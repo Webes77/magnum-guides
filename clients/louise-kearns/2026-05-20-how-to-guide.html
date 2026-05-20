@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundation Session How-To Guide — Perway Construction</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f9f8f6; color: #1a1a1a; line-height: 1.7; }
+  .header { background: #1C1C1E; color: #fff; padding: 48px 40px 40px; }
+  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .header p { color: #aaa; font-size: 15px; }
+  .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+  .section { background: #fff; border-radius: 10px; padding: 36px; margin-bottom: 24px; border: 1px solid #e8e6e3; }
+  .section h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #1C1C1E; border-bottom: 2px solid #e8e6e3; padding-bottom: 12px; }
+  .section h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; color: #1C1C1E; }
+  .section p { font-size: 15px; margin-bottom: 14px; color: #333; }
+  .section ul, .section ol { padding-left: 20px; margin-bottom: 16px; }
+  .section li { font-size: 15px; margin-bottom: 8px; color: #333; }
+  .steps { counter-reset: step; list-style: none; padding-left: 0; }
+  .steps li { counter-increment: step; padding: 12px 16px 12px 52px; position: relative; background: #f9f8f6; border-radius: 8px; margin-bottom: 8px; }
+  .steps li::before { content: counter(step); position: absolute; left: 14px; top: 11px; background: #1C1C1E; color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .prompt-block { background: #1C1C1E; color: #e8e6e3; padding: 16px 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 13.5px; line-height: 1.6; margin: 12px 0 20px; white-space: pre-wrap; }
+  .action-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0eeec; }
+  .action-item:last-child { border-bottom: none; }
+  .action-checkbox { width: 20px; height: 20px; border: 2px solid #ccc; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+  .action-label { font-size: 15px; color: #333; }
+  .action-who { font-size: 12px; color: #888; margin-top: 2px; }
+  .tip { background: #fffbf0; border-left: 4px solid #D4AF37; padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; color: #555; }
+  .question-item { padding: 14px 0; border-bottom: 1px solid #f0eeec; }
+  .question-item:last-child { border-bottom: none; }
+  .question-text { font-size: 15px; font-weight: 600; color: #1C1C1E; margin-bottom: 4px; }
+  .question-answer { font-size: 14px; color: #555; }
+  .question-pending { font-size: 13px; color: #B8941F; font-style: italic; margin-top: 4px; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-left: 8px; }
+  .tag-answered { background: #e8f5e9; color: #2e7d32; }
+  .tag-pending { background: #fff8e1; color: #f57c00; }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 16px 0; }
+  @media (max-width: 600px) { .concept-grid { grid-template-columns: 1fr; } }
+  .concept-card { background: #f9f8f6; border: 1px solid #e8e6e3; border-radius: 8px; padding: 16px; }
+  .concept-card h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 6px; }
+  .concept-card p { font-size: 14px; color: #333; margin: 0; }
+  .next-steps { background: #1C1C1E; color: #fff; border-radius: 10px; padding: 36px; margin-bottom: 24px; }
+  .next-steps h2 { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: #fff; }
+  .next-steps p { color: #ccc; font-size: 15px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Foundation Session — How-To Guide</h1>
+  <p>Perway Construction &nbsp;·&nbsp; 20 May 2026 &nbsp;·&nbsp; Delivered by Magnum AI</p>
+</div>
+
+<div class="container">
+
+  <!-- Overview -->
+  <div class="section">
+    <h2>What This Guide Covers</h2>
+    <p>This is your reference document from today's Foundation Session. Everything we covered — the frameworks, the settings, the step-by-step instructions — is in here so you can implement it without having to remember every detail from the call.</p>
+    <p>Bookmark it. Come back to it as you go. It's designed to be used in pieces, not read end to end.</p>
+  </div>
+
+  <!-- Mistakes -->
+  <div class="section">
+    <h2>The 3 Biggest Mistakes That Kill AI Output</h2>
+
+    <h3>1. No foundation before you start</h3>
+    <p>Most people open a new chat and ask a question cold. The AI doesn't know who you are, what you need, or how you want it to behave — so it guesses. Build the ground rules first (your role, your business, your preferences) and every output improves immediately.</p>
+
+    <h3>2. One-shot prompting</h3>
+    <p>Typing a single sentence and hoping for the best. The AI has trillions of examples of language — the more context you give it, the more specific the output. Richer input, better result. Every time.</p>
+
+    <h3>3. Memory bloat</h3>
+    <p>When a chat gets too long, the AI can't see the beginning of the conversation anymore. It starts making mistakes, looping, or losing context — this is called memory bloat. Fix: start a new chat for each fresh task. If you're deep in a chat and it starts spinning, copy the whole conversation, paste it into a new chat, and ask it to pick up from there.</p>
+
+    <div class="tip">
+      <strong>Quick check:</strong> Feeling like your AI has amnesia? Ask it directly: "How are we going for context memory right now?" It'll tell you — and can write a handover brief for the next chat if needed.
+    </div>
+  </div>
+
+  <!-- 6 Lever Framework -->
+  <div class="section">
+    <h2>The 6 Lever Framework — Better Prompts Every Time</h2>
+    <p>Instead of one vague sentence, structure your prompts across six levers. You don't need all six every time — but the more you include, the sharper the output.</p>
+
+    <div class="concept-grid">
+      <div class="concept-card"><h4>Role</h4><p>Who is the AI being? Invoke a specific expert.</p></div>
+      <div class="concept-card"><h4>Context</h4><p>What's the situation? Give it background.</p></div>
+      <div class="concept-card"><h4>Constraints</h4><p>What should it NOT do? Be explicit.</p></div>
+      <div class="concept-card"><h4>Tone</h4><p>How should it sound? Formal, casual, direct?</p></div>
+      <div class="concept-card"><h4>Format</h4><p>How should it be structured? List, paragraph, table?</p></div>
+      <div class="concept-card"><h4>Output</h4><p>What exactly do you want delivered?</p></div>
+    </div>
+
+    <h3>Perway Example — Social Media</h3>
+    <p><strong>Weak prompt (2 levers):</strong></p>
+    <div class="prompt-block">Write me some Facebook posts about our latest finished home.</div>
+
+    <p><strong>Strong prompt (6 levers):</strong></p>
+    <div class="prompt-block">You are a social media content strategist with 10 years of experience working with residential construction businesses in Western Australia. I run Perway Construction — a custom home and renovation company. We've just completed a project and I want to turn it into a week of social content across Facebook and Instagram. Don't use generic captions. Focus on the craftsmanship and the client's story. Write in a warm but professional tone. Give me 5 posts — one per day — as a simple numbered list.</div>
+
+    <div class="tip">
+      <strong>Tip:</strong> Talk to the AI rather than type. Your spoken words are more natural and give it more to work with. Use WhisperFlow (see below) and just speak your prompt — the AI understands rambling better than finely typed sentences.
+    </div>
+  </div>
+
+  <!-- Voice Input -->
+  <div class="section">
+    <h2>Voice Input — The Fastest Way to Work</h2>
+    <p>The tool is called <strong>WhisperFlow</strong>. It costs $150/year and is one of the highest-leverage tools you can buy.</p>
+
+    <h3>What it does</h3>
+    <ul>
+      <li>Transcribes your voice to text anywhere on your computer</li>
+      <li>Polishes your speech into clean written text automatically</li>
+      <li>Lets you create snippets — say "my details" and it types your address</li>
+      <li>Works across Claude, ChatGPT, email, documents — anywhere you type</li>
+    </ul>
+
+    <h3>Why it matters</h3>
+    <p>When you type, you unconsciously edit what you're saying. When you talk, you give the AI your actual thinking — messier, richer, and far more useful as input. The AI is built to understand natural language. Use it.</p>
+  </div>
+
+  <!-- Claude Settings -->
+  <div class="section">
+    <h2>Setting Up Claude Correctly</h2>
+
+    <h3>Privacy settings — do this now</h3>
+    <ol class="steps">
+      <li>Go to Settings (bottom left in Claude)</li>
+      <li>Click <strong>Privacy</strong></li>
+      <li>Turn OFF "Improve Help Improve Claude" — this stops your conversations being used for training</li>
+      <li>Review your memory settings — check what Claude has stored about you and clear anything inaccurate</li>
+    </ol>
+
+    <h3>Capabilities — turn these on</h3>
+    <ol class="steps">
+      <li>Go to Settings > Capabilities</li>
+      <li>Turn on <strong>Search and reference past chats</strong> — lets Claude search your conversation history</li>
+      <li>Turn on <strong>Generate memory from chat history</strong> — builds a profile of you over time</li>
+      <li>Set <strong>Tool access mode</strong> to "Tools already loaded" — faster performance</li>
+    </ol>
+
+    <h3>Import your ChatGPT memory into Claude</h3>
+    <ol class="steps">
+      <li>Go to Settings > Capabilities</li>
+      <li>Click <strong>Import memory from other AI provider</strong></li>
+      <li>Copy the prompt it gives you</li>
+      <li>Paste it into ChatGPT and run it</li>
+      <li>Copy the result back into Claude and click Add to Memory</li>
+    </ol>
+
+    <h3>Managing AI usage — Sonnet vs Opus</h3>
+    <p>Check your usage at Settings > Usage. <strong>Sonnet is the right model for 90% of tasks</strong> — it's fast and cost-efficient. Opus (also called Advanced Thinking) is powerful but burns through credits quickly. Don't leave it toggled on by default.</p>
+    <p>For a team: check that staff are defaulting to Sonnet, not Opus. One person on Opus all day can burn through a month's budget.</p>
+  </div>
+
+  <!-- Projects vs Chat vs Cowork -->
+  <div class="section">
+    <h2>Claude Chat vs Projects vs Cowork</h2>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Claude Chat</h4>
+        <p>Conversational. One task at a time. Writing, editing, research, quick analysis. Most of your day-to-day work.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Projects</h4>
+        <p>A container for deep, ongoing work. Has its own instructions, files, and memory. Use for legal work, advertising, any specialist area you return to regularly.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Cowork</h4>
+        <p>Autonomous. Runs multi-step tasks, accesses your local files, connects to tools. Use when you want it to act, not just answer.</p>
+      </div>
+    </div>
+
+    <h3>When to use each</h3>
+    <ul>
+      <li><strong>Chat:</strong> Draft an email, summarize a document, answer a question, brainstorm ideas</li>
+      <li><strong>Projects:</strong> Legal matter with multiple documents, advertising campaigns, anything with deep specialist context you'll revisit</li>
+      <li><strong>Cowork:</strong> Go through my emails and flag the urgent ones, run my post-session workflow, build and test a skill, access files on my computer</li>
+    </ul>
+
+    <h3>How to set up a project</h3>
+    <ol class="steps">
+      <li>In Claude Chat, click <strong>New Project</strong></li>
+      <li>Give it a name and description (e.g., "Perway Advertising")</li>
+      <li>Add <strong>Project Instructions</strong> — this is where you tell Claude who it is, what it knows about your business, and how it should behave in this context</li>
+      <li>Upload relevant files — standard operating procedures, brand guidelines, scripts, templates</li>
+      <li>Only upload files you'll actually use. Every file uploaded gets read on every chat — unused files burn credits.</li>
+    </ol>
+
+    <div class="tip">
+      <strong>Strategy tip:</strong> Think of each project as a specialist staff member. Your main hub handles business operations. A separate project handles advertising. Brief them separately — and brief one from the other if you need them to collaborate.
+    </div>
+
+    <h3>How to access SharePoint/OneDrive from Cowork</h3>
+    <ol class="steps">
+      <li>Install the OneDrive desktop app on your PC if you haven't already</li>
+      <li>Sync your SharePoint folder to your local drive</li>
+      <li>In Cowork, use <strong>Choose a different folder</strong> to point Cowork at your OneDrive folder</li>
+      <li>Cowork can now read, write, and organize files in that folder</li>
+    </ol>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <h2>Skills — Repeatable Workflows You Build Once</h2>
+    <p>A skill is a set of instructions that tells Claude how to run a specific workflow — consistently, every time. Once built, you invoke it with a forward slash (e.g., <code>/email-triage</code>) and it runs.</p>
+
+    <h3>How to install a skill</h3>
+    <ol class="steps">
+      <li>Go to <strong>Customize</strong> (bottom left in Claude)</li>
+      <li>Click <strong>Skills</strong></li>
+      <li>Click <strong>Add Skill</strong> > <strong>Upload a Skill</strong></li>
+      <li>Drag and drop the .skill file in</li>
+      <li>Done — it's now available in all your chats</li>
+    </ol>
+
+    <h3>Installing your Perway Email Triage Skill</h3>
+    <p>James has built a custom email triage skill for you. Once you receive it:</p>
+    <ol class="steps">
+      <li>Follow the install steps above to upload it</li>
+      <li>Once installed, go to Skills and find the Perway Email Triage skill</li>
+      <li>Click <strong>Edit with Claude</strong></li>
+      <li>Paste in the brief James sends you — this tells Claude how to improve the skill for your inbox</li>
+      <li>Run it on a batch of your recent emails and give Claude feedback on what to change</li>
+    </ol>
+
+    <h3>How to invoke a skill</h3>
+    <p>In any chat or Cowork, type <code>/</code> followed by the first few letters of the skill name. It will appear as a suggestion. Click it to invoke.</p>
+
+    <h3>How to update a skill</h3>
+    <p>Go to Customize > Skills > find the skill > click <strong>Edit with Claude</strong>. Tell it what you want changed in plain English. It updates the skill in real time.</p>
+
+    <div class="tip">
+      <strong>Rule of thumb:</strong> If you do something the same way more than three times, turn it into a skill. Skills are how you build consistent, staff-level outputs without repeating yourself.
+    </div>
+  </div>
+
+  <!-- Connectors -->
+  <div class="section">
+    <h2>Connectors — Linking Your Tools</h2>
+    <p>Connectors let Claude access and act within your existing tools — email, calendar, files, and more.</p>
+
+    <h3>How to connect</h3>
+    <ol class="steps">
+      <li>Go to Customize > Connectors > Browse Connectors</li>
+      <li>Find the tool you want (Google Drive, Google Calendar, Canva, etc.)</li>
+      <li>Click and authorize — it's a one-click approval for most tools</li>
+      <li>Connectors built by Anthropic are safe. Check the developer name before authorizing anything unfamiliar.</li>
+    </ol>
+
+    <h3>Microsoft 365 — what you need to know</h3>
+    <p>Microsoft 365 requires admin approval to connect. Your IT team needs to approve it through Microsoft's admin portal. Once approved:</p>
+    <ul>
+      <li>Claude can search your emails and files</li>
+      <li>Claude can check your calendar</li>
+      <li>Claude cannot send emails directly — that requires a separate Make or Zapier automation (James can build this for you)</li>
+    </ul>
+
+    <h3>Priority connectors to set up</h3>
+    <ul>
+      <li>Microsoft 365 (pending IT approval)</li>
+      <li>Google Calendar (if you use it)</li>
+      <li>Google Drive (if you use it)</li>
+      <li>Canva (if you use it for design)</li>
+    </ul>
+  </div>
+
+  <!-- Scheduled Tasks -->
+  <div class="section">
+    <h2>Scheduled Tasks in Cowork</h2>
+    <p>Cowork can run tasks on a schedule — daily, weekly, or at a specific time — without you needing to prompt it each time.</p>
+
+    <h3>How to set up a scheduled task</h3>
+    <ol class="steps">
+      <li>Open <strong>Cowork</strong></li>
+      <li>Click <strong>Scheduled</strong> (left sidebar)</li>
+      <li>Click <strong>New Task</strong></li>
+      <li>Invoke your skill (e.g., <code>/email-triage</code>)</li>
+      <li>Tell it what to do and when to run it</li>
+    </ol>
+
+    <div class="prompt-block">Run my Perway email triage skill every day at 4:30pm. Look back 24 hours. Categorise emails into urgent, follow-up required, junk, and FYI. Flag anything from clients or council. Give me a summary in chat.</div>
+
+    <div class="tip">
+      <strong>Note on accounts:</strong> Scheduled tasks in Cowork run from your account and use your connected tools. If Andy needs separate email triage, he'll need his own Claude account with his own connectors set up. James can walk you through this.
+    </div>
+  </div>
+
+  <!-- Action Items -->
+  <div class="section">
+    <h2>Your Action Items</h2>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Upload the master prompt document into Claude and ask it to read the brief</div>
+        <div class="action-who">Louise — James sent this through today</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Install the Perway Email Triage skill when you receive it from James</div>
+        <div class="action-who">Louise — follow the install steps in the Skills section above</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Turn off "Improve Help Improve Claude" in your Privacy settings</div>
+        <div class="action-who">Louise — Settings > Privacy</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Turn on Search and reference past chats, Generate memory from chat history, and set Tool access to "Tools already loaded"</div>
+        <div class="action-who">Louise — Settings > Capabilities</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Import your ChatGPT memory into Claude using the import tool</div>
+        <div class="action-who">Louise — Settings > Capabilities > Import memory</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Connect your priority connectors: Microsoft 365 (pending IT), Google Drive, Google Calendar, Canva</div>
+        <div class="action-who">Louise — Customize > Connectors > Browse</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Send ABN and invoicing details to James</div>
+        <div class="action-who">Louise — james@magnumai.com.au</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Schedule follow-up call (approximately one week) — happy to include Andy</div>
+        <div class="action-who">Louise + James</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Send master prompt, presentation, email triage skill, and skill brief to Louise</div>
+        <div class="action-who">James</div>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="action-checkbox"></div>
+      <div>
+        <div class="action-label">Confirm whether Microsoft 365 connector can access multiple email accounts within the same domain</div>
+        <div class="action-who">James — will follow up via email</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Open Questions -->
+  <div class="section">
+    <h2>Your Questions from Today</h2>
+
+    <div class="question-item">
+      <div class="question-text">What paid plan do I actually need? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">ChatGPT Plus ($30/month) is sufficient for most users. Claude Pro is fine unless you or your team are running heavy automations or using Opus/Advanced Thinking frequently — that's when usage burns fast. Check Settings > Usage to monitor where you're at. Default everyone to Sonnet, not Opus.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">Can Microsoft 365 connector access multiple email accounts in the same domain? <span class="tag tag-pending">James will confirm</span></div>
+      <div class="question-answer">James believes it should work across accounts within the same Microsoft 365 domain — but he's confirming this and will follow up in the email.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">How does Cowork access SharePoint files? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">Install the OneDrive desktop app, sync your SharePoint folder to your local drive, then point Cowork at that folder using "Choose a different folder." Once synced, it can read and write to those files.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">If Andy and I both use Claude, how do we keep our emails and tools separate? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">Each person needs their own Claude account with their own connectors. Skills can be shared (James can package them for both of you), but the tool connections — email, calendar, files — are account-specific. This is how you keep your inboxes separate.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">The builders course mentions keeping skills on your desktop — what does that mean? <span class="tag tag-pending">James will follow up</span></div>
+      <div class="question-answer">James will clarify this in the follow-up. His best guess is they're referring to having the .skill files accessible locally so you can re-upload or share them easily.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">Is it safe to connect tools like Microsoft 365 and Google Drive to Claude? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">Connectors built by Anthropic (it says "Developed by Anthropic" on the connector page) are safe — they're owned and maintained by Claude's parent company. For third-party connectors, check who built them before authorizing. The risk isn't Claude itself — it's unknown third-party developers whose connectors you don't recognize.</div>
+    </div>
+
+  </div>
+
+  <!-- Next Steps -->
+  <div class="next-steps">
+    <h2>Next Steps</h2>
+    <p>Before the next session, the priority is getting the foundations in place: master prompt uploaded, email triage skill installed, and your key connectors connected.</p>
+    <p>Don't try to implement everything at once. Start with the master prompt and the privacy settings — that's 15 minutes and immediately improves every future session with Claude.</p>
+    <p>Any questions as you implement, send them through to <strong>james@magnumai.com.au</strong> — James can answer most things quickly over email between sessions.</p>
+    <p style="margin-top: 20px; color: #888; font-size: 13px;">Prepared by Magnum AI &nbsp;·&nbsp; magnumai.com.au</p>
+  </div>
+
+</div>
+</body>
+</html>
