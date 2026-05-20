@@ -343,6 +343,43 @@
       <div class="question-answer">Connectors built by Anthropic (it says "Developed by Anthropic" on the connector page) are safe — they're owned and maintained by Claude's parent company. For third-party connectors, check who built them before authorizing. The risk isn't Claude itself — it's unknown third-party developers whose connectors you don't recognize.</div>
     </div>
 
+    <div class="question-item">
+      <div class="question-text">Where do I save these files? <span class="tag tag-pending">Partial answer</span></div>
+      <div class="question-answer">We couldn't access the specific chat you shared, but the general answer is: upload files you want Claude to reference consistently into a Project. Files uploaded to a project are available every time you work in that project — no need to re-upload them. For files Cowork creates (estimates, documents, exports), save those to your Claude folder on your local drive or OneDrive. If you're unsure where something belongs, a good rule of thumb: if Claude needs to read it, it goes in a project. If Claude creates it, it goes in your local Claude folder.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">I want scheduled tasks for both me and Andy — but if I run them on my account, they use my email. How do we share skills but use separate connections? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">Andy needs his own Claude account with his own connectors set up. Skills are portable — James can package them as .skill files and Andy installs the same ones on his account. But the connections (his Microsoft 365, his email, his calendar) are tied to his login. There's no cross-account connector sharing, and that's actually a good thing — it means his scheduled tasks only ever touch his data and yours only touch yours. The setup: Andy gets Claude Pro, installs the shared skills, connects his own tools. Clean and separate from day one.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">What's the recommended folder structure for Claude on my computer? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">Your suggested structure is right. Create the Claude parent folder manually on your OneDrive-synced drive — that's the only one you need to set up yourself. Scheduled and Artifacts folders build automatically the first time Cowork uses them. Start with this and let the rest fill in:
+      <br><br>
+      Claude/<br>
+      &nbsp;&nbsp;Projects/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Perway/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Estimating/<br>
+      <br>
+      Don't over-engineer it upfront. Add folders as you actually need them.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">What actually are Artifacts and Scheduled tasks? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer"><strong>Artifacts</strong> are files Claude creates for you — a document, a spreadsheet, an HTML page, a quote template. Any time Claude builds something and saves it, that's an artifact. In Cowork they land in your Artifacts folder automatically.<br><br><strong>Scheduled tasks</strong> are automations that run on a timer without you having to prompt them. You set it up once — "run my email triage every morning at 6am" — and it fires on its own from then on. Think of it like setting an alarm, except instead of waking you up it goes and does a job for you.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">Will I end up with duplicate files — for example, if Claude creates a new estimate, does it save into the same folder as existing estimates? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">Yes, duplicates will happen if you don't give Claude a specific place to save things. Claude won't overwrite an existing file unless you tell it to — so without a clear naming convention and folder, you'll end up with multiples. Fix this now before the habit forms: always tell Cowork exactly where to save ("save this to my Claude > Projects > Estimating folder") and use a consistent file naming convention. Date plus project name works well — for example, <em>2026-05-20-Johnson-Renovation-Estimate.docx</em>. Once that's a habit, duplicates stop being a problem.</div>
+    </div>
+
+    <div class="question-item">
+      <div class="question-text">We have 3 separate businesses. Should I set up a different Claude account for each? And within Perway — should Renovations and EcoPods be separate projects? <span class="tag tag-answered">Answered</span></div>
+      <div class="question-answer">One Claude account, not three. Use projects as the separator — not accounts. Separate accounts create friction and don't add meaningful data separation for a business owner who's across everything anyway.<br><br>For Perway specifically — same brand voice, shared website, different preconstruction processes — two projects is the right call:<br><br><strong>Perway HQ</strong> — shared brand voice, logo, company context, website copy. This is the reference point both arms draw from.<br><strong>Perway Renovations</strong> — renovation-specific preconstruction process and workflows.<br><strong>Perway EcoPods</strong> — EcoPods-specific process, same brand, different workflow.<br><br>Your other two businesses each get their own project. Everything stays in one account, cleanly separated by project instructions.</div>
+    </div>
+
   </div>
 
   <!-- Next Steps -->
