@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Manus Website Manual — Magnum AI</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111111; --paper:#FFFFFF; --panel:#EFEFEF; --hair:#D5D5D5;
+  --muted:#6B6B6B; --gold:#B8941F; --gold-dark:#D4AF37;
+  --display:'Archivo Narrow','Arial Narrow',sans-serif;
+  --body:'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+/* Running header */
+.runhead{position:fixed;top:0;left:0;right:0;background:var(--paper);z-index:100;padding:20px 48px 0}
+.runhead-inner{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
+.runhead .brand{font-weight:bold;font-size:12px;letter-spacing:3px}
+.runhead .marker{font-weight:bold;font-size:12px;letter-spacing:3px;color:var(--gold)}
+/* Layout */
+.wrap{display:flex;max-width:1360px;margin:0 auto;padding-top:62px}
+nav{width:264px;flex-shrink:0;position:sticky;top:62px;height:calc(100vh - 62px);overflow-y:auto;padding:56px 28px 80px 48px}
+nav::-webkit-scrollbar{width:0}
+nav .navlabel{display:none}
+nav a{display:block;color:var(--muted);text-decoration:none;font-size:12.5px;padding:4px 0;line-height:1.4;transition:color .12s}
+nav a:hover{color:var(--ink)}
+nav a.active{color:var(--ink);font-weight:bold}
+nav a.active::before{content:"";display:inline-block;width:14px;height:2px;background:var(--gold);vertical-align:middle;margin-right:8px}
+nav .navgroup{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;margin:30px 0 10px;color:var(--ink)}
+nav .navgroup:first-of-type{margin-top:0}
+main{flex:1;min-width:0;padding:0 56px 140px 72px;max-width:900px}
+/* Type */
+h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(56px,7.5vw,104px);line-height:.92;letter-spacing:-1px;margin:0 0 28px}
+.subtitle{font-size:19px;color:var(--ink);margin-bottom:10px;max-width:52ch}
+.version{font-weight:bold;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:56px}
+h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,3.6vw,50px);line-height:.98;margin:0 0 30px;letter-spacing:-.5px;position:relative;z-index:1}
+h3{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:21px;letter-spacing:.5px;margin:44px 0 14px}
+h4{font-weight:bold;font-size:15px;margin:26px 0 8px}
+p{margin-bottom:16px;max-width:66ch}
+section{padding-top:96px;position:relative}
+.kicker{display:none}
+/* Signature: ghost part numeral */
+.secnum{font-family:var(--display);font-weight:700;font-size:150px;line-height:1;color:var(--paper);-webkit-text-stroke:1.5px var(--hair);position:absolute;top:52px;right:0;z-index:0;user-select:none;pointer-events:none}
+.seclabel{font-weight:bold;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+/* Phase divider bands */
+.phase{background:var(--ink);color:var(--paper);margin:110px -56px 0 -72px;padding:64px 72px}
+.phase .pnum{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:4px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:10px}
+.phase h2{color:var(--paper);font-size:clamp(44px,5vw,72px);margin:0}
+.phase p{color:#B5B5B5;margin:14px 0 0;max-width:56ch;font-size:16px}
+ul,ol{margin:0 0 18px 22px;max-width:66ch}
+li{margin-bottom:7px}
+strong{font-weight:bold}
+/* Panel */
+.panel{background:var(--panel);padding:26px 32px;margin:26px 0 30px;max-width:68ch}
+.panel p{font-size:17px;line-height:1.6}
+.panel p:last-child{margin-bottom:0}
+/* Outlined box */
+.box{border:1.5px solid var(--ink);padding:26px 32px;margin:26px 0 30px;max-width:68ch}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+/* Contrast pair */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0 30px;max-width:68ch}
+.pair .before{background:var(--panel);padding:22px 24px}
+.pair .after{border:1.5px solid var(--ink);padding:22px 24px}
+.pair .plabel{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px}
+.pair .before .plabel{color:var(--muted)}
+.pair p{margin:0;font-size:15px}
+/* Checklist: two columns */
+.check{list-style:none;margin-left:0;max-width:100%;column-count:2;column-gap:48px}
+.check li{position:relative;padding-left:30px;margin-bottom:9px;break-inside:avoid;font-size:15px}
+.check li::before{content:"";position:absolute;left:0;top:5px;width:13px;height:13px;border:1.5px solid var(--ink);background:var(--paper)}
+/* Prompt block: ink */
+.prompt{background:var(--ink);margin:26px 0 34px;max-width:72ch}
+.prompt-head{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid #333}
+.prompt-head span{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--paper)}
+.prompt pre{padding:24px 26px;white-space:pre-wrap;font-family:var(--body);font-size:14px;line-height:1.65;color:#E8E8E8}
+.copybtn{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;background:var(--paper);color:var(--ink);border:none;padding:8px 18px;cursor:pointer;transition:background .12s}
+.copybtn:hover,.copybtn.copied{background:var(--gold-dark)}
+/* Numbered circles */
+.numlist{list-style:none;margin-left:0;counter-reset:step;max-width:66ch}
+.numlist li{counter-increment:step;position:relative;padding-left:48px;margin-bottom:14px;min-height:30px}
+.numlist li::before{content:counter(step);position:absolute;left:0;top:0;width:28px;height:28px;border:1.5px solid var(--ink);font-family:var(--display);font-weight:700;font-size:14px;line-height:28px;text-align:center}
+/* Flow */
+.flow{max-width:66ch;margin:26px 0 30px}
+.flow .step{border:1.5px solid var(--ink);padding:16px 22px}
+.flow .arrow{text-align:center;font-weight:bold;padding:3px 0;color:var(--muted)}
+.flow .step .n{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;display:block;margin-bottom:3px}
+/* Dark closing */
+.dark{background:var(--ink);color:var(--paper);padding:72px 72px;margin:60px -56px 0 -72px}
+.dark h2{color:var(--paper)}
+.dark .goldline{color:var(--gold-dark);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:1.1;margin-top:20px}
+.dark p{color:#CFCFCF}
+/* FAQ */
+details{border-bottom:1px solid var(--hair);max-width:70ch}
+details summary{font-weight:bold;font-size:15px;padding:16px 0;cursor:pointer;list-style:none;position:relative;padding-right:34px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";position:absolute;right:4px;top:13px;font-family:var(--display);font-weight:700;font-size:20px}
+details[open] summary::after{content:"2"}
+details .a{padding:0 0 18px}
+details .a p{font-size:15px}
+details .a p:last-child{margin-bottom:0}
+/* Spec rows */
+.specrow{display:grid;grid-template-columns:250px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--hair);max-width:70ch;font-size:15px;align-items:baseline}
+.specrow .k{font-weight:bold}
+/* Mobile */
+.navtoggle{display:none}
+@media(max-width:960px){
+  .runhead{padding:14px 20px 0}
+  .wrap{flex-direction:column;padding-top:54px}
+  nav{position:fixed;top:54px;left:0;right:0;height:auto;max-height:0;overflow:hidden;background:var(--paper);border-bottom:1.5px solid var(--ink);padding:0 24px;transition:max-height .25s;z-index:90}
+  nav.open{max-height:72vh;overflow-y:auto;padding:24px}
+  main{padding:0 22px 90px}
+  .secnum{font-size:88px;top:70px}
+  .phase{margin:80px -22px 0;padding:44px 24px}
+  .dark{margin:48px -22px 0;padding:48px 24px}
+  .pair,.check{grid-template-columns:1fr;column-count:1}
+  .specrow{grid-template-columns:1fr;gap:2px}
+  .navtoggle{display:block;position:fixed;top:9px;right:16px;z-index:110;background:var(--ink);color:var(--paper);border:none;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:2px;padding:8px 14px;cursor:pointer}
+}
+@media print{.runhead,nav,.navtoggle{display:none}.wrap{padding:0}main{padding:0}.phase,.dark{margin:40px 0 0}}
+</style>
+</head>
+<body>
+<div class="runhead"><div class="runhead-inner">
+<span class="brand">MAGNUM AI</span>
+<span class="marker">MANUS WEBSITE MANUAL</span>
+</div></div>
+<button class="navtoggle" onclick="document.querySelector('nav').classList.toggle('open')">CONTENTS</button>
+<div class="wrap">
+<nav id="nav">
+<div class="navlabel">Contents</div>
+<a href="#intro">What this manual is for</a>
+<div class="navgroup">Foundations</div>
+<a href="#p1">1 — The Golden Rule</a>
+<a href="#p2">2 — What Are We Building?</a>
+<a href="#p3">3 — Before Building Anything</a>
+<a href="#p4">4 — Ownership</a>
+<div class="navgroup">The Build</div>
+<a href="#p5">5 — The First Version</a>
+<a href="#p6">6 — First Review</a>
+<a href="#p7">7 — Mobile</a>
+<a href="#p8">8 — Forms</a>
+<a href="#p9">9 — Changing Content</a>
+<a href="#p10">10 — Client Self-Editing</a>
+<a href="#p11">11 — Pubs, Menus &amp; Events</a>
+<a href="#p12">12 — E-Commerce</a>
+<a href="#p13">13 — Bookings</a>
+<div class="navgroup">Going Live</div>
+<a href="#p14">14 — Connecting the Domain</a>
+<a href="#p15">15 — Hosting</a>
+<a href="#p16">16 — The Billing Trap</a>
+<a href="#p17">17 — Who Pays for Hosting?</a>
+<a href="#p18">18 — SEO</a>
+<a href="#p19">19 — Analytics</a>
+<a href="#p20">20 — Backups &amp; Escape Hatch</a>
+<a href="#p21">21 — Before a Big Change</a>
+<a href="#p22">22 — Final Pre-Launch Test</a>
+<a href="#p23">23 — Client Approval</a>
+<a href="#p24">24 — Launch Day</a>
+<div class="navgroup">After Launch</div>
+<a href="#p25">25 — Handover</a>
+<a href="#p26">26 — Ongoing Maintenance</a>
+<a href="#p27">27 — Making Changes Safely</a>
+<a href="#p28">28 — Standard Change Prompt</a>
+<a href="#p29">29 — When Not to Use Manus</a>
+<a href="#p30">30 — Troubleshooting</a>
+<a href="#p31">31 — The FAQ</a>
+<div class="navgroup">Quick Reference</div>
+<a href="#p32">32 — 60-Second Decision Tree</a>
+<a href="#p33">33 — Standard Operating Process</a>
+<a href="#cheat">The One-Page Cheat Sheet</a>
+<a href="#final">The Final Rule</a>
+</nav>
+<main>
+
+<section id="intro" style="padding-top:64px">
+<h1>The Manus<br>Website Manual</h1>
+<p class="subtitle">A no-coder's guide to building, launching and managing client websites.</p>
+<p class="version">Version 1.0 &mdash; August 2026</p>
+<h3>What this manual is for</h3>
+<p>This is the standard process for building websites for clients using Manus. You do <strong>not</strong> need to be a web developer.</p>
+<p>You do need to know: what you are building, what Manus should handle, what another system should handle, who owns everything, how the client will update things later, and how you get out if something goes wrong.</p>
+<div class="panel"><p>The objective is not to build the world's cleverest website. The objective is to build a good website, get it live, make sure it works, and avoid creating a bloody nightmare six months later.</p></div>
+</section>
+
+<div class="phase"><div class="pnum">Phase One</div><h2>Foundations</h2><p>What you are building, what to collect, and who owns what. Get this wrong and everything after it is built on sand.</p></div>
+<section id="p1">
+<div class="secnum">01</div><p class="seclabel">Part 1</p>
+<h2>The Golden Rule</h2>
+<div class="box"><p><strong>Manus builds the website. It does not have to run the client's entire business.</strong></p><p>This one rule prevents most problems.</p></div>
+<div class="specrow"><span class="k">Construction company website?</span><span>Build it in Manus.</span></div>
+<div class="specrow"><span class="k">Pub with weekly events?</span><span>Build it in Manus and make Events editable.</span></div>
+<div class="specrow"><span class="k">Bike-tour company with a booking system?</span><span>Build the website in Manus and connect the booking system.</span></div>
+<div class="specrow"><span class="k">Online shop, hundreds of products?</span><span>Build the storefront in Manus. Use Shopify to manage the actual commerce.</span></div>
+<div class="specrow"><span class="k">One-off payment or simple subscription?</span><span>Manus + Stripe may be enough.</span></div>
+<div class="specrow"><span class="k">Complex custom software, thousands of users?</span><span>Stop. This is no longer a normal website job.</span></div>
+<p style="margin-top:20px">Manus currently supports managed hosting, databases, file storage, authentication, custom domains, analytics, Stripe, Shopify, REST APIs and other full-stack functionality. That does <strong>not</strong> mean we should use all of it on every website. Simple wins.</p>
+</section>
+
+<section id="p2">
+<div class="secnum">02</div><p class="seclabel">Part 2</p>
+<h2>First Decision: What Are We Actually Building?</h2>
+<p>Before touching Manus, put the website into one of these buckets.</p>
+<h3>Type A &mdash; The Simple Business Website</h3>
+<p>Builder, electrician, consultant, recruiter, accountant, commercial furniture business, local service company. Typical pages: Home, About, Services, Projects, Testimonials, Contact.</p>
+<div class="box"><p><strong>Verdict: Manus. Keep it simple.</strong> No database unless there is a reason for one.</p></div>
+<h3>Type B &mdash; The Frequently Updated Website</h3>
+<p>Pub, restaurant, club, venue, recruitment company, accommodation business, events business. Things that change: events, menus, jobs, specials, projects, team members, news.</p>
+<div class="box"><p><strong>Verdict: Manus + structured database.</strong> Do not bury information that changes every week inside the page design.</p></div>
+<p>Manus projects can use a managed MySQL database, and records can be viewed, added, edited and deleted through its data interface. Better still, if the client needs to update the content themselves, build them a deliberately simple admin page. Example: <strong>clientwebsite.com.au/admin</strong>. They log in and see Events, Add Event, a handful of fields, Save. That's it.</p>
+<div class="panel"><p>Do not give Dave from the pub the keys to the entire website because he wants to change Saturday night's band.</p></div>
+<h3>Type C &mdash; The Booking Website</h3>
+<p>Mountain biking, tours, appointments, accommodation, classes, experiences. First question: <strong>does the client already use booking software?</strong></p>
+<div class="box"><p><strong>If yes: do not rebuild it.</strong> Connect or embed the existing booking platform. Manus can communicate with third-party systems through REST APIs where required.</p><p>Your job is: website &rarr; beautiful information &rarr; obvious BOOK NOW button &rarr; existing booking system. Do not accidentally build Expedia.</p></div>
+<p>If they don't have booking software, assess that separately before promising anything.</p>
+<h3>Type D &mdash; E-Commerce</h3>
+<p>100 products, stock levels, sizes, colours, discount codes, shipping, refunds, collections.</p>
+<div class="box"><p><strong>Recommended setup: Manus = website/storefront. Shopify = commerce engine.</strong></p><p>Manus officially supports connecting a Shopify commerce backend, including products, collections, inventory and checkout. The client changes products in Shopify. Manus displays the shop. Shopify handles the serious commerce machinery.</p></div>
+<p>Do not make someone's stock control system dependent on asking an AI agent to change a webpage.</p>
+<h3>Type E &mdash; Simple Payments</h3>
+<p>A $100 booking deposit, paid consultation, membership, fixed-price service, simple subscription. Consider <strong>Manus + Stripe</strong>. Manus can create and test Stripe payments in a sandbox before connecting the real Stripe account.</p>
+<h3>Type F &mdash; "This Is Starting to Sound Like Software"</h3>
+<p>Warning signs: users need individual dashboards, different permission levels, live availability, synchronising with three systems, customers creating accounts and managing orders, thousands of database records, complex calculations.</p>
+<div class="panel"><p>Manus can technically build sophisticated web applications. But commercially, stop calling this a website. Scope it separately.</p></div>
+</section>
+
+<section id="p3">
+<div class="secnum">03</div><p class="seclabel">Part 3</p>
+<h2>Before Building Anything</h2>
+<h3>The Client Website Checklist</h3>
+<p>Before Manus receives a prompt, collect:</p>
+<ul class="check">
+<li>Business name</li><li>Existing website</li><li>Existing domain</li><li>Domain registrar/login</li><li>Logo</li><li>Brand colours</li><li>Fonts if known</li><li>Business description</li><li>Services</li><li>Target customers</li><li>Main desired action</li><li>Phone</li><li>Email</li><li>Address</li><li>Social links</li><li>Photos</li><li>Testimonials</li><li>Existing brochures/PDFs</li><li>Competitors they like</li><li>Websites they like</li><li>Websites they hate</li><li>Pages required</li><li>Contact form requirements</li><li>Booking system</li><li>Payment system</li><li>E-commerce requirements</li><li>Content that changes regularly</li><li>Who will update the site</li><li>Existing analytics</li><li>Existing Google Search Console</li><li>Privacy/legal copy supplied by client</li>
+</ul>
+<div class="panel"><p>You don't necessarily need every item. You need enough to prevent Manus inventing the business.</p></div>
+</section>
+
+<section id="p4">
+<div class="secnum">04</div><p class="seclabel">Part 4</p>
+<h2>Ownership: Do This Properly</h2>
+<p>This is boring. It is also where future disasters come from.</p>
+<h3>The client should own</h3>
+<ul><li>Domain name</li><li>Shopify account</li><li>Stripe account</li><li>Booking platform</li><li>Google Business Profile</li><li>Important third-party business accounts</li></ul>
+<p>You can have access. They should own them. Why? If the relationship ends, their business shouldn't collapse.</p>
+<h3>Domain Rule</h3>
+<div class="box"><p>For client work, the recommended default is: <strong>keep the domain with an independent domain registrar.</strong></p></div>
+<p>Manus allows an existing domain or subdomain to be connected using DNS records, normally an A record and/or CNAME, and automatically provisions SSL/HTTPS once connected. Manus also allows domains to be purchased directly through Manus. I would normally <strong>not</strong> do that for client domains. Keeping the domain independent makes ownership clearer and makes moving the website later easier.</p>
+<h3>Important: Don't Murder Their Email</h3>
+<p>When connecting a domain, change <strong>only</strong> the DNS records required for the website. Do not randomly delete MX records, SPF records, DKIM records, TXT records, Microsoft 365 records or Google Workspace records.</p>
+<div class="panel"><p>If you don't know what a DNS record does: <strong>leave it alone.</strong> Take screenshots of the existing DNS setup before changing anything.</p></div>
+</section>
+
+<div class="phase"><div class="pnum">Phase Two</div><h2>The Build</h2><p>Brief it properly, review it before the client sees it, and put anything that changes weekly into a database, not a page.</p></div>
+<section id="p5">
+<div class="secnum">05</div><p class="seclabel">Part 5</p>
+<h2>Building the First Version</h2>
+<p>Don't start with "Build me a website for ABC Construction." It may work, but you're making Manus guess half the job. Give it a proper brief instead.</p>
+<div class="prompt">
+<div class="prompt-head"><span>Master Build Prompt</span><button class="copybtn" onclick="copyPrompt(this)">Copy</button></div>
+<pre>Build a complete professional website for [BUSINESS].
+
+The business is [DESCRIPTION].
+
+Primary audience: [AUDIENCE].
+
+The primary goal of the website is to get visitors to [ACTION].
+
+Required pages:
+[PAGES]
+
+Brand direction:
+[STYLE]
+
+Use the supplied logo, photographs, brand assets and business information exactly where appropriate.
+
+The site must feel modern, credible and human. Avoid generic AI website styling, excessive gradients, unnecessary animations, huge amounts of empty space and generic corporate language.
+
+Prioritise:
+
+- strong mobile experience;
+- simple navigation;
+- clear calls to action;
+- readability;
+- trust;
+- fast page loading;
+- SEO-friendly page structure;
+- accessibility;
+- obvious contact information.
+
+Do not invent testimonials, awards, accreditations, projects, statistics, employees, locations or claims.
+
+If information has not been supplied, use clearly marked placeholders rather than making factual claims.
+
+Build the complete first version and then give me a list of anything still required from the client.</pre>
+</div>
+<p>Manus supports conversational editing and direct visual controls for styling, typography, spacing, borders and similar changes.</p>
+</section>
+
+<section id="p6">
+<div class="secnum">06</div><p class="seclabel">Part 6</p>
+<h2>First Review</h2>
+<p>Do not show the client version one immediately. AI can build something impressive in five minutes. It can also confidently put nonsense in the footer.</p>
+<h3>Content</h3>
+<ul class="check"><li>Business name correct</li><li>Phone correct</li><li>Email correct</li><li>Address correct</li><li>Services correct</li><li>No invented claims</li><li>No fake testimonials</li><li>No fake projects</li><li>No strange American spelling</li><li>No obvious AI waffle</li></ul>
+<h3>Design</h3>
+<ul class="check"><li>Logo correct</li><li>Colours correct</li><li>Images relevant</li><li>Fonts readable</li><li>Buttons obvious</li><li>No ridiculous animations</li><li>No weird AI-generated stock people</li><li>Consistent styling</li></ul>
+<h3>Navigation</h3>
+<p>Click every menu item. Click every button.</p>
+<div class="panel"><p>If a button says <strong>Book Now</strong>, it had better bloody book something.</p></div>
+</section>
+
+<section id="p7">
+<div class="secnum">07</div><p class="seclabel">Part 7</p>
+<h2>Mobile</h2>
+<p>Do not consider mobile an optional final check. For many small businesses, mobile <strong>is</strong> the website. Manus provides desktop and mobile preview modes. Check every important page on mobile.</p>
+<p>Look for: giant headings, buttons falling off screens, unreadable menus, stretched images, strange gaps, forms that are horrible to complete, phone numbers that can't be tapped, pop-ups covering the screen.</p>
+<p>Then test the actual published site on your own phone.</p>
+</section>
+
+<section id="p8">
+<div class="secnum">08</div><p class="seclabel">Part 8</p>
+<h2>Forms</h2>
+<p>Typical form: Name, Email, Phone, Message. For some businesses: Service required, Preferred date, Location, Budget, Upload file.</p>
+<p>Manus supports backend processing and database storage for form submissions. It also supports event-driven notifications when website data changes.</p>
+<div class="prompt">
+<div class="prompt-head"><span>Recommended Form Instruction</span><button class="copybtn" onclick="copyPrompt(this)">Copy</button></div>
+<pre>When someone submits this form:
+
+1. validate the required fields;
+2. save the submission;
+3. send a notification to [EMAIL];
+4. show the visitor a clear confirmation message;
+5. prevent accidental duplicate submissions;
+6. make the form work properly on mobile.</pre>
+</div>
+<p>Then TEST IT. Use your own details. Confirm: submission succeeds, email arrives, database record exists if required, confirmation appears, reply/contact details are usable.</p>
+<div class="panel"><p>Never assume a form works because it looks like a form.</p></div>
+</section>
+
+<section id="p9">
+<div class="secnum">09</div><p class="seclabel">Part 9</p>
+<h2>Frequently Changing Content</h2>
+<p>This is where we stop editing pages manually. Imagine a pub. The homepage shows THIS WEEK: Friday, Karaoke. Saturday, The Bogans. Sunday, Roast &amp; Live Music. If these are hard-coded into the homepage, someone has to redesign the page every week. Bad system.</p>
+<h3>Instead, create an Events database</h3>
+<p>Fields: Event Name, Date, Start Time, Description, Image, Booking URL, Category, Published, Featured.</p>
+<div class="prompt">
+<div class="prompt-head"><span>Events Instruction</span><button class="copybtn" onclick="copyPrompt(this)">Copy</button></div>
+<pre>The events section must automatically display future events from the Events database ordered by date. Do not display expired events unless they are specifically marked to remain visible.</pre>
+</div>
+<p>Manus's persistent database is designed for structured information such as products, posts, profiles and similar records.</p>
+</section>
+
+<section id="p10">
+<div class="secnum">10</div><p class="seclabel">Part 10</p>
+<h2>Client Self-Editing</h2>
+<p>There are three models.</p>
+<h3>Model 1 &mdash; You update everything</h3>
+<p>Best for tiny businesses, infrequent changes, clients who don't want another login, maintenance retainers. Client emails "Change Friday's band to The Pork Chops." You update it. Done. This is the easiest model.</p>
+<h3>Model 2 &mdash; Client edits structured content</h3>
+<p>Best for pubs, events, vacancies, menus, projects, accommodation, regular news. Build a simple password-protected admin area. Manus supports login systems and role-based restrictions for specific pages such as /admin.</p>
+<p>Example admin: Website Manager. EVENTS. MENU. SPECIALS. Nothing else.</p>
+<div class="panel"><p>Do not build WordPress inside Manus. Give them only what they genuinely need.</p></div>
+<h3>Model 3 &mdash; Client works inside Manus</h3>
+<p>Manus has collaborative tasks where invited collaborators can see the work and prompt Manus themselves. I would <strong>not use this as the normal client handover model</strong>. Because the client who only wanted to change a photo can now tell Manus: "Make the entire website red and add a spinning kangaroo."</p>
+<p>Use collaboration when genuinely useful. Use an admin panel for routine content.</p>
+</section>
+
+<section id="p11">
+<div class="secnum">11</div><p class="seclabel">Part 11</p>
+<h2>Pubs, Menus &amp; Events</h2>
+<div class="specrow"><span class="k">Events</span><span>Database.</span></div>
+<div class="specrow"><span class="k">Food menu</span><span>Updated rarely: normal page. Updated regularly: database/admin.</span></div>
+<div class="specrow"><span class="k">Drinks</span><span>Same logic.</span></div>
+<div class="specrow"><span class="k">PDF menu</span><span>Fine as a secondary option. Do not make PDF the only menu if possible.</span></div>
+<div class="specrow"><span class="k">Weekly specials</span><span>Database.</span></div>
+<div class="specrow"><span class="k">Booking</span><span>Existing booking platform.</span></div>
+<div class="panel" style="margin-top:20px"><p>People shouldn't need to pinch, zoom and fight an A4 PDF on their phone to discover how much the schnitzel costs.</p></div>
+</section>
+
+<section id="p12">
+<div class="secnum">12</div><p class="seclabel">Part 12</p>
+<h2>E-Commerce</h2>
+<h3>When to use Shopify</h3>
+<p>Use Shopify when products involve inventory, lots of products, variants, shipping, fulfilment, discount codes, collections, or ongoing catalogue management. Manus officially supports Shopify as a commerce backend and can connect products, collections, inventory and checkout.</p>
+<div class="box"><p><strong>Recommended architecture:</strong> Customer &rarr; Manus website &rarr; Shopify checkout/commerce.</p><p>Client product management: <strong>Shopify admin</strong>. Website design: <strong>Manus</strong>. Nice separation.</p></div>
+</section>
+
+<section id="p13">
+<div class="secnum">13</div><p class="seclabel">Part 13</p>
+<h2>Bookings</h2>
+<p><strong>Existing booking system? Use it.</strong> Possible methods:</p>
+<ol class="numlist"><li>Booking button opens platform.</li><li>Booking platform embedded into page.</li><li>API integration if appropriate.</li></ol>
+<p>Choose the simplest method that provides a good customer experience. Do not rebuild mature third-party software merely because Manus technically can.</p>
+</section>
+
+<div class="phase"><div class="pnum">Phase Three</div><h2>Going Live</h2><p>Domains, hosting, billing, SEO and the escape hatch. The boring parts that prevent the 2am phone calls.</p></div>
+<section id="p14">
+<div class="secnum">14</div><p class="seclabel">Part 14</p>
+<h2>Connecting the Domain</h2>
+<p>Once the site is approved, go to publishing/custom domain and tell Manus the domain. Example: "Connect this website to www.clientdomain.com.au." Manus provides the DNS records required, normally A and/or CNAME records.</p>
+<h3>At the domain registrar</h3>
+<ol class="numlist">
+<li>Screenshot existing DNS.</li>
+<li>Add/change only the required records.</li>
+<li>Save.</li>
+<li>Wait for DNS to propagate.</li>
+<li>Confirm both versions work where appropriate: clientdomain.com.au and www.clientdomain.com.au.</li>
+<li>Confirm HTTPS works.</li>
+</ol>
+<p>Manus automatically provisions an SSL/TLS certificate after the domain is connected.</p>
+</section>
+
+<section id="p15">
+<div class="secnum">15</div><p class="seclabel">Part 15</p>
+<h2>Where Is the Website Actually Hosted?</h2>
+<p>If you publish normally through Manus, Manus manages the hosting infrastructure. You do <strong>not</strong> need a separate Netlify, Vercel or AWS account for the standard setup.</p>
+<p>The default Autoscale hosting currently uses Google Cloud Run and scales according to demand. Manus also offers Reserved hosting for applications requiring persistent processes.</p>
+<div class="box"><p>For ordinary business websites: <strong>leave it on Autoscale.</strong> Don't touch clever hosting settings because they sound impressive.</p></div>
+</section>
+
+<section id="p16">
+<div class="secnum">16</div><p class="seclabel">Part 16</p>
+<h2>The Billing Trap</h2>
+<p>Pay attention to this. Manus currently has two different website cost systems:</p>
+<div class="pair">
+<div class="before"><div class="plabel">Building / Editing</div><p>Manus credits</p></div>
+<div class="after"><div class="plabel">Live Website Usage</div><p>Usage-based hosting/cloud/AI/API billing</p></div>
+</div>
+<p>Each account currently includes monthly allowances, including a cloud allowance. Larger usage can create additional charges. Most importantly:</p>
+<div class="panel"><p><strong>If there aren't sufficient funds and auto top-up isn't enabled, the website may become temporarily unavailable.</strong></p></div>
+<p>Therefore every live-client checklist includes:</p>
+<ul class="check"><li>Website billing reviewed</li><li>Payment card valid</li><li>Auto top-up considered/enabled</li><li>Usage monitored</li><li>Client understands ongoing cost arrangement</li></ul>
+<p>Do not host 20 client websites under one account and then ignore the billing dashboard for twelve months.</p>
+</section>
+
+<section id="p17">
+<div class="secnum">17</div><p class="seclabel">Part 17</p>
+<h2>Who Pays for Hosting?</h2>
+<p>Pick one model and be clear.</p>
+<h3>Option A &mdash; Included in your maintenance service</h3>
+<p>You manage Manus hosting, updates, backups, monitoring. Client pays one monthly fee. Simplest client experience.</p>
+<h3>Option B &mdash; Client owns/pays everything</h3>
+<p>More admin. Cleaner separation.</p>
+<h3>Option C &mdash; Hybrid</h3>
+<p>Client owns important external accounts. You manage Manus and include normal hosting within a maintenance fee, subject to reasonable usage.</p>
+<div class="box"><p><strong>Recommended model for smaller managed clients: Hybrid.</strong> Client owns their domain and important business systems. You manage the Manus website.</p></div>
+</section>
+
+<section id="p18">
+<div class="secnum">18</div><p class="seclabel">Part 18</p>
+<h2>SEO</h2>
+<p>Manus now includes built-in SEO tooling: prerendered content for search engines, canonical URLs, robots.txt, sitemaps, SEO health scoring, titles, descriptions and automated recommendations.</p>
+<h3>Before launch</h3>
+<ul class="check"><li>Page titles checked</li><li>Meta descriptions checked</li><li>One clear topic per page</li><li>Proper H1/H2 structure</li><li>Images sensibly named</li><li>Alt text</li><li>Local areas mentioned naturally where relevant</li><li>Contact information consistent</li><li>Sitemap available</li><li>SEO feature enabled</li><li>Google Search Console connected/submitted where appropriate</li></ul>
+<div class="panel"><p>A green SEO score does <strong>not</strong> mean the business will suddenly rank number one on Google. Technical SEO is only one part of SEO.</p></div>
+</section>
+
+<section id="p19">
+<div class="secnum">19</div><p class="seclabel">Part 19</p>
+<h2>Analytics</h2>
+<p>Manus automatically provides built-in website analytics including visitors, page views and traffic sources on published apps.</p>
+<p>At minimum, after launch you should be able to answer: Is anyone visiting? Which pages do they visit? Where do visitors come from? Are enquiries coming through?</p>
+<p>For clients who rely heavily on marketing, consider their existing Google Analytics or other marketing measurement setup rather than creating competing sources of truth.</p>
+</section>
+
+<section id="p20">
+<div class="secnum">20</div><p class="seclabel">Part 20</p>
+<h2>Backups &amp; the Escape Hatch</h2>
+<p>Never build a business-critical site with no way out. Manus lets you download the entire underlying codebase. It also integrates with GitHub and can create a private repository with two-way synchronisation between Manus and the main branch.</p>
+<div class="box"><p><strong>Standard rule: for every serious live client, connect the project to GitHub.</strong></p><p>You do not need to become a GitHub developer. Think of it as a spare copy of the website's engine stored somewhere else.</p></div>
+<p>Manus automatically syncs changes made through Manus to the connected repository.</p>
+<div class="panel"><p>Do not randomly rename or transfer that GitHub repository after connecting it; Manus warns that this breaks its connection.</p></div>
+</section>
+
+<section id="p21">
+<div class="secnum">21</div><p class="seclabel">Part 21</p>
+<h2>Before Making a Big Change</h2>
+<p>Manus has a <strong>Make a Copy</strong> feature for WebDev projects. Use it. Before something major: Live Website &rarr; Make a Copy &rarr; Test Copy. Experiment there.</p>
+<div class="panel"><p>Do not test your exciting new idea at 2pm Friday afternoon on the client's live site.</p></div>
+</section>
+
+<section id="p22">
+<div class="secnum">22</div><p class="seclabel">Part 22</p>
+<h2>Final Pre-Launch Test</h2>
+<h3>Content</h3>
+<ul class="check"><li>Business information correct</li><li>Spelling checked</li><li>No placeholders</li><li>No invented claims</li><li>No Lorem Ipsum</li><li>Copyright/footer correct</li></ul>
+<h3>Navigation</h3>
+<ul class="check"><li>Every menu link</li><li>Every CTA</li><li>Every button</li><li>Logo returns home</li><li>Social links</li><li>Booking links</li></ul>
+<h3>Forms</h3>
+<ul class="check"><li>Test enquiry</li><li>Confirmation works</li><li>Notification received</li><li>Database stores submission if required</li></ul>
+<h3>Mobile</h3>
+<ul class="check"><li>iPhone</li><li>Android if available</li><li>Menu</li><li>Forms</li><li>Images</li><li>Buttons</li><li>Phone number</li></ul>
+<h3>Desktop</h3>
+<ul class="check"><li>Chrome</li><li>Safari</li><li>Major pages</li><li>Forms</li></ul>
+<h3>Commerce</h3>
+<ul class="check"><li>Test product</li><li>Test cart</li><li>Test checkout</li><li>Test confirmation</li><li>Test mobile checkout</li></ul>
+<h3>Booking</h3>
+<ul class="check"><li>Correct dates</li><li>Correct business</li><li>Booking flow completes</li><li>Confirmation works</li></ul>
+<h3>Technical</h3>
+<ul class="check"><li>Domain correct</li><li>HTTPS</li><li>SEO enabled</li><li>Analytics working</li><li>GitHub connected</li><li>Billing checked</li><li>Auto top-up considered</li><li>Admin login tested</li><li>Client ownership recorded</li></ul>
+</section>
+
+<section id="p23">
+<div class="secnum">23</div><p class="seclabel">Part 23</p>
+<h2>Client Approval</h2>
+<p>Do not ask "Do you like it?" Ask them to check:</p>
+<ol class="numlist"><li>Factual accuracy</li><li>Services/products</li><li>Contact information</li><li>Images</li><li>Pricing where relevant</li><li>Legal/policy information</li><li>Anything commercially important</li></ol>
+<div class="panel"><p>Design-by-committee can continue forever. Set boundaries.</p></div>
+</section>
+
+<section id="p24">
+<div class="secnum">24</div><p class="seclabel">Part 24</p>
+<h2>Launch Day</h2>
+<p>Follow this exact order.</p>
+<ol class="numlist">
+<li>Final client approval.</li>
+<li>Make/export backup.</li>
+<li>Confirm GitHub sync.</li>
+<li>Check billing.</li>
+<li>Connect domain.</li>
+<li>Confirm SSL.</li>
+<li>Test desktop.</li>
+<li>Test phone.</li>
+<li>Submit real enquiry.</li>
+<li>Test bookings/payments if applicable.</li>
+<li>Enable/check SEO.</li>
+<li>Check analytics.</li>
+<li>Notify client.</li>
+<li>Do not immediately disappear.</li>
+</ol>
+</section>
+
+<div class="phase"><div class="pnum">Phase Four</div><h2>After Launch</h2><p>Handover, maintenance, safe changes, and what to do when something breaks.</p></div>
+<section id="p25">
+<div class="secnum">25</div><p class="seclabel">Part 25</p>
+<h2>Handover</h2>
+<p>Give the client a simple handover sheet. It should state:</p>
+<div class="specrow"><span class="k">Your website URL</span><span>________________</span></div>
+<div class="specrow"><span class="k">Domain provider</span><span>________________</span></div>
+<div class="specrow"><span class="k">Who owns the domain?</span><span>________________</span></div>
+<div class="specrow"><span class="k">Website platform</span><span>Manus</span></div>
+<div class="specrow"><span class="k">Booking system</span><span>________________</span></div>
+<div class="specrow"><span class="k">E-commerce</span><span>________________</span></div>
+<div class="specrow"><span class="k">Payment processor</span><span>________________</span></div>
+<div class="specrow"><span class="k">Who updates the website?</span><span>Client / Us / Both</span></div>
+<div class="specrow"><span class="k">Admin address</span><span>________________</span></div>
+<div class="specrow"><span class="k">Support contact</span><span>________________</span></div>
+<div class="specrow"><span class="k">What's included in maintenance?</span><span>________________</span></div>
+<div class="panel" style="margin-top:20px"><p>Do not send clients twenty passwords in an email. Use a secure password manager/share method where credentials genuinely need sharing.</p></div>
+</section>
+
+<section id="p26">
+<div class="secnum">26</div><p class="seclabel">Part 26</p>
+<h2>Ongoing Maintenance</h2>
+<p>For managed websites, once a month check:</p>
+<ul class="check"><li>Website loads</li><li>HTTPS works</li><li>Contact forms work</li><li>Main CTA works</li><li>Booking system works</li><li>Important integrations work</li><li>Billing normal</li><li>Traffic looks normal</li><li>SEO issues</li><li>GitHub sync</li><li>Outdated events</li><li>Old staff</li><li>Old prices</li><li>Broken links</li></ul>
+<div class="panel"><p>Ten minutes of maintenance is cheaper than an angry client.</p></div>
+</section>
+
+<section id="p27">
+<div class="secnum">27</div><p class="seclabel">Part 27</p>
+<h2>How to Make Changes Safely</h2>
+<h3>Tiny change</h3>
+<p>Example: change phone number. Change live project. Check result. Done.</p>
+<h3>Moderate change</h3>
+<p>Example: replace services section. Make change. Preview desktop/mobile. Publish.</p>
+<h3>Major change</h3>
+<p>Example: redesign homepage. Make a Copy first. Redesign copy. Get approval. Then update live site.</p>
+</section>
+
+<section id="p28">
+<div class="secnum">28</div><p class="seclabel">Part 28</p>
+<h2>Standard Manus Change Prompt</h2>
+<p>Use this when making multiple changes:</p>
+<div class="prompt">
+<div class="prompt-head"><span>Standard Change Prompt</span><button class="copybtn" onclick="copyPrompt(this)">Copy</button></div>
+<pre>Please make only the following changes to the existing website.
+
+1. [CHANGE]
+2. [CHANGE]
+3. [CHANGE]
+
+Do not redesign unrelated sections.
+
+Preserve the existing branding, responsive behaviour, navigation, integrations, database structure and functionality unless a change above specifically requires otherwise.
+
+After making the changes, check desktop and mobile layouts and confirm that no existing links, forms or functionality have been broken.</pre>
+</div>
+<p>That last line matters. AI has a charming habit of fixing the kitchen and accidentally demolishing the garage.</p>
+</section>
+
+<section id="p29">
+<div class="secnum">29</div><p class="seclabel">Part 29</p>
+<h2>When Not to Use Manus</h2>
+<p>Think twice if the project requires:</p>
+<ul><li>Highly specialised enterprise infrastructure</li><li>Unusual regulatory requirements</li><li>Mission-critical systems</li><li>Complex real-time applications</li><li>Enormous traffic</li><li>Complicated bespoke commerce</li><li>Advanced integrations you don't understand</li><li>Software where failure could seriously harm the client's operation</li></ul>
+<div class="panel"><p>Manus may still be able to build it. That doesn't automatically mean <strong>you should sell it</strong>.</p></div>
+</section>
+
+<section id="p30">
+<div class="secnum">30</div><p class="seclabel">Part 30</p>
+<h2>Troubleshooting</h2>
+<h3>"The domain isn't working."</h3>
+<ol class="numlist"><li>Correct domain entered?</li><li>DNS records match Manus instructions?</li><li>Both root and www considered?</li><li>DNS propagation complete?</li><li>SSL issued?</li><li>Existing conflicting records?</li></ol>
+<p>Do not start randomly deleting DNS records.</p>
+<h3>"The client's email stopped working."</h3>
+<p>Stop. Review any DNS changes. Email normally depends on separate MX/TXT/DKIM/SPF records. Restore anything accidentally removed. If unsure, get technical help.</p>
+<h3>"The website is down."</h3>
+<ol class="numlist"><li>Manus service status.</li><li>Website usage/billing.</li><li>Payment balance.</li><li>Domain expiry.</li><li>DNS.</li><li>Published project.</li><li>Recent changes.</li></ol>
+<p>Remember: Manus documentation specifically warns that insufficient website funds can make the site temporarily unavailable.</p>
+<h3>"I changed something and broke the website."</h3>
+<p>Do not keep prompting wildly. Check GitHub/version history/copy. Work out what changed. Revert or restore known working code/version where possible. Then make the change again properly.</p>
+<h3>"The client wants something new every day."</h3>
+<div class="panel"><p>Congratulations. You have discovered a maintenance plan. Do not provide unlimited development disguised as "hosting."</p></div>
+</section>
+
+<section id="p31">
+<div class="secnum">31</div><p class="seclabel">Part 31</p>
+<h2>The FAQ</h2>
+<details><summary>1. Is Manus actually hosting the website?</summary><div class="a"><p>Yes, if you publish through Manus. Manus manages the deployment and cloud infrastructure.</p></div></details>
+<details><summary>2. Do I need another hosting company?</summary><div class="a"><p>Not for a normally published Manus website.</p></div></details>
+<details><summary>3. Can I use the client's existing domain?</summary><div class="a"><p>Yes.</p></div></details>
+<details><summary>4. Does the domain have to be transferred to Manus?</summary><div class="a"><p>No. You can keep it with its existing registrar and point the required DNS records to Manus.</p></div></details>
+<details><summary>5. Can Manus sell me a domain?</summary><div class="a"><p>Yes. For client work, I generally recommend keeping domain ownership independent.</p></div></details>
+<details><summary>6. Does Manus provide HTTPS?</summary><div class="a"><p>Yes. Manus automatically provisions SSL/TLS once the custom domain is connected.</p></div></details>
+<details><summary>7. How do I change the website after launch?</summary><div class="a"><p>Open the existing Manus project and describe the change. Manus can edit and redeploy published sites.</p></div></details>
+<details><summary>8. Does every change require code?</summary><div class="a"><p>No. Manus is specifically designed around conversational and visual editing.</p></div></details>
+<details><summary>9. Can my client make changes?</summary><div class="a"><p>Yes, but decide <strong>what type of changes</strong>. For regular data such as events, jobs and menu items, use a simple admin interface. For occasional website changes, you can manage them.</p></div></details>
+<details><summary>10. Can I give clients their own login?</summary><div class="a"><p>Manus-built apps support registration, login/logout, user management and role-based access to specific sections.</p></div></details>
+<details><summary>11. Can I create an admin-only page?</summary><div class="a"><p>Yes. Manus explicitly documents restricting /admin to users with an Admin role.</p></div></details>
+<details><summary>12. Can Manus store events, products or articles?</summary><div class="a"><p>Yes. Its database can store structured persistent data.</p></div></details>
+<details><summary>13. Can the database be edited manually?</summary><div class="a"><p>Yes. Manus provides a visual data browser where records can be added, edited and deleted.</p></div></details>
+<details><summary>14. Should a client edit that database directly?</summary><div class="a"><p>Usually a clean admin interface is better. Less opportunity for carnage.</p></div></details>
+<details><summary>15. Can Manus handle contact forms?</summary><div class="a"><p>Yes. Its backend can process forms, store submissions and trigger actions.</p></div></details>
+<details><summary>16. Can I get notified when someone submits something?</summary><div class="a"><p>Yes. Manus supports notifications triggered by data changes.</p></div></details>
+<details><summary>17. Can Manus handle Shopify?</summary><div class="a"><p>Yes. Shopify is an officially supported integration.</p></div></details>
+<details><summary>18. Should I build a large online shop purely inside Manus?</summary><div class="a"><p>I wouldn't. Use Shopify for the commerce engine unless there is a strong reason not to.</p></div></details>
+<details><summary>19. Can Manus accept payments without Shopify?</summary><div class="a"><p>Yes. Stripe integration is built in.</p></div></details>
+<details><summary>20. Can it do subscriptions?</summary><div class="a"><p>Its Stripe integration supports product and subscription models.</p></div></details>
+<details><summary>21. Can it connect to booking systems?</summary><div class="a"><p>If the service exposes an appropriate web/API integration, Manus can connect to REST APIs. A normal booking link or embed may be simpler.</p></div></details>
+<details><summary>22. Does Manus have analytics?</summary><div class="a"><p>Yes. Built-in analytics include visitors, page views and traffic sources.</p></div></details>
+<details><summary>23. Does Manus handle SEO?</summary><div class="a"><p>It has built-in technical and on-page SEO tooling including prerendering, sitemaps, canonical URLs and SEO analysis.</p></div></details>
+<details><summary>24. Does that guarantee Google rankings?</summary><div class="a"><p>No. Absolutely not.</p></div></details>
+<details><summary>25. Can I export the website?</summary><div class="a"><p>Yes. Manus says the full codebase can be downloaded.</p></div></details>
+<details><summary>26. Am I trapped with Manus forever?</summary><div class="a"><p>The code-export and GitHub options materially reduce platform lock-in. Moving a live application elsewhere may still require technical work.</p></div></details>
+<details><summary>27. Should every client website have a GitHub backup?</summary><div class="a"><p>For anything commercially important, yes.</p></div></details>
+<details><summary>28. Does GitHub mean I need to learn coding?</summary><div class="a"><p>No. For the basic process, it's primarily the safety copy/version-control layer.</p></div></details>
+<details><summary>29. Does Manus automatically sync GitHub?</summary><div class="a"><p>Once connected, Manus documents automatic push/pull synchronisation with the main branch.</p></div></details>
+<details><summary>30. Can I copy a website before making changes?</summary><div class="a"><p>Yes. Manus has a Make a Copy feature.</p></div></details>
+<details><summary>31. What if the client already has WordPress?</summary><div class="a"><p>Decide whether there is actually a reason to replace it. "AI can rebuild it in five minutes" isn't, by itself, a business case for migration.</p></div></details>
+<details><summary>32. What happens to old Google rankings when replacing a website?</summary><div class="a"><p>Preserve important URLs where possible. If URLs change, arrange proper redirects. Do not casually delete pages that already rank.</p></div></details>
+<details><summary>33. Should I rebuild the website directly on the client's live domain?</summary><div class="a"><p>No. Build and approve it first. Connect the domain when you are ready to launch.</p></div></details>
+<details><summary>34. Should I host every client site in my Manus account?</summary><div class="a"><p>You can, but think commercially. The more client sites sitting under one account, the more responsibility and billing dependency sits with you. Maintain a proper client register.</p></div></details>
+<details><summary>35. What should be in the client register?</summary><div class="a"><p>For every site record: Client, Website URL, Manus project, Domain registrar, Domain renewal date, GitHub repository, Booking platform, Shopify, Stripe, Analytics, Client admin users, Maintenance arrangement, Billing arrangement, Launch date.</p></div></details>
+<details><summary>36. Who owns the website code?</summary><div class="a"><p>Make this clear contractually. Technical exportability does not replace a clear commercial agreement about ownership.</p></div></details>
+<details><summary>37. Can Manus hosting cost more as traffic increases?</summary><div class="a"><p>Yes. Live website hosting uses usage-based billing after included allowances.</p></div></details>
+<details><summary>38. Can a Manus site go offline because of billing?</summary><div class="a"><p>Yes. Manus warns that insufficient funds without auto top-up can cause temporary unavailability.</p></div></details>
+<details><summary>39. Should I enable auto top-up?</summary><div class="a"><p>For commercially important managed sites, strongly consider it and monitor spend.</p></div></details>
+<details><summary>40. What happens if Manus disappeared tomorrow?</summary><div class="a"><p>Your protection is: <strong>independently owned domain + GitHub copy + downloadable code + independently owned external systems.</strong> That is why we set the architecture up properly from day one.</p></div></details>
+</section>
+
+<div class="phase"><div class="pnum">Quick Reference</div><h2>The Short Version</h2><p>The decision tree, the process, and the cheat sheet. If you only ever read one part, read this one.</p></div>
+<section id="p32">
+<div class="secnum">32</div><p class="seclabel">Part 32</p>
+<h2>The 60-Second Decision Tree</h2>
+<p>Client says: "I need a website." Ask:</p>
+<div class="specrow"><span class="k">Mainly contains information?</span><span><strong>Manus</strong></span></div>
+<div class="specrow"><span class="k">Content changes regularly?</span><span><strong>Manus + Database</strong></span></div>
+<div class="specrow"><span class="k">Client needs to update it?</span><span><strong>Add simple admin</strong></span></div>
+<div class="specrow"><span class="k">Takes bookings?</span><span><strong>Connect existing booking platform</strong></span></div>
+<div class="specrow"><span class="k">Sells lots of products?</span><span><strong>Manus + Shopify</strong></span></div>
+<div class="specrow"><span class="k">One or two simple payments?</span><span><strong>Consider Manus + Stripe</strong></span></div>
+<div class="specrow"><span class="k">Starting to sound like custom software?</span><span><strong>Stop and scope separately</strong></span></div>
+</section>
+
+<section id="p33">
+<div class="secnum">33</div><p class="seclabel">Part 33</p>
+<h2>The Standard Operating Process</h2>
+<p>This is the version to remember.</p>
+<div class="flow">
+<div class="step"><span class="n">1 &mdash; Discover</span>What does the client actually need?</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">2 &mdash; Classify</span>Simple / Dynamic / Booking / E-commerce / Application.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">3 &mdash; Collect</span>Brand, copy, images, domain and systems.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">4 &mdash; Build</span>Create first version in Manus.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">5 &mdash; Structure</span>Put frequently changing content into databases.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">6 &mdash; Connect</span>Forms, booking, Shopify, Stripe, APIs.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">7 &mdash; Review</span>You review before client sees it.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">8 &mdash; Client Approval</span>Facts, content, functionality and design.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">9 &mdash; Protect</span>GitHub + copy/export + account ownership.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">10 &mdash; Connect the Bloody Domain</span>Change only the required DNS records.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">11 &mdash; Test</span>Desktop, mobile, forms, booking, payments.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">12 &mdash; SEO + Analytics</span>Enable and verify.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">13 &mdash; Billing</span>Make sure the live website isn't going to disappear because someone forgot twenty bucks.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">14 &mdash; Launch</span>Website live.</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">15 &mdash; Handover</span>Who owns what and who changes what?</div>
+<div class="arrow">&darr;</div>
+<div class="step"><span class="n">16 &mdash; Maintain</span>Check it. Update it. Charge appropriately for doing so.</div>
+</div>
+</section>
+
+<section id="cheat">
+<p class="seclabel">Quick Reference</p>
+<h2>The One-Page Cheat Sheet</h2>
+<div class="specrow"><span class="k">Normal business site</span><span>Manus</span></div>
+<div class="specrow"><span class="k">Weekly events/menu/jobs</span><span>Manus + database/admin</span></div>
+<div class="specrow"><span class="k">Existing booking platform</span><span>Integrate it</span></div>
+<div class="specrow"><span class="k">Serious e-commerce</span><span>Manus + Shopify</span></div>
+<div class="specrow"><span class="k">Simple payments</span><span>Manus + Stripe</span></div>
+<div class="specrow"><span class="k">Client domain</span><span>Client owns it independently</span></div>
+<div class="specrow"><span class="k">Hosting</span><span>Manus</span></div>
+<div class="specrow"><span class="k">SSL</span><span>Manus handles it</span></div>
+<div class="specrow"><span class="k">SEO</span><span>Enable Manus SEO + Search Console</span></div>
+<div class="specrow"><span class="k">Analytics</span><span>Manus built-in; supplement where needed</span></div>
+<div class="specrow"><span class="k">Backup</span><span>GitHub + code export</span></div>
+<div class="specrow"><span class="k">Small update</span><span>Change existing project</span></div>
+<div class="specrow"><span class="k">Big redesign</span><span>Make a Copy first</span></div>
+<div class="specrow"><span class="k">Client wants self-service</span><span>Build simple admin</span></div>
+<div class="specrow"><span class="k">Billing</span><span>Monitor usage + don't let balance run out</span></div>
+<div class="specrow"><span class="k">Project becoming complicated</span><span>Stop calling it a website</span></div>
+</section>
+
+<section id="final" style="padding-top:40px">
+<div class="dark">
+<h2>The Final Rule</h2>
+<p style="color:#FFFFFF;max-width:60ch">A good client website should have four characteristics:</p>
+<p class="goldline">Easy to build.<br>Easy to use.<br>Easy to update.<br>Easy to leave.</p>
+<p style="color:#FFFFFF;margin-top:20px;max-width:60ch">If we've achieved all four, we've built it properly. If it only looks pretty, we've only done the first half of the job.</p>
+</div>
+</section>
+
+</main>
+</div>
+<script>
+function copyPrompt(btn){
+  var pre=btn.closest('.prompt').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(function(){
+    btn.textContent='Copied';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},1600);
+  });
+}
+// Active nav highlight
+var links=document.querySelectorAll('nav a');
+var sections=[];
+links.forEach(function(l){var id=l.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)sections.push({id:id,el:el,link:l});});
+function onScroll(){
+  var pos=window.scrollY+120;var current=sections[0];
+  sections.forEach(function(s){if(s.el.offsetTop<=pos)current=s;});
+  links.forEach(function(l){l.classList.remove('active');});
+  if(current)current.link.classList.add('active');
+}
+window.addEventListener('scroll',onScroll);onScroll();
+// Close mobile nav on link tap
+links.forEach(function(l){l.addEventListener('click',function(){document.getElementById('nav').classList.remove('open');});});
+</script>
+</body>
+</html>
