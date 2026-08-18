@@ -1,0 +1,658 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fine-Tune The AI You Already Use — Live Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0D10; --panel2:#0F1216; --line:#262B33;
+  --white:#F4F6F8; --muted:#9BA6B2; --accent:#3BE0A5; --accent-ink:#0B0D10;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--white);
+  font-family:"Space Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+.slide{position:fixed;inset:0;display:none;flex-direction:column;padding:4.5vh 5vw 3.5vh}
+.slide.active{display:flex}
+.topbar{display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--line);padding-bottom:1.4vh;margin-bottom:2.6vh}
+.part{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.badge{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.28em .7em;border-radius:2px}
+.badge.core{background:var(--accent);color:var(--accent-ink)}
+.badge.opt{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:0}
+.left{padding-right:3.2vw;display:flex;flex-direction:column;min-height:0}
+.right{padding-left:3.2vw;border-left:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.stepno{font-size:.82rem;font-weight:700;letter-spacing:.2em;color:var(--accent);margin-bottom:1.2vh}
+.headline{font-size:2.55rem;line-height:1.04;font-weight:700;letter-spacing:-.015em;margin-bottom:2vh}
+.why{font-size:1.02rem;line-height:1.45;color:var(--muted);margin-bottom:2.8vh;max-width:40ch}
+.know-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:1.4vh}
+.points{list-style:none;display:flex;flex-direction:column;gap:1.25vh}
+.points li{position:relative;padding-left:1.7em;font-size:1.05rem;line-height:1.4;color:var(--white)}
+.points li::before{content:"";position:absolute;left:0;top:.62em;width:.7em;height:.14em;background:var(--accent)}
+.points li b{font-weight:700}
+.footnote{margin-top:auto;padding-top:2vh;font-size:.86rem;line-height:1.4;color:var(--muted);font-style:italic;max-width:44ch}
+.promptcard{flex:1;display:flex;flex-direction:column;background:var(--panel2);border:1px solid var(--line);border-radius:6px;min-height:0}
+.promptbar{display:flex;justify-content:space-between;align-items:center;padding:.9vh 1.1vw;border-bottom:1px solid var(--line)}
+.plabel{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.copy{background:var(--accent);color:var(--accent-ink);border:0;font-family:inherit;font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:.5em 1.1em;border-radius:3px;cursor:pointer}
+.copy:active{transform:translateY(1px)}
+.copy.copied{background:var(--white)}
+.prompt{flex:1;overflow:auto;padding:1.6vh 1.2vw;font-family:"IBM Plex Mono",monospace;font-size:.82rem;line-height:1.55;color:#CDD6E0;white-space:pre-wrap}
+/* cover */
+.cover{padding:0}
+.cover-grid{flex:1;display:grid;grid-template-columns:1.15fr .85fr}
+.cover-left{background:var(--ink);padding:9vh 4vw 6vh 5vw;display:flex;flex-direction:column;justify-content:center}
+.cover-right{background:#0F1216;padding:9vh 4vw 6vh 3.5vw;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--line);position:relative}
+.kicker{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2.4vh}
+.cover-h1{font-size:4rem;line-height:1;font-weight:700;letter-spacing:-.02em;margin-bottom:3vh}
+.cover-sub{font-size:1.12rem;line-height:1.5;color:var(--white);max-width:44ch;margin-bottom:2vh}
+.cover-sub2{font-size:1rem;line-height:1.5;color:var(--muted);max-width:44ch}
+.cover-list{list-style:none;display:flex;flex-direction:column;gap:2.4vh}
+.cover-list li{display:flex;gap:1.1em;align-items:flex-start}
+.cn{font-size:.85rem;font-weight:700;color:var(--accent);letter-spacing:.1em;padding-top:.2em}
+.ct{font-size:1.05rem;line-height:1.35;color:var(--white)}
+.ct b{font-weight:700}
+.cover-foot{margin-top:4vh;font-size:.92rem;line-height:1.45;color:var(--muted);font-style:italic;max-width:40ch}
+/* close */
+.close{align-items:center;justify-content:center;text-align:center}
+.close-inner{max-width:60ch}
+.close-h1{font-size:3.2rem;line-height:1.05;font-weight:700;letter-spacing:-.02em;margin:2vh 0 3vh}
+.close-sub{font-size:1.12rem;line-height:1.5;color:var(--muted);margin-bottom:4vh}
+.close-tick{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:.95rem;padding:.8em 1.4em;border-radius:4px}
+/* chrome */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:50;transition:width .2s}
+.nav{position:fixed;bottom:2vh;right:2.4vw;font-size:.78rem;color:var(--muted);letter-spacing:.12em;z-index:50}
+.hint{position:fixed;bottom:2vh;left:2.4vw;font-size:.72rem;color:var(--muted);letter-spacing:.06em;z-index:50;opacity:.7}
+</style></head>
+<body>
+<div class="progress" id="prog"></div>
+<section class="slide cover" data-idx="0">
+  <div class="cover-grid">
+    <div class="cover-left">
+      <div class="kicker">The optimisation session</div>
+      <h1 class="cover-h1">Fine-tune the AI<br>you already use.</h1>
+      <p class="cover-sub">You're already paying for a tool that could feel custom-built for you. Most people never set it up, so it stays average. In the next hour you fix that, one step at a time, and it starts working like it actually knows you.</p>
+      <p class="cover-sub2">Nothing here is technical. You read what the AI tells you, and you paste back what you're happy with. That's it.</p>
+    </div>
+    <div class="cover-right">
+      <div class="cover-rule"></div>
+      <ol class="cover-list">
+        <li><span class="cn">01</span><span class="ct"><b>Your setup</b><br>Teach it who you are, once.</span></li>
+        <li><span class="cn">02</span><span class="ct"><b>Your projects</b><br>Make each one an expert again.</span></li>
+        <li><span class="cn">03</span><span class="ct"><b>Cowork</b><br>Brief the part that does real work.</span></li>
+        <li><span class="cn">04</span><span class="ct"><b>Keep it sharp</b><br>Ten minutes, every six weeks.</span></li>
+      </ol>
+      <p class="cover-foot">Stop after step one and you'll already feel the difference. Everything after is good to sharp.</p>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="1">
+  <div class="topbar">
+    <span class="part">Part One — Account</span>
+    <span class="badge opt">Optional</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 01 · 1A</div>
+      <h1 class="headline">Set up who you are</h1>
+      <p class="why">The AI has no idea who you are until you tell it. Fill this in once and every future chat starts knowing you.</p>
+      <div class="know-label">What to know about your account setup</div>
+      <ul class="points">
+        <li>This box is the <b>one thing it reads before every message</b>, in every chat.</li>
+        <li>Fill it in once and you <b>stop re-explaining yourself</b> all day.</li>
+        <li>It sets how you write, how much detail you want, and your standards.</li>
+        <li>Keep out anything that changes often. <b>Names and prices go in files</b>, not here.</li>
+      </ul>
+      <p class="footnote">This only works if the AI has already had a real conversation with you. On a brand-new account, give it a few sentences about you first, then run it.</p>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">My account custom instructions are empty and I want you to write them for me.
+
+Do not send me a list of questions. Use what you already know about me from how we&#x27;ve talked and anything you remember. Build the draft from that. If you genuinely don&#x27;t have enough to go on, ask me three quick questions, no more, then build it.
+
+Keep it 150 to 400 words. Include only what belongs at this level: how I communicate, how much detail I want, how I like decisions made, the standards I hold you to, and the mistakes to avoid. Do not include client names, pricing, research, or anything that changes often. That lives in files later, not here.
+
+Answer in this exact format. Nothing else.
+
+YOUR DRAFT INSTRUCTIONS: (the full set in a copy-paste block, 150 to 400 words. This is a draft for you to approve. I have not saved anything. Paste it in yourself only if you&#x27;re happy.)
+WHAT I ASSUMED: (max 4 bullets, one line each. The guesses I made about you, so you can correct anything wrong before you use it.)
+
+Keep it short. No preamble, no summary. Stop after the assumptions.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="2">
+  <div class="topbar">
+    <span class="part">Part One — Account</span>
+    <span class="badge core">Core</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 02 · 1B</div>
+      <h1 class="headline">Fix your account setup</h1>
+      <p class="why">You wrote this once and never looked again. It&#x27;s gone stale, and it&#x27;s steering every answer you get.</p>
+      <div class="know-label">What to know about your account setup</div>
+      <ul class="points">
+        <li>The AI reads this <b>before your actual question</b>, every single time.</li>
+        <li>Old, bloated, or contradicting rules quietly <b>drag every answer down</b>.</li>
+        <li>Reference material crammed in here <b>belongs in files</b> instead.</li>
+        <li>This is the <b>highest-leverage two minutes</b> you'll spend on your AI all year.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Audit my account custom instructions. Diagnosis first, then a suggested rewrite. Do not apply anything.
+
+Everything you need is pasted below. Work only from that text. Do not ask me questions. Do not try to read my settings. If the block is empty, say so and stop.
+
+Check for:
+1. Length. Over 400 words? Name what&#x27;s bloating it.
+2. Rules that are vague, repeated, or contradict each other.
+3. Reference material that shouldn&#x27;t be here: pricing, client details, examples, research, anything that changes often. Say where it should move.
+4. Anything missing that would improve everyday output.
+
+Answer in this exact format. Nothing else.
+
+WHAT&#x27;S WORKING: (max 3 bullets, one line each)
+WHAT&#x27;S HURTING YOUR OUTPUT: (max 4 bullets, one line each, plainest language)
+FIX THIS: (max 4 bullets. Each one: the problem, what to do, where it moves if it moves)
+YOUR REWRITTEN VERSION: (the full replacement in a copy-paste block, 150 to 400 words. This is a draft for you to approve. I have not changed anything. Paste it in yourself only if you&#x27;re happy.)
+
+Keep every line short. Assume I&#x27;m time-poor. No preamble, no summary. Stop after the rewrite.
+
+MY CURRENT ACCOUNT CUSTOM INSTRUCTIONS:
+[paste here]</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="3">
+  <div class="topbar">
+    <span class="part">Part One — Account</span>
+    <span class="badge opt">Optional</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 03 · 1C</div>
+      <h1 class="headline">Check what it remembers</h1>
+      <p class="why">The AI quietly remembers things about you on its own. Stale memories pull answers off even when your setup is clean.</p>
+      <div class="know-label">What to know about its memory</div>
+      <ul class="points">
+        <li>This is <b>separate from your instructions</b>. It builds up on its own, across chats.</li>
+        <li>Most of it helps. Some of it <b>goes stale</b> and you can't see it.</li>
+        <li>An old job or a changed preference can <b>still be nudging answers</b> today.</li>
+        <li>You can <b>read it back and clear</b> anything wrong, yourself.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Show me what you actually remember about me, so I can check it&#x27;s right.
+
+I don&#x27;t mean my saved instructions. I mean the memory you&#x27;ve built up about me on your own over time, across our chats. List it back to me in plain language.
+
+For each thing you remember, tell me:
+- What you remember
+- Whether it still looks current, or might be out of date
+
+Then flag anything that looks stale, wrong, or too specific to one old job, because that could be quietly shaping your answers now.
+
+Answer in this exact format. Nothing else.
+
+WHAT I REMEMBER ABOUT YOU: (bullets, plain language, one line each)
+MIGHT BE OUT OF DATE: (bullets, anything worth checking or clearing. If nothing, say so.)
+HOW TO CLEAR IT: (one or two lines, plain steps, telling me where to remove or edit a memory myself.)
+
+Keep it short and easy to understand. No jargon, no preamble. I&#x27;ll clear anything myself. Change nothing.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="4">
+  <div class="topbar">
+    <span class="part">Part Two — Projects</span>
+    <span class="badge core">Core</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 04 · 2A</div>
+      <h1 class="headline">Audit the project</h1>
+      <p class="why">A project drifts as you use it. Old files pile up, instructions go stale, and it slowly gets worse at the one job you built it for.</p>
+      <div class="know-label">What to know about projects</div>
+      <ul class="points">
+        <li>A project is the AI in <b>expert mode</b> for one job, with its own instructions and files.</li>
+        <li>It runs your <b>account setup and the project setup at once</b>. If they clash, answers suffer.</li>
+        <li><b>Files are its memory.</b> Out-of-date files quietly feed it wrong facts.</li>
+        <li>Fix your <b>messiest project first</b>. One done properly beats five done half.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Audit this project&#x27;s setup. Diagnosis first, then a suggested rewrite of the project instructions. Do not apply or change anything.
+
+Read the files in this project yourself. For the project instructions, work from the block I&#x27;ve pasted at the bottom, because you can&#x27;t reliably read those back on your own. Do not ask me questions. If the pasted block is empty, say so and stop.
+
+Look at four things and explain each in plain, simple language:
+1. Project instructions. What&#x27;s unclear, out of date, repeated, or too vague to act on?
+2. Clashes. Does anything here contradict my account-level instructions, or another rule inside this project? Name the clash so I can decide which wins.
+3. Files. What&#x27;s outdated, duplicated, or the wrong place for the information?
+4. What&#x27;s misplaced. What&#x27;s crammed into the instructions that should really live in a file, because it&#x27;s reference material or it changes often?
+
+Answer in this exact format. Nothing else.
+
+WHAT&#x27;S WORKING: (max 3 bullets, one line each)
+WHAT&#x27;S HURTING THIS PROJECT: (max 5 bullets, one line each, plainest language. For any clash, say what fights what.)
+FIX THIS: (max 5 bullets. Each one: the problem, what to do, where it moves if it moves)
+YOUR REWRITTEN PROJECT INSTRUCTIONS: (the full replacement in a copy-paste block, as short as it can be while keeping everything that matters. This is a draft for you to approve. I have changed nothing. Paste it in yourself only if you&#x27;re happy.)
+
+Keep every line short and easy to understand. Assume I&#x27;m time-poor and not technical. No jargon, no preamble, no summary. Stop after the rewrite.
+
+MY CURRENT PROJECT INSTRUCTIONS:
+[paste here]</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="5">
+  <div class="topbar">
+    <span class="part">Part Two — Projects</span>
+    <span class="badge core">Core</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 05 · 2B</div>
+      <h1 class="headline">Plan the files</h1>
+      <p class="why">Files are what make a project actually smart. Most projects have none, or a pile that&#x27;s out of date.</p>
+      <div class="know-label">What to know about knowledge files</div>
+      <ul class="points">
+        <li>Instructions tell it <b>how to behave</b>. Files tell it <b>what to know</b>.</li>
+        <li>Load your facts in <b>once</b> and it stops asking you the same things forever.</li>
+        <li>Too many files, or stale ones, and it <b>can't tell what's true</b> anymore.</li>
+        <li>This step is a <b>plan only</b>. You build the files in the next step.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Plan the knowledge files this project should have. Recommend only. Do not create, write, or change any files.
+
+Read the existing files in this project yourself. For the project instructions, work from the block I&#x27;ve pasted at the bottom, because you can&#x27;t reliably read those back on your own. Do not ask me questions first. Work from what&#x27;s in front of you.
+
+First, check what already exists:
+- If the project has files, audit them: what&#x27;s outdated, what&#x27;s duplicated, what&#x27;s in the wrong place, what&#x27;s missing.
+- If the project has no files, design the set it should have from scratch.
+- If the project genuinely doesn&#x27;t need files, say so and explain why. Don&#x27;t invent files to look useful.
+- Either way, flag anything currently stuffed in the project instructions that should be pulled out into a file instead.
+
+Then give me the plan. For each file you recommend, in plain simple language:
+- File name
+- What it&#x27;s for, in one line
+- What goes in it
+- What stays out of it
+- Is it fixed reference, or something that&#x27;ll change over time
+- If it replaces or absorbs something that already exists, say what
+
+Answer in this exact format. Nothing else.
+
+WHAT YOU&#x27;VE GOT NOW: (max 4 bullets. Current file situation. If none, say so.)
+THE FILES THIS PROJECT SHOULD HAVE: (the recommended set, each laid out as above. If none needed, say so and why.)
+WHAT TO MOVE OUT OF INSTRUCTIONS: (max 4 bullets. Anything in the instructions that belongs in a file instead. If nothing, say so.)
+
+Keep the set as small as it can be. Do not invent files to look thorough. Do not duplicate the same information across two files. Keep every line short and easy to understand, assume I&#x27;m time-poor and not technical. No jargon, no preamble. Stop after the plan. Do not create anything.
+
+MY CURRENT PROJECT INSTRUCTIONS:
+[paste here]</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="6">
+  <div class="topbar">
+    <span class="part">Part Two — Projects</span>
+    <span class="badge opt">Optional</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 06 · 2C</div>
+      <h1 class="headline">Build one file</h1>
+      <p class="why">Now you build the files, one at a time. Rush it and let the AI invent the gaps, and you make a fresh mess.</p>
+      <div class="know-label">What to know about building files</div>
+      <ul class="points">
+        <li><b>One file at a time.</b> Slow is the point.</li>
+        <li>Tell it to <b>use only what you've given it</b>, and flag what it's unsure of.</li>
+        <li>A file full of confident guesses is <b>worse than no file</b>.</li>
+        <li>Some knowledge is a document, some is a <b>live link</b>, some is a small table. Pick the right home.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Build one of the knowledge files you recommended. Just one. Do not build any others.
+
+Build this one: [NAME THE FILE FROM YOUR PLAN, e.g. &quot;Objection handling&quot;]
+
+You recommended this file and the format for it in the plan. If that plan is still in this chat, follow it. If the plan&#x27;s gone, tell me in one line what you&#x27;d recommend this file be and the format for it, then build it.
+
+Rules:
+- Use only what&#x27;s in this project or what I&#x27;ve told you. Do not invent details, names or numbers to fill gaps.
+- Anything you&#x27;re not sure of, mark [NEEDS CONFIRMING] and leave it for me. Don&#x27;t guess.
+- Keep it clean and easy to update later.
+
+Answer in this format. Nothing else.
+
+FORMAT: (written document, live link, or structured reference, and one line on why. If a live link is right, don&#x27;t copy content in, tell me what to link.)
+THE FILE: (finished, in a copy-paste block)
+STILL NEEDS CONFIRMING: (bullets, or &quot;nothing, this one&#x27;s done&quot;)
+
+Keep it simple, no jargon, no preamble. Build this one file, then stop.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="7">
+  <div class="topbar">
+    <span class="part">Part Two — Projects</span>
+    <span class="badge core">Core</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 07 · 2D</div>
+      <h1 class="headline">Test it on real work</h1>
+      <p class="why">A tidy project proves nothing. Better answers on a real job prove everything. This is where you find out.</p>
+      <div class="know-label">What to know about testing it</div>
+      <ul class="points">
+        <li>Test on a <b>real task you'd do this week</b>, not a made-up one.</li>
+        <li>First, make it <b>say back its job and what it's using</b>. Catch mistakes in ten seconds.</li>
+        <li>Then judge the answer: is it <b>genuinely sharper</b> than before?</li>
+        <li>This isn't one-and-done. It's the start of a project that <b>keeps improving</b>.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">I want to test whether this project is actually working better now. Before you do the task, read this project&#x27;s instructions and files.
+
+First, before touching the task, tell me in plain simple language:
+- What you understand your job is in this project
+- Which instructions are guiding you
+- Which files, if any, are relevant to this task
+- Anything you still need from me to do this well
+
+Then do this real task:
+[PASTE A REAL TASK YOU&#x27;D ACTUALLY DO THIS WEEK]
+
+After you&#x27;ve done it, tell me:
+- What the new setup helped you get right
+- Where the instructions or files made this easier
+- Anything that was still unclear or where you had to guess
+- One thing worth refining for next time
+
+Do not change any instructions or files. Do not fix anything automatically. Just do the task and give me the honest read.
+
+Keep it short and easy to understand. No jargon. Stop after your evaluation.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="8">
+  <div class="topbar">
+    <span class="part">Part Three — Cowork</span>
+    <span class="badge opt">Optional</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 08 · 3A</div>
+      <h1 class="headline">Set up Cowork</h1>
+      <p class="why">Cowork is a different room. It runs your account setup but can&#x27;t see any of your past chats.</p>
+      <div class="know-label">What to know about Cowork</div>
+      <ul class="points">
+        <li>It has <b>its own separate instructions and files</b>, apart from your chats.</li>
+        <li>It <b>can't see your chat history</b>, so it needs a fuller brief to stand alone.</li>
+        <li>Cowork <b>does real work</b>, so a thin brief costs you a whole job, not just a weak reply.</li>
+        <li>Only worth doing <b>if you actually use Cowork</b>.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">My Cowork global instructions are empty and I want you to write them for me.
+
+Do not send me a list of questions. Use what you already know about me and how I work. Build the draft from that. If you genuinely don&#x27;t have enough to go on, ask me three quick questions, no more, then build it.
+
+Keep it under 500 words. This setup may not have my normal chat history, so it needs to stand on its own. Cover: what I do, how I work, what I use Cowork for, what matters most in the output, the tone and standards I expect, and the mistakes to avoid. Do not include client names, pricing, research, or anything that changes often. That belongs in files, not here.
+
+Answer in this exact format. Nothing else.
+
+YOUR DRAFT GLOBAL INSTRUCTIONS: (the full set in a copy-paste block, under 500 words. A draft for you to approve. I have saved nothing. Paste it in yourself only if you&#x27;re happy.)
+WHAT I ASSUMED: (max 4 bullets, one line each, so you can correct anything wrong.)
+
+Keep it short. No preamble, no summary. Stop after the assumptions.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="9">
+  <div class="topbar">
+    <span class="part">Part Three — Cowork</span>
+    <span class="badge opt">Optional</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 09 · 3B</div>
+      <h1 class="headline">Fix your Cowork setup</h1>
+      <p class="why">If you set Cowork up a while ago, the same rot has hit it. And here a bad brief means a bad job, done all the way through.</p>
+      <div class="know-label">What to know about Cowork</div>
+      <ul class="points">
+        <li>Same rot as everywhere: <b>stale rules, clashes, misplaced reference material</b>.</li>
+        <li>It <b>can't lean on your chat history</b> to fill gaps. No safety net.</li>
+        <li>So its instructions have to be <b>clear and complete on their own</b>.</li>
+        <li>A weak brief here becomes <b>a weak job, done properly, in the wrong direction</b>.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Audit my Cowork global instructions. Diagnosis first, then a suggested rewrite. Do not apply anything.
+
+Everything you need is pasted below. Work only from that text. Do not ask me questions. Do not try to read my settings. If the block is empty, say so and stop.
+
+Check for:
+1. Length. Under 500 words? If over, name what&#x27;s bloating it.
+2. Rules that are vague, repeated, or contradict each other.
+3. Reference material that shouldn&#x27;t be here: pricing, client details, research, anything that changes often. Say where it should move.
+4. Whether it&#x27;s clear enough to work on its own, for a session that may not have my normal chat history behind it.
+
+Answer in this exact format. Nothing else.
+
+WHAT&#x27;S WORKING: (max 3 bullets, one line each)
+WHAT&#x27;S HURTING YOUR OUTPUT: (max 4 bullets, one line each, plainest language)
+FIX THIS: (max 4 bullets. Each one: the problem, what to do, where it moves if it moves)
+YOUR REWRITTEN VERSION: (the full replacement in a copy-paste block, under 500 words. A draft for you to approve. I have changed nothing. Paste it in yourself only if you&#x27;re happy.)
+
+Keep every line short. Assume I&#x27;m time-poor. No preamble, no summary. Stop after the rewrite.
+
+MY CURRENT COWORK GLOBAL INSTRUCTIONS:
+[paste here]</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="10">
+  <div class="topbar">
+    <span class="part">Part Three — Cowork</span>
+    <span class="badge opt">Optional</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 10 · 3C</div>
+      <h1 class="headline">Clean up Cowork files</h1>
+      <p class="why">Cowork can reach a pile of files. Half of them might be lying to it, and it acts on what it reads.</p>
+      <div class="know-label">What to know about Cowork files</div>
+      <ul class="points">
+        <li>Cowork <b>acts on its files</b>, so an old one feeds bad info straight into real work.</li>
+        <li>The mess builds quietly: <b>two versions, a dead file, an old job</b>.</li>
+        <li>This step is a <b>clean-up plan, not a clean-up</b>. It changes nothing.</li>
+        <li>You decide what actually goes, <b>in your own time</b>.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Look at the files you can access and check them against how I actually work now. Give me a clean-up plan only. Do not change, move, delete, or rewrite anything.
+
+Tell me, in plain simple language:
+1. What looks outdated?
+2. What looks duplicated, two versions of the same thing?
+3. What looks like it&#x27;s no longer relevant to what I do?
+4. What important information looks like it&#x27;s missing?
+5. What should I sort out first?
+
+Answer in this exact format. Nothing else.
+
+OUTDATED: (bullets, or &quot;nothing obvious&quot;)
+DUPLICATED: (bullets, or &quot;nothing obvious&quot;)
+PROBABLY DEAD: (bullets, or &quot;nothing obvious&quot;)
+LOOKS MISSING: (bullets, or &quot;nothing obvious&quot;)
+DO THIS FIRST: (max 3 bullets, the order I should tackle it in)
+
+Keep it short and easy to understand. No jargon, no preamble. Give me the plan, then stop. Change nothing.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="11">
+  <div class="topbar">
+    <span class="part">Part Three — Cowork</span>
+    <span class="badge opt">Optional</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 11 · 3D</div>
+      <h1 class="headline">Audit your skills</h1>
+      <p class="why">Skills are brilliant until they start tripping over each other. Two that overlap can both fire on one job and you can&#x27;t tell why.</p>
+      <div class="know-label">What to know about skills</div>
+      <ul class="points">
+        <li>A skill is a <b>saved way of doing one job</b>, so you don't rebuild it each time.</li>
+        <li>Some fire <b>on their own</b> when a job looks like their kind of work.</li>
+        <li>When two <b>overlap or contradict</b>, the result gets unpredictable.</li>
+        <li>This sorts every skill into <b>keep, bin, or rewrite</b>. You make the calls.</li>
+      </ul>
+      <p class="footnote">Skip this unless you actually use skills. Most people don&#x27;t, and that&#x27;s fine.</p>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">Audit the skills set up in my Cowork workspace. Do not change, delete, rewrite, or create any skill. Just assess them.
+
+Read what each skill is and does. For each one, check:
+- Is it still relevant to how I work now?
+- Does it overlap with another skill?
+- Does it contradict another skill?
+- Is it too broad, too narrow, or unclear?
+
+If I have no skills set up, or only one, say so plainly instead of forcing the three lists. Otherwise, sort every skill into one of three lists, with a one-line reason for each.
+
+Answer in this exact format. Nothing else.
+
+KEEP: (skill name, one line on why it earns its place)
+BIN: (skill name, one line on why it&#x27;s dead weight)
+REWRITE: (skill name, one line on what&#x27;s wrong with it)
+
+If two skills overlap or fight each other, name the pair and say which to keep. Keep every line short and easy to understand. No jargon, no preamble. Give me the three lists, then stop. Change nothing.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide step" data-idx="12">
+  <div class="topbar">
+    <span class="part">Part Four — Keeping It Sharp</span>
+    <span class="badge core">Core</span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="stepno">STEP 12 · 4A</div>
+      <h1 class="headline">The six-week check</h1>
+      <p class="why">You&#x27;ve cleaned it up once. In six weeks it&#x27;ll have drifted again. This is the ten-minute habit that keeps it sharp.</p>
+      <div class="know-label">What to know about staying sharp</div>
+      <ul class="points">
+        <li>A one-off clean-up <b>doesn't hold</b>. You keep working, it keeps drifting.</li>
+        <li>The people who win aren't the ones who set it up once. They're the ones who <b>catch the drift early</b>.</li>
+        <li>Every six weeks, a <b>light check</b>, not a full rebuild. Minutes, not an afternoon.</li>
+        <li><b>Put it in your calendar now.</b> That reminder does more than any clever prompt.</li>
+      </ul>
+      <p class="footnote">Run the same light check on your busiest project too. Don&#x27;t check everything every time. Check what you actually use.</p>
+    </div>
+    <div class="right">
+      <div class="promptcard">
+        <div class="promptbar"><span class="plabel">Paste this in</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt">It&#x27;s my regular check-up. I want a quick drift check, not a full rebuild.
+
+I&#x27;m pasting my current account instructions below. Work only from that plus what you know about how I&#x27;ve been working with you lately. Do not ask me questions. If the block is empty, say so and stop.
+
+Tell me, in plain simple language:
+1. Has anything in my instructions gone out of date or started to clash, based on how my work seems to have shifted?
+2. Is anything now bloating them that could be trimmed or moved to a file?
+3. Is there one thing worth adding that would sharpen my everyday output?
+
+Answer in this exact format. Nothing else.
+
+STILL GOOD: (one line. Confirm what&#x27;s holding up fine.)
+DRIFTED: (max 3 bullets. What&#x27;s moved on and should change. If nothing, say so.)
+WORTH ADDING: (max 2 bullets, or &quot;nothing needed&quot;)
+SUGGESTED TWEAK: (only if something drifted, give me the corrected version in a copy-paste block. If nothing drifted, skip this.)
+
+Keep it short. This is a light check, not a deep audit. No preamble. Stop after the tweak.
+
+MY CURRENT ACCOUNT INSTRUCTIONS:
+[paste here]</pre>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide close" data-idx="13">
+  <div class="close-inner">
+    <div class="kicker">The rule under all of it</div>
+    <h1 class="close-h1">Audit first. Approve second.<br>Rewrite third. Implement last.</h1>
+    <p class="close-sub">Nothing changes until you've read it and you're happy. You leave with a setup that knows you, projects that behave like experts, and a ten-minute habit that keeps it that way.</p>
+    <div class="close-tick">Put the six-week check in your calendar before you close this.</div>
+  </div>
+</section>
+<div class="nav" id="nav"></div>
+<div class="hint">← → move · C copy · F fullscreen</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let i=0;
+function show(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,x)=>s.classList.toggle('active',x===i));
+  document.getElementById('prog').style.width=((i)/(slides.length-1)*100)+'%';
+  document.getElementById('nav').textContent=(i+1)+' / '+slides.length;
+}
+function copyPrompt(btn){
+  const pre=btn.closest('.promptcard').querySelector('.prompt');
+  navigator.clipboard.writeText(pre.innerText).then(()=>{
+    btn.textContent='Copied';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},1400);
+  });
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();show(i+1)}
+  else if(e.key==='ArrowLeft'){show(i-1)}
+  else if(e.key==='c'||e.key==='C'){const b=slides[i].querySelector('.copy');if(b)b.click()}
+  else if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}
+});
+document.addEventListener('click',e=>{
+  if(e.target.closest('.copy')||e.target.closest('a'))return;
+  const x=e.clientX/window.innerWidth;
+  if(x>0.5)show(i+1);else show(i-1);
+});
+show(0);
+</script>
+</body></html>
