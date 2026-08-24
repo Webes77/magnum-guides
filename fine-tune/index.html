@@ -40,6 +40,13 @@ body.present .whererun p{font-size:17.5px}
 body.present .byhand ol li{font-size:17.5px}
 @media (max-width:640px){.whererun{flex-direction:column;gap:6px}}
 
+
+.whydo{display:flex;align-items:baseline;gap:16px;border-left:3px solid var(--coral);padding:4px 0 4px 18px;margin:0 0 26px}
+.whydo-label{flex:0 0 auto;font-size:12px;letter-spacing:.16em;font-weight:700;color:var(--coral)}
+.whydo p{margin:0;color:#F0EBE5;font-size:17.5px;line-height:1.6;font-style:italic}
+body.present .whydo p{font-size:20px}
+@media (max-width:640px){.whydo{flex-direction:column;gap:4px}}
+
 /* present-mode point layer */
 .ppoints{display:none}
 .ppoints ul{list-style:none;margin:34px 0 10px}
@@ -264,17 +271,22 @@ footer .sig{font-size:11px;letter-spacing:.24em;color:var(--faint);text-transfor
 <p><strong>Your account instructions.</strong> One box, buried in your settings, that the AI reads before every single message you send. Whatever's in there shapes every answer you ever get. Most are empty or ancient.</p>
 <p><strong>Your projects.</strong> Separate workspaces you set up for one job each, a client, an offer, a type of work. Each one has its own instructions and its own files, so the AI can be a specialist there instead of a generalist everywhere.</p>
 <p><strong>Files.</strong> Documents you attach so the AI actually knows things, your pricing, your process, your standards, instead of guessing at them. Instructions tell it how to behave. Files tell it what to know.</p>
-<p><strong>Cowork.</strong> The version of the AI that goes off and does real work, files, tasks, multi-step jobs, rather than just chatting. It has its own separate setup, and tuning your chats does not tune this.</p>
+<p><strong>Cowork.</strong> The version of the AI that goes off and does real work, files, tasks, multi-step jobs, rather than just chatting. It follows your account instructions, but everything else about its setup is separate, and it can't see your chats. Tuning your chats does not tune this.</p>
 <p>That's it. That's the whole machine. And "optimising" just means making sure each of those four things is current, clean, and not fighting the others. No code, no technical skill. You paste in a prompt, read what comes back, and keep what you're happy with.</p>
-<p>The whole pass takes an afternoon if you do everything, and most people shouldn't. Part One alone takes ten minutes and you'll feel the difference the same day.</p>
-<p>One rule runs under all of it: audit first, approve second, rewrite third, implement last. The AI never changes anything on its own. You read everything before it goes in. You stay in charge the whole way through.</p>
+<p>Done end to end it's a few hours, and it lands better spread over a week than forced into one sitting. Most people shouldn't do everything anyway. Part One alone takes about ten minutes, and you'll feel the difference the same day.</p>
+<p>One rule runs under all of it: audit first, rewrite second, approve third, implement last. The AI never changes anything on its own. You read everything before it goes in. You stay in charge the whole way through.</p>
 </div></section>
 <section class="prose-sec" id="how"><div class="wrap">
 <div class="kicker">How this works</div>
-<div class="ppoints"><ul><li>Every step: the plain why, then one prompt to paste.</li><li>One prompt, review, next prompt.</li><li>Audit first, approve second, rewrite third, implement last.</li></ul></div>
+<div class="ppoints"><ul><li>Every step: the plain why, then one prompt to paste.</li><li>One prompt, review, next prompt.</li><li>Audit first, rewrite second, approve third, implement last.</li></ul></div>
 <p>Every step has two parts. First, the plain-English reason you're doing it, what's broken now and what you get after. Read it before you touch the prompt. Then the prompt itself, which you paste in one at a time.</p>
 <p>The order matters. We move account layer first, then projects, one at a time. Never paste the whole document into an AI. One prompt, review, next prompt.</p>
-<p>The rule under everything: audit first, approve second, rewrite third, implement last. Nothing gets changed until you've read it and you're happy.</p>
+<p>The rule under everything: audit first, rewrite second, approve third, implement last. Nothing gets changed until you've read it and you're happy.</p>
+<p>One thing before you start. You'll be pasting real business information into</p>
+<p>chats as you go. Take thirty seconds in your settings first: on ChatGPT it's</p>
+<p>Data Controls, on Claude it's Privacy, and switch off training on your data</p>
+<p>if you don't want it used that way. Then paste freely.</p>
+<p>*This edition: August 2026. ChatGPT and Claude move their menus around. If a settings path in this guide doesn't match your screen, search your settings for the key word instead, memory, instructions, personalisation, and you'll land in the right place.*</p>
 </div></section>
 <section class="index" id="map"><div class="wrap">
 <div class="kicker">The whole thing, on one page</div>
@@ -310,13 +322,14 @@ footer .sig{font-size:11px;letter-spacing:.24em;color:var(--faint);text-transfor
 <div class="opener-row"><span class="opener-label">THE POINT</span><span>One box in your settings shapes every answer you ever get.</span></div>
 <div class="opener-row"><span class="opener-label">WHAT IT'S WORTH</span><span>You stop re-explaining yourself forever. Sharper answers from the next chat you open.</span></div>
 <div class="opener-row opener-wrong"><span class="opener-label">WHAT MOST PEOPLE GET WRONG</span><span>They think the AI gets to know them the more they use it. It doesn't. It reads this box. Empty box, stranger every time.</span></div>
-<div class="opener-row"><span class="opener-label">TIME</span><span>Ten minutes.</span></div>
+<div class="opener-row"><span class="opener-label">TIME</span><span>Ten to fifteen minutes.</span></div>
 </div>
 <div class="picker"><span class="picker-label">WHICH ONE IS YOU?</span> Box empty or never touched? Start at 1A. Got something in there already? Start at 1B. Everyone does 1C.</div>
 </div></section>
 <section class="step" id="step-1a"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 1A</span></div>
 <h3 class="step-title">Your AI has no idea who you are, and it's costing you every single day.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Fill one box once and every chat you open from now on starts already knowing you.</p></div>
 <div class="ppoints"><ul><li>The AI reads one box before every message you send. Yours is empty.</li><li>One prompt: it drafts your instructions from what it already knows about you.</li><li>You read it, fix it, paste it in. Two minutes.</li></ul></div>
 <p>Most people never fill this in. You open ChatGPT or Claude, you start typing, and you assume it just knows how to help you. It doesn't. Out of the box, it's built for everyone, which means it's built for no one. It writes the way it thinks the average person wants, guesses at the detail you need, and has no clue what you actually do for a living.</p>
 <p>So you spend your life re-explaining yourself. Every new chat, you're setting the scene again: who you are, what your business does, how you like things written, what to leave out. You've probably typed the same background paragraph a hundred times without realising it. That's not the AI being difficult. That's you doing its onboarding by hand, every time, forever.</p>
@@ -329,13 +342,13 @@ footer .sig{font-size:11px;letter-spacing:.24em;color:var(--faint);text-transfor
 <p>Here's how.</p>
 <div class="promptcard"><div class="promptbar"><span>THE PROMPT · PASTE THIS IN</span><button class="copybtn" data-target="prompt-1">Copy</button></div><pre id="prompt-1">My account custom instructions are empty and I want you to write them for me.
 
-Do not send me a list of questions. Use what you already know about me from how we've talked and anything you remember. Build the draft from that. If you genuinely don't have enough to go on, ask me three quick questions, no more, then build it.
+Do not interview me one question at a time. Use what you already know about me from how we've talked and anything you remember. If you have no real knowledge of me beyond this message, say exactly that, ask me up to three quick questions, and build only from my answers. Do not invent details about me to fill gaps.
 
 Keep it 150 to 400 words. Include only what belongs at this level: how I communicate, how much detail I want, how I like decisions made, the standards I hold you to, and the mistakes to avoid. Do not include client names, pricing, research, or anything that changes often. That lives in files later, not here.
 
 Answer in this exact format. Nothing else.
 
-YOUR DRAFT INSTRUCTIONS: (the full set in a copy-paste block, 150 to 400 words. This is a draft for you to approve. I have not saved anything. Paste it in yourself only if you're happy.)
+YOUR DRAFT INSTRUCTIONS: (the full set in a copy-paste block, 150 to 400 words.)
 WHAT I ASSUMED: (max 4 bullets, one line each. The guesses I made about you, so you can correct anything wrong before you use it.)
 
 Keep it short. No preamble, no summary. Stop after the assumptions.</pre></div>
@@ -345,7 +358,8 @@ Keep it short. No preamble, no summary. Stop after the assumptions.</pre></div>
 </div></section>
 <section class="step" id="step-1b"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 1B</span></div>
-<h3 class="step-title">Right now, your AI is guessing at who you are.</h3>
+<h3 class="step-title">Your AI is still following a brief you forgot you wrote.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Whatever's in that box steers every answer you get. Two minutes here sharpens everything downstream.</p></div>
 <div class="ppoints"><ul><li>Your old setup steers every answer you get, and it's quietly rotted.</li><li>The AI audits its own instructions and hands you a clean rewrite.</li><li>Paste the rewrite. Sharpest two minutes you'll spend on AI this year.</li></ul></div>
 <p>Think about how you set it up. You wrote some instructions once, maybe when you first got the account, maybe you copied something off a video. Then you never looked at them again. But here's the part nobody tells you: every single message you send, the AI reads that old setup first, before it even looks at your actual question. So whatever you dumped in there months ago is still steering every answer you get today.</p>
 <p>And that setup has quietly rotted. It's too long, so the AI skims it. Half of it's out of date, because your business has moved on since you wrote it. Some of the rules contradict each other, so the AI picks one at random. And you've probably got stuff crammed in there that was never meant to live there in the first place, client names, pricing, notes to self, so the AI's wading through a filing cabinet every time it should just be answering you.</p>
@@ -371,17 +385,19 @@ Answer in this exact format. Nothing else.
 WHAT'S WORKING: (max 3 bullets, one line each)
 WHAT'S HURTING YOUR OUTPUT: (max 4 bullets, one line each, plainest language)
 FIX THIS: (max 4 bullets. Each one: the problem, what to do, where it moves if it moves)
-YOUR REWRITTEN VERSION: (the full replacement in a copy-paste block, 150 to 400 words. This is a draft for you to approve. I have not changed anything. Paste it in yourself only if you're happy.)
+YOUR REWRITTEN VERSION: (the full replacement in a copy-paste block, 150 to 400 words.)
 
 Keep every line short. Assume I'm time-poor. No preamble, no summary. Stop after the rewrite.</pre></div>
-<div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Paste the rewrite into your custom instructions box and save. Account layer done. Everything else sits on top of it.</p></div>
-<div class="proof">You'll know it worked when the rewrite is shorter than what you had, and you can't find anything in it you'd argue with.</div>
-<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Copy the rewritten version.</li><li>On ChatGPT: Settings, then Personalisation, then Custom Instructions. Replace what's there and save.</li><li>On Claude: Settings, then Profile. Replace the preferences box contents and save.</li><li>Old version worth keeping? Paste it into a note first. Then it's safe to overwrite.</li></ol></div>
 <p class="aside">If the box won't take the full draft, your plan has a smaller character limit. Ask it to cut the draft to 250 words and paste that instead. Free ChatGPT accounts cap the box at roughly 250 words; paid plans and Claude take the full version.</p>
+<div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Paste the rewrite into your custom instructions box and save. Account layer done. Everything else sits on top of it. Anything the audit said belongs in a file instead: nothing to do with it now, that happens in Part Two when your projects get their files.</p></div>
+<div class="proof">You'll know it worked when you can't find a single line you'd argue with, and nothing in there makes you think 'that's not me'.</div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Copy what's currently in the box into a note first. That's your way back if the new version disappoints.</li><li>Copy the rewritten version.</li><li>On ChatGPT: Settings, then Personalisation, then Custom Instructions. Replace what's there and save.</li><li>On Claude: Settings, then Profile. Replace the preferences box contents and save.</li><li>If the answers get worse over the next few days, paste the old version back and run the audit again. Nothing here is one-way.</li></ol></div>
+<p class="aside">One more thing while you're in here. Using a Style in Claude, the dropdown near the message box? It sits on top of your instructions and wins on tone. If your tone rules ever seem ignored, check the Style first. Normal is the neutral setting.</p>
 </div></section>
 <section class="step" id="step-1c"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 1C</span></div>
 <h3 class="step-title">There's a second thing shaping your answers, and it isn't your instructions.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Stale memories quietly bend your answers. Clear them and the odd off answer stops.</p></div>
 <div class="ppoints"><ul><li>It's also built its own memory of you. Some of it has gone stale.</li><li>One prompt lists what it remembers and flags what looks off.</li><li>Tell it to forget the stale bits, then confirm in settings.</li></ul></div>
 <p>Claude quietly builds up its own memory of you as you work, across all your chats.</p>
 <p>Most of it is helpful. But some of it goes stale. An old job, a one-off you did months ago, a preference you've since changed. It's still in there, still nudging the answers, and you can't see it.</p>
@@ -390,6 +406,8 @@ Keep every line short. Assume I'm time-poor. No preamble, no summary. Stop after
 <div class="whererun"><span class="whererun-label">WHERE TO RUN THIS</span><p>A brand-new chat, not inside a project, with memory switched on in your settings.</p></div>
 <p>Here's how.</p>
 <div class="promptcard"><div class="promptbar"><span>THE PROMPT · PASTE THIS IN</span><button class="copybtn" data-target="prompt-3">Copy</button></div><pre id="prompt-3">Show me what you actually remember about me, so I can check it's right.
+
+If you have no stored memories about me at all, say exactly that and stop. Do not infer things about me from this message and present them as remembered.
 
 I don't mean my saved instructions. I mean the memory you've built up about me on your own over time, across our chats. List it back to me in plain language.
 
@@ -419,13 +437,14 @@ Keep it short and easy to understand. No jargon, no preamble. I'll clear anythin
 <div class="opener-row"><span class="opener-label">THE POINT</span><span>A project done right turns a general assistant into a specialist in one job.</span></div>
 <div class="opener-row"><span class="opener-label">WHAT IT'S WORTH</span><span>The AI stops asking you the same questions and starts sounding like it's read your whole business.</span></div>
 <div class="opener-row opener-wrong"><span class="opener-label">WHAT MOST PEOPLE GET WRONG</span><span>They think more files makes a project smarter. A mess of files makes it dumber, because it treats all of them as equally true, including the out-of-date ones.</span></div>
-<div class="opener-row"><span class="opener-label">TIME</span><span>Twenty to thirty minutes per project. One project properly beats five halfway.</span></div>
+<div class="opener-row"><span class="opener-label">TIME</span><span>Thirty to sixty minutes per project, more if it needs new files built. One project done properly beats five done halfway.</span></div>
 </div>
 <div class="picker"><span class="picker-label">WHICH ONE IS YOU?</span> Project has instructions? Start at 2A. Files and history but the instructions box is empty? Start at 2A-i. Either way you'll end up at 2B, 2C and 2D.</div>
 </div></section>
 <section class="step" id="step-2a"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 2A</span></div>
 <h3 class="step-title">Your projects are where the AI should be at its smartest. Usually it's where they're at their most confused.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>A confused project gives you sharp on Tuesday, vague on Thursday. This makes it a specialist again.</p></div>
 <div class="ppoints"><ul><li>Projects rot fastest: old rules, dead files, clashing instructions.</li><li>The audit names what's hurting the project and rewrites its instructions.</li><li>Read, paste, done. The files come next.</li></ul></div>
 <p>A project is meant to be the AI's specialist mode. You set it up for one job, a client, an offer, a type of work, and load it with the instructions and files for that job. Done right, it stops being a general assistant and becomes an expert in that one thing. That's the whole point of them.</p>
 <p>But projects rot faster than anything else in your setup. You build one, it works, you keep using it. Then the work shifts. You add a file, then another, then five more. You tweak the instructions mid-task and never clean up after. Six months on, the project's carrying instructions for work you don't do anymore, files that contradict each other, and rules that quietly fight the rules in your main account setup. The AI's trying to follow all of it at once, so it follows none of it well.</p>
@@ -446,23 +465,26 @@ Look at four things and explain each in plain, simple language:
 3. Files. What's outdated, duplicated, or the wrong place for the information?
 4. What's misplaced. What's crammed into the instructions that should really live in a file, because it's reference material or it changes often?
 
+Before anything else, list every file you actually read for this, and name any file you could not open or fully read. Audit only what you actually read. Do not present a partial read as a complete audit.
+
 Answer in this exact format. Nothing else.
 
 WHAT'S WORKING: (max 3 bullets, one line each)
 WHAT'S HURTING THIS PROJECT: (max 5 bullets, one line each, plainest language. For any clash, say what fights what.)
 FIX THIS: (max 5 bullets. Each one: the problem, what to do, where it moves if it moves)
-YOUR REWRITTEN PROJECT INSTRUCTIONS: (the full replacement in a copy-paste block, as short as it can be while keeping everything that matters. This is a draft for you to approve. I have changed nothing. Paste it in yourself only if you're happy.)
+YOUR REWRITTEN PROJECT INSTRUCTIONS: (the full replacement in a copy-paste block, as short as it can be while keeping everything that matters.)
 
 Keep every line short and easy to understand. Assume I'm time-poor and not technical. No jargon, no preamble, no summary. Stop after the rewrite.
 
 MY CURRENT PROJECT INSTRUCTIONS: [paste here]</pre></div>
 <div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Don't paste yet. Read its file findings first, the next step plans those. Paste the rewritten project instructions in, then go to 2B for the files.</p></div>
 <div class="proof">You'll know it worked when the audit names at least one thing you'd forgotten was even in there.</div>
-<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Copy the rewritten project instructions.</li><li>Open the project's instructions box: in ChatGPT it's in the project's settings, in Claude it's the instructions panel on the project page.</li><li>Replace what's there and save.</li><li>Leave the chat open. The file findings feed straight into 2B.</li></ol></div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Copy the current project instructions into a note first, that's your rollback.</li><li>Copy the rewritten project instructions.</li><li>Open the project's instructions box: in ChatGPT it's in the project's settings, in Claude it's the instructions panel on the project page.</li><li>Replace what's there and save.</li><li>Leave the chat open. The file findings feed straight into 2B.</li></ol></div>
 </div></section>
 <section class="step" id="step-2ai"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 2A-i</span></div>
 <h3 class="step-title">Some projects grow up backwards. Files first, instructions never.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>A project with files but no brief re-guesses its job every single chat. This gives it a spine.</p></div>
 <div class="ppoints"><ul><li>Files and history, but the instructions box is empty. It happens a lot.</li><li>The AI drafts the project's brief from what's already inside it.</li><li>Fix its assumptions, paste it in, then sort the files.</li></ul></div>
 <p>It happens more than you'd think. You start a project, you drag documents in as the work comes up, you have real conversations in it, and it works well enough that you never notice the instructions box is empty. Fifteen files deep, months of history, and the AI still has no standing brief for what this project is actually for. Every chat, it re-derives the job from scratch off whatever files it happens to weight that day. That's why the same project gives you a sharp answer on Tuesday and a vague one on Thursday.</p>
 <p>You can't audit instructions that don't exist, so 2A has nothing to work with here. But the project isn't empty. Those files and that history are exactly the raw material good instructions get written from. So instead of you drafting a brief from a blank page, the AI reads what's already there and writes the first version for you.</p>
@@ -472,13 +494,13 @@ MY CURRENT PROJECT INSTRUCTIONS: [paste here]</pre></div>
 <p>Here's how.</p>
 <div class="promptcard"><div class="promptbar"><span>THE PROMPT · PASTE THIS IN</span><button class="copybtn" data-target="prompt-5">Copy</button></div><pre id="prompt-5">This project has files and chat history but no project instructions. Draft them for me. Do not save or apply anything.
 
-Everything you need is already here. Read the files in this project and how I've been using it. Do not ask me to paste anything. Do not send me a list of questions. Work out what this project is for from what's in front of you.
+Everything you need is already here. Read the files in this project. If you can genuinely see how I've been working in it, use that too. If you can't, work from the files alone and say so. Do not invent usage history. Do not ask me to paste anything. Do not send me a list of questions. Work out what this project is for from what's actually in front of you.
 
 Keep the draft as short as it can be while covering: what this project is for, who or what it serves, how I want the work done here, the standards the output has to meet, and what to avoid. Do not copy reference material out of the files into the instructions. The files stay the source for facts. The instructions only say how to behave.
 
 Answer in this exact format. Nothing else.
 
-YOUR DRAFT PROJECT INSTRUCTIONS: (the full set in a copy-paste block. A draft for you to approve. I have saved nothing. Paste it in yourself only if you're happy.)
+YOUR DRAFT PROJECT INSTRUCTIONS: (the full set in a copy-paste block.)
 
 WHAT I ASSUMED: (max 4 bullets, one line each. The guesses you made about this project, so I can correct anything wrong before I use it.)
 
@@ -490,6 +512,7 @@ Keep it short. No preamble, no summary. Stop after the assumptions.</pre></div>
 <section class="step" id="step-2b"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 2B</span></div>
 <h3 class="step-title">The files are what make a project actually smart. Most projects either have none, or a mess.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Files are what make a project genuinely smart. This plans the right set before anything gets built.</p></div>
 <div class="ppoints"><ul><li>Instructions tell it how to behave. Files tell it what to know.</li><li>This step plans the file set: keep, bin, merge, and what's missing.</li><li>A map, not a build. You approve it before anything gets made.</li></ul></div>
 <p>Here's the difference between an AI that feels generic and one that feels like it's read your whole business. It's the files. Your instructions tell the AI how to behave. Your files tell it what to know. Pricing, your process, past decisions, client background, the stuff you'd otherwise re-type every time. Load that into files once and the AI carries it into every task in that project without being reminded.</p>
 <p>Two ways this goes wrong. Either the project has no files at all, so the AI's working off memory and vibes and asking you the same questions forever. Or it's got files, but they've piled up, two versions of the same thing, notes that are a year out of date, one giant dumping-ground document nobody's opened since. Either way the AI can't tell what matters, so it treats all of it as equally true, including the bits that aren't anymore.</p>
@@ -517,6 +540,8 @@ Then give me the plan. For each file you recommend, in plain simple language:
 - Is it fixed reference, or something that'll change over time
 - If it replaces or absorbs something that already exists, say what
 
+Before anything else, list every file you actually read for this, and name any file you could not open or fully read. Audit only what you actually read. Do not present a partial read as a complete audit.
+
 Answer in this exact format. Nothing else.
 
 WHAT YOU'VE GOT NOW: (max 4 bullets. Current file situation. If none, say so.)
@@ -525,7 +550,7 @@ WHAT TO MOVE OUT OF INSTRUCTIONS: (max 4 bullets. Anything in the instructions t
 
 Keep the set as small as it can be. Do not invent files to look thorough. Do not duplicate the same information across two files. Keep every line short and easy to understand, assume I'm time-poor and not technical. No jargon, no preamble. Stop after the plan. Do not create anything.
 
-MY CURRENT PROJECT INSTRUCTIONS: [paste here]</pre></div>
+MY CURRENT PROJECT INSTRUCTIONS (paste the version you saved after 2A, the new one):</pre></div>
 <div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>A plan, not a build. Move-out-of-instructions items wait for your next instructions update. Old files to merge or bin are your call by hand. New files you build one at a time, next step. Pick the most important and go to 2C.</p></div>
 <div class="proof">You'll know it worked when the plan is smaller than you expected. A short list of files with clear jobs beats a long one.</div>
 <div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Nothing gets built yet. This is the map.</li><li>Files it said to bin: open the project's file list and remove them yourself. Unsure about one? Download it first, then remove it.</li><li>Files it said to merge: remove the old ones once the merged version exists in 2C, not before.</li><li>Pick the most important new file on the plan and take it to 2C.</li></ol></div>
@@ -533,6 +558,7 @@ MY CURRENT PROJECT INSTRUCTIONS: [paste here]</pre></div>
 <section class="step" id="step-2c"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 2C</span></div>
 <h3 class="step-title">Now you build the files. One at a time, the right way, or you'll create a fresh mess.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>One clean file at a time is how the plan becomes real without creating a fresh mess.</p></div>
 <div class="ppoints"><ul><li>Build one file at a time. Never let it build everything at once.</li><li>Anything it isn't sure of gets marked NEEDS CONFIRMING, not guessed.</li><li>Check it, attach it, move to the next.</li></ul></div>
 <p>You've got the plan. This is where it becomes real. But there's a trap right at the start, and it's the reason most people's projects end up cluttered again three months later: they let the AI build everything at once, and it invents half of it.</p>
 <p>So two rules here, and they matter. One file at a time. And you tell the AI to use only what you've actually given it, and to flag anything it's unsure of instead of filling the gap with a guess. Left to its own devices it will sometimes invent a detail to be helpful. This stops that. A file full of confident-sounding guesses is worse than no file.</p>
@@ -562,11 +588,12 @@ STILL NEEDS CONFIRMING: (bullets, or "nothing, this one's done")
 Keep it simple, no jargon, no preamble. Build this one file, then stop.</pre></div>
 <div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Fill any blanks, save the file, attach it to the project yourself. Then run this prompt again for the next file on your plan. One at a time. Five clean files beat fifteen half-built ones.</p></div>
 <div class="proof">You'll know it worked when the file reads like your business wrote it, and every [NEEDS CONFIRMING] is a real gap, not a guess.</div>
-<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Fill in every [NEEDS CONFIRMING] yourself before the file goes anywhere.</li><li>Save it: copy the text into a document, name it exactly what the plan called it.</li><li>Attach it to the project: in ChatGPT add it to the project's files, in Claude add it to the project's knowledge.</li><li>Run the same prompt again for the next file on the plan. One at a time.</li></ol></div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Fill in every [NEEDS CONFIRMING] yourself before the file goes anywhere.</li><li>Save it: copy the text into a document, name it exactly what the plan called it.</li><li>Attach it to the project: in ChatGPT add it to the project's files, in Claude add it to the project's knowledge.</li><li>If the plan called for a live link instead: paste the document's share link into the project and check the matching connector is switched on. If your setup can't do live links, build it as a written document instead.</li><li>Run the same prompt again for the next file on the plan. One at a time.</li></ol></div>
 </div></section>
 <section class="step" id="step-2d"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 2D</span></div>
 <h3 class="step-title">Now prove it. A tidy setup means nothing. Better answers on real work mean everything.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Tidy proves nothing. One real task shows whether the setup actually works.</p></div>
 <div class="ppoints"><ul><li>A tidy project isn't the goal. Better work is.</li><li>It reads back what it thinks its job is, then does a real task.</li><li>Anywhere it guessed is your next fix.</li></ul></div>
 <p>Here's where most people stop too early. They clean everything up, the project looks neat, the instructions are tight, and they call it done. But neat isn't the point. You didn't do this to have a tidy project. You did it so the AI gives you better work. And the only way to know if it worked is to make it do a real job and watch.</p>
 <p>So we don't test it on a made-up task. We give it something you'd actually do this week. Real work, real stakes. Then we look at whether the answer's genuinely sharper than what you'd have got before.</p>
@@ -596,7 +623,7 @@ Do not change any instructions or files. Do not fix anything automatically. Just
 Keep it short and easy to understand. No jargon. Stop after your evaluation.</pre></div>
 <div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Your proof. Pointed to real instructions and files, and the without version was worse? You're done. Had to guess anywhere? The fix goes back into an instruction or a file, not the chat.</p></div>
 <div class="proof">You'll know it worked when the readback sounds right before the task even starts, and the output needs less fixing than usual.</div>
-<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Read its readback before it starts. If it's misunderstood the job, stop and fix the instruction it got wrong.</li><li>Let it do the task, then read its honest review at the end.</li><li>Anywhere it guessed: that fix goes into an instruction or a file, not into the chat.</li><li>Happy? This project's done. Next messiest project, back to 2A.</li></ol></div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Read its readback before it starts. If it's misunderstood the job, stop and fix the instruction it got wrong.</li><li>Let it do the task, then read its honest review at the end.</li><li>Anywhere it guessed: that fix goes into an instruction or a file, not into the chat.</li><li>Want proof rather than a feeling? Run the exact same task in a plain chat outside the project and put the two answers side by side. The gap is your setup working.</li><li>Happy? This project's done. Next messiest project, back to 2A.</li></ol></div>
 </div></section>
 <section class="part" id="part-03"><div class="wrap">
 <div class="part-head"><span class="ghost ghost-xl">03</span>
@@ -607,13 +634,14 @@ Keep it short and easy to understand. No jargon. Stop after your evaluation.</pr
 <div class="opener-row"><span class="opener-label">THE POINT</span><span>Cowork does real work end to end, and it runs on its own separate setup.</span></div>
 <div class="opener-row"><span class="opener-label">WHAT IT'S WORTH</span><span>Jobs come back done properly instead of done confidently in the wrong direction.</span></div>
 <div class="opener-row opener-wrong"><span class="opener-label">WHAT MOST PEOPLE GET WRONG</span><span>They assume tuning their chats tuned this too. It didn't. Cowork is a different room, and it can't see your past chats at all.</span></div>
-<div class="opener-row"><span class="opener-label">TIME</span><span>Fifteen minutes. Skip this whole part if you don't use Cowork.</span></div>
+<div class="opener-row"><span class="opener-label">TIME</span><span>Fifteen to twenty minutes. Skip this whole part if you don't use Cowork.</span></div>
 </div>
-<div class="picker"><span class="picker-label">WHICH ONE IS YOU?</span> Cowork instructions empty? Start at 3A. Already got some? Start at 3B. Then 3C for the files, and 3D only if you use skills.</div>
+<div class="picker"><span class="picker-label">WHICH ONE IS YOU?</span> Cowork instructions empty? Start at 3A. Already got some? Start at 3B. Then 3C for the files. Skills user? 3D audits them, 3D-i fixes them.</div>
 </div></section>
 <section class="step" id="step-3a"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 3A</span></div>
 <h3 class="step-title">Cowork is a different room, and it can't see what your chats know.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Cowork does whole jobs on its brief alone. A blank brief means whole jobs done wrong.</p></div>
 <div class="ppoints"><ul><li>Cowork is a separate room. It can't see any of your chats.</li><li>One prompt drafts its standing brief from scratch.</li><li>Paste it in, then grant folder access, or it's working half-blind.</li></ul></div>
 <p>Here's the thing people get wrong about Cowork. It runs on your account instructions, so it's not a total stranger. But it also has its own separate instructions and its own files, and it can't see any of your past chats. So if you've never filled in its own setup, it's working with one hand tied behind its back, missing everything you've taught your normal chats over time.</p>
 <p>That's why Cowork sometimes feels generic even when your normal chats feel sharp. It's got your account instructions, but not the context and files your chats have built up, and not its own setup either. And because Cowork actually goes off and does things, files, tasks, multi-step jobs, a thin brief costs you more than a generic chat answer does. It's not just a weak reply, it's a weak job done end to end.</p>
@@ -623,13 +651,13 @@ Keep it short and easy to understand. No jargon. Stop after your evaluation.</pr
 <p>Here's how.</p>
 <div class="promptcard"><div class="promptbar"><span>THE PROMPT · PASTE THIS IN</span><button class="copybtn" data-target="prompt-9">Copy</button></div><pre id="prompt-9">My Cowork global instructions are empty and I want you to write them for me.
 
-Do not send me a list of questions. Use what you already know about me and how I work. Build the draft from that. If you genuinely don't have enough to go on, ask me three quick questions, no more, then build it.
+Do not interview me one question at a time. Use what you already know about me and how I work. If you have no real knowledge of me beyond this message, say exactly that, ask me up to three quick questions, and build only from my answers. Do not invent details about me to fill gaps.
 
 Keep it under 500 words. This setup may not have my normal chat history, so it needs to stand on its own. Cover: what I do, how I work, what I use Cowork for, what matters most in the output, the tone and standards I expect, and the mistakes to avoid. Do not include client names, pricing, research, or anything that changes often. That belongs in files, not here.
 
 Answer in this exact format. Nothing else.
 
-YOUR DRAFT GLOBAL INSTRUCTIONS: (the full set in a copy-paste block, under 500 words. A draft for you to approve. I have saved nothing. Paste it in yourself only if you're happy.)
+YOUR DRAFT GLOBAL INSTRUCTIONS: (the full set in a copy-paste block, under 500 words.)
 WHAT I ASSUMED: (max 4 bullets, one line each, so you can correct anything wrong.)
 
 Keep it short. No preamble, no summary. Stop after the assumptions.</pre></div>
@@ -640,6 +668,7 @@ Keep it short. No preamble, no summary. Stop after the assumptions.</pre></div>
 <section class="step" id="step-3b"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 3B</span></div>
 <h3 class="step-title">Your Cowork instructions might be quietly working against you.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>A rotted Cowork brief steers real work in the wrong direction, end to end.</p></div>
 <div class="ppoints"><ul><li>Old Cowork instructions steer real jobs in the wrong direction.</li><li>Audit, rewrite, paste. Same pattern as your account.</li><li>Check folder and connector access while you're in there.</li></ul></div>
 <p>If you set Cowork up a while ago, the same rot that hits everything else has probably hit this too. Instructions that were right then and aren't now. Rules that fight each other. Reference material crammed in where it doesn't belong. And because Cowork does real work rather than just chatting, a bad brief here doesn't just make a weak answer, it makes a weak job, done properly, all the way through, in the wrong direction.</p>
 <p>There's one extra thing that matters more in Cowork than anywhere else. This setup can't lean on your normal chat history to fill gaps. So if the instructions are vague, there's no safety net underneath them. They have to be clear and complete on their own, or the work drifts.</p>
@@ -662,18 +691,19 @@ Answer in this exact format. Nothing else.
 WHAT'S WORKING: (max 3 bullets, one line each)
 WHAT'S HURTING YOUR OUTPUT: (max 4 bullets, one line each, plainest language)
 FIX THIS: (max 4 bullets. Each one: the problem, what to do, where it moves if it moves)
-YOUR REWRITTEN VERSION: (the full replacement in a copy-paste block, under 500 words. A draft for you to approve. I have changed nothing. Paste it in yourself only if you're happy.)
+YOUR REWRITTEN VERSION: (the full replacement in a copy-paste block, under 500 words.)
 
 Keep every line short. Assume I'm time-poor. No preamble, no summary. Stop after the rewrite.
 
 MY CURRENT COWORK GLOBAL INSTRUCTIONS: [paste here]</pre></div>
-<div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Paste the rewrite into Cowork global instructions and save. Same reminder: Cowork only sees the folders and connectors you've explicitly given it. Make sure that's connected.</p></div>
+<div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Paste the rewrite into Cowork global instructions and save. Same reminder: Cowork only sees the folders and connectors you've explicitly given it. Make sure that's connected. Anything it said should live in a file: the file clean-up is 3C, and building the file is the 2C pattern.</p></div>
 <div class="proof">You'll know it worked when the rewrite stands on its own. If it only makes sense with backstory, it's not done.</div>
-<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Copy the rewrite.</li><li>Cowork's settings in the Claude desktop app: replace the old instructions and save.</li><li>Check the folder and connector access list while the settings are open.</li><li>Give it a real job and watch whether it starts sharper.</li></ol></div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Copy the old Cowork instructions into a note first, your rollback.</li><li>Copy the rewrite.</li><li>Cowork's settings in the Claude desktop app: replace the old instructions and save.</li><li>Check the folder and connector access list while the settings are open.</li><li>Give it a real job and watch whether it starts sharper.</li></ol></div>
 </div></section>
 <section class="step" id="step-3c"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 3C</span></div>
 <h3 class="step-title">Cowork can reach a pile of files. Half of them might be lying to it.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Cowork treats every file it can reach as true. This finds the ones lying to it.</p></div>
 <div class="ppoints"><ul><li>Cowork acts on every file it can reach, current or not.</li><li>This is a clean-up plan: outdated, duplicated, dead, missing.</li><li>You hold the delete key. It changes nothing itself.</li></ul></div>
 <p>Cowork works off the files you've given it access to. Great when they're current. A problem when they're not. Because Cowork acts on what it reads, an out-of-date file doesn't just sit there harmlessly, it feeds bad information straight into real work. Old pricing, a superseded process, last year's positioning, and Cowork treats all of it as true because you gave it to it.</p>
 <p>The mess builds up quietly. Two versions of the same document. A file you meant to delete months ago. Something that made sense for a job you don't do anymore. You stop noticing it's there. Cowork never stops reading it.</p>
@@ -691,6 +721,8 @@ Tell me, in plain simple language:
 4. What important information looks like it's missing?
 5. What should I sort out first?
 
+Before anything else, list every file you actually read for this, and name any file you could not open or fully read. Audit only what you actually read. Do not present a partial read as a complete audit.
+
 Answer in this exact format. Nothing else.
 
 OUTDATED: (bullets, or 'nothing obvious')
@@ -707,11 +739,12 @@ Keep it short and easy to understand. No jargon, no preamble. Give me the plan, 
 <section class="step" id="step-3d"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 3D</span></div>
 <h3 class="step-title">Skip this unless you actually use skills. Most people don't, and that's fine.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Overlapping skills are why the same job comes out different every time.</p></div>
 <div class="ppoints"><ul><li>Skills overlap, contradict, and drift. That's your weird results.</li><li>Sort every skill into keep, bin, or rewrite.</li><li>Fix any pair that's fighting each other first.</li></ul></div>
 <p>Skills are brilliant until they start tripping over each other.</p>
 <p>A skill is a saved way of doing a specific job, so you don't rebuild it from scratch each time. Powerful when you've got a few sharp ones. A mess when they pile up. Because here's what happens: you build a skill, then later you build another that overlaps, then a third that quietly contradicts the first. Some skills you trigger by name, others fire on their own when a job looks like their kind of work. So when two overlap, both can kick in on the same task, the result gets unpredictable, and you can't work out why.</p>
 <p>The other trap is drift. A skill describes how you used to do something. The work's moved on, the skill hasn't. So it keeps steering jobs down a path you've abandoned, and it feels like Cowork's ignoring you, when really it's obeying an old instruction you forgot you wrote.</p>
-<p>This step audits every skill and sorts them into keep, kill, or rewrite. It changes nothing. You decide.</p>
+<p>This step audits every skill and sorts them into keep, bin, or rewrite. It changes nothing. You decide.</p>
 <p>Here's what happens when you run it.</p>
 <p>You get three clean lists: skills worth keeping, skills to bin, and skills that need rewriting, each with a one-line reason. You go through them, make the calls, and your skills stop fighting each other.</p>
 <div class="whererun"><span class="whererun-label">WHERE TO RUN THIS</span><p>Inside a Cowork session. It needs to read the skills, and they live there.</p></div>
@@ -735,7 +768,43 @@ REWRITE: (skill name, one line on what's wrong with it)
 If two skills overlap or fight each other, name the pair and say which to keep. Keep every line short and easy to understand. No jargon, no preamble. Give me the three lists, then stop. Change nothing.</pre></div>
 <div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>It recommends, you act. Go into your skills and make the calls. Bin the dead weight, rewrite the flagged, leave the keepers. Two fighting each other? Fix that pair first, that's your weird-results culprit.</p></div>
 <div class="proof">You'll know it worked when the overlaps it names explain the weird results you've been shrugging off.</div>
-<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Open where your skills live in the Claude app and go through them against the three lists.</li><li>BIN list: delete them.</li><li>REWRITE list: open each one and fix the specific problem it named.</li><li>If two were fighting, deal with that pair first. That's the one causing your weird results.</li></ol></div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Open where your skills live in the Claude app and go through them against the three lists.</li><li>BIN list: delete them.</li><li>REWRITE list: take them to 3D-i, one at a time, and let the AI produce the fix for you.</li><li>If two were fighting, deal with that pair first. That's the one causing your weird results.</li></ol></div>
+</div></section>
+<section class="step" id="step-3di"><div class="wrap">
+<div class="step-head"><span class="chip chip-coral">STEP 3D-i</span></div>
+<h3 class="step-title">The audit told you which skills are broken. This is where they get fixed, without you writing a word.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>A broken skill fixed properly stops firing at the wrong moments.</p></div>
+<div class="ppoints"><ul><li>The audit found the broken skills. This fixes them.</li><li>One skill at a time: it rewrites, you approve, you replace.</li><li>Overlapping pair? It merges them into one and you bin the other.</li></ul></div>
+<p>A skill on the rewrite list has a named problem: it overlaps with another one, it contradicts one, it's too broad, too narrow, or it describes how you used to work. Fixing that by hand means rewriting instructions you probably didn't write in the first place. So don't. Point the AI at one skill, tell it what the audit found, and let it produce the clean version for you to approve.</p>
+<p>Same rule as building files: one at a time. Skills are exactly where a batch job quietly creates three new overlaps while fixing two old ones. Slow is the point.</p>
+<p>Here's what happens when you run it.</p>
+<p>The AI reads the skill, fixes the specific problems the audit named, keeps what was working, and hands you the rewritten version with a short list of what changed. Anything it wasn't sure about is marked for you instead of guessed. You read it, you replace the old skill with it, you move to the next one on the list.</p>
+<div class="whererun"><span class="whererun-label">WHERE TO RUN THIS</span><p>Inside a Cowork session, same place as the audit, so it can read the skill it's fixing.</p></div>
+<p>Here's how.</p>
+<div class="promptcard"><div class="promptbar"><span>THE PROMPT · PASTE THIS IN</span><button class="copybtn" data-target="prompt-13">Copy</button></div><pre id="prompt-13">Rewrite one of the skills from the audit. Just one. Do not touch any others.
+
+Rewrite this one: [NAME THE SKILL FROM YOUR REWRITE LIST]
+
+Read the current skill first. Then fix the specific problems the audit found with it: overlap, contradiction, too broad, too narrow, or out of date. Keep everything that's working. Do not add new jobs it didn't have.
+
+Rules:
+- Use only what's in this workspace and what I've told you. Do not invent how I work to fill gaps.
+- Anything you're not sure of, mark [NEEDS CONFIRMING] and leave it for me.
+- Make it clear when this skill should fire and when it shouldn't. That line is what stops skills tripping over each other.
+- The description is what decides when this skill fires on its own. Rewrite it so it names exactly when to trigger and when to stay out of the way.
+- If this skill is a folder with more than one file in it, rewrite only the main instruction file and list the other files you are leaving untouched.
+- If the real fix is merging this skill with another, say so and give me the one merged version instead.
+
+Answer in this exact format. Nothing else.
+
+WHAT I CHANGED: (max 4 bullets, one line each)
+THE REWRITTEN SKILL: (the full replacement in a copy-paste block.)
+STILL NEEDS CONFIRMING: (bullets, or "nothing, this one's done")
+
+Keep it simple, no jargon, no preamble. This one skill, then stop.</pre></div>
+<div class="donext"><span class="donext-label">WHAT TO DO WITH THIS</span><p>Read what changed, fill in anything marked, then replace the old skill's contents with the rewrite. Next skill on the rewrite list, same prompt. If it recommended a merge, use the merged version and bin the other skill.</p></div>
+<div class="proof">You'll know it worked when you can say in one line when this skill fires and when it stays out of the way.</div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Open the skill in the Claude app, where your skills are managed.</li><li>Replace its contents with the rewritten version and save.</li><li>If it was a merge, bin the other skill in the pair once the merged one is saved.</li><li>Run the same prompt for the next skill on the rewrite list. One at a time.</li></ol></div>
 </div></section>
 <section class="part" id="part-04"><div class="wrap">
 <div class="part-head"><span class="ghost ghost-xl">04</span>
@@ -752,18 +821,19 @@ If two skills overlap or fight each other, name the pair and say which to keep. 
 <section class="step" id="step-4a"><div class="wrap">
 <div class="step-head"><span class="chip chip-coral">STEP 4A</span></div>
 <h3 class="step-title">You've cleaned it up once. In six weeks it'll have drifted again. Here's the ten-minute habit that keeps it sharp.</h3>
+<div class="whydo"><span class="whydo-label">WHY DO THIS</span><p>Ten minutes every six weeks is what stops all of this sliding back to average.</p></div>
 <div class="ppoints"><ul><li>One clean-up doesn't hold. Drift is the default.</li><li>Ten minutes every six weeks catches it while it's small.</li><li>Put the recurring reminder in your calendar now.</li></ul></div>
 <p>Nobody wants to hear this, but a one-off clean-up doesn't hold. The reason your setup got messy in the first place hasn't gone anywhere. You'll keep working. You'll add files, tweak instructions mid-job, start new projects, win new clients, drop old ones. Every one of those is a tiny bit of drift. Leave it long enough and you're right back where you started, wondering why the answers have gone flat again.</p>
 <p>The people who get lasting value out of their AI aren't the ones who set it up perfectly once. They're the ones who give it ten minutes every so often to catch the drift before it builds up. That's the whole secret. Not a big rebuild. A small, regular check.</p>
-<p>So every six to eight weeks, you run one quick pass. Not the full process again, you don't need it. Just a light check across the things most likely to have moved: your account instructions, your busiest project, and anything you've added lately. It tells you what's drifted and what's worth a look. You fix the one or two things that matter and get on with your day.</p>
+<p>So every six weeks, you run one quick pass. Not the full process again, you don't need it. Just a light check across the things most likely to have moved: your account instructions, your busiest project, and anything you've added lately. It tells you what's drifted and what's worth a look. You fix the one or two things that matter and get on with your day.</p>
 <p>Here's what happens when you make it a habit.</p>
 <p>Your AI never gets the chance to slide back to average. It stays tuned to how you work right now, not how you worked two months ago. And because you're catching small drift instead of a big mess, each check takes minutes, not an afternoon. This is the difference between a tool you fixed once and a tool that stays sharp.</p>
 <p>Put it in your calendar now. Every six weeks, ten minutes. That recurring reminder is doing more for your output than any single clever prompt.</p>
 <div class="whererun"><span class="whererun-label">WHERE TO RUN THIS</span><p>A brand-new chat, not inside a project. Copy your current instructions out of settings first.</p></div>
 <p>Here's how.</p>
-<div class="promptcard"><div class="promptbar"><span>THE PROMPT · PASTE THIS IN</span><button class="copybtn" data-target="prompt-13">Copy</button></div><pre id="prompt-13">It's my regular check-up. I want a quick drift check, not a full rebuild.
+<div class="promptcard"><div class="promptbar"><span>THE PROMPT · PASTE THIS IN</span><button class="copybtn" data-target="prompt-14">Copy</button></div><pre id="prompt-14">It's my regular check-up. I want a quick drift check, not a full rebuild.
 
-I'm pasting my current account instructions below. Work only from that plus what you know about how I've been working with you lately. Do not ask me questions. If the block is empty, say so and stop.
+I'm pasting my current account instructions below. Work only from that plus what you genuinely know about how I've been working with you lately. If you have no real knowledge of me beyond the pasted text, work from the pasted text alone and say so. Do not ask me questions. If the block is empty, say so and stop.
 
 Tell me, in plain simple language:
 1. Has anything in my instructions gone out of date or started to clash, based on how my work seems to have shifted?
@@ -781,37 +851,40 @@ Keep it short. This is a light check, not a deep audit. No preamble. Stop after 
 
 MY CURRENT ACCOUNT INSTRUCTIONS: [paste here]</pre></div>
 <div class="proof">You'll know it worked when the check takes minutes and finds one or two small things, not a mess. A mess means you left it too long.</div>
-<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Nothing drifted? Close it, see you in six weeks.</li><li>Something drifted? Copy the corrected version and paste it over your instructions in settings, same place as 1B.</li><li>Run the same light check inside your busiest project.</li><li>Not booked yet? Put the recurring six-week reminder in your calendar right now, before you close this.</li></ol></div>
+<div class="byhand"><span class="byhand-label">BY HAND</span><ol><li>Nothing drifted? Close it, see you in six weeks.</li><li>Something drifted? Keep the old version in a note, then paste the corrected version over your instructions in settings, same place as 1B.</li><li>Run the same light check inside your busiest project.</li><li>Not booked yet? Put the recurring six-week reminder in your calendar right now, before you close this.</li></ol></div>
 <p>Run the same light check on your busiest project too, inside the project, just ask it what's drifted since you last cleaned it up. Don't check everything every time. Check what you actually use.</p>
 </div></section>
 <section class="checklist" id="checklist"><div class="wrap">
 <div class="kicker">The checklist</div>
 <p class="ck-note">The whole process on one page. Use it to run the pass, and to run your six-week check.</p>
 <h4 class="ck-group">ACCOUNT INSTRUCTIONS</h4>
-<label class="ck-item"><input type="checkbox" id="ck-716"><span class="ck-box"></span><span>Audit your account instructions (or draft them if the box is empty).</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-717"><span class="ck-box"></span><span>Read the audit, paste in the rewrite you're happy with.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-718"><span class="ck-box"></span><span>Check what it remembers about you. Clear anything out of date.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-832"><span class="ck-box"></span><span>Audit your account instructions (or draft them if the box is empty).</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-833"><span class="ck-box"></span><span>Keep the old version in a note until the new one proves itself.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-834"><span class="ck-box"></span><span>Read the audit, paste in the rewrite you're happy with.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-835"><span class="ck-box"></span><span>Check what it remembers, clear the stale entries (1C).</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-836"><span class="ck-box"></span><span>Check what it remembers about you. Clear anything out of date.</span></label>
 <h4 class="ck-group">PROJECTS, ONE AT A TIME</h4>
-<label class="ck-item"><input type="checkbox" id="ck-720"><span class="ck-box"></span><span>Pick your messiest project first.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-721"><span class="ck-box"></span><span>Audit it, fix the project instructions. No instructions at all? Draft them from the files first (2A-i).</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-722"><span class="ck-box"></span><span>Plan the knowledge files. Build them one at a time.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-723"><span class="ck-box"></span><span>Test it on a real task and check the output actually improved.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-724"><span class="ck-box"></span><span>Only then move to the next project.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-838"><span class="ck-box"></span><span>Pick your messiest project first.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-839"><span class="ck-box"></span><span>Audit it, fix the project instructions. No instructions at all? Draft them from the files first (2A-i).</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-840"><span class="ck-box"></span><span>Plan the knowledge files. Build them one at a time.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-841"><span class="ck-box"></span><span>Test it on a real task and check the output actually improved.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-842"><span class="ck-box"></span><span>Only then move to the next project.</span></label>
 <h4 class="ck-group">COWORK (IF YOU USE IT)</h4>
-<label class="ck-item"><input type="checkbox" id="ck-726"><span class="ck-box"></span><span>Audit or draft your Cowork global instructions.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-727"><span class="ck-box"></span><span>Run the file clean-up plan, then tidy in your own time.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-728"><span class="ck-box"></span><span>Advanced: audit your skills. Keep, bin, rewrite.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-844"><span class="ck-box"></span><span>Audit or draft your Cowork global instructions.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-845"><span class="ck-box"></span><span>Run the file clean-up plan, then tidy in your own time.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-846"><span class="ck-box"></span><span>Advanced: audit your skills. Keep, bin, rewrite.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-847"><span class="ck-box"></span><span>Rewrite the flagged skills one at a time, approve each before the next.</span></label>
 <h4 class="ck-group">EVERY SIX WEEKS</h4>
-<label class="ck-item"><input type="checkbox" id="ck-730"><span class="ck-box"></span><span>Run the ten-minute drift check on your account instructions.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-731"><span class="ck-box"></span><span>Run it on your busiest project too.</span></label>
-<label class="ck-item"><input type="checkbox" id="ck-732"><span class="ck-box"></span><span>Fix the one or two things that have moved. Done.</span></label>
-<p class="ck-note">The rule under all of it: audit first, approve second, rewrite third, implement last. Nothing changes until you've read it and you're happy.</p>
+<label class="ck-item"><input type="checkbox" id="ck-849"><span class="ck-box"></span><span>Run the ten-minute drift check on your account instructions.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-850"><span class="ck-box"></span><span>Run it on your busiest project too.</span></label>
+<label class="ck-item"><input type="checkbox" id="ck-851"><span class="ck-box"></span><span>Fix the one or two things that have moved. Done.</span></label>
+<p class="ck-note">The rule under all of it: audit first, rewrite second, approve third, implement last. Nothing changes until you've read it and you're happy.</p>
 </div></section>
 </main>
 
 <footer class="final-screen">
-  <p class="final">The rule under all of it: <b>audit first, approve second, rewrite third, implement last.</b> Nothing changes until you've read it and you're happy.</p>
-  <p class="sig">Magnum AI &middot; magnumai.com.au</p>
+  <p class="final">The rule under all of it: <b>audit first, rewrite second, approve third, implement last.</b> Nothing changes until you've read it and you're happy.</p>
+  <p class="sig">Magnum AI &middot; magnumai.com.au &middot; August 2026 edition</p>
 </footer>
 
 <div class="pagerbar">
