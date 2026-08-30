@@ -21,6 +21,10 @@
   .card .meta { font-size: 13px; color: #888; margin-bottom: 10px; }
   .card p { font-size: 14px; color: #555; margin: 0; }
   .card .arrow { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 600; color: #B8941F; }
+  .card-grid.field-note { align-items: start; }
+  .card.thumb { padding: 0; overflow: hidden; }
+  .card.thumb img { display: block; width: 100%; height: auto; border-bottom: 1px solid #e8e6e3; background: #EDE3CF; }
+  .card.thumb .card-body { padding: 24px 28px 28px; }
   .card.placeholder { border-style: dashed; background: #faf9f7; }
   .card.placeholder h3 { color: #999; }
   .intro { background: #fff; border-radius: 10px; padding: 32px; border: 1px solid #e8e6e3; margin-bottom: 44px; }
@@ -42,6 +46,29 @@
   <div class="intro">
     <h2>Welcome</h2>
     <p>This is the front door to your Magnum AI resources. Everything delivered to you lives here so you can come back to it any time. Browse by client or topic below — new material is added as it's created.</p>
+  </div>
+
+  <!-- WEEKLY FIELD NOTE -->
+  <div class="section-label">Weekly Field Note</div>
+  <div class="card-grid field-note">
+
+    <a class="card thumb" href="newsletter/field-note-01-clarity.html">
+      <img src="assets/thumbnails/field-note-01-clarity.png" alt="Weekly Field Note No. 01 — Clarity: stop asking AI to make this clearer" width="1200" height="630" loading="lazy">
+      <div class="card-body">
+        <h3>No. 01 — Clarity</h3>
+        <div class="meta">Weekly Field Note · Four minute read</div>
+        <p>Stop asking AI to &ldquo;make this clearer.&rdquo; Five rules worth stealing, three prompts to keep, and how to make it automatic.</p>
+        <span class="arrow">Read this issue &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card" href="newsletter/">
+      <h3>All Field Notes</h3>
+      <div class="meta">Archive</div>
+      <p>Every issue in one place. New Field Notes are added here as they go out.</p>
+      <span class="arrow">Open the archive &rarr;</span>
+    </a>
+
   </div>
 
   <!-- CLIENT GUIDES -->
