@@ -1,0 +1,24 @@
+# Files that should never end up in this repository.
+# If GitHub Desktop offers you something from this list, it is junk, not work.
+
+# macOS puts one of these in every folder you open in Finder.
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows does the same thing.
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Half-saved Office and text-editor files.
+~$*
+*.tmp
+*.swp
+
+# Secrets. These never belong in a repository.
+.env
+*.pem
+*.key
