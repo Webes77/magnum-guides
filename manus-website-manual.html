@@ -6,22 +6,25 @@
 <title>The Manus Website Manual — Magnum AI</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#111111; --paper:#FFFFFF; --panel:#EFEFEF; --hair:#D5D5D5;
-  --muted:#6B6B6B; --gold:#B8941F; --gold-dark:#D4AF37;
-  --display:'Archivo Narrow','Arial Narrow',sans-serif;
-  --body:'Helvetica Neue',Arial,sans-serif;
+  --ink:#1E1B17; --paper:#EEE6D3; --panel:#E4DAC4; --hair:#C9BFAC;
+  --muted:#6F675C; --accent:#B8452A; --accent-dark:#C9542F;
+  --grid:rgba(120,90,60,.13);
+  --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{font-family:var(--body);color:var(--ink);background:var(--paper);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);color:var(--ink);background-color:var(--paper);background-image:radial-gradient(var(--grid) 1.2px, transparent 1.3px),linear-gradient(rgba(120,90,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,90,60,.05) 1px,transparent 1px);background-size:26px 26px,26px 26px,26px 26px;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
 /* Running header */
 .runhead{position:fixed;top:0;left:0;right:0;background:var(--paper);z-index:100;padding:20px 48px 0}
 .runhead-inner{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
-.runhead .brand{font-weight:bold;font-size:12px;letter-spacing:3px}
-.runhead .marker{font-weight:bold;font-size:12px;letter-spacing:3px;color:var(--gold)}
+.runhead .brand{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.runhead .marker{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
 /* Layout */
 .wrap{display:flex;max-width:1360px;margin:0 auto;padding-top:62px}
 nav{width:264px;flex-shrink:0;position:sticky;top:62px;height:calc(100vh - 62px);overflow-y:auto;padding:56px 28px 80px 48px}
@@ -30,7 +33,7 @@ nav .navlabel{display:none}
 nav a{display:block;color:var(--muted);text-decoration:none;font-size:12.5px;padding:4px 0;line-height:1.4;transition:color .12s}
 nav a:hover{color:var(--ink)}
 nav a.active{color:var(--ink);font-weight:bold}
-nav a.active::before{content:"";display:inline-block;width:14px;height:2px;background:var(--gold);vertical-align:middle;margin-right:8px}
+nav a.active::before{content:"";display:inline-block;width:14px;height:2px;background:var(--accent);vertical-align:middle;margin-right:8px}
 nav .navgroup{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;margin:30px 0 10px;color:var(--ink)}
 nav .navgroup:first-of-type{margin-top:0}
 main{flex:1;min-width:0;padding:0 56px 140px 72px;max-width:900px}
@@ -45,13 +48,13 @@ p{margin-bottom:16px;max-width:66ch}
 section{padding-top:96px;position:relative}
 .kicker{display:none}
 /* Signature: ghost part numeral */
-.secnum{font-family:var(--display);font-weight:700;font-size:150px;line-height:1;color:var(--paper);-webkit-text-stroke:1.5px var(--hair);position:absolute;top:52px;right:0;z-index:0;user-select:none;pointer-events:none}
-.seclabel{font-weight:bold;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.secnum{font-family:var(--display);font-weight:700;font-size:150px;line-height:1;color:var(--paper);-webkit-text-stroke:1.5px rgba(30,27,23,.26);position:absolute;top:52px;right:0;z-index:0;user-select:none;pointer-events:none}
+.seclabel{font-weight:bold;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 /* Phase divider bands */
 .phase{background:var(--ink);color:var(--paper);margin:110px -56px 0 -72px;padding:64px 72px}
-.phase .pnum{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:4px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:10px}
+.phase .pnum{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:4px;color:var(--accent-dark);text-transform:uppercase;margin-bottom:10px}
 .phase h2{color:var(--paper);font-size:clamp(44px,5vw,72px);margin:0}
-.phase p{color:#B5B5B5;margin:14px 0 0;max-width:56ch;font-size:16px}
+.phase p{color:#C9BFAF;margin:14px 0 0;max-width:56ch;font-size:16px}
 ul,ol{margin:0 0 18px 22px;max-width:66ch}
 li{margin-bottom:7px}
 strong{font-weight:bold}
@@ -75,11 +78,11 @@ strong{font-weight:bold}
 .check li::before{content:"";position:absolute;left:0;top:5px;width:13px;height:13px;border:1.5px solid var(--ink);background:var(--paper)}
 /* Prompt block: ink */
 .prompt{background:var(--ink);margin:26px 0 34px;max-width:72ch}
-.prompt-head{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid #333}
+.prompt-head{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid #413931}
 .prompt-head span{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--paper)}
-.prompt pre{padding:24px 26px;white-space:pre-wrap;font-family:var(--body);font-size:14px;line-height:1.65;color:#E8E8E8}
+.prompt pre{padding:24px 26px;white-space:pre-wrap;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:#EEE6D3}
 .copybtn{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;background:var(--paper);color:var(--ink);border:none;padding:8px 18px;cursor:pointer;transition:background .12s}
-.copybtn:hover,.copybtn.copied{background:var(--gold-dark)}
+.copybtn:hover,.copybtn.copied{background:var(--accent-dark)}
 /* Numbered circles */
 .numlist{list-style:none;margin-left:0;counter-reset:step;max-width:66ch}
 .numlist li{counter-increment:step;position:relative;padding-left:48px;margin-bottom:14px;min-height:30px}
@@ -92,8 +95,8 @@ strong{font-weight:bold}
 /* Dark closing */
 .dark{background:var(--ink);color:var(--paper);padding:72px 72px;margin:60px -56px 0 -72px}
 .dark h2{color:var(--paper)}
-.dark .goldline{color:var(--gold-dark);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:1.1;margin-top:20px}
-.dark p{color:#CFCFCF}
+.dark .goldline{color:var(--accent-dark);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:1.1;margin-top:20px}
+.dark p{color:#C9BFAF}
 /* FAQ */
 details{border-bottom:1px solid var(--hair);max-width:70ch}
 details summary{font-weight:bold;font-size:15px;padding:16px 0;cursor:pointer;list-style:none;position:relative;padding-right:34px}
@@ -740,9 +743,9 @@ After making the changes, check desktop and mobile layouts and confirm that no e
 <section id="final" style="padding-top:40px">
 <div class="dark">
 <h2>The Final Rule</h2>
-<p style="color:#FFFFFF;max-width:60ch">A good client website should have four characteristics:</p>
+<p style="color:#EEE6D3;max-width:60ch">A good client website should have four characteristics:</p>
 <p class="goldline">Easy to build.<br>Easy to use.<br>Easy to update.<br>Easy to leave.</p>
-<p style="color:#FFFFFF;margin-top:20px;max-width:60ch">If we've achieved all four, we've built it properly. If it only looks pretty, we've only done the first half of the job.</p>
+<p style="color:#EEE6D3;margin-top:20px;max-width:60ch">If we've achieved all four, we've built it properly. If it only looks pretty, we've only done the first half of the job.</p>
 </div>
 </section>
 
