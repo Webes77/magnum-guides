@@ -7,6 +7,7 @@ the foundation for a future members area where clients log in to access their ma
 
 ```
 index.html      ← the members-area front page (links to everything below)
+brand/          ← the house style: palette, type, components, rules
 newsletter/     ← the Weekly Field Note — every issue, plus the archive page
 clients/        ← per-client guides and deliverables
 notes/          ← general notes and knowledge, not tied to one client
@@ -14,6 +15,22 @@ templates/      ← reusable starting points (guide + Field Note thumbnail)
 assets/         ← shared images, logos, and files
   thumbnails/   ← the preview images used on cards and shared links
 ```
+
+## The house style — read this before building anything
+
+`brand/index.html` is the single source of truth for how Magnum AI pages look:
+paper, ink and rust, with Oswald for display and IBM Plex Sans and Mono for
+everything else. It carries the palette, the type scale, the card component,
+and the rules that govern them, plus a `:root` block to paste into any new page.
+
+**Anything new starts from those tokens.** The reason this file exists is that
+eight documents were each built with their own colours and typefaces, which is
+why nothing looked like one business. Do not introduce a fourth typeface, and do
+not reach for black and gold — that system is retired.
+
+Live at `https://webes77.github.io/magnum-guides/brand/`. It is marked `noindex`
+because it is an internal reference, and it is deliberately not linked from the
+members-area front page.
 
 ## How to add new material
 

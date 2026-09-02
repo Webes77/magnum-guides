@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House Style · Magnum AI</title>
+<meta name="description" content="The Magnum AI house style. Palette, type, components and the rules that govern them.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1E1B17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEE6D3;
+  --paper-2:#E4DAC4;
+  --ink:#1E1B17;
+  --body:#2B2823;
+  --rust:#B8452A;
+  --olive:#6C7A3F;
+  --char:#3A3630;
+  --mute:#6F675C;
+  --grid:rgba(120,90,60,.13);
+  --display:'Oswald',Impact,sans-serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{font-family:var(--sans);font-size:17px;line-height:1.6;color:var(--body);
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(var(--grid) 1.2px, transparent 1.3px),
+    linear-gradient(rgba(120,90,60,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,90,60,.05) 1px,transparent 1px);
+  background-size:26px 26px,26px 26px,26px 26px;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 40px}
+
+.masthead{background:var(--ink);color:var(--paper);padding:44px 0 52px;border-bottom:4px solid var(--rust)}
+.masthead .brand{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;border-bottom:1px solid var(--rust);padding-bottom:4px;display:inline-block}
+.masthead h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(46px,8vw,88px);line-height:.9;margin-top:26px}
+.masthead h1 em{font-style:normal;color:var(--rust)}
+.masthead p{font-size:18px;color:#C9BFAF;max-width:52ch;margin-top:20px;line-height:1.55}
+
+main{padding:44px 0 20px}
+.back{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-bottom:34px}
+.back:hover{color:var(--rust)}
+section{margin-bottom:52px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.label::after{content:"";flex:1;height:2px;background:var(--ink)}
+.note{font-size:15.5px;color:var(--mute);max-width:66ch;margin-bottom:24px}
+
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.sw{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.sw .chip{height:88px}
+.sw .info{background:var(--paper-2);border-top:3px solid var(--ink);padding:12px 14px}
+.sw .nm{font-family:var(--display);font-weight:600;font-size:16px;text-transform:uppercase;color:var(--ink)}
+.sw .hex{font-family:var(--mono);font-size:12px;color:var(--char);margin-top:2px}
+.sw .use{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.45}
+
+.panel{background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:28px 30px}
+.type-row{padding:18px 0;border-top:1px solid rgba(30,27,23,.22)}
+.type-row:first-child{border-top:0;padding-top:0}
+.type-row .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.d-sample{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:46px;line-height:.95;color:var(--ink)}
+.b-sample{font-family:var(--sans);font-size:17px;color:var(--char);max-width:62ch}
+.m-sample{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--char)}
+.spec{font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:8px}
+
+.rules{list-style:none}
+.rules li{padding:14px 0 14px 30px;border-top:1px solid rgba(30,27,23,.22);position:relative;font-size:16px;color:var(--char);line-height:1.55}
+.rules li:first-child{border-top:0}
+.rules li::before{content:"";position:absolute;left:0;top:23px;width:16px;height:3px;background:var(--rust)}
+.rules li b{color:var(--ink);font-weight:600}
+.rules.no li::before{background:var(--char)}
+
+pre{font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--ink);color:var(--paper);padding:20px 22px;overflow-x:auto;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+
+.demo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{display:flex;flex-direction:column;background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.card .inner{padding:24px 26px 26px}
+.card .date{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.card h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.12;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.card .meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.card p{font-size:15.5px;color:var(--char);line-height:1.55}
+.card .go{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-top:16px;display:block}
+
+footer{background:var(--ink);color:#9C9285;margin-top:40px;padding:34px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+footer b{color:var(--paper);font-weight:500}
+
+@media(max-width:820px){
+  .swatches{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .demo{grid-template-columns:1fr}
+  .wrap{padding:0 22px}
+  .d-sample{font-size:34px}
+  footer .wrap{flex-direction:column;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand">Magnum AI</div>
+    <h1>House<br><em>Style</em></h1>
+    <p>One system for everything Magnum AI publishes. Anything built from here uses these values, unchanged.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <a class="back" href="../index.html">&larr; Back to the members area</a>
+
+  <section>
+    <div class="label">Palette</div>
+    <p class="note">Seven values. Rust is the only accent. Olive appears in figures and confirmation marks, never in text.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#EEE6D3"></div><div class="info"><div class="nm">Paper</div><div class="hex">#EEE6D3</div><div class="use">Page ground, always with the fine grid texture.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E4DAC4"></div><div class="info"><div class="nm">Paper deep</div><div class="hex">#E4DAC4</div><div class="use">Cards and panels, so they lift off the ground.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1E1B17"></div><div class="info"><div class="nm">Ink</div><div class="hex">#1E1B17</div><div class="use">Mastheads, footers, borders, headings, offset shadows.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#B8452A"></div><div class="info"><div class="nm">Rust</div><div class="hex">#B8452A</div><div class="use">The accent. Labels, dates, links, one emphasis word.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#6C7A3F"></div><div class="info"><div class="nm">Olive</div><div class="hex">#6C7A3F</div><div class="use">Figures and ticks only. Never body text, never a link.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#2B2823"></div><div class="info"><div class="nm">Body</div><div class="hex">#2B2823</div><div class="use">Running text on paper.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3A3630"></div><div class="info"><div class="nm">Char</div><div class="hex">#3A3630</div><div class="use">Text inside cards and panels.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#6F675C"></div><div class="info"><div class="nm">Mute</div><div class="hex">#6F675C</div><div class="use">Section notes and secondary lines.</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Type</div>
+    <p class="note">Three faces, each with one job. Never introduce a fourth.</p>
+    <div class="panel">
+      <div class="type-row">
+        <div class="k">Oswald &mdash; display</div>
+        <div class="d-sample">Make Claude yours.</div>
+        <div class="spec">600 or 700. Uppercase. Line height .90 to 1.12. Headings and card titles only.</div>
+      </div>
+      <div class="type-row">
+        <div class="k">IBM Plex Sans &mdash; body</div>
+        <div class="b-sample">Each issue takes one idea, shows what it changes in practice, and hands you the prompts to use it straight away.</div>
+        <div class="spec">400 for running text, 500 or 600 for emphasis. 15.5px in cards, 17px on the page.</div>
+      </div>
+      <div class="type-row">
+        <div class="k">IBM Plex Mono &mdash; labels</div>
+        <div class="m-sample">Session deck &middot; Ninety minutes</div>
+        <div class="spec">11px to 12px. Uppercase. Letter spacing .14em to .28em. Labels, dates, metadata, footers.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">The card</div>
+    <p class="note">One component does most of the work. Three-pixel ink border, six-pixel hard offset shadow, no rounded corners. On hover it lifts two pixels and the shadow grows.</p>
+    <div class="demo">
+      <div class="card"><div class="inner">
+        <div class="date">23 August 2026</div>
+        <h3>Card title in Oswald</h3>
+        <div class="meta">Mono label &middot; Secondary</div>
+        <p>Body copy sits in IBM Plex Sans at 15.5 pixels. Cards in one section are always the same type: all with images, or all without.</p>
+        <span class="go">Read this edition &rarr;</span>
+      </div></div>
+      <div class="card"><div class="inner">
+        <div class="date">Rules</div>
+        <h3>Never mix card types</h3>
+        <div class="meta">This is the one that breaks pages</div>
+        <p>A tall image card beside a short text card leaves a hole and reads as a bug. Put the archive link under the grid as text, not inside it as a card.</p>
+        <span class="go">Understood &rarr;</span>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Rules</div>
+    <ul class="rules">
+      <li><b>Rust is the only accent.</b> One accent colour per page. Gold belongs to the old system and is retired.</li>
+      <li><b>Olive never carries text.</b> It exists for figures, ticks and confirmation marks.</li>
+      <li><b>Uppercase Oswald for every heading.</b> Sentence case display type belongs to a different brand.</li>
+      <li><b>Every label is mono, uppercase, letter spaced,</b> with a rule running off to the right.</li>
+      <li><b>Hard shadows, no blur, no radius.</b> The offset shadow is the signature. Soft shadows and rounded corners are the previous system.</li>
+      <li><b>Paper always carries the grid texture.</b> A flat paper ground looks unfinished.</li>
+      <li><b>Cards within a section share one type.</b> All image, or all text.</li>
+      <li><b>Never ship a placeholder card.</b> An empty section is better than advertising an empty room.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">Do not</div>
+    <ul class="rules no">
+      <li>Introduce a fourth typeface, or Playfair, Bebas Neue, Archivo Narrow or Inter. Those came from documents that predate this system.</li>
+      <li>Use black and gold. Retired.</li>
+      <li>Restyle a document a client has already received. Deliverables stay as they were sent.</li>
+      <li>Change a URL that has been sent to a client, for any reason, including a redesign.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">Copy the tokens</div>
+    <p class="note">Paste this block at the top of any new page. Every value on this page comes from it.</p>
+<pre>:root{
+  --paper:#EEE6D3;    /* page ground, with the grid texture */
+  --paper-2:#E4DAC4;  /* cards and panels */
+  --ink:#1E1B17;      /* mastheads, borders, headings, shadows */
+  --body:#2B2823;     /* running text */
+  --rust:#B8452A;     /* the only accent */
+  --olive:#6C7A3F;    /* figures and ticks only */
+  --char:#3A3630;     /* text inside cards */
+  --mute:#6F675C;     /* notes and secondary lines */
+  --grid:rgba(120,90,60,.13);
+  --display:'Oswald',Impact,sans-serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}</pre>
+  </section>
+
+  <section>
+    <div class="label">Where this applies</div>
+    <p class="note">Live in this system: the members area, the Field Note archive, both Field Note issues, the Make Claude Yours deck, and every social thumbnail.</p>
+    <p class="note">Still on older looks, in this order of priority: the Fine-Tune manual, the Manus manual, and the weekly newsletter masthead in the magnum-newsletter repository. Newsletter issues already sent keep the look they were sent in.</p>
+    <p class="note">Deliberately left alone: the Louise Kearns guide, the BA Growth guide, and the GIG and Easy Fit documents. Already delivered.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>Magnum AI</b></span>
+    <span>House Style</span>
+    <span>magnumai.com.au</span>
+  </div>
+</footer>
+
+</body>
+</html>
