@@ -79,8 +79,10 @@ p.body:last-child{margin-bottom:0}
 .scard p{font-size:15.5px;color:var(--char);line-height:1.6}
 
 .stages{display:grid;gap:16px;margin-top:34px}
-.stage{background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);overflow:hidden;transition:border-color .2s}
+.stage{background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);overflow:hidden;transition:border-color .2s, transform .14s ease, box-shadow .14s ease}
+.stage:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--ink)}
 .stage.open{border-color:var(--rust)}
+.stage-btn:focus-visible{outline:3px solid var(--rust);outline-offset:-6px}
 .stage-btn{width:100%;background:none;border:0;cursor:pointer;font-family:inherit;text-align:left;padding:24px 28px;display:flex;align-items:flex-start;gap:22px}
 .stage-num{font-family:var(--display);font-weight:700;font-size:24px;color:var(--rust);line-height:1;flex:0 0 auto;min-width:34px}
 .stage-head{flex:1}
