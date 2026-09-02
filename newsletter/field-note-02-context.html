@@ -28,15 +28,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#EDE3CF;
-  --paper-deep:#E2D5BB;
-  --ink:#16140F;
-  --rust:#B04A26;
+  --paper:#EEE6D3;
+  --paper-deep:#E4DAC4;
+  --ink:#1E1B17;
+  --rust:#B8452A;
   --tan:#C9A87C;
-  --olive:#6B7342;
-  --charcoal:#3B3730;
+  --olive:#6C7A3F;
+  --charcoal:#3A3630;
   --taupe:#9C8D77;
-  --hair:rgba(22,20,15,.24);
+  --hair:rgba(30,27,23,.24);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -62,10 +62,10 @@ body{
   background-image:
     radial-gradient(circle at 18% 12%, rgba(156,141,119,.16) 0 2px, transparent 2px),
     radial-gradient(circle at 72% 34%, rgba(156,141,119,.13) 0 2px, transparent 2px),
-    radial-gradient(circle at 42% 78%, rgba(176,74,38,.07) 0 3px, transparent 3px),
-    radial-gradient(circle at 88% 66%, rgba(107,115,66,.08) 0 2px, transparent 2px),
-    repeating-linear-gradient(92deg, rgba(22,20,15,.028) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(2deg, rgba(22,20,15,.022) 0 1px, transparent 1px 6px),
+    radial-gradient(circle at 42% 78%, rgba(184,69,42,.07) 0 3px, transparent 3px),
+    radial-gradient(circle at 88% 66%, rgba(108,122,63,.08) 0 2px, transparent 2px),
+    repeating-linear-gradient(92deg, rgba(30,27,23,.028) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(2deg, rgba(30,27,23,.022) 0 1px, transparent 1px 6px),
     linear-gradient(160deg, rgba(255,250,238,.55), rgba(198,181,152,.28));
   background-size:26px 26px,34px 34px,48px 48px,40px 40px,auto,auto,auto;
   border:9px solid var(--ink);
@@ -179,7 +179,7 @@ p+p{margin-top:.72em}
   font-size:.52em;
   letter-spacing:.16em;
   text-transform:uppercase;
-  border-top:2px solid rgba(22,20,15,.45);
+  border-top:2px solid rgba(30,27,23,.45);
   padding-top:6px;
   margin-top:12px;
 }
@@ -194,10 +194,10 @@ p+p{margin-top:.72em}
   border:3px solid var(--ink);
   padding:11% 12%;
   box-shadow:
-    5px 5px 0 rgba(22,20,15,.16), 10px 10px 0 rgba(22,20,15,.14),
-    15px 15px 0 rgba(22,20,15,.12), 20px 20px 0 rgba(22,20,15,.10),
-    25px 25px 0 rgba(22,20,15,.08), 30px 30px 0 rgba(22,20,15,.06),
-    35px 35px 0 rgba(22,20,15,.045), 40px 40px 0 rgba(22,20,15,.03);
+    5px 5px 0 rgba(30,27,23,.16), 10px 10px 0 rgba(30,27,23,.14),
+    15px 15px 0 rgba(30,27,23,.12), 20px 20px 0 rgba(30,27,23,.10),
+    25px 25px 0 rgba(30,27,23,.08), 30px 30px 0 rgba(30,27,23,.06),
+    35px 35px 0 rgba(30,27,23,.045), 40px 40px 0 rgba(30,27,23,.03);
 }
 .doc i{display:block;height:5px;background:var(--charcoal);opacity:.75;margin-bottom:9px}
 .doc i:nth-child(1){width:70%;height:8px;opacity:1;background:var(--ink)}
@@ -328,7 +328,7 @@ p+p{margin-top:.72em}
   font-size:1.9em;
   line-height:.8;
   color:var(--rust);
-  text-shadow:2px 2px 0 rgba(22,20,15,.16),4px 4px 0 rgba(22,20,15,.13),6px 6px 0 rgba(22,20,15,.10),8px 8px 0 rgba(22,20,15,.07),10px 10px 0 rgba(22,20,15,.05);
+  text-shadow:2px 2px 0 rgba(30,27,23,.16),4px 4px 0 rgba(30,27,23,.13),6px 6px 0 rgba(30,27,23,.10),8px 8px 0 rgba(30,27,23,.07),10px 10px 0 rgba(30,27,23,.05);
 }
 .rule h3{
   font-family:'Oswald','Arial Narrow',Impact,sans-serif;
@@ -587,7 +587,7 @@ pre{
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
-  color:#EDE3CF;
+  color:#EEE6D3;
   background:transparent;
   border:1px solid rgba(237,227,207,.45);
   padding:8px 14px;
@@ -595,7 +595,7 @@ pre{
   text-decoration:none;
   display:inline-block;
 }
-.sharebar .share-btn:hover{background:rgba(237,227,207,.1);border-color:#EDE3CF}
+.sharebar .share-btn:hover{background:rgba(237,227,207,.1);border-color:#EEE6D3}
 .sharebar .share-btn:focus-visible{outline:2px solid var(--olive);outline-offset:2px}
 .sharebar .share-btn.done{background:var(--olive);border-color:var(--olive);color:#F6ECDC}
 
@@ -649,7 +649,7 @@ pre{
 .trap p+p{margin-top:.5em}
 .ex{margin-top:12px;border-top:2px solid var(--ink);flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .exr{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:11px 0 12px;border-bottom:2px solid var(--ink);align-items:start}
-.exr .rnum{font-size:2.2em;text-shadow:2px 2px 0 rgba(22,20,15,.16),4px 4px 0 rgba(22,20,15,.12),6px 6px 0 rgba(22,20,15,.08)}
+.exr .rnum{font-size:2.2em;text-shadow:2px 2px 0 rgba(30,27,23,.16),4px 4px 0 rgba(30,27,23,.12),6px 6px 0 rgba(30,27,23,.08)}
 .exr h3{font-family:'Oswald','Arial Narrow',Impact,sans-serif;font-size:1.15em;text-transform:uppercase;letter-spacing:.02em;line-height:1}
 .exr ol{margin:6px 0 0 1.1em;font-size:.76em;line-height:1.5;color:var(--charcoal)}
 .exr ol li+li{margin-top:2px}
