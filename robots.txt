@@ -1,0 +1,5 @@
+# Magnum AI members area.
+# Public material is fine to index. Anything client-specific is not.
+User-agent: *
+Disallow: /clients/
+Disallow: /brand/
