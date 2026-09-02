@@ -31,6 +31,11 @@
   .intro h2 { font-size: 20px; font-weight: 700; color: #1C1C1E; margin-bottom: 12px; }
   .intro p { font-size: 15px; color: #444; }
   .footer { text-align: center; color: #aaa; font-size: 13px; padding: 32px 24px 48px; }
+  .section-note { font-size: 14px; color: #777; margin: -10px 0 18px; }
+  .card-grid.live { align-items: start; }
+  .card .date { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #B8941F; margin-bottom: 6px; }
+  .card.loading { border-style: dashed; background: #faf9f7; color: #999; }
+  .card.loading h3 { color: #999; }
 </style>
 </head>
 <body>
@@ -46,6 +51,20 @@
   <div class="intro">
     <h2>Welcome</h2>
     <p>This is the front door to your Magnum AI resources. Everything delivered to you lives here so you can come back to it any time. Browse by client or topic below — new material is added as it's created.</p>
+  </div>
+
+  <!-- WEEKLY NEWSLETTER — pulled live from the magnum-newsletter repo -->
+  <div class="section-label">This Week in AI &mdash; the weekly newsletter</div>
+  <p class="section-note">The four most recent editions. Every issue keeps the link it was sent on, so anything already shared with a client still works.</p>
+  <div class="card-grid live" id="newsletter-grid">
+
+    <a class="card" href="https://webes77.github.io/magnum-newsletter/archive.html">
+      <h3>Every edition</h3>
+      <div class="meta">Newsletter archive</div>
+      <p>The full issue library, from the first edition to the most recent.</p>
+      <span class="arrow">Open the archive &rarr;</span>
+    </a>
+
   </div>
 
   <!-- WEEKLY FIELD NOTE -->
@@ -138,6 +157,39 @@
 <div class="footer">
   Magnum AI · Members Area · Built to grow with you
 </div>
+
+<script>
+// Pulls the latest editions straight from the newsletter repo. Both sites are
+// served from webes77.github.io, so this is a same-origin request and needs no
+// setup. If it fails for any reason the archive card below still stands.
+(function () {
+  var BASE = 'https://webes77.github.io/magnum-newsletter/';
+  var grid = document.getElementById('newsletter-grid');
+  if (!grid) return;
+
+  fetch(BASE + 'issues.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) {
+      var issues = (data.issues || []).slice(0, 3);
+      if (!issues.length) return;
+
+      var archive = grid.firstElementChild;
+      issues.forEach(function (issue) {
+        var a = document.createElement('a');
+        a.className = 'card';
+        a.href = BASE + issue.file;
+        a.innerHTML =
+          '<div class="date"></div><h3></h3><div class="meta">This Week in AI</div><p></p>' +
+          '<span class="arrow">Read this edition &rarr;</span>';
+        a.querySelector('.date').textContent = issue.displayDate;
+        a.querySelector('h3').textContent = issue.title;
+        a.querySelector('p').textContent = issue.dek;
+        grid.insertBefore(a, archive);
+      });
+    })
+    .catch(function () { /* the archive card remains */ });
+})();
+</script>
 
 </body>
 </html>
