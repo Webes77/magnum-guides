@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make Claude Yours · Magnum AI</title>
+<meta name="description" content="Set up your own Claude account in ninety minutes. Privacy settings, one connector, account instructions, a project that does a real job, and Cowork. Five prompts, all copy-paste ready.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/make-claude-yours/">
+
+<!-- Social preview — what clients see when this link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI — Members Area">
+<meta property="og:title" content="Make Claude Yours">
+<meta property="og:description" content="Teach Claude your business in ninety minutes. Five prompts, one at a time. Nothing gets pasted in until you have read it.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/make-claude-yours/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/make-claude-yours.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Make Claude Yours — a Magnum AI setup session deck">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Make Claude Yours">
+<meta name="twitter:description" content="Teach Claude your business in ninety minutes. Five prompts, one at a time. Nothing gets pasted in until you have read it.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/make-claude-yours.png">
+<meta name="theme-color" content="#4A423C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEE6D3;
+  --paper-2:#E4DAC4;
+  --ink:#1E1B17;
+  --body:#2B2823;
+  --rust:#B8452A;
+  --olive:#6C7A3F;
+  --olive-2:#546230;
+  --char:#3A3630;
+  --mute:#6F675C;
+  --rule:#1E1B17;
+  --grid:rgba(120,90,60,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#4A423C;color:var(--body);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:18px;line-height:1.45}
+body{display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#C9BFAF}
+header .brand{color:#EEE6D3;border-bottom:1px solid #EEE6D3;padding-bottom:2px}
+header .count{color:#EEE6D3}
+
+main{flex:1;display:flex;padding:0 40px 8px;overflow:hidden}
+#deck{flex:1;background:var(--ink);padding:10px;display:flex;overflow:hidden}
+.slide{flex:1;display:none;padding:44px 64px 56px;overflow:auto;position:relative;
+  background:var(--paper);
+  background-image:radial-gradient(var(--grid) 1.2px, transparent 1.3px),linear-gradient(rgba(120,90,60,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(120,90,60,.06) 1px,transparent 1px);
+  background-size:26px 26px,26px 26px,26px 26px;
+  border:3px solid var(--paper);box-shadow:inset 0 0 0 1px var(--ink)}
+.slide.on{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-content:start}
+.slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:minmax(320px,6fr) minmax(360px,6fr)}
+.slide.tiles.on{grid-template-columns:minmax(0,1fr)}
+
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px}
+.kicker::after{content:"";flex:1;height:2px;background:var(--ink);max-width:420px}
+h1{font-family:"Oswald",sans-serif;font-weight:600;font-size:58px;line-height:.98;text-transform:uppercase;letter-spacing:-.005em;max-width:18ch;color:var(--ink);margin-top:10px}
+h1 .n{display:none}
+h1 em{font-style:normal;color:var(--rust)}
+.cover h1{font-size:132px;max-width:12ch;line-height:.92}
+.cover.has-fig.on{grid-template-columns:minmax(360px,6fr) minmax(320px,5fr)}
+.cover .sub{font-family:"Oswald",sans-serif;font-weight:500;font-size:30px;text-transform:uppercase;color:var(--rust);margin-top:12px}
+.cover p{font-size:21px;color:var(--body);max-width:40ch;margin-top:18px;line-height:1.5}
+.meta{margin-top:18px;padding-top:14px;border-top:2px solid var(--ink);font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);line-height:2}
+.meta b{color:var(--rust);font-weight:500;margin-right:10px}
+
+ul.points{list-style:none;margin-top:6px;max-width:56ch}
+ul.points li{font-size:24px;line-height:1.35;padding:12px 0 12px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
+ul.points li:last-child{border-bottom:2px solid var(--ink)}
+ul.points li::before{content:"";position:absolute;left:0;top:25px;width:18px;height:3px;background:var(--rust)}
+ul.points li b{color:var(--rust);font-weight:500}
+ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:var(--ink);background:#fff8;border:1px solid var(--ink);padding:1px 6px}
+.note{margin-top:8px;color:var(--mute);font-size:17px;max-width:52ch}
+.left{display:flex;flex-direction:column;gap:18px;min-width:0}
+.has-prompt h1,.has-fig h1{font-size:44px}
+.has-prompt ul.points li{font-size:19px;padding:10px 0 10px 28px}
+.has-prompt ul.points li::before{top:19px}
+.has-fig ul.points li{font-size:21px}
+
+/* figure panel */
+.fig{background:var(--rust);border:3px solid var(--ink);padding:26px 26px 18px;display:flex;flex-direction:column;gap:14px;align-self:start;box-shadow:6px 6px 0 var(--ink)}
+.fig svg{width:100%;height:auto;max-height:50vh;display:block}
+.fig .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);border-top:1px solid rgba(238,230,211,.5);padding-top:10px;line-height:1.7}
+
+/* tile grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.tile{padding:20px 20px 24px;color:var(--paper);min-height:150px;border:3px solid var(--ink)}
+.tile h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
+.tile p{font-size:19px;line-height:1.35}
+.tile.o{background:var(--olive)}.tile.t{background:var(--rust)}.tile.c{background:var(--char)}
+
+/* before / after split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.split div{border:3px solid var(--ink);background:var(--paper-2);padding:0;box-shadow:5px 5px 0 var(--ink)}
+.split h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:20px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;color:var(--paper);border-bottom:3px solid var(--ink)}
+.split .b h3{background:var(--char)}.split .a h3{background:var(--olive)}
+.split p{font-family:"IBM Plex Mono",monospace;font-size:17px;line-height:1.5;margin:14px 20px;color:var(--ink)}
+
+/* chevron steps */
+.chev{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.chev span{background:var(--rust);color:var(--paper);font-family:"Oswald",sans-serif;font-size:17px;letter-spacing:.06em;padding:14px 26px 14px 30px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);text-transform:uppercase}
+.chev span:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
+.chev span:nth-child(even){background:var(--char)}
+.chev span:last-child{background:var(--olive)}
+
+/* prompt pane */
+.pane{background:var(--paper-2);border:3px solid var(--ink);display:flex;flex-direction:column;min-height:0;min-width:0;box-shadow:6px 6px 0 var(--ink)}
+.pane-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
+.copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 16px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;transition:background .15s}
+.copy:hover{background:#d2553a}
+.copy.done{background:var(--olive)}
+pre{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.55;white-space:pre-wrap;padding:18px 20px;overflow:auto;flex:1;color:var(--ink)}
+.after{border-top:3px solid var(--ink);background:var(--paper)}
+.after summary{padding:12px 18px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.after summary::after{content:"+";color:var(--rust);font-size:20px;line-height:1}
+.after[open] summary::after{content:"\2212"}
+.after ol{list-style:none;counter-reset:s;padding:0 18px 16px;font-size:16px;color:var(--body)}
+.after ol li{counter-increment:s;margin:8px 0;padding-left:44px;position:relative;min-height:28px}
+.after ol li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:3px 6px;letter-spacing:.1em}
+
+.foot{position:absolute;left:64px;right:64px;bottom:18px;border-top:2px solid var(--ink);padding-top:8px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.foot b{color:var(--ink);font-weight:500}
+
+footer{display:flex;align-items:center;justify-content:space-between;padding:12px 40px}
+.nav{display:flex;gap:8px}
+.nav button{background:transparent;color:#EEE6D3;border:1px solid #8C8275;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+.nav button:hover{border-color:#EEE6D3}
+.bar{flex:1;height:3px;background:#6B625A;margin:0 28px;position:relative}
+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
+.hint{color:#9C9285;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
+
+#menu{position:fixed;inset:0;background:rgba(74,66,60,.97);display:none;padding:60px 80px;overflow:auto;color:#EEE6D3}
+#menu.on{display:block}
+#menu h2{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;color:#C9BFAF}
+#menu ol{list-style:none;columns:2;column-gap:60px;max-width:1000px}
+#menu li{break-inside:avoid;margin:0 0 6px}
+#menu li.sec{font-family:"IBM Plex Mono",monospace;color:#C9BFAF;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
+#menu button{background:none;border:0;color:#EEE6D3;font-size:18px;text-align:left;padding:4px 0}
+#menu button:hover{color:#F0A288}
+#menu .close{position:fixed;top:20px;right:40px;color:#C9BFAF;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em}
+
+@media (max-width:1000px){
+  main{padding:0 12px 8px}
+  .slide{padding:28px 22px 60px}
+  .slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:1fr}
+  .grid,.split{grid-template-columns:1fr}
+  h1{font-size:38px}.cover h1{font-size:56px}
+  ul.points li{font-size:20px}
+  .foot{left:22px;right:22px}
+  header,footer{padding:12px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">MAGNUM AI</span>
+  <span class="section" id="sec"></span>
+  <span class="count" id="count"></span>
+</header>
+<main id="deck"></main>
+<footer>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button></div>
+  <div class="bar"><i id="fill"></i></div>
+  <span class="hint">Arrow keys move. M for the slide list.</span>
+</footer>
+<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE</button><h2>Slides</h2><ol id="menulist"></ol></div>
+
+<script>
+const P1 = `I want you to write my account instructions. These go in Settings under
+Instructions for Claude, and you read them before every message I send.
+
+What belongs here: who I am, what my business does, who my customers are,
+how I like things written, and what you must never do. Things that stay
+true for months.
+What does not belong here: client names, prices, examples, anything that
+changes often. That goes in a file inside a project, not here.
+
+My account is nearly empty, so you know almost nothing about me. Do not
+draft from what you think you know. Interview me first.
+
+Ask me one question at a time. Wait for my answer before asking the next.
+Cover these, in this order:
+1. What my business does and what I do in it.
+2. Who my customers are.
+3. What I will mostly use you for.
+4. How I like things written. Short or detailed, plain or formal.
+5. What annoys me in an answer.
+6. Anything you must never do.
+Six questions. Ask one or two more only if an answer needs it. Then stop asking.
+
+Rules:
+- Do not invent details, names, numbers or facts I have not told you. If
+  you need something and I have not said it, ask. If I skip it, leave it out.
+- Only include what stays true for months: how I communicate, the standards
+  I hold you to, what to avoid. Leave out client names, pricing and anything
+  that changes often.
+- Write the instructions as instructions to you. "The user runs a..." not
+  "I run a..."
+- 150 to 400 words.
+
+When the interview is done, answer in this exact format and nothing else:
+
+YOUR DRAFT INSTRUCTIONS: (the full set in a copy-paste block, 150 to 400
+words. This is a draft for me to approve. You have saved nothing. I paste
+it in myself if I am happy.)
+WHAT I ASSUMED: (max 3 bullets, one line each, so I can correct anything.)
+
+No preamble, no summary. Stop after the assumptions.`;
+
+const P2 = `I want you to write the instructions for this project. This project is for
+one job only, and the instructions go in the project instructions box.
+
+What belongs here: what the job is, what I hand you, what a good result
+looks like, what you must always include, what you must never do.
+What does not belong here: anything my account instructions already say,
+and anything that changes often such as prices, templates and examples.
+Those go in files, which we plan next.
+
+You know nothing about this job yet. Do not guess. Interview me first.
+
+Ask me one question at a time. Wait for my answer before asking the next.
+Cover these, in this order:
+1. What the job is, in one sentence.
+2. What I give you to start it. Rough notes, a photo, an email, numbers.
+3. What a good finished result looks like. Length, layout, tone.
+4. Who reads the result.
+5. What you must always include.
+6. What you must never do.
+Six questions. Ask one or two more only if an answer needs it. Then stop asking.
+
+Rules:
+- Do not invent details, names, prices, steps or facts I have not told you.
+  If you need something, ask. If I skip it, leave it out.
+- Only include what is true for this job every time. Leave out anything that
+  changes often. That belongs in a file, which comes next.
+- Do not repeat anything my account instructions already cover. This
+  project runs on top of them.
+- Write the instructions as instructions to you.
+- Under 300 words. Shorter is better.
+
+When the interview is done, answer in this exact format and nothing else:
+
+YOUR DRAFT PROJECT INSTRUCTIONS: (the full set in a copy-paste block. This
+is a draft for me to approve. You have changed nothing. I paste it in
+myself if I am happy.)
+WHAT I ASSUMED: (max 3 bullets, one line each.)
+
+No preamble, no summary. Stop after the assumptions.`;
+
+const P3 = `Now plan the files this project should have. Recommend only. Do not create
+or write any file.
+
+Work from what I told you in this chat. Do not ask me more questions.
+
+A file is for knowledge that changes or is too long for the instructions:
+price lists, templates, past examples, standard wording, customer details.
+
+Rules:
+- Two to four files. No more.
+- Do not invent a file to look thorough. If the job needs only one, say one.
+  If it needs none, say none and why.
+- Do not invent what is in the files. You are telling me what to gather,
+  not writing it.
+- Do not put the same information in two files.
+- Do not recommend a file for a single rule or a one-line preference. That
+  belongs in the instructions, not a file.
+
+Answer in this exact format and nothing else:
+
+THE FILES THIS PROJECT SHOULD HAVE:
+For each file:
+- File name
+- What it is for, one line
+- What goes in it
+- What stays out of it
+- Where I probably already have this: a document, a spreadsheet, my email,
+  my head. If you don't know, say "you'll know where"
+
+DO THIS FIRST: (one line. Which file to gather and upload first, and why.)
+
+Plain language, no jargon, no preamble. Stop after the plan.`;
+
+const P4 = `I want you to write my Cowork global instructions. These go in Settings
+under Cowork, and you read them before every Cowork task.
+
+What belongs here: what I do, what I hand to Cowork, how I want finished
+work delivered, what you check with me before doing.
+What does not belong here: client names, prices, anything that changes
+often. That lives in the files and folders I give you.
+
+Cowork cannot see my chats, so these instructions must stand on their own.
+Do not draft from what you think you know. Interview me first.
+
+Ask me one question at a time. Wait for my answer before asking the next.
+Cover these, in this order:
+1. What my business does and what I do in it.
+2. What I will hand to Cowork. Documents, spreadsheets, research, tidying files.
+3. How I want finished work delivered. File type, length, layout.
+4. What you must check with me before doing.
+5. What you must never do.
+Five questions. Ask one or two more only if an answer needs it. Then stop asking.
+
+Rules:
+- Do not invent details, names, numbers or facts I have not told you. If
+  you need something, ask. If I skip it, leave it out.
+- Only include what stays true for months. Leave out client names, pricing
+  and anything that changes often.
+- Write the instructions as instructions to you.
+- Under 500 words.
+
+When the interview is done, answer in this exact format and nothing else:
+
+YOUR DRAFT GLOBAL INSTRUCTIONS: (the full set in a copy-paste block, under
+500 words. This is a draft for me to approve. You have saved nothing. I
+paste it in myself if I am happy.)
+WHAT I ASSUMED: (max 3 bullets, one line each.)
+
+No preamble, no summary. Stop after the assumptions.`;
+
+const P5 = `I want you to draft one skill for me. A skill is a saved way of doing one
+job, so I never have to explain that job twice.
+
+What belongs in a skill: one job, the steps in order, what the finished
+result looks like, and the exact words that should trigger it.
+What does not belong: general preferences about how I like things written.
+Those are already in my instructions.
+
+Do not guess what the job is. Interview me first.
+
+Ask me one question at a time. Wait for my answer before asking the next.
+Cover these, in this order:
+1. One job I do the same way every time.
+2. What I have in hand when I start it.
+3. The steps, in the order I do them.
+4. What the finished result looks like.
+5. When this skill should NOT be used, even if the job looks similar.
+Five questions. Then stop asking.
+
+Rules:
+- Do not invent steps, names, numbers or facts I have not told you. If
+  something is missing, mark it [NEEDS CONFIRMING]. Do not fill the gap.
+- The description decides when the skill fires. Write it so it names the
+  job plainly and lists the words I would actually say when I want it.
+  Also say when it must stay out of the way.
+- Keep it short. One job, not five.
+
+When the interview is done, answer in this exact format and nothing else:
+
+SKILL NAME: (two or three words)
+DESCRIPTION: (three to five lines. What it does. The exact phrases that
+should trigger it. When it must not trigger.)
+STEPS: (numbered, one action each, in order)
+RESULT: (one line. What it hands back.)
+STILL NEEDS CONFIRMING: (bullets, or "nothing, this one's done")
+
+This is a draft for me to approve. You have saved nothing. No preamble.
+Stop after the confirming list.`;
+
+
+const F = {};
+F.cover = ['<svg viewBox="0 0 420 380"><rect x="40" y="26" width="300" height="310" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="52" y="38" width="300" height="310" fill="none" stroke="#1E1B17" stroke-width="2" opacity=".35"/><rect x="72" y="62" width="130" height="14" fill="#1E1B17"/><rect x="72" y="92" width="200" height="8" fill="#3A3630"/><rect x="72" y="110" width="170" height="8" fill="#3A3630"/><rect x="72" y="128" width="190" height="8" fill="#3A3630"/><rect x="72" y="160" width="60" height="12" fill="#B8452A"/><rect x="176" y="150" width="80" height="34" rx="17" fill="#6C7A3F" stroke="#1E1B17" stroke-width="3"/><circle cx="238" cy="167" r="12" fill="#EEE6D3" stroke="#1E1B17" stroke-width="3"/><rect x="72" y="204" width="210" height="8" fill="#3A3630"/><rect x="72" y="222" width="150" height="8" fill="#3A3630"/><rect x="72" y="240" width="180" height="8" fill="#3A3630"/><rect x="72" y="270" width="110" height="8" fill="#B8452A"/><circle cx="330" cy="310" r="46" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M308 312l16 16 30-34" fill="none" stroke="#EEE6D3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ 'Fig. 01 / your account, set up by you<br>Instructions in. Connector on. Project built.'];
+F.connector = ['<svg viewBox="0 0 420 300"><rect x="20" y="100" width="140" height="100" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="90" y="158" text-anchor="middle" font-family="Oswald" font-size="28" fill="#1E1B17">CLAUDE</text><rect x="260" y="30" width="140" height="70" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="330" y="74" text-anchor="middle" font-family="Oswald" font-size="24" fill="#1E1B17">EMAIL</text><rect x="260" y="115" width="140" height="70" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="330" y="159" text-anchor="middle" font-family="Oswald" font-size="24" fill="#1E1B17">CALENDAR</text><rect x="260" y="200" width="140" height="70" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="330" y="244" text-anchor="middle" font-family="Oswald" font-size="24" fill="#1E1B17">FILES</text><path d="M160 150 L260 65 M160 150 L260 150 M160 150 L260 235" stroke="#1E1B17" stroke-width="4"/><circle cx="210" cy="150" r="22" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M203 150l6 6 11-13" fill="none" stroke="#EEE6D3" stroke-width="4" stroke-linecap="round"/><text x="210" y="290" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#EEE6D3">YOU GRANT IT. YOU CAN REVOKE IT.</text></svg>',
+ 'Fig. 02 / a connector is a permission<br>Claude sees only what you allow'];
+F.project = ['<svg viewBox="0 0 420 300"><rect x="30" y="220" width="360" height="52" fill="#3A3630" stroke="#1E1B17" stroke-width="4"/><text x="210" y="253" text-anchor="middle" font-family="Oswald" font-size="20" fill="#EEE6D3">ACCOUNT INSTRUCTIONS. WHO YOU ARE.</text><rect x="60" y="150" width="300" height="52" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><text x="210" y="183" text-anchor="middle" font-family="Oswald" font-size="20" fill="#EEE6D3">PROJECT INSTRUCTIONS. THE JOB.</text><rect x="90" y="80" width="240" height="52" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="210" y="113" text-anchor="middle" font-family="Oswald" font-size="20" fill="#1E1B17">FILES. WHAT CHANGES.</text><rect x="150" y="22" width="120" height="40" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><text x="210" y="49" text-anchor="middle" font-family="Oswald" font-size="18" fill="#EEE6D3">ONE JOB</text></svg>',
+ 'Fig. 03 / the project sits on top of your account<br>One job. Instructions for it. Files for the detail.'];
+F.cowork = ['<svg viewBox="0 0 420 300"><rect x="20" y="40" width="175" height="200" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="225" y="40" width="175" height="200" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="107" y="80" text-anchor="middle" font-family="Oswald" font-size="26" fill="#1E1B17">CHAT</text><text x="312" y="80" text-anchor="middle" font-family="Oswald" font-size="26" fill="#1E1B17">COWORK</text><rect x="45" y="105" width="120" height="8" fill="#3A3630"/><rect x="45" y="125" width="90" height="8" fill="#3A3630"/><rect x="45" y="145" width="110" height="8" fill="#3A3630"/><text x="107" y="205" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" letter-spacing="1" fill="#1E1B17">ANSWERS YOU</text><rect x="250" y="102" width="50" height="60" fill="#6C7A3F" stroke="#1E1B17" stroke-width="3"/><rect x="312" y="102" width="50" height="60" fill="#6C7A3F" stroke="#1E1B17" stroke-width="3"/><rect x="281" y="120" width="50" height="60" fill="#B8452A" stroke="#1E1B17" stroke-width="3"/><text x="312" y="205" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" letter-spacing="1" fill="#1E1B17">DOES THE WORK</text><rect x="197" y="30" width="26" height="220" fill="#1E1B17"/><text x="210" y="285" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#EEE6D3">THE WALL. COWORK CANNOT SEE YOUR CHATS.</text></svg>',
+ 'Fig. 04 / two rooms, one account<br>Each needs its own instructions'];
+F.next = ['<svg viewBox="0 0 420 300"><path d="M30 190 H390" stroke="#1E1B17" stroke-width="4"/><g font-family="IBM Plex Mono" font-size="12" fill="#1E1B17" text-anchor="middle"><text x="70" y="225">MON</text><text x="150" y="225">TUE</text><text x="230" y="225">WED</text><text x="310" y="225">THU</text><text x="390" y="225">FRI</text></g><g stroke="#1E1B17" stroke-width="4"><line x1="70" y1="180" x2="70" y2="200"/><line x1="150" y1="180" x2="150" y2="200"/><line x1="230" y1="180" x2="230" y2="200"/><line x1="310" y1="180" x2="310" y2="200"/><line x1="390" y1="180" x2="390" y2="200"/></g><rect x="30" y="60" width="150" height="80" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="105" y="95" text-anchor="middle" font-family="Oswald" font-size="30" fill="#1E1B17">6:00 AM</text><text x="105" y="122" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" fill="#1E1B17">JOB RUNS. YOU ARE ASLEEP.</text><path d="M70 140 V180" stroke="#1E1B17" stroke-width="4"/><circle cx="70" cy="190" r="12" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><circle cx="150" cy="190" r="12" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><circle cx="230" cy="190" r="12" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><circle cx="310" cy="190" r="12" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><circle cx="390" cy="190" r="12" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><text x="210" y="275" text-anchor="middle" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#EEE6D3">THE RESULT IS WAITING WHEN YOU OPEN IT.</text></svg>',
+ 'Fig. 05 / schedules and repeats<br>Next session'];
+
+const S = [
+{sec:"", cover:true, fig:"cover", h:"Make Claude yours.", pts:[], sub:"Teach it your business in ninety minutes.", note:"Your own account. One prompt at a time. Nothing gets pasted in until you have read it.", meta:[["Works in","Claude, any paid plan"],["You need","Your laptop, your voice, one real job"],["Take-away","This deck, with every prompt in it"]]},
+
+{sec:"Open", h:"What gets <em>built</em> in this session", pts:[
+ "A Claude that knows your business.",
+ "Set up on your own account, by you.",
+ "Tested on a real job before the session ends.",
+ "One prompt at a time. Nothing gets pasted in until you have read it."]},
+
+{sec:"Open", h:"The <em>order</em>", chev:["Settings","Connect one","Account instructions","Project","Real job","Cowork"], pts:[
+ "Outside in. The foundation first, the detail last.",
+ "Every prompt: Claude asks, you answer by voice, it drafts, you read, you paste.",
+ "Nothing self-applies. You are the one who saves."]},
+
+{sec:"Settings, privacy", h:"Open Settings", pts:[
+ "Click your initials, bottom left of the screen.",
+ "Click <b>Settings</b>.",
+ "Leave this page open. The next four slides live here."]},
+
+{sec:"Settings, privacy", h:"Training and <em>your</em> data", pts:[
+ "Go to <b>Privacy</b>.",
+ "Find <b>Help improve Claude</b>. Turn it off. Your chats stop being used to train the model.",
+ "Off means a deleted chat is kept 30 days, then gone.",
+ "Find <b>Location metadata</b> on the same page. Turn it off."]},
+
+{sec:"Settings, privacy", h:"Memory", pts:[
+ "Go to <b>Memory</b>.",
+ "<b>Generate memory from chat history</b>: turn on. Claude carries what it learns about your business into new chats.",
+ "<b>Search and reference chats</b>: turn on. Claude can look back at past chats when you ask.",
+ "For anything confidential, use the ghost icon at the top right of a new chat. That chat is not saved and not remembered."]},
+
+{sec:"Settings, privacy", h:"Chat history and deleting", pts:[
+ "Every chat is saved in the left sidebar.",
+ "To delete one: hover over it, click the three dots, click <b>Delete</b>.",
+ "Deleted chats leave your history straight away and are cleared from storage within 30 days.",
+ "Delete anything you would not want read back to you later."]},
+
+{sec:"Settings, usage", h:"The <em>instructions</em> box", pts:[
+ "Go to <b>Profile</b>.",
+ "Find <b>Instructions for Claude</b>.",
+ "It is empty. That is why answers feel generic.",
+ "Leave it empty for now. Prompt 1 fills it in a few minutes."]},
+
+{sec:"Settings, usage", h:"<em>Voice</em>, not typing", pts:[
+ "On the phone app: tap the microphone in the message box, speak, stop.",
+ "On Windows: press the <b>Windows key and H</b> together, speak, press it again.",
+ "On Mac: press the microphone key on the keyboard, or press <b>fn</b> twice.",
+ "Everything from here on is spoken. Rough spoken input is fine. Claude tidies it."]},
+
+{sec:"Settings, usage", h:"Models", pts:[
+ "The model picker sits at the bottom of the message box.",
+ "Leave it on the default. It is right for daily work.",
+ "Switch up one model only for a big job that needs real thinking: a tender, a contract, a long report.",
+ "Do not touch anything else in Capabilities."]},
+
+{sec:"Settings, usage", h:"Where connectors live", pts:[
+ "Go to <b>Connectors</b>.",
+ "This is the list of tools Claude is allowed to see.",
+ "Yours is empty.",
+ "The next three slides explain what one is. Then you connect one."]},
+
+{sec:"Connectors", h:"What a <em>connector</em> is", fig:"connector", pts:[
+ "A permission.",
+ "It lets Claude see one of your tools: email, calendar, files.",
+ "Without it, Claude only knows what you type or paste.",
+ "With it, Claude reads the real thing."]},
+
+{sec:"Connectors", h:"What <em>changes</em> when it is on", split:[
+ ["Before","\u201cHere is roughly what the email said, what should I reply?\u201d","Describing your week from memory."],
+ ["After","\u201cRead the last email from the site foreman and draft the reply.\u201d","\u201cWhat is on my calendar Thursday?\u201d"]]},
+
+{sec:"Connectors", h:"You are in <em>control</em>", pts:[
+ "You grant it. Nobody else can.",
+ "You can switch it off any time, same screen.",
+ "It sees only what you can see. It gets no more access than you have.",
+ "Connector content is not used to train the model."]},
+
+{sec:"Connectors", h:"Connect one <em>now</em>", pts:[
+ "In <b>Connectors</b>, pick Gmail or Google Calendar, whichever you use more.",
+ "Click <b>Connect</b>. Sign in. Allow.",
+ "Open a new chat. Check the connector is switched on in the tools menu at the bottom of the message box.",
+ "Ask it one real question. \u201cWhat is on my calendar this week?\u201d or \u201cWhat is the newest unread email about?\u201d"]},
+
+{sec:"Account instructions", h:"Why the instructions box matters", pts:[
+ "Claude reads this box before every message you send.",
+ "Empty box: it writes for the average person.",
+ "Filled box: it writes for you, your business, your customers.",
+ "You fill it once. It works in every chat after that."]},
+
+{sec:"Account instructions", h:"Account instructions: what goes <em>in</em>", tiles:[
+ ["o","In","Who you are and what the business does."],
+ ["o","In","Who your customers are and how you like things written."],
+ ["o","In","What Claude must never do. Australian spelling. No jargon. Whatever bites you."],
+ ["c","Out","Client names, prices, anything that changes month to month."],
+ ["c","Out","Long stories. If Claude has to skim it, it is too long."],
+ ["c","Out","Instructions for one particular job. That is what a project is for."]],
+ pts:["150 to 400 words. That is the whole box."]},
+
+{sec:"Account instructions", h:"Fixing the <em>draft</em>", pts:[
+ "Claude gives you a draft. You will not like all of it. That is normal.",
+ "Say what to change. One thing at a time. \u201cTake out the bit about formal emails. Keep everything else.\u201d",
+ "Do not rewrite it yourself in the box. Ask Claude for the whole thing again, fixed.",
+ "When you would put your name to it, copy it and paste it in."]},
+
+{sec:"Account instructions", h:"Prompt 1. Your account instructions", pts:[
+ "Claude asks you six questions, one at a time. Answer by voice.",
+ "It drafts your instructions. You read them.",
+ "Fix anything wrong by telling Claude what to change.",
+ "Then you paste them in yourself."],
+ prompt:P1, where:"Runs in a brand-new chat", after:[
+ "Read the draft. Fix anything wrong by telling Claude what to change.",
+ "Copy the final draft.",
+ "Click your initials, bottom left. Click Settings.",
+ "Click Profile. Find Instructions for Claude.",
+ "Paste. Click Save."]},
+
+{sec:"Your project", h:"What a <em>project</em> is", fig:"project", pts:[
+ "A separate room in Claude for one job.",
+ "It has its own instructions and its own files.",
+ "Your account instructions still apply underneath.",
+ "Result: Claude stops being a general assistant and becomes a specialist in that job."]},
+
+{sec:"Your project", h:"What goes <em>in</em>, what stays out", tiles:[
+ ["o","In","One job. Quotes. Safety docs. Client updates. Pick one."],
+ ["o","In","Instructions that are true for that job every time."],
+ ["o","In","Files that hold the detail that changes: prices, templates, past examples."],
+ ["c","Out","Three jobs in one project. It stops being a specialist."],
+ ["c","Out","Prices and client details typed into the instructions. They go stale there."],
+ ["c","Out","Files you have not opened in a year. Claude reads them as true."]]},
+
+{sec:"Your project", h:"Project instructions: <em>how much</em>", pts:[
+ "Under 300 words. One job.",
+ "Only what is true for that job every single time.",
+ "Do not repeat your account instructions. The project sits on top of them.",
+ "Do not type in prices, templates or examples. They go stale in a week. Files are for that.",
+ "If a rule here fights a rule in your account instructions, Claude gets confused. Pick one place."]},
+
+{sec:"Your project", h:"When to use a <em>file</em>, and when not", tiles:[
+ ["o","Use a file","It changes. Price lists, rates, product ranges."],
+ ["o","Use a file","It is long. Templates, standard wording, past examples."],
+ ["o","Use a file","Claude needs to read it every time, without you pasting it."],
+ ["c","Not a file","A single rule. That is one line in the instructions."],
+ ["c","Not a file","Something you only need once. Paste it into the chat."],
+ ["c","Not a file","Anything you would not trust as current. Claude treats every file as true."]]},
+
+{sec:"Your project", h:"Create it", pts:[
+ "Click <b>Projects</b> in the left sidebar.",
+ "Click <b>New project</b>.",
+ "Name it after the one job you keep re-explaining.",
+ "Open it. The instructions box is on the right."]},
+
+{sec:"Your project", h:"Prompt 2. Project instructions", pts:[
+ "Claude asks what the job is, what good looks like, what you give it, what it must never do.",
+ "It drafts the project instructions. You read them.",
+ "Paste them into the project instructions box."],
+ prompt:P2, where:"Runs inside the new project", after:[
+ "Read the draft. Fix anything wrong by telling Claude what to change.",
+ "Copy the final draft.",
+ "In the project, find the instructions box on the right-hand side. Click Set project instructions, or Edit if something is already there.",
+ "Paste. Click Save."]},
+
+{sec:"Your project", h:"Prompt 3. The file plan", pts:[
+ "Claude names the two to four files this project should have.",
+ "For each one: what it is for, what goes in, what stays out.",
+ "Write the list down. Gather the files after the session."],
+ prompt:P3, where:"Same project, same chat, straight after Prompt 2", after:[
+ "Write the file list down. That is the whole action in the room.",
+ "After the session, find each file. Save it as a PDF or Word document if it is not already.",
+ "Upload one file at a time, starting with the DO THIS FIRST file. The next slide shows how."]},
+
+{sec:"Your project", h:"Upload a file", pts:[
+ "In the project, find <b>Files</b> on the right-hand side. Click the plus sign, or <b>Add files</b>.",
+ "Pick the file from your computer. PDF or Word is best.",
+ "Name it so you would know what it is in a year. <code>Price list 2026.pdf</code>, not <code>Document3.pdf</code>.",
+ "One file at a time. If one is on your machine now, upload it now.",
+ "<b>Do not upload:</b> two versions of the same thing, or anything you have not opened in a year."]},
+
+{sec:"Your project", h:"Give it a <em>real</em> job", pts:[
+ "First, say: \u201cBefore you start, tell me in two lines what this project is for.\u201d Wrong answer means the instructions need a fix.",
+ "Then the job. Something you would do this week. Not a test. The real thing.",
+ "Say it by voice, inside the project. Rough is fine.",
+ "Read what comes back.",
+ "Compare it to what you would have got two months ago."]},
+
+{sec:"Cowork and skills", h:"Cowork is a <em>different</em> room", fig:"cowork", pts:[
+ "Same account. Same Claude. Different job.",
+ "Chat answers you. Cowork does the work: files, multi-step tasks, finished documents.",
+ "Cowork cannot see your chats.",
+ "It has its own instructions box. It needs its own setup."]},
+
+{sec:"Cowork and skills", h:"Prompt 4. Cowork instructions", pts:[
+ "In the message box, switch the toggle from <b>Chat</b> to <b>Cowork</b> before pasting.",
+ "Claude asks what you will use Cowork for and how you want work delivered.",
+ "It drafts under 500 words. You read them.",
+ "Paste into Settings, Cowork, Global instructions."],
+ prompt:P4, where:"Runs in a Cowork session", after:[
+ "Read the draft. Fix anything wrong by telling Claude what to change.",
+ "Copy the final draft.",
+ "Click your initials, bottom left. Click Settings.",
+ "Click Cowork. Click Edit next to Global instructions.",
+ "Paste. Click Save."]},
+
+{sec:"Cowork and skills", h:"What a <em>skill</em> is", pts:[
+ "A saved way of doing one job.",
+ "You describe the job once. Claude uses it every time that job comes up.",
+ "The description decides when it fires. Vague description, wrong timing.",
+ "One good skill beats five half-built ones."]},
+
+{sec:"Cowork and skills", h:"Prompt 5. Your first skill", pts:[
+ "Claude asks for one job you do the same way every time.",
+ "It drafts the skill: what it does, when it fires, when it stays out of the way.",
+ "Read it. Fix it. Save it."],
+ prompt:P5, where:"Runs in a Cowork session", after:[
+ "Read the draft. Fix anything marked [NEEDS CONFIRMING].",
+ "In the same Cowork session, say: \u201cSave this as a skill.\u201d Cowork writes the skill file and stores it.",
+ "Test it once. Start a new Cowork session and ask for the job using one of the trigger phrases in the description."]},
+
+{sec:"Close", h:"What you <em>built</em>", pts:[
+ "Your privacy settings, set by you.",
+ "One connector live.",
+ "Account instructions that know your business.",
+ "A project that did a real job."]},
+
+{sec:"Close", h:"Suggested Tasks", pts:[
+ "Before Friday: give your project one real job by voice.",
+ "Screenshot your rough brief next to what came back.",
+ "Send it to me.",
+ "Under ten minutes."]},
+
+{sec:"Close", h:"<em>Next</em> time", fig:"next", pts:[
+ "Right now you brief Claude when you need something.",
+ "Next: Claude does the job on a timer, without you opening it.",
+ "Schedules and repeats. The job runs Monday at 6am, the result is waiting.",
+ "That is the next session."]}
+];
+
+const deck = document.getElementById('deck');
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+S.forEach((s,i)=>{
+  const el = document.createElement('section');
+  el.className = 'slide' + (s.prompt?' has-prompt':'') + (s.cover?' cover':'') + (s.tiles?' tiles':'') + (s.fig?' has-fig':'');
+  const num = i===0 ? '' : `<span class="n">${i}</span>`;
+  let left = `<div class="left">`;
+  if(s.sec) left += `<div class="kicker">${s.sec}</div>`;
+  left += `<h1>${s.h}</h1>`;
+  if(s.sub) left += `<div class="sub">${s.sub}</div>`;
+  if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
+  if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
+  if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3><p>${s.split[0][1]}</p><p>${s.split[0][2]}</p></div><div class="a"><h3>${s.split[1][0]}</h3><p>${s.split[1][1]}</p><p>${s.split[1][2]}</p></div></div>`;
+  if(s.note) left += `<p class="note">${s.note}</p>`;
+  if(s.meta) left += `<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`;
+  left += `</div>`;
+  let right = '';
+  if(s.fig){ right = `<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`; }
+  if(s.prompt){
+    right = `<div class="pane">
+      <div class="pane-head"><span class="where">${s.where}</span><button class="copy" data-i="${i}">COPY PROMPT</button></div>
+      <pre>${esc(s.prompt)}</pre>
+      <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
+    </div>`;
+  }
+  const badge = `<div class="foot"><span>Magnum AI / Make Claude Yours</span><span>${s.sec||'Setup session'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
+  el.innerHTML = left + right + badge;
+  deck.appendChild(el);
+});
+
+const slides=[...document.querySelectorAll('.slide')];
+let cur=0;
+function show(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
+  document.getElementById('sec').textContent=S[cur].sec;
+  document.getElementById('count').textContent=cur===0?'':`${cur} / ${slides.length-1}`;
+  document.getElementById('fill').style.width=(cur/(slides.length-1)*100)+'%';
+  location.hash=cur?('#'+cur):'';
+  slides[cur].scrollTop=0;
+}
+document.getElementById('next').onclick=()=>show(cur+1);
+document.getElementById('prev').onclick=()=>show(cur-1);
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
+  if(e.key==='m'||e.key==='M'){toggleMenu();}
+});
+
+document.querySelectorAll('.copy').forEach(b=>{
+  b.onclick=async()=>{
+    const t=S[+b.dataset.i].prompt;
+    try{await navigator.clipboard.writeText(t);}
+    catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+    b.textContent='COPIED';b.classList.add('done');
+    setTimeout(()=>{b.textContent='COPY PROMPT';b.classList.remove('done');},1800);
+  };
+});
+
+const ml=document.getElementById('menulist');
+let lastSec=null;
+S.forEach((s,i)=>{
+  if(i===0)return;
+  if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
+  const li=document.createElement('li');
+  const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
+  li.appendChild(b);ml.appendChild(li);
+});
+function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+
+show(parseInt(location.hash.slice(1))||0);
+</script>
+</body>
+</html>
