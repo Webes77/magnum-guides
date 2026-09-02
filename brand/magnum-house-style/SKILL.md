@@ -28,7 +28,7 @@ Paste this at the top of any new page. Every value below comes from it.
   --char:#3A3630;     /* text inside cards */
   --mute:#6F675C;     /* notes and secondary lines */
   --grid:rgba(120,90,60,.13);
-  --display:'Oswald',Impact,sans-serif;
+  --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
 }
@@ -49,6 +49,14 @@ Three faces, each with one job. Never introduce a fourth.
   eyebrows, dates, metadata and footers.
 
 Never more than two type treatments in one block.
+
+Oswald and IBM Plex are web fonts. They load in HTML and they do not exist on a
+client's machine. Anything that renders locally, a PowerPoint file or a Word
+document, must use the fallbacks, so the display stack is
+`'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif` and body falls
+back to Arial. Arial and Arial Narrow ship with Office on Mac and Windows and
+render identically everywhere. A deck delivered forty times across client
+machines cannot depend on a font that might not be there.
 
 ## The card
 
@@ -82,6 +90,43 @@ do not lift, because a lift on something unclickable is a lie.
 
 These came from documents that predate this system. If a brief, a template or
 an older file reaches for them, use the tokens above instead and say so.
+
+## Imagery
+
+The system is image-light. Image-light is not image-free. Every layout needs
+something to look at.
+
+In order of preference:
+
+1. **Real screenshots.** In training material this is the strongest image
+   available. An actual AI output, an actual inbox, an actual quote. It proves
+   the claim rather than decorating it. Crop tight. No browser chrome, no drop
+   shadow, no device mockup.
+2. **Line icons and diagrams.** Single weight outline, ink on paper, or paper
+   inside a filled ink shape. One per component, never a decorative scatter.
+3. **Photography of real work.** Real clients, real sites, real hands on real
+   tools. A photo of an actual tradesman's van earns its place. A stock photo of
+   someone smiling at a laptop does not.
+4. **Line illustration**, as used in the deck figures. Flat ink line work,
+   rust and olive fills, no gradients.
+
+Never: stock photography, circuit boards, neural networks, glowing blue
+anything, abstract AI gradients, 3D renders, isometric business people, or an
+image chosen because a layout looked empty. If nothing real is available, the
+answer is more white space, not filler.
+
+The quality gate: would this image survive being printed in black and white on
+a bad photocopier? If it only works in colour, or only works large, it is not
+strong enough.
+
+## Before delivering
+
+- Does every layout have something to look at, and is it real rather than
+  decorative?
+- Is rust doing a job on every appearance, or is it just present?
+- Is the display type uppercase and condensed?
+- Does it still read printed in black and white?
+- If a layout feels full, cut content rather than shrink the type.
 
 ## What this skill does not govern
 
