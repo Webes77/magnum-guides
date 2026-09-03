@@ -145,7 +145,8 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 #menu li.sec{font-family:"IBM Plex Mono",monospace;color:#C9BFAF;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
 #menu button{background:none;border:0;color:#EEE6D3;font-size:18px;text-align:left;padding:4px 0}
 #menu button:hover{color:#F0A288}
-#menu .close{position:fixed;top:20px;right:40px;color:#C9BFAF;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em}
+#menu .close{position:fixed;top:20px;right:40px;color:#EEE6D3;background:transparent;border:1px solid #C9BFAF;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+#menu .close:hover{border-color:#EEE6D3;color:#F0A288}
 
 @media (max-width:1000px){
   main{padding:0 12px 8px}
@@ -168,11 +169,11 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 </header>
 <main id="deck"></main>
 <footer>
-  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button></div>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button></div>
   <div class="bar"><i id="fill"></i></div>
-  <span class="hint">Arrow keys move. M for the slide list.</span>
+  <span class="hint">Arrow keys move. SLIDES for the full list.</span>
 </footer>
-<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE</button><h2>Slides</h2><ol id="menulist"></ol></div>
+<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
 
 <script>
 const P1 = `I want your help with a real task, and I would rather talk it
@@ -228,7 +229,7 @@ F.next = ['<svg viewBox="0 0 420 380"><rect x="34" y="60" width="150" height="10
  'Fig. 04 / it still does not know you<br>That is the next session'];
 
 const S = [
-{sec:"", cover:true, fig:"cover", h:"Stop prompting. Start talking.", pts:[], sub:"AI Foundations", note:"How it actually works, how to talk to it, and how to make it tell you the truth. Nothing to set up today.", meta:[["Works in","Claude, any paid plan"],["You need","One real task from this week"],["Take-away","This deck, with every prompt in it"]]},
+{sec:"", cover:true, fig:"cover", h:"Stop prompting. Start talking.", pts:[], sub:"Session one \u00b7 AI Foundations", note:"How it actually works, how to talk to it, and how to make it tell you the truth. Nothing to set up today.", meta:[["Works in","Claude, any paid plan"],["You need","One real task from this week"],["Take-away","This deck, with every prompt in it"]]},
 
 {sec:"Open", h:"What you get from <em>today</em>", pts:[
  "Why most people get weak answers, and the fix.",
@@ -369,7 +370,7 @@ const S = [
 {sec:"Close", h:"It still does not <em>know</em> you", fig:"next", pts:[
  "Today was method. It works in any tool, on any day.",
  "But every new chat, it starts from nothing about you or your business.",
- "Next session we fix that permanently: your account, your instructions, your projects.",
+ "Session two, Make Claude Yours, fixes that permanently: your account, your instructions, your projects.",
  "Ninety minutes, and you never introduce yourself again."]}
 ];
 
@@ -399,7 +400,7 @@ S.forEach((s,i)=>{
       <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
     </div>`;
   }
-  const badge = `<div class="foot"><span>Magnum AI / AI Foundations</span><span>${s.sec||'Foundations'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
+  const badge = `<div class="foot"><span>Magnum AI / Session one</span><span>${s.sec||'Foundations'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
   el.innerHTML = left + right + badge;
   deck.appendChild(el);
 });
@@ -444,6 +445,7 @@ S.forEach((s,i)=>{
   li.appendChild(b);ml.appendChild(li);
 });
 function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
 
 show(parseInt(location.hash.slice(1))||0);
 </script>

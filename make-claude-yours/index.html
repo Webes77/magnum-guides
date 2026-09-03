@@ -145,7 +145,8 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 #menu li.sec{font-family:"IBM Plex Mono",monospace;color:#C9BFAF;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
 #menu button{background:none;border:0;color:#EEE6D3;font-size:18px;text-align:left;padding:4px 0}
 #menu button:hover{color:#F0A288}
-#menu .close{position:fixed;top:20px;right:40px;color:#C9BFAF;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em}
+#menu .close{position:fixed;top:20px;right:40px;color:#EEE6D3;background:transparent;border:1px solid #C9BFAF;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+#menu .close:hover{border-color:#EEE6D3;color:#F0A288}
 
 @media (max-width:1000px){
   main{padding:0 12px 8px}
@@ -168,11 +169,11 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 </header>
 <main id="deck"></main>
 <footer>
-  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button></div>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button></div>
   <div class="bar"><i id="fill"></i></div>
-  <span class="hint">Arrow keys move. M for the slide list.</span>
+  <span class="hint">Arrow keys move. SLIDES for the full list.</span>
 </footer>
-<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE</button><h2>Slides</h2><ol id="menulist"></ol></div>
+<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
 
 <script>
 const P1 = `I want you to write my account instructions. These go in Settings under
@@ -379,7 +380,7 @@ F.next = ['<svg viewBox="0 0 420 300"><path d="M30 190 H390" stroke="#1E1B17" st
  'Fig. 05 / schedules and repeats<br>Next session'];
 
 const S = [
-{sec:"", cover:true, fig:"cover", h:"Make Claude yours.", pts:[], sub:"Teach it your business in ninety minutes.", note:"Your own account. One prompt at a time. Nothing gets pasted in until you have read it.", meta:[["Works in","Claude, any paid plan"],["You need","Your laptop, your voice, one real job"],["Take-away","This deck, with every prompt in it"]]},
+{sec:"", cover:true, fig:"cover", h:"Make Claude yours.", pts:[], sub:"Session two \u00b7 Teach it your business in ninety minutes.", note:"Your own account. One prompt at a time. Nothing gets pasted in until you have read it.", meta:[["Works in","Claude, any paid plan"],["You need","Your laptop, your voice, one real job"],["Take-away","This deck, with every prompt in it"]]},
 
 {sec:"Open", h:"What gets <em>built</em> in this session", pts:[
  "A Claude that knows your business.",
@@ -620,7 +621,7 @@ const S = [
  "Right now you brief Claude when you need something.",
  "Next: Claude does the job on a timer, without you opening it.",
  "Schedules and repeats. The job runs Monday at 6am, the result is waiting.",
- "That is the next session."]}
+ "That is session three."]}
 ];
 
 const deck = document.getElementById('deck');
@@ -649,7 +650,7 @@ S.forEach((s,i)=>{
       <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
     </div>`;
   }
-  const badge = `<div class="foot"><span>Magnum AI / Make Claude Yours</span><span>${s.sec||'Setup session'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
+  const badge = `<div class="foot"><span>Magnum AI / Session two</span><span>${s.sec||'Setup session'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
   el.innerHTML = left + right + badge;
   deck.appendChild(el);
 });
@@ -694,6 +695,7 @@ S.forEach((s,i)=>{
   li.appendChild(b);ml.appendChild(li);
 });
 function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
 
 show(parseInt(location.hash.slice(1))||0);
 </script>
