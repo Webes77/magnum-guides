@@ -1,31 +1,58 @@
 # Training material audit
 
-**This is a worklist, not a report.** Every finding below has a destination and
-a status. The audit is not finished when everything is catalogued. It is
-finished when this list is clear.
+**Closed 2 September 2026.** The audit ran far enough to answer the question it
+was asked. It is not being completed file by file, because the answer arrived
+before the reading did.
 
-## Work to do
+## The decision
 
-Status: `TODO` not started · `DOING` in progress · `DONE` built and live ·
-`WAITING` blocked on a decision from James.
+James, 2 September: the Big 6 is not being salvaged. Nothing from before March
+changes what is taught going forward. New material gets written instead.
 
-| # | Job | Status | Blocked on |
-|---|---|---|---|
-| 1 | Fix the 6 Levers order in AI-Foundations-Base-v2.docx | WAITING | Sign-off to edit the file in Drive |
-| 2 | Decide whether ChatGPT and Perplexity are still taught | WAITING | James |
-| 3 | Decide whether the sales stream gets its own area | WAITING | James |
-| 4 | Merge June structure + March lever order into one current AI Foundations | TODO | 1, 2 |
-| 5 | Add what neither covers: account instructions, skills, privacy settings | TODO | 4 |
-| 6 | Lift a generic industry guide out of Audrey Twins, or rule it out | TODO | Reading |
-| 7 | Lift the tonality material into generic sales method | TODO | 3 |
-| 8 | Rebuild the survivors in the house style for the members area | TODO | 4, 5 |
-| 9 | Produce the signed-off removal list, then trash in batches | TODO | All reading done |
-| 10 | Delete ~$atGPT-Foundations.docx, a 162-byte Word lock file | TODO | Nothing. Free win. |
+That is the right call and the dates support it. Every file in The Big 6 is
+January or February. A third of it teaches ChatGPT and Perplexity, which are no
+longer the taught tools. Salvaging would cost more than writing fresh.
 
-## Reading progress
+## What the audit was worth
 
-| Source | Catalogued | Read and graded |
+It answered three things that shape what gets built next.
+
+1. **The 6 Levers order had drifted.** The newest trusted document taught Role,
+   Context, Output, Constraints, Tone, Format. The canonical order, fixed in the
+   six-lever-prompt-builder skill, is Role, Context, Constraints, Tone, Format,
+   Output. Anything written from here uses the canonical order.
+2. **Claude is the taught tool.** Confirmed by James's own build note in the June
+   document. The Big 6 survives as a map of what else exists, not as a curriculum.
+   The dedicated ChatGPT and Perplexity manuals are retired.
+3. **The sales stream is a separate product with a separate buyer.** It gets its
+   own front door, not a members area section, and not yet.
+
+## What replaces it
+
+Not a repository build. A cadence, with the repository accumulating from it.
+
+| Build | Why | Status |
 |---|---|---|
+| AI Foundations, written new | The real gap. Setup is covered by Make Claude Yours; how to talk to it is not. Claude-first, canonical lever order, current interface. | TODO |
+| Industry guides, one per trade | Monetisable, and the By Industry section is already built. Buyer's agents is the first. | TODO |
+| Weekly Field Note | Already running. Dated artefacts never go stale, so the body of work grows without maintenance. | LIVE |
+
+## Drive housekeeping, whenever suits
+
+Not urgent, and not required before anything is built.
+
+- `~$atGPT-Foundations.docx`, 162 bytes, a Word lock file. Delete.
+- The Big 6 folder and the ChatGPT Ecosystem Training folder are retired as
+  teaching material. Keep or trash as preferred; nothing depends on them.
+- Three heavy items worth reclaiming: a 131.5 MB deck, a 17.3 MB generated
+  review page, and 11.2 MB of near-identical deploy backups.
+
+**Nothing in Drive has been deleted, moved or renamed.** The audit was read-only
+throughout. The never-touch rules below still stand, Fairmont first among them.
+
+---
+
+---|---|
 | Magnum Training Word documents, 5 files | Yes | 2 of 4 real files |
 | The Big 6 Training series, 11 files | Yes | 0 |
 | ChatGPT Ecosystem Training + Backups, 4 files | Yes | 0 |
