@@ -1,7 +1,7 @@
 # Weekly Field Note
 
 One page of practical AI a week. Every issue lives in this folder as a single
-self-contained HTML file — no build step, no dependencies.
+self-contained HTML file. No build step, no dependencies.
 
 ```
 index.html                     ← the archive page clients land on
@@ -17,7 +17,7 @@ For example `field-note-02-handovers.html`.
 the issue number, headline, and one-line description in each of these:
 `<title>`, `<meta name="description">`, `og:title`, `og:description`, `og:url`,
 `og:image`, `twitter:title`, `twitter:description`, `twitter:image`. The `og:` tags
-are what a client sees when the link arrives in their inbox — worth getting right.
+are what a client sees when the link arrives in their inbox, so worth getting right.
 
 **3. Make the thumbnail.**
 
@@ -33,7 +33,7 @@ are what a client sees when the link arrives in their inbox — worth getting ri
   (On a Mac, `chrome` is
   `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`.)
   If you'd rather not touch the command line, open the template in a browser,
-  screenshot it, and crop to 1200 × 630 — same result.
+  screenshot it, and crop to 1200 × 630. Same result.
 - Save the PNG to `../assets/thumbnails/field-note-NN-slug.png`.
 
 **4. Link it in two places:** copy an existing card in `index.html` (this folder's
@@ -48,7 +48,7 @@ once GitHub Pages has been turned on for the repo.
 
 - **Self-contained.** All CSS and JS stay inside the file. The only external
   request is Google Fonts.
-- **Prints properly.** The `@media print` block turns the page into clean A4 —
+- **Prints properly.** The `@media print` block turns the page into clean A4,
   clients can save any issue as a PDF straight from the browser.
 - **Keep the two bars.** The link back to the members area at the top, and the
   copy-link / email row at the bottom. Both are hidden when the page prints.
