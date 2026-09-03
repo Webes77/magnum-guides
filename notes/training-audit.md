@@ -148,6 +148,54 @@ Not training decisions. Flagged because they are large and duplicated.
 
 ---
 
+## Currency findings
+
+Graded against Make Claude Yours, which is the current session, and against the
+six-lever-prompt-builder skill, which holds the canonical framework.
+
+### The 6 Levers order is wrong in the newest document
+
+`six-lever-prompt-builder/SKILL.md`, line 26:
+
+> **The six labels are fixed.** Role, Context, Constraints, Tone, Format, Output.
+
+| Document | Date | Order taught | Verdict |
+|---|---|---|---|
+| Getting Started with Claude | 29 Mar 2026 | Role, Context, Constraints, Tone, Format, Output | **Correct** |
+| AI-Foundations-Base-v2 | 15 Jun 2026 | Role, Context, **Output**, Constraints, Tone, Format | **Wrong.** Output moved from sixth to third. |
+
+The newer file introduced the error. Fix before any of this is taught again.
+
+### Neither trusted document is wholly current
+
+**AI-Foundations-Base-v2 (15 Jun).** The better teaching. Claude-first,
+industry-neutral, a capability map, a live demo slot, and it fixed a real flaw
+in the master prompt build by making it interview-based rather than relying on
+chat history a new user does not have. Carries the wrong lever order. Teaches
+loading a master prompt into each new chat, which the account instructions box
+has since replaced. No account instructions, no skills, no privacy settings.
+
+**Getting Started with Claude (29 Mar).** Correct lever order. Session 1 of 3,
+pairing with the Connectors/Cowork and Artifacts documents. Dated on specifics:
+a 200k context window claim, a Claude versus ChatGPT comparison table that ages
+badly, and the master prompt built from "everything you know about me from our
+conversations", which fails from a cold start.
+
+**So the fix is a merge, not a choice.** Take the June teaching structure, put
+back the March lever order, and add what neither has: account instructions,
+skills, connectors, the privacy settings and Cowork as it works now.
+
+### Against the current session
+
+Make Claude Yours covers: privacy and memory settings, the account instructions
+box, voice input, models, connectors, projects with files, Cowork with its own
+instructions, and skills.
+
+Neither Drive document covers the account instructions box, skills, or the
+privacy settings. That is the gap.
+
+---
+
 ## What the dates say
 
 Every file in The Big 6 is January or February 2026. Seven months old.
