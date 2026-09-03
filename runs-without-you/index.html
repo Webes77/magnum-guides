@@ -46,7 +46,8 @@ button{font:inherit;cursor:pointer}
 button:focus-visible,a:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
 
 header{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#C9BFAF}
-header .brand{color:#EEE6D3;border-bottom:1px solid #EEE6D3;padding-bottom:2px}
+header .brand{color:#EEE6D3;border-bottom:1px solid #EEE6D3;padding-bottom:2px;text-decoration:none}
+header .brand:hover{color:#F0A288;border-bottom-color:#F0A288}
 header .count{color:#EEE6D3}
 
 main{flex:1;display:flex;padding:0 40px 8px;overflow:hidden}
@@ -163,7 +164,7 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 </head>
 <body>
 <header>
-  <span class="brand">MAGNUM AI</span>
+  <a class="brand" href="../">MAGNUM AI</a>
   <span class="section" id="sec"></span>
   <span class="count" id="count"></span>
 </header>
@@ -419,7 +420,7 @@ function show(n){
   document.getElementById('sec').textContent=S[cur].sec;
   document.getElementById('count').textContent=cur===0?'':`${cur} / ${slides.length-1}`;
   document.getElementById('fill').style.width=(cur/(slides.length-1)*100)+'%';
-  location.hash=cur?('#'+cur):'';
+  history.replaceState(null,'',cur?('#'+cur):location.pathname);
   slides[cur].scrollTop=0;
 }
 document.getElementById('next').onclick=()=>show(cur+1);
