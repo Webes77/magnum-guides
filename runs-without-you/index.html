@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work That Runs Without You · Magnum AI</title>
+<meta name="description" content="Scheduled tasks in Cowork. What earns a timer, how to brief a job that cannot ask you a question, and how to stop one quietly going bad.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/runs-without-you/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Work That Runs Without You">
+<meta property="og:description" content="Set it once. It runs without you. Session three, on scheduled tasks in Cowork.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/runs-without-you/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/runs-without-you.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Work That Runs Without You, a Magnum AI session deck">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Work That Runs Without You">
+<meta name="twitter:description" content="Set it once. It runs without you. Session three, on scheduled tasks in Cowork.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/runs-without-you.jpg">
+<meta name="theme-color" content="#4A423C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEE6D3;
+  --paper-2:#E4DAC4;
+  --ink:#1E1B17;
+  --body:#2B2823;
+  --rust:#B8452A;
+  --olive:#6C7A3F;
+  --olive-2:#546230;
+  --char:#3A3630;
+  --mute:#6F675C;
+  --rule:#1E1B17;
+  --grid:rgba(120,90,60,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#4A423C;color:var(--body);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:18px;line-height:1.45}
+body{display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#C9BFAF}
+header .brand{color:#EEE6D3;border-bottom:1px solid #EEE6D3;padding-bottom:2px}
+header .count{color:#EEE6D3}
+
+main{flex:1;display:flex;padding:0 40px 8px;overflow:hidden}
+#deck{flex:1;background:var(--ink);padding:10px;display:flex;overflow:hidden}
+.slide{flex:1;display:none;padding:44px 64px 56px;overflow:auto;position:relative;
+  background:var(--paper);
+  background-image:radial-gradient(var(--grid) 1.2px, transparent 1.3px),linear-gradient(rgba(120,90,60,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(120,90,60,.06) 1px,transparent 1px);
+  background-size:26px 26px,26px 26px,26px 26px;
+  border:3px solid var(--paper);box-shadow:inset 0 0 0 1px var(--ink)}
+.slide.on{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-content:start}
+.slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:minmax(320px,6fr) minmax(360px,6fr)}
+.slide.tiles.on{grid-template-columns:minmax(0,1fr)}
+
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px}
+.kicker::after{content:"";flex:1;height:2px;background:var(--ink);max-width:420px}
+h1{font-family:"Oswald",sans-serif;font-weight:600;font-size:58px;line-height:.98;text-transform:uppercase;letter-spacing:-.005em;max-width:18ch;color:var(--ink);margin-top:10px}
+h1 .n{display:none}
+h1 em{font-style:normal;color:var(--rust)}
+.cover h1{font-size:132px;max-width:12ch;line-height:.92}
+.cover.has-fig.on{grid-template-columns:minmax(360px,6fr) minmax(320px,5fr)}
+.cover .sub{font-family:"Oswald",sans-serif;font-weight:500;font-size:30px;text-transform:uppercase;color:var(--rust);margin-top:12px}
+.cover p{font-size:21px;color:var(--body);max-width:40ch;margin-top:18px;line-height:1.5}
+.meta{margin-top:18px;padding-top:14px;border-top:2px solid var(--ink);font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);line-height:2}
+.meta b{color:var(--rust);font-weight:500;margin-right:10px}
+
+ul.points{list-style:none;margin-top:6px;max-width:56ch}
+ul.points li{font-size:24px;line-height:1.35;padding:12px 0 12px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
+ul.points li:last-child{border-bottom:2px solid var(--ink)}
+ul.points li::before{content:"";position:absolute;left:0;top:25px;width:18px;height:3px;background:var(--rust)}
+ul.points li b{color:var(--rust);font-weight:500}
+ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:var(--ink);background:#fff8;border:1px solid var(--ink);padding:1px 6px}
+.note{margin-top:8px;color:var(--mute);font-size:17px;max-width:52ch}
+.left{display:flex;flex-direction:column;gap:18px;min-width:0}
+.has-prompt h1,.has-fig h1{font-size:44px}
+.has-prompt ul.points li{font-size:19px;padding:10px 0 10px 28px}
+.has-prompt ul.points li::before{top:19px}
+.has-fig ul.points li{font-size:21px}
+
+/* figure panel */
+.fig{background:var(--rust);border:3px solid var(--ink);padding:26px 26px 18px;display:flex;flex-direction:column;gap:14px;align-self:start;box-shadow:6px 6px 0 var(--ink)}
+.fig svg{width:100%;height:auto;max-height:50vh;display:block}
+.fig .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);border-top:1px solid rgba(238,230,211,.5);padding-top:10px;line-height:1.7}
+
+/* tile grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.tile{padding:20px 20px 24px;color:var(--paper);min-height:150px;border:3px solid var(--ink)}
+.tile h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
+.tile p{font-size:19px;line-height:1.35}
+.tile.o{background:var(--olive)}.tile.t{background:var(--rust)}.tile.c{background:var(--char)}
+
+/* before / after split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.split div{border:3px solid var(--ink);background:var(--paper-2);padding:0;box-shadow:5px 5px 0 var(--ink)}
+.split h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:20px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;color:var(--paper);border-bottom:3px solid var(--ink)}
+.split .b h3{background:var(--char)}.split .a h3{background:var(--olive)}
+.split p{font-family:"IBM Plex Mono",monospace;font-size:17px;line-height:1.5;margin:14px 20px;color:var(--ink)}
+
+/* chevron steps */
+.chev{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.chev span{background:var(--rust);color:var(--paper);font-family:"Oswald",sans-serif;font-size:17px;letter-spacing:.06em;padding:14px 26px 14px 30px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);text-transform:uppercase}
+.chev span:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
+.chev span:nth-child(even){background:var(--char)}
+.chev span:last-child{background:var(--olive)}
+
+/* prompt pane */
+.pane{background:var(--paper-2);border:3px solid var(--ink);display:flex;flex-direction:column;min-height:0;min-width:0;box-shadow:6px 6px 0 var(--ink)}
+.pane-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
+.copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 16px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;transition:background .15s}
+.copy:hover{background:#d2553a}
+.copy.done{background:var(--olive)}
+pre{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.55;white-space:pre-wrap;padding:18px 20px;overflow:auto;flex:1;color:var(--ink)}
+.after{border-top:3px solid var(--ink);background:var(--paper)}
+.after summary{padding:12px 18px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.after summary::after{content:"+";color:var(--rust);font-size:20px;line-height:1}
+.after[open] summary::after{content:"\2212"}
+.after ol{list-style:none;counter-reset:s;padding:0 18px 16px;font-size:16px;color:var(--body)}
+.after ol li{counter-increment:s;margin:8px 0;padding-left:44px;position:relative;min-height:28px}
+.after ol li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:3px 6px;letter-spacing:.1em}
+
+.foot{position:absolute;left:64px;right:64px;bottom:18px;border-top:2px solid var(--ink);padding-top:8px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.foot b{color:var(--ink);font-weight:500}
+
+footer{display:flex;align-items:center;justify-content:space-between;padding:12px 40px}
+.nav{display:flex;gap:8px}
+.nav button{background:transparent;color:#EEE6D3;border:1px solid #8C8275;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+.nav button:hover{border-color:#EEE6D3}
+.bar{flex:1;height:3px;background:#6B625A;margin:0 28px;position:relative}
+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
+.hint{color:#9C9285;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
+
+#menu{position:fixed;inset:0;background:rgba(74,66,60,.97);display:none;padding:60px 80px;overflow:auto;color:#EEE6D3}
+#menu.on{display:block}
+#menu h2{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;color:#C9BFAF}
+#menu ol{list-style:none;columns:2;column-gap:60px;max-width:1000px}
+#menu li{break-inside:avoid;margin:0 0 6px}
+#menu li.sec{font-family:"IBM Plex Mono",monospace;color:#C9BFAF;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
+#menu button{background:none;border:0;color:#EEE6D3;font-size:18px;text-align:left;padding:4px 0}
+#menu button:hover{color:#F0A288}
+#menu .close{position:fixed;top:20px;right:40px;color:#EEE6D3;background:transparent;border:1px solid #C9BFAF;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+#menu .close:hover{border-color:#EEE6D3;color:#F0A288}
+
+@media (max-width:1000px){
+  main{padding:0 12px 8px}
+  .slide{padding:28px 22px 60px}
+  .slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:1fr}
+  .grid,.split{grid-template-columns:1fr}
+  h1{font-size:38px}.cover h1{font-size:56px}
+  ul.points li{font-size:20px}
+  .foot{left:22px;right:22px}
+  header,footer{padding:12px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">MAGNUM AI</span>
+  <span class="section" id="sec"></span>
+  <span class="count" id="count"></span>
+</header>
+<main id="deck"></main>
+<footer>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button></div>
+  <div class="bar"><i id="fill"></i></div>
+  <span class="hint">Arrow keys move. SLIDES for the full list.</span>
+</footer>
+<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
+
+<script>
+const P1 = `I want to put one recurring job on a schedule so it runs without
+me. Do not write the schedule yet. Interview me first.
+
+Ask one question at a time and wait for my answer before the next one.
+
+Work out:
+- The job. What gets produced, and what it is for.
+- The trigger. What day and time it should run, and why that time.
+- The inputs. Where the information lives, and whether you can reach it.
+- The judgement. Which decisions in this job are mine and must never be made
+  without me.
+- The delivery. Where the finished thing should end up so I actually see it.
+- The failure. What a bad version of this output would look like.
+
+When you have enough, write me the task brief as one block I can paste
+into a scheduled task. Write it so it works with nobody in the room.
+
+Mark anything you had to assume as [NEEDS CONFIRMING].`;
+
+const P2 = `These rules apply to every job you run for me on a schedule.
+
+You cannot ask me a question while this runs, so do not wait for one.
+
+When something is missing or ambiguous, choose the most reasonable option,
+carry on, and list every choice you made at the top of the output under
+ASSUMPTIONS.
+
+When you could not reach a source, or the source was empty, say so under
+COULD NOT VERIFY. Never fill the gap with a plausible guess.
+
+Never send anything to anyone. Produce the work and stop.
+
+Put the date and time you ran at the top of every output.
+
+If the job cannot be done properly, say that in one line instead of
+producing a weak version of it.`;
+
+const P3 = `Build me a Monday morning brief.
+
+Every Monday at 6am, before I start, produce one page that tells me what
+this week actually needs from me.
+
+Pull from: my calendar for the next seven days, and any email from the last
+seven days that is waiting on a reply from me.
+
+Structure it in this order:
+1. What is locked in. Meetings and commitments with times.
+2. What is waiting on me. Anything unanswered, oldest first, with how many
+   days it has been sitting.
+3. What is at risk. Anything with a date this week that has no meeting and no
+   recent activity against it.
+
+Rules:
+- Facts only. Do not motivate me, do not summarise the summary.
+- Name people and jobs directly.
+- If a section is empty, write "Nothing" and move on.
+- Under 400 words.`;
+
+const P4 = `Review the scheduled tasks I have running.
+
+For each one, tell me:
+- What it produces, in one line.
+- Whether I have actually used the last three outputs, based on what I tell
+  you when you ask.
+- Whether the brief still matches the job, or whether the job has moved.
+- One specific change that would make the output more useful, or a
+  recommendation to switch it off.
+
+Ask me about them one at a time.
+
+Be blunt. A task I do not read is worse than no task, because it looks like
+coverage.`;
+
+const F = {};
+F.cover = ['<svg viewBox="0 0 420 380"><circle cx="130" cy="130" r="82" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><path d="M130 78v52l36 22" fill="none" stroke="#1E1B17" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="130" cy="130" r="7" fill="#B8452A"/><path d="M232 130 H300" stroke="#1E1B17" stroke-width="5"/><path d="M286 118l14 12-14 12" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="196" y="228" width="190" height="128" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="218" y="256" width="96" height="12" fill="#1E1B17"/><rect x="218" y="284" width="146" height="8" fill="#3A3630"/><rect x="218" y="302" width="120" height="8" fill="#3A3630"/><rect x="218" y="326" width="72" height="10" fill="#B8452A"/><circle cx="84" cy="292" r="46" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M66 292l12 14 24-28" fill="none" stroke="#EEE6D3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ 'Fig. 01 / the clock does the opening<br>You read the result, you do not build it'];
+F.filter = ['<svg viewBox="0 0 420 380"><g fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"><rect x="30" y="44" width="112" height="72"/><rect x="30" y="150" width="112" height="72"/><rect x="30" y="256" width="112" height="72"/></g><g fill="#3A3630"><rect x="48" y="66" width="66" height="9"/><rect x="48" y="86" width="46" height="7"/><rect x="48" y="172" width="66" height="9"/><rect x="48" y="192" width="52" height="7"/><rect x="48" y="278" width="66" height="9"/><rect x="48" y="298" width="40" height="7"/></g><path d="M142 80 H206 L206 186 H240" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M142 186 H240" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M142 292 H206 L206 186" fill="none" stroke="#1E1B17" stroke-width="4" stroke-dasharray="9 8"/><path d="M226 174l14 12-14 12" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="252" y="132" width="134" height="108" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><text x="319" y="180" text-anchor="middle" font-family="Oswald" font-size="19" fill="#EEE6D3">SAME</text><text x="319" y="206" text-anchor="middle" font-family="Oswald" font-size="19" fill="#EEE6D3">EVERY TIME</text><path d="M108 270l32 32M140 270l-32 32" stroke="#B8452A" stroke-width="6" stroke-linecap="round"/></svg>',
+ 'Fig. 02 / three tests, then it earns a schedule<br>Most jobs fail the first one'];
+F.drift = ['<svg viewBox="0 0 420 380"><g stroke="#1E1B17" stroke-width="4" fill="#EEE6D3"><rect x="28" y="56" width="86" height="112"/><rect x="140" y="56" width="86" height="112"/><rect x="252" y="56" width="86" height="112"/></g><g fill="#3A3630"><rect x="44" y="80" width="54" height="8"/><rect x="44" y="98" width="42" height="7"/><rect x="44" y="116" width="50" height="7"/><rect x="156" y="80" width="54" height="8"/><rect x="156" y="98" width="42" height="7"/><rect x="268" y="80" width="54" height="8"/></g><rect x="44" y="142" width="34" height="9" fill="#6C7A3F"/><rect x="156" y="142" width="34" height="9" fill="#6C7A3F"/><rect x="268" y="142" width="34" height="9" fill="#B8452A"/><text x="71" y="196" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" letter-spacing="1" fill="#6F675C">WEEK 1</text><text x="183" y="196" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" letter-spacing="1" fill="#6F675C">WEEK 6</text><text x="295" y="196" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" letter-spacing="1" fill="#6F675C">WEEK 20</text><rect x="28" y="240" width="310" height="106" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="52" y="284" font-family="Oswald" font-size="21" fill="#1E1B17">STILL RUNNING.</text><text x="52" y="316" font-family="Oswald" font-size="21" fill="#B8452A">NOBODY READING.</text></svg>',
+ 'Fig. 03 / the failure is silent<br>It keeps producing long after it stops helping'];
+F.next = ['<svg viewBox="0 0 420 380"><rect x="30" y="52" width="150" height="104" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="105" y="98" text-anchor="middle" font-family="Oswald" font-size="19" fill="#1E1B17">ONE JOB</text><text x="105" y="126" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" fill="#6F675C">ON A TIMER</text><rect x="240" y="52" width="150" height="104" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><text x="315" y="98" text-anchor="middle" font-family="Oswald" font-size="19" fill="#EEE6D3">A SYSTEM</text><text x="315" y="126" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" fill="#EEE6D3">JOBS THAT TALK</text><path d="M180 104 H240" stroke="#1E1B17" stroke-width="5"/><path d="M226 92l14 12-14 12" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><g fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"><circle cx="86" cy="286" r="34"/><circle cx="210" cy="286" r="34"/><circle cx="334" cy="286" r="34"/></g><path d="M120 286h56M244 286h56" stroke="#1E1B17" stroke-width="5"/><path d="M164 276l12 10-12 10M288 276l12 10-12 10" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="86" cy="286" r="11" fill="#6C7A3F"/><circle cx="210" cy="286" r="11" fill="#6C7A3F"/><circle cx="334" cy="286" r="11" fill="#B8452A"/></svg>',
+ 'Fig. 04 / one job becomes a chain<br>That is session four'];
+
+const S = [
+{sec:"", cover:true, fig:"cover", h:"Set it once. It runs without you.", pts:[], sub:"Session three · Work That Runs Without You", note:"Scheduled tasks in Cowork. What deserves a timer, how to brief a job that cannot ask you a question, and how to stop one quietly going bad.", meta:[["Works in","Cowork, any paid plan"],["You need","One job you do the same way every week"],["Take-away","This deck, with every prompt in it"]]},
+
+{sec:"Where we are", h:"What you have <em>already</em>", pts:[
+ "Session one: the method. Talk-It-Out, the 6 Levers, telling it to be honest.",
+ "Session two: your account. Instructions, projects, your first skill.",
+ "Both still need you to open something and ask.",
+ "Today the asking stops."]},
+
+{sec:"Where we are", h:"What <em>changes</em> today", pts:[
+ "A scheduled task is a job you describe once and Claude runs on a timer.",
+ "It runs in the cloud. Your laptop can be shut. You can be in a meeting.",
+ "The work is finished and waiting when you look.",
+ "Pro, Max and Team. Not on the free plan."]},
+
+{sec:"What earns a timer", h:"Three <em>tests</em>", fig:"filter", pts:[
+ "One. Same every time. If the shape of the job changes week to week, it is not ready.",
+ "Two. Claude can reach the inputs on its own. Calendar, email, files, a connector.",
+ "Three. A bad output costs you ten minutes, not a client.",
+ "Fails any one of the three, it stays manual."]},
+
+{sec:"What earns a timer", h:"What never gets <em>scheduled</em>", pts:[
+ "Anything that leaves your business without you reading it first.",
+ "Anything priced, quoted or committed to.",
+ "Anything where the judgement is the job.",
+ "Anything you cannot check. If you would not notice it going wrong, do not automate it."]},
+
+{sec:"Setting one up", h:"Where it <em>lives</em>", pts:[
+ "Open the Claude desktop app. Open Cowork.",
+ "Go to the Schedule tab.",
+ "Click New Task.",
+ "Or type /schedule inside a Cowork session and answer the questions.",
+ "Scheduled tasks get everything a normal Cowork task gets. Your connectors, your skills, your instructions."]},
+
+{sec:"Setting one up", h:"How <em>often</em>", pts:[
+ "Hourly, daily, weekly, weekdays, or on demand.",
+ "Pick the time by when you will read it, not by when the work is ready.",
+ "A brief that lands at 6am and gets read at 9am should land at 8am.",
+ "On demand is a saved job you fire by hand. Use it while you are still testing."]},
+
+{sec:"Briefing the job", h:"Nobody is in the <em>room</em>", pts:[
+ "In a chat, a weak brief gets fixed. Claude asks, you answer.",
+ "At 6am on a Monday there is nobody to ask.",
+ "So the brief has to carry every decision in advance.",
+ "This is where the 6 Levers stop being a technique and start being load-bearing: Role, Context, Constraints, Tone, Format, Output."]},
+
+{sec:"Briefing the job", h:"Prompt 1. Build the <em>brief</em>", pts:[
+ "Claude interviews you about one recurring job.",
+ "It works out the trigger, the inputs, the judgement calls and the delivery.",
+ "You get back one block, ready to paste into a scheduled task."],
+ prompt:P1, where:"Runs in a Cowork session", after:[
+ "Answer the questions honestly. Rough answers make a rough task.",
+ "Read the brief it writes. Fix anything marked [NEEDS CONFIRMING].",
+ "Open the Schedule tab. Click New Task. Paste the brief in.",
+ "Set the cadence. Save."]},
+
+{sec:"Briefing the job", h:"Prompt 2. Rules for <em>unattended</em> work", pts:[
+ "One block that applies to every scheduled job you run.",
+ "It stops the two failures that matter: silent guessing, and pleasant filler where a gap should be.",
+ "Assumptions get listed. Gaps get named. Nothing gets sent."],
+ prompt:P2, where:"Paste at the top of every scheduled task", after:[
+ "Paste this above the job brief inside the task, not in your account instructions.",
+ "Scheduled work needs rules that chat work does not.",
+ "Read the ASSUMPTIONS block on the first three runs. That is where you find out what your brief left out."]},
+
+{sec:"Your first schedule", h:"Prompt 3. The <em>Monday</em> brief", pts:[
+ "One page, every Monday, before you start.",
+ "Locked in, waiting on you, at risk. In that order.",
+ "Facts only. No encouragement, no summary of the summary."],
+ prompt:P3, where:"Runs as a scheduled task", after:[
+ "This needs your calendar and email connected. If they are not, connect them first.",
+ "Set it to weekly, Monday, an hour before you actually start.",
+ "Run it once on demand before you schedule it. Read what comes back.",
+ "Change the three headings to match how you actually think about your week."]},
+
+{sec:"Your first schedule", h:"Where the output <em>lands</em>", pts:[
+ "A task that delivers somewhere you never look has not run.",
+ "Pick the place you already open: your email, a document you keep, the app itself.",
+ "Do not invent a new home for it. New homes get abandoned.",
+ "Never let a scheduled task send anything to anyone else. That is a rule, not a preference."]},
+
+{sec:"Keeping it honest", h:"The <em>silent</em> failure", fig:"drift", pts:[
+ "Automation does not break loudly. It drifts.",
+ "The job stays the same, your business moves, and the output slowly stops matching.",
+ "It keeps arriving. It keeps looking like coverage. Nobody reads it.",
+ "A task you do not read is worse than no task, because you think it is handled."]},
+
+{sec:"Keeping it honest", h:"Prompt 4. The monthly <em>review</em>", pts:[
+ "Once a month, go through what is running.",
+ "Kept, changed, or switched off. Those are the only three outcomes.",
+ "Switching one off is a good result, not a failure."],
+ prompt:P4, where:"Runs in a Cowork session", after:[
+ "Put this in your calendar as a recurring fifteen minutes, first Monday of the month.",
+ "Be honest about whether you read the last three outputs.",
+ "Switch off anything you did not."]},
+
+{sec:"Keeping it honest", h:"Start with <em>one</em>", pts:[
+ "One scheduled task. Read every output for two weeks.",
+ "Fix the brief twice in that fortnight. You will need to.",
+ "Only then add a second.",
+ "Five half-working schedules produce noise you learn to ignore. That habit is expensive to break."]},
+
+{sec:"Close", h:"Four things to <em>keep</em>", pts:[
+ "Three tests: same every time, reachable inputs, cheap to get wrong.",
+ "The brief carries every decision, because nobody is there to ask.",
+ "It delivers where you already look, and it sends nothing to anyone.",
+ "Review monthly. Switching one off counts as a win."]},
+
+{sec:"Close", h:"Before <em>next</em> time", pts:[
+ "Put one job on a timer this week. Just one.",
+ "Read all of its outputs.",
+ "Send me the third one and tell me what you changed after the first.",
+ "Under ten minutes."]},
+
+{sec:"Close", h:"One job is not a <em>system</em>", fig:"next", pts:[
+ "You now have work that happens without you opening anything.",
+ "Right now each job runs alone and hands you the result.",
+ "Next: jobs that hand each other the result. One finishes, the next starts.",
+ "That is session four."]}
+];
+
+const deck = document.getElementById('deck');
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+S.forEach((s,i)=>{
+  const el = document.createElement('section');
+  el.className = 'slide' + (s.prompt?' has-prompt':'') + (s.cover?' cover':'') + (s.tiles?' tiles':'') + (s.fig?' has-fig':'');
+  const num = i===0 ? '' : `<span class="n">${i}</span>`;
+  let left = `<div class="left">`;
+  if(s.sec) left += `<div class="kicker">${s.sec}</div>`;
+  left += `<h1>${s.h}</h1>`;
+  if(s.sub) left += `<div class="sub">${s.sub}</div>`;
+  if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
+  if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
+  if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3><p>${s.split[0][1]}</p><p>${s.split[0][2]}</p></div><div class="a"><h3>${s.split[1][0]}</h3><p>${s.split[1][1]}</p><p>${s.split[1][2]}</p></div></div>`;
+  if(s.note) left += `<p class="note">${s.note}</p>`;
+  if(s.meta) left += `<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`;
+  left += `</div>`;
+  let right = '';
+  if(s.fig){ right = `<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`; }
+  if(s.prompt){
+    right = `<div class="pane">
+      <div class="pane-head"><span class="where">${s.where}</span><button class="copy" data-i="${i}">COPY PROMPT</button></div>
+      <pre>${esc(s.prompt)}</pre>
+      <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
+    </div>`;
+  }
+  const badge = `<div class="foot"><span>Magnum AI / Session three</span><span>${s.sec||'Scheduling'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
+  el.innerHTML = left + right + badge;
+  deck.appendChild(el);
+});
+
+const slides=[...document.querySelectorAll('.slide')];
+let cur=0;
+function show(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
+  document.getElementById('sec').textContent=S[cur].sec;
+  document.getElementById('count').textContent=cur===0?'':`${cur} / ${slides.length-1}`;
+  document.getElementById('fill').style.width=(cur/(slides.length-1)*100)+'%';
+  location.hash=cur?('#'+cur):'';
+  slides[cur].scrollTop=0;
+}
+document.getElementById('next').onclick=()=>show(cur+1);
+document.getElementById('prev').onclick=()=>show(cur-1);
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
+  if(e.key==='m'||e.key==='M'){toggleMenu();}
+});
+
+document.querySelectorAll('.copy').forEach(b=>{
+  b.onclick=async()=>{
+    const t=S[+b.dataset.i].prompt;
+    try{await navigator.clipboard.writeText(t);}
+    catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+    b.textContent='COPIED';b.classList.add('done');
+    setTimeout(()=>{b.textContent='COPY PROMPT';b.classList.remove('done');},1800);
+  };
+});
+
+const ml=document.getElementById('menulist');
+let lastSec=null;
+S.forEach((s,i)=>{
+  if(i===0)return;
+  if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
+  const li=document.createElement('li');
+  const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
+  li.appendChild(b);ml.appendChild(li);
+});
+function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
+
+show(parseInt(location.hash.slice(1))||0);
+</script>
+</body>
+</html>
