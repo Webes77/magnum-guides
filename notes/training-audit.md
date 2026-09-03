@@ -90,6 +90,62 @@ Swept 2 September 2026. Two of three trusted folders enumerated.
 | PP ChatGPT eco Series | 9 Feb 2026 | AI | Folder, not yet opened. |
 | Backups | 14 Mar 2026 | — | Folder. Backups of the above. Review last, expect to retire whole. |
 
+### ChatGPT Ecosystem Training / Backups
+`... / ChatGPT Ecosystem Training / Backups`
+
+| File | Last touched | Stream | Read |
+|---|---|---|---|
+| ChatGPT Power Features 3 — Training Manual Copy | 9 Feb 2026 | AI | **Not a duplicate.** No Power Features module exists outside this folder. This is the only copy. |
+| MODULE 1 — ChatGPT Foundations Back Up Copy | 5 Feb 2026 | AI | Duplicate of Module 1. 5.4KB against the original's larger size. Likely partial. |
+| ChatGPT Session 4: Build Custom GPTs copy | 5 Feb 2026 | AI | Duplicate of the v3 markdown in the parent folder. |
+
+### ChatGPT Ecosystem Training / PP ChatGPT eco Series
+
+| File | Last touched | Stream | Read |
+|---|---|---|---|
+| ChatGPT_Projects_—_Build_Your_AI_Brains.pptx | 4 Feb 2026 | AI | **131.5 MB.** The largest single file found. Almost certainly uncompressed media inside. |
+
+---
+
+## Source 1b: the sales stream
+
+Found inside client folders. Read for generic sales method only. Nothing naming
+the client, their product or their campaign ships.
+
+### Generic sales method, liftable
+
+| File | Last touched | Where | Read |
+|---|---|---|---|
+| Tonality_Guide_Stage_by_Stage.md | 30 Mar 2026 | RebuildReliefFieldManual | 11.9KB. Tonality is method, not client. Largest of the four. Read first. |
+| Tonality_Training_Trainer_Notes.md | 30 Mar 2026 | RebuildReliefFieldManual | Trainer notes for the above. |
+| Tonality_Training_Outline.md | 30 Mar 2026 | RebuildReliefFieldManual | The outline. Three files covering one subject. |
+| Tonality_Training_Rebuild_Relief.pptx | 30 Mar 2026 | Rebuild Relief / Training | 215KB. Client-named but the subject is generic. Check how much is theirs. |
+| Two-Tools-That-Change-the-Conversation-NOTES.pptx | 6 Apr 2026 | Rebuild Relief / Training | 9.4MB. Title reads generic. Needs opening to confirm. |
+| Rebuild_Relief_—_Hybrid_Sales_Discovery_Session (1).pptx | 6 Apr 2026 | Rebuild Relief / Training | 2.7MB. Discovery method may lift; the client framing will not. |
+
+### Client-specific, out of scope for the members area
+
+Listed so the audit is complete, not as removal candidates. These stay where
+they are.
+
+RebuildRelief_FieldManual.md, RebuildRelief_Playbook_v6.md,
+RebuildRelief_Scripts_09Jun2026.html, ReferralSession_Brief.html,
+FieldManual_ChapterMap and FlowAudit, the four rebuild-relief-training skill
+versions, field-manual-formatter_SKILL.md, CLAUDE.md, CleanupReport,
+og-image.jpg.
+
+---
+
+## Storage worth knowing about
+
+Not training decisions. Flagged because they are large and duplicated.
+
+| Item | Size | Note |
+|---|---|---|
+| ChatGPT_Projects_—_Build_Your_AI_Brains.pptx | 131.5 MB | One file. |
+| skill_eval_review.html | 17.3 MB | A generated review page, kept as an artefact. |
+| index_v7-deploy .html, four near-identical versions | 11.2 MB total | Live, plus three dated backups from 27 and 28 July. |
+
 ---
 
 ## What the dates say
@@ -108,14 +164,14 @@ current Claude interface existed.
 2. **ChatGPT and Perplexity.** The Big 6 carries dedicated manuals for both.
    Make Claude Yours is Claude only, the Field Notes say "ChatGPT or Claude".
    Decide what you still teach before deciding what to keep.
-3. **The sales stream.** No item tagged SALES has appeared yet, because the
-   sales material lives in the client folders. It needs a home before it can
-   be sorted.
+3. **The sales stream is real and it has no home.** Six liftable items found,
+   four of them on tonality alone. This is a second product sitting inside a
+   client folder. Decide whether it becomes a sales area before deciding what
+   to keep.
 
 ## Still to sweep
 
+- Broadbent and GIG, filtered for generic sales training only
 - Training Materials / Privacy Documents (not training, listed for completeness)
-- PP ChatGPT eco Series, Backups
-- Rebuild Relief, Broadbent, GIG, filtered for generic sales training only
 - Gamma presentations
 - The desktop folders, once uploaded
