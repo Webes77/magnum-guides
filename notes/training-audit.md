@@ -11,8 +11,41 @@ company or campaign. Out: everything else in Drive.
 sitting in one pile and they are two different products. The members area is
 the home for the AI stream. The sales stream has no home yet.
 
-**Nothing is deleted from this document.** Removal happens only after sign-off,
-and only into Drive's trash, which is recoverable for 30 days.
+## Deletion rules
+
+**Nothing in Google Drive has been deleted, moved or renamed during this audit.**
+Every call is read-only search and listing. That stays true until a named list
+is signed off.
+
+When removal does happen it goes to Drive's trash, which is recoverable for 30
+days. It is never a permanent delete.
+
+### Never touch, under any circumstances
+
+These are out of scope. They are not in this inventory, they will never appear
+on a removal list, and no audit step reads or acts on them.
+
+- **Fairmont**, everything. Product images, catalogue data, brand folder,
+  matched and scraped image sets, session material.
+- Every other client folder: Broadbent, GIG, Rebuild Relief, Merritt, Ottoman,
+  EZFurn, Visionchart, Schoolfurn, DDK, Body IQ, ELC, The Intro.
+- Netlify deploy folders, fm_build, repo_build, and the synced .git folders.
+- Admin & Finance, Personal, Staff Docs, signed forms, privacy documents.
+- Meet Recordings.
+
+Anything not explicitly listed in the inventory below is in the never-touch
+set by default. The inventory is an allow-list, not a to-do list.
+
+### Client material
+
+Client training is not members area material. It only becomes usable if it can
+be lifted to a generic industry guide, in the way the buyer's agents guide
+works: the trade, not the client.
+
+Ruled on 2 September 2026:
+
+- **THE AUDREY TWINS — MASTER BRAIN.** Client. Read only for whether an
+  industry guide can be lifted out of it. The named version never ships.
 
 ---
 
@@ -46,7 +79,7 @@ Swept 2 September 2026. Two of three trusted folders enumerated.
 | ChatGPT_Session_4_Build_Custom_GPTs_Manual_v3.md | 5 Feb 2026 | AI | Custom GPTs. Check the interface still matches. |
 | Magnum AI Perplexity Training Guide | 2 Feb 2026 | AI | 92KB. |
 | Magnum Ai Perplexity Training Guide Copy | 28 Jan 2026 | AI | 16KB. **Duplicate, and much smaller.** Likely partial. |
-| THE AUDREY TWINS — MASTER BRAIN | 19 Feb 2026 | ? | **Needs your call.** Reads as a client name, sitting in a trusted folder. |
+| THE AUDREY TWINS — MASTER BRAIN | 19 Feb 2026 | AI | **Client.** Confirmed 2 Sep. Read only for a liftable industry guide. Never ships named. |
 
 ### ChatGPT Ecosystem Training
 `... / The Big 6 ... / ChatGPT Ecosystem Training`
@@ -69,11 +102,9 @@ two and a half months before Make Claude Yours, which is the current session.
 Nothing here has been touched since the members area, the house style, or the
 current Claude interface existed.
 
-## Three things to decide
+## Things to decide
 
-1. **THE AUDREY TWINS — MASTER BRAIN.** Client material in a trusted folder, or
-   something else? There is also an Audrey-Twins-Session-Notes.pdf elsewhere in
-   Drive.
+1. ~~THE AUDREY TWINS.~~ Settled 2 Sep: client. See the client material rule above.
 2. **ChatGPT and Perplexity.** The Big 6 carries dedicated manuals for both.
    Make Claude Yours is Claude only, the Field Notes say "ChatGPT or Claude".
    Decide what you still teach before deciding what to keep.
