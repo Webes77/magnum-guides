@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Foundations · Magnum AI</title>
+<meta name="description" content="Stop prompting. Start talking. How AI actually works, the 6 Levers, Talk-It-Out, and how to make it tell you the truth.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/ai-foundations/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="AI Foundations">
+<meta property="og:description" content="Stop prompting. Start talking. The session before the setup session.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/ai-foundations/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/ai-foundations.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI Foundations, a Magnum AI session deck">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Foundations">
+<meta name="twitter:description" content="Stop prompting. Start talking. The session before the setup session.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/ai-foundations.jpg">
+<meta name="theme-color" content="#4A423C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEE6D3;
+  --paper-2:#E4DAC4;
+  --ink:#1E1B17;
+  --body:#2B2823;
+  --rust:#B8452A;
+  --olive:#6C7A3F;
+  --olive-2:#546230;
+  --char:#3A3630;
+  --mute:#6F675C;
+  --rule:#1E1B17;
+  --grid:rgba(120,90,60,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#4A423C;color:var(--body);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:18px;line-height:1.45}
+body{display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#C9BFAF}
+header .brand{color:#EEE6D3;border-bottom:1px solid #EEE6D3;padding-bottom:2px}
+header .count{color:#EEE6D3}
+
+main{flex:1;display:flex;padding:0 40px 8px;overflow:hidden}
+#deck{flex:1;background:var(--ink);padding:10px;display:flex;overflow:hidden}
+.slide{flex:1;display:none;padding:44px 64px 56px;overflow:auto;position:relative;
+  background:var(--paper);
+  background-image:radial-gradient(var(--grid) 1.2px, transparent 1.3px),linear-gradient(rgba(120,90,60,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(120,90,60,.06) 1px,transparent 1px);
+  background-size:26px 26px,26px 26px,26px 26px;
+  border:3px solid var(--paper);box-shadow:inset 0 0 0 1px var(--ink)}
+.slide.on{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-content:start}
+.slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:minmax(320px,6fr) minmax(360px,6fr)}
+.slide.tiles.on{grid-template-columns:minmax(0,1fr)}
+
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px}
+.kicker::after{content:"";flex:1;height:2px;background:var(--ink);max-width:420px}
+h1{font-family:"Oswald",sans-serif;font-weight:600;font-size:58px;line-height:.98;text-transform:uppercase;letter-spacing:-.005em;max-width:18ch;color:var(--ink);margin-top:10px}
+h1 .n{display:none}
+h1 em{font-style:normal;color:var(--rust)}
+.cover h1{font-size:132px;max-width:12ch;line-height:.92}
+.cover.has-fig.on{grid-template-columns:minmax(360px,6fr) minmax(320px,5fr)}
+.cover .sub{font-family:"Oswald",sans-serif;font-weight:500;font-size:30px;text-transform:uppercase;color:var(--rust);margin-top:12px}
+.cover p{font-size:21px;color:var(--body);max-width:40ch;margin-top:18px;line-height:1.5}
+.meta{margin-top:18px;padding-top:14px;border-top:2px solid var(--ink);font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);line-height:2}
+.meta b{color:var(--rust);font-weight:500;margin-right:10px}
+
+ul.points{list-style:none;margin-top:6px;max-width:56ch}
+ul.points li{font-size:24px;line-height:1.35;padding:12px 0 12px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
+ul.points li:last-child{border-bottom:2px solid var(--ink)}
+ul.points li::before{content:"";position:absolute;left:0;top:25px;width:18px;height:3px;background:var(--rust)}
+ul.points li b{color:var(--rust);font-weight:500}
+ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:var(--ink);background:#fff8;border:1px solid var(--ink);padding:1px 6px}
+.note{margin-top:8px;color:var(--mute);font-size:17px;max-width:52ch}
+.left{display:flex;flex-direction:column;gap:18px;min-width:0}
+.has-prompt h1,.has-fig h1{font-size:44px}
+.has-prompt ul.points li{font-size:19px;padding:10px 0 10px 28px}
+.has-prompt ul.points li::before{top:19px}
+.has-fig ul.points li{font-size:21px}
+
+/* figure panel */
+.fig{background:var(--rust);border:3px solid var(--ink);padding:26px 26px 18px;display:flex;flex-direction:column;gap:14px;align-self:start;box-shadow:6px 6px 0 var(--ink)}
+.fig svg{width:100%;height:auto;max-height:50vh;display:block}
+.fig .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);border-top:1px solid rgba(238,230,211,.5);padding-top:10px;line-height:1.7}
+
+/* tile grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.tile{padding:20px 20px 24px;color:var(--paper);min-height:150px;border:3px solid var(--ink)}
+.tile h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
+.tile p{font-size:19px;line-height:1.35}
+.tile.o{background:var(--olive)}.tile.t{background:var(--rust)}.tile.c{background:var(--char)}
+
+/* before / after split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.split div{border:3px solid var(--ink);background:var(--paper-2);padding:0;box-shadow:5px 5px 0 var(--ink)}
+.split h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:20px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;color:var(--paper);border-bottom:3px solid var(--ink)}
+.split .b h3{background:var(--char)}.split .a h3{background:var(--olive)}
+.split p{font-family:"IBM Plex Mono",monospace;font-size:17px;line-height:1.5;margin:14px 20px;color:var(--ink)}
+
+/* chevron steps */
+.chev{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.chev span{background:var(--rust);color:var(--paper);font-family:"Oswald",sans-serif;font-size:17px;letter-spacing:.06em;padding:14px 26px 14px 30px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);text-transform:uppercase}
+.chev span:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
+.chev span:nth-child(even){background:var(--char)}
+.chev span:last-child{background:var(--olive)}
+
+/* prompt pane */
+.pane{background:var(--paper-2);border:3px solid var(--ink);display:flex;flex-direction:column;min-height:0;min-width:0;box-shadow:6px 6px 0 var(--ink)}
+.pane-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
+.copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 16px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;transition:background .15s}
+.copy:hover{background:#d2553a}
+.copy.done{background:var(--olive)}
+pre{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.55;white-space:pre-wrap;padding:18px 20px;overflow:auto;flex:1;color:var(--ink)}
+.after{border-top:3px solid var(--ink);background:var(--paper)}
+.after summary{padding:12px 18px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.after summary::after{content:"+";color:var(--rust);font-size:20px;line-height:1}
+.after[open] summary::after{content:"\2212"}
+.after ol{list-style:none;counter-reset:s;padding:0 18px 16px;font-size:16px;color:var(--body)}
+.after ol li{counter-increment:s;margin:8px 0;padding-left:44px;position:relative;min-height:28px}
+.after ol li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:3px 6px;letter-spacing:.1em}
+
+.foot{position:absolute;left:64px;right:64px;bottom:18px;border-top:2px solid var(--ink);padding-top:8px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.foot b{color:var(--ink);font-weight:500}
+
+footer{display:flex;align-items:center;justify-content:space-between;padding:12px 40px}
+.nav{display:flex;gap:8px}
+.nav button{background:transparent;color:#EEE6D3;border:1px solid #8C8275;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+.nav button:hover{border-color:#EEE6D3}
+.bar{flex:1;height:3px;background:#6B625A;margin:0 28px;position:relative}
+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
+.hint{color:#9C9285;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
+
+#menu{position:fixed;inset:0;background:rgba(74,66,60,.97);display:none;padding:60px 80px;overflow:auto;color:#EEE6D3}
+#menu.on{display:block}
+#menu h2{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;color:#C9BFAF}
+#menu ol{list-style:none;columns:2;column-gap:60px;max-width:1000px}
+#menu li{break-inside:avoid;margin:0 0 6px}
+#menu li.sec{font-family:"IBM Plex Mono",monospace;color:#C9BFAF;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
+#menu button{background:none;border:0;color:#EEE6D3;font-size:18px;text-align:left;padding:4px 0}
+#menu button:hover{color:#F0A288}
+#menu .close{position:fixed;top:20px;right:40px;color:#C9BFAF;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em}
+
+@media (max-width:1000px){
+  main{padding:0 12px 8px}
+  .slide{padding:28px 22px 60px}
+  .slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:1fr}
+  .grid,.split{grid-template-columns:1fr}
+  h1{font-size:38px}.cover h1{font-size:56px}
+  ul.points li{font-size:20px}
+  .foot{left:22px;right:22px}
+  header,footer{padding:12px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">MAGNUM AI</span>
+  <span class="section" id="sec"></span>
+  <span class="count" id="count"></span>
+</header>
+<main id="deck"></main>
+<footer>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button></div>
+  <div class="bar"><i id="fill"></i></div>
+  <span class="hint">Arrow keys move. M for the slide list.</span>
+</footer>
+<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE</button><h2>Slides</h2><ol id="menulist"></ol></div>
+
+<script>
+const P1 = `I want your help with a real task, and I would rather talk it
+through than write you a brief.
+
+Interview me. Ask one question at a time and wait for my answer before the next
+one. Work out what I actually need, who it is for, what it has to do, and what
+would make it wrong.
+
+Do not start producing anything until you have enough. When you do, tell me
+what you understood before you hand me the result.
+
+The task is: [say it roughly, out loud, in your own words]`;
+
+const P2 = `From now on, in everything you do for me:
+
+Do not tell me what I want to hear. Tell me what I need to hear.
+Do not protect my ego. Protect my outcome.
+Act in my best interest, even when that means telling me I am wrong.
+
+If you are not sure about something, say so. Do not fill the gap with a guess
+that sounds confident.`;
+
+const P3 = `Before I act on this, take the other side.
+
+Argue against it. Tell me where the logic is weakest, what I have assumed
+without checking, and what could go wrong that I have not accounted for.
+
+Then tell me the things I need to know about this that I have not asked you.`;
+
+const P4 = `You are writing on behalf of a small business owner chasing an
+overdue invoice.
+
+The situation: the invoice is 30 days past due. The client is a good one, we
+want to keep them, and this has never happened before. I have already sent one
+polite reminder and had no reply.
+
+Write the follow-up email. Under 120 words. Warm but not apologetic. Make it
+easy for them to pay and easy for them to tell me if something is wrong. Do not
+threaten anything and do not grovel.
+
+Give me the email only. No preamble.`;
+
+
+const F = {};
+F.cover = ['<svg viewBox="0 0 420 380"><rect x="34" y="40" width="300" height="180" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="58" y="72" width="150" height="14" fill="#1E1B17"/><rect x="58" y="104" width="230" height="8" fill="#3A3630"/><rect x="58" y="122" width="196" height="8" fill="#3A3630"/><rect x="58" y="140" width="214" height="8" fill="#3A3630"/><rect x="58" y="170" width="96" height="10" fill="#B8452A"/><path d="M126 220 L146 250 L106 250 Z" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4" stroke-linejoin="round"/><circle cx="300" cy="292" r="60" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><rect x="272" y="272" width="56" height="8" fill="#EEE6D3"/><rect x="272" y="290" width="40" height="8" fill="#EEE6D3"/><rect x="272" y="308" width="48" height="8" fill="#EEE6D3"/><circle cx="86" cy="300" r="38" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M70 300h32M86 284v32" stroke="#EEE6D3" stroke-width="6" stroke-linecap="round"/></svg>',
+ 'Fig. 01 / you talk, it asks, it builds<br>The method, before the setup'];
+F.levers = ['<svg viewBox="0 0 420 380"><g stroke="#1E1B17" stroke-width="5" stroke-linecap="square"><line x1="40" y1="70" x2="380" y2="70"/><line x1="40" y1="122" x2="380" y2="122"/><line x1="40" y1="174" x2="380" y2="174"/><line x1="40" y1="226" x2="380" y2="226"/><line x1="40" y1="278" x2="380" y2="278"/><line x1="40" y1="330" x2="380" y2="330"/></g><g fill="#3A3630"><rect x="40" y="64" width="230" height="12"/><rect x="40" y="116" width="300" height="12"/><rect x="40" y="168" width="150" height="12"/><rect x="40" y="220" width="196" height="12"/><rect x="40" y="272" width="118" height="12"/></g><rect x="40" y="324" width="264" height="12" fill="#B8452A"/><g fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"><circle cx="270" cy="70" r="17"/><circle cx="340" cy="122" r="17"/><circle cx="190" cy="174" r="17"/><circle cx="236" cy="226" r="17"/><circle cx="158" cy="278" r="17"/></g><circle cx="304" cy="330" r="21" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M294 330l7 8 13-15" fill="none" stroke="#EEE6D3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ 'Fig. 02 / six levers, one diagnostic<br>Weak answer? One of them was missing'];
+F.honest = ['<svg viewBox="0 0 420 380"><rect x="30" y="46" width="180" height="130" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="52" y="72" width="90" height="10" fill="#1E1B17"/><rect x="52" y="96" width="132" height="8" fill="#3A3630"/><rect x="52" y="114" width="108" height="8" fill="#3A3630"/><rect x="52" y="140" width="60" height="8" fill="#6C7A3F"/><rect x="210" y="204" width="180" height="130" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="232" y="230" width="90" height="10" fill="#1E1B17"/><rect x="232" y="254" width="132" height="8" fill="#3A3630"/><rect x="232" y="272" width="108" height="8" fill="#3A3630"/><rect x="232" y="298" width="76" height="8" fill="#B8452A"/><path d="M210 176 L210 204" stroke="#1E1B17" stroke-width="4"/><path d="M120 176 L120 250 L210 250" fill="none" stroke="#1E1B17" stroke-width="4" stroke-dasharray="10 8"/><text x="248" y="196" font-family="IBM Plex Mono" font-size="15" letter-spacing="2" fill="#1E1B17">REDLINE</text></svg>',
+ 'Fig. 03 / ask it to take the other side<br>Agreement is not the same as useful'];
+F.next = ['<svg viewBox="0 0 420 380"><rect x="34" y="60" width="150" height="106" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="109" y="120" text-anchor="middle" font-family="Oswald" font-size="22" fill="#1E1B17">TODAY</text><rect x="236" y="60" width="150" height="106" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><text x="311" y="112" text-anchor="middle" font-family="Oswald" font-size="20" fill="#EEE6D3">NEXT</text><text x="311" y="138" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" fill="#EEE6D3">SET IT UP</text><path d="M184 113 H236" stroke="#1E1B17" stroke-width="5"/><path d="M222 103l14 10-14 10" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="212" width="352" height="128" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="58" y="240" width="140" height="12" fill="#1E1B17"/><rect x="58" y="268" width="280" height="8" fill="#3A3630"/><rect x="58" y="286" width="236" height="8" fill="#3A3630"/><rect x="58" y="310" width="104" height="10" fill="#B8452A"/><circle cx="344" cy="304" r="26" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M332 304l8 9 15-18" fill="none" stroke="#EEE6D3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ 'Fig. 04 / it still does not know you<br>That is the next session'];
+
+const S = [
+{sec:"", cover:true, fig:"cover", h:"Stop prompting. Start talking.", pts:[], sub:"AI Foundations", note:"How it actually works, how to talk to it, and how to make it tell you the truth. Nothing to set up today.", meta:[["Works in","Claude, any paid plan"],["You need","One real task from this week"],["Take-away","This deck, with every prompt in it"]]},
+
+{sec:"Open", h:"What you get from <em>today</em>", pts:[
+ "Why most people get weak answers, and the fix.",
+ "Two ways to talk to it that cover almost everything.",
+ "The 6 Levers, so you can diagnose a bad answer instead of guessing.",
+ "How to stop it agreeing with you.",
+ "One real task, done live."]},
+
+{sec:"Open", h:"The <em>order</em>", chev:["What it is","How to talk","6 Levers","Make it honest","Live"], pts:[
+ "Method today. Setup next session.",
+ "Nothing to install, nothing to configure.",
+ "Bring one real task. You will use it."]},
+
+{sec:"What it is", h:"The simplest <em>explanation</em>", pts:[
+ "It has read virtually everything ever written.",
+ "It learned to predict the most useful next thing to say.",
+ "No magic. Pattern recognition in a very good suit.",
+ "The smartest person you know, no ego, awake at 2am, never charges by the hour."]},
+
+{sec:"What it is", h:"Why most people get <em>weak</em> answers", pts:[
+ "They send a text message and expect a miracle.",
+ "It can only work with what you give it.",
+ "A bad answer is almost always a thin question.",
+ "The whole of today is about making the question better."]},
+
+{sec:"What it is", h:"Put it <em>first</em>, not last", pts:[
+ "Most people reach for it when they are stuck. That is the wrong end.",
+ "Open it at the start of the task, before you have decided how to do it.",
+ "A quote, a stuck email, prepping a meeting, a decision you keep putting off.",
+ "Tools change every few months. This habit does not."]},
+
+{sec:"The full picture", h:"You are using the <em>tip</em>", tiles:[
+ ["o","Think &amp; decide","Brainstorm, coach you, research, summarise long documents, pressure-test a plan, compare options."],
+ ["t","Create &amp; build","Write and edit anything, build documents and SOPs, spreadsheets, images, presentations, checklists."],
+ ["c","Run &amp; connect","Read your email, check your calendar, pull live information, run jobs on a timer, hand off to other tools."]],
+ pts:["Most people use two of these boxes. Find things, write things. That is the surface."]},
+
+{sec:"The full picture", h:"Stop using it like <em>Google</em>", split:[
+ ["Search","“Find me an article about handling a price rise.”","You get links. You still have to do the work."],
+ ["Build","“Write the price rise email to my twelve best customers.”","You get the thing itself, in your words, ready to send."]]},
+
+{sec:"How to talk", h:"Two ways <em>in</em>", pts:[
+ "<b>Ask and refine.</b> Ask once, then steer. “Tighter.” “Less formal.” “Try again, but assume they are annoyed.”",
+ "<b>Talk-It-Out.</b> Let it interview you. You answer, it builds.",
+ "That is the lot. You do not need a catalogue of prompt types.",
+ "If you only remember one, remember Talk-It-Out."]},
+
+{sec:"How to talk", h:"Talk-It-<em>Out</em>", pts:[
+ "You talk faster than you type, and you know more than you can write down cold.",
+ "So stop writing the brief. Let it pull the brief out of you.",
+ "Use voice. Ramble. It tidies.",
+ "Its questions happen to cover all six levers, which is why it works."],
+ prompt:P1, where:"Any new chat, on a real task", after:[
+ "Say the task roughly, out loud. Do not polish it.",
+ "Answer its questions one at a time.",
+ "When it tells you what it understood, correct anything wrong before it builds.",
+ "Compare what comes back to what you would have written yourself."]},
+
+{sec:"How to talk", h:"Why it starts to <em>drift</em>", pts:[
+ "Every conversation has a memory limit.",
+ "The longer one runs, the more it loses of what you said early on.",
+ "When it repeats itself or wanders, that is the signal.",
+ "Fresh task, fresh chat. It costs you nothing."]},
+
+{sec:"The 6 Levers", h:"When the answer is <em>weak</em>", fig:"levers", pts:[
+ "Something was missing from your input. It is nearly always one of six things.",
+ "The 6 Levers is a diagnostic, not a formula.",
+ "You do not pull all six every time.",
+ "You use it when the answer is not good enough, to find what you left out."]},
+
+{sec:"The 6 Levers", h:"The <em>six</em>", tiles:[
+ ["o","01 Role","Who is it being right now?"],
+ ["o","02 Context","What is the situation?"],
+ ["o","03 Constraints","What are the rules?"],
+ ["t","04 Tone","How should it sound?"],
+ ["t","05 Format","How should it be laid out?"],
+ ["c","06 Output","What exactly do you need?"]],
+ pts:["Role, Context, Constraints, Tone, Format, Output. That order, every time."]},
+
+{sec:"The 6 Levers", h:"Role, Context, <em>Constraints</em>", pts:[
+ "<b>Role.</b> Not “a marketing expert.” A specific one: “someone who writes for trades businesses and hates jargon.” Vague role, generic answer.",
+ "<b>Context.</b> Who you are, what has already happened, what you have tried. Without it, it guesses.",
+ "<b>Constraints.</b> The rules that focus it. “Under 120 words.” “No filler.” “If you are unsure, say so.” Constraints do not limit it. They aim it."]},
+
+{sec:"The 6 Levers", h:"Tone, Format, <em>Output</em>", pts:[
+ "<b>Tone.</b> How it should sound. “A smart mate who happens to be an expert.” “Calm, not apologetic.”",
+ "<b>Format.</b> How it is laid out. Answer first. A checklist you can hand over. A table you can scan in thirty seconds.",
+ "<b>Output.</b> The finish line. Not “help me with a quote.” A quote ready to paste into an email, with line items.",
+ "Want a decision, not a menu? Say “tell me what you would do, and why.”"]},
+
+{sec:"The 6 Levers", h:"Same job, two <em>results</em>", split:[
+ ["Thin","“Write me an email chasing an invoice.”","Formal, generic, slightly cold. You will rewrite it, so you have saved nothing."],
+ ["Levered","Role, situation, word count, tone, and what it must not do.","Sendable. The whole point is to stop editing and start sending."]]},
+
+{sec:"Make it honest", h:"The <em>yes-man</em> problem", fig:"honest", pts:[
+ "It is built to be agreeable. Left alone, it tells you what you want to hear.",
+ "Agreeable is comfortable. It is also useless when you are about to make a decision.",
+ "You have to tell it to behave differently. It will.",
+ "Say it once at the top of an important chat, or put it in your instructions later."],
+ prompt:P2, where:"Top of any chat that matters", after:[
+ "Paste it at the start, before you ask for anything.",
+ "Watch what changes. The tone goes flatter and more useful.",
+ "Next session this goes into your account instructions, so you never paste it again."]},
+
+{sec:"Make it honest", h:"<em>Redline</em> your own plan", pts:[
+ "The most valuable thing it does is argue with you.",
+ "Ask it to take the other side, before you commit.",
+ "The last line of this prompt is the one that earns its keep.",
+ "Use it on a quote, a hire, a price rise, a plan you are already sure about."],
+ prompt:P3, where:"After it has given you a plan or a draft", after:[
+ "Read what comes back without defending yourself.",
+ "Most of it you will dismiss. One line usually lands.",
+ "That one line is why you asked."]},
+
+{sec:"Live", h:"One <em>real</em> job", pts:[
+ "The invoice that is thirty days late, from a client you want to keep.",
+ "You have sent one polite reminder. Nothing came back.",
+ "Everyone in this room has this email sitting unwritten.",
+ "Watch which levers get pulled, and when."],
+ prompt:P4, where:"Live, on screen", after:[
+ "Run it. Read what comes back.",
+ "Now change one lever. Make the tone firmer, or drop the word count to 60.",
+ "Run it again. That is the whole method.",
+ "Then do it with your own overdue invoice."]},
+
+{sec:"Close", h:"Four things to <em>keep</em>", pts:[
+ "Open it first, not last.",
+ "Talk-It-Out when you do not know where to start.",
+ "The 6 Levers when the answer is not good enough: Role, Context, Constraints, Tone, Format, Output.",
+ "Tell it to be honest, or it will be pleasant instead."]},
+
+{sec:"Close", h:"Before <em>next</em> time", pts:[
+ "Use Talk-It-Out on one real task this week. Not a test. A real one.",
+ "Screenshot what you said next to what came back.",
+ "Send it to me.",
+ "Under ten minutes."]},
+
+{sec:"Close", h:"It still does not <em>know</em> you", fig:"next", pts:[
+ "Today was method. It works in any tool, on any day.",
+ "But every new chat, it starts from nothing about you or your business.",
+ "Next session we fix that permanently: your account, your instructions, your projects.",
+ "Ninety minutes, and you never introduce yourself again."]}
+];
+
+const deck = document.getElementById('deck');
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+S.forEach((s,i)=>{
+  const el = document.createElement('section');
+  el.className = 'slide' + (s.prompt?' has-prompt':'') + (s.cover?' cover':'') + (s.tiles?' tiles':'') + (s.fig?' has-fig':'');
+  const num = i===0 ? '' : `<span class="n">${i}</span>`;
+  let left = `<div class="left">`;
+  if(s.sec) left += `<div class="kicker">${s.sec}</div>`;
+  left += `<h1>${s.h}</h1>`;
+  if(s.sub) left += `<div class="sub">${s.sub}</div>`;
+  if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
+  if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
+  if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3><p>${s.split[0][1]}</p><p>${s.split[0][2]}</p></div><div class="a"><h3>${s.split[1][0]}</h3><p>${s.split[1][1]}</p><p>${s.split[1][2]}</p></div></div>`;
+  if(s.note) left += `<p class="note">${s.note}</p>`;
+  if(s.meta) left += `<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`;
+  left += `</div>`;
+  let right = '';
+  if(s.fig){ right = `<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`; }
+  if(s.prompt){
+    right = `<div class="pane">
+      <div class="pane-head"><span class="where">${s.where}</span><button class="copy" data-i="${i}">COPY PROMPT</button></div>
+      <pre>${esc(s.prompt)}</pre>
+      <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
+    </div>`;
+  }
+  const badge = `<div class="foot"><span>Magnum AI / AI Foundations</span><span>${s.sec||'Foundations'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
+  el.innerHTML = left + right + badge;
+  deck.appendChild(el);
+});
+
+const slides=[...document.querySelectorAll('.slide')];
+let cur=0;
+function show(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
+  document.getElementById('sec').textContent=S[cur].sec;
+  document.getElementById('count').textContent=cur===0?'':`${cur} / ${slides.length-1}`;
+  document.getElementById('fill').style.width=(cur/(slides.length-1)*100)+'%';
+  location.hash=cur?('#'+cur):'';
+  slides[cur].scrollTop=0;
+}
+document.getElementById('next').onclick=()=>show(cur+1);
+document.getElementById('prev').onclick=()=>show(cur-1);
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
+  if(e.key==='m'||e.key==='M'){toggleMenu();}
+});
+
+document.querySelectorAll('.copy').forEach(b=>{
+  b.onclick=async()=>{
+    const t=S[+b.dataset.i].prompt;
+    try{await navigator.clipboard.writeText(t);}
+    catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+    b.textContent='COPIED';b.classList.add('done');
+    setTimeout(()=>{b.textContent='COPY PROMPT';b.classList.remove('done');},1800);
+  };
+});
+
+const ml=document.getElementById('menulist');
+let lastSec=null;
+S.forEach((s,i)=>{
+  if(i===0)return;
+  if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
+  const li=document.createElement('li');
+  const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
+  li.appendChild(b);ml.appendChild(li);
+});
+function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+
+show(parseInt(location.hash.slice(1))||0);
+</script>
+</body>
+</html>
