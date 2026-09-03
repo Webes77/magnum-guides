@@ -1,6 +1,39 @@
 # Training material audit
 
-Working document. One row per candidate. Updated as each source is swept.
+**This is a worklist, not a report.** Every finding below has a destination and
+a status. The audit is not finished when everything is catalogued. It is
+finished when this list is clear.
+
+## Work to do
+
+Status: `TODO` not started · `DOING` in progress · `DONE` built and live ·
+`WAITING` blocked on a decision from James.
+
+| # | Job | Status | Blocked on |
+|---|---|---|---|
+| 1 | Fix the 6 Levers order in AI-Foundations-Base-v2.docx | WAITING | Sign-off to edit the file in Drive |
+| 2 | Decide whether ChatGPT and Perplexity are still taught | WAITING | James |
+| 3 | Decide whether the sales stream gets its own area | WAITING | James |
+| 4 | Merge June structure + March lever order into one current AI Foundations | TODO | 1, 2 |
+| 5 | Add what neither covers: account instructions, skills, privacy settings | TODO | 4 |
+| 6 | Lift a generic industry guide out of Audrey Twins, or rule it out | TODO | Reading |
+| 7 | Lift the tonality material into generic sales method | TODO | 3 |
+| 8 | Rebuild the survivors in the house style for the members area | TODO | 4, 5 |
+| 9 | Produce the signed-off removal list, then trash in batches | TODO | All reading done |
+| 10 | Delete ~$atGPT-Foundations.docx, a 162-byte Word lock file | TODO | Nothing. Free win. |
+
+## Reading progress
+
+| Source | Catalogued | Read and graded |
+|---|---|---|
+| Magnum Training Word documents, 5 files | Yes | 2 of 4 real files |
+| The Big 6 Training series, 11 files | Yes | 0 |
+| ChatGPT Ecosystem Training + Backups, 4 files | Yes | 0 |
+| Sales stream, 6 liftable files | Yes | 0 |
+| Gamma presentations | No | No |
+| Desktop folders | No | No |
+
+---
 
 **Scope agreed 2 September 2026.** In: Training Materials, The Big 6 Training
 series Manuals, Magnum Training Word documents. Read but filter: Rebuild Relief,
