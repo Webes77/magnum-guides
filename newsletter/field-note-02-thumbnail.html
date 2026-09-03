@@ -12,8 +12,9 @@
 
   To make one for a new issue:
     1. Copy this file, change the four bits marked EDIT below.
-    2. Render it to a PNG at exactly 1200x630 (any headless browser will do):
-         chrome --headless --screenshot=out.png --window-size=1200,630 file.html
+    2. Render it to a JPEG at exactly 1200x630, quality 90 (any headless browser will do):
+         Use a real browser at a true 1200x630 viewport. A headless --window-size
+         screenshot scales the page and ships a cropped card.
     3. Save the PNG as assets/thumbnails/field-note-NN-slug.png
     4. Point the issue's og:image meta tag at it.
 -->
