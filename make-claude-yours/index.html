@@ -58,7 +58,8 @@ main{flex:1;display:flex;padding:0 40px 8px;overflow:hidden}
   background-size:26px 26px,26px 26px,26px 26px;
   border:3px solid var(--paper);box-shadow:inset 0 0 0 1px var(--ink)}
 .slide.on{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-content:start}
-.slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:minmax(320px,6fr) minmax(360px,6fr)}
+.slide.has-fig.on{grid-template-columns:minmax(320px,6fr) minmax(360px,6fr)}
+.slide.has-prompt.on{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:16px;align-content:stretch}
 .slide.tiles.on{grid-template-columns:minmax(0,1fr)}
 
 .kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px}
@@ -82,8 +83,14 @@ ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:va
 .note{margin-top:8px;color:var(--mute);font-size:17px;max-width:52ch}
 .left{display:flex;flex-direction:column;gap:18px;min-width:0}
 .has-prompt h1,.has-fig h1{font-size:44px}
-.has-prompt ul.points li{font-size:19px;padding:10px 0 10px 28px}
-.has-prompt ul.points li::before{top:19px}
+.slide.has-prompt{padding:26px 48px 52px}
+.has-prompt .left{gap:6px}
+.has-prompt h1{font-size:34px;max-width:none;margin-top:4px}
+.has-prompt .foot{left:48px;right:48px}
+.has-prompt ul.points{display:flex;flex-wrap:wrap;gap:0 32px;max-width:none;margin-top:2px;border-bottom:2px solid var(--ink)}
+.has-prompt ul.points li{font-size:15px;line-height:1.3;padding:6px 0 6px 22px;border-top:0;flex:1 1 28%;min-width:220px}
+.has-prompt ul.points li:last-child{border-bottom:0}
+.has-prompt ul.points li::before{top:13px;width:12px}
 .has-fig ul.points li{font-size:21px}
 
 /* figure panel */
@@ -114,13 +121,25 @@ ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:va
 
 /* prompt pane */
 .pane{background:var(--paper-2);border:3px solid var(--ink);display:flex;flex-direction:column;min-height:0;min-width:0;box-shadow:6px 6px 0 var(--ink)}
-.pane-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
+.pane-head{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
 .copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 16px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;transition:background .15s}
 .copy:hover{background:#d2553a}
 .copy.done{background:var(--olive)}
-pre{font-family:"IBM Plex Mono",monospace;font-size:14px;line-height:1.55;white-space:pre-wrap;padding:18px 20px;overflow:auto;flex:1;color:var(--ink)}
+.prewrap{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
+pre{font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.42;white-space:pre-wrap;padding:14px 20px 22px;overflow:auto;flex:1;color:var(--ink)}
+.prewrap::after{content:"More below \2193";position:absolute;left:0;right:0;bottom:0;padding:38px 0 8px;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 62%);pointer-events:none;opacity:0;transition:opacity .15s}
+.pane.more .prewrap::after{opacity:1}
+.btns{display:flex;gap:8px}
+.expand{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
+.expand:hover{border-color:#F0A288;color:#F0A288}
+#reader{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:5}
+#reader.on{display:flex}
+#reader .rhead{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:22px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
+#reader pre{font-size:19px;line-height:1.6;padding:36px 64px 60px;max-width:92ch;width:100%;margin:0 auto;box-sizing:border-box}
+#reader .rclose{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
+#reader .rclose:hover{border-color:#F0A288;color:#F0A288}
 .after{border-top:3px solid var(--ink);background:var(--paper)}
-.after summary{padding:12px 18px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.after summary{padding:8px 18px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
 .after summary::after{content:"+";color:var(--rust);font-size:20px;line-height:1}
 .after[open] summary::after{content:"\2212"}
 .after ol{list-style:none;counter-reset:s;padding:0 18px 16px;font-size:16px;color:var(--body)}
@@ -152,7 +171,8 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 @media (max-width:1000px){
   main{padding:0 12px 8px}
   .slide{padding:28px 22px 60px}
-  .slide.has-prompt.on,.slide.has-fig.on{grid-template-columns:1fr}
+  .slide.has-fig.on{grid-template-columns:1fr}
+  .has-prompt ul.points li{flex-basis:100%}
   .grid,.split{grid-template-columns:1fr}
   h1{font-size:38px}.cover h1{font-size:56px}
   ul.points li{font-size:20px}
@@ -175,6 +195,7 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
   <span class="hint">Arrow keys move. SLIDES for the full list.</span>
 </footer>
 <div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
+<div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="copy" id="rcopy" data-i="0">COPY PROMPT</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
 const P1 = `I want you to write my account instructions. These go in Settings under
@@ -417,12 +438,6 @@ const S = [
  "Deleted chats leave your history straight away and are cleared from storage within 30 days.",
  "Delete anything you would not want read back to you later."]},
 
-{sec:"Settings, usage", h:"The <em>instructions</em> box", pts:[
- "Go to <b>Profile</b>.",
- "Find <b>Instructions for Claude</b>.",
- "It is empty. That is why answers feel generic.",
- "Leave it empty for now. Prompt 1 fills it in a few minutes."]},
-
 {sec:"Settings, usage", h:"<em>Voice</em>, not typing", pts:[
  "On the phone app: tap the microphone in the message box, speak, stop.",
  "On Windows: press the <b>Windows key and H</b> together, speak, press it again.",
@@ -463,11 +478,11 @@ const S = [
  "Open a new chat. Check the connector is switched on in the tools menu at the bottom of the message box.",
  "Ask it one real question. \u201cWhat is on my calendar this week?\u201d or \u201cWhat is the newest unread email about?\u201d"]},
 
-{sec:"Account instructions", h:"Why the instructions box matters", pts:[
- "Claude reads this box before every message you send.",
- "Empty box: it writes for the average person.",
- "Filled box: it writes for you, your business, your customers.",
- "You fill it once. It works in every chat after that."]},
+{sec:"Account instructions", h:"The <em>instructions</em> box", pts:[
+ "Go to <b>Profile</b>. Find <b>Instructions for Claude</b>.",
+ "It is empty. That is why answers feel generic. Claude reads this box before every message you send.",
+ "Filled, it writes for you, your business, your customers. You fill it once. It works in every chat after that.",
+ "Prompt 1 fills it now."]},
 
 {sec:"Account instructions", h:"Account instructions: what goes <em>in</em>", tiles:[
  ["o","In","Who you are and what the business does."],
@@ -598,8 +613,7 @@ const S = [
  "Test it once. Start a new Cowork session and ask for the job using one of the trigger phrases in the description."]},
 
 {sec:"Cowork and skills", h:"The <em>other</em> way to build one", pts:[
- "Some jobs are faster to show than to describe.",
- "Cowork can watch you do the job once and write the skill from that.",
+ "Some jobs are faster to show than to describe. Cowork can watch you do the job once and write the skill from that.",
  "Open the Claude desktop app. Open Cowork.",
  "Click the plus icon. Select Record a skill.",
  "Do the job on screen. Say out loud why you do each step.",
@@ -627,6 +641,8 @@ const S = [
 
 const deck = document.getElementById('deck');
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const flow=t=>{const out=[];for(const raw of t.split('\n')){const l=raw.replace(/\s+$/,'');const prev=out.length?out[out.length-1]:'';const item=x=>/^\s*([-\u2022*]|\d+[.)])\s/.test(x)||/^[A-Z][A-Z0-9 ]{2,}:/.test(x);const indented=/^\s+\S/.test(raw);if(l===''){out.push('');}else if(prev!==''&&(indented||/^[a-z]/.test(l)||(!item(l)&&!item(prev)))){out[out.length-1]=prev+' '+l.trim();}else{out.push(l);}}return out.join('\n');};
+
 S.forEach((s,i)=>{
   const el = document.createElement('section');
   el.className = 'slide' + (s.prompt?' has-prompt':'') + (s.cover?' cover':'') + (s.tiles?' tiles':'') + (s.fig?' has-fig':'');
@@ -646,8 +662,8 @@ S.forEach((s,i)=>{
   if(s.fig){ right = `<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`; }
   if(s.prompt){
     right = `<div class="pane">
-      <div class="pane-head"><span class="where">${s.where}</span><button class="copy" data-i="${i}">COPY PROMPT</button></div>
-      <pre>${esc(s.prompt)}</pre>
+      <div class="pane-head"><span class="where">${s.where}</span><div class="btns"><button class="expand" data-i="${i}">EXPAND</button><button class="copy" data-i="${i}">COPY PROMPT</button></div></div>
+      <div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>
       <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
     </div>`;
   }
@@ -666,10 +682,12 @@ function show(n){
   document.getElementById('fill').style.width=(cur/(slides.length-1)*100)+'%';
   history.replaceState(null,'',cur?('#'+cur):location.pathname);
   slides[cur].scrollTop=0;
+  checkMore();
 }
 document.getElementById('next').onclick=()=>show(cur+1);
 document.getElementById('prev').onclick=()=>show(cur-1);
 document.addEventListener('keydown',e=>{
+  if(document.getElementById('reader').classList.contains('on')){if(e.key==='Escape')closeReader();return;}
   if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
   if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
   if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
@@ -695,6 +713,11 @@ S.forEach((s,i)=>{
   const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
   li.appendChild(b);ml.appendChild(li);
 });
+function checkMore(){document.querySelectorAll('.slide.on .pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');if(!pre)return;p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});}
+document.querySelectorAll('.prewrap pre').forEach(pre=>pre.addEventListener('scroll',checkMore));
+window.addEventListener('resize',checkMore);
+document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const s=S[+b.dataset.i];document.getElementById('rwhere').textContent=s.where;document.getElementById('rpre').textContent=flow(s.prompt);document.getElementById('rcopy').dataset.i=b.dataset.i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;};});
+function closeReader(){document.getElementById('reader').classList.remove('on');}
 function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
 document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
 
