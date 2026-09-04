@@ -9,6 +9,7 @@ the foundation for a future members area where clients log in to access their ma
 index.html      ← the members-area front page (links to everything below)
 brand/          ← the house style: palette, type, components, rules
 newsletter/     ← the Weekly Field Note. Every issue, plus the archive page
+prompts/        ← the Prompt Shelf. Every session prompt as a copy-ready card, plus recipes
 clients/        ← per-client guides and deliverables
 notes/          ← general notes and knowledge, not tied to one client
 templates/      ← reusable starting points (guide + Field Note thumbnail)

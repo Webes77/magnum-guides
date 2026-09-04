@@ -46,9 +46,17 @@ typeface.
 
 ## Where we are
 
-Front page `index.html` has four sections: This Week in AI (live fetch from
-the separate `magnum-newsletter` repo), Weekly Field Note, Guides and
-Manuals, By Industry.
+Front page `index.html` has five sections: This Week in AI (live fetch from
+the separate `magnum-newsletter` repo), Weekly Field Note, Prompt Shelf,
+Guides and Manuals, By Industry.
+
+The Prompt Shelf (`prompts/`) is a cumulative, undated page of copy-ready
+prompt cards and recipe cards. It launched on 4 Sep seeded with the thirteen
+deck prompts, verbatim, plus one recipe. Every card carries a levers strip
+showing which of the six it pulls on. Cards live in the `S` array at the top
+of the script in `prompts/index.html`; new cards go at the top of the array
+under the section `From the Sunday Brief`. Sections render in order of first
+appearance and an empty section never renders.
 
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
@@ -80,6 +88,15 @@ not been delivered to anyone yet.
   on where his last several paying engagements came from.
 - Two weekly publications exist (Field Note here, This Week in AI in the
   newsletter repo). Unresolved positioning question. Not urgent.
+- No third weekly publication. The Prompt Shelf is cumulative and undated so
+  it grows without James having to write anything on a schedule. Decided
+  4 Sep.
+- The Sunday Brief (James's private Cowork task that reads the week's AI
+  newsletters) feeds the shelf. Its prompt is versioned at
+  `notes/sunday-brief-prompt.md`. The brief drafts shelf cards as paste-ready
+  JS objects; James approves and pastes. Nothing reaches the shelf without
+  that step. Deck prompts on the shelf are the authored text and are never
+  rewritten; a fix to a deck prompt is made in the deck and the shelf.
 - The audience copies prompts, it does not read them off the screen. Prompt
   slides are built for that.
 
@@ -90,17 +107,27 @@ the three decks are live and fixed. The open work, in order of value:
 
 1. James to confirm Make Claude Yours slide 31 (Record a Skill, plus menu in
    the desktop app) against the live product. Third-party sources only.
-2. Sweep the material never swept: Gamma presentations and the desktop
+   The shelf recipe "Set Claude up in the right order" and the account and
+   Cowork instruction prompts also name Settings locations; they say what
+   the shipped decks say, so they move together if the deck changes.
+2. James to paste the rewritten Sunday Brief prompt into the Cowork task
+   (`notes/sunday-brief-prompt.md`). The first run with a FOR THE SHELF block
+   will show whether the JS-object format survives an email client. If it
+   does not, switch the block to plain fields and have the session paste.
+3. Sweep the material never swept: Gamma presentations and the desktop
    folders. The Drive sweep is done. See "Still to sweep" at the end of
    `notes/training-audit.md`.
-3. Drive housekeeping (not urgent): the items listed under "Reclaim" in the
+4. Drive housekeeping (not urgent): the items listed under "Reclaim" in the
    audit.
-4. Industry guide, one only, once James names the trade.
+5. Industry guide, one only, once James names the trade.
 
 ## How things get built
 
 - Work on the branch `claude/client-guide-magnum-access-iqtblw`, merge to
-  `main`, push both. James has said "you have full control, merge wherever
+  `main`, push both. The Prompt Shelf was built on
+  `claude/newsletter-brief-members-area-hxwcby` while a second session was
+  also working in the members area; that branch is merged to `main` only
+  after James has reconciled the two. James has said "you have full control, merge wherever
   you need to." Pages deploys from `main` in under a minute.
 - Never deploy inside 20 minutes of a client session unless James says so.
 - Each document keeps its card source next to it (`*-thumbnail.html` or
