@@ -239,6 +239,14 @@ the three decks are live and fixed. The open work, in order of value:
 - Do not `pkill -f` a local server by pattern. It killed the shell once. Let
   it die with the session.
 - `navigator.clipboard.readText()` hangs headless Chromium. Do not test it.
+- The decks scale to fit the screen. Every slide is laid out for a box of
+  1340 by 770 (`FIT_W`, `FIT_H` in the engine, the tallest slide at a
+  1440-wide window) and zoomed to the deck area, so nothing spills and the
+  pinned footer never prints over the last line. Before the fit (4 Sep
+  evening) a 1366-wide laptop showed five lines of a prompt and overlapping
+  text on most slides. A slide whose content grows past 770 at 1340 wide
+  will overflow again: measure with a headless run at 1366 by 657 before
+  adding a slide, and keep prompt slides to one row of points.
 - Prompts are authored with hard line breaks at about 72 characters. Widening
   a panel does nothing until they are reflowed.
 - Case-insensitive grep for "Inter" matches "interaction". Use word

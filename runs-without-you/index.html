@@ -484,6 +484,20 @@ function closeReader(){document.getElementById('reader').classList.remove('on');
 function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
 document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
 
+// Fit every slide to the screen. The decks are laid out for a box of
+// FIT_W by FIT_H (the tallest slide at a 1440-wide window) and scaled to
+// whatever the deck area actually is, so nothing spills past the box and
+// the footer never prints over the last line. One zoom for the whole deck
+// keeps the text size consistent from slide to slide.
+const FIT_W=1340, FIT_H=770;
+function fit(){
+  const r=document.getElementById('deck').getBoundingClientRect();
+  const z=Math.max(0.4,Math.min((r.width-20)/FIT_W,(r.height-20)/FIT_H,1.35));
+  document.querySelectorAll('.slide').forEach(s=>{s.style.zoom=z;});
+  checkMore();
+}
+window.addEventListener('resize',fit);
+fit();
 show(parseInt(location.hash.slice(1))||0);
 </script>
 </body>
