@@ -136,6 +136,11 @@ spreadsheets and handwritten notes as inputs. Details in
   training for other chat models; that is the retired Big 6. Things the
   Sunday Brief finds go to the shelf or a Field Note, not a manual. Decided
   4 Sep.
+- Every prompt on the shelf is reviewed against
+  `notes/prompt-review-standards.md`, James's September 2026 reference
+  checked against Anthropic's live docs. Pasted in verbatim on 4 Sep. The
+  Sunday Brief routine and any future prompt work review against it. A
+  deck prompt that fails it is fixed in the deck and on the shelf together.
 - No third weekly publication. The Prompt Shelf is cumulative and undated so
   it grows without James having to write anything on a schedule. Decided
   4 Sep.
