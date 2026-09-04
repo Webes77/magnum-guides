@@ -7,14 +7,19 @@ briefing. It ran as a hand-started Cowork task until 4 Sep 2026. It moved so
 it runs with no Mac awake, can send from James's own Outlook, and can commit
 shelf cards to this repo instead of emailing them for pasting.
 
-This file holds the prompt in full so it is versioned and the next session
-can see what the brief is supposed to produce. The live copy is the routine's
-prompt (trigger name Sunday Brief); if they differ, the routine is what actually ran, and this file is
-what it should say.
+The live routine is the one James created in the claude.ai Routines UI. It
+has to be created and edited there, because in this org a session cannot
+attach connectors to a routine, and a session's attempt to rewrite the
+routine's prompt is blocked. This file holds the prompt in full so it is
+versioned. When the prompt changes, change it here first, then paste it into
+the routine. If the two differ, the routine is what actually ran, and this
+file is what it should say.
 
-The change from the first version: the six mandatory sections became five,
+Changes from the first version: the six mandatory sections became five,
 WHAT CHANGED and the model scoreboard went, a fifth relevance test was added,
-and the outputs grew from two to four.
+and the outputs grew from two to four. On 4 Sep a tidy step was added: after
+the brief is sent, the routine trashes the week's read newsletters, except
+anything from ruben@substack.com (Ruben Hassid), which stays.
 
 ## How the brief feeds the members area
 
@@ -40,7 +45,8 @@ approved subset.
 
 ## The prompt
 
-This is the routine's prompt, verbatim.
+This is the routine's prompt, verbatim. Paste it into the routine in the
+claude.ai Routines UI whenever it changes.
 
 ---
 
@@ -91,7 +97,7 @@ Work through these steps in order.
 
 Step 1, the window. Gold Coast is Australia/Brisbane, UTC+10, no daylight saving. The covered week is the Sunday through Saturday that ended at midnight before this run. Compute those dates and use them everywhere below. If the run fires on any day other than Sunday (a manual test), still cover the most recent completed Sunday to Saturday week.
 
-Step 2, read. Use the Gmail connector on the magnumai.newsletters@gmail.com inbox. Search with to:magnumai.newsletters@gmail.com after:YYYY/MM/DD before:YYYY/MM/DD (Gmail dates are exclusive on before, so use the Sunday after the window). Page through every result. Open every thread with get_thread and read the full body; previews and snippets do not count as read. Skip promos, receipts and non-AI mail, but count them. For any email that is cut off, fetch its web version with WebFetch and read that. Do not reply, forward, label, archive or mark anything in this inbox. Read only.
+Step 2, read. Use the Gmail connector on the magnumai.newsletters@gmail.com inbox. Search with to:magnumai.newsletters@gmail.com after:YYYY/MM/DD before:YYYY/MM/DD (Gmail dates are exclusive on before, so use the Sunday after the window). Page through every result. Open every thread with get_thread and read the full body; previews and snippets do not count as read. Skip promos, receipts and non-AI mail, but count them. For any email that is cut off, fetch its web version with WebFetch and read that. Do not reply, forward, label or archive anything in this inbox while reading. Keep a list of every thread id you opened or skipped, and note which came from ruben@substack.com; you need both in Step 7.
 
 Step 3, write the brief in the FORMAT above.
 
@@ -99,6 +105,7 @@ Step 4, send. Use the Microsoft 365 connector's outlook_send_mail to send the br
 X emails read in full, Y skipped as promos or non-AI mail, Z fetched from web due to truncation.
 Shelf: the branch name pushed, or "no shelf cards this week".
 Vault: the name of the file written, or what failed.
+Inbox: N emails to be moved to trash after this send, Ruben Hassid kept.
 ASSUMPTIONS: every choice you made because nobody could be asked, one line each, or "none".
 
 Step 5, shelf cards. For every BUILD THIS item tagged FOR THE SHELF (zero to two a week), add one card to the Prompt Shelf. In /home/user/magnum-guides run git fetch origin main, then git checkout -B sunday-brief/YYYY-MM-DD origin/main using the Sunday's date. Insert the card object at the very top of the S array in prompts/index.html (the first element, directly after "const S=[" and its comment line), with sec:'From the Sunday Brief'. Use this shape exactly:
@@ -113,4 +120,6 @@ The levers array lists only the levers the prompt actually pulls on. The prompt 
 
 Step 6, vault. Write one markdown file into James's Drive Vault folder (folder id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l) using the Google Drive connector's create_file with title sunday-brief-YYYY-MM-DD.md, contentMimeType text/markdown, disableConversionToGoogleType true, parentId set to that folder. The file has four sections headed ## tools-library, ## prompts-library, ## content-ideas, ## sales-lessons, each holding the week's raw material for that vault with full detail, sources and dates. Sources and client names are allowed here; this file is private. An empty section says "Nothing this week." Never modify, rename or move any existing file in that folder.
 
-Step 7, stop. Nothing else is sent, posted, replied to or changed. If a step fails after two attempts, record it in the email's closing lines and continue with the remaining steps rather than abandoning the run.
+Step 7, tidy the inbox. Do this only after the brief has actually been sent in Step 4. Using the Gmail connector's trash_thread, move to trash every thread in the covered window that you read or skipped in Step 2. Exceptions, absolute: never trash anything from ruben@substack.com (Ruben Hassid); his posts stay in the inbox untouched. Never trash anything outside the window, anything in Sent, or any thread you did not list in Step 2. Trash only, never permanent delete; Gmail keeps trash for 30 days. If the send in Step 4 failed, skip this step entirely so nothing is lost before James has the brief.
+
+Step 8, stop. Nothing else is sent, posted, replied to or changed. If a step fails after two attempts, record it in the email's closing lines (or, for Step 7, in the run's final message) and continue with the remaining steps rather than abandoning the run.
