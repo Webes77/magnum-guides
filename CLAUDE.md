@@ -46,9 +46,17 @@ typeface.
 
 ## Where we are
 
-Front page `index.html` has four sections: This Week in AI (live fetch from
-the separate `magnum-newsletter` repo), Weekly Field Note, Guides and
-Manuals, By Industry.
+Front page `index.html` has five sections: This Week in AI (live fetch from
+the separate `magnum-newsletter` repo), Weekly Field Note, Prompt Shelf,
+Guides and Manuals, By Industry.
+
+The Prompt Shelf (`prompts/`) is a cumulative, undated page of copy-ready
+prompt cards and recipe cards. It launched on 4 Sep seeded with the thirteen
+deck prompts, verbatim, plus one recipe. Every card carries a levers strip
+showing which of the six it pulls on. Cards live in the `S` array at the top
+of the script in `prompts/index.html`; new cards go at the top of the array
+under the section `From the Sunday Brief`. Sections render in order of first
+appearance and an empty section never renders.
 
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
@@ -105,6 +113,18 @@ spreadsheets and handwritten notes as inputs. Details in
   on where his last several paying engagements came from.
 - Two weekly publications exist (Field Note here, This Week in AI in the
   newsletter repo). Unresolved positioning question. Not urgent.
+- No third weekly publication. The Prompt Shelf is cumulative and undated so
+  it grows without James having to write anything on a schedule. Decided
+  4 Sep.
+- The Sunday Brief (the routine that reads the week's AI newsletters for
+  James) feeds the shelf. It moved from a Cowork task to a Claude Code
+  routine on 4 Sep so it runs with no Mac awake. Its prompt is versioned at
+  `notes/sunday-brief-prompt.md`. The routine drafts shelf cards straight
+  into `prompts/index.html` on a branch named `sunday-brief/<date>`; James
+  reads the diff and merges. Nothing reaches the shelf without that step.
+  The four vault files live in Google Drive as Docs so the routine can
+  append to them. Deck prompts on the shelf are the authored text and are
+  never rewritten; a fix to a deck prompt is made in the deck and the shelf.
 - The audience copies prompts, it does not read them off the screen. Prompt
   slides are built for that.
 
@@ -115,18 +135,26 @@ the three decks are live and fixed. The open work, in order of value:
 
 1. James to glance at Make Claude Yours slide 31 in the live desktop app.
    Sources agree with the slide; nobody has seen the menu itself from here.
-2. The desktop folders, once James uploads them. The only material never
+   The shelf recipe "Set Claude up in the right order" and the account and
+   Cowork instruction prompts name the same Settings locations as the deck,
+   so they move together if the deck changes.
+2. Watch the first live Sunday Brief routine run (Sunday 6am Gold Coast).
+   It should land an email, four Drive appends and a `sunday-brief/<date>`
+   branch. If the branch arrives, James reads the diff and merges it. The
+   prompt is versioned at `notes/sunday-brief-prompt.md`.
+3. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-3. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
+4. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
    and the 38 Gamma duplicates listed under Source 2.
-4. Industry guide, one only, once James names the trade.
+5. Industry guide, one only, once James names the trade.
 
 ## How things get built
 
 - Work on whichever `claude/...` branch the session is given (it changes
   every session), merge to `main`, push both. James has said "you have full
   control, merge wherever you need to." Pages deploys from `main` in under a
-  minute.
+  minute. Two sessions can be live in this repo at once; fetch `main` before
+  merging and expect to resolve `CLAUDE.md` by hand.
 - Never deploy inside 20 minutes of a client session unless James says so.
 - Each document keeps its card source next to it (`*-thumbnail.html` or
   `thumbnail.html`). Cards are 1200x630 JPEG q90 in `assets/thumbnails/`.
