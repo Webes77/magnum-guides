@@ -76,6 +76,18 @@ list still renders and filters, and sorts last. The Sunday Brief routine
 does not yet write `type` or `when`; that is James's change to make from the
 routine's chat.
 
+On 4 Sep (evening) the shelf grew from 14 cards to 30. Sixteen came from
+James's own prompt library in Drive (the Five Role Prompts, four of the
+fifty Role Packs, the Prompt Architect, the voice guide, the 20 per cent
+cut, the reference-file builder, the three-part image prompt, and one
+recipe), each rewritten for Claude against `notes/prompt-review-standards.md`
+and carrying `sec:'Magnum AI library'`. The other forty-six Role Packs stay
+off the shelf as a product. A primer, "The method in five lines", sits at
+the top of the shelf and links to session one. `image` was added to the
+type list. Two deck prompts were fixed in the deck and on the shelf
+together: Cowork instructions ("Cowork does not read my chats") and The
+file plan (its rules rewritten as positive rules with reasons).
+
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
 deck.
