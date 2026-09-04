@@ -55,8 +55,20 @@ prompt cards and recipe cards. It launched on 4 Sep seeded with the thirteen
 deck prompts, verbatim, plus one recipe. Every card carries a levers strip
 showing which of the six it pulls on. Cards live in the `S` array at the top
 of the script in `prompts/index.html`; new cards go at the top of the array
-under the section `From the Sunday Brief`. Sections render in order of first
-appearance and an empty section never renders.
+under the section `From the Sunday Brief`.
+
+Since 4 Sep (afternoon) the shelf is indexed for the client, not by source.
+Two optional fields on each card: `type` (interview, instructions, rules,
+review, writing, scheduled) and `when` (start, before-acting, setup, weekly,
+monthly). The page groups cards by `when`, in that order, and a card with no
+`when` lands in a last group headed New until James files it. A filter row
+at the top narrows by When, Type, or one Lever, one chip per group. `sec`
+stays on every card and shows as a small source label on the card; it is no
+longer a heading. Every id and anchor is unchanged. The lists of types and
+moments live next to `LEVERS` at the top of the script; a value not on a
+list still renders and filters, and sorts last. The Sunday Brief routine
+does not yet write `type` or `when`; that is James's change to make from the
+routine's chat.
 
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
@@ -142,11 +154,14 @@ the three decks are live and fixed. The open work, in order of value:
    It should land an email, four Drive appends and a `sunday-brief/<date>`
    branch. If the branch arrives, James reads the diff and merges it. The
    prompt is versioned at `notes/sunday-brief-prompt.md`.
-3. The desktop folders, once James uploads them. The only material never
+3. James to add two lines to the routine prompt so new cards arrive filed:
+   `type` and `when`, values as listed under "Where we are". Until then new
+   cards land under New and get filed by hand in the merge.
+4. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-4. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
+5. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
    and the 38 Gamma duplicates listed under Source 2.
-5. Industry guide, one only, once James names the trade.
+6. Industry guide, one only, once James names the trade.
 
 ## How things get built
 

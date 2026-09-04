@@ -76,6 +76,24 @@ main{padding:34px 0 20px}
 .about p+p{margin-top:10px}
 .about .key{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--paper);border:2px solid var(--ink);padding:1px 7px;white-space:nowrap}
 
+/* FILTERS */
+.filters{background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:10px 20px 8px;margin-bottom:44px}
+.frow{display:flex;align-items:flex-start;gap:14px;padding:9px 0;border-top:1px solid rgba(30,27,23,.18)}
+.frow:first-child{border-top:0}
+.fname{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);width:58px;flex-shrink:0;padding-top:7px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:transparent;color:var(--ink);border:2px solid var(--ink);padding:4px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;line-height:1.4}
+.chip:hover{background:var(--paper-2)}
+.chip.on{background:var(--ink);color:var(--paper)}
+.fmeta{padding:6px 0 2px}
+.fcount{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);padding-top:2px}
+.none{font-size:15.5px;color:var(--char);margin:-20px 0 40px;display:flex;align-items:center;gap:12px}
+.pane-head .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.pane-head .meta i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;border:1px solid #C9BFAF;color:#C9BFAF;line-height:1.5}
+.pane-head .meta i.type{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.pane-head .meta i.src{border:0;padding:1px 0;color:#9C9285}
+[hidden]{display:none!important}
+
 /* SECTIONS */
 section{margin-bottom:54px}
 .label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px;margin-bottom:8px}
@@ -132,13 +150,15 @@ footer b{color:var(--paper);font-weight:500}
   .wrap{padding:0 22px}
   .masthead{padding:34px 0 40px}
   .pane-head{flex-direction:column}
+  .frow{flex-direction:column;gap:6px}
+  .fname{width:auto;padding-top:0}
   #reader .rhead{padding:14px 20px;font-size:18px}
   #reader pre{padding:24px 20px 48px;font-size:16px}
   footer .wrap{flex-direction:column;gap:10px}
 }
 @media print{
   body{background:#fff}
-  .masthead,.back,.btns,.prewrap::after,footer,#reader{display:none!important}
+  .masthead,.back,.btns,.prewrap::after,footer,#reader,.filters,.none{display:none!important}
   .pane{box-shadow:none;break-inside:avoid;margin-bottom:18px}
   .prewrap pre{max-height:none;overflow:visible}
   .grid{display:block}
@@ -163,8 +183,11 @@ footer b{color:var(--paper);font-weight:500}
     <h2>How to use <em>a card</em></h2>
     <p><span class="key">Copy</span> puts the exact prompt on your clipboard. <span class="key">Expand</span> opens it full screen for reading. Anything in [square brackets] is yours to fill in before you send it.</p>
     <p>The strip above each prompt shows which of the six levers it pulls on: Role, Context, Constraints, Tone, Format, Output. Read the strip, then read the prompt, and you can see the method doing its work before you use it.</p>
-    <p>New cards land at the top as they earn their place. Every card keeps its link, so anything already shared still works.</p>
+    <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act on an answer, setting up, every week, every month. The row of chips narrows it further by type, or by a single lever. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
   </div>
+
+  <div class="filters" id="filters" aria-label="Narrow the shelf"></div>
+  <p class="none" id="none" hidden>No card matches all of that. <button class="chip" id="clear">Show all</button></p>
 
   <div id="shelf"></div>
 
@@ -192,16 +215,34 @@ footer b{color:var(--paper);font-weight:500}
 // Prompt card:  {kind:'prompt', id, sec, title, where, levers:[...], prompt:`...`}
 // Recipe card:  {kind:'recipe', id, sec, title, where, steps:[...]}
 //
+// Two optional fields index a card for the client. Leave them off and the
+// card still renders, under the group NEW, until James files it by hand.
+//   type: 'interview' | 'instructions' | 'rules' | 'review' | 'writing' | 'scheduled'
+//   when: 'start' | 'before-acting' | 'setup' | 'weekly' | 'monthly'
+// A value not on either list still renders and still filters; it sorts last.
+// The page groups cards by `when`. `sec` stays on every card and shows as the
+// source label on the card, so it is never removed.
+//
 // Prompts are authored with hard line breaks at about 72 characters. The page
 // reflows them for display only. Copy always hands over the authored text.
 // The levers array names only the levers the prompt actually pulls on.
 // ---------------------------------------------------------------------------
 const LEVERS=['Role','Context','Constraints','Tone','Format','Output'];
+const TYPES=[['interview','Interview'],['instructions','Instructions'],['rules','Rules'],['review','Review'],['writing','Writing'],['scheduled','Scheduled']];
+const WHENS=[['start','Starting a task'],['before-acting','Before you act on an answer'],['setup','Setting up'],['weekly','Every week'],['monthly','Every month'],['new','New']];
+const WHEN_NOTES={
+  'start':'The first thing you paste into a new chat.',
+  'before-acting':'The check step. Run it before an answer turns into an action.',
+  'setup':'Your account, a project, Cowork, a skill, or a schedule. Done once, then left alone.',
+  'weekly':'Runs, or gets run, every week.',
+  'monthly':'Runs, or gets run, every month.',
+  'new':'Fresh cards, not yet filed by moment.'
+};
 
 const S=[
 
 /* ---------- Session one · AI Foundations ---------- */
-{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', levers:['Context','Constraints','Output'],
+{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', levers:['Context','Constraints','Output'],
 prompt:`I want your help with a real task, and I would rather talk it
 through than write you a brief.
 
@@ -214,7 +255,7 @@ what you understood before you hand me the result.
 
 The task is: [say it roughly, out loud, in your own words]`},
 
-{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', levers:['Constraints','Tone'],
+{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', levers:['Constraints','Tone'],
 prompt:`From now on, in everything you do for me:
 
 Do not tell me what I want to hear. Tell me what I need to hear.
@@ -224,7 +265,7 @@ Act in my best interest, even when that means telling me I am wrong.
 If you are not sure about something, say so. Do not fill the gap with a guess
 that sounds confident.`},
 
-{kind:'prompt', id:'redline-your-plan', sec:'Session one · AI Foundations', title:'Redline your own plan', where:'After it has given you a plan or a draft', levers:['Role','Format','Output'],
+{kind:'prompt', id:'redline-your-plan', sec:'Session one · AI Foundations', title:'Redline your own plan', where:'After it has given you a plan or a draft', type:'review', when:'before-acting', levers:['Role','Format','Output'],
 prompt:`Before I act on this, take the other side.
 
 Argue against it. Tell me where the logic is weakest, what I have assumed
@@ -232,7 +273,7 @@ without checking, and what could go wrong that I have not accounted for.
 
 Then tell me the things I need to know about this that I have not asked you.`},
 
-{kind:'prompt', id:'overdue-invoice', sec:'Session one · AI Foundations', title:'Chase an overdue invoice', where:'Any chat. All six levers in one working prompt', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'overdue-invoice', sec:'Session one · AI Foundations', title:'Chase an overdue invoice', where:'Any chat. All six levers in one working prompt', type:'writing', when:'start', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are writing on behalf of a small business owner chasing an
 overdue invoice.
 
@@ -247,7 +288,7 @@ threaten anything and do not grovel.
 Give me the email only. No preamble.`},
 
 /* ---------- Session two · Make Claude Yours ---------- */
-{kind:'prompt', id:'account-instructions', sec:'Session two · Make Claude Yours', title:'Your account instructions', where:'Runs in a brand-new chat', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'account-instructions', sec:'Session two · Make Claude Yours', title:'Your account instructions', where:'Runs in a brand-new chat', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to write my account instructions. These go in Settings under
 Instructions for Claude, and you read them before every message I send.
 
@@ -289,7 +330,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each, so I can correct anything.)
 
 No preamble, no summary. Stop after the assumptions.`},
 
-{kind:'prompt', id:'project-instructions', sec:'Session two · Make Claude Yours', title:'Project instructions', where:'Runs inside the new project', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'project-instructions', sec:'Session two · Make Claude Yours', title:'Project instructions', where:'Runs inside the new project', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to write the instructions for this project. This project is for
 one job only, and the instructions go in the project instructions box.
 
@@ -330,7 +371,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`},
 
-{kind:'prompt', id:'file-plan', sec:'Session two · Make Claude Yours', title:'The file plan', where:'Same project, same chat, straight after Project instructions', levers:['Constraints','Format','Output'],
+{kind:'prompt', id:'file-plan', sec:'Session two · Make Claude Yours', title:'The file plan', where:'Same project, same chat, straight after Project instructions', type:'instructions', when:'setup', levers:['Constraints','Format','Output'],
 prompt:`Now plan the files this project should have. Recommend only. Do not create
 or write any file.
 
@@ -364,7 +405,7 @@ DO THIS FIRST: (one line. Which file to gather and upload first, and why.)
 
 Plain language, no jargon, no preamble. Stop after the plan.`},
 
-{kind:'prompt', id:'cowork-instructions', sec:'Session two · Make Claude Yours', title:'Cowork instructions', where:'Runs in a Cowork session', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'cowork-instructions', sec:'Session two · Make Claude Yours', title:'Cowork instructions', where:'Runs in a Cowork session', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to write my Cowork global instructions. These go in Settings
 under Cowork, and you read them before every Cowork task.
 
@@ -402,7 +443,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`},
 
-{kind:'prompt', id:'first-skill', sec:'Session two · Make Claude Yours', title:'Your first skill', where:'Runs in a Cowork session', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'first-skill', sec:'Session two · Make Claude Yours', title:'Your first skill', where:'Runs in a Cowork session', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to draft one skill for me. A skill is a saved way of doing one
 job, so I never have to explain that job twice.
 
@@ -443,7 +484,7 @@ This is a draft for me to approve. You have saved nothing. No preamble.
 Stop after the confirming list.`},
 
 /* ---------- Session three · Work That Runs Without You ---------- */
-{kind:'prompt', id:'build-the-brief', sec:'Session three · Work That Runs Without You', title:'Build the brief', where:'Runs in a Cowork session', levers:['Context','Constraints','Output'],
+{kind:'prompt', id:'build-the-brief', sec:'Session three · Work That Runs Without You', title:'Build the brief', where:'Runs in a Cowork session', type:'interview', when:'setup', levers:['Context','Constraints','Output'],
 prompt:`I want to put one recurring job on a schedule so it runs without
 me. Do not write the schedule yet. Interview me first.
 
@@ -463,7 +504,7 @@ into a scheduled task. Write it so it works with nobody in the room.
 
 Mark anything you had to assume as [NEEDS CONFIRMING].`},
 
-{kind:'prompt', id:'unattended-rules', sec:'Session three · Work That Runs Without You', title:'Rules for unattended work', where:'Paste at the top of every scheduled task', levers:['Constraints','Format'],
+{kind:'prompt', id:'unattended-rules', sec:'Session three · Work That Runs Without You', title:'Rules for unattended work', where:'Paste at the top of every scheduled task', type:'rules', when:'setup', levers:['Constraints','Format'],
 prompt:`These rules apply to every job you run for me on a schedule.
 
 You cannot ask me a question while this runs, so do not wait for one.
@@ -482,7 +523,7 @@ Put the date and time you ran at the top of every output.
 If the job cannot be done properly, say that in one line instead of
 producing a weak version of it.`},
 
-{kind:'prompt', id:'monday-brief', sec:'Session three · Work That Runs Without You', title:'The Monday brief', where:'Runs as a scheduled task', levers:['Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'monday-brief', sec:'Session three · Work That Runs Without You', title:'The Monday brief', where:'Runs as a scheduled task', type:'scheduled', when:'weekly', levers:['Context','Constraints','Tone','Format','Output'],
 prompt:`Build me a Monday morning brief.
 
 Every Monday at 6am, before I start, produce one page that tells me what
@@ -504,7 +545,7 @@ Rules:
 - If a section is empty, write "Nothing" and move on.
 - Under 400 words.`},
 
-{kind:'prompt', id:'monthly-review', sec:'Session three · Work That Runs Without You', title:'The monthly review', where:'Runs in a Cowork session', levers:['Constraints','Tone','Format'],
+{kind:'prompt', id:'monthly-review', sec:'Session three · Work That Runs Without You', title:'The monthly review', where:'Runs in a Cowork session', type:'review', when:'monthly', levers:['Constraints','Tone','Format'],
 prompt:`Review the scheduled tasks I have running.
 
 For each one, tell me:
@@ -521,7 +562,7 @@ Be blunt. A task I do not read is worse than no task, because it looks like
 coverage.`},
 
 /* ---------- Recipes ---------- */
-{kind:'recipe', id:'set-up-in-order', sec:'Recipes', title:'Set Claude up in the right order', where:'Once when you start. Again for each new job.',
+{kind:'recipe', id:'set-up-in-order', sec:'Recipes', title:'Set Claude up in the right order', where:'Once when you start. Again for each new job.', type:'instructions', when:'setup',
 steps:[
  'Open a new chat. Run <b>Your account instructions</b>.',
  'Answer its six questions, one at a time.',
@@ -546,29 +587,64 @@ const stepsText=s=>s.steps.map((t,i)=>`${i+1}. ${t.replace(/<[^>]+>/g,'')}`).joi
 const copyText=s=>s.kind==='recipe'?stepsText(s):s.prompt;
 const copyLabel=s=>s.kind==='recipe'?'Copy steps':'Copy prompt';
 
+const cap=k=>k.replace(/-/g,' ').replace(/^\w/,c=>c.toUpperCase());
+const label=(list,k)=>{const f=list.find(x=>x[0]===k);return f?f[1]:cap(k);};
+const keysOf=(list,field)=>{const out=list.map(x=>x[0]);S.forEach(c=>{const v=c[field];if(v&&!out.includes(v))out.push(v);});return out;};
+const whenOf=c=>c.when||'new';
+const whenKeys=keysOf(WHENS,'when').filter(k=>k!=='new').concat('new');
+const typeKeys=keysOf(TYPES,'type');
+
+// ---- the shelf, grouped by moment
 const root=document.getElementById('shelf');
-const secs=[];S.forEach(s=>{if(!secs.includes(s.sec))secs.push(s.sec);});
-secs.forEach(sec=>{
-  const items=S.filter(s=>s.sec===sec);
+whenKeys.forEach(w=>{
+  const items=S.filter(c=>whenOf(c)===w);
   if(!items.length)return;
-  const section=document.createElement('section');
-  const isRecipe=items.every(s=>s.kind==='recipe');
-  section.innerHTML=`<div class="label">${esc(sec)}</div><div class="grid"></div>`;
+  const section=document.createElement('section');section.dataset.when=w;
+  section.innerHTML=`<div class="label">${esc(label(WHENS,w))}</div><p class="note">${esc(WHEN_NOTES[w]||'')}</p><div class="grid"></div>`;
   const grid=section.querySelector('.grid');
   items.forEach(s=>{
     const i=S.indexOf(s);
     const el=document.createElement('article');
     el.className='pane';el.id=s.id;
+    el.dataset.when=w;el.dataset.type=s.type||'';el.dataset.levers=(s.levers||[]).join(',');
     const levers=s.kind==='prompt'?`<div class="levers">${LEVERS.map(l=>`<span class="${s.levers.includes(l)?'on':''}">${l}</span>`).join('')}</div>`:'';
     const body=s.kind==='recipe'
       ?`<ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
       :`<div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>`;
     const expand=s.kind==='prompt'?`<button class="expand" data-i="${i}">Expand</button>`:'';
-    el.innerHTML=`<div class="pane-head"><h3><a href="#${s.id}">${esc(s.title)}</a><span class="where">${esc(s.where)}</span></h3><div class="btns">${expand}<button class="copy" data-i="${i}">${copyLabel(s)}</button></div></div>${levers}${body}`;
+    const meta=`<span class="meta">${s.type?`<i class="type">${esc(label(TYPES,s.type))}</i>`:''}${s.kind==='recipe'&&s.sec!=='Recipes'?'<i class="type">Recipe</i>':''}<i class="src">${esc(s.sec)}</i></span>`;
+    el.innerHTML=`<div class="pane-head"><h3><a href="#${s.id}">${esc(s.title)}</a><span class="where">${esc(s.where)}</span>${meta}</h3><div class="btns">${expand}<button class="copy" data-i="${i}">${copyLabel(s)}</button></div></div>${levers}${body}`;
     grid.appendChild(el);
   });
   root.appendChild(section);
 });
+
+// ---- the filter row. One active chip per group. Groups combine.
+const filters=document.getElementById('filters');
+const state={when:'',type:'',lever:''};
+const present={when:whenKeys.filter(k=>S.some(c=>whenOf(c)===k)),type:typeKeys.filter(k=>S.some(c=>c.type===k))};
+const chipRow=(name,g,keys,lab)=>`<div class="frow"><span class="fname">${name}</span><div class="chips"><button class="chip on" data-g="${g}" data-v="">All</button>${keys.map(k=>`<button class="chip" data-g="${g}" data-v="${esc(k)}">${esc(lab(k))}</button>`).join('')}</div></div>`;
+filters.innerHTML=
+  chipRow('When','when',present.when,k=>label(WHENS,k))+
+  chipRow('Type','type',present.type,k=>label(TYPES,k))+
+  chipRow('Lever','lever',LEVERS,k=>k)+
+  `<div class="frow fmeta"><span class="fname"></span><span class="fcount" id="fcount"></span></div>`;
+function applyFilters(){
+  let n=0;
+  document.querySelectorAll('.pane').forEach(p=>{
+    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.lever||p.dataset.levers.split(',').includes(state.lever));
+    p.hidden=!ok;if(ok)n++;
+  });
+  document.querySelectorAll('#shelf section').forEach(sec=>{sec.hidden=!sec.querySelector('.pane:not([hidden])');});
+  document.getElementById('none').hidden=n>0;
+  const any=state.when||state.type||state.lever;
+  document.getElementById('fcount').textContent=any?`${n} of ${S.length} cards`:`${S.length} cards`;
+  filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',state[b.dataset.g]===b.dataset.v));
+  checkMore();
+}
+filters.querySelectorAll('.chip').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
+document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.lever='';applyFilters();};
+applyFilters();
 
 async function doCopy(b){
   const s=S[+b.dataset.i];const t=copyText(s);
@@ -587,7 +663,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&reader.classList.co
 function checkMore(){document.querySelectorAll('.pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');if(!pre)return;p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});}
 document.querySelectorAll('.prewrap pre').forEach(pre=>pre.addEventListener('scroll',checkMore));
 window.addEventListener('resize',checkMore);
-window.addEventListener('load',checkMore);
+window.addEventListener('load',()=>{checkMore();const h=location.hash.slice(1);const e=h&&document.getElementById(h);if(e&&e.classList.contains('pane'))e.scrollIntoView();});
 checkMore();
 </script>
 
