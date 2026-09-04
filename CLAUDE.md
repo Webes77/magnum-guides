@@ -46,9 +46,15 @@ typeface.
 
 ## Where we are
 
-Front page `index.html` has five sections: This Week in AI (live fetch from
-the separate `magnum-newsletter` repo), Weekly Field Note, Prompt Shelf,
-Guides and Manuals, By Industry.
+Front page `index.html` was rebuilt on 4 Sep (afternoon) for navigation.
+Masthead carries a one-line instruction and an anchor nav. Then a Start
+Here strip (three numbered blocks, one per session), Your Sessions (the
+three decks, Fine-Tune as a reference link beneath), Prompt Shelf (one
+full-width card), This Week (latest Field Note beside the latest edition,
+the edition filled by a live fetch from the `magnum-newsletter` repo with
+the archive as fallback), then Tool Manuals and By Industry side by side.
+Only the latest Field Note shows; the archive holds the rest. One page, no
+URL changed.
 
 The Prompt Shelf (`prompts/`) is a cumulative, undated page of copy-ready
 prompt cards and recipe cards. It launched on 4 Sep seeded with the thirteen
@@ -125,6 +131,11 @@ spreadsheets and handwritten notes as inputs. Details in
   on where his last several paying engagements came from.
 - Two weekly publications exist (Field Note here, This Week in AI in the
   newsletter repo). Unresolved positioning question. Not urgent.
+- Tool Manuals is one section, not an area per tool. A tool gets a manual
+  when it does a job Claude does not and it has done paid work, both. No
+  training for other chat models; that is the retired Big 6. Things the
+  Sunday Brief finds go to the shelf or a Field Note, not a manual. Decided
+  4 Sep.
 - No third weekly publication. The Prompt Shelf is cumulative and undated so
   it grows without James having to write anything on a schedule. Decided
   4 Sep.
@@ -145,23 +156,25 @@ spreadsheets and handwritten notes as inputs. Details in
 Where the last session stopped: the members area is structurally done and
 the three decks are live and fixed. The open work, in order of value:
 
-1. James to glance at Make Claude Yours slide 31 in the live desktop app.
+1. James to look at the rebuilt front page and the indexed shelf live, on
+   a phone as well as a laptop. Both were verified locally only.
+2. James to glance at Make Claude Yours slide 31 in the live desktop app.
    Sources agree with the slide; nobody has seen the menu itself from here.
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-2. Watch the first live Sunday Brief routine run (Sunday 6am Gold Coast).
+3. Watch the first live Sunday Brief routine run (Sunday 6am Gold Coast).
    It should land an email, four Drive appends and a `sunday-brief/<date>`
    branch. If the branch arrives, James reads the diff and merges it. The
    prompt is versioned at `notes/sunday-brief-prompt.md`.
-3. James to add two lines to the routine prompt so new cards arrive filed:
+4. James to add two lines to the routine prompt so new cards arrive filed:
    `type` and `when`, values as listed under "Where we are". Until then new
    cards land under New and get filed by hand in the merge.
-4. The desktop folders, once James uploads them. The only material never
+5. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-5. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
+6. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
    and the 38 Gamma duplicates listed under Source 2.
-6. Industry guide, one only, once James names the trade.
+7. Industry guide, one only, once James names the trade.
 
 ## How things get built
 

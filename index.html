@@ -63,7 +63,7 @@ body{
 .masthead p{font-size:18px;color:#C9BFAF;max-width:46ch;margin-top:20px;line-height:1.55}
 
 /* SECTIONS */
-main{padding:56px 0 20px}
+main.wrap{padding-top:56px;padding-bottom:20px}
 section{margin-bottom:54px}
 .label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px;margin-bottom:8px}
 .label::after{content:"";flex:1;height:2px;background:var(--ink)}
@@ -88,6 +88,44 @@ section{margin-bottom:54px}
 .card p{font-size:15.5px;color:var(--char);line-height:1.55;margin:0}
 .card .go{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-top:auto;padding-top:18px}
 
+/* MASTHEAD NAV */
+.nav{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:30px}
+.nav a{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#C9BFAF;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:3px}
+.nav a:hover{color:var(--paper);border-color:var(--rust)}
+
+/* START HERE STRIP */
+.start{margin:0 0 60px}
+.start .grid{gap:18px}
+.step{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px 20px 20px;min-height:150px;transition:transform .14s ease, box-shadow .14s ease}
+.step:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--ink)}
+.step .n{font-family:var(--display);font-weight:700;font-size:34px;line-height:1;color:var(--rust)}
+.step h3{font-family:var(--display);font-weight:600;font-size:20px;line-height:1.1;text-transform:uppercase;color:var(--ink);margin-top:10px}
+.step p{font-size:14.5px;color:var(--char);line-height:1.45;margin-top:6px}
+.step .meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:auto;padding-top:12px}
+.step.shelf{background:var(--ink);color:var(--paper)}
+.step.shelf h3{color:var(--paper)}.step.shelf p{color:#C9BFAF}.step.shelf .meta{color:#9C9285}
+
+/* DARK CARD · the live one */
+.card.dark{background:var(--ink);color:var(--paper)}
+.card.dark h3{color:var(--paper)}.card.dark p{color:#C9BFAF}.card.dark .meta{color:#9C9285}.card.dark .go{color:#F0A288}
+
+/* WIDE CARD · one thing, full width */
+.card.wide{flex-direction:row}
+.card.wide img{width:46%;flex-shrink:0;border-bottom:0;border-right:3px solid var(--ink);object-fit:cover}
+.card.wide .inner{padding:30px 34px}
+.card.wide h3{font-size:30px}
+
+/* TWO SECTIONS SIDE BY SIDE */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.duo section{margin-bottom:0}
+.duo .grid{grid-template-columns:1fr}
+
+/* REFERENCE LINE */
+.ref{margin-top:22px;font-size:15px;color:var(--mute)}
+.ref a{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-left:8px}
+.ref a:hover{color:var(--rust)}
+.links{display:flex;gap:30px;flex-wrap:wrap}
+
 /* SEE-ALL LINK */
 .seeall{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px}
 .seeall:hover{color:var(--rust)}
@@ -98,7 +136,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;font-family:var
 footer b{color:var(--paper);font-weight:500}
 
 @media(max-width:820px){
-  .grid,.grid.three{grid-template-columns:1fr}
+  .grid,.grid.three,.duo{grid-template-columns:1fr}
+  .start{margin:0 0 44px}
+  .start .grid{gap:12px}
+  .step{flex-direction:row;align-items:baseline;gap:14px;min-height:0;padding:14px 18px}
+  .step .n{font-size:26px}
+  .step h3{margin-top:0;font-size:19px}
+  .step p,.step .meta{display:none}
+  .card.wide{flex-direction:column}
+  .card.wide img{width:100%;border-right:0;border-bottom:3px solid var(--ink)}
+  .card.wide .inner{padding:24px 26px 26px}
+  .card.wide h3{font-size:23px}
+  .duo{gap:54px}
+  section{scroll-margin-top:16px}
   .wrap{padding:0 22px}
   .masthead{padding:34px 0 40px}
   footer .wrap{flex-direction:column;gap:10px}
@@ -111,92 +161,55 @@ footer b{color:var(--paper);font-weight:500}
   <div class="wrap">
     <div class="brand">Magnum AI</div>
     <h1>Members<br><em>Area</em></h1>
-    <p>Everything from your sessions in one place. Guides, manuals, session decks, the prompt shelf and the weekly newsletter.</p>
+    <p>Start with the three sessions, in order. Take your prompts from the shelf. Read the Field Note when it lands.</p>
+    <nav class="nav" aria-label="Sections">
+      <a href="#sessions">Sessions</a>
+      <a href="#prompts">Prompt Shelf</a>
+      <a href="#week">This week</a>
+      <a href="#manuals">Tool manuals</a>
+      <a href="#industry">By industry</a>
+    </nav>
   </div>
 </header>
 
 <main class="wrap">
 
-  <!-- WEEKLY NEWSLETTER · pulled live from the magnum-newsletter repo -->
-  <section>
-    <div class="label">This Week in AI</div>
-    <p class="note">The weekly briefing. What moved in AI, a tool worth trying, a prompt worth keeping, and a small business that made something work. Four minutes.</p>
-    <div class="grid three" id="newsletter-grid"></div>
-    <a class="seeall" href="https://webes77.github.io/magnum-newsletter/archive.html">Every edition &rarr;</a>
-  </section>
-
-  <!-- WEEKLY FIELD NOTE -->
-  <section>
-    <div class="label">Weekly Field Note</div>
-    <p class="note">One idea, worked through properly. Longer than the briefing, with the prompts and exercises to put it to work the same day.</p>
-    <div class="grid">
-
-      <a class="card thumb" href="newsletter/field-note-03-talking.html">
-        <img src="assets/thumbnails/field-note-03-talking.jpg" alt="Weekly Field Note No. 03 · Talking" width="1200" height="630" loading="lazy">
-        <div class="inner">
-          <div class="date">No. 03</div>
-          <h3>Stop typing the brief. Talk it through.</h3>
-          <div class="meta">Field Note &middot; Talking &middot; Four minutes</div>
-          <p>Typing captures what you know. Talking captures how you think. Five rules, one prompt, five exercises.</p>
-          <span class="go">Read this issue &rarr;</span>
-        </div>
+  <!-- START HERE · the path through the members area -->
+  <div class="start">
+    <div class="label">Start here</div>
+    <div class="grid three">
+      <a class="step" href="ai-foundations/">
+        <span class="n">01</span>
+        <h3>How to talk to it</h3>
+        <p>What it is, the 6 Levers, and how to make it honest. Nothing to set up.</p>
+        <span class="meta">Session one &middot; AI Foundations</span>
       </a>
-
-      <a class="card thumb" href="newsletter/field-note-02-context.html">
-        <img src="assets/thumbnails/field-note-02-context.jpg" alt="Weekly Field Note No. 02 · Context" width="1200" height="630" loading="lazy">
-        <div class="inner">
-          <div class="date">No. 02</div>
-          <h3>Stop typing your business into the chat</h3>
-          <div class="meta">Field Note &middot; Context &middot; Five minutes</div>
-          <p>Two kinds of context, the one question that sorts them, and five exercises to run this week.</p>
-          <span class="go">Read this issue &rarr;</span>
-        </div>
+      <a class="step" href="make-claude-yours/">
+        <span class="n">02</span>
+        <h3>Teach it your business</h3>
+        <p>Your account, your instructions, your first project and skill.</p>
+        <span class="meta">Session two &middot; Make Claude Yours</span>
       </a>
-
-      <a class="card thumb" href="newsletter/field-note-01-clarity.html">
-        <img src="assets/thumbnails/field-note-01-clarity.jpg" alt="Weekly Field Note No. 01 · Clarity" width="1200" height="630" loading="lazy">
-        <div class="inner">
-          <div class="date">No. 01</div>
-          <h3>Stop asking AI to make it clearer</h3>
-          <div class="meta">Field Note &middot; Clarity &middot; Four minutes</div>
-          <p>Five rules worth stealing, three prompts to keep, and how to make clear writing automatic.</p>
-          <span class="go">Read this issue &rarr;</span>
-        </div>
+      <a class="step" href="runs-without-you/">
+        <span class="n">03</span>
+        <h3>Put one job on a timer</h3>
+        <p>Scheduled tasks that run with the laptop shut.</p>
+        <span class="meta">Session three &middot; Work That Runs Without You</span>
       </a>
-
     </div>
-    <a class="seeall" href="newsletter/">Every Field Note &rarr;</a>
-  </section>
+  </div>
 
-  <!-- PROMPT SHELF · cumulative, undated. Fed by the Sunday Brief -->
-  <section>
-    <div class="label">Prompt Shelf</div>
-    <p class="note">Every prompt from the sessions in one place, ready to copy, with the levers each one pulls marked. Undated, so it grows without going stale.</p>
-    <div class="grid">
-
-      <a class="card thumb" href="prompts/">
-        <img src="assets/thumbnails/prompt-shelf.jpg" alt="The Magnum AI Prompt Shelf, every prompt from the sessions ready to copy" width="1200" height="630" loading="lazy">
-        <div class="inner">
-          <h3>Every prompt. One shelf.</h3>
-          <div class="meta">Living page &middot; Prompts and recipes</div>
-          <p>Thirteen prompts from the three sessions and the recipe that puts them in order. Copy one, change the bracketed bits, use it today.</p>
-          <span class="go">Open the shelf &rarr;</span>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- GUIDES & MANUALS -->
-  <section>
-    <div class="label">Guides &amp; Manuals</div>
+  <!-- YOUR SESSIONS -->
+  <section id="sessions">
+    <div class="label">Your sessions</div>
+    <p class="note">Three sessions, in order. Each is the deck from the room with every prompt in it, so you can reopen it any time and pick up where you left off.</p>
     <div class="grid three">
 
       <a class="card thumb" href="ai-foundations/">
         <img src="assets/thumbnails/ai-foundations.jpg" alt="AI Foundations, a Magnum AI session deck" width="1200" height="630" loading="lazy">
         <div class="inner">
           <h3>Stop prompting. Start talking.</h3>
-          <div class="meta">Session deck &middot; Session one</div>
+          <div class="meta">Session one &middot; AI Foundations</div>
           <p>How it actually works, the 6 Levers, and how to make it tell you the truth instead of agreeing with you. Nothing to set up.</p>
           <span class="go">Open the deck &rarr;</span>
         </div>
@@ -206,7 +219,7 @@ footer b{color:var(--paper);font-weight:500}
         <img src="assets/thumbnails/make-claude-yours.jpg" alt="Make Claude Yours, a Magnum AI setup session deck" width="1200" height="630" loading="lazy">
         <div class="inner">
           <h3>Make Claude Yours</h3>
-          <div class="meta">Session deck &middot; Session two, ninety minutes</div>
+          <div class="meta">Session two &middot; Ninety minutes</div>
           <p>Set up your own account so Claude knows your business. Five prompts, one at a time, and nothing is saved until you have read it.</p>
           <span class="go">Open the deck &rarr;</span>
         </div>
@@ -216,53 +229,110 @@ footer b{color:var(--paper);font-weight:500}
         <img src="assets/thumbnails/runs-without-you.jpg" alt="Work That Runs Without You, a Magnum AI session deck" width="1200" height="630" loading="lazy">
         <div class="inner">
           <h3>Set it once. It runs without you.</h3>
-          <div class="meta">Session deck &middot; Session three</div>
+          <div class="meta">Session three &middot; Work That Runs Without You</div>
           <p>Scheduled tasks in Cowork. Which jobs earn a timer, how to brief one that cannot ask you a question at 6am, and how to catch one going quietly bad.</p>
           <span class="go">Open the deck &rarr;</span>
         </div>
       </a>
 
-      <a class="card thumb" href="fine-tune/">
-        <img src="assets/thumbnails/fine-tune.jpg" alt="Fine-Tune the AI You Already Use, a Magnum AI session manual" width="1200" height="630" loading="lazy">
-        <div class="inner">
-          <h3>Fine-Tune the AI You Already Use</h3>
-          <div class="meta">Session manual &middot; Four parts</div>
-          <p>Account instructions, projects, Cowork, and how to keep the whole thing sharp once it is running.</p>
-          <span class="go">Open the manual &rarr;</span>
-        </div>
-      </a>
+    </div>
+    <p class="ref">Reference for what session two sets up: <a href="fine-tune/">Fine-Tune the AI You Already Use &rarr;</a></p>
+  </section>
 
-      <a class="card thumb" href="manus-website-manual.html">
-        <img src="assets/thumbnails/manus-website-manual.jpg" alt="Build client websites without a developer, the Manus website manual" width="1200" height="630" loading="lazy">
+  <!-- PROMPT SHELF · cumulative, undated. Fed by the Sunday Brief -->
+  <section id="prompts">
+    <div class="label">Prompt Shelf</div>
+    <p class="note">Every prompt from the sessions, grouped by when you would run it: starting a task, before you act on an answer, setting up, every week, every month. Undated, so it grows without going stale.</p>
+    <div class="grid" style="grid-template-columns:1fr">
+
+      <a class="card thumb wide" href="prompts/">
+        <img src="assets/thumbnails/prompt-shelf.jpg" alt="The Magnum AI Prompt Shelf, every prompt from the sessions ready to copy" width="1200" height="630" loading="lazy">
         <div class="inner">
-          <h3>Build client websites without a developer</h3>
-          <div class="meta">Reference manual &middot; Thirty-three parts</div>
-          <p>The golden rule, who owns what, hosting and the billing trap, going live, and the escape hatch for when something breaks.</p>
-          <span class="go">Open the manual &rarr;</span>
+          <h3>Every prompt. One shelf.</h3>
+          <div class="meta">Living page &middot; Prompts and recipes</div>
+          <p>Fourteen cards and counting. Find the moment you are in, copy the card, change the bracketed bits, use it today.</p>
+          <span class="go">Open the shelf &rarr;</span>
         </div>
       </a>
 
     </div>
   </section>
 
-  <!-- BY INDUSTRY -->
-  <section>
-    <div class="label">By Industry</div>
-    <p class="note">Where AI actually earns its place in a particular trade, written for how that business already runs.</p>
+  <!-- THIS WEEK · the latest Field Note and the latest edition -->
+  <section id="week">
+    <div class="label">This week</div>
+    <p class="note">Two weekly reads. The Field Note is one idea worked through properly, with the prompts and exercises to use it the same day. This Week in AI is the four-minute briefing on what moved.</p>
     <div class="grid">
 
-      <a class="card thumb" href="ba-growth/index.html">
-        <img src="assets/thumbnails/ba-growth.jpg" alt="AI for Buyer’s Agents, a Magnum AI industry guide" width="1200" height="630" loading="lazy">
+      <a class="card thumb" href="newsletter/field-note-03-talking.html">
+        <img src="assets/thumbnails/field-note-03-talking.jpg" alt="Weekly Field Note No. 03 · Talking" width="1200" height="630" loading="lazy">
         <div class="inner">
-          <h3>AI for Buyer&rsquo;s Agents</h3>
-          <div class="meta">Industry guide &middot; Ten parts</div>
-          <p>Voice input, roles, projects, skills, Cowork and connectors, applied to how a buyer&rsquo;s agency actually runs.</p>
-          <span class="go">Open the guide &rarr;</span>
+          <div class="date">Field Note No. 03</div>
+          <h3>Stop typing the brief. Talk it through.</h3>
+          <div class="meta">Weekly Field Note &middot; Talking &middot; Four minutes</div>
+          <p>Typing captures what you know. Talking captures how you think. Five rules, one prompt, five exercises.</p>
+          <span class="go">Read this issue &rarr;</span>
+        </div>
+      </a>
+
+      <a class="card dark" id="newsletter-card" href="https://webes77.github.io/magnum-newsletter/archive.html">
+        <div class="inner">
+          <div class="date">Latest edition</div>
+          <h3>This Week in AI</h3>
+          <div class="meta">Weekly briefing &middot; Four minutes</div>
+          <p>What moved in AI, a tool worth trying, a prompt worth keeping, and a small business that made something work.</p>
+          <span class="go">Read the latest &rarr;</span>
         </div>
       </a>
 
     </div>
+    <div class="links">
+      <a class="seeall" href="newsletter/">Every Field Note &rarr;</a>
+      <a class="seeall" href="https://webes77.github.io/magnum-newsletter/archive.html">Every edition &rarr;</a>
+    </div>
   </section>
+
+  <div class="duo">
+
+    <!-- TOOL MANUALS · one tool, one manual, only after paid work -->
+    <section id="manuals">
+      <div class="label">Tool manuals</div>
+      <p class="note">Manuals for tools that do a job Claude does not. One tool, one manual, and only once it has done real work.</p>
+      <div class="grid">
+
+        <a class="card thumb" href="manus-website-manual.html">
+          <img src="assets/thumbnails/manus-website-manual.jpg" alt="Build client websites without a developer, the Manus website manual" width="1200" height="630" loading="lazy">
+          <div class="inner">
+            <h3>Build client websites without a developer</h3>
+            <div class="meta">Manus &middot; Reference manual &middot; Thirty-three parts</div>
+            <p>The golden rule, who owns what, hosting and the billing trap, going live, and the escape hatch for when something breaks.</p>
+            <span class="go">Open the manual &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- BY INDUSTRY -->
+    <section id="industry">
+      <div class="label">By industry</div>
+      <p class="note">Where AI actually earns its place in a particular trade, written for how that business already runs.</p>
+      <div class="grid">
+
+        <a class="card thumb" href="ba-growth/index.html">
+          <img src="assets/thumbnails/ba-growth.jpg" alt="AI for Buyer’s Agents, a Magnum AI industry guide" width="1200" height="630" loading="lazy">
+          <div class="inner">
+            <h3>AI for Buyer&rsquo;s Agents</h3>
+            <div class="meta">Industry guide &middot; Ten parts</div>
+            <p>Voice input, roles, projects, skills, Cowork and connectors, applied to how a buyer&rsquo;s agency actually runs.</p>
+            <span class="go">Open the guide &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
 
 </main>
 
@@ -275,29 +345,25 @@ footer b{color:var(--paper);font-weight:500}
 </footer>
 
 <script>
-// Pulls the latest editions straight from the newsletter repo. Both sites are
-// served from webes77.github.io, so this is a same-origin request and needs no
-// setup. If it fails, the "Every edition" link below the grid still stands.
+// Fills the This Week in AI card with the latest edition, straight from the
+// newsletter repo. Both sites are served from webes77.github.io, so this is a
+// same-origin request and needs no setup. If it fails, the card still links
+// to the archive.
 (function () {
   var BASE = 'https://webes77.github.io/magnum-newsletter/';
-  var grid = document.getElementById('newsletter-grid');
-  if (!grid) return;
+  var card = document.getElementById('newsletter-card');
+  if (!card) return;
 
   fetch(BASE + 'issues.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (data) {
-      (data.issues || []).slice(0, 3).forEach(function (issue) {
-        var a = document.createElement('a');
-        a.className = 'card';
-        a.href = BASE + issue.file;
-        a.innerHTML = '<div class="inner"><div class="date"></div><h3></h3>' +
-          '<div class="meta">This Week in AI</div><p></p>' +
-          '<span class="go">Read this edition &rarr;</span></div>';
-        a.querySelector('.date').textContent = issue.displayDate;
-        a.querySelector('h3').textContent = issue.title;
-        a.querySelector('p').textContent = issue.dek;
-        grid.appendChild(a);
-      });
+      var issue = (data.issues || [])[0];
+      if (!issue) return;
+      card.href = BASE + issue.file;
+      card.querySelector('.date').textContent = issue.displayDate;
+      card.querySelector('h3').textContent = issue.title;
+      card.querySelector('p').textContent = issue.dek;
+      card.querySelector('.go').innerHTML = 'Read this edition &rarr;';
     })
     .catch(function () { /* the archive link remains */ });
 })();
