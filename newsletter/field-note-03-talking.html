@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Field Note No. 03 · Talking · Magnum AI</title>
+<meta name="description" content="Stop typing the brief. Talk it through. Typing captures what you know, talking captures how you think, and five exercises to prove it on your own screen.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/newsletter/field-note-03-talking.html">
+
+<!-- Social preview · what clients see when this link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI · Weekly Field Note">
+<meta property="og:title" content="Weekly Field Note No. 03 · Talking">
+<meta property="og:description" content="Stop typing the brief. Talk it through. Five rules, one prompt, five exercises.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/newsletter/field-note-03-talking.html">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-03-talking.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Weekly Field Note No. 03 · Talking, published by Magnum AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weekly Field Note No. 03 · Talking">
+<meta name="twitter:description" content="Stop typing the brief. Talk it through. Five rules, one prompt, five exercises.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-03-talking.jpg">
+<meta name="theme-color" content="#4A453D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEE6D3;
+  --paper-deep:#E4DAC4;
+  --ink:#1E1B17;
+  --rust:#B8452A;
+  --tan:#C9A87C;
+  --olive:#6C7A3F;
+  --charcoal:#3A3630;
+  --taupe:#9C8D77;
+  --hair:rgba(30,27,23,.24);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  background:#4A453D;
+  font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  color:var(--ink);
+  padding:16px 12px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+
+/* ---------- PAGE SHELL ---------- */
+.page{
+  width:100%;
+  max-width:794px;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(156,141,119,.16) 0 2px, transparent 2px),
+    radial-gradient(circle at 72% 34%, rgba(156,141,119,.13) 0 2px, transparent 2px),
+    radial-gradient(circle at 42% 78%, rgba(184,69,42,.07) 0 3px, transparent 3px),
+    radial-gradient(circle at 88% 66%, rgba(108,122,63,.08) 0 2px, transparent 2px),
+    repeating-linear-gradient(92deg, rgba(30,27,23,.028) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(2deg, rgba(30,27,23,.022) 0 1px, transparent 1px 6px),
+    linear-gradient(160deg, rgba(255,250,238,.55), rgba(198,181,152,.28));
+  background-size:26px 26px,34px 34px,48px 48px,40px 40px,auto,auto,auto;
+  border:9px solid var(--ink);
+  padding:26px 30px 20px;
+  display:flex;
+  flex-direction:column;
+  font-size:clamp(12.5px,3.25vw,16px);
+  position:relative;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+/* ---------- MASTHEAD ---------- */
+.masthead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  border-bottom:3px solid var(--ink);
+  padding-bottom:7px;
+  gap:12px;
+}
+.mh-title{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-weight:700;
+  font-size:1.06em;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  line-height:1;
+  display:block;
+}
+.mh-sub{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.56em;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--charcoal);
+  display:block;
+  margin-top:5px;
+}
+.mh-issue{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-weight:600;
+  font-size:.8em;
+  letter-spacing:.1em;
+  border:2px solid var(--ink);
+  padding:2px 9px 3px;
+  white-space:nowrap;
+  background:var(--paper-deep);
+}
+
+/* ---------- BODY GRID ---------- */
+.sheet{flex:1;padding-top:16px;display:flex;flex-direction:column}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.6em;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--rust);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::after{content:"";flex:1;height:2px;background:var(--ink);opacity:.85}
+
+h1,h2{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  line-height:.92;
+  letter-spacing:-.005em;
+}
+h1{font-size:3.35em}
+h2{font-size:2.12em;margin-top:.42em}
+h2.lower{text-transform:none;letter-spacing:-.01em}
+
+p{font-size:.83em;line-height:1.52;color:var(--charcoal)}
+p+p{margin-top:.72em}
+.lead{font-size:.92em;color:var(--ink)}
+
+/* ---------- FOOTER ---------- */
+.foot{
+  margin-top:auto;
+  border-top:2px solid var(--ink);
+  padding-top:7px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.53em;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--charcoal);
+}
+.foot .mid{color:var(--taupe);text-align:center}
+.foot .pg{color:var(--ink);font-weight:600}
+
+/* ---------- POSTER PLATE (signature) ---------- */
+.plate{
+  border:3px solid var(--ink);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:0;
+  overflow:hidden;
+}
+.plate-cap{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.52em;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  border-top:2px solid rgba(30,27,23,.45);
+  padding-top:6px;
+  margin-top:12px;
+}
+
+/* flat document illustration */
+.doc-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:6px 0}
+.doc{
+  position:relative;
+  width:60%;
+  aspect-ratio:.74;
+  background:var(--paper);
+  border:3px solid var(--ink);
+  padding:11% 12%;
+  box-shadow:
+    5px 5px 0 rgba(30,27,23,.16), 10px 10px 0 rgba(30,27,23,.14),
+    15px 15px 0 rgba(30,27,23,.12), 20px 20px 0 rgba(30,27,23,.10),
+    25px 25px 0 rgba(30,27,23,.08), 30px 30px 0 rgba(30,27,23,.06),
+    35px 35px 0 rgba(30,27,23,.045), 40px 40px 0 rgba(30,27,23,.03);
+}
+.doc i{display:block;height:5px;background:var(--charcoal);opacity:.75;margin-bottom:9px}
+.doc i:nth-child(1){width:70%;height:8px;opacity:1;background:var(--ink)}
+.doc i:nth-child(3){width:88%}
+.doc i:nth-child(4){width:62%}
+.doc i:nth-child(5){width:80%}
+.doc i:nth-child(6){width:45%;background:var(--rust);opacity:1}
+.tick{
+  position:absolute;
+  right:-14%;
+  bottom:-11%;
+  width:38%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--olive);
+  border:3px solid var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.tick::after{
+  content:"";
+  width:42%;
+  height:22%;
+  border-left:5px solid var(--paper);
+  border-bottom:5px solid var(--paper);
+  transform:rotate(-45deg) translate(6%,-18%);
+}
+
+/* ---------- COVER ---------- */
+.cover-top{display:grid;grid-template-columns:1.12fr .88fr;gap:20px;align-items:stretch}
+.cover-head h1{font-size:4.15em;margin-top:.14em}
+.cover-head .kicker{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.5em;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color:var(--rust);
+  margin-top:.55em;
+}
+.cover-head p{margin-top:.6em}
+.plate-rust{background:var(--rust)}
+.plate-rust .plate-cap{color:#F6ECDC;border-color:rgba(246,236,220,.5)}
+
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.ba-card{border:3px solid var(--ink);background:var(--paper-deep);display:flex;flex-direction:column}
+.ba-head{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.82em;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:5px 10px;
+  color:var(--paper);
+  background:var(--charcoal);
+}
+.ba-card.good .ba-head{background:var(--olive)}
+.ba-body{padding:11px 12px 12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;line-height:1.62;color:var(--ink)}
+
+/* ---------- INTRO PAGE ---------- */
+.cols{columns:2;column-gap:26px;column-rule:1px solid var(--hair);margin-top:1em}
+.cols p{break-inside:avoid}
+.band{
+  margin-top:auto;
+  background:var(--ink);
+  color:var(--paper);
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.band .num{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:2.2em;
+  color:var(--rust);
+  line-height:.8;
+}
+.band .txt{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.2em;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:1.06;
+}
+
+.p-intro .band{flex:1;align-items:center;justify-content:space-between;padding:24px 26px}
+.p-intro .band .num{font-size:3.2em}
+.p-intro .band .txt{font-size:2.4em}
+.p-intro .band .sub{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;letter-spacing:.24em;text-transform:uppercase;color:var(--tan);margin-top:14px;display:block}
+.ghost{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:5.4em;line-height:.82;text-align:right;color:transparent;-webkit-text-stroke:2px var(--rust);letter-spacing:-.02em;flex:none}
+@media (max-width:620px){.ghost{display:none}}
+.p-intro .contents{align-self:start}
+
+/* ---------- THREE BLOCKS ---------- */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.tcard{border:3px solid var(--ink);padding:14px 13px 15px;background:var(--paper-deep);display:flex;flex-direction:column;gap:10px}
+.icon{width:42px;height:42px;border:3px solid var(--ink);position:relative;flex:none}
+.icon.i1{background:var(--rust);border-radius:50%}
+.icon.i1::after{content:"";position:absolute;inset:26% 46% 26% 46%;background:var(--paper)}
+.icon.i2{background:var(--olive)}
+.icon.i2::after{content:"";position:absolute;left:20%;top:24%;width:0;height:0;border-left:16px solid var(--paper);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.icon.i3{background:var(--tan)}
+.icon.i3::after{content:"";position:absolute;inset:22% 20%;border-top:5px solid var(--ink);border-bottom:5px solid var(--ink)}
+.tcard h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.94em;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  line-height:1.02;
+}
+.tcard p{font-size:.74em}
+.quote{
+  margin-top:auto;
+  border-top:3px solid var(--ink);
+  border-bottom:3px solid var(--ink);
+  padding:16px 0 17px;
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.62em;
+  line-height:1.02;
+  text-transform:uppercase;
+}
+.quote span{color:var(--rust)}
+
+/* ---------- RULES LIST ---------- */
+.rules{margin-top:14px;border-top:2px solid var(--ink)}
+.rule{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;padding:12px 0 13px;border-bottom:2px solid var(--ink)}
+.rnum{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.9em;
+  line-height:.8;
+  color:var(--rust);
+  text-shadow:2px 2px 0 rgba(30,27,23,.16),4px 4px 0 rgba(30,27,23,.13),6px 6px 0 rgba(30,27,23,.10),8px 8px 0 rgba(30,27,23,.07),10px 10px 0 rgba(30,27,23,.05);
+}
+.rule h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.12em;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:1;
+}
+.rule p{font-size:.78em;margin-top:5px}
+.callout{
+  margin-top:16px;
+  background:var(--olive);
+  color:#F6ECDC;
+  border:3px solid var(--ink);
+  padding:14px 16px;
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.16em;
+  line-height:1.06;
+  text-transform:uppercase;
+}
+
+/* ---------- PROMPT BLOCKS ---------- */
+.prompt{
+  border:3px solid var(--ink);
+  background:var(--paper-deep);
+  margin-top:12px;
+  position:relative;
+}
+.prompt-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:var(--ink);
+  color:var(--paper);
+  padding:5px 10px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.56em;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.copy{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:1em;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  background:var(--rust);
+  color:#F6ECDC;
+  border:1px solid #F6ECDC;
+  padding:2px 8px 3px;
+  cursor:pointer;
+}
+.copy:focus-visible{outline:3px solid var(--olive);outline-offset:2px}
+.copy.done{background:var(--olive)}
+pre{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.63em;
+  line-height:1.6;
+  padding:12px 13px 13px;
+  white-space:pre-wrap;
+  word-break:break-word;
+  color:var(--ink);
+  -webkit-user-select:text;
+  user-select:text;
+}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.pcard{border:3px solid var(--ink);padding:12px 13px 13px;background:var(--paper-deep)}
+.pcard h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.86em;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.pcard.no h3{color:var(--rust)}
+.pcard p{font-size:.76em}
+
+/* ---------- FLOW ---------- */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.stage{border:3px solid var(--ink);display:flex;flex-direction:column}
+.stage-num{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.5em;
+  line-height:1;
+  padding:6px 11px 7px;
+  color:#F6ECDC;
+  background:var(--charcoal);
+}
+.stage:nth-child(1) .stage-num{background:var(--rust)}
+.stage:nth-child(2) .stage-num{background:var(--olive)}
+.stage:nth-child(3) .stage-num{background:var(--tan);color:var(--ink)}
+.stage-body{padding:12px 13px 14px;background:var(--paper-deep);flex:1}
+.stage-body h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.92em;
+  text-transform:uppercase;
+  line-height:1.02;
+  letter-spacing:.03em;
+  margin-bottom:7px;
+}
+.stage-body p{font-size:.74em}
+.bigrule{
+  margin-top:20px;
+  border-top:3px solid var(--ink);
+  border-bottom:3px solid var(--ink);
+  padding:15px 0 16px;
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.5em;
+  line-height:1.04;
+  text-transform:uppercase;
+}
+.bigrule span{color:var(--rust)}
+.install{
+  margin-top:14px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.64em;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--charcoal);
+}
+
+/* ---------- VERTICAL FILL ---------- */
+.p-cover .cover-top{flex:1;min-height:0}
+.p-cover .cover-head{display:flex;flex-direction:column}
+.p-cover .cover-head p{padding-top:.55em}
+.slug{margin-top:auto;border-top:3px solid var(--ink);padding-top:9px;display:flex;flex-direction:column;gap:5px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.55em;letter-spacing:.16em;text-transform:uppercase;color:var(--charcoal)}
+.slug b{font-weight:600;color:var(--rust)}
+.p-cover .doc{width:82%;aspect-ratio:.66}
+.p-cover .cover-head p{font-size:.97em;line-height:1.55}
+.p-cover .ba-body{font-size:.68em}
+.p-cover .ba-head{font-size:.9em;padding:6px 11px}
+.p-cover .slug{font-size:.6em;gap:7px}
+.p-cover .ba{margin-top:16px}
+
+.intro-grid{display:grid;grid-template-columns:1.28fr .72fr;gap:26px;align-items:start;margin-top:1em;padding-bottom:22px}
+.intro-copy{display:flex;flex-direction:column}
+.intro-copy p{font-size:.94em;line-height:1.62}
+.intro-copy p+p{margin-top:.8em}
+.intro-note{margin-top:auto;border-top:3px solid var(--ink);padding-top:10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal)}
+.contents{border:3px solid var(--ink);background:var(--paper-deep);display:flex;flex-direction:column}
+.contents h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.8em;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);padding:6px 11px 7px;
+}
+.contents ol{list-style:none;padding:6px 11px 4px;display:flex;flex-direction:column}
+.contents .note{margin-top:auto;border-top:2px solid var(--ink);padding:10px 11px 11px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.56em;line-height:1.7;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal)}
+.contents .note b{color:var(--rust);font-weight:600}
+.contents li{
+  display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:11px 0;border-bottom:1px solid var(--hair);
+}
+.contents li:last-child{border-bottom:0}
+.contents li b{font-weight:500}
+.contents li span{color:var(--rust);font-weight:600}
+
+.p-why .trio{flex:none}
+.p-why .tcard{justify-content:flex-start;padding:16px 15px 17px}
+.p-why .icon{width:60px;height:60px}
+.p-why .icon.i2::after{border-left-width:22px;border-top-width:12px;border-bottom-width:12px;left:22%;top:26%}
+.p-why .tcard p{font-size:.78em}
+.p-why .quote{flex:none;margin-top:auto;font-size:2.75em;padding:40px 0 42px}
+.swap{margin-top:22px;border:3px solid var(--ink);background:var(--paper-deep);display:grid;grid-template-columns:repeat(3,1fr)}
+.swap .cell{padding:15px 16px 16px;border-right:2px solid var(--ink)}
+.swap .cell:last-child{border-right:0}
+.swap .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.56em;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.swap .from{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.76em;color:var(--charcoal);margin-top:7px}
+.swap .to{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.1em;text-transform:uppercase;color:var(--rust);margin-top:8px;line-height:1.06}
+@media (max-width:620px){.swap{grid-template-columns:1fr}.swap .cell{border-right:0;border-bottom:2px solid var(--ink)}.swap .cell:last-child{border-bottom:0}}
+
+.p-rules .rules{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.p-rules .rule{flex:1;align-items:center;grid-template-columns:88px 1fr}
+.p-rules .rnum{font-size:3em}
+.p-rules .rule h3{font-size:1.5em}
+.p-rules .rule p{font-size:.88em;margin-top:7px}
+.p-rules .callout{font-size:1.36em;padding:18px 20px;margin-top:20px}
+
+.p-prompt .prompt{flex:none;margin-top:14px}
+.p-prompt pre{font-size:.9em;line-height:1.9;padding:18px 18px 20px}
+.tip{border-top:2px solid var(--ink);padding:9px 14px 10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.58em;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal)}
+.tip b{color:var(--rust);font-weight:600}
+.howto-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.58em;letter-spacing:.28em;text-transform:uppercase;color:var(--rust);margin-top:20px}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;align-content:start;margin-top:12px}
+.hcard{border-top:3px solid var(--ink);padding-top:10px}
+.hcard b{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.5em;color:var(--rust);display:block;line-height:1}
+.hcard p{font-size:.78em;margin-top:6px}
+.p-prompt .duo{margin-top:auto}
+
+.p-auto .flow{flex:1;min-height:0;margin-top:18px}
+.p-auto .stage-body{display:flex;flex-direction:column;gap:12px;padding:16px 15px 16px;justify-content:space-between}
+.stag{margin-top:auto;border-top:2px solid var(--ink);padding-top:10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.56em;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal)}
+.p-auto .stage-body h3{margin-bottom:0}
+.sicon{width:66px;height:66px;border:3px solid var(--ink);position:relative;flex:none}
+.sicon.s1{background:var(--paper)}
+.sicon.s1::before{content:"";position:absolute;left:18%;right:18%;top:26%;height:4px;background:var(--charcoal);box-shadow:0 13px 0 var(--rust),0 26px 0 var(--charcoal)}
+.sicon.s2{background:var(--paper)}
+.sicon.s2::before{content:"";position:absolute;inset:20%;border:3px solid var(--olive)}
+.sicon.s2::after{content:"";position:absolute;left:20%;right:20%;top:47%;height:3px;background:var(--charcoal)}
+.sicon.s3{background:var(--paper);border-radius:50%}
+.sicon.s3::after{content:"";position:absolute;inset:26%;background:var(--tan);border:3px solid var(--ink)}
+.p-auto .verdict{flex:none;display:flex;flex-direction:column;gap:16px;border:3px solid var(--ink);background:var(--paper-deep);margin-top:20px;padding:26px 26px 28px}
+.p-auto .verdict .line{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:2.1em;line-height:1.04;text-transform:uppercase}
+.p-auto .verdict .line span{color:var(--rust)}
+.p-auto .verdict .install{margin-top:0;border-top:2px solid var(--ink);padding-top:12px}
+
+.p-copy .sheet{padding-bottom:4px}
+.p-copy pre{font-size:.655em;line-height:1.62}
+.p-copy .prompt{margin-top:14px}
+
+/* page 6 type scale */
+.p-auto .sicon{width:88px;height:88px}
+.p-auto .sicon.s1::before{box-shadow:0 18px 0 var(--rust),0 36px 0 var(--charcoal);height:5px}
+.p-auto .stage-num{font-size:1.85em;padding:8px 13px 9px}
+.p-auto .stage-body{gap:18px;padding:20px 17px 18px}
+.p-auto .stage-body h3{font-size:1.22em}
+.p-auto .stage-body p{font-size:.94em;line-height:1.56}
+.p-auto .stag{font-size:.6em}
+.p-auto .verdict .line{font-size:2.3em}
+
+/* page 3 type scale */
+.p-why .tcard h3{font-size:1.2em}
+.p-why .tcard p{font-size:.94em;line-height:1.56}
+.p-why .icon{width:74px;height:74px}
+.p-why .tcard{gap:14px;padding:20px 17px 20px}
+
+/* page 5 type scale */
+.p-prompt .hcard b{font-size:2em}
+.p-prompt .hcard p{font-size:.88em}
+.p-prompt .pcard h3{font-size:.95em}
+.p-prompt .pcard p{font-size:.86em}
+.p-prompt .pcard{padding:15px 15px 16px}
+
+/* ---------- SITE BARS (screen only) ---------- */
+.sitebar{
+  width:100%;
+  max-width:794px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#C9BFAC;
+}
+.sitebar a{color:#C9BFAC;text-decoration:none;border-bottom:1px solid rgba(201,191,172,.4);padding-bottom:2px}
+.sitebar a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.sitebar .issue{color:#8F8779;letter-spacing:.22em}
+.sharebar{justify-content:center;gap:10px;padding-top:2px}
+.sharebar .share-btn{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#EEE6D3;
+  background:transparent;
+  border:1px solid rgba(237,227,207,.45);
+  padding:8px 14px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+.sharebar .share-btn:hover{background:rgba(237,227,207,.1);border-color:#EEE6D3}
+.sharebar .share-btn:focus-visible{outline:2px solid var(--olive);outline-offset:2px}
+.sharebar .share-btn.done{background:var(--olive);border-color:var(--olive);color:#F6ECDC}
+
+/* ---------- PRINT ---------- */
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff;padding:0;gap:0;display:block}
+  .page{
+    width:210mm;
+    height:297mm;
+    max-width:none;
+    font-size:15.4px;
+    border-width:8px;
+    page-break-after:always;
+    break-after:page;
+    overflow:hidden;
+  }
+  .page:last-child{page-break-after:auto;break-after:auto}
+  .copy{display:none}
+  .sitebar{display:none}
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width:620px){
+  body{padding:10px 8px 28px}
+  .cover-head h1{font-size:3.2em}
+  .page{padding:18px 17px 14px;border-width:7px}
+  .cover-top{grid-template-columns:1fr;gap:16px}
+  .cover-head h1{font-size:3.05em}
+  .p-cover .doc{width:56%;aspect-ratio:.76}
+  .p-cover .plate{padding:14px}
+  .ba,.trio,.duo,.flow{grid-template-columns:1fr}
+  .intro-grid{grid-template-columns:1fr;gap:18px;padding-bottom:14px}
+  .cols{columns:1}
+  .foot .mid{display:none}
+  .rule{grid-template-columns:48px 1fr;gap:12px}
+}
+
+/* ---------- NO. 02 ADDITIONS ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kcard{border:3px solid var(--ink);background:var(--paper-deep);display:flex;flex-direction:column}
+.kcard .khead{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.25em;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px 10px;color:#F6ECDC;background:var(--charcoal);line-height:1}
+.kcard.frozen .khead{background:var(--olive)}
+.kcard.living .khead{background:var(--rust)}
+.kcard .kbody{padding:14px 15px 15px;flex:1;display:flex;flex-direction:column;gap:9px}
+.kcard .kbody p{font-size:.86em;line-height:1.5}
+.kcard .klist{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.62em;line-height:1.75;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border-top:2px solid var(--ink);padding-top:9px;margin-top:auto}
+.trap{margin-top:16px;border:3px solid var(--ink);background:var(--ink);color:var(--paper);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.trap .tl{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.6em;text-transform:uppercase;color:var(--rust);line-height:.9}
+.trap p{color:var(--paper);font-size:.84em}
+.trap p+p{margin-top:.5em}
+.ex{margin-top:12px;border-top:2px solid var(--ink);flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.exr{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:11px 0 12px;border-bottom:2px solid var(--ink);align-items:start}
+.exr .rnum{font-size:2.2em;text-shadow:2px 2px 0 rgba(30,27,23,.16),4px 4px 0 rgba(30,27,23,.12),6px 6px 0 rgba(30,27,23,.08)}
+.exr h3{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.15em;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+.exr ol{margin:6px 0 0 1.1em;font-size:.76em;line-height:1.5;color:var(--charcoal)}
+.exr ol li+li{margin-top:2px}
+.exr .learn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-top:6px}
+.exr .learn b{color:var(--ink);font-weight:600}
+.p-diag .rules{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.p-diag .rule{flex:1;align-items:center;grid-template-columns:88px 1fr}
+.p-diag .rnum{font-size:3em}
+.p-diag .rule h3{font-size:1.45em}
+.p-diag .rule p{font-size:.88em;margin-top:7px}
+.p-diag .callout{font-size:1.36em;padding:18px 20px;margin-top:20px}
+.p-agents .flow{flex:1;min-height:0;margin-top:18px}
+.p-agents .stage-body{display:flex;flex-direction:column;gap:16px;padding:20px 17px 18px;justify-content:space-between}
+.p-agents .stage-num{font-size:1.85em;padding:8px 13px 9px}
+.p-agents .stage-body h3{font-size:1.22em;margin-bottom:0}
+.p-agents .stage-body p{font-size:.94em;line-height:1.56}
+.p-agents .stag{font-size:.6em}
+.p-agents .verdict{flex:none;display:flex;flex-direction:column;gap:16px;border:3px solid var(--ink);background:var(--paper-deep);margin-top:20px;padding:26px 26px 28px}
+.p-agents .verdict .line{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:2.1em;line-height:1.04;text-transform:uppercase}
+.p-agents .verdict .line span{color:var(--rust)}
+.p-agents .verdict .install{margin-top:0;border-top:2px solid var(--ink);padding-top:12px}
+.sicon.s4{background:var(--paper)}
+.sicon.s4::after{content:"";position:absolute;left:30%;right:30%;top:18%;bottom:18%;background:var(--rust);border:3px solid var(--ink)}
+.sicon.s5{background:var(--paper)}
+.sicon.s5::before{content:"";position:absolute;left:18%;right:18%;top:24%;height:4px;background:var(--charcoal);box-shadow:0 14px 0 var(--charcoal),0 28px 0 var(--olive)}
+.sicon.s6{background:var(--paper);border-radius:50%}
+.sicon.s6::after{content:"";position:absolute;left:30%;right:30%;top:30%;bottom:30%;border:4px solid var(--ink);border-radius:50%;background:var(--tan)}
+@media (max-width:620px){.two{grid-template-columns:1fr}.trap{grid-template-columns:1fr}.exr{grid-template-columns:48px 1fr}}
+</style>
+</head>
+<body>
+
+<nav class="sitebar">
+  <a href="../index.html">&larr; Magnum AI Members Area</a>
+  <span class="issue">Weekly Field Note / No. 03</span>
+</nav>
+
+<!-- ============ PAGE 1 · COVER ============ -->
+<section class="page p-cover">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 03</div>
+  </header>
+
+  <div class="sheet">
+    <div class="cover-top">
+      <div class="cover-head">
+        <div class="eyebrow">Talking</div>
+        <h1>Stop typing<br>the brief.<br>Talk it through.</h1>
+        <div class="kicker">Typing captures what you know. Talking captures how you think.</div>
+        <p>When you type, you edit. When you talk, you think out loud. The second one is what the AI actually needs, and it is three times faster.</p>
+        <div class="slug">
+          <span><b>Reading time</b> four minutes</span>
+          <span><b>Works in</b> Claude, ChatGPT, any of them</span>
+          <span><b>Run it yourself</b> five exercises, page 07</span>
+        </div>
+      </div>
+
+      <div class="plate plate-rust">
+        <div class="doc-wrap">
+          <div class="doc">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <div class="tick"></div>
+          </div>
+        </div>
+        <div class="plate-cap">Fig. 03 / The train of thought, not the final sentence<br>Weekly Field Note, published by Magnum AI</div>
+      </div>
+    </div>
+
+    <div class="ba">
+      <div class="ba-card">
+        <div class="ba-head">Before / Typed</div>
+        <div class="ba-body">“Write me a follow-up email to a client after a quote.”</div>
+      </div>
+      <div class="ba-card good">
+        <div class="ba-head">After / Spoken</div>
+        <div class="ba-body">“So I quoted this bloke on Tuesday for the kitchen, about fourteen grand, and he has gone quiet. I reckon the price scared him but he also said his wife wanted to see other options. I don’t want to chase him, I want to make it easy for him to come back...”<br><br>Same person. Same job. The second one gets a usable email first go.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that hears you think</span>
+    <span class="mid">Rough in / Why / Not this / Let it ask / Read it</span>
+    <span class="pg">01 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 2 · INTRO ============ -->
+<section class="page p-intro">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 03</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">This week</div>
+    <h2 class="lower">Why the typed brief is always thin.</h2>
+
+    <div class="intro-grid">
+      <div class="intro-copy">
+        <p class="lead">I watched a client type a brief last week. Three lines. It took him four minutes. Then he told me what he actually wanted, out loud, in about forty seconds, and it was three times as much information.</p>
+        <p>That is the whole Field Note. When you type, your brain turns into an editor. You shorten, you tidy, you leave things out, and you try to make it sound right before you have finished thinking. What lands in the box is a compressed version of what is in your head.</p>
+        <p>When you talk, you hand over the raw material. The side thought, the example, the bit you are not sure about, the throwaway line about why the last one went wrong. That is the stuff the AI needs to work out what you mean, not just what you wrote.</p>
+        <p>I did this wrong for a long time. I typed like I was sending a text and then wondered why the answer read like a template.</p>
+        <p>If you had a problem with a job, would you text your business partner two lines about it, or talk it through over a coffee? The coffee gets to the answer faster every time. This is the same thing.</p>
+        <div class="intro-note">Three times the words. A tenth of the effort.</div>
+      </div>
+      <aside class="contents">
+        <h3>In this issue</h3>
+        <ol>
+          <li><b>Editor and raw material</b><span>03</span></li>
+          <li><b>Five rules</b><span>04</span></li>
+          <li><b>Prompt to steal</b><span>05</span></li>
+          <li><b>Make it automatic</b><span>06</span></li>
+          <li><b>Five exercises</b><span>07</span></li>
+        </ol>
+        <div class="note"><b>Do exercise 1 first.</b><br>It takes ninety seconds and you will not go back.</div>
+      </aside>
+    </div>
+
+    <div class="band">
+      <div class="num">→</div>
+      <div class="txt">Typing edits.<br>Talking thinks.
+        <span class="sub">Weekly Field Note / Talking</span>
+      </div>
+      <div class="ghost">No.<br>03</div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that hears you think</span>
+    <span class="mid">Rough in / Why / Not this / Let it ask / Read it</span>
+    <span class="pg">02 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 3 · EDITOR AND RAW MATERIAL ============ -->
+<section class="page p-why">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 03</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Editor and raw material</div>
+    <h2>Typing edits. Talking thinks out loud.</h2>
+    <p class="lead" style="margin-top:.9em">Both are you. They hand the AI very different things.</p>
+
+    <div class="two">
+      <div class="kcard frozen">
+        <div class="khead">What typing gives it</div>
+        <div class="kbody">
+          <p>The finished sentence. Tidy, short, and missing everything you decided was not worth the effort of typing.</p>
+          <p>Your fingers run at 30 to 50 words a minute, so your brain rations what gets through.</p>
+          <div class="klist">The conclusion<br>The polite version<br>Whatever fit in the box</div>
+        </div>
+      </div>
+      <div class="kcard living">
+        <div class="khead">What talking gives it</div>
+        <div class="kbody">
+          <p>The thinking. The example you would have cut. The doubt. The reason the last attempt failed. The bit you only worked out as you said it.</p>
+          <p>You speak at 120 to 150 words a minute. Nothing gets rationed.</p>
+          <div class="klist">Context<br>Examples<br>Uncertainty<br>What wrong looks like</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trap">
+      <div class="tl">The<br>trap</div>
+      <div>
+        <p>Treating dictation as a faster keyboard. People turn it on, then dictate the same tidy two lines they would have typed, only quicker. Nothing changes.</p>
+        <p>Dictation is not about speed. It is about letting the AI hear the train of thought instead of the final sentence. Ramble. That is the point.</p>
+      </div>
+    </div>
+
+    <div class="quote">You think you are talking to the AI.<br><span>You are talking to yourself. It is taking notes.</span></div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that hears you think</span>
+    <span class="mid">Rough in / Why / Not this / Let it ask / Read it</span>
+    <span class="pg">03 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 4 · FIVE RULES ============ -->
+<section class="page p-diag">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 03</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">The deliverable</div>
+    <h2>Five rules for talking to it.</h2>
+    <p style="margin-top:.7em">None of these need practice. They need permission.</p>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="rnum">01</div>
+        <div>
+          <h3>Say it rough.</h3>
+          <p>Do not compose. Say it the way you would say it to someone in the ute. Half sentences are fine. It tidies. That is its job, not yours.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">02</div>
+        <div>
+          <h3>Say why.</h3>
+          <p>The reason behind the ask is the most useful thing you own, and it is the first thing typing cuts. “Because the last one sounded too formal” changes the whole answer.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">03</div>
+        <div>
+          <h3>Say what wrong looks like.</h3>
+          <p>You know what you do not want long before you know what you want. Say it out loud. “Not salesy, not long, not another one of those templated ones.”</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">04</div>
+        <div>
+          <h3>Let it ask.</h3>
+          <p>Tell it to interview you, one question at a time. The questions pull out what you forgot you knew.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">05</div>
+        <div>
+          <h3>Read before you send.</h3>
+          <p>The one place to slow down. Talking gets you a better draft. It is not yours until you have read it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">Rough in, tidy out.<br>You supply the thinking. It supplies the sentences.</div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that hears you think</span>
+    <span class="mid">Rough in / Why / Not this / Let it ask / Read it</span>
+    <span class="pg">04 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 5 · PROMPT TO STEAL ============ -->
+<section class="page p-prompt">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 03</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Prompt to steal</div>
+    <h2>Talk it through, one question at a time.</h2>
+    <p style="margin-top:.7em">This is the Talk-It-Out prompt from session one. Paste it, then say the job out loud where the last line asks for it.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span>Prompt / Talk-It-Out</span>
+        <button class="copy" type="button" data-copy>Copy</button>
+      </div>
+      <pre>I want your help with a real task, and I would rather talk it through than write you a brief.
+
+Interview me. Ask one question at a time and wait for my answer before the next one. Work out what I actually need, who it is for, what it has to do, and what would make it wrong.
+
+Do not start producing anything until you have enough. When you do, tell me what you understood before you hand me the result.
+
+The task is: [say it roughly, out loud, in your own words]</pre>
+      <div class="tip"><b>Tip.</b> Put the mic on before you paste. Whatever it asks first, answer out loud.</div>
+    </div>
+
+    <div class="howto-label">Use it like this</div>
+    <div class="howto">
+      <div class="hcard"><b>01</b><p>Turn dictation on. Mac: press fn twice. Windows: the Windows key and H. Phone: the microphone in the message box.</p></div>
+      <div class="hcard"><b>02</b><p>Paste the prompt. Where it says the task is, say the job roughly.</p></div>
+      <div class="hcard"><b>03</b><p>Answer each question out loud. Rough is fine. Read the result before you use it.</p></div>
+    </div>
+
+    <div class="duo">
+      <div class="pcard">
+        <h3>Best for</h3>
+        <p>Anything you would normally overthink the brief for. An email that matters, a proposal, a plan, a difficult message.</p>
+      </div>
+      <div class="pcard no">
+        <h3>Not ideal for</h3>
+        <p>A one-line factual question. Ask it straight and move on.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that hears you think</span>
+    <span class="mid">Rough in / Why / Not this / Let it ask / Read it</span>
+    <span class="pg">05 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 6 · MAKE IT AUTOMATIC ============ -->
+<section class="page p-auto">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 03</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Make it automatic</div>
+    <h2>Mic on. Say the mess. Read the result.</h2>
+    <p style="margin-top:.7em">Three habits. Two are settings, one is discipline.</p>
+
+    <div class="flow">
+      <div class="stage">
+        <div class="stage-num">01</div>
+        <div class="stage-body">
+          <div class="sicon s1"></div>
+          <h3>Set the shortcut once</h3>
+          <p>Mac: fn twice. Windows: the Windows key and H. Phone: the microphone in the message box. Learn one. Use it every time.</p>
+          <div class="stag">Set once</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">02</div>
+        <div class="stage-body">
+          <div class="sicon s2"></div>
+          <h3>Open with the mess</h3>
+          <p>Start every real task by saying it rough, with the why and the not-this. Thirty seconds. Then let it ask.</p>
+          <div class="stag">Every task</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">03</div>
+        <div class="stage-body">
+          <div class="sicon s3"></div>
+          <h3>Read before it leaves</h3>
+          <p>Nothing goes out unread. Talking makes the draft better. Reading makes it yours.</p>
+          <div class="stag">Every time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <div class="line">Dictation is not a faster keyboard.<br><span>It is the AI in the passenger seat while you think.</span></div>
+      <div class="install">It cannot read your mind. This is the closest thing to it.</div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that hears you think</span>
+    <span class="mid">Rough in / Why / Not this / Let it ask / Read it</span>
+    <span class="pg">06 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 7 · FIVE EXERCISES ============ -->
+<section class="page p-ex">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 03</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Run it yourself</div>
+    <h2>Five exercises. Ninety seconds to ten minutes.</h2>
+    <p style="margin-top:.7em">Do not take my word for it. Watch the difference on your own screen.</p>
+
+    <div class="ex">
+      <div class="exr">
+        <div class="rnum">01</div>
+        <div>
+          <h3>Same job, twice</h3>
+          <ol>
+            <li>Type a brief for a real email, the way you normally would. Get the draft.</li>
+            <li>New chat. Say the same job out loud, rough, with the why.</li>
+            <li>Put the two drafts side by side.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> The spoken one is longer and closer. Do this one first.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">02</div>
+        <div>
+          <h3>Count your words</h3>
+          <ol>
+            <li>Say a job out loud for thirty seconds.</li>
+            <li>Look at how much landed in the box.</li>
+            <li>Now type the same thing and time it.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> About 70 words spoken. You would have typed 20 and cut the useful bits.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">03</div>
+        <div>
+          <h3>Say the not-this</h3>
+          <ol>
+            <li>Pick a task you have been unhappy with the results on.</li>
+            <li>Say only what wrong looks like. Three things.</li>
+            <li>Then ask for it.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> Naming the wrong version fixes more than describing the right one.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">04</div>
+        <div>
+          <h3>Let it interview you</h3>
+          <ol>
+            <li>Paste the page 05 prompt.</li>
+            <li>Say the task in one rough sentence.</li>
+            <li>Answer every question out loud.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> The third question is usually the one you had not thought about.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">05</div>
+        <div>
+          <h3>Walk and talk</h3>
+          <ol>
+            <li>Open the phone app.</li>
+            <li>Say the plan for tomorrow while you walk.</li>
+            <li>Ask it for the three things that actually matter.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> You think better moving. The phone is the best dictation device you own.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>Rough in. Tidy out.</span>
+    <span class="mid">Rough in / Why / Not this / Let it ask / Read it</span>
+    <span class="pg">07 / 07</span>
+  </footer>
+</section>
+
+<div class="sitebar sharebar">
+  <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
+  <a class="share-btn" href="mailto:?subject=Weekly%20Field%20Note%20No.%2003%20%C2%B7%20Talking&amp;body=Thought%20this%20one%20was%20worth%20passing%20on%3A%0A%0Ahttps%3A%2F%2Fwebes77.github.io%2Fmagnum-guides%2Fnewsletter%2Ffield-note-03-talking.html">Email it to someone</a>
+  <a class="share-btn" href="../newsletter/">All Field Notes</a>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var text = btn.closest('.prompt').querySelector('pre').innerText;
+    var done = function(){
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+    } else {
+      fallback(text, done);
+    }
+  });
+});
+function fallback(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+var shareBtn = document.getElementById('share-link');
+if (shareBtn) {
+  shareBtn.addEventListener('click', function(){
+    var url = window.location.href.split('#')[0];
+    var done = function(){
+      shareBtn.textContent = 'Link copied';
+      shareBtn.classList.add('done');
+      setTimeout(function(){ shareBtn.textContent = 'Copy link to this Field Note'; shareBtn.classList.remove('done'); }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done, function(){ fallback(url, done); });
+    } else {
+      fallback(url, done);
+    }
+  });
+}
+</script>
+
+</body>
+</html>
