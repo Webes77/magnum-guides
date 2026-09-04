@@ -64,6 +64,11 @@ Also live: Fine-Tune (`fine-tune/`, do not restyle, James said leave it
 alone), the Manus website manual, AI for Buyer's Agents (`ba-growth/`, the
 only By Industry entry).
 
+Three Weekly Field Notes are live in `newsletter/`: 01 Clarity, 02 Context,
+03 Talking (added 4 Sep, written from a note James was sent, in his voice).
+Each issue is one self-contained HTML file with its card source beside it.
+The front page shows the newest two or three; the archive shows all.
+
 Make Claude Yours has been delivered to one client, on 3 Sep. Two problems
 came out of that run and both are fixed: prompts were mostly off-screen, and
 the deck did not follow its own agenda. Foundations and session three have
