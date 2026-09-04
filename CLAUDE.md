@@ -56,7 +56,7 @@ deck.
 
 | Session | Folder | Slides | Prompts |
 |---|---|---|---|
-| One, AI Foundations | `ai-foundations/` | 22 | 4 |
+| One, AI Foundations | `ai-foundations/` | 23 | 4 |
 | Two, Make Claude Yours | `make-claude-yours/` | 35 | 5 |
 | Three, Work That Runs Without You | `runs-without-you/` | 18 | 4 |
 
@@ -68,6 +68,26 @@ Make Claude Yours has been delivered to one client, on 3 Sep. Two problems
 came out of that run and both are fixed: prompts were mostly off-screen, and
 the deck did not follow its own agenda. Foundations and session three have
 not been delivered to anyone yet.
+
+Make Claude Yours slide 31 (Record a Skill) was checked on 4 Sep against
+Claude's own announcement post on X (21 July 2026) and three third-party
+writeups. Plus menu of the desktop app, inside Cowork, Pro, Max and Team
+plans, desktop only. The slide matches. James has not yet eyeballed it in
+the live product; that is the one remaining check.
+
+Three product facts search-verified on 4 Sep, all third-party (TechCrunch,
+Engadget, The Register, 9to5Mac): Cowork has run on the web and the phone
+app since 7 July, Max plans first, other plans following; scheduled tasks run
+in the cloud with no device on; chat and Cowork share memory since 25 Aug, on
+by default. The decks were corrected to match. `claude.com`, `anthropic.com`
+and `support.claude.com` are all blocked from the sandbox; WebSearch is the
+only research channel and it works.
+
+The Gamma sweep is done, 4 Sep. 233 decks listed, the four Claude-era ones
+read. Nothing reopened the closure decision. One gap it surfaced is closed:
+Foundations gained a slide, "It reads what you hand it", on photos, PDFs,
+spreadsheets and handwritten notes as inputs. Details in
+`notes/training-audit.md`, Source 2.
 
 ## Decisions already made
 
@@ -88,20 +108,20 @@ not been delivered to anyone yet.
 Where the last session stopped: the members area is structurally done and
 the three decks are live and fixed. The open work, in order of value:
 
-1. James to confirm Make Claude Yours slide 31 (Record a Skill, plus menu in
-   the desktop app) against the live product. Third-party sources only.
-2. Sweep the material never swept: Gamma presentations and the desktop
-   folders. The Drive sweep is done. See "Still to sweep" at the end of
-   `notes/training-audit.md`.
-3. Drive housekeeping (not urgent): the items listed under "Reclaim" in the
-   audit.
+1. James to glance at Make Claude Yours slide 31 in the live desktop app.
+   Sources agree with the slide; nobody has seen the menu itself from here.
+2. The desktop folders, once James uploads them. The only material never
+   swept. See "Still to sweep" at the end of `notes/training-audit.md`.
+3. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
+   and the 38 Gamma duplicates listed under Source 2.
 4. Industry guide, one only, once James names the trade.
 
 ## How things get built
 
-- Work on the branch `claude/client-guide-magnum-access-iqtblw`, merge to
-  `main`, push both. James has said "you have full control, merge wherever
-  you need to." Pages deploys from `main` in under a minute.
+- Work on whichever `claude/...` branch the session is given (it changes
+  every session), merge to `main`, push both. James has said "you have full
+  control, merge wherever you need to." Pages deploys from `main` in under a
+  minute.
 - Never deploy inside 20 minutes of a client session unless James says so.
 - Each document keeps its card source next to it (`*-thumbnail.html` or
   `thumbnail.html`). Cards are 1200x630 JPEG q90 in `assets/thumbnails/`.

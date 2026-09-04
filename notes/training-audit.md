@@ -57,7 +57,7 @@ throughout. The never-touch rules below still stand, Fairmont first among them.
 | The Big 6 Training series, 11 files | Yes | 0 |
 | ChatGPT Ecosystem Training + Backups, 4 files | Yes | 0 |
 | Sales stream, 6 liftable files | Yes | 0 |
-| Gamma presentations | No | No |
+| Gamma presentations, 233 decks | Yes | 4 of 233, the Claude-era four |
 | Desktop folders | No | No |
 
 ---
@@ -277,9 +277,55 @@ current Claude interface existed.
    client folder. Decide whether it becomes a sales area before deciding what
    to keep.
 
+## Source 2: Gamma
+
+Swept 4 September 2026 through the Gamma connector. Read-only. 233 decks in
+15 folders, January 2025 to 2 September 2026. Nothing was moved, renamed or
+deleted. Titles were listed in full; four decks were read in full.
+
+The listing confirmed the closure decision rather than reopening it. The
+Gamma library is the same material as Drive, in slide form, plus the client
+session recaps that were never going to ship anyway.
+
+### What is in there
+
+| Group | Decks | Stream | Verdict |
+|---|---|---|---|
+| Claude-era AI training, March to August 2026 | 19 | AI | The four newest read in full, below. Everything in them is already in the three live decks, with one gap, now closed. |
+| ChatGPT, Perplexity, Gemini, Big 6, Manus | 27 | AI | Retired. Same decision as Drive. The Manus manual is already live. |
+| Sales training, generic | 31 | SALES | Separate product, separate buyer. No home yet. Titles only, not read. |
+| Client sessions, recaps, proposals, discovery decks | 118 | Client | Never-touch. Includes every folder in the never-touch list plus a dozen smaller engagements. |
+| Magnum AI positioning, service menus, overviews | 11 | Business | Not training. |
+| Personal and unrelated | 27 | Out | Out of scope. |
+
+Counts are by title and folder, so a deck that is both a client recap and a
+sales session was counted once, as client.
+
+### The four read in full
+
+| Deck | Date | What it is | Verdict |
+|---|---|---|---|
+| AI Foundations V5, Track A (Claude-led) | 16 June, edited 19 July | The last Gamma version of Foundations. 22 cards. Canonical lever order. Closes on an embedded service menu. | Superseded by `ai-foundations/`. Two things it had that the live deck did not: a card on reading photos, PDFs, spreadsheets and handwritten notes, and a data-safety line. Both now in the live deck as one slide, "It reads what you hand it". The account-tier risk table was not carried; Make Claude Yours covers settings properly. |
+| How to Use Claude in 2026 | 28 July, edited 5 August | 15 cards. Projects, skills, Cowork, connectors, schedules, in setup order. Two copies exist. | Superseded by Make Claude Yours and Work That Runs Without You, which cover the same ground with prompts. Nothing to carry. |
+| AI-First Mindset | 5 August | 2 cards. "Before every task, ask: could AI do this?" and Talking Beats Typing. | Already in Foundations as "Put it first, not last" and "Voice, not typing" in session two. Nothing to carry. |
+| Claude Projects and Cowork | 13 August | 6 cards for a named client. Project instructions, knowledge base, where Cowork fits. | Client deck. Two unverified product claims in it (Claude weights the end of instructions more heavily; aim for 200 words) are not carried anywhere. |
+
+### Housekeeping, whenever suits
+
+Not urgent, and Gamma is not the source of truth for anything.
+
+- 38 decks are duplicates or near-duplicates of another deck with the same
+  title. Worst offenders: one client furniture deck exists five times, one
+  retail sales deck five times, Closing the Sale three times, Seven Rules
+  three times, THE BIG SIX three times. An "Archive, Superseded" folder
+  already exists and is the place for them.
+- Two decks are titled "How to Use Claude in 2026". The 28 July one is the
+  edited version.
+- Nothing in Gamma needs to be deleted. Nothing in it is referenced by the
+  members area.
+
 ## Still to sweep
 
 - Broadbent and GIG, filtered for generic sales training only
 - Training Materials / Privacy Documents (not training, listed for completeness)
-- Gamma presentations
 - The desktop folders, once uploaded
