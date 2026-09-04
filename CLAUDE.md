@@ -189,8 +189,12 @@ the three decks are live and fixed. The open work, in order of value:
    cards land under New and get filed by hand in the merge.
 5. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-6. Housekeeping (not urgent): the Drive items under "Reclaim" in the audit,
-   and the 38 Gamma duplicates listed under Source 2.
+6. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
+   2, by hand, since the Gamma connector cannot move or delete. The Drive
+   tidy ran on 4 Sep: the retired January to March workspace is archived,
+   duplicates sit in `_Review before deleting 2026-09` under Magnum
+   Business for James to empty, and the log is `_Declutter log` in the same
+   folder. Two loose PNGs and the API Key folder are still James's call.
 7. Industry guide, one only, once James names the trade.
 
 ## How things get built
