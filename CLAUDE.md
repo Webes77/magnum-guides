@@ -122,8 +122,8 @@ spreadsheets and handwritten notes as inputs. Details in
   `notes/sunday-brief-prompt.md`. The routine drafts shelf cards straight
   into `prompts/index.html` on a branch named `sunday-brief/<date>`; James
   reads the diff and merges. Nothing reaches the shelf without that step.
-  The four vault files live in Google Drive as Docs so the routine can
-  append to them. Deck prompts on the shelf are the authored text and are
+  The vault is the `Vault` folder in Drive, synced to the Mac; the routine
+  adds one dated file a week there and never edits the four standing files. Deck prompts on the shelf are the authored text and are
   never rewritten; a fix to a deck prompt is made in the deck and the shelf.
 - The audience copies prompts, it does not read them off the screen. Prompt
   slides are built for that.
