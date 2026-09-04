@@ -75,6 +75,14 @@ writeups. Plus menu of the desktop app, inside Cowork, Pro, Max and Team
 plans, desktop only. The slide matches. James has not yet eyeballed it in
 the live product; that is the one remaining check.
 
+Three product facts search-verified on 4 Sep, all third-party (TechCrunch,
+Engadget, The Register, 9to5Mac): Cowork has run on the web and the phone
+app since 7 July, Max plans first, other plans following; scheduled tasks run
+in the cloud with no device on; chat and Cowork share memory since 25 Aug, on
+by default. The decks were corrected to match. `claude.com`, `anthropic.com`
+and `support.claude.com` are all blocked from the sandbox; WebSearch is the
+only research channel and it works.
+
 The Gamma sweep is done, 4 Sep. 233 decks listed, the four Claude-era ones
 read. Nothing reopened the closure decision. One gap it surfaced is closed:
 Foundations gained a slide, "It reads what you hand it", on photos, PDFs,
