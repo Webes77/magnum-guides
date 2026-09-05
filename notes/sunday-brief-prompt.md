@@ -19,7 +19,13 @@ Changes from the first version: the six mandatory sections became five,
 WHAT CHANGED and the model scoreboard went, a fifth relevance test was added,
 and the outputs grew from two to four. On 4 Sep a tidy step was added: after
 the brief is sent, the routine trashes the week's read newsletters, except
-anything from ruben@substack.com (Ruben Hassid), which stays.
+anything from ruben@substack.com (Ruben Hassid), which stays. On 6 Sep, after
+the first live run, the send moved from Outlook to the Gmail connector: the
+Microsoft 365 connector refused Mail.Send in the routine session (403 at the
+app registration) and the Gmail fallback got through. The same run could not
+push to GitHub (read-only clone), so the routine now also writes any unpushed
+cards into the vault file, and the routine's repository access is James's to
+fix in the Routines UI.
 
 ## How the brief feeds the members area
 
@@ -101,7 +107,7 @@ Step 2, read. Use the Gmail connector on the magnumai.newsletters@gmail.com inbo
 
 Step 3, write the brief in the FORMAT above.
 
-Step 4, send. Use the Microsoft 365 connector's outlook_send_mail to send the brief as a plain text email from James's own account to james@magnumai.com.au and nobody else. Subject: Sunday Brief - D Month YYYY, using the Sunday the run is for. This is a standing scheduled send with pre-approval for this recipient and this recipient only. The final lines of the email, after the five sections, are:
+Step 4, send. Use the Gmail connector's send_message to send the brief as a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Sunday Brief - D Month YYYY, using the Sunday the run is for. This is a standing scheduled send with pre-approval for this recipient and this recipient only. If the send fails twice, write the full email text to the Drive Vault folder named in Step 6 as sunday-brief-YYYY-MM-DD-EMAIL-TEXT.md and carry on. The final lines of the email, after the five sections, are:
 X emails read in full, Y skipped as promos or non-AI mail, Z fetched from web due to truncation.
 Shelf: the branch name pushed, or "no shelf cards this week".
 Vault: the name of the file written, or what failed.
@@ -122,7 +128,7 @@ when is the moment a client would run it. One of exactly these values: start (th
 
 Pick one of each. If a card fits none, leave both fields out and the card lands under New for James to file. Never invent a new value.
 
-The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a type and a when from the lists above, or neither. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If there are no FOR THE SHELF items, do nothing in the repo.
+The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a type and a when from the lists above, or neither. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If the push is refused, put the complete card objects, exactly as written, into the vault file's prompts-library section under a heading SHELF CARDS NOT PUSHED, so James can paste them. If there are no FOR THE SHELF items, do nothing in the repo.
 
 Step 6, vault. Write one markdown file into James's Drive Vault folder (folder id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l) using the Google Drive connector's create_file with title sunday-brief-YYYY-MM-DD.md, contentMimeType text/markdown, disableConversionToGoogleType true, parentId set to that folder. The file has four sections headed ## tools-library, ## prompts-library, ## content-ideas, ## sales-lessons, each holding the week's raw material for that vault with full detail, sources and dates. Sources and client names are allowed here; this file is private. An empty section says "Nothing this week." Never modify, rename or move any existing file in that folder.
 
