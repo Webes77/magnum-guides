@@ -225,12 +225,12 @@ footer b{color:var(--paper);font-weight:500}
 
   <div class="vault" id="vault" aria-label="Choose a moment">
     <div class="label">Where are you?</div>
-    <p class="note">Pick the moment you are in. The cards for it open below. Or narrow by type or lever above.</p>
+    <p class="note">Pick the moment you are in. The cards for it open below. Or narrow by type or lever below.</p>
     <div class="vgrid" id="vgrid"></div>
+  </div>
 
   <div class="filters" id="filters" aria-label="Narrow the shelf"></div>
 
-  </div>
 
   <p class="none" id="none" hidden>No card matches all of that. <button class="chip" id="clear">Show all</button></p>
 
@@ -1104,7 +1104,7 @@ function applyFilters(){
   document.querySelectorAll('#shelf section').forEach(sec=>{sec.hidden=!sec.querySelector('.pane:not([hidden])');});
   document.getElementById('none').hidden=n>0;
   document.getElementById('fcount').textContent=any?`${n} of ${S.length} cards`:`${S.length} cards`;
-  filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',state[b.dataset.g]===b.dataset.v));
+  filters.querySelectorAll('.chip:not(.back)').forEach(b=>b.classList.toggle('on',state[b.dataset.g]===b.dataset.v));
   checkMore();
 }
 filters.querySelectorAll('.chip:not(.back)').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
