@@ -19,7 +19,15 @@ Changes from the first version: the six mandatory sections became five,
 WHAT CHANGED and the model scoreboard went, a fifth relevance test was added,
 and the outputs grew from two to four. On 4 Sep a tidy step was added: after
 the brief is sent, the routine trashes the week's read newsletters, except
-anything from ruben@substack.com (Ruben Hassid), which stays.
+anything from ruben@substack.com (Ruben Hassid), which stays. On 6 Sep, after
+the first live run, the send moved from Outlook to the Gmail connector: the
+Microsoft 365 connector refused Mail.Send in the routine session (403 at the
+app registration) and the Gmail fallback got through. The same run could not
+push to GitHub (read-only clone), so the routine now also writes any unpushed
+cards into the vault file, and the routine's repository access is James's to
+fix in the Routines UI. Also on 6 Sep the two-card weekly cap was dropped and
+replaced with a four-test bar and a duplicate check, and the email now carries
+each card in full readable text so James can approve it from his phone.
 
 ## How the brief feeds the members area
 
@@ -101,14 +109,23 @@ Step 2, read. Use the Gmail connector on the magnumai.newsletters@gmail.com inbo
 
 Step 3, write the brief in the FORMAT above.
 
-Step 4, send. Use the Microsoft 365 connector's outlook_send_mail to send the brief as a plain text email from James's own account to james@magnumai.com.au and nobody else. Subject: Sunday Brief - D Month YYYY, using the Sunday the run is for. This is a standing scheduled send with pre-approval for this recipient and this recipient only. The final lines of the email, after the five sections, are:
+Step 4, send. Use the Gmail connector's send_message to send the brief as a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Sunday Brief - D Month YYYY, using the Sunday the run is for. This is a standing scheduled send with pre-approval for this recipient and this recipient only. If the send fails twice, write the full email text to the Drive Vault folder named in Step 6 as sunday-brief-YYYY-MM-DD-EMAIL-TEXT.md and carry on. The final lines of the email, after the five sections, are:
 X emails read in full, Y skipped as promos or non-AI mail, Z fetched from web due to truncation.
 Shelf: the branch name pushed, or "no shelf cards this week".
 Vault: the name of the file written, or what failed.
 Inbox: N emails to be moved to trash after this send, Ruben Hassid kept.
 ASSUMPTIONS: every choice you made because nobody could be asked, one line each, or "none".
+SHELF CARDS FOR APPROVAL: James reads this on his phone and approves from the email, so write it as plain readable text, no code formatting and no JavaScript. For each card going to the branch, give its title, its one-line when-to-use, and its full text exactly as a client would paste it. If a card replaces an existing one, name the card it replaces and say why the new one is better. If there are none, write "Nothing for the shelf this week."
 
-Step 5, shelf cards. For every BUILD THIS item tagged FOR THE SHELF (zero to two a week), add one card to the Prompt Shelf. In /home/user/magnum-guides run git fetch origin main, then git checkout -B sunday-brief/YYYY-MM-DD origin/main using the Sunday's date. Insert the card object at the very top of the S array in prompts/index.html (the first element, directly after "const S=[" and its comment line), with sec:'From the Sunday Brief'. Use this shape exactly:
+Step 5, shelf cards. Add a card to the Prompt Shelf for every BUILD THIS item tagged FOR THE SHELF that passes all four tests below. There is no fixed number of cards a week. Some weeks none pass, and that is a good week, not a failed one. Everything that does not pass still goes into the vault at Step 6, so nothing is lost.
+
+The bar. All four must pass, or the card does not go on the page.
+1. A client can paste it and get value with James not in the room.
+2. It is not a near-duplicate of a card already on the page. Before writing anything, read the whole S array and note what every existing card does, not just what it is called. If a new card does substantially the same job as one already there, you have two options and no third: replace the existing card when the new one is plainly better, naming the replacement in the commit message, or drop the new one. Never add a variation. Cards from the three session decks are authored material and are never replaced, so a new card that overlaps a deck prompt is always the one that gets dropped.
+3. It still makes sense in six months. Cut anything tied to this week's model, this week's release, or a news story.
+4. It does not depend on a menu, a setting or a button, or if it does, its where line carries [VERIFY BEFORE SHIPPING].
+
+All of the week's cards go on one branch, so James reviews one diff however many cards it holds. In /home/user/magnum-guides run git fetch origin main, then git checkout -B sunday-brief/YYYY-MM-DD origin/main using the Sunday's date. Insert the card object at the very top of the S array in prompts/index.html (the first element, directly after "const S=[" and its comment line), with sec:'From the Sunday Brief'. Use this shape exactly:
 
 Prompt card:
 {kind:'prompt', id:'two-or-three-word-slug', sec:'From the Sunday Brief', title:'Short imperative title', where:'When to use it, one line', type:'...', when:'...', levers:['Role','Context','Constraints','Tone','Format','Output'], prompt:`The full prompt, authored with hard line breaks at about 72 characters, in the order Role, Context, Constraints, Tone, Format, Output where the prompt calls for them.`},
@@ -122,7 +139,7 @@ when is the moment a client would run it. One of exactly these values: start (th
 
 Pick one of each. If a card fits none, leave both fields out and the card lands under New for James to file. Never invent a new value.
 
-The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a type and a when from the lists above, or neither. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If there are no FOR THE SHELF items, do nothing in the repo.
+The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a type and a when from the lists above, or neither. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If the push is refused, put the complete card objects, exactly as written, into the vault file's prompts-library section under a heading SHELF CARDS NOT PUSHED, so James can paste them. If there are no FOR THE SHELF items, do nothing in the repo.
 
 Step 6, vault. Write one markdown file into James's Drive Vault folder (folder id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l) using the Google Drive connector's create_file with title sunday-brief-YYYY-MM-DD.md, contentMimeType text/markdown, disableConversionToGoogleType true, parentId set to that folder. The file has four sections headed ## tools-library, ## prompts-library, ## content-ideas, ## sales-lessons, each holding the week's raw material for that vault with full detail, sources and dates. Sources and client names are allowed here; this file is private. An empty section says "Nothing this week." Never modify, rename or move any existing file in that folder.
 
