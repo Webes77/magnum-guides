@@ -76,6 +76,15 @@ list still renders and filters, and sorts last. The Sunday Brief routine
 does not yet write `type` or `when`; that is James's change to make from the
 routine's chat.
 
+Since 4 Sep (night) the shelf opens as a vault: a chooser of the moments,
+one tile each with a count, plus Everything. Cards stay hidden until a tile
+is picked or any filter chip is set; "Choose a moment" in the filter row
+returns to the chooser. A link to a card id still lands on the card with
+its moment open (`openHash` in the script, on load and on hashchange). The
+"How to use a card" box shows only once cards are showing. Built for a
+shelf past a hundred cards: every card is rendered once and hidden by
+state, nothing is re-rendered.
+
 On 4 Sep (evening) the shelf grew from 14 cards to 30. Sixteen came from
 James's own prompt library in Drive (the Five Role Prompts, four of the
 fifty Role Packs, the Prompt Architect, the voice guide, the 20 per cent

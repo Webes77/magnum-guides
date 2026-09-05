@@ -103,6 +103,20 @@ main{padding:34px 0 20px}
 .pane-head .meta i.src{border:0;padding:1px 0;color:#9C9285}
 [hidden]{display:none!important}
 
+/* VAULT · the landing chooser */
+.vault{margin-bottom:54px}
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.vtile{display:flex;flex-direction:column;text-align:left;background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:20px 22px 18px;min-height:168px;color:inherit;transition:transform .14s ease, box-shadow .14s ease}
+.vtile:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--ink)}
+.vtile:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
+.vtile .vn{font-family:var(--display);font-weight:700;font-size:34px;line-height:1;color:var(--rust)}
+.vtile h3{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.1;text-transform:uppercase;color:var(--ink);margin-top:10px}
+.vtile p{font-size:14.5px;color:var(--char);line-height:1.45;margin-top:6px}
+.vtile .vc{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:auto;padding-top:14px}
+.vtile.all{background:var(--ink);color:var(--paper)}
+.vtile.all h3{color:var(--paper)}.vtile.all p{color:#C9BFAF}.vtile.all .vc{color:#9C9285}
+.fmeta .back{margin-left:auto}
+
 /* SECTIONS */
 section{margin-bottom:54px}
 .label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px;margin-bottom:8px}
@@ -160,6 +174,8 @@ footer b{color:var(--paper);font-weight:500}
   .masthead{padding:34px 0 40px}
   .pane-head{flex-direction:column}
   .frow{flex-direction:column;gap:6px}
+  .vgrid{grid-template-columns:1fr}
+  .vtile{min-height:0}
   .fname{width:auto;padding-top:0}
   #reader .rhead{padding:14px 20px;font-size:18px}
   #reader pre{padding:24px 20px 48px;font-size:16px}
@@ -200,14 +216,22 @@ footer b{color:var(--paper);font-weight:500}
     <p>Those five are the six levers in working order: Role, Context, Constraints, Tone, Format, Output. Every card below is built on them. <a href="../ai-foundations/">Session one</a> teaches them properly.</p>
   </div>
 
-  <div class="about">
+  <div class="about" id="howto" hidden>
     <h2>How to use <em>a card</em></h2>
     <p><span class="key">Copy</span> puts the exact prompt on your clipboard. <span class="key">Expand</span> opens it full screen for reading. Anything in [square brackets] is yours to fill in before you send it.</p>
     <p>The strip above each prompt shows which of the six levers it pulls on: Role, Context, Constraints, Tone, Format, Output. Read the strip, then read the prompt, and you can see the method doing its work before you use it.</p>
     <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act on an answer, setting up, every week, every month. The row of chips narrows it further by type, or by a single lever. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
   </div>
 
+  <div class="vault" id="vault" aria-label="Choose a moment">
+    <div class="label">Where are you?</div>
+    <p class="note">Pick the moment you are in. The cards for it open below. Or narrow by type or lever above.</p>
+    <div class="vgrid" id="vgrid"></div>
+
   <div class="filters" id="filters" aria-label="Narrow the shelf"></div>
+
+  </div>
+
   <p class="none" id="none" hidden>No card matches all of that. <button class="chip" id="clear">Show all</button></p>
 
   <div id="shelf"></div>
@@ -1048,13 +1072,30 @@ whenKeys.forEach(w=>{
 const filters=document.getElementById('filters');
 const state={when:'',type:'',lever:''};
 const present={when:whenKeys.filter(k=>S.some(c=>whenOf(c)===k)),type:typeKeys.filter(k=>S.some(c=>c.type===k))};
+let revealed=false;
 const chipRow=(name,g,keys,lab)=>`<div class="frow"><span class="fname">${name}</span><div class="chips"><button class="chip on" data-g="${g}" data-v="">All</button>${keys.map(k=>`<button class="chip" data-g="${g}" data-v="${esc(k)}">${esc(lab(k))}</button>`).join('')}</div></div>`;
 filters.innerHTML=
   chipRow('When','when',present.when,k=>label(WHENS,k))+
   chipRow('Type','type',present.type,k=>label(TYPES,k))+
   chipRow('Lever','lever',LEVERS,k=>k)+
-  `<div class="frow fmeta"><span class="fname"></span><span class="fcount" id="fcount"></span></div>`;
+  `<div class="frow fmeta"><span class="fname"></span><span class="fcount" id="fcount"></span><button class="chip back" id="tovault" hidden>Choose a moment</button></div>`;
+
+// ---- the vault. One tile per moment with a count, plus everything.
+const vgrid=document.getElementById('vgrid');
+const countOf=k=>S.filter(c=>whenOf(c)===k).length;
+vgrid.innerHTML=present.when.map((k,i)=>`<button class="vtile" data-when="${esc(k)}"><span class="vn">${String(i+1).padStart(2,'0')}</span><h3>${esc(label(WHENS,k))}</h3><p>${esc(WHEN_NOTES[k]||'')}</p><span class="vc">${countOf(k)} card${countOf(k)===1?'':'s'}</span></button>`).join('')
+  +`<button class="vtile all" data-when=""><span class="vn">&rarr;</span><h3>Everything</h3><p>Every card on the shelf, grouped by moment.</p><span class="vc">${S.length} cards</span></button>`;
+vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.when=b.dataset.when;state.type='';state.lever='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
+document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.lever='';revealed=false;applyFilters();window.scrollTo({top:0});};
 function applyFilters(){
+  const any=!!(state.when||state.type||state.lever);
+  if(any) revealed=true;
+  const landing=!revealed;
+  document.getElementById('vault').hidden=!landing;
+  document.getElementById('shelf').hidden=landing;
+  document.getElementById('howto').hidden=landing;
+  document.getElementById('tovault').hidden=landing;
+  if(landing){document.getElementById('none').hidden=true;document.getElementById('fcount').textContent=`${S.length} cards`;filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.v===''));return;}
   let n=0;
   document.querySelectorAll('.pane').forEach(p=>{
     const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.lever||p.dataset.levers.split(',').includes(state.lever));
@@ -1062,12 +1103,11 @@ function applyFilters(){
   });
   document.querySelectorAll('#shelf section').forEach(sec=>{sec.hidden=!sec.querySelector('.pane:not([hidden])');});
   document.getElementById('none').hidden=n>0;
-  const any=state.when||state.type||state.lever;
   document.getElementById('fcount').textContent=any?`${n} of ${S.length} cards`:`${S.length} cards`;
   filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',state[b.dataset.g]===b.dataset.v));
   checkMore();
 }
-filters.querySelectorAll('.chip').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
+filters.querySelectorAll('.chip:not(.back)').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
 document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.lever='';applyFilters();};
 applyFilters();
 
@@ -1088,7 +1128,18 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&reader.classList.co
 function checkMore(){document.querySelectorAll('.pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');if(!pre)return;p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});}
 document.querySelectorAll('.prewrap pre').forEach(pre=>pre.addEventListener('scroll',checkMore));
 window.addEventListener('resize',checkMore);
-window.addEventListener('load',()=>{checkMore();const h=location.hash.slice(1);const e=h&&document.getElementById(h);if(e&&e.classList.contains('pane'))e.scrollIntoView();});
+function openHash(){
+  const h=location.hash.slice(1);const e=h&&document.getElementById(h);
+  if(!(e&&e.classList.contains('pane')))return false;
+  if(!revealed||e.hidden||e.closest('section').hidden){state.when=e.dataset.when;state.type='';state.lever='';}
+  revealed=true;
+  applyFilters();
+  e.scrollIntoView();
+  return true;
+}
+window.addEventListener('hashchange',openHash);
+window.addEventListener('load',()=>{checkMore();openHash();});
+openHash();
 checkMore();
 </script>
 
