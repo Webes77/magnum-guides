@@ -25,7 +25,9 @@ Microsoft 365 connector refused Mail.Send in the routine session (403 at the
 app registration) and the Gmail fallback got through. The same run could not
 push to GitHub (read-only clone), so the routine now also writes any unpushed
 cards into the vault file, and the routine's repository access is James's to
-fix in the Routines UI.
+fix in the Routines UI. Also on 6 Sep the two-card weekly cap was dropped and
+replaced with a four-test bar and a duplicate check, and the email now carries
+each card in full readable text so James can approve it from his phone.
 
 ## How the brief feeds the members area
 
@@ -113,8 +115,17 @@ Shelf: the branch name pushed, or "no shelf cards this week".
 Vault: the name of the file written, or what failed.
 Inbox: N emails to be moved to trash after this send, Ruben Hassid kept.
 ASSUMPTIONS: every choice you made because nobody could be asked, one line each, or "none".
+SHELF CARDS FOR APPROVAL: James reads this on his phone and approves from the email, so write it as plain readable text, no code formatting and no JavaScript. For each card going to the branch, give its title, its one-line when-to-use, and its full text exactly as a client would paste it. If a card replaces an existing one, name the card it replaces and say why the new one is better. If there are none, write "Nothing for the shelf this week."
 
-Step 5, shelf cards. For every BUILD THIS item tagged FOR THE SHELF (zero to two a week), add one card to the Prompt Shelf. In /home/user/magnum-guides run git fetch origin main, then git checkout -B sunday-brief/YYYY-MM-DD origin/main using the Sunday's date. Insert the card object at the very top of the S array in prompts/index.html (the first element, directly after "const S=[" and its comment line), with sec:'From the Sunday Brief'. Use this shape exactly:
+Step 5, shelf cards. Add a card to the Prompt Shelf for every BUILD THIS item tagged FOR THE SHELF that passes all four tests below. There is no fixed number of cards a week. Some weeks none pass, and that is a good week, not a failed one. Everything that does not pass still goes into the vault at Step 6, so nothing is lost.
+
+The bar. All four must pass, or the card does not go on the page.
+1. A client can paste it and get value with James not in the room.
+2. It is not a near-duplicate of a card already on the page. Before writing anything, read the whole S array and note what every existing card does, not just what it is called. If a new card does substantially the same job as one already there, you have two options and no third: replace the existing card when the new one is plainly better, naming the replacement in the commit message, or drop the new one. Never add a variation. Cards from the three session decks are authored material and are never replaced, so a new card that overlaps a deck prompt is always the one that gets dropped.
+3. It still makes sense in six months. Cut anything tied to this week's model, this week's release, or a news story.
+4. It does not depend on a menu, a setting or a button, or if it does, its where line carries [VERIFY BEFORE SHIPPING].
+
+All of the week's cards go on one branch, so James reviews one diff however many cards it holds. In /home/user/magnum-guides run git fetch origin main, then git checkout -B sunday-brief/YYYY-MM-DD origin/main using the Sunday's date. Insert the card object at the very top of the S array in prompts/index.html (the first element, directly after "const S=[" and its comment line), with sec:'From the Sunday Brief'. Use this shape exactly:
 
 Prompt card:
 {kind:'prompt', id:'two-or-three-word-slug', sec:'From the Sunday Brief', title:'Short imperative title', where:'When to use it, one line', type:'...', when:'...', levers:['Role','Context','Constraints','Tone','Format','Output'], prompt:`The full prompt, authored with hard line breaks at about 72 characters, in the order Role, Context, Constraints, Tone, Format, Output where the prompt calls for them.`},
