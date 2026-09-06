@@ -7,13 +7,15 @@ briefing. It ran as a hand-started Cowork task until 4 Sep 2026. It moved so
 it runs with no Mac awake, can send from James's own Outlook, and can commit
 shelf cards to this repo instead of emailing them for pasting.
 
-The live routine is the one James created in the claude.ai Routines UI. It
-has to be created and edited there, because in this org a session cannot
-attach connectors to a routine, and a session's attempt to rewrite the
-routine's prompt is blocked. This file holds the prompt in full so it is
-versioned. When the prompt changes, change it here first, then paste it into
-the routine. If the two differ, the routine is what actually ran, and this
-file is what it should say.
+The live routine is the one James created in the claude.ai Routines UI
+(trigger id `trig_014BpCSeSMonkfgePpN5tBfN`). Connectors are attached there,
+because a session cannot attach them. The prompt, though, a session can read
+and rewrite: `list_triggers` returns the live prompt and `update_trigger`
+replaces it, both proven on 6 Sep. So the working order is: change this
+file first, then push the whole prompt from this file to the routine with
+`update_trigger`, then read it back with `list_triggers` and confirm the
+changed line is there. If the two differ, the routine is what actually ran,
+and this file is what it should say.
 
 Changes from the first version: the six mandatory sections became five,
 WHAT CHANGED and the model scoreboard went, a fifth relevance test was added,

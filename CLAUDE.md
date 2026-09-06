@@ -235,8 +235,10 @@ the three decks are live and fixed. The open work, in order of value:
    Field Notes beside the three previous editions. The
    `sunday-brief/2026-09-06` branch is done with and can be deleted on
    GitHub.
-4. James to paste the current `notes/sunday-brief-prompt.md` into the
-   routine. One line changed on 6 Sep: the mechanical duplicate test.
+4. Done 6 Sep: the routine carries the mechanical duplicate test. A
+   session can now update the routine prompt itself with `update_trigger`
+   and read it back with `list_triggers`; the how is in
+   `notes/sunday-brief-prompt.md`. Next run is Sunday 13 Sep, 6am.
 5. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
 6. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
