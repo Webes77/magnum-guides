@@ -97,7 +97,10 @@ main{padding:34px 0 20px}
 .fmeta{padding:6px 0 2px}
 .fcount{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);padding-top:2px}
 .none{font-size:15.5px;color:var(--char);margin:-20px 0 40px;display:flex;align-items:center;gap:12px}
+.pane-head .hook{display:block;font-family:var(--sans);font-weight:500;font-size:14.5px;line-height:1.4;letter-spacing:0;text-transform:none;color:var(--paper);margin-top:7px;max-width:52ch}
 .pane-head .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.pane-head .meta i.pick{background:var(--rust);color:var(--paper);border-color:var(--rust)}
+.pane-head .meta i.new{background:var(--olive);color:var(--paper);border-color:var(--olive)}
 .pane-head .meta i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;border:1px solid #C9BFAF;color:#C9BFAF;line-height:1.5}
 .pane-head .meta i.type{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .pane-head .meta i.src{border:0;padding:1px 0;color:#9C9285}
@@ -265,6 +268,10 @@ footer b{color:var(--paper);font-weight:500}
 //   type: 'interview' | 'instructions' | 'rules' | 'review' | 'writing' | 'image' | 'scheduled'
 //   when: 'start' | 'before-acting' | 'setup' | 'weekly' | 'monthly'
 // A value not on either list still renders and still filters; it sorts last.
+//   hook: one line of outcome shown under the title, under fourteen words
+//   added: 'YYYY-MM-DD', the day the card landed; under fourteen days old shows NEW
+//   rank: 1, 2 or 3 pins a card to the top of its moment. James sets this, the
+//         routine never does.
 // The page groups cards by `when`. `sec` stays on every card and shows as the
 // source label on the card, so it is never removed.
 //
@@ -287,7 +294,7 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- Magnum AI library · filed 4 Sep 2026 ---------- */
-{kind:'prompt', id:'rebuild-a-weak-prompt', sec:'Magnum AI library', title:'Rebuild a weak prompt', where:'Any prompt you keep reusing and keep editing', type:'review', when:'before-acting', levers:['Role','Constraints','Format','Output'],
+{kind:'prompt', id:'rebuild-a-weak-prompt', sec:'Magnum AI library', title:'Rebuild a weak prompt', where:'Any prompt you keep reusing and keep editing', type:'review', when:'before-acting', hook:"Paste a prompt you keep editing. Get one you never have to.", rank:3, added:'2026-09-04', levers:['Role','Constraints','Format','Output'],
 prompt:`You are a prompt engineer who rebuilds weak prompts on the six levers:
 Role, Context, Constraints, Tone, Format, Output.
 
@@ -320,7 +327,7 @@ MY PROMPTING LESSON: one habit I can carry into every prompt I write.
 Stop after the lesson.
 
 The prompt is: [paste it]`},
-{kind:'prompt', id:'audit-project-instructions', sec:'Magnum AI library', title:'Audit your project instructions', where:'Inside a project that is not behaving', type:'review', when:'setup', levers:['Role','Constraints','Format','Output'],
+{kind:'prompt', id:'audit-project-instructions', sec:'Magnum AI library', title:'Audit your project instructions', where:'Inside a project that is not behaving', type:'review', when:'setup', hook:"Shorter, clearer instructions from the ones you already have, with what is hurting named.", added:'2026-09-04', levers:['Role','Constraints','Format','Output'],
 prompt:`You are an instructions editor. You make project instructions shorter,
 clearer and more reliable without losing what already works.
 
@@ -348,7 +355,7 @@ THE REWRITE: the full instructions, ready to paste, shorter than the
 original, with no commentary inside them.
 
 Stop after the rewrite.`},
-{kind:'prompt', id:'build-the-reference-file', sec:'Magnum AI library', title:'Build the reference file', where:'Inside a project, after The file plan', type:'writing', when:'setup', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'build-the-reference-file', sec:'Magnum AI library', title:'Build the reference file', where:'Inside a project, after The file plan', type:'writing', when:'setup', hook:"The one document it reads before every job, drafted from what you have already told it.", added:'2026-09-04', levers:['Context','Constraints','Format','Output'],
 prompt:`I want one reference file for this project: the document you read before
 every piece of work here, so I never explain the same background twice.
 
@@ -371,7 +378,7 @@ Rules:
 
 Answer with the finished file only: headed, plain language, ready to save
 and upload. Stop after the file.`},
-{kind:'prompt', id:'voice-guide', sec:'Magnum AI library', title:'Teach it to write like you', where:'A new chat. Fifteen minutes and three real emails', type:'interview', when:'setup', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'voice-guide', sec:'Magnum AI library', title:'Teach it to write like you', where:'A new chat. Fifteen minutes and three real emails', type:'interview', when:'setup', hook:"Fifteen minutes and three real emails. After that it writes in your voice.", rank:3, added:'2026-09-04', levers:['Context','Constraints','Format','Output'],
 prompt:`Help me build a voice guide: a set of instructions that makes anything you
 write for me sound like I wrote it. Once it is built I will save it and
 load it before any writing task, so the tone is right from the start
@@ -402,7 +409,7 @@ and a checklist to run before anything goes out in my name.
 Finish with two short test pieces written to the guide, one email and one
 message, so I can hear whether it is me. If it is off, we fix the guide,
 not the sample. Stop after the test pieces.`},
-{kind:'prompt', id:'cut-to-twenty', sec:'Magnum AI library', title:'Cut it to the 20 per cent', where:'Any draft that feels long. Paste the writing first', type:'review', when:'before-acting', levers:['Constraints','Format','Output'],
+{kind:'prompt', id:'cut-to-twenty', sec:'Magnum AI library', title:'Cut it to the 20 per cent', where:'Any draft that feels long. Paste the writing first', type:'review', when:'before-acting', hook:"The same writing, a fifth shorter, with the weak lines listed.", rank:2, added:'2026-09-04', levers:['Constraints','Format','Output'],
 prompt:`[paste the writing]
 
 That is a piece of my writing. Make it better by removing, not adding.
@@ -416,7 +423,7 @@ THE CUT VERSION: the full text, a fifth shorter, in my words.
 WHAT WENT: each line you removed, with a phrase on why.
 
 Stop after that list.`},
-{kind:'prompt', id:'write-the-quote', sec:'Magnum AI library', title:'Write the quote', where:'New chat, rough job notes in hand', type:'writing', when:'start', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'write-the-quote', sec:'Magnum AI library', title:'Write the quote', where:'New chat, rough job notes in hand', type:'writing', when:'start', hook:"Rough notes in, a signable quote out, in under a minute.", rank:3, added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a senior proposal writer who turns rough job notes into quotes
 that get signed. A quote is a trust document before it is a price.
 
@@ -443,7 +450,7 @@ not given figures. Timeline. One clear next step. Contact details.
 
 Give me the quote only, ready to paste into an email or my quoting
 software. Stop after the contact details.`},
-{kind:'prompt', id:'hard-conversation', sec:'Magnum AI library', title:'Prepare the hard conversation', where:'Before the conversation you have been avoiding', type:'writing', when:'start', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'hard-conversation', sec:'Magnum AI library', title:'Prepare the hard conversation', where:'Before the conversation you have been avoiding', type:'writing', when:'start', hook:"Walk in with three openings and every pushback already answered.", added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a communication strategist who has spent twenty years preparing
 business owners for the conversations they have been avoiding: overdue
 money, underperforming staff, long-term clients taking liberties.
@@ -471,7 +478,7 @@ with a response. One sentence on what success looks like.
 
 I should be able to read it in three minutes and walk in prepared. A
 mental map, not a script. Stop after the success line.`},
-{kind:'prompt', id:'week-of-posts', sec:'Magnum AI library', title:'A week of posts in your voice', where:'New chat, once a week', type:'writing', when:'start', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'week-of-posts', sec:'Magnum AI library', title:'A week of posts in your voice', where:'New chat, once a week', type:'writing', when:'start', hook:"Seven posts you can schedule today, and none of them sound like an agency.", added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a content strategist who helps small business owners build local
 authority with posts that sound like them, not like an agency.
 
@@ -496,7 +503,7 @@ copy, hashtags.
 
 Seven posts I can copy, schedule and publish. The only edits I should need
 are adding a photo and filling any bracket. Stop after the table.`},
-{kind:'prompt', id:'write-the-sop', sec:'Magnum AI library', title:'Write the SOP', where:'New chat. Talk the process through first', type:'writing', when:'start', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'write-the-sop', sec:'Magnum AI library', title:'Write the SOP', where:'New chat. Talk the process through first', type:'writing', when:'start', hook:"Talk it through once. A new starter follows it on day two.", added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are an operations consultant who turns what lives in the owner's head
 into a procedure a new person can follow on their second day.
 
@@ -524,7 +531,7 @@ failures and what to do. Common mistakes. A sign-off line.
 
 Give me the finished procedure only, ready to drop into a training folder.
 Stop after the sign-off line.`},
-{kind:'prompt', id:'difficult-email', sec:'Magnum AI library', title:'Reply to the difficult email', where:'Before you reply while annoyed', type:'writing', when:'start', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'difficult-email', sec:'Magnum AI library', title:'Reply to the difficult email', where:'Before you reply while annoyed', type:'writing', when:'start', hook:"The reply you would write if you were not annoyed, in five minutes.", added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a business communications specialist who helps owners answer
 emails that are unreasonable, emotional, or built to pressure a
 concession. A reply is a record and a signal about how the business runs.
@@ -552,7 +559,7 @@ send. Then, under a line marked NOT FOR SENDING, three lines on why it is
 written this way.
 
 Stop after those three lines.`},
-{kind:'prompt', id:'part-time-cfo', sec:'Magnum AI library', title:'Your part-time CFO', where:'Project instructions for a numbers project', type:'instructions', when:'setup', levers:['Role','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'part-time-cfo', sec:'Magnum AI library', title:'Your part-time CFO', where:'Project instructions for a numbers project', type:'instructions', when:'setup', hook:"A simple model, your three profit levers, and a weekly numbers ritual.", added:'2026-09-04', levers:['Role','Constraints','Tone','Format','Output'],
 prompt:`You are the part-time CFO of a small business. You build cashflow clarity,
 pricing discipline and profit systems, and you ignore vanity metrics.
 
@@ -581,7 +588,7 @@ Stop after the weekly ritual.
 
 Start by asking: what does the business sell, and roughly what came in
 last month?`},
-{kind:'prompt', id:'handle-the-objection', sec:'Magnum AI library', title:'Handle the objection', where:'Project instructions for a sales project', type:'instructions', when:'setup', levers:['Role','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'handle-the-objection', sec:'Magnum AI library', title:'Handle the objection', where:'Project instructions for a sales project', type:'instructions', when:'setup', hook:"Scripts for your five most common objections, in the words you actually use.", added:'2026-09-04', levers:['Role','Constraints','Tone','Format','Output'],
 prompt:`You are a sales coach who specialises in discovery, objection handling and
 honest persuasion. A higher close rate with trust intact, never a trick.
 
@@ -610,7 +617,7 @@ sequence, walk-away signals, one practice drill. Stop after the drill.
 
 Start by asking: what do you sell, and what is the objection you hear
 most?`},
-{kind:'prompt', id:'tighten-the-writing', sec:'Magnum AI library', title:'Tighten the writing', where:'Project instructions for an editing project', type:'instructions', when:'setup', levers:['Role','Constraints','Format','Output'],
+{kind:'prompt', id:'tighten-the-writing', sec:'Magnum AI library', title:'Tighten the writing', where:'Project instructions for an editing project', type:'instructions', when:'setup', hook:"Three versions of anything you write, each tighter, plus the three things you keep doing wrong.", added:'2026-09-04', levers:['Role','Constraints','Format','Output'],
 prompt:`You are a senior editor known for making writing tighter, clearer and more
 credible without flattening the writer's voice.
 
@@ -631,7 +638,7 @@ the piece needs a headline or a subject line, add ten options at the end.
 Stop after the versions, or after the options if the piece needs them.
 
 Start by asking: what have you got for me, and who is it for?`},
-{kind:'prompt', id:'make-the-decision', sec:'Magnum AI library', title:'Make the decision', where:'Project instructions for a decision you keep circling', type:'instructions', when:'setup', levers:['Role','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'make-the-decision', sec:'Magnum AI library', title:'Make the decision', where:'Project instructions for a decision you keep circling', type:'instructions', when:'setup', hook:"The trade-offs laid out, the assumptions named, and a recommendation or the one fact that would change it.", added:'2026-09-04', levers:['Role','Constraints','Tone','Format','Output'],
 prompt:`You are a decision analyst who helps people make high-stakes choices under
 uncertainty. Clear trade-offs and a decision I can stand behind.
 
@@ -657,7 +664,7 @@ assumptions, a scenario table, the recommendation or the missing
 information, the pre-mortem, the next action. Stop after the next action.
 
 Start by asking: what is the decision, and when does it have to be made?`},
-{kind:'prompt', id:'image-prompt', sec:'Magnum AI library', title:'Write an image or video prompt', where:'Before you open the image or video tool', type:'image', when:'start', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'image-prompt', sec:'Magnum AI library', title:'Write an image or video prompt', where:'Before you open the image or video tool', type:'image', when:'start', hook:"Three parts, one paragraph, a picture that looks like you meant it.", added:'2026-09-04', levers:['Context','Constraints','Format','Output'],
 prompt:`Write me a prompt for an image or video generator. Build it in three parts,
 in this order, because that is the order the generators read:
 
@@ -676,7 +683,7 @@ What must stay out of it: [logos, text, faces, brands]
 Give me the finished prompt as one paragraph, then a second version with
 one part changed, so I can see which part moved the result. Stop after the
 second version.`},
-{kind:'recipe', id:'meeting-to-follow-up', sec:'Recipes', title:'Meeting to follow-up in ten minutes', where:'After any meeting, with a recorder and a calendar connected', type:'instructions', when:'start',
+{kind:'recipe', id:'meeting-to-follow-up', sec:'Recipes', title:'Meeting to follow-up in ten minutes', where:'After any meeting, with a recorder and a calendar connected', type:'instructions', when:'start', hook:"Transcript to sent email to calendar invite, before the coffee is cold.", added:'2026-09-04',
 steps:[
  'Connect your meeting recorder and your calendar to Claude. Once.',
  'After the meeting, open a new chat. Ask for the transcript by meeting name.',
@@ -689,7 +696,7 @@ steps:[
 ]},
 
 /* ---------- Session one · AI Foundations ---------- */
-{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', levers:['Context','Constraints','Output'],
+{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', hook:"Say the job out loud and get a brief you could not have typed.", rank:1, levers:['Context','Constraints','Output'],
 prompt:`I want your help with a real task, and I would rather talk it
 through than write you a brief.
 
@@ -702,7 +709,7 @@ what you understood before you hand me the result.
 
 The task is: [say it roughly, out loud, in your own words]`},
 
-{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', levers:['Constraints','Tone'],
+{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', hook:"Four lines that stop it agreeing with you.", rank:2, levers:['Constraints','Tone'],
 prompt:`From now on, in everything you do for me:
 
 Do not tell me what I want to hear. Tell me what I need to hear.
@@ -712,7 +719,7 @@ Act in my best interest, even when that means telling me I am wrong.
 If you are not sure about something, say so. Do not fill the gap with a guess
 that sounds confident.`},
 
-{kind:'prompt', id:'redline-your-plan', sec:'Session one · AI Foundations', title:'Redline your own plan', where:'After it has given you a plan or a draft', type:'review', when:'before-acting', levers:['Role','Format','Output'],
+{kind:'prompt', id:'redline-your-plan', sec:'Session one · AI Foundations', title:'Redline your own plan', where:'After it has given you a plan or a draft', type:'review', when:'before-acting', hook:"Find the hole in your plan before a client does.", rank:1, levers:['Role','Format','Output'],
 prompt:`Before I act on this, take the other side.
 
 Argue against it. Tell me where the logic is weakest, what I have assumed
@@ -720,7 +727,7 @@ without checking, and what could go wrong that I have not accounted for.
 
 Then tell me the things I need to know about this that I have not asked you.`},
 
-{kind:'prompt', id:'overdue-invoice', sec:'Session one · AI Foundations', title:'Chase an overdue invoice', where:'Any chat. All six levers in one working prompt', type:'writing', when:'start', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'overdue-invoice', sec:'Session one · AI Foundations', title:'Chase an overdue invoice', where:'Any chat. All six levers in one working prompt', type:'writing', when:'start', hook:"All six levers in one working prompt. The session one demo, kept here to copy.", levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are writing on behalf of a small business owner chasing an
 overdue invoice.
 
@@ -735,7 +742,7 @@ threaten anything and do not grovel.
 Give me the email only. No preamble.`},
 
 /* ---------- Session two · Make Claude Yours ---------- */
-{kind:'prompt', id:'account-instructions', sec:'Session two · Make Claude Yours', title:'Your account instructions', where:'Runs in a brand-new chat', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'account-instructions', sec:'Session two · Make Claude Yours', title:'Your account instructions', where:'Runs in a brand-new chat', type:'instructions', when:'setup', hook:"Never introduce yourself to it again.", rank:2, levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to write my account instructions. These go in Settings under
 Instructions for Claude, and you read them before every message I send.
 
@@ -777,7 +784,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each, so I can correct anything.)
 
 No preamble, no summary. Stop after the assumptions.`},
 
-{kind:'prompt', id:'project-instructions', sec:'Session two · Make Claude Yours', title:'Project instructions', where:'Runs inside the new project', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'project-instructions', sec:'Session two · Make Claude Yours', title:'Project instructions', where:'Runs inside the new project', type:'instructions', when:'setup', hook:"One project, one job, instructions it follows every time.", levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to write the instructions for this project. This project is for
 one job only, and the instructions go in the project instructions box.
 
@@ -818,7 +825,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`},
 
-{kind:'prompt', id:'file-plan', sec:'Session two · Make Claude Yours', title:'The file plan', where:'Same project, same chat, straight after Project instructions', type:'instructions', when:'setup', levers:['Constraints','Format','Output'],
+{kind:'prompt', id:'file-plan', sec:'Session two · Make Claude Yours', title:'The file plan', where:'Same project, same chat, straight after Project instructions', type:'instructions', when:'setup', hook:"The two to four files this project needs, and the one to gather first.", levers:['Constraints','Format','Output'],
 prompt:`Now plan the files this project should have. Recommend only: I gather and
 upload the files myself, so describe each one rather than writing it.
 
@@ -854,7 +861,7 @@ DO THIS FIRST: (one line. Which file to gather and upload first, and why.)
 
 Plain language, no jargon, no preamble. Stop after the plan.`},
 
-{kind:'prompt', id:'cowork-instructions', sec:'Session two · Make Claude Yours', title:'Cowork instructions', where:'Runs in a Cowork session', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'cowork-instructions', sec:'Session two · Make Claude Yours', title:'Cowork instructions', where:'Runs in a Cowork session', type:'instructions', when:'setup', hook:"Tell Cowork once how you want finished work handed back.", levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to write my Cowork global instructions. These go in Settings
 under Cowork, and you read them before every Cowork task.
 
@@ -892,7 +899,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`},
 
-{kind:'prompt', id:'first-skill', sec:'Session two · Make Claude Yours', title:'Your first skill', where:'Runs in a Cowork session', type:'instructions', when:'setup', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'first-skill', sec:'Session two · Make Claude Yours', title:'Your first skill', where:'Runs in a Cowork session', type:'instructions', when:'setup', hook:"One job you do the same way every time, saved so you never explain it twice.", levers:['Context','Constraints','Format','Output'],
 prompt:`I want you to draft one skill for me. A skill is a saved way of doing one
 job, so I never have to explain that job twice.
 
@@ -933,7 +940,7 @@ This is a draft for me to approve. You have saved nothing. No preamble.
 Stop after the confirming list.`},
 
 /* ---------- Session three · Work That Runs Without You ---------- */
-{kind:'prompt', id:'build-the-brief', sec:'Session three · Work That Runs Without You', title:'Build the brief', where:'Runs in a Cowork session', type:'interview', when:'setup', levers:['Context','Constraints','Output'],
+{kind:'prompt', id:'build-the-brief', sec:'Session three · Work That Runs Without You', title:'Build the brief', where:'Runs in a Cowork session', type:'interview', when:'setup', hook:"A scheduled task briefed so well it runs with nobody in the room.", levers:['Context','Constraints','Output'],
 prompt:`I want to put one recurring job on a schedule so it runs without
 me. Do not write the schedule yet. Interview me first.
 
@@ -953,7 +960,7 @@ into a scheduled task. Write it so it works with nobody in the room.
 
 Mark anything you had to assume as [NEEDS CONFIRMING].`},
 
-{kind:'prompt', id:'unattended-rules', sec:'Session three · Work That Runs Without You', title:'Rules for unattended work', where:'Paste at the top of every scheduled task', type:'rules', when:'setup', levers:['Constraints','Format'],
+{kind:'prompt', id:'unattended-rules', sec:'Session three · Work That Runs Without You', title:'Rules for unattended work', where:'Paste at the top of every scheduled task', type:'rules', when:'setup', hook:"The rules that stop a scheduled task guessing, sending, or padding.", levers:['Constraints','Format'],
 prompt:`These rules apply to every job you run for me on a schedule.
 
 You cannot ask me a question while this runs, so do not wait for one.
@@ -972,7 +979,7 @@ Put the date and time you ran at the top of every output.
 If the job cannot be done properly, say that in one line instead of
 producing a weak version of it.`},
 
-{kind:'prompt', id:'monday-brief', sec:'Session three · Work That Runs Without You', title:'The Monday brief', where:'Runs as a scheduled task', type:'scheduled', when:'weekly', levers:['Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'monday-brief', sec:'Session three · Work That Runs Without You', title:'The Monday brief', where:'Runs as a scheduled task', type:'scheduled', when:'weekly', hook:"One page every Monday at 6am: what is locked in, what is waiting on you, what is at risk.", levers:['Context','Constraints','Tone','Format','Output'],
 prompt:`Build me a Monday morning brief.
 
 Every Monday at 6am, before I start, produce one page that tells me what
@@ -994,7 +1001,7 @@ Rules:
 - If a section is empty, write "Nothing" and move on.
 - Under 400 words.`},
 
-{kind:'prompt', id:'monthly-review', sec:'Session three · Work That Runs Without You', title:'The monthly review', where:'Runs in a Cowork session', type:'review', when:'monthly', levers:['Constraints','Tone','Format'],
+{kind:'prompt', id:'monthly-review', sec:'Session three · Work That Runs Without You', title:'The monthly review', where:'Runs in a Cowork session', type:'review', when:'monthly', hook:"Which scheduled tasks earn their keep, and which to switch off.", levers:['Constraints','Tone','Format'],
 prompt:`Review the scheduled tasks I have running.
 
 For each one, tell me:
@@ -1011,7 +1018,7 @@ Be blunt. A task I do not read is worse than no task, because it looks like
 coverage.`},
 
 /* ---------- Recipes ---------- */
-{kind:'recipe', id:'set-up-in-order', sec:'Recipes', title:'Set Claude up in the right order', where:'Once when you start. Again for each new job.', type:'instructions', when:'setup',
+{kind:'recipe', id:'set-up-in-order', sec:'Recipes', title:'Set Claude up in the right order', where:'Once when you start. Again for each new job.', type:'instructions', when:'setup', hook:"Account, project, files, first job. Nine steps, once.", rank:1,
 steps:[
  'Open a new chat. Run <b>Your account instructions</b>.',
  'Answer its six questions, one at a time.',
@@ -1046,7 +1053,7 @@ const typeKeys=keysOf(TYPES,'type');
 // ---- the shelf, grouped by moment
 const root=document.getElementById('shelf');
 whenKeys.forEach(w=>{
-  const items=S.filter(c=>whenOf(c)===w);
+  const items=S.filter(c=>whenOf(c)===w).sort((a,b)=>(a.rank||99)-(b.rank||99));
   if(!items.length)return;
   const section=document.createElement('section');section.dataset.when=w;
   section.innerHTML=`<div class="label">${esc(label(WHENS,w))}</div><p class="note">${esc(WHEN_NOTES[w]||'')}</p><div class="grid"></div>`;
@@ -1061,8 +1068,10 @@ whenKeys.forEach(w=>{
       ?`<ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
       :`<div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>`;
     const expand=s.kind==='prompt'?`<button class="expand" data-i="${i}">Expand</button>`:'';
-    const meta=`<span class="meta">${s.type?`<i class="type">${esc(label(TYPES,s.type))}</i>`:''}${s.kind==='recipe'&&s.sec!=='Recipes'?'<i class="type">Recipe</i>':''}<i class="src">${esc(s.sec)}</i></span>`;
-    el.innerHTML=`<div class="pane-head"><h3><a href="#${s.id}">${esc(s.title)}</a><span class="where">${esc(s.where)}</span>${meta}</h3><div class="btns">${expand}<button class="copy" data-i="${i}">${copyLabel(s)}</button></div></div>${levers}${body}`;
+    const fresh=s.added&&(Date.now()-Date.parse(s.added))<14*864e5;
+    const meta=`<span class="meta">${s.rank?'<i class="pick">Start with this</i>':''}${fresh?'<i class="new">New</i>':''}${s.type?`<i class="type">${esc(label(TYPES,s.type))}</i>`:''}${s.kind==='recipe'&&s.sec!=='Recipes'?'<i class="type">Recipe</i>':''}<i class="src">${esc(s.sec)}</i></span>`;
+    const hook=s.hook?`<span class="hook">${esc(s.hook)}</span>`:'';
+    el.innerHTML=`<div class="pane-head"><h3><a href="#${s.id}">${esc(s.title)}</a>${hook}<span class="where">${esc(s.where)}</span>${meta}</h3><div class="btns">${expand}<button class="copy" data-i="${i}">${copyLabel(s)}</button></div></div>${levers}${body}`;
     grid.appendChild(el);
   });
   root.appendChild(section);

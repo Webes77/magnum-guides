@@ -85,6 +85,18 @@ its moment open (`openHash` in the script, on load and on hashchange). The
 shelf past a hundred cards: every card is rendered once and hidden by
 state, nothing is re-rendered.
 
+Since 6 Sep every card carries a `hook`, one line of outcome under the
+title, under fourteen words, written to sell the card before it is read.
+Two more optional fields: `rank` (1, 2 or 3) pins a card to the top of its
+moment and shows a rust "Start with this" tag; James sets it, the routine
+never does. Nine cards are ranked, three per moment for Starting a task,
+Before you act and Setting up. `added` (YYYY-MM-DD) shows an olive "New"
+tag for fourteen days. The sixteen library cards carry `added:'2026-09-04'`.
+Two things were proposed and deferred on 6 Sep: a `topic` field
+(communication, conflict, money, files) waits until a moment passes twenty
+cards, and pre-written Cowork skill cards wait until one paying client has
+run one for a month. Neither is a decision to never build.
+
 On 4 Sep (evening) the shelf grew from 14 cards to 30. Sixteen came from
 James's own prompt library in Drive (the Five Role Prompts, four of the
 fifty Role Packs, the Prompt Architect, the voice guide, the 20 per cent
@@ -196,9 +208,10 @@ the three decks are live and fixed. The open work, in order of value:
    It should land an email, four Drive appends and a `sunday-brief/<date>`
    branch. If the branch arrives, James reads the diff and merges it. The
    prompt is versioned at `notes/sunday-brief-prompt.md`.
-4. James to add two lines to the routine prompt so new cards arrive filed:
-   `type` and `when`, values as listed under "Where we are". Until then new
-   cards land under New and get filed by hand in the merge.
+4. James to add four lines to the routine prompt so new cards arrive
+   filed and sold: `type`, `when`, `hook` and `added`, values as listed
+   under "Where we are". `rank` is never the routine's. Until then new
+   cards land under New with no hook and get filed by hand in the merge.
 5. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
 6. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
