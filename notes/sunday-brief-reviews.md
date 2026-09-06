@@ -66,12 +66,13 @@ failure: an answer that is wrong and confidently so. Seven steps, one
 action each, verb first, longest step thirteen words, condition before
 action on the last two. Nothing to change.
 
-### What James does
+### Outcome
 
-Merge the branch, then in the same edit delete the first card and paste the
-rewrite into the second. Or ask the next session to do it on the merge.
-Either way the two kept cards carry `added:'2026-09-06'` and show New until
-20 Sep.
+James approved the verdict on 6 Sep. The two kept cards were written into
+the shelf from the branch with the rewrite applied, and the skill card was
+left out. The branch itself was not merged as a git merge, so it still sits
+on the remote as the record of what the routine wrote; it can be deleted.
+Both kept cards carry `added:'2026-09-06'` and show New until 20 Sep.
 
 ### For the routine
 

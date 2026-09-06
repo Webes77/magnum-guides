@@ -293,6 +293,28 @@ const WHEN_NOTES={
 
 const S=[
 
+/* ---------- From the Sunday Brief ---------- */
+{kind:'prompt', id:'approve-before-sending', sec:'From the Sunday Brief', title:'Never let it send anything', where:'Once, when you first connect it to your email or calendar', type:'rules', when:'setup', hook:"It drafts, you decide. Nothing leaves your inbox without you.", added:'2026-09-06', levers:['Constraints','Output'],
+prompt:`This is a standing rule for anything you do with my email, my calendar
+or my files, because a message sent in my name cannot be unsent.
+
+Draft it. Show it to me. Wait for my yes on that exact message before
+you send, reply, book, move or delete anything.
+
+If I am not there to answer, do the work and stop. A finished draft
+waiting for me is the right result.`},
+
+{kind:'recipe', id:'blind-second-opinion', sec:'From the Sunday Brief', title:'Get a blind second opinion', where:'Before an answer becomes a payment, an email, or a decision', type:'review', when:'before-acting', hook:"Catch the confident wrong answer before it costs you money.", added:'2026-09-06',
+steps:[
+ 'Open a second chat that cannot see the first one.',
+ 'Paste in the same raw material only: the document, the numbers, the question.',
+ 'Never paste in the first answer.',
+ 'Ask the same question, word for word.',
+ 'Compare the two answers side by side.',
+ 'If they agree, act.',
+ 'If they disagree on anything that matters, stop and check it yourself.'
+]},
+
 /* ---------- Magnum AI library · filed 4 Sep 2026 ---------- */
 {kind:'prompt', id:'rebuild-a-weak-prompt', sec:'Magnum AI library', title:'Rebuild a weak prompt', where:'Any prompt you keep reusing and keep editing', type:'review', when:'before-acting', hook:"Paste a prompt you keep editing. Get one you never have to.", rank:3, added:'2026-09-04', levers:['Role','Constraints','Format','Output'],
 prompt:`You are a prompt engineer who rebuilds weak prompts on the six levers:

@@ -125,6 +125,14 @@ section{margin-bottom:54px}
 .ref a{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-left:8px}
 .ref a:hover{color:var(--rust)}
 .links{display:flex;gap:30px;flex-wrap:wrap}
+.recent{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:26px}
+.recent-label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:10px}
+.recent-list{list-style:none;margin:0;padding:0;border-top:3px solid var(--ink)}
+.recent-list li{border-bottom:1px solid var(--ink)}
+.recent-list a{display:block;padding:10px 0;font-size:15px;line-height:1.4;color:var(--ink);text-decoration:none}
+.recent-list a:hover{color:var(--rust)}
+.recent-list .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-right:10px}
+.recent .seeall{margin-top:16px}
 
 /* SEE-ALL LINK */
 .seeall{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px}
@@ -286,9 +294,23 @@ footer b{color:var(--paper);font-weight:500}
       </a>
 
     </div>
-    <div class="links">
-      <a class="seeall" href="newsletter/">Every Field Note &rarr;</a>
-      <a class="seeall" href="https://webes77.github.io/magnum-newsletter/archive.html">Every edition &rarr;</a>
+    <div class="recent">
+      <div class="recent-col">
+        <div class="recent-label">Earlier Field Notes</div>
+        <ul class="recent-list">
+          <li><a href="newsletter/field-note-03-talking.html"><span class="n">No. 03</span> Talking. Stop typing the brief. Talk it through.</a></li>
+          <li><a href="newsletter/field-note-02-context.html"><span class="n">No. 02</span> Context. Stop typing your business into the chat every morning.</a></li>
+          <li><a href="newsletter/field-note-01-clarity.html"><span class="n">No. 01</span> Clarity. Stop asking AI to make this clearer. Five rules worth stealing.</a></li>
+        </ul>
+        <a class="seeall" href="newsletter/">Every Field Note &rarr;</a>
+      </div>
+      <div class="recent-col">
+        <div class="recent-label">Recent editions of This Week in AI</div>
+        <ul class="recent-list" id="edition-list">
+          <li><a href="https://webes77.github.io/magnum-newsletter/archive.html"><span class="n">Archive</span> Every edition, newest first.</a></li>
+        </ul>
+        <a class="seeall" href="https://webes77.github.io/magnum-newsletter/archive.html">Every edition &rarr;</a>
+      </div>
     </div>
   </section>
 
@@ -364,6 +386,24 @@ footer b{color:var(--paper);font-weight:500}
       card.querySelector('h3').textContent = issue.title;
       card.querySelector('p').textContent = issue.dek;
       card.querySelector('.go').innerHTML = 'Read this edition &rarr;';
+
+      // The three editions before the latest, as a list under the cards.
+      var list = document.getElementById('edition-list');
+      var rest = (data.issues || []).slice(1, 4);
+      if (!list || !rest.length) return;
+      list.innerHTML = '';
+      rest.forEach(function (i) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = BASE + i.file;
+        var n = document.createElement('span');
+        n.className = 'n';
+        n.textContent = i.displayDate;
+        a.appendChild(n);
+        a.appendChild(document.createTextNode(i.title));
+        li.appendChild(a);
+        list.appendChild(li);
+      });
     })
     .catch(function () { /* the archive link remains */ });
 })();

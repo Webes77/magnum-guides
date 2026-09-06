@@ -120,12 +120,20 @@ file plan (its rules rewritten as positive rules with reasons).
 The first live Sunday Brief branch landed on 6 Sep: `sunday-brief/2026-09-06`,
 three cards, every field written, no rank. So the routine's repository
 access works and item 4 of the old Next list is done. The branch was
-reviewed against the bar and the standards, not merged; the review is
+reviewed against the bar and the standards; the review is
 `notes/sunday-brief-reviews.md`, one entry per branch from now on. Verdict:
 drop one (duplicates the deck's Your first skill), keep one as written,
-keep one with a two-line rewrite given in the log. The routine prompt gained
-a mechanical duplicate test (same type, same when, same thing in hand), for
-James to paste into the routine.
+keep one with a two-line rewrite. James approved and the two kept cards are
+on the shelf (32 cards). The routine prompt gained a mechanical duplicate
+test (same type, same when, same thing in hand), for James to paste into
+the routine.
+
+Also on 6 Sep James reported the newsletter links had gone from the front
+page. The 4 Sep rebuild had cut This Week from a three-edition grid and
+three Field Note cards down to one card each. The two cards stay, and under
+them a two-column list now carries the three earlier Field Notes and the
+three editions before the latest, the editions filled by the same live
+fetch with the archive link as fallback. No URL changed.
 
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
@@ -222,11 +230,11 @@ the three decks are live and fixed. The open work, in order of value:
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-3. James to read `notes/sunday-brief-reviews.md` and act on the
-   `sunday-brief/2026-09-06` branch: merge it, drop the skill card, paste
-   the rewrite into the approval card. A session can do the edit on the
-   merge if he says so. The branch is the routine's, so no session pushes
-   to it.
+3. James to check the front page live: This Week should show the Field
+   Note card, the latest edition card, and under them the three earlier
+   Field Notes beside the three previous editions. The
+   `sunday-brief/2026-09-06` branch is done with and can be deleted on
+   GitHub.
 4. James to paste the current `notes/sunday-brief-prompt.md` into the
    routine. One line changed on 6 Sep: the mechanical duplicate test.
 5. The desktop folders, once James uploads them. The only material never
