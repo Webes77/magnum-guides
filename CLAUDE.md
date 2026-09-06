@@ -117,6 +117,16 @@ type list. Two deck prompts were fixed in the deck and on the shelf
 together: Cowork instructions ("Cowork does not read my chats") and The
 file plan (its rules rewritten as positive rules with reasons).
 
+The first live Sunday Brief branch landed on 6 Sep: `sunday-brief/2026-09-06`,
+three cards, every field written, no rank. So the routine's repository
+access works and item 4 of the old Next list is done. The branch was
+reviewed against the bar and the standards, not merged; the review is
+`notes/sunday-brief-reviews.md`, one entry per branch from now on. Verdict:
+drop one (duplicates the deck's Your first skill), keep one as written,
+keep one with a two-line rewrite given in the log. The routine prompt gained
+a mechanical duplicate test (same type, same when, same thing in hand), for
+James to paste into the routine.
+
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
 deck.
@@ -212,14 +222,13 @@ the three decks are live and fixed. The open work, in order of value:
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-3. Watch the first live Sunday Brief routine run (Sunday 6am Gold Coast).
-   It should land an email, four Drive appends and a `sunday-brief/<date>`
-   branch. If the branch arrives, James reads the diff and merges it. The
-   prompt is versioned at `notes/sunday-brief-prompt.md`.
-4. James to add four lines to the routine prompt so new cards arrive
-   filed and sold: `type`, `when`, `hook` and `added`, values as listed
-   under "Where we are". `rank` is never the routine's. Until then new
-   cards land under New with no hook and get filed by hand in the merge.
+3. James to read `notes/sunday-brief-reviews.md` and act on the
+   `sunday-brief/2026-09-06` branch: merge it, drop the skill card, paste
+   the rewrite into the approval card. A session can do the edit on the
+   merge if he says so. The branch is the routine's, so no session pushes
+   to it.
+4. James to paste the current `notes/sunday-brief-prompt.md` into the
+   routine. One line changed on 6 Sep: the mechanical duplicate test.
 5. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
 6. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
