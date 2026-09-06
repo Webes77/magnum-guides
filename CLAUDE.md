@@ -135,6 +135,18 @@ them a two-column list now carries the three earlier Field Notes and the
 three editions before the latest, the editions filled by the same live
 fetch with the archive link as fallback. No URL changed.
 
+On 6 Sep the weekly newsletter, This Week in AI, moved off Manus and onto
+two Claude Code routines that live in the `magnum-newsletter` repo. Saturday
+6am drafts an `edition.json`, checks it builds, puts the draft and two image
+prompts in the Drive folder This Week in AI, and emails James. James makes
+the two images and drops them in the dated subfolder. Sunday 4pm (retry
+Monday 4pm) builds, validates and pushes. The builder, schema, prompts and
+trigger ids are in that repo: `tools/build_edition.py`,
+`tools/EDITION-SCHEMA.md`, `ROUTINE.md`. The members area front page picks
+the new edition up through the fetch it already does. Nothing in this repo
+changed for it. The newsletter is a separate product and keeps its own
+look; do not restyle it to the members area.
+
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
 deck.
@@ -230,24 +242,30 @@ the three decks are live and fixed. The open work, in order of value:
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-3. James to check the front page live: This Week should show the Field
+3. The newsletter routines need three things from James before Saturday
+   12 Sep: attach Gmail and Google Drive to the three This Week in AI
+   routines in the Routines UI; add the `magnum-newsletter` repo to the
+   routine environment's sources so the publish run can push (until then
+   it falls back to Drive and an email with the manual command); and
+   nothing else. The first draft lands Saturday 12 Sep 6am.
+4. James to check the front page live: This Week should show the Field
    Note card, the latest edition card, and under them the three earlier
    Field Notes beside the three previous editions. The
    `sunday-brief/2026-09-06` branch is done with and can be deleted on
    GitHub.
-4. Done 6 Sep: the routine carries the mechanical duplicate test. A
+5. Done 6 Sep: the routine carries the mechanical duplicate test. A
    session can now update the routine prompt itself with `update_trigger`
    and read it back with `list_triggers`; the how is in
    `notes/sunday-brief-prompt.md`. Next run is Sunday 13 Sep, 6am.
-5. The desktop folders, once James uploads them. The only material never
+6. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-6. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
+7. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
    2, by hand, since the Gamma connector cannot move or delete. The Drive
    tidy ran on 4 Sep: the retired January to March workspace is archived,
    duplicates sit in `_Review before deleting 2026-09` under Magnum
    Business for James to empty, and the log is `_Declutter log` in the same
    folder. Two loose PNGs and the API Key folder are still James's call.
-7. Industry guide, one only, once James names the trade.
+8. Industry guide, one only, once James names the trade.
 
 ## How things get built
 
