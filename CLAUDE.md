@@ -34,6 +34,14 @@ These are absolute. Do not relitigate them.
     search-verified before it ships. Training knowledge is months behind.
     The primary docs (`support.claude.com`, `anthropic.com`) are blocked from
     the sandbox. WebSearch works. Say when a fact is third-party only.
+11. A prompt on a slide is never shrunk, condensed, cut or reflowed to make
+    it fit. Prompt text holds a floor of 15 real pixels at any window size
+    (14 for the points beside it); a small window scrolls the pane and
+    shows "More below". If a prompt slide does not fit, the fix is fewer
+    points beside it or a second slide, never a smaller prompt. Run
+    `node tools/check-decks.js` against a local server before any deck
+    change merges; it must print PASS. James asked for this on 6 Sep after
+    a run where prompts had been compressed to fit.
 
 ## House style
 
@@ -236,6 +244,10 @@ the three decks are live and fixed. The open work, in order of value:
 - The three decks share one engine (CSS and JS). A fix to the engine goes
   into all three files. The only differences between them are metadata,
   prompts, figures, and the slide array.
+- `tools/check-decks.js` measures every slide of every deck at four window
+  sizes: overflow, anything printing over the footer, elements overlapping,
+  prompt text below its floor, prompt clipped without "More below". It exits
+  1 on any failure. Run it before every deck merge (hard rule 11).
 - Every deck: SLIDES button and M open the list. Escape, CLOSE, or clicking
   the backdrop closes it. Slide changes use `history.replaceState`, so one
   Back returns to the members area. Prompt slides give the prompt the full
@@ -267,8 +279,11 @@ the three decks are live and fixed. The open work, in order of value:
   pinned footer never prints over the last line. Before the fit (4 Sep
   evening) a 1366-wide laptop showed five lines of a prompt and overlapping
   text on most slides. A slide whose content grows past 770 at 1340 wide
-  will overflow again: measure with a headless run at 1366 by 657 before
-  adding a slide, and keep prompt slides to one row of points.
+  will overflow again: run `tools/check-decks.js` before adding a slide,
+  and keep prompt slides to one row of points. The zoom alone made prompt
+  text 9 real pixels on a 1366 laptop window (found 6 Sep); the prompt
+  pane and its points now hold a real-pixel floor through `--z`, set by
+  `fit()`, so they scroll instead of shrinking.
 - Prompts are authored with hard line breaks at about 72 characters. Widening
   a panel does nothing until they are reflowed.
 - Case-insensitive grep for "Inter" matches "interaction". Use word

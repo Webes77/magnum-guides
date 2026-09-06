@@ -88,7 +88,7 @@ ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:va
 .has-prompt h1{font-size:34px;max-width:none;margin-top:4px}
 .has-prompt .foot{left:48px;right:48px}
 .has-prompt ul.points{display:flex;flex-wrap:wrap;gap:0 32px;max-width:none;margin-top:2px;border-bottom:2px solid var(--ink)}
-.has-prompt ul.points li{font-size:15px;line-height:1.3;padding:6px 0 6px 22px;border-top:0;flex:1 1 28%;min-width:220px}
+.has-prompt ul.points li{font-size:max(15px,calc(14px / var(--z,1)));line-height:1.3;padding:6px 0 6px 22px;border-top:0;flex:1 1 28%;min-width:220px}
 .has-prompt ul.points li:last-child{border-bottom:0}
 .has-prompt ul.points li::before{top:13px;width:12px}
 .has-fig ul.points li{font-size:21px}
@@ -126,7 +126,7 @@ ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:va
 .copy:hover{background:#d2553a}
 .copy.done{background:var(--olive)}
 .prewrap{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
-pre{font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.42;white-space:pre-wrap;padding:14px 20px 22px;overflow:auto;flex:1;color:var(--ink)}
+pre{font-family:"IBM Plex Mono",monospace;font-size:max(14px,calc(15px / var(--z,1)));line-height:1.42;white-space:pre-wrap;padding:14px 20px 22px;overflow:auto;flex:1;color:var(--ink)}
 .prewrap::after{content:"More below \2193";position:absolute;left:0;right:0;bottom:0;padding:38px 0 8px;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 62%);pointer-events:none;opacity:0;transition:opacity .15s}
 .pane.more .prewrap::after{opacity:1}
 .btns{display:flex;gap:8px}
@@ -488,12 +488,15 @@ document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='m
 // FIT_W by FIT_H (the tallest slide at a 1440-wide window) and scaled to
 // whatever the deck area actually is, so nothing spills past the box and
 // the footer never prints over the last line. One zoom for the whole deck
-// keeps the text size consistent from slide to slide.
+// keeps the text size consistent from slide to slide. Prompt text and the
+// points beside it hold a real-pixel floor (see the pre rule in the CSS) so
+// a small window scrolls the prompt rather than shrinking it.
 const FIT_W=1340, FIT_H=770;
 function fit(){
   const r=document.getElementById('deck').getBoundingClientRect();
   const z=Math.max(0.4,Math.min((r.width-20)/FIT_W,(r.height-20)/FIT_H,1.35));
   document.querySelectorAll('.slide').forEach(s=>{s.style.zoom=z;});
+  document.documentElement.style.setProperty('--z',z); // prompt text floors read this
   checkMore();
 }
 window.addEventListener('resize',fit);
