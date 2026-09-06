@@ -30,7 +30,11 @@ replaced with a four-test bar and a duplicate check, and the email now carries
 each card in full readable text so James can approve it from his phone. Later
 that day the shelf schema grew again: every card now carries hook and added
 alongside type and when, the type list gained image, and rank exists but is
-James's to set by hand, never the routine's.
+James's to set by hand, never the routine's. The first branch to arrive,
+`sunday-brief/2026-09-06`, carried a card that duplicated a deck prompt, so
+the duplicate check gained a mechanical test: same type, same when, same
+thing in the client's hand means duplicate. Reviews of each branch live in
+`notes/sunday-brief-reviews.md`.
 
 ## How the brief feeds the members area
 
@@ -124,7 +128,7 @@ Step 5, shelf cards. Add a card to the Prompt Shelf for every BUILD THIS item ta
 
 The bar. All four must pass, or the card does not go on the page.
 1. A client can paste it and get value with James not in the room.
-2. It is not a near-duplicate of a card already on the page. Before writing anything, read the whole S array and note what every existing card does, not just what it is called. If a new card does substantially the same job as one already there, you have two options and no third: replace the existing card when the new one is plainly better, naming the replacement in the commit message, or drop the new one. Never add a variation. Cards from the three session decks are authored material and are never replaced, so a new card that overlaps a deck prompt is always the one that gets dropped.
+2. It is not a near-duplicate of a card already on the page. Before writing anything, read the whole S array and note what every existing card does, not just what it is called. If a new card does substantially the same job as one already there, you have two options and no third: replace the existing card when the new one is plainly better, naming the replacement in the commit message, or drop the new one. Never add a variation. Apply a mechanical test before you judge: if the new card would carry the same type and the same when as an existing card and the client would end up with the same kind of thing in hand (a skill, a settings box, a quote, a second opinion), treat it as a duplicate. Cards from the three session decks are authored material and are never replaced, so a new card that overlaps a deck prompt is always the one that gets dropped.
 3. It still makes sense in six months. Cut anything tied to this week's model, this week's release, or a news story.
 4. It does not depend on a menu, a setting or a button, or if it does, its where line carries [VERIFY BEFORE SHIPPING].
 
