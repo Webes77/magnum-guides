@@ -27,7 +27,10 @@ push to GitHub (read-only clone), so the routine now also writes any unpushed
 cards into the vault file, and the routine's repository access is James's to
 fix in the Routines UI. Also on 6 Sep the two-card weekly cap was dropped and
 replaced with a four-test bar and a duplicate check, and the email now carries
-each card in full readable text so James can approve it from his phone.
+each card in full readable text so James can approve it from his phone. Later
+that day the shelf schema grew again: every card now carries hook and added
+alongside type and when, the type list gained image, and rank exists but is
+James's to set by hand, never the routine's.
 
 ## How the brief feeds the members area
 
@@ -115,7 +118,7 @@ Shelf: the branch name pushed, or "no shelf cards this week".
 Vault: the name of the file written, or what failed.
 Inbox: N emails to be moved to trash after this send, Ruben Hassid kept.
 ASSUMPTIONS: every choice you made because nobody could be asked, one line each, or "none".
-SHELF CARDS FOR APPROVAL: James reads this on his phone and approves from the email, so write it as plain readable text, no code formatting and no JavaScript. For each card going to the branch, give its title, its one-line when-to-use, and its full text exactly as a client would paste it. If a card replaces an existing one, name the card it replaces and say why the new one is better. If there are none, write "Nothing for the shelf this week."
+SHELF CARDS FOR APPROVAL: James reads this on his phone and approves from the email, so write it as plain readable text, no code formatting and no JavaScript. For each card going to the branch, give its title, its hook, its one-line when-to-use, and its full text exactly as a client would paste it. If a card replaces an existing one, name the card it replaces and say why the new one is better. If there are none, write "Nothing for the shelf this week."
 
 Step 5, shelf cards. Add a card to the Prompt Shelf for every BUILD THIS item tagged FOR THE SHELF that passes all four tests below. There is no fixed number of cards a week. Some weeks none pass, and that is a good week, not a failed one. Everything that does not pass still goes into the vault at Step 6, so nothing is lost.
 
@@ -128,18 +131,26 @@ The bar. All four must pass, or the card does not go on the page.
 All of the week's cards go on one branch, so James reviews one diff however many cards it holds. In /home/user/magnum-guides run git fetch origin main, then git checkout -B sunday-brief/YYYY-MM-DD origin/main using the Sunday's date. Insert the card object at the very top of the S array in prompts/index.html (the first element, directly after "const S=[" and its comment line), with sec:'From the Sunday Brief'. Use this shape exactly:
 
 Prompt card:
-{kind:'prompt', id:'two-or-three-word-slug', sec:'From the Sunday Brief', title:'Short imperative title', where:'When to use it, one line', type:'...', when:'...', levers:['Role','Context','Constraints','Tone','Format','Output'], prompt:`The full prompt, authored with hard line breaks at about 72 characters, in the order Role, Context, Constraints, Tone, Format, Output where the prompt calls for them.`},
+{kind:'prompt', id:'two-or-three-word-slug', sec:'From the Sunday Brief', title:'Short imperative title', where:'When to use it, one line', type:'...', when:'...', hook:"One line of outcome.", added:'YYYY-MM-DD', levers:['Role','Context','Constraints','Tone','Format','Output'], prompt:`The full prompt, authored with hard line breaks at about 72 characters, in the order Role, Context, Constraints, Tone, Format, Output where the prompt calls for them.`},
 
 Recipe card:
-{kind:'recipe', id:'two-or-three-word-slug', sec:'From the Sunday Brief', title:'Short imperative title', where:'When to use it, one line', type:'...', when:'...', steps:['One action per step, verb first, under 20 words.','Condition before action.','Give a number or a trigger, never a vague quantity.']},
+{kind:'recipe', id:'two-or-three-word-slug', sec:'From the Sunday Brief', title:'Short imperative title', where:'When to use it, one line', type:'...', when:'...', hook:"One line of outcome.", added:'YYYY-MM-DD', steps:['One action per step, verb first, under 20 words.','Condition before action.','Give a number or a trigger, never a vague quantity.']},
 
-type is what the card does. One of exactly these values: interview (Claude asks, you answer, it builds), instructions (writes a settings box, a project, a skill), rules (standing rules pasted at the top of a chat or task), review (argues with, or audits, something that already exists), writing (produces a finished piece you send), scheduled (a job that runs on a timer).
+Every card carries four fields beyond the basics. All four are written every time.
+
+type is what the card does. One of exactly these values: interview (Claude asks, you answer, it builds), instructions (writes a settings box, a project, a skill), rules (standing rules pasted at the top of a chat or task), review (argues with, or audits, something that already exists), writing (produces a finished piece you send), image (produces or edits a picture), scheduled (a job that runs on a timer).
 
 when is the moment a client would run it. One of exactly these values: start (the first thing you paste into a new chat), before-acting (the check step, before an answer becomes an action), setup (account, project, Cowork, a skill, or a schedule), weekly (runs, or gets run, every week), monthly (runs, or gets run, every month).
 
-Pick one of each. If a card fits none, leave both fields out and the card lands under New for James to file. Never invent a new value.
+hook is one line of outcome shown under the title, under fourteen words, written to make a small business owner want the card. Say what they get, not what the prompt does. Double quotes, because the line often contains an apostrophe.
 
-The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a type and a when from the lists above, or neither. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If the push is refused, put the complete card objects, exactly as written, into the vault file's prompts-library section under a heading SHELF CARDS NOT PUSHED, so James can paste them. If there are no FOR THE SHELF items, do nothing in the repo.
+added is the date of the run that wrote the card, as YYYY-MM-DD. The page marks a card NEW for fourteen days from that date.
+
+Pick one type and one when. If a card fits neither list, leave those two fields off and the card lands under New for James to file, but still write hook and added. Never invent a new type or when value.
+
+Never write rank. Rank pins a card to the top of its moment and James sets it by hand. If you are editing an existing card for any reason, leave its rank exactly as you found it.
+
+The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a hook and an added date, has a type and a when from the lists above or neither, and carries no rank. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If the push is refused, put the complete card objects, exactly as written, into the vault file's prompts-library section under a heading SHELF CARDS NOT PUSHED, so James can paste them. If there are no FOR THE SHELF items, do nothing in the repo.
 
 Step 6, vault. Write one markdown file into James's Drive Vault folder (folder id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l) using the Google Drive connector's create_file with title sunday-brief-YYYY-MM-DD.md, contentMimeType text/markdown, disableConversionToGoogleType true, parentId set to that folder. The file has four sections headed ## tools-library, ## prompts-library, ## content-ideas, ## sales-lessons, each holding the week's raw material for that vault with full detail, sources and dates. Sources and client names are allowed here; this file is private. An empty section says "Nothing this week." Never modify, rename or move any existing file in that folder.
 
