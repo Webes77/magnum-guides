@@ -420,7 +420,7 @@ S.forEach((s,i)=>{
   left += `<h1>${s.h}</h1>`;
   if(s.sub) left += `<div class="sub">${s.sub}</div>`;
   if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
-  if(s.rows) left += `<div class="rows"><div>Step</div><div>What we do</div><div>Why it matters</div>${s.rows.map((r,i)=>`<div class="step"><b>${i+1}</b>${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div>`).join('')}</div>`;
+  if(s.rows){ const hd=s.rowhead||["Step","What we do","Why it matters"]; const num=!s.rowhead; left += `<div class="rows"><div>${hd[0]}</div><div>${hd[1]}</div><div>${hd[2]}</div>${s.rows.map((r,i)=>`<div class="step">${num?`<b>${i+1}</b>`:''}${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div>`).join('')}</div>`; }
   if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
   if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
   if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`;

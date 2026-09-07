@@ -476,11 +476,13 @@ const S = [
  "Mac, Windows and phone, one account.",
  "Install it now. Everything from here on is spoken. Rough is fine. Claude tidies."]},
 
-{sec:"Settings, usage", h:"Models", pts:[
- "The model picker sits at the bottom of the message box.",
- "Leave it on the default. It is right for daily work.",
- "Switch up one model only for a big job that needs real thinking: a tender, a contract, a long report.",
- "Do not touch anything else in Capabilities."]},
+{sec:"Settings, usage", h:"Which <em>model</em>, and when", rowhead:["Model","What it is","Use it when"], rows:[
+ ["Haiku","The fast one. Cheap, quick, less careful.","A fast first pass on something small: a subject line, a rename, a quick summary."],
+ ["Sonnet","The default. Where the picker sits when you open Claude.","Nearly everything. Emails, quotes, plans, Talk-It-Out, your projects. Stay here."],
+ ["Opus","The thinker. Slower, and it goes deeper.","One big job that needs real thought: a tender, a contract, a long report, a decision with money on it."],
+ ["Fable","The top one. Above Opus. Not on every plan.","The same jobs as Opus when Opus is not enough. If you cannot see it, you do not need it."]],
+ pts:[
+ "Stay on Sonnet. Move up for one job, then move back. The picker is at the bottom of the message box."]},
 
 {sec:"Settings, usage", h:"Where connectors live", pts:[
  "Go to <b>Connectors</b>.",
@@ -507,7 +509,7 @@ const S = [
  ["c","Sending","\u201cDraft the email confirming Thursday at 2. Show me. I will say send.\u201d"]]},
 
 {sec:"Connectors", h:"You are in <em>control</em>", pts:[
- "You grant it. Nobody else can.",
+ "You grant it. Nobody else can. On a Team plan, your admin decides which connectors are on offer, so ask them first.",
  "You can switch it off any time, same screen.",
  "It sees only what you can see. It gets no more access than you have.",
  "Connector content is not used to train the model."]},
@@ -684,7 +686,7 @@ S.forEach((s,i)=>{
   left += `<h1>${s.h}</h1>`;
   if(s.sub) left += `<div class="sub">${s.sub}</div>`;
   if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
-  if(s.rows) left += `<div class="rows"><div>Step</div><div>What we do</div><div>Why it matters</div>${s.rows.map((r,i)=>`<div class="step"><b>${i+1}</b>${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div>`).join('')}</div>`;
+  if(s.rows){ const hd=s.rowhead||["Step","What we do","Why it matters"]; const num=!s.rowhead; left += `<div class="rows"><div>${hd[0]}</div><div>${hd[1]}</div><div>${hd[2]}</div>${s.rows.map((r,i)=>`<div class="step">${num?`<b>${i+1}</b>`:''}${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div>`).join('')}</div>`; }
   if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
   if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
   if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`;
