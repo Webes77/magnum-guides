@@ -48,7 +48,7 @@ More cards is not more value. Padding is failure.
 - **textMode**: `generate` for short briefs and outlines. `condense` for long source material like transcripts. `preserve` for fully written slide content. When `preserve`, strip every em dash from the source content before output. Replace with comma, colon, or full stop depending on the dash's function. This is not negotiable.
 - **numCards**: use the deck-type defaults above.
 - **cardOptions.dimensions**: `16x9` default.
-- **themeId**: never Nano Banana. Default to clean, minimalist, stone-toned themes that align with the Magnum AI brand system. When in doubt, recommend "minimalist". If unsure which theme IDs are available, query `get_themes` before locking the recommendation.
+- **themeId**: never Nano Banana. Default to clean, minimalist, light cream-toned themes that align with the Magnum AI house style. When in doubt, recommend "minimalist". If unsure which theme IDs are available, query `get_themes` before locking the recommendation.
 
 ## Image model selection
 
@@ -95,10 +95,10 @@ Every global style prompt must do three things:
 Use these as starting points when `stylePreset` is `custom`. Pick one, then inject industry texture and negatives.
 
 **Editorial Premium**
-> editorial photography, soft natural light, muted stone and warm tones, premium magazine aesthetic, negative space, shallow depth of field
+> editorial photography, soft natural light, muted cream, ink and warm earth tones, premium magazine aesthetic, negative space, shallow depth of field
 
 **Warm Minimalism**
-> warm minimalism, stone palette with brass and matte black accents, natural light, considered composition, no clutter, architectural digest aesthetic
+> warm minimalism, cream paper palette with ink and one rust accent, natural light, considered composition, no clutter, architectural digest aesthetic
 
 **Documentary**
 > documentary photography, candid, natural lighting, real moments, no posing, kinfolk magazine aesthetic
