@@ -209,89 +209,98 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 <div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="copy" id="rcopy" data-i="0">COPY PROMPT</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
-const P1 = `I want you to write my account instructions. These go in Settings under
-Instructions for Claude, and you read them before every message I send.
+const P1 = `You are helping me set up my account instructions, the way a careful new
+assistant would learn a business on day one: by asking, not guessing.
+These go in Settings under Instructions for Claude, and you read them
+before every message I send.
 
 What belongs here: who I am, what my business does, who my customers are,
-how I like things written, and what you must never do. Things that stay
-true for months.
+how I like things written, and what to avoid. Things that stay true for
+months.
 What does not belong here: client names, prices, examples, anything that
 changes often. That goes in a file inside a project, not here.
 
-My account is nearly empty, so you know almost nothing about me. Do not
-draft from what you think you know. Interview me first.
+My account is nearly empty, so you know almost nothing about me yet.
+Interview me first.
 
 Ask me one question at a time. Wait for my answer before asking the next.
 Cover these, in this order:
 1. What my business does and what I do in it.
 2. Who my customers are.
 3. What I will mostly use you for.
-4. How I like things written. Short or detailed, plain or formal.
+4. How I like things written. I will paste in two things I have written
+   so you can hear it, rather than describe it.
 5. What annoys me in an answer.
 6. Anything you must never do.
-Six questions. Ask one or two more only if an answer needs it. Then stop asking.
+Six questions. Ask one or two more only if an answer needs it. Then stop
+asking.
 
 Rules:
-- Do not invent details, names, numbers or facts I have not told you. If
-  you need something and I have not said it, ask. If I skip it, leave it out.
-- Only include what stays true for months: how I communicate, the standards
-  I hold you to, what to avoid. Leave out client names, pricing and anything
-  that changes often.
-- Write the instructions as instructions to you. "The user runs a..." not
-  "I run a..."
+- Use only what I tell you, because an invented detail in my instructions
+  follows me into every chat. If something is missing, ask. If I skip it,
+  leave it out.
+- Keep to what stays true for months, because prices and client names
+  change and belong in a project file.
+- Write the instructions as rules with reasons, mostly positive, so they
+  hold up in situations neither of us has thought of.
+- Address them to you: "The user runs a..." not "I run a..."
 - 150 to 400 words.
 
 When the interview is done, answer in this exact format and nothing else:
 
 YOUR DRAFT INSTRUCTIONS: (the full set in a copy-paste block, 150 to 400
-words. This is a draft for me to approve. You have saved nothing. I paste
-it in myself if I am happy.)
+words.)
 WHAT I ASSUMED: (max 3 bullets, one line each, so I can correct anything.)
 
 No preamble, no summary. Stop after the assumptions.`;
 
-const P2 = `I want you to write the instructions for this project. This project is for
-one job only, and the instructions go in the project instructions box.
+const P2 = `You are helping me write the instructions for this project, the way a
+careful new hire would learn one job before doing it: by asking. This
+project is for one job only, and the instructions go in the project
+instructions box.
 
 What belongs here: what the job is, what I hand you, what a good result
-looks like, what you must always include, what you must never do.
+looks like, what you must always include, what to avoid.
 What does not belong here: anything my account instructions already say,
 and anything that changes often such as prices, templates and examples.
 Those go in files, which we plan next.
 
-You know nothing about this job yet. Do not guess. Interview me first.
+You know nothing about this job yet. Interview me first.
 
 Ask me one question at a time. Wait for my answer before asking the next.
 Cover these, in this order:
 1. What the job is, in one sentence.
 2. What I give you to start it. Rough notes, a photo, an email, numbers.
-3. What a good finished result looks like. Length, layout, tone.
+3. What a good finished result looks like. If I have one I am proud of,
+   I will paste it in, because one example beats a description.
 4. Who reads the result.
 5. What you must always include.
 6. What you must never do.
-Six questions. Ask one or two more only if an answer needs it. Then stop asking.
+Six questions. Ask one or two more only if an answer needs it. Then stop
+asking.
 
 Rules:
-- Do not invent details, names, prices, steps or facts I have not told you.
-  If you need something, ask. If I skip it, leave it out.
-- Only include what is true for this job every time. Leave out anything that
-  changes often. That belongs in a file, which comes next.
-- Do not repeat anything my account instructions already cover. This
-  project runs on top of them.
-- Write the instructions as instructions to you.
+- Use only what I tell you, because an invented step or price in a project
+  repeats on every job it runs. If something is missing, ask. If I skip
+  it, leave it out.
+- Keep to what is true for this job every time. Anything that changes
+  often belongs in a file, which comes next.
+- Leave out anything my account instructions already cover, because this
+  project runs on top of them and a rule stated twice gets applied twice.
+- Write the instructions as rules with reasons, mostly positive, addressed
+  to you.
 - Under 300 words. Shorter is better.
 
 When the interview is done, answer in this exact format and nothing else:
 
-YOUR DRAFT PROJECT INSTRUCTIONS: (the full set in a copy-paste block. This
-is a draft for me to approve. You have changed nothing. I paste it in
-myself if I am happy.)
+YOUR DRAFT PROJECT INSTRUCTIONS: (the full set in a copy-paste block.)
 WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`;
 
-const P3 = `Now plan the files this project should have. Recommend only: I gather and
-upload the files myself, so describe each one rather than writing it.
+const P3 = `You are planning the files for this project, the way a careful assistant
+would before the first job runs. Recommend only: I gather and upload the
+files myself, so describe each one rather than writing it.
 
 Work from what I told you in this chat. It is enough for a plan. Where
 something is unclear, say so inside the plan rather than asking.
@@ -325,69 +334,79 @@ DO THIS FIRST: (one line. Which file to gather and upload first, and why.)
 
 Plain language, no jargon, no preamble. Stop after the plan.`;
 
-const P4 = `I want you to write my Cowork global instructions. These go in Settings
-under Cowork, and you read them before every Cowork task.
+const P4 = `You are helping me write my Cowork global instructions, the way a careful
+new assistant would learn a business on day one: by asking, not guessing.
+These go in Settings under Cowork, and you read them before every Cowork
+task.
 
 What belongs here: what I do, what I hand to Cowork, how I want finished
 work delivered, what you check with me before doing.
 What does not belong here: client names, prices, anything that changes
 often. That lives in the files and folders I give you.
 
-Cowork does not read my chats, so these instructions must stand on their own.
-Do not draft from what you think you know. Interview me first.
+Cowork does not read my chats, so these instructions must stand on their
+own. Interview me first.
 
 Ask me one question at a time. Wait for my answer before asking the next.
 Cover these, in this order:
 1. What my business does and what I do in it.
-2. What I will hand to Cowork. Documents, spreadsheets, research, tidying files.
+2. What I will hand to Cowork. Documents, spreadsheets, research, tidying
+   files.
 3. How I want finished work delivered. File type, length, layout.
-4. What you must check with me before doing.
+4. What you check with me before doing, and why it matters to me.
 5. What you must never do.
-Five questions. Ask one or two more only if an answer needs it. Then stop asking.
+Five questions. Ask one or two more only if an answer needs it. Then stop
+asking.
 
 Rules:
-- Do not invent details, names, numbers or facts I have not told you. If
-  you need something, ask. If I skip it, leave it out.
-- Only include what stays true for months. Leave out client names, pricing
-  and anything that changes often.
-- Write the instructions as instructions to you.
+- Use only what I tell you, because Cowork acts on these instructions
+  without me in the room, and an invented detail becomes an action. If
+  something is missing, ask. If I skip it, leave it out.
+- Keep to what stays true for months, because client names and prices
+  belong in the files and folders.
+- Write the instructions as rules with reasons, mostly positive, addressed
+  to you. Where I have said "check with me first", keep those words exact.
 - Under 500 words.
 
 When the interview is done, answer in this exact format and nothing else:
 
 YOUR DRAFT GLOBAL INSTRUCTIONS: (the full set in a copy-paste block, under
-500 words. This is a draft for me to approve. You have saved nothing. I
-paste it in myself if I am happy.)
+500 words.)
 WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`;
 
-const P5 = `I want you to draft one skill for me. A skill is a saved way of doing one
+const P5 = `You are helping me draft one skill, the way you would learn a job from
+the person who does it: by asking. A skill is a saved way of doing one
 job, so I never have to explain that job twice.
 
 What belongs in a skill: one job, the steps in order, what the finished
 result looks like, and the exact words that should trigger it.
-What does not belong: general preferences about how I like things written.
-Those are already in my instructions.
+What does not belong: general preferences about how I like things
+written. Those are already in my instructions.
 
-Do not guess what the job is. Interview me first.
+You do not know the job yet. Interview me first.
 
 Ask me one question at a time. Wait for my answer before asking the next.
 Cover these, in this order:
 1. One job I do the same way every time.
 2. What I have in hand when I start it.
 3. The steps, in the order I do them.
-4. What the finished result looks like.
-5. When this skill should NOT be used, even if the job looks similar.
+4. What the finished result looks like. If I have a good one, I will
+   paste it in.
+5. When this skill should stay out of the way, even if the job looks
+   similar.
 Five questions. Then stop asking.
 
 Rules:
-- Do not invent steps, names, numbers or facts I have not told you. If
-  something is missing, mark it [NEEDS CONFIRMING]. Do not fill the gap.
-- The description decides when the skill fires. Write it so it names the
-  job plainly and lists the words I would actually say when I want it.
-  Also say when it must stay out of the way.
-- Keep it short. One job, not five.
+- Use only the steps, names and numbers I give you, because a skill runs
+  the same way every time and a guessed step repeats every time. Where
+  something is missing, mark it [NEEDS CONFIRMING] and leave the gap.
+- The description decides when the skill fires, so write it to name the
+  job plainly, list the words I would actually say when I want it, and
+  say when it must stay out of the way.
+- Keep it to one job, because a skill that does five fires at the wrong
+  moments.
 
 When the interview is done, answer in this exact format and nothing else:
 
@@ -398,8 +417,7 @@ STEPS: (numbered, one action each, in order)
 RESULT: (one line. What it hands back.)
 STILL NEEDS CONFIRMING: (bullets, or "nothing, this one's done")
 
-This is a draft for me to approve. You have saved nothing. No preamble.
-Stop after the confirming list.`;
+No preamble. Stop after the confirming list.`;
 
 
 const F = {};
