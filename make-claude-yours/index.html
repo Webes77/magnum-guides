@@ -585,20 +585,6 @@ const S = [
  ["c","Out","Prices and client details typed into the instructions. They go stale there."],
  ["c","Out","Files you have not opened in a year. Claude reads them as true."]]},
 
-{sec:"Your project", h:"Project instructions: <em>how much</em>", pts:[
- "Under 300 words. One job. Only what is true for that job every single time.",
- "Do not repeat your account instructions. The project sits on top of them.",
- "Prices, templates and examples go stale in a week. Put them in files, not here.",
- "If a rule here fights one in your account instructions, Claude gets confused. Pick one place."]},
-
-{sec:"Your project", h:"When to use a <em>file</em>, and when not", tiles:[
- ["o","Use a file","It changes. Price lists, rates, product ranges."],
- ["o","Use a file","It is long. Templates, standard wording, past examples."],
- ["o","Use a file","Claude needs to read it every time, without you pasting it."],
- ["c","Not a file","A single rule. That is one line in the instructions."],
- ["c","Not a file","Something you only need once. Paste it into the chat."],
- ["c","Not a file","Anything you would not trust as current. Claude treats every file as true."]]},
-
 {sec:"Your project", h:"Create it", tag:"do", pts:[
  "Click <b>Projects</b> in the left sidebar.",
  "Click <b>New project</b>.",
@@ -614,6 +600,20 @@ const S = [
  "Copy the final draft.",
  "In the project, find the instructions box on the right-hand side. Click Set project instructions, or Edit if something is already there.",
  "Paste. Click Save."]},
+
+{sec:"Your project", h:"Project instructions: <em>how much</em>", pts:[
+ "Under 300 words. One job. Only what is true for that job every single time.",
+ "Do not repeat your account instructions. The project sits on top of them.",
+ "Prices, templates and examples go stale in a week. Put them in files, not here.",
+ "If a rule here fights one in your account instructions, Claude gets confused. Pick one place."]},
+
+{sec:"Your project", h:"When to use a <em>file</em>, and when not", tiles:[
+ ["o","Use a file","It changes. Price lists, rates, product ranges."],
+ ["o","Use a file","It is long. Templates, standard wording, past examples."],
+ ["o","Use a file","Claude needs to read it every time, without you pasting it."],
+ ["c","Not a file","A single rule. That is one line in the instructions."],
+ ["c","Not a file","Something you only need once. Paste it into the chat."],
+ ["c","Not a file","Anything you would not trust as current. Claude treats every file as true."]]},
 
 {sec:"Your project", h:"Prompt 3. The file plan", pts:[
  "Claude names the two to four files this project should have.",
