@@ -474,8 +474,16 @@ const S = [
  "With it, Claude reads the real thing."]},
 
 {sec:"Connectors", h:"What <em>changes</em> when it is on", split:[
- ["Before","\u201cHere is roughly what the email said, what should I reply?\u201d","Describing your week from memory."],
- ["After","\u201cRead the last email from the site foreman and draft the reply.\u201d","\u201cWhat is on my calendar Thursday?\u201d"]]},
+ ["Before","\u201cHere is roughly what the email said, what should I reply?\u201d","Describing your week from memory.","Trying to remember what you promised in the meeting."],
+ ["After","\u201cRead the last email from the site foreman and draft the reply.\u201d","\u201cWhat is on my calendar Thursday?\u201d","\u201cList what I promised in yesterday\u2019s meeting.\u201d"]]},
+
+{sec:"Connectors", h:"Once it is on, you can <em>say</em>", tiles:[
+ ["o","Calendar","\u201cWhat is on my calendar this week, and where are the gaps?\u201d"],
+ ["o","Email","\u201cWhich emails from the last three days still need an answer from me?\u201d"],
+ ["o","Email","\u201cRead the last email from the site foreman and draft the reply in my tone.\u201d"],
+ ["o","Meetings","\u201cPull up the transcript of yesterday\u2019s meeting and list everything I promised.\u201d"],
+ ["o","Files","\u201cFind the quote I sent Dave in March and tell me what we agreed on price.\u201d"],
+ ["c","Sending","\u201cDraft the email confirming Thursday at 2. Show me. I will say send.\u201d"]]},
 
 {sec:"Connectors", h:"You are in <em>control</em>", pts:[
  "You grant it. Nobody else can.",
@@ -659,7 +667,7 @@ S.forEach((s,i)=>{
   if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
   if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
   if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
-  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3><p>${s.split[0][1]}</p><p>${s.split[0][2]}</p></div><div class="a"><h3>${s.split[1][0]}</h3><p>${s.split[1][1]}</p><p>${s.split[1][2]}</p></div></div>`;
+  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`;
   if(s.note) left += `<p class="note">${s.note}</p>`;
   if(s.meta) left += `<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`;
   left += `</div>`;

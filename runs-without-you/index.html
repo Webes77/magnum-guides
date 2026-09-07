@@ -411,7 +411,7 @@ S.forEach((s,i)=>{
   if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
   if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
   if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
-  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3><p>${s.split[0][1]}</p><p>${s.split[0][2]}</p></div><div class="a"><h3>${s.split[1][0]}</h3><p>${s.split[1][1]}</p><p>${s.split[1][2]}</p></div></div>`;
+  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`;
   if(s.note) left += `<p class="note">${s.note}</p>`;
   if(s.meta) left += `<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`;
   left += `</div>`;
