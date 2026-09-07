@@ -187,12 +187,13 @@ and shelf together.
 
 Later on 7 Sep the Foundations lever section became one slide per lever
 (rule in a line, then a vague ask beside a specific one and what each
-gets back). The examples live in `EGS` above the slide array. The
-default set is a trades business; `?eg=ot` on the URL swaps in an
-occupational therapy practice, built for a room from that field on
-8 Sep. Add a set for another field there. No client is named in any
-set (hard rule 5). Both sets pass the deck check. `?short&eg=ot`
-combines with Skip basics.
+gets back). The examples live in `EGS` above the slide array, two
+sets: a trades business and an occupational therapy practice. The line
+`const EG = EGS.ot` picks the set the slides show; James wanted it on
+the main slides with no URL switch, changed by hand for each room. It
+is on the OT set for a session on 8 Sep. Add a set for another field
+there. No client is named in any set (hard rule 5). Both sets pass the
+deck check.
 
 Gotcha found the same day: GitHub Pages did not rebuild for any push that
 sent `main` and the session branch in one command. Push `main` on its own

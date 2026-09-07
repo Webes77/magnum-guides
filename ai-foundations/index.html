@@ -265,11 +265,11 @@ F.honest = ['<svg viewBox="0 0 420 380"><rect x="30" y="46" width="180" height="
 F.next = ['<svg viewBox="0 0 420 380"><rect x="34" y="60" width="150" height="106" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="109" y="120" text-anchor="middle" font-family="Oswald" font-size="22" fill="#1E1B17">TODAY</text><rect x="236" y="60" width="150" height="106" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><text x="311" y="112" text-anchor="middle" font-family="Oswald" font-size="20" fill="#EEE6D3">NEXT</text><text x="311" y="138" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" fill="#EEE6D3">SET IT UP</text><path d="M184 113 H236" stroke="#1E1B17" stroke-width="5"/><path d="M222 103l14 10-14 10" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="212" width="352" height="128" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="58" y="240" width="140" height="12" fill="#1E1B17"/><rect x="58" y="268" width="280" height="8" fill="#3A3630"/><rect x="58" y="286" width="236" height="8" fill="#3A3630"/><rect x="58" y="310" width="104" height="10" fill="#B8452A"/><circle cx="344" cy="304" r="26" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M332 304l8 9 15-18" fill="none" stroke="#EEE6D3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  'Fig. 04 / it still does not know you<br>That is the next session'];
 
-// Worked examples for the six lever slides. The default set is a trades
-// business. `?eg=ot` on the URL swaps in an occupational therapy practice,
-// for a room from that field. Add a set here for another field; nothing is
-// client-specific and no client is named. Each entry: vague ask, what it
-// gets, specific ask, what it gets.
+// Worked examples for the six lever slides. Two sets: a trades business
+// and an occupational therapy practice. The line under them picks which
+// one the slides show. Change it for the room. Add a set here for another
+// field; nothing is client-specific and no client is named. Each entry:
+// vague ask, what it gets, specific ask, what it gets.
 const EGS = {
  trades: {
   cv: "copywriter",
@@ -302,7 +302,7 @@ const EGS = {
            "“The assessment summary itself: findings in plain language, three recommendations, then a two-line note to the GP, ready to paste. Then stop.”","A summary the GP can read. It knew what done looked like."]
  }
 };
-const EG = EGS[(location.search.match(/[?&]eg=([a-z]+)/)||[])[1]] || EGS.trades;
+const EG = EGS.ot; // the set on the slides right now. Swap by hand for the room.
 
 const S = [
 {sec:"", cover:true, fig:"cover", h:"Stop prompting. Start talking.", pts:[], sub:"Session one \u00b7 AI Foundations", note:"How it actually works, how to talk to it, and how to make it tell you the truth. Nothing to set up today.", meta:[["Works in","Claude, any paid plan"],["You need","One real task from this week"],["Take-away","This deck, with every prompt in it"]]},
