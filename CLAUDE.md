@@ -153,7 +153,7 @@ deck.
 
 | Session | Folder | Slides | Prompts |
 |---|---|---|---|
-| One, AI Foundations | `ai-foundations/` | 24 | 4 |
+| One, AI Foundations | `ai-foundations/` | 28 | 4 |
 | Two, Make Claude Yours | `make-claude-yours/` | 37 | 5 |
 | Three, Work That Runs Without You | `runs-without-you/` | 17 | 4 |
 
