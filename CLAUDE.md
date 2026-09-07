@@ -164,7 +164,18 @@ gets built": the four parts (Projects, Skills, Cowork, Code) and the two
 underneath (Connectors, Schedules), lifted from his July talk deck "How to
 Use Claude in 2026", which stays a talk deck and is not on the members
 area. Two points were sharpened from the same deck: the four things a
-project holds, and the two-minute test for a skill.
+project holds, and the two-minute test for a skill. Later on 7 Sep, for
+a large online group session: The order became Today, an agenda in three
+columns (step, what we do, why it matters) using a new `rows` layout in
+the engine; the connector slides gained a third before-and-after line and
+a six-tile slide of things to say once a connector is on; the voice slide
+now teaches Wispr Flow, with no price on it; The instructions box was
+retitled Introduce yourself to Claude. Deck is 36 slides.
+
+Gotcha found the same day: GitHub Pages did not rebuild for any push that
+sent `main` and the session branch in one command. Push `main` on its own
+(`git push origin main`), then the branch, and confirm a "pages build and
+deployment" run appears for the commit.
 
 Also live: Fine-Tune (`fine-tune/`, do not restyle, James said leave it
 alone), the Manus website manual, AI for Buyer's Agents (`ba-growth/`, the
