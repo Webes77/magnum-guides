@@ -164,6 +164,9 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 .nav{display:flex;gap:8px}
 .nav button{background:transparent;color:#EEE6D3;border:1px solid #8C8275;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
 .nav button:hover{border-color:#EEE6D3}
+.nav button.on{background:var(--rust);border-color:var(--rust)}
+#menulist li.basic button::after{content:"  basics";font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C8275}
+.menu.skip #menulist li.basic button{opacity:.38}
 .bar{flex:1;height:3px;background:#6B625A;margin:0 28px;position:relative}
 .bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
 .hint{color:#9C9285;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
@@ -201,7 +204,7 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 </header>
 <main id="deck"></main>
 <footer>
-  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button></div>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button><button id="skipbtn" onclick="toggleSkip()" hidden>SKIP BASICS</button></div>
   <div class="bar"><i id="fill"></i></div>
   <span class="hint">Arrow keys move. SLIDES for the full list.</span>
 </footer>
@@ -454,14 +457,22 @@ function show(n){
   slides[cur].scrollTop=0;
   checkMore();
 }
-document.getElementById('next').onclick=()=>show(cur+1);
-document.getElementById('prev').onclick=()=>show(cur-1);
+// Skip basics: slides marked basic:true drop out of Next and Back when the
+// switch is on, so one deck serves a room that already knows the basics.
+let skip=/[?&]short\b/.test(location.search);
+const hasBasics=S.some(s=>s.basic);
+function step(d){let n=cur+d;while(skip&&n>0&&n<slides.length&&S[n].basic)n+=d;if(n<0||n>slides.length-1)return;show(n);}
+function toggleSkip(){skip=!skip;paintSkip();if(skip&&S[cur].basic)step(1);}
+function paintSkip(){const b=document.getElementById('skipbtn');b.hidden=!hasBasics;b.classList.toggle('on',skip);b.textContent=skip?'BASICS OFF':'SKIP BASICS';document.getElementById('menu').classList.toggle('skip',skip);}
+document.getElementById('next').onclick=()=>step(1);
+document.getElementById('prev').onclick=()=>step(-1);
 document.addEventListener('keydown',e=>{
   if(document.getElementById('reader').classList.contains('on')){if(e.key==='Escape')closeReader();return;}
   if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
-  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
-  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();step(1);}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();step(-1);}
   if(e.key==='m'||e.key==='M'){toggleMenu();}
+  if(e.key==='b'||e.key==='B'){toggleSkip();}
 });
 
 document.querySelectorAll('.copy').forEach(b=>{
@@ -479,7 +490,7 @@ let lastSec=null;
 S.forEach((s,i)=>{
   if(i===0)return;
   if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
-  const li=document.createElement('li');
+  const li=document.createElement('li');if(s.basic)li.className='basic';
   const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
   li.appendChild(b);ml.appendChild(li);
 });
@@ -489,6 +500,7 @@ window.addEventListener('resize',checkMore);
 document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const s=S[+b.dataset.i];document.getElementById('rwhere').textContent=s.where;document.getElementById('rpre').textContent=flow(s.prompt);document.getElementById('rcopy').dataset.i=b.dataset.i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;};});
 function closeReader(){document.getElementById('reader').classList.remove('on');}
 function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+paintSkip();
 document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
 
 // Fit every slide to the screen. The decks are laid out for a box of

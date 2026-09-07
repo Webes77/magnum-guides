@@ -164,6 +164,9 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 .nav{display:flex;gap:8px}
 .nav button{background:transparent;color:#EEE6D3;border:1px solid #8C8275;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
 .nav button:hover{border-color:#EEE6D3}
+.nav button.on{background:var(--rust);border-color:var(--rust)}
+#menulist li.basic button::after{content:"  basics";font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C8275}
+.menu.skip #menulist li.basic button{opacity:.38}
 .bar{flex:1;height:3px;background:#6B625A;margin:0 28px;position:relative}
 .bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
 .hint{color:#9C9285;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
@@ -201,7 +204,7 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 </header>
 <main id="deck"></main>
 <footer>
-  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button></div>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button><button id="skipbtn" onclick="toggleSkip()" hidden>SKIP BASICS</button></div>
   <div class="bar"><i id="fill"></i></div>
   <span class="hint">Arrow keys move. SLIDES for the full list.</span>
 </footer>
@@ -216,8 +219,8 @@ Interview me. Ask one question at a time and wait for my answer before the next
 one. Work out what I actually need, who it is for, what it has to do, and what
 would make it wrong.
 
-Do not start producing anything until you have enough. When you do, tell me
-what you understood before you hand me the result.
+Start producing only when you have enough, and tell me what you understood
+before you hand me the result.
 
 The task is: [say it roughly, out loud, in your own words]`;
 
@@ -245,8 +248,9 @@ want to keep them, and this has never happened before. I have already sent one
 polite reminder and had no reply.
 
 Write the follow-up email. Under 120 words. Warm but not apologetic. Make it
-easy for them to pay and easy for them to tell me if something is wrong. Do not
-threaten anything and do not grovel.
+easy for them to pay and easy for them to tell me if something is wrong. Keep
+it level, no threat and no apology, because either one makes it harder for
+them to pay.
 
 Give me the email only. No preamble.`;
 
@@ -271,16 +275,20 @@ const S = [
  "How to stop it agreeing with you.",
  "One real task, done live."]},
 
-{sec:"Open", h:"The <em>order</em>", chev:["What it is","How to talk","6 Levers","Make it honest","Live"], pts:[
- "Method today. Setup next session.",
- "Nothing to install, nothing to configure.",
- "Bring one real task. You will use it."]},
+{sec:"Open", h:"<em>Today</em>", rows:[
+ ["What it is","Two minutes on how it actually works.","Once you know it is a pattern engine, you stop treating it like Google."],
+ ["How to talk","Two ways in, one of them by voice.","Talk-It-Out gets a better brief out of you than you could type."],
+ ["The 6 Levers","Role, Context, Constraints, Tone, Format, Output.","When an answer is weak, you find what you left out instead of guessing."],
+ ["Make it honest","Two prompts.","It is built to agree with you. You tell it not to."],
+ ["Live","One real job, the overdue invoice.","You see the method work before you leave."]],
+ pts:[
+ "Method today, setup next session. Nothing to install. Bring one real task, you will use it."]},
 
-{sec:"What it is", h:"The simplest <em>explanation</em>", pts:[
- "It has read virtually everything ever written.",
- "It learned to predict the most useful next thing to say.",
+{sec:"What it is", h:"What it actually <em>is</em>", basic:true, pts:[
+ "A program that has read most of what has ever been written, and learned one skill from it: predicting the most useful next words.",
+ "That is all it does. You type something, it works out what a knowledgeable person would say next, and says it.",
  "No magic. Pattern recognition in a very good suit.",
- "The smartest person you know, no ego, awake at 2am, never charges by the hour."]},
+ "In practice: the smartest person you know, no ego, awake at 2am, never charges by the hour."]},
 
 {sec:"What it is", h:"Why most people get <em>weak</em> answers", pts:[
  "They send a text message and expect a miracle.",
@@ -288,25 +296,25 @@ const S = [
  "A bad answer is almost always a thin question.",
  "The whole of today is about making the question better."]},
 
-{sec:"What it is", h:"Put it <em>first</em>, not last", pts:[
+{sec:"What it is", h:"Put it <em>first</em>, not last", basic:true, pts:[
  "Most people reach for it when they are stuck. That is the wrong end.",
  "Open it at the start of the task, before you have decided how to do it.",
  "A quote, a stuck email, prepping a meeting, a decision you keep putting off.",
  "Tools change every few months. This habit does not."]},
 
-{sec:"The full picture", h:"You are using the <em>tip</em>", tiles:[
+{sec:"The full picture", h:"You are using the <em>tip</em>", basic:true, tiles:[
  ["o","Think &amp; decide","Brainstorm, coach you, research, summarise long documents, pressure-test a plan, compare options."],
  ["t","Create &amp; build","Write and edit anything, build documents and SOPs, spreadsheets, images, presentations, checklists."],
  ["c","Run &amp; connect","Read your email, check your calendar, pull live information, run jobs on a timer, hand off to other tools."]],
  pts:["Most people use two of these boxes. Find things, write things. That is the surface."]},
 
-{sec:"The full picture", h:"It reads what you <em>hand</em> it", pts:[
+{sec:"The full picture", h:"It reads what you <em>hand</em> it", basic:true, pts:[
  "Not only typed text. Photos, screenshots, PDFs, spreadsheets, a photo of a handwritten note.",
  "A supplier contract. A screenshot of a customer\u2019s message. A page from the job book.",
  "Drop it in, then ask. Summarise it, check it, pull the numbers out, turn it into a quote.",
  "One rule. If you would not email it to a stranger, do not paste it in. Session two sorts the settings."]},
 
-{sec:"The full picture", h:"Stop using it like <em>Google</em>", split:[
+{sec:"The full picture", h:"Stop using it like <em>Google</em>", basic:true, split:[
  ["Search","“Find me an article about handling a price rise.”","You get links. You still have to do the work."],
  ["Build","“Write the price rise email to my twelve best customers.”","You get the thing itself, in your words, ready to send."]]},
 
@@ -319,7 +327,7 @@ const S = [
 {sec:"How to talk", h:"Talk-It-<em>Out</em>", pts:[
  "You talk faster than you type, and you know more than you can write down cold.",
  "So stop writing the brief. Let it pull the brief out of you.",
- "Use voice. Ramble. It tidies.",
+ "Use voice. Wispr Flow if you have it. Ramble. It tidies.",
  "Its questions happen to cover all six levers, which is why it works."],
  prompt:P1, where:"Any new chat, on a real task", after:[
  "Say the task roughly, out loud. Do not polish it.",
@@ -454,14 +462,22 @@ function show(n){
   slides[cur].scrollTop=0;
   checkMore();
 }
-document.getElementById('next').onclick=()=>show(cur+1);
-document.getElementById('prev').onclick=()=>show(cur-1);
+// Skip basics: slides marked basic:true drop out of Next and Back when the
+// switch is on, so one deck serves a room that already knows the basics.
+let skip=/[?&]short\b/.test(location.search);
+const hasBasics=S.some(s=>s.basic);
+function step(d){let n=cur+d;while(skip&&n>0&&n<slides.length&&S[n].basic)n+=d;if(n<0||n>slides.length-1)return;show(n);}
+function toggleSkip(){skip=!skip;paintSkip();if(skip&&S[cur].basic)step(1);}
+function paintSkip(){const b=document.getElementById('skipbtn');b.hidden=!hasBasics;b.classList.toggle('on',skip);b.textContent=skip?'BASICS OFF':'SKIP BASICS';document.getElementById('menu').classList.toggle('skip',skip);}
+document.getElementById('next').onclick=()=>step(1);
+document.getElementById('prev').onclick=()=>step(-1);
 document.addEventListener('keydown',e=>{
   if(document.getElementById('reader').classList.contains('on')){if(e.key==='Escape')closeReader();return;}
   if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
-  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
-  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();step(1);}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();step(-1);}
   if(e.key==='m'||e.key==='M'){toggleMenu();}
+  if(e.key==='b'||e.key==='B'){toggleSkip();}
 });
 
 document.querySelectorAll('.copy').forEach(b=>{
@@ -479,7 +495,7 @@ let lastSec=null;
 S.forEach((s,i)=>{
   if(i===0)return;
   if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
-  const li=document.createElement('li');
+  const li=document.createElement('li');if(s.basic)li.className='basic';
   const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
   li.appendChild(b);ml.appendChild(li);
 });
@@ -489,6 +505,7 @@ window.addEventListener('resize',checkMore);
 document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const s=S[+b.dataset.i];document.getElementById('rwhere').textContent=s.where;document.getElementById('rpre').textContent=flow(s.prompt);document.getElementById('rcopy').dataset.i=b.dataset.i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;};});
 function closeReader(){document.getElementById('reader').classList.remove('on');}
 function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+paintSkip();
 document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
 
 // Fit every slide to the screen. The decks are laid out for a box of

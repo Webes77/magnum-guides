@@ -172,6 +172,19 @@ a six-tile slide of things to say once a connector is on; the voice slide
 now teaches Wispr Flow, with no price on it; The instructions box was
 retitled Introduce yourself to Claude. Deck is 36 slides.
 
+Later again on 7 Sep: every deck has a Skip basics switch (SKIP BASICS in
+the bottom bar, or the B key, or `?short` on the URL). A slide marked
+`basic:true` drops out of Next and Back while it is on and greys in the
+slide list, so one deck serves a room that already knows the basics. In
+Foundations five slides carry it: What it actually is (rewritten to say
+plainly what it is), Put it first, You are using the tip, It reads what
+you hand it, Stop using it like Google. The button hides itself in a deck
+with no basic slides. Foundations also gained the Today agenda in rows,
+Wispr Flow on the Talk-It-Out slide, and two prompt edits (Talk-It-Out
+and the overdue invoice) mirrored on the shelf. The five session-two
+prompts were rewritten the same day against the review standards, deck
+and shelf together.
+
 Gotcha found the same day: GitHub Pages did not rebuild for any push that
 sent `main` and the session branch in one command. Push `main` on its own
 (`git push origin main`), then the branch, and confirm a "pages build and
