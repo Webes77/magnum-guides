@@ -731,6 +731,38 @@ before you hand me the result.
 
 The task is: [say it roughly, out loud, in your own words]`},
 
+{kind:'prompt', id:'state-of-play', sec:'Session one · AI Foundations', title:'Take a state of play', where:'Any long chat or Cowork job, at a natural pause', type:'instructions', when:'before-acting', hook:"Four headings that stop a long job losing the thread.", added:'2026-09-07', levers:['Format','Output'],
+prompt:`Give me a state of play on this job, in this shape and nothing else:
+
+DECIDED: what we have settled, one line each.
+OPEN: what is still unresolved, one line each.
+NEXT: the next three steps, in order.
+FROM ME: anything you need from me before you can continue.
+
+Keep it under 200 words. No commentary. Do not restart the work.`},
+
+{kind:'prompt', id:'chat-rescue', sec:'Session one · AI Foundations', title:'The rescue', where:'A fresh chat, with the whole old chat pasted under it', type:'review', when:'start', hook:"Paste in the chat that went in circles. Get back where it broke and a clean restart.", added:'2026-09-07', levers:['Context','Constraints','Format','Output'],
+prompt:`Below is a full copy of a chat that has gone in circles. Read all of
+it before you answer. I am not asking you to do the work. I am asking
+you to tell me what happened.
+
+Give me:
+
+1. WHAT I WANTED. The original goal, in one sentence, in my words.
+2. WHERE IT WENT WRONG. The message where the thread was lost, and
+   why. Quote the line.
+3. WHAT IS STILL GOOD. Anything decided or produced that I should keep.
+4. WHAT TO DROP. Anything the chat is now carrying that is getting in
+   the way.
+5. A FRESH BRIEF. A message I can paste into a new chat to restart from
+   here: the goal, what is decided, what to do next. Under 200 words,
+   written to be pasted.
+
+Then tell me in one line: fix it here, or start again. Do not start
+the work.
+
+The chat:`},
+
 {kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', hook:"Four lines that stop it agreeing with you.", rank:2, levers:['Constraints','Tone'],
 prompt:`From now on, in everything you do for me:
 

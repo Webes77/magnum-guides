@@ -255,6 +255,36 @@ them to pay.
 Give me the email only. No preamble.`;
 
 
+const P5 = `Give me a state of play on this job, in this shape and nothing else:
+
+DECIDED: what we have settled, one line each.
+OPEN: what is still unresolved, one line each.
+NEXT: the next three steps, in order.
+FROM ME: anything you need from me before you can continue.
+
+Keep it under 200 words. No commentary. Do not restart the work.`;
+
+const P6 = `Below is a full copy of a chat that has gone in circles. Read all of
+it before you answer. I am not asking you to do the work. I am asking
+you to tell me what happened.
+
+Give me:
+
+1. WHAT I WANTED. The original goal, in one sentence, in my words.
+2. WHERE IT WENT WRONG. The message where the thread was lost, and
+   why. Quote the line.
+3. WHAT IS STILL GOOD. Anything decided or produced that I should keep.
+4. WHAT TO DROP. Anything the chat is now carrying that is getting in
+   the way.
+5. A FRESH BRIEF. A message I can paste into a new chat to restart from
+   here: the goal, what is decided, what to do next. Under 200 words,
+   written to be pasted.
+
+Then tell me in one line: fix it here, or start again. Do not start
+the work.
+
+The chat:`;
+
 const F = {};
 F.cover = ['<svg viewBox="0 0 420 380"><rect x="34" y="40" width="300" height="180" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="58" y="72" width="150" height="14" fill="#1E1B17"/><rect x="58" y="104" width="230" height="8" fill="#3A3630"/><rect x="58" y="122" width="196" height="8" fill="#3A3630"/><rect x="58" y="140" width="214" height="8" fill="#3A3630"/><rect x="58" y="170" width="96" height="10" fill="#B8452A"/><path d="M126 220 L146 250 L106 250 Z" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4" stroke-linejoin="round"/><circle cx="300" cy="292" r="60" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><rect x="272" y="272" width="56" height="8" fill="#EEE6D3"/><rect x="272" y="290" width="40" height="8" fill="#EEE6D3"/><rect x="272" y="308" width="48" height="8" fill="#EEE6D3"/><circle cx="86" cy="300" r="38" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M70 300h32M86 284v32" stroke="#EEE6D3" stroke-width="6" stroke-linecap="round"/></svg>',
  'Fig. 01 / you talk, it asks, it builds<br>The method, before the setup'];
@@ -394,6 +424,25 @@ const S = [
  "<b>Carry over what mattered.</b> Ask “Sum up what we decided in five lines.” Copy it. Paste it into the new chat.",
  "<b>One chat, one job.</b> The invoice email is one chat. The quote is another. Do not chain them together.",
  "<b>The rule.</b> If you have scrolled more than a screen or two, or it has repeated itself once, start again."]},
+
+{sec:"How to talk", h:"Take a <em>state of play</em>", pts:[
+ "Before a long job goes bad, ask for one. Especially in Cowork, where a job runs for an hour and you step away.",
+ "Same shape every time: decided, open, next, what it needs from you.",
+ "Ask at every natural pause. The last one is the opening message of the next chat."],
+ prompt:P5, where:"Any long chat or Cowork job, at a natural pause", after:[
+ "Read it. Correct anything it got wrong before you carry on.",
+ "Keep the latest one. When the chat gets full, it starts the next one.",
+ "If it cannot fill in DECIDED, nothing has been decided. That is worth knowing."]},
+
+{sec:"How to talk", h:"The <em>rescue</em>", pts:[
+ "The chat has gone in circles and you did not take a state of play.",
+ "Select all. Copy the lot. Open a fresh chat. Paste this prompt, then the chat under it.",
+ "It reads the mess and hands back where it went wrong and a clean brief to restart from.",
+ "Then choose: fix it in the old chat, or restart from the brief. Restarting costs nothing."],
+ prompt:P6, where:"A fresh chat, with the whole old chat pasted under it", after:[
+ "Read WHERE IT WENT WRONG first. That is usually the whole lesson.",
+ "If it says start again, paste the fresh brief into a new chat and go.",
+ "If it says fix it here, go back to the old chat and paste WHAT TO DROP as an instruction."]},
 
 {sec:"The 6 Levers", h:"When the answer is <em>weak</em>", fig:"levers", pts:[
  "Something was missing from your input. It is nearly always one of six things.",

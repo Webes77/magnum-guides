@@ -153,7 +153,7 @@ deck.
 
 | Session | Folder | Slides | Prompts |
 |---|---|---|---|
-| One, AI Foundations | `ai-foundations/` | 28 | 4 |
+| One, AI Foundations | `ai-foundations/` | 30 | 6 |
 | Two, Make Claude Yours | `make-claude-yours/` | 37 | 5 |
 | Three, Work That Runs Without You | `runs-without-you/` | 17 | 4 |
 
@@ -194,6 +194,14 @@ the main slides with no URL switch, changed by hand for each room. It
 is on the OT set for a session on 8 Sep. Add a set for another field
 there. No client is named in any set (hard rule 5). Both sets pass the
 deck check.
+
+Later still on 7 Sep, from James's own practice: Foundations gained two
+prompt slides after Fresh chat, every job. Take a state of play (P5:
+decided, open, next, from me; asked at every pause in a long chat or
+Cowork job) and The rescue (P6: paste the whole drifted chat under it,
+get back where it went wrong and a fresh brief to restart from). Both
+are on the shelf as `state-of-play` and `chat-rescue`, deck and shelf
+identical. Foundations is 30 slides, six prompts. The shelf is 34 cards.
 
 Gotcha found the same day: GitHub Pages did not rebuild for any push that
 sent `main` and the session branch in one command. Push `main` on its own
