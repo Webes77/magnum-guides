@@ -75,7 +75,7 @@ h1 em{font-style:normal;color:var(--rust)}
 .meta b{color:var(--rust);font-weight:500;margin-right:10px}
 
 ul.points{list-style:none;margin-top:6px;max-width:56ch}
-ul.points li{font-size:24px;line-height:1.35;padding:12px 0 12px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
+ul.points li{font-size:27px;line-height:1.32;padding:9px 0 9px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
 ul.points li:last-child{border-bottom:2px solid var(--ink)}
 ul.points li::before{content:"";position:absolute;left:0;top:25px;width:18px;height:3px;background:var(--rust)}
 ul.points li b{color:var(--rust);font-weight:500}
@@ -91,7 +91,7 @@ ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:va
 .has-prompt ul.points li{font-size:max(15px,calc(14px / var(--z,1)));line-height:1.3;padding:6px 0 6px 22px;border-top:0;flex:1 1 28%;min-width:220px}
 .has-prompt ul.points li:last-child{border-bottom:0}
 .has-prompt ul.points li::before{top:13px;width:12px}
-.has-fig ul.points li{font-size:21px}
+.has-fig ul.points li{font-size:24px}
 
 /* figure panel */
 .fig{background:var(--rust);border:3px solid var(--ink);padding:26px 26px 18px;display:flex;flex-direction:column;gap:14px;align-self:start;box-shadow:6px 6px 0 var(--ink)}
@@ -102,7 +102,7 @@ ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:va
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
 .tile{padding:20px 20px 24px;color:var(--paper);min-height:150px;border:3px solid var(--ink)}
 .tile h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
-.tile p{font-size:19px;line-height:1.35}
+.tile p{font-size:22px;line-height:1.35}
 .tile.o{background:var(--olive)}.tile.t{background:var(--rust)}.tile.c{background:var(--char)}
 
 /* before / after split */
@@ -110,16 +110,18 @@ ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:va
 .split div{border:3px solid var(--ink);background:var(--paper-2);padding:0;box-shadow:5px 5px 0 var(--ink)}
 .split h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:20px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;color:var(--paper);border-bottom:3px solid var(--ink)}
 .split .b h3{background:var(--char)}.split .a h3{background:var(--olive)}
-.split p{font-family:"IBM Plex Mono",monospace;font-size:17px;line-height:1.5;margin:14px 20px;color:var(--ink)}
+.split p{font-family:"IBM Plex Mono",monospace;font-size:19px;line-height:1.5;margin:14px 20px;color:var(--ink)}
 
 /* agenda rows: step, what, why */
 .rows{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.3fr);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:var(--paper-2);margin-top:8px}
-.rows > div{padding:11px 18px;border-top:1px solid rgba(30,27,23,.3);font-size:19px;line-height:1.3;color:var(--body)}
+.rows > div{padding:11px 18px;border-top:1px solid rgba(30,27,23,.3);font-size:21px;line-height:1.3;color:var(--body)}
 .rows > div:nth-child(-n+3){border-top:0;background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:9px 18px}
 .rows .step{font-family:"Oswald",sans-serif;font-weight:600;font-size:22px;text-transform:uppercase;color:var(--rust);letter-spacing:.01em;white-space:nowrap}
 .rows .step b{display:inline-block;width:1.6em;color:var(--ink)}
 .slide.has-rows.on{grid-template-columns:minmax(0,1fr)}
 .has-rows h1{font-size:44px}
+/* do-this badge, top right */
+.dotag{position:absolute;top:26px;right:34px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;background:var(--rust);color:var(--paper);padding:7px 14px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
 /* chevron steps */
 .chev{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
 .chev span{background:var(--rust);color:var(--paper);font-family:"Oswald",sans-serif;font-size:17px;letter-spacing:.06em;padding:14px 26px 14px 30px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);text-transform:uppercase}
@@ -438,26 +440,31 @@ const S = [
  pts:[
  "Every prompt runs the same way: Claude asks, you answer out loud, it drafts, you read, you paste. Nothing saves itself."]},
 
-{sec:"Settings, privacy", h:"Open Settings", pts:[
+{sec:"Settings, privacy", h:"Open Settings", tag:"do", pts:[
  "Click your initials, bottom left of the screen.",
  "Click <b>Settings</b>.",
- "Leave this page open. The next four slides live here."]},
+ "Leave this page open. The next five slides live here."]},
 
-{sec:"Settings, privacy", h:"Training and <em>your</em> data", pts:[
- "Go to <b>Privacy</b>.",
- "Find <b>Help improve Claude</b>. Turn it off. Your chats stop being used to train the model.",
- "Off means a deleted chat is kept 30 days, then gone.",
- "Find <b>Location metadata</b> on the same page. Turn it off."]},
+{sec:"Settings, privacy", h:"Your chats stay <em>yours</em>", tag:"do", pts:[
+ "Claude can learn from your conversations to improve the model. For a business that means your quotes, your clients, your numbers. Turn it off.",
+ "Go to <b>Privacy</b>. Find <b>Help improve Claude</b>. Switch it <b>off</b>.",
+ "On the same page, find <b>Location metadata</b>. Switch it <b>off</b>. Claude does not need to know where you are to do your work.",
+ "Once off, a chat you delete is gone within 30 days. Nothing from it is kept."]},
 
-{sec:"Settings, privacy", h:"Memory", pts:[
- "Go to <b>Memory</b>.",
- "<b>Generate memory from chat history</b>: turn on. Claude carries what it learns about your business into new chats.",
- "<b>Search and reference chats</b>: turn on. Claude can look back at past chats when you ask.",
- "Everything it remembers is listed by topic on the same page. Read it. Edit or delete any line.",
- "For anything confidential, use the ghost icon at the top right of a new chat. That chat is not saved and not remembered."]},
+{sec:"Settings, privacy", h:"Let it <em>remember</em> your business", tag:"do", pts:[
+ "Memory is what stops you re-explaining your business in every chat. Two switches run it.",
+ "Go to <b>Capabilities</b>, then <b>Memory</b>.",
+ "<b>Generate memory from chat history</b>: on. <b>Search and reference chats</b>: on. Both are on by default. Check.",
+ "Click <b>View and manage memory</b>. Read what it holds. Edit or delete any line."]},
 
-{sec:"Settings, privacy", h:"Chat history and deleting", pts:[
- "Every chat is saved in the left sidebar.",
+{sec:"Settings, privacy", h:"The <em>private</em> chat", tag:"do", pts:[
+ "Some things should not be remembered. A staff issue. A medical thing. A deal that is not yours to share.",
+ "Start a new chat outside a project. Click the <b>ghost icon</b>, top right.",
+ "That chat is not saved, not remembered, and not in your history.",
+ "Close it, and the next chat is a normal one again."]},
+
+{sec:"Settings, privacy", h:"Chat history and deleting", tag:"do", pts:[
+ "Every chat is saved in the left sidebar, and Claude can search them for you.",
  "To delete one: hover over it, click the three dots, click <b>Delete</b>.",
  "Deleted chats leave your history straight away and are cleared from storage within 30 days.",
  "Delete anything you would not want read back to you later."]},
@@ -504,7 +511,7 @@ const S = [
  "It sees only what you can see. It gets no more access than you have.",
  "Connector content is not used to train the model."]},
 
-{sec:"Connectors", h:"Connect one <em>now</em>", pts:[
+{sec:"Connectors", h:"Connect one <em>now</em>", tag:"do", pts:[
  "In <b>Connectors</b>, pick Gmail or Google Calendar, whichever you use more.",
  "Click <b>Connect</b>. Sign in. Allow.",
  "Open a new chat. Check the connector is switched on in the tools menu at the bottom of the message box.",
@@ -558,11 +565,10 @@ const S = [
  ["c","Out","Files you have not opened in a year. Claude reads them as true."]]},
 
 {sec:"Your project", h:"Project instructions: <em>how much</em>", pts:[
- "Under 300 words. One job.",
- "Only what is true for that job every single time.",
+ "Under 300 words. One job. Only what is true for that job every single time.",
  "Do not repeat your account instructions. The project sits on top of them.",
- "Do not type in prices, templates or examples. They go stale in a week. Files are for that.",
- "If a rule here fights a rule in your account instructions, Claude gets confused. Pick one place."]},
+ "Prices, templates and examples go stale in a week. Put them in files, not here.",
+ "If a rule here fights one in your account instructions, Claude gets confused. Pick one place."]},
 
 {sec:"Your project", h:"When to use a <em>file</em>, and when not", tiles:[
  ["o","Use a file","It changes. Price lists, rates, product ranges."],
@@ -572,7 +578,7 @@ const S = [
  ["c","Not a file","Something you only need once. Paste it into the chat."],
  ["c","Not a file","Anything you would not trust as current. Claude treats every file as true."]]},
 
-{sec:"Your project", h:"Create it", pts:[
+{sec:"Your project", h:"Create it", tag:"do", pts:[
  "Click <b>Projects</b> in the left sidebar.",
  "Click <b>New project</b>.",
  "Name it after the one job you keep re-explaining.",
@@ -597,14 +603,14 @@ const S = [
  "After the session, find each file. Save it as a PDF or Word document if it is not already.",
  "Upload one file at a time, starting with the DO THIS FIRST file. The next slide shows how."]},
 
-{sec:"Your project", h:"Upload a file", pts:[
+{sec:"Your project", h:"Upload a file", tag:"do", pts:[
  "In the project, find <b>Files</b> on the right-hand side. Click the plus sign, or <b>Add files</b>.",
  "Pick the file from your computer. PDF or Word is best.",
  "Name it so you would know what it is in a year. <code>Price list 2026.pdf</code>, not <code>Document3.pdf</code>.",
  "One file at a time. If one is on your machine now, upload it now.",
  "<b>Do not upload:</b> two versions of the same thing, or anything you have not opened in a year."]},
 
-{sec:"Your project", h:"Give it a <em>real</em> job", pts:[
+{sec:"Your project", h:"Give it a <em>real</em> job", tag:"do", pts:[
  "First, say: \u201cBefore you start, tell me in two lines what this project is for.\u201d Wrong answer means the instructions need a fix.",
  "Then the job. Something you would do this week. Not a test. The real thing.",
  "Say it by voice, inside the project. Rough is fine.",
@@ -646,8 +652,7 @@ const S = [
 
 {sec:"Cowork and skills", h:"The <em>other</em> way to build one", pts:[
  "Some jobs are faster to show than to describe. Cowork can watch you do the job once and write the skill from that.",
- "Open the Claude desktop app. Open Cowork.",
- "Click the plus icon. Select Record a skill.",
+ "Open the Claude desktop app, open Cowork, click the plus icon, select <b>Record a skill</b>.",
  "Do the job on screen. Say out loud why you do each step.",
  "Stop the recording. Claude turns it into a skill you can run again.",
  "Pro, Max and Team plans. Desktop app only."]},
@@ -695,7 +700,8 @@ S.forEach((s,i)=>{
     </div>`;
   }
   const badge = `<div class="foot"><span>Magnum AI / Session two</span><span>${s.sec||'Setup session'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
-  el.innerHTML = left + right + badge;
+  const dotag = (s.tag==='do' || s.prompt) ? '<div class="dotag">Do this now</div>' : '';
+  el.innerHTML = left + right + badge + dotag;
   deck.appendChild(el);
 });
 

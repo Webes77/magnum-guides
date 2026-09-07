@@ -154,7 +154,7 @@ deck.
 | Session | Folder | Slides | Prompts |
 |---|---|---|---|
 | One, AI Foundations | `ai-foundations/` | 22 | 4 |
-| Two, Make Claude Yours | `make-claude-yours/` | 36 | 5 |
+| Two, Make Claude Yours | `make-claude-yours/` | 37 | 5 |
 | Three, Work That Runs Without You | `runs-without-you/` | 17 | 4 |
 
 On 7 Sep the homework slides came out of all three decks ("Before next
