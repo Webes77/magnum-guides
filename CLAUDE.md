@@ -185,6 +185,15 @@ and the overdue invoice) mirrored on the shelf. The five session-two
 prompts were rewritten the same day against the review standards, deck
 and shelf together.
 
+Later on 7 Sep the Foundations lever section became one slide per lever
+(rule in a line, then a vague ask beside a specific one and what each
+gets back). The examples live in `EGS` above the slide array. The
+default set is a trades business; `?eg=ot` on the URL swaps in an
+occupational therapy practice, built for a room from that field on
+8 Sep. Add a set for another field there. No client is named in any
+set (hard rule 5). Both sets pass the deck check. `?short&eg=ot`
+combines with Skip basics.
+
 Gotcha found the same day: GitHub Pages did not rebuild for any push that
 sent `main` and the session branch in one command. Push `main` on its own
 (`git push origin main`), then the branch, and confirm a "pages build and

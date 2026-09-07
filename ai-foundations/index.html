@@ -265,6 +265,45 @@ F.honest = ['<svg viewBox="0 0 420 380"><rect x="30" y="46" width="180" height="
 F.next = ['<svg viewBox="0 0 420 380"><rect x="34" y="60" width="150" height="106" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><text x="109" y="120" text-anchor="middle" font-family="Oswald" font-size="22" fill="#1E1B17">TODAY</text><rect x="236" y="60" width="150" height="106" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><text x="311" y="112" text-anchor="middle" font-family="Oswald" font-size="20" fill="#EEE6D3">NEXT</text><text x="311" y="138" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" fill="#EEE6D3">SET IT UP</text><path d="M184 113 H236" stroke="#1E1B17" stroke-width="5"/><path d="M222 103l14 10-14 10" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="212" width="352" height="128" fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"/><rect x="58" y="240" width="140" height="12" fill="#1E1B17"/><rect x="58" y="268" width="280" height="8" fill="#3A3630"/><rect x="58" y="286" width="236" height="8" fill="#3A3630"/><rect x="58" y="310" width="104" height="10" fill="#B8452A"/><circle cx="344" cy="304" r="26" fill="#6C7A3F" stroke="#1E1B17" stroke-width="4"/><path d="M332 304l8 9 15-18" fill="none" stroke="#EEE6D3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  'Fig. 04 / it still does not know you<br>That is the next session'];
 
+// Worked examples for the six lever slides. The default set is a trades
+// business. `?eg=ot` on the URL swaps in an occupational therapy practice,
+// for a room from that field. Add a set here for another field; nothing is
+// client-specific and no client is named. Each entry: vague ask, what it
+// gets, specific ask, what it gets.
+const EGS = {
+ trades: {
+  cv: "copywriter",
+  role: ["“You are a marketing expert.”","Too wide. Marketing for whom? It picks the middle and writes for nobody.",
+         "“You are a copywriter who works with small trades businesses.”","It writes like a copywriter and it knows the field. The rest you tell it in the next five levers."],
+  context: ["“Write a follow-up to a customer.”","It invents the customer, the job and the history, then writes to a stranger.",
+            "“Sarah had a kitchen quote from us in July, said she would decide by August, and went quiet. Friendly, but price-focused.”","A follow-up to Sarah. Same tool. It just knew something."],
+  constraints: ["“Keep it short.”","Its idea of short. Usually three paragraphs.",
+                "“Under 80 words, because she reads on her phone between jobs. If you do not know the price, say so instead of guessing.”","80 words and no invented numbers. A rule with a reason gets kept."],
+  tone: ["“Make it friendly.”","Exclamation marks and “Hope you are well!”",
+         "“Like a tradie who is good at the job and does not need the work. Warm, level, no apology.”","Reads like you on a good day. It could picture the person."],
+  format: ["“Give me some options.”","A wall of text with headings, and a summary you did not ask for.",
+           "“Three subject lines, then the email as plain text I can paste. Nothing else.”","Exactly that. Copy, paste, send."],
+  output: ["“Help me with the quote.”","Questions, tips and a plan for a quote. Not a quote.",
+           "“The quote itself: line items with prices, then a two-line cover note, ready to paste into an email. Then stop.”","A quote. It knew what done looked like."]
+ },
+ ot: {
+  cv: "occupational therapist",
+  role: ["“You are a healthcare expert.”","Too wide. Health for whom? It picks the middle and writes for nobody.",
+         "“You are the practice manager of an occupational therapy clinic.”","It writes like a practice manager and it knows the field. The rest you tell it in the next five levers."],
+  context: ["“Write a follow-up to a family.”","It invents the child, the referral and the history, then writes to a stranger.",
+            "“Mia’s parents were referred by their GP in July for a fine motor assessment. They booked, cancelled, and have not rebooked. Friendly, worried about cost, NDIS plan renews in November.”","A follow-up to Mia’s parents. Same tool. It just knew something."],
+  constraints: ["“Keep it short.”","Its idea of short. Usually three paragraphs.",
+                "“Under 80 words, because she reads it on her phone between school runs. If you do not know what the plan covers, say so instead of guessing.”","80 words and no invented funding. A rule with a reason gets kept."],
+  tone: ["“Make it friendly.”","Exclamation marks and “Hope you are well!”",
+         "“Like a therapist who is good at the job and has a full book. Warm, level, no pressure.”","Reads like you on a good day. It could picture the person."],
+  format: ["“Give me some options.”","A wall of text with headings, and a summary you did not ask for.",
+           "“Two subject lines, then the message as plain text I can paste. Nothing else.”","Exactly that. Copy, paste, send."],
+  output: ["“Help me with the report.”","Questions, tips and a plan for a report. Not a report.",
+           "“The assessment summary itself: findings in plain language, three recommendations, then a two-line note to the GP, ready to paste. Then stop.”","A summary the GP can read. It knew what done looked like."]
+ }
+};
+const EG = EGS[(location.search.match(/[?&]eg=([a-z]+)/)||[])[1]] || EGS.trades;
+
 const S = [
 {sec:"", cover:true, fig:"cover", h:"Stop prompting. Start talking.", pts:[], sub:"Session one \u00b7 AI Foundations", note:"How it actually works, how to talk to it, and how to make it tell you the truth. Nothing to set up today.", meta:[["Works in","Claude, any paid plan"],["You need","One real task from this week"],["Take-away","This deck, with every prompt in it"]]},
 
@@ -373,40 +412,40 @@ const S = [
 
 {sec:"The 6 Levers", h:"01 <em>Role</em>", pts:[
  "One short line: a real job and its field. That is all the role does. The reader, the situation and the rules each have their own lever, coming up.",
- "Not “a world-class copywriter with 25 years of experience who…” The CV changes nothing, and it drags the useful detail into the wrong lever."],
+ "Not “a world-class "+EG.cv+" with 25 years of experience who…” The CV changes nothing, and it drags the useful detail into the wrong lever."],
  split:[
- ["Vague","“You are a marketing expert.”","Too wide. Marketing for whom? It picks the middle and writes for nobody."],
- ["Specific","“You are a copywriter who works with small trades businesses.”","It writes like a copywriter and it knows the field. The rest you tell it in the next five levers."]]},
+ ["Vague",EG.role[0],EG.role[1]],
+ ["Specific",EG.role[2],EG.role[3]]]},
 
 {sec:"The 6 Levers", h:"02 <em>Context</em>", pts:[
  "What it cannot see: who you are, what has happened, what you already tried, and why this matters now. Without it, it fills the gaps with guesses."],
  split:[
- ["Vague","“Write a follow-up to a customer.”","It invents the customer, the job and the history, then writes to a stranger."],
- ["Specific","“Sarah had a kitchen quote from us in July, said she would decide by August, and went quiet. Friendly, but price-focused.”","A follow-up to Sarah. Same tool. It just knew something."]]},
+ ["Vague",EG.context[0],EG.context[1]],
+ ["Specific",EG.context[2],EG.context[3]]]},
 
 {sec:"The 6 Levers", h:"03 <em>Constraints</em>", pts:[
  "The rules that aim it. Give the rule and the reason. It follows a reason better than a ban."],
  split:[
- ["Vague","“Keep it short.”","Its idea of short. Usually three paragraphs."],
- ["Specific","“Under 80 words, because she reads on her phone between jobs. If you do not know the price, say so instead of guessing.”","80 words and no invented numbers. A rule with a reason gets kept."]]},
+ ["Vague",EG.constraints[0],EG.constraints[1]],
+ ["Specific",EG.constraints[2],EG.constraints[3]]]},
 
 {sec:"The 6 Levers", h:"04 <em>Tone</em>", pts:[
  "How it sounds. Describe a person, not an adjective."],
  split:[
- ["Vague","“Make it friendly.”","Exclamation marks and “Hope you are well!”"],
- ["Specific","“Like a tradie who is good at the job and does not need the work. Warm, level, no apology.”","Reads like you on a good day. It could picture the person."]]},
+ ["Vague",EG.tone[0],EG.tone[1]],
+ ["Specific",EG.tone[2],EG.tone[3]]]},
 
 {sec:"The 6 Levers", h:"05 <em>Format</em>", pts:[
  "How it is laid out. Say what you will do with it next. If you have one you liked, paste it in: one example beats a paragraph of description."],
  split:[
- ["Vague","“Give me some options.”","A wall of text with headings, and a summary you did not ask for."],
- ["Specific","“Three subject lines, then the email as plain text I can paste. Nothing else.”","Exactly that. Copy, paste, send."]]},
+ ["Vague",EG.format[0],EG.format[1]],
+ ["Specific",EG.format[2],EG.format[3]]]},
 
 {sec:"The 6 Levers", h:"06 <em>Output</em>", pts:[
  "The finish line. What lands on your desk, and where it stops."],
  split:[
- ["Vague","“Help me with the quote.”","Questions, tips and a plan for a quote. Not a quote."],
- ["Specific","“The quote itself: line items with prices, then a two-line cover note, ready to paste into an email. Then stop.”","A quote. It knew what done looked like."]]},
+ ["Vague",EG.output[0],EG.output[1]],
+ ["Specific",EG.output[2],EG.output[3]]]},
 
 {sec:"The 6 Levers", h:"Same job, two <em>results</em>", split:[
  ["Thin","“Write me an email chasing an invoice.”","Formal, generic, slightly cold. You will rewrite it, so you have saved nothing."],
