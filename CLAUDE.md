@@ -153,9 +153,18 @@ deck.
 
 | Session | Folder | Slides | Prompts |
 |---|---|---|---|
-| One, AI Foundations | `ai-foundations/` | 23 | 4 |
+| One, AI Foundations | `ai-foundations/` | 22 | 4 |
 | Two, Make Claude Yours | `make-claude-yours/` | 35 | 5 |
-| Three, Work That Runs Without You | `runs-without-you/` | 18 | 4 |
+| Three, Work That Runs Without You | `runs-without-you/` | 17 | 4 |
+
+On 7 Sep the homework slides came out of all three decks ("Before next
+time" in one and three, "Suggested Tasks" in two). James does not want
+anyone leaving with tasks. Make Claude Yours gained "The map" after "What
+gets built": the four parts (Projects, Skills, Cowork, Code) and the two
+underneath (Connectors, Schedules), lifted from his July talk deck "How to
+Use Claude in 2026", which stays a talk deck and is not on the members
+area. Two points were sharpened from the same deck: the four things a
+project holds, and the two-minute test for a skill.
 
 Also live: Fine-Tune (`fine-tune/`, do not restyle, James said leave it
 alone), the Manus website manual, AI for Buyer's Agents (`ba-growth/`, the
