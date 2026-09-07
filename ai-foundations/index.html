@@ -255,14 +255,20 @@ them to pay.
 Give me the email only. No preamble.`;
 
 
-const P5 = `Give me a state of play on this job, in this shape and nothing else:
+const P5 = `For the rest of this job, keep a status note and never lose it.
 
-DECIDED: what we have settled, one line each.
-OPEN: what is still unresolved, one line each.
-NEXT: the next three steps, in order.
-FROM ME: anything you need from me before you can continue.
+In Cowork, keep it as a file called STATUS.md in the working folder.
+In a chat, put it at the end of every answer.
 
-Keep it under 200 words. No commentary. Do not restart the work.`;
+Shape, every time:
+DONE: what is finished.
+DECIDED: what we have settled.
+OPEN: what is still unresolved.
+NEXT: the next step.
+
+Update it every time something is done or decided. When I come back
+and say "pick up", read the note first and carry on from NEXT. Do not
+ask me to re-explain the job.`;
 
 const P6 = `Below is a full copy of a chat that has gone in circles. Read all of
 it before you answer. I am not asking you to do the work. I am asking
@@ -425,14 +431,14 @@ const S = [
  "<b>One chat, one job.</b> The invoice email is one chat. The quote is another. Do not chain them together.",
  "<b>The rule.</b> If you have scrolled more than a screen or two, or it has repeated itself once, start again."]},
 
-{sec:"How to talk", h:"Take a <em>state of play</em>", pts:[
- "Before a long job goes bad, ask for one. Especially in Cowork, where a job runs for an hour and you step away.",
- "Same shape every time: decided, open, next, what it needs from you.",
- "Ask at every natural pause. The last one is the opening message of the next chat."],
- prompt:P5, where:"Any long chat or Cowork job, at a natural pause", after:[
- "Read it. Correct anything it got wrong before you carry on.",
- "Keep the latest one. When the chat gets full, it starts the next one.",
- "If it cannot fill in DECIDED, nothing has been decided. That is worth knowing."]},
+{sec:"How to talk", h:"Make it keep a <em>status note</em>", pts:[
+ "Nothing keeps a running status of a job on its own. Not Cowork, not chat. You tell it to, once, at the start.",
+ "In Cowork it keeps a file in the folder. In a chat it adds the note to the end of every answer.",
+ "Then “pick up” is the whole restart. It reads the note and carries on. You never re-explain."],
+ prompt:P5, where:"The start of any job that will run longer than one sitting", after:[
+ "Paste it with the job, or straight after.",
+ "Step away. Come back. Say “pick up”. Watch it read the note before it moves.",
+ "In session two this goes into your Cowork instructions, so every job gets it without pasting."]},
 
 {sec:"How to talk", h:"The <em>rescue</em>", pts:[
  "The chat has gone in circles and you did not take a state of play.",

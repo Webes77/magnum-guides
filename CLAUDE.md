@@ -196,9 +196,10 @@ there. No client is named in any set (hard rule 5). Both sets pass the
 deck check.
 
 Later still on 7 Sep, from James's own practice: Foundations gained two
-prompt slides after Fresh chat, every job. Take a state of play (P5:
-decided, open, next, from me; asked at every pause in a long chat or
-Cowork job) and The rescue (P6: paste the whole drifted chat under it,
+prompt slides after Fresh chat, every job. Make it keep a status note (P5: a
+standing rule given once at the start of a long job; STATUS.md in the
+Cowork folder or a note at the end of every chat answer, and "pick up"
+restarts from it) and The rescue (P6: paste the whole drifted chat under it,
 get back where it went wrong and a fresh brief to restart from). Both
 are on the shelf as `state-of-play` and `chat-rescue`, deck and shelf
 identical. Foundations is 30 slides, six prompts. The shelf is 34 cards.

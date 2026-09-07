@@ -731,15 +731,21 @@ before you hand me the result.
 
 The task is: [say it roughly, out loud, in your own words]`},
 
-{kind:'prompt', id:'state-of-play', sec:'Session one · AI Foundations', title:'Take a state of play', where:'Any long chat or Cowork job, at a natural pause', type:'instructions', when:'before-acting', hook:"Four headings that stop a long job losing the thread.", added:'2026-09-07', levers:['Format','Output'],
-prompt:`Give me a state of play on this job, in this shape and nothing else:
+{kind:'prompt', id:'state-of-play', sec:'Session one · AI Foundations', title:'Make it keep a status note', where:'The start of any job that will run longer than one sitting', type:'instructions', when:'start', hook:"One rule, and every long job picks up exactly where you left it.", added:'2026-09-07', levers:['Constraints','Format','Output'],
+prompt:`For the rest of this job, keep a status note and never lose it.
 
-DECIDED: what we have settled, one line each.
-OPEN: what is still unresolved, one line each.
-NEXT: the next three steps, in order.
-FROM ME: anything you need from me before you can continue.
+In Cowork, keep it as a file called STATUS.md in the working folder.
+In a chat, put it at the end of every answer.
 
-Keep it under 200 words. No commentary. Do not restart the work.`},
+Shape, every time:
+DONE: what is finished.
+DECIDED: what we have settled.
+OPEN: what is still unresolved.
+NEXT: the next step.
+
+Update it every time something is done or decided. When I come back
+and say "pick up", read the note first and carry on from NEXT. Do not
+ask me to re-explain the job.`},
 
 {kind:'prompt', id:'chat-rescue', sec:'Session one · AI Foundations', title:'The rescue', where:'A fresh chat, with the whole old chat pasted under it', type:'review', when:'start', hook:"Paste in the chat that went in circles. Get back where it broke and a clean restart.", added:'2026-09-07', levers:['Context','Constraints','Format','Output'],
 prompt:`Below is a full copy of a chat that has gone in circles. Read all of
