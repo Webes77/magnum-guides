@@ -284,8 +284,17 @@ spreadsheets and handwritten notes as inputs. Details in
 
 ## Next
 
-Where the last session stopped: the members area is structurally done and
-the three decks are live and fixed. The open work, in order of value:
+Where the last session stopped (7 Sep, night): Foundations is ready for
+the 8 Sep occupational therapy room at 30 slides with the OT example
+set on the main slides. Swap `const EG = EGS.ot` back to `EGS.trades`
+after that session, or add a set for the next room. The open work, in
+order of value:
+
+0. After 8 Sep: swap the lever example set for the next room (see
+   above). James to move the corrected gamma-architect and
+   magnum-client-rollout-doc skills into Claude from Drive, folder
+   Magnum AI Skills / Skill updates 2026-09-07 (the paste-ready prompts
+   for the skill-creator were given in chat on 7 Sep).
 
 1. James to look at the rebuilt front page and the indexed shelf live, on
    a phone as well as a laptop. Both were verified locally only.
