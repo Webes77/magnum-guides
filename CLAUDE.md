@@ -331,10 +331,18 @@ after that session, or add a set for the next room. The open work, in
 order of value:
 
 0. After 8 Sep: swap the lever example set for the next room (see
-   above). James to move the corrected gamma-architect and
-   magnum-client-rollout-doc skills into Claude from Drive, folder
-   Magnum AI Skills / Skill updates 2026-09-07 (the paste-ready prompts
-   for the skill-creator were given in chat on 7 Sep).
+   above). James to move four corrected skills into Claude from Drive,
+   folder Magnum AI Skills / Skill updates 2026-09-07, one zip each:
+   magnum-house-style, gamma-architect, magnum-client-rollout-doc,
+   design-director (sources in `brand/skill-updates/`). The one-paste
+   skill-creator prompt was given in chat on 9 Sep. The brand page now
+   carries a PDF download (`brand/Magnum-AI-House-Style.pdf`, regenerate
+   from the page when the style changes) and a Drive folder "Magnum AI
+   House Style" holds the paste-ready block. James also asked for his
+   Mac desktop to be cleared of old-style (beige and rust, black and
+   gold) files; that needs Cowork with desktop access, a prompt was
+   given in chat, and nothing should be deleted, only moved to a dated
+   review folder.
 
 1. James to look at the rebuilt front page and the indexed shelf live, on
    a phone as well as a laptop. Both were verified locally only.
