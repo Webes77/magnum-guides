@@ -1,20 +1,18 @@
-# Skill updates, 7 Sep 2026
+# Skill updates, 9 Sep 2026
 
-Corrected copies of two Claude skills that still carried black and gold.
-Each folder holds the full SKILL.md with the old colours and fonts
-replaced by the house style. Nothing else in the skill changed.
+Corrected copies of four Claude skills, each carrying the white, navy and
+coral house style. Each folder is a complete skill; each zip in the Drive
+folder "Magnum AI Skills / Skill updates 2026-09-07" is the same folder
+zipped, ready to upload in Claude (Settings, Capabilities, Skills).
 
-To install: in Claude, Settings, Capabilities, Skills, open the skill,
-replace its SKILL.md with the one here. Or upload the folder as a new
-version.
+- magnum-house-style: the enforcement skill itself, new palette.
+- gamma-architect: brand section and style prompt library rewritten.
+- magnum-client-rollout-doc: hero, intro, summary and confirm box
+  restyled; em dashes removed.
+- design-director: house style section added; the three example
+  prompts rewritten for navy, coral, Oswald and Plex.
 
-- gamma-architect: brand section rewritten, with a paste-ready Gamma
-  style prompt.
-- magnum-client-rollout-doc: hero, intro, summary and confirm box lose
-  gold and Playfair; em dashes removed throughout.
-
-Two skills were left alone on purpose. broadbent-campaign-repository and
-magnum-field-manual-builder each style a living HTML document in dark
-cards and gold. The Broadbent one is client work already delivered; the
-field manual is James's own vault. Restyling either changes a document
-that already exists, so that is James's call.
+Left alone on purpose: broadbent-campaign-repository and
+magnum-field-manual-builder (living documents already delivered, dark
+and gold by design), website-builder (a client site with its own neutral
+style), iwa-course-review (black and white Word documents).
