@@ -57,8 +57,9 @@ token names did not change: `--rust` holds coral, `--olive` holds slate.
 Oswald for display, IBM Plex Sans for body, IBM Plex Mono for labels and
 prompts. Retired: black and gold, and the beige and rust system (paper
 `#EEE6D3`, rust `#B8452A`, olive `#6C7A3F`, grid texture, offset
-shadows). Do not introduce a fourth typeface. Fine-Tune keeps its own
-look.
+shadows). Do not introduce a fourth typeface. Since 9 Sep (night) Fine-Tune and
+the Buyer's Agents guide carry it too; nothing on the members area is
+in an older style.
 
 ## Where we are
 
@@ -234,9 +235,11 @@ sent `main` and the session branch in one command. Push `main` on its own
 (`git push origin main`), then the branch, and confirm a "pages build and
 deployment" run appears for the commit.
 
-Also live: Fine-Tune (`fine-tune/`, do not restyle, James said leave it
-alone), the Manus website manual, AI for Buyer's Agents (`ba-growth/`, the
-only By Industry entry).
+Also live: Fine-Tune (`fine-tune/`, restyled to the house style on 9 Sep
+at James's request, content unchanged, safe drawing kept), the Manus
+website manual, AI for Buyer's Agents (`ba-growth/`, the only By Industry
+entry; restyled 9 Sep, the client name removed from its subtitle per hard
+rule 5, mangled arrows and dashes repaired).
 
 Four Weekly Field Notes are in `newsletter/`: 01 Clarity, 02 Context,
 03 Talking (added 4 Sep, written from a note James was sent, in his voice),
@@ -315,8 +318,9 @@ decks, the shelf, the Field Notes, the brand page, the manual, the rollout
 exemplar, the card sources and templates, and all eleven share cards
 re-rendered. The swap was scripted (simple token and hex replacements
 plus texture and shadow removal) and the deck check passed after it.
-Fine-Tune and its card were left alone. Field Note 01 has no card
-source, so its card is still the old look; regenerate it from
+Later that night James asked for every old-style page to follow, so
+Fine-Tune, its card and the Buyer's Agents guide moved too. Field Note
+01 has no card source, so its card is still the old look; regenerate it from
 `templates/field-note-thumbnail.html` when convenient. James chose this
 look from mockups after supplying a white, red-orange reference; the
 decision and the hex values are final.

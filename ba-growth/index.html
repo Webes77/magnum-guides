@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI for Buyer's Agents ‚Äî Session Guide</title>
+<title>AI for Buyer's Agents · Session Guide · Magnum AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light">
 <style>
+  :root{--paper:#FBFBF9;--white:#FFFFFF;--navy:#1F2A37;--ink:#1E1B17;--body:#2B2823;--rust:#DE4A3C;--bright:#FF6F5E;--tint:#FBE1D8;--slate:#5B6B7A;--char:#3A3630;--mute:#7A7A7A;color-scheme:light}
   * { box-sizing: border-box; }
+  html { background:#FBFBF9; }
   body {
-    background: #0a0a0a;
-    color: #e8e8e8;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #FBFBF9;
+    color: var(--body);
+    font-family: 'IBM Plex Sans', Arial, system-ui, sans-serif;
     font-size: 17px;
     line-height: 1.7;
     max-width: 800px;
@@ -17,62 +22,73 @@
     padding: 40px 24px 100px;
   }
   h1 {
-    color: #d4af37;
-    font-size: 30px;
+    font-family: 'Oswald','Arial Narrow',sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-size: 40px;
+    line-height: 1.02;
     margin: 0 0 6px;
-    line-height: 1.25;
   }
-  .sub { color: #888; font-size: 15px; margin-bottom: 40px; }
+  .sub { font-family:'IBM Plex Mono',monospace; font-size: 12px; letter-spacing:.18em; text-transform:uppercase; color: var(--mute); margin-bottom: 40px; }
   h2 {
-    color: #d4af37;
-    font-size: 22px;
+    font-family: 'Oswald','Arial Narrow',sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-size: 26px;
     margin: 48px 0 14px;
     padding-top: 24px;
-    border-top: 1px solid #2a2a2a;
+    border-top: 2px solid var(--ink);
   }
   h3 {
-    color: #fff;
-    font-size: 17px;
+    font-family: 'Oswald','Arial Narrow',sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-size: 18px;
+    letter-spacing:.02em;
     margin: 26px 0 8px;
   }
   ul { margin: 10px 0 0; padding-left: 22px; }
   li { margin-bottom: 9px; }
-  strong { color: #fff; }
+  strong { color: var(--ink); font-weight:600; }
   p { margin: 10px 0; }
   .box {
-    background: #141414;
-    border-left: 3px solid #d4af37;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-left: 6px solid var(--rust);
     padding: 16px 20px;
     margin: 18px 0;
   }
   .prompt {
-    background: #141414;
-    border: 1px solid #2f2a1a;
+    background: var(--navy);
+    border: 2px solid var(--ink);
     padding: 16px 18px;
     margin: 14px 0;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
     font-size: 14.5px;
     line-height: 1.6;
-    color: #f0e6c8;
+    color: #F4F1EA;
     white-space: pre-wrap;
   }
   .path {
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
     font-size: 15px;
-    color: #d4af37;
+    color: var(--rust);
   }
-  .toc { background: #141414; padding: 20px 24px; margin-bottom: 20px; }
-  .toc a { color: #d4af37; text-decoration: none; }
+  .toc { background: var(--white); border: 2px solid var(--ink); padding: 20px 24px; margin-bottom: 20px; }
+  .toc a { color: var(--rust); text-decoration: none; font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
   .toc a:hover { text-decoration: underline; }
-  .toc ul { margin: 0; }
-  .toc li { margin-bottom: 6px; }
-  .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #2a2a2a; color: #888; font-size: 15px; }
+  .toc ul { margin: 0; list-style:none; padding-left:0; }
+  .toc li { margin-bottom: 8px; }
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 2px solid var(--ink); color: var(--mute); font-size: 15px; }
 </style>
 </head>
 <body>
 
 <h1>AI for Buyer's Agents</h1>
-<div class="sub">Session guide, In Demand Buyers Agents, August 2026</div>
+<div class="sub">Session guide · Buyer's agents · August 2026</div>
 
 <div class="toc">
 <ul>
@@ -161,7 +177,7 @@ Cover: what kind of clients I work with, where I buy and where my clients are ba
 
 Once you have all the answers, write it up as project instructions.</div>
 
-<p>Then paste the result into <span class="path">Project ‚Üí Instructions</span> and save it. That's the setup. Half an hour, once.</p>
+<p>Then paste the result into <span class="path">Project &rsaquo; Instructions</span> and save it. That's the setup. Half an hour, once.</p>
 
 <h2 id="skills">4. Skills</h2>
 
@@ -189,12 +205,12 @@ Once you have all the answers, write it up as project instructions.</div>
 
 <h3>Turn this on first</h3>
 <div class="box">
-<span class="path">Settings ‚Üí Capabilities ‚Üí Code execution and file creation</span><br><br>
+<span class="path">Settings &rsaquo; Capabilities &rsaquo; Code execution and file creation</span><br><br>
 Skills won't run without it. If you install one and nothing happens, this is why.
 </div>
 
 <h3>Finding and building skills</h3>
-<p><span class="path">Settings ‚Üí Skills</span> (under Customize, bottom left)</p>
+<p><span class="path">Settings &rsaquo; Skills</span> (under Customize, bottom left)</p>
 <ul>
   <li><strong>Browse</strong> for ones already built and ready to use</li>
   <li><strong>Upload</strong> a skill file someone has sent you</li>
@@ -229,7 +245,7 @@ Ask someone to tidy your kitchen with no instructions and they'll do a beautiful
 
 <h2 id="connectors">6. Connectors</h2>
 
-<p><span class="path">Settings ‚Üí Connectors</span></p>
+<p><span class="path">Settings &rsaquo; Connectors</span></p>
 
 <p>Connectors let Claude work with your other tools directly. Start with email and calendar, that's where most of the value is.</p>
 
@@ -250,7 +266,7 @@ Ask someone to tidy your kitchen with no instructions and they'll do a beautiful
 <h2 id="privacy">7. Privacy</h2>
 
 <h3>Do this now</h3>
-<p><span class="path">Settings ‚Üí Privacy ‚Üí Help improve our AI models</span> and switch it off. Takes ten seconds. On a free account this is on by default.</p>
+<p><span class="path">Settings &rsaquo; Privacy &rsaquo; Help improve our AI models</span> and switch it off. Takes ten seconds. On a free account this is on by default.</p>
 
 <h3>Rules of thumb</h3>
 <ul>
