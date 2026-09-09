@@ -1,6 +1,6 @@
 ---
 name: magnum-client-rollout-doc
-description: Builds client-facing HTML rollout plans, proposals, and review documents in Magnum AI's locked paper and rust house style. Use this skill whenever James needs a client-facing proposal, rollout plan, setup plan, operations review, scope document, or any polished HTML deliverable a client will read, including when he says "build the rollout doc", "do the proposal", "make it like the Easy Fit one", "client-facing plan", or shares a scope and asks for the document. Always use this skill for these documents, never improvise the design or writing rules from scratch, because every rule in here was earned through client iteration.
+description: Builds client-facing HTML rollout plans, proposals, and review documents in Magnum AI's locked white, navy and coral house style. Use this skill whenever James needs a client-facing proposal, rollout plan, setup plan, operations review, scope document, or any polished HTML deliverable a client will read, including when he says "build the rollout doc", "do the proposal", "make it like the Easy Fit one", "client-facing plan", or shares a scope and asks for the document. Always use this skill for these documents, never improvise the design or writing rules from scratch, because every rule in here was earned through client iteration.
 ---
 
 # Magnum Client Rollout Document Builder

@@ -1,0 +1,48 @@
+/* Magnum AI house style, 9 September 2026. White paper, navy, coral.
+   Paste at the top of any new page. --rust holds coral and --olive holds
+   slate; the names stayed so older files did not break. */
+
+:root{
+  --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+  --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+  --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+  --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+  --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+
+html,body{background:#FBFBF9;color-scheme:light}
+body{color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;margin:0}
+
+h1,h2,h3{font-family:var(--display);font-weight:600;text-transform:uppercase;
+  line-height:1;color:var(--ink);margin:0 0 14px}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--rust)}
+
+.masthead{background:var(--navy);color:var(--on-navy);
+  border-bottom:4px solid var(--coral-bright);padding:34px 30px}
+.masthead .sub{color:var(--on-navy-mute)}
+
+.card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 26px;
+  font-size:15.5px;color:var(--char)}
+a.card:hover,.card.is-link:hover{border-color:var(--rust)}
+
+.plate{background:var(--navy);border:2px solid var(--ink);padding:26px;
+  color:var(--on-navy)}
+
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:12px}
+.label::after{content:"";flex:1;height:1px;background:var(--ink)}
+
+.tag{background:var(--tint);color:var(--ink);font-family:var(--mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;padding:3px 8px}
+
+.badge{background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;padding:3px 8px}
+
+.note{color:var(--mute);font-size:14px}
+.tick{color:var(--olive)}
+
+footer{background:var(--navy);color:var(--on-navy-mute);font-family:var(--mono);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:22px 30px}
