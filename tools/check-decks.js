@@ -5,7 +5,7 @@
 // fails. A prompt is never shrunk, condensed or cut to pass this check;
 // the fix is fewer points beside it or a second slide.
 const { chromium } = require('/opt/node22/lib/node_modules/playwright');
-const DECKS = ['ai-foundations', 'make-claude-yours', 'runs-without-you'];
+const DECKS = ['ai-foundations', 'make-claude-yours', 'runs-without-you', 'bots'];
 const SIZES = [[1280, 600], [1366, 657], [1440, 780], [1920, 969]];
 const BASE = process.env.BASE || 'http://localhost:8765';
 const MIN_PRE_PX = 14;     // smallest prompt text on screen, in real pixels

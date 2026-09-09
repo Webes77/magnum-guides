@@ -717,6 +717,51 @@ steps:[
  'Check the invite landed. Ten minutes, start to finish.'
 ]},
 
+/* ---------- Reference · Chatbots, Agents and Bots ---------- */
+{kind:'prompt', id:'design-the-bot', sec:'Reference · Chatbots, Agents and Bots', title:'Design the bot', where:'A new chat, in the project the bot will live in', type:'interview', when:'setup', hook:"Say a repeated job out loud and get back the brief for a bot.", added:'2026-09-09', levers:['Context','Constraints','Format','Output'],
+prompt:`I want to hand one repeated job to a bot. Interview me before you build
+anything.
+
+Ask one question at a time and wait for my answer. Find out: what the job
+is, how often it comes up, what a finished result looks like, where the
+information lives, what I would never want it to do on its own, and how I
+will check it.
+
+When you have enough, write the bot's brief under these headings and stop:
+JOB. WHEN IT RUNS. WHAT IT READS. WHAT IT PRODUCES. RULES. HOW I CHECK IT.
+
+The job is: [say it roughly, in your own words]`},
+
+{kind:'prompt', id:'bot-test-run', sec:'Reference · Chatbots, Agents and Bots', title:'Test the bot once', where:'Inside the bot\'s project, before it goes on a timer', type:'review', when:'before-acting', hook:"See exactly what will land on the day, with every guess listed.", added:'2026-09-09', levers:['Constraints','Format','Output'],
+prompt:`Run the job in the brief above once, now, as if this were the scheduled
+run.
+
+Do not ask me anything. Where something is missing, choose the most
+reasonable option and list every choice at the top under ASSUMPTIONS.
+
+Show me the finished output exactly as it would land on the day.
+
+Then tell me, in three lines, what you would change in the brief to do it
+better next time.`},
+
+{kind:'prompt', id:'friday-enquiries-bot', sec:'Reference · Chatbots, Agents and Bots', title:'The Friday enquiries bot', where:'A scheduled task in Cowork, inside the bot\'s project', type:'scheduled', when:'weekly', hook:"Every Friday, the week\'s enquiries sorted hot to cold, nothing sent.", added:'2026-09-09', levers:['Context','Constraints','Format','Output'],
+prompt:`Every Friday at 3pm, review every enquiry that reached this inbox since
+last Friday.
+
+For each one give me: who it is from, what they asked for in one line, how
+warm it reads (hot, warm or cold) and why in a few words, and the one next
+step you suggest.
+
+Put the hot ones first. If an enquiry is from an existing customer, say so.
+
+Rules. You cannot ask me anything, so choose the most reasonable option and
+list your choices under ASSUMPTIONS at the top. Do not send, reply to, or
+draft anything to anyone. Never invent a name or a detail; if you cannot
+read an email, list it under COULD NOT READ. If there were no enquiries,
+say so in one line and stop.
+
+Put the date and time you ran at the top. Then stop.`},
+
 /* ---------- Session one · AI Foundations ---------- */
 {kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', hook:"Say the job out loud and get a brief you could not have typed.", rank:1, levers:['Context','Constraints','Output'],
 prompt:`I want your help with a real task, and I would rather talk it

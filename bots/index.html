@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chatbots, Agents and Bots · Magnum AI</title>
+<meta name="description" content="What the words mean, what is out there, and how to build one bot in Claude that runs on a schedule. A reference deck from Magnum AI.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/bots/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Chatbots, Agents and Bots">
+<meta property="og:description" content="A chatbot answers you. An agent does work for you. What the words mean, what is out there, and how to build one.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/bots/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/bots.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chatbots, Agents and Bots, a Magnum AI reference deck">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chatbots, Agents and Bots">
+<meta name="twitter:description" content="A chatbot answers you. An agent does work for you. What the words mean, what is out there, and how to build one.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/bots.jpg">
+<meta name="theme-color" content="#4A423C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEE6D3;
+  --paper-2:#E4DAC4;
+  --ink:#1E1B17;
+  --body:#2B2823;
+  --rust:#B8452A;
+  --olive:#6C7A3F;
+  --olive-2:#546230;
+  --char:#3A3630;
+  --mute:#6F675C;
+  --rule:#1E1B17;
+  --grid:rgba(120,90,60,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#4A423C;color:var(--body);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:18px;line-height:1.45}
+body{display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#C9BFAF}
+header .brand{color:#EEE6D3;border-bottom:1px solid #EEE6D3;padding-bottom:2px;text-decoration:none}
+header .brand:hover{color:#F0A288;border-bottom-color:#F0A288}
+header .count{color:#EEE6D3}
+
+main{flex:1;display:flex;padding:0 40px 8px;overflow:hidden}
+#deck{flex:1;background:var(--ink);padding:10px;display:flex;overflow:hidden}
+.slide{flex:1;display:none;padding:44px 64px 56px;overflow:auto;position:relative;
+  background:var(--paper);
+  background-image:radial-gradient(var(--grid) 1.2px, transparent 1.3px),linear-gradient(rgba(120,90,60,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(120,90,60,.06) 1px,transparent 1px);
+  background-size:26px 26px,26px 26px,26px 26px;
+  border:3px solid var(--paper);box-shadow:inset 0 0 0 1px var(--ink)}
+.slide.on{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-content:start}
+.slide.has-fig.on{grid-template-columns:minmax(320px,6fr) minmax(360px,6fr)}
+.slide.has-prompt.on{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:16px;align-content:stretch}
+.slide.tiles.on{grid-template-columns:minmax(0,1fr)}
+
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px}
+.kicker::after{content:"";flex:1;height:2px;background:var(--ink);max-width:420px}
+h1{font-family:"Oswald",sans-serif;font-weight:600;font-size:58px;line-height:.98;text-transform:uppercase;letter-spacing:-.005em;max-width:18ch;color:var(--ink);margin-top:10px}
+h1 .n{display:none}
+h1 em{font-style:normal;color:var(--rust)}
+.cover h1{font-size:132px;max-width:12ch;line-height:.92}
+.cover.has-fig.on{grid-template-columns:minmax(360px,6fr) minmax(320px,5fr)}
+.cover .sub{font-family:"Oswald",sans-serif;font-weight:500;font-size:30px;text-transform:uppercase;color:var(--rust);margin-top:12px}
+.cover p{font-size:21px;color:var(--body);max-width:40ch;margin-top:18px;line-height:1.5}
+.meta{margin-top:18px;padding-top:14px;border-top:2px solid var(--ink);font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);line-height:2}
+.meta b{color:var(--rust);font-weight:500;margin-right:10px}
+
+ul.points{list-style:none;margin-top:6px;max-width:84ch}
+.has-fig ul.points{max-width:56ch}
+ul.points li{font-size:27px;line-height:1.32;padding:9px 0 9px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
+ul.points li:last-child{border-bottom:2px solid var(--ink)}
+ul.points li::before{content:"";position:absolute;left:0;top:25px;width:18px;height:3px;background:var(--rust)}
+ul.points li b{color:var(--rust);font-weight:500}
+ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:var(--ink);background:#fff8;border:1px solid var(--ink);padding:1px 6px}
+.note{margin-top:8px;color:var(--mute);font-size:17px;max-width:52ch}
+.left{display:flex;flex-direction:column;gap:18px;min-width:0}
+.has-prompt h1,.has-fig h1{font-size:44px}
+.slide.has-prompt{padding:26px 48px 52px}
+.has-prompt .left{gap:6px}
+.has-prompt h1{font-size:34px;max-width:none;margin-top:4px}
+.has-prompt .foot{left:48px;right:48px}
+.has-prompt ul.points{display:flex;flex-wrap:wrap;gap:0 32px;max-width:none;margin-top:2px;border-bottom:2px solid var(--ink)}
+.has-prompt ul.points li{font-size:max(15px,calc(14px / var(--z,1)));line-height:1.3;padding:6px 0 6px 22px;border-top:0;flex:1 1 28%;min-width:220px}
+.has-prompt ul.points li:last-child{border-bottom:0}
+.has-prompt ul.points li::before{top:13px;width:12px}
+.has-fig ul.points li{font-size:24px}
+
+/* figure panel */
+.fig{background:var(--rust);border:3px solid var(--ink);padding:26px 26px 18px;display:flex;flex-direction:column;gap:14px;align-self:start;box-shadow:6px 6px 0 var(--ink)}
+.fig svg{width:100%;height:auto;max-height:50vh;display:block}
+.fig .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);border-top:1px solid rgba(238,230,211,.5);padding-top:10px;line-height:1.7}
+
+/* tile grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.tile{padding:20px 20px 24px;color:var(--paper);min-height:150px;border:3px solid var(--ink)}
+.tile h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
+.tile p{font-size:22px;line-height:1.35}
+.tile.o{background:var(--olive)}.tile.t{background:var(--rust)}.tile.c{background:var(--char)}
+
+/* before / after split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.split div{border:3px solid var(--ink);background:var(--paper-2);padding:0;box-shadow:5px 5px 0 var(--ink)}
+.split h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:20px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;color:var(--paper);border-bottom:3px solid var(--ink)}
+.split .b h3{background:var(--char)}.split .a h3{background:var(--olive)}
+.split p{font-family:"IBM Plex Mono",monospace;font-size:19px;line-height:1.5;margin:14px 20px;color:var(--ink)}
+
+/* agenda rows: step, what, why */
+.rows{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.3fr);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:var(--paper-2);margin-top:8px}
+.rows > div{padding:11px 18px;border-top:1px solid rgba(30,27,23,.3);font-size:21px;line-height:1.3;color:var(--body)}
+.rows > div:nth-child(-n+3){border-top:0;background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:9px 18px}
+.rows .step{font-family:"Oswald",sans-serif;font-weight:600;font-size:22px;text-transform:uppercase;color:var(--rust);letter-spacing:.01em;white-space:nowrap}
+.rows .step b{display:inline-block;width:1.6em;color:var(--ink)}
+.slide.has-rows.on{grid-template-columns:minmax(0,1fr)}
+.has-rows h1{font-size:44px}
+/* do-this badge, top right */
+.dotag{position:absolute;top:26px;right:34px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;background:var(--rust);color:var(--paper);padding:7px 14px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+/* chevron steps */
+.chev{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.chev span{background:var(--rust);color:var(--paper);font-family:"Oswald",sans-serif;font-size:17px;letter-spacing:.06em;padding:14px 26px 14px 30px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);text-transform:uppercase}
+.chev span:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
+.chev span:nth-child(even){background:var(--char)}
+.chev span:last-child{background:var(--olive)}
+
+/* prompt pane */
+.pane{background:var(--paper-2);border:3px solid var(--ink);display:flex;flex-direction:column;min-height:0;min-width:0;box-shadow:6px 6px 0 var(--ink)}
+.pane-head{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
+.copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 16px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;transition:background .15s}
+.copy:hover{background:#d2553a}
+.copy.done{background:var(--olive)}
+.prewrap{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
+pre{font-family:"IBM Plex Mono",monospace;font-size:max(14px,calc(15px / var(--z,1)));line-height:1.42;white-space:pre-wrap;padding:14px 20px 22px;overflow:auto;flex:1;color:var(--ink)}
+.prewrap::after{content:"More below \2193";position:absolute;left:0;right:0;bottom:0;padding:38px 0 8px;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 62%);pointer-events:none;opacity:0;transition:opacity .15s}
+.pane.more .prewrap::after{opacity:1}
+.btns{display:flex;gap:8px}
+.expand{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
+.expand:hover{border-color:#F0A288;color:#F0A288}
+#reader{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:5}
+#reader.on{display:flex}
+#reader .rhead{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--char);color:var(--paper);font-family:"Oswald",sans-serif;font-size:22px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--ink)}
+#reader pre{font-size:19px;line-height:1.6;padding:36px 64px 60px;max-width:92ch;width:100%;margin:0 auto;box-sizing:border-box}
+#reader .rclose{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
+#reader .rclose:hover{border-color:#F0A288;color:#F0A288}
+.after{border-top:3px solid var(--ink);background:var(--paper)}
+.after summary{padding:8px 18px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+.after summary::after{content:"+";color:var(--rust);font-size:20px;line-height:1}
+.after[open] summary::after{content:"\2212"}
+.after ol{list-style:none;counter-reset:s;padding:0 18px 16px;font-size:16px;color:var(--body)}
+.after ol li{counter-increment:s;margin:8px 0;padding-left:44px;position:relative;min-height:28px}
+.after ol li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:12px;padding:3px 6px;letter-spacing:.1em}
+
+.foot{position:absolute;left:64px;right:64px;bottom:18px;border-top:2px solid var(--ink);padding-top:8px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.foot b{color:var(--ink);font-weight:500}
+
+footer{display:flex;align-items:center;justify-content:space-between;padding:12px 40px}
+.nav{display:flex;gap:8px}
+.nav button{background:transparent;color:#EEE6D3;border:1px solid #8C8275;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+.nav button:hover{border-color:#EEE6D3}
+.nav button.on{background:var(--rust);border-color:var(--rust)}
+#menulist li.basic button::after{content:"  basics";font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C8275}
+.menu.skip #menulist li.basic button{opacity:.38}
+.bar{flex:1;height:3px;background:#6B625A;margin:0 28px;position:relative}
+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
+.hint{color:#9C9285;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
+
+#menu{position:fixed;inset:0;background:rgba(74,66,60,.97);display:none;padding:60px 80px;overflow:auto;color:#EEE6D3}
+#menu.on{display:block}
+#menu h2{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;color:#C9BFAF}
+#menu ol{list-style:none;columns:2;column-gap:60px;max-width:1000px}
+#menu li{break-inside:avoid;margin:0 0 6px}
+#menu li.sec{font-family:"IBM Plex Mono",monospace;color:#C9BFAF;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
+#menu button{background:none;border:0;color:#EEE6D3;font-size:18px;text-align:left;padding:4px 0}
+#menu button:hover{color:#F0A288}
+#menu .close{position:fixed;top:20px;right:40px;color:#EEE6D3;background:transparent;border:1px solid #C9BFAF;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+#menu .close:hover{border-color:#EEE6D3;color:#F0A288}
+
+@media (max-width:1000px){
+  main{padding:0 12px 8px}
+  .slide{padding:28px 22px 60px}
+  .slide.has-fig.on{grid-template-columns:1fr}
+  .has-prompt ul.points li{flex-basis:100%}
+  .grid,.split{grid-template-columns:1fr}
+  h1{font-size:38px}.cover h1{font-size:56px}
+  ul.points li{font-size:20px}
+  .foot{left:22px;right:22px}
+  header,footer{padding:12px 16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../">MAGNUM AI</a>
+  <span class="section" id="sec"></span>
+  <span class="count" id="count"></span>
+</header>
+<main id="deck"></main>
+<footer>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button><button id="skipbtn" onclick="toggleSkip()" hidden>SKIP BASICS</button></div>
+  <div class="bar"><i id="fill"></i></div>
+  <span class="hint">Arrow keys move. SLIDES for the full list.</span>
+</footer>
+<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
+<div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="copy" id="rcopy" data-i="0">COPY PROMPT</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
+
+<script>
+const P1 = `I want to hand one repeated job to a bot. Interview me before you build
+anything.
+
+Ask one question at a time and wait for my answer. Find out: what the job
+is, how often it comes up, what a finished result looks like, where the
+information lives, what I would never want it to do on its own, and how I
+will check it.
+
+When you have enough, write the bot's brief under these headings and stop:
+JOB. WHEN IT RUNS. WHAT IT READS. WHAT IT PRODUCES. RULES. HOW I CHECK IT.
+
+The job is: [say it roughly, in your own words]`;
+
+const P2 = `Run the job in the brief above once, now, as if this were the scheduled
+run.
+
+Do not ask me anything. Where something is missing, choose the most
+reasonable option and list every choice at the top under ASSUMPTIONS.
+
+Show me the finished output exactly as it would land on the day.
+
+Then tell me, in three lines, what you would change in the brief to do it
+better next time.`;
+
+const P3 = `Every Friday at 3pm, review every enquiry that reached this inbox since
+last Friday.
+
+For each one give me: who it is from, what they asked for in one line, how
+warm it reads (hot, warm or cold) and why in a few words, and the one next
+step you suggest.
+
+Put the hot ones first. If an enquiry is from an existing customer, say so.
+
+Rules. You cannot ask me anything, so choose the most reasonable option and
+list your choices under ASSUMPTIONS at the top. Do not send, reply to, or
+draft anything to anyone. Never invent a name or a detail; if you cannot
+read an email, list it under COULD NOT READ. If there were no enquiries,
+say so in one line and stop.
+
+Put the date and time you ran at the top. Then stop.`;
+
+
+const F = {};
+F.cover = ['<svg viewBox="0 0 420 380"><g fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"><rect x="40" y="290" width="340" height="56"/><rect x="40" y="214" width="340" height="56"/><rect x="40" y="138" width="340" height="56"/><rect x="40" y="62" width="340" height="56"/></g><g fill="#3A3630"><rect x="62" y="311" width="120" height="12"/><rect x="62" y="235" width="150" height="12"/><rect x="62" y="159" width="110" height="12"/></g><rect x="62" y="83" width="180" height="12" fill="#B8452A"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17"><text x="300" y="322">BRAIN</text><text x="288" y="246">HELPER</text><text x="296" y="170">AGENT</text></g><text x="252" y="94" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#B8452A">STANDING</text><circle cx="360" cy="90" r="9" fill="#6C7A3F" stroke="#1E1B17" stroke-width="3"/></svg>',
+ 'Fig. 01 / four levels, one ladder<br>Every word you hear sits on one of them'];
+F.ladder = F.cover;
+F.filter = ['<svg viewBox="0 0 420 380"><g fill="#EEE6D3" stroke="#1E1B17" stroke-width="4"><rect x="30" y="44" width="112" height="72"/><rect x="30" y="150" width="112" height="72"/><rect x="30" y="256" width="112" height="72"/></g><g fill="#3A3630"><rect x="48" y="66" width="66" height="9"/><rect x="48" y="86" width="46" height="7"/><rect x="48" y="172" width="66" height="9"/><rect x="48" y="192" width="52" height="7"/><rect x="48" y="278" width="66" height="9"/><rect x="48" y="298" width="40" height="7"/></g><path d="M142 80 H206 L206 186 H240" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M142 186 H240" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M142 292 H206 L206 186" fill="none" stroke="#1E1B17" stroke-width="4" stroke-dasharray="9 8"/><path d="M226 174l14 12-14 12" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="252" y="132" width="134" height="108" fill="#B8452A" stroke="#1E1B17" stroke-width="4"/><text x="319" y="180" text-anchor="middle" font-family="Oswald" font-size="19" fill="#EEE6D3">SAME</text><text x="319" y="206" text-anchor="middle" font-family="Oswald" font-size="19" fill="#EEE6D3">EVERY TIME</text><path d="M108 270l32 32M140 270l-32 32" stroke="#B8452A" stroke-width="6" stroke-linecap="round"/></svg>',
+ 'Fig. 02 / three tests, then it earns a schedule<br>Most jobs fail the first one'];
+
+const S = [
+{sec:"", cover:true, fig:"cover", h:"A chatbot answers you. An agent does work for you.", pts:[], sub:"Reference · Chatbots, Agents and Bots", note:"What the words mean, what is out there, and how to build one bot in Claude that runs on a schedule. Watch it before session one, or any time the words get confusing."},
+
+{sec:"Why", h:"Why this is <em>confusing</em>", pts:[
+ "Model. LLM. Chatbot. Agent. Bot. Cowork. Code. Workspace agent. Computer use. MCP.",
+ "They sound like ten different things. Most are different layers of the same thing, or the same thing with a company's name on it.",
+ "One idea sorts all of it: AI has moved from answering you to doing work for you.",
+ "Four levels. Every word you hear sits on one of them."]},
+
+{sec:"Why", h:"The <em>ladder</em>", fig:"ladder", pts:[
+ "<b>Brain.</b> The model. It understands and reasons. You never use it bare.",
+ "<b>Helper.</b> The chat. You ask, it answers, you do the next bit.",
+ "<b>Agent.</b> You hand over a job. It works out the steps and does them.",
+ "<b>Standing agent.</b> It has a job for good. It starts without you and comes back when it needs you."]},
+
+{sec:"The four levels", h:"Level one: the <em>brain</em>", pts:[
+ "A model is the intelligence underneath. Anthropic makes Claude's. OpenAI, Google and xAI make their own.",
+ "It is an engine. Nobody buys an engine to sit in the garage. You buy the car built around it.",
+ "The engine can read, write, reason, look at a picture, and decide what to do next.",
+ "When someone says “the new model is incredible”, they mean the engine got better. The car is what you drive."]},
+
+{sec:"The four levels", h:"Level two: the <em>helper</em>", pts:[
+ "This is the chat. Claude, ChatGPT, Gemini, Grok are all cars built around an engine.",
+ "“Write the email.” “Summarise this.” “Give me ten ideas.” It answers. You decide what happens next.",
+ "You copy. You paste. You ask again. Useful, and you are still doing the running around.",
+ "Session one teaches you to be good at this level. Most people never leave it."]},
+
+{sec:"The four levels", h:"Level three: the <em>agent</em>", pts:[
+ "An agent is given an outcome, not a question. It decides the steps and does them.",
+ "Tell a new staff member “research our five biggest competitors and have a report ready for Friday.” You did not say open the browser, take notes, make a document.",
+ "That is the whole idea. You give the outcome. It works out the steps.",
+ "In Claude, that is Cowork. You hand it the folder and the job, and it comes back with the work."]},
+
+{sec:"The four levels", h:"Chatbot versus <em>agent</em>", split:[
+ ["Chatbot","“Who are our competitors?”","You get an answer. You do the rest: look them up, compare, write it up.","It helps you do the task."],
+ ["Agent","“Research our competitors, compare their offers with ours, and give me a report with three opportunities.”","It searches, reads, compares, writes the file, checks its own work, keeps going.","You hand it the task. The difference is delegation."]]},
+
+{sec:"The four levels", h:"Automation versus <em>agent</em>", split:[
+ ["Automation","When a form comes in, put the details in the CRM and send the template email.","Fixed rules. Same every time. Cheap, reliable, and dumb.","It follows rules."],
+ ["Agent","When a form comes in, read it, look the company up, decide if they fit, draft a reply that suits them, flag anything odd.","Judgement calls at every step, inside rules you set.","It reasons within rules."]]},
+
+{sec:"The four levels", h:"Level four: the <em>standing</em> agent", pts:[
+ "An agent you have to start each time is still waiting on you.",
+ "A standing agent has a job for good. Every Friday, every morning, whenever a thing happens. It starts itself.",
+ "It comes back to you only when it needs a decision, or when the work is done.",
+ "This is the level people mean when they say “digital employee”. Session three puts one on a timer. We build one at the end of this deck."]},
+
+{sec:"The parts", h:"What is <em>inside</em> a bot", tiles:[
+ ["o","Brain","The model. The intelligence."],
+ ["o","Instructions","What you want done, and how."],
+ ["o","Context","Who you are, the job, the files."],
+ ["t","Tools","What it can reach. Email, files, the web, a browser."],
+ ["t","Memory","What it keeps between runs."],
+ ["c","The loop","It looks at what happened and decides the next step."]],
+ pts:["The loop is the part that makes it an agent. A normal program goes A, B, C, D. An agent goes A, B, something unexpected, rethink, C, check, fix, D."]},
+
+{sec:"The parts", h:"The <em>words</em>", rows:[
+ ["Tool","Anything it can use to touch the outside world.","Web search, your calendar, your inbox, a spreadsheet, a browser."],
+ ["Connector","A tool plugged into your account, with your permission.","Session two: Gmail, Drive, your calendar."],
+ ["Computer use","It works a screen like a person. Click, type, read, scroll.","No special plumbing needed. Also the riskiest kind of access."],
+ ["MCP","A standard plug so any AI can talk to any system.","You never touch it. It is why connectors exist."],
+ ["Skill","A job you taught it once, saved, and reuse.","Session two: your first skill."],
+ ["Workflow","The order the work happens in.","Find the workflow first. Then decide if AI belongs in it."]],
+ rowhead:["Word","What it means","Where you meet it"]},
+
+{sec:"What is out there", h:"In <em>Claude</em>", rows:[
+ ["Chat","Helper","You ask, it answers. Session one."],
+ ["Projects and skills","Helper, taught","It knows your business and your jobs. Session two."],
+ ["Cowork","Agent","Hand it a folder and a job. Desktop, web and phone."],
+ ["Scheduled tasks","Standing agent","A Cowork job on a timer. Runs in the cloud, laptop shut. Every paid plan. Session three."],
+ ["Claude Code","Agent, technical","Works inside files and systems. Builds and changes things. This deck was built with it."]],
+ rowhead:["Name","Level","What it is"]},
+
+{sec:"What is out there", h:"In <em>ChatGPT</em>", pts:[
+ "<b>ChatGPT Agent.</b> Inside ChatGPT. You give it a multi-step job and it works through it with you watching. Level three.",
+ "<b>Workspace agents.</b> Since April 2026. Shared agents a business sets up once, connects to its tools, runs on a schedule or in Slack. Level four. Business and Enterprise plans only, paid per run since May.",
+ "<b>Where it is going.</b> The September model can drive your computer. Same idea as Claude's computer use.",
+ "If you are on a personal ChatGPT plan, you have the first and not the second."]},
+
+{sec:"What is out there", h:"<em>Grok Bot</em>, from xAI", pts:[
+ "Launched 11 August 2026. Still a beta.",
+ "An always-on bot with its own cloud computer. It signs into your tools, works through the night, and comes back when it needs approval. Level four, built as the whole product.",
+ "Bundled into the top Grok plan and two Cursor plans. Not sold on its own.",
+ "One thing the launch page glosses over: all your bots share one computer, and xAI's own docs say not to treat separate bots as a wall between jobs."]},
+
+{sec:"What is out there", h:"<em>OpenClaw</em>", pts:[
+ "Free and open source. It runs on your own computer or a server you rent.",
+ "You talk to it through WhatsApp, Telegram, Slack or twenty other apps. It uses whichever brain you give it: Claude, GPT, Gemini, or a free one.",
+ "That is the appeal: your choice of model, your own data, your own rules.",
+ "That is also the cost. Someone has to set it up, keep it running, and keep it safe. If that someone is you, and you run the business too, it is a second job."]},
+
+{sec:"What is out there", h:"Which <em>one</em>", rows:[
+ ["A job you do alone, at your desk","Claude chat, with your instructions in it","Session one and two. Nothing to buy."],
+ ["A job with files and steps","Cowork","Already in your plan."],
+ ["A job that repeats on its own","A scheduled task in Cowork","Session three. Already in your plan."],
+ ["A team of five sharing the same bots","ChatGPT workspace agents, or Claude on a Team plan","Both work. Pick the one your team already lives in."],
+ ["Full control, own server, own model","OpenClaw","Only with a technical person on call."]],
+ rowhead:["The job","Use","Why"]},
+
+{sec:"Build one", h:"The junior employee <em>test</em>", fig:"filter", pts:[
+ "Would you give this job to a new junior with a written brief? Then it is a bot.",
+ "Research these prospects. Prepare the weekly report. Sort these enquiries. Summarise the meetings. First drafts. Check whether this changed.",
+ "Repeated, predictable, time consuming, spread over steps, worth doing well. That is the profile.",
+ "Happens twice a year and takes five minutes? Not a bot. Open a chat and ask."]},
+
+{sec:"Build one", h:"The bot we will <em>build</em>", pts:[
+ "<b>The Friday enquiries bot.</b> Every Friday at 3pm it reads the week's enquiries and hands you a list: who, what they want, how warm, next step. Hot ones first.",
+ "It never sends anything. It never replies. It reads and it lists.",
+ "Same every week. Claude can reach the inbox through a connector. A bad list costs you ten minutes. It passes all three tests from session three.",
+ "Four steps: design it, give it a home, test it once, put it on the timer."]},
+
+{sec:"Build one", h:"Step 1. <em>Design</em> it", pts:[
+ "Do not write the bot's instructions cold. Let it interview you.",
+ "Say the job roughly. Answer its questions. It hands back the brief under six headings.",
+ "Read the RULES line twice. That is where the bot stays safe."],
+ prompt:P1, where:"A new chat, in the project the bot will live in", after:[
+ "Answer out loud if you can. Rough is fine.",
+ "Correct anything wrong in the brief before you move on.",
+ "Keep the brief. It becomes the bot's instructions in step 2."]},
+
+{sec:"Build one", h:"Step 2. Give it a <em>home</em>", pts:[
+ "<b>Make a project</b> called after the bot. Friday enquiries.",
+ "<b>Paste the brief</b> from step 1 into the project instructions. That is the bot's job description.",
+ "<b>Connect the inbox.</b> Settings, Connectors, Gmail or Outlook. The bot can now read enquiries on its own.",
+ "<b>Rule from session two:</b> read only. It drafts nothing, it sends nothing. If that rule is not in the brief, add it now."]},
+
+{sec:"Build one", h:"Step 3. <em>Test</em> it once", pts:[
+ "Before it runs alone, run it with you watching.",
+ "Same brief, same inbox, one run now. You see exactly what will land on Friday.",
+ "Fix the brief, not the output. Then run it again."],
+ prompt:P2, where:"Inside the bot's project, in chat or in Cowork", after:[
+ "Read the ASSUMPTIONS first. Each one is a gap in the brief.",
+ "If it invented a name or a detail, the rules need tightening.",
+ "Two clean runs in a row and it is ready for the timer."]},
+
+{sec:"Build one", h:"Step 4. Put it on the <em>timer</em>", pts:[
+ "Open Cowork. In the sidebar, Scheduled. Then New task, then Create with Claude.",
+ "Or type /schedule inside any Cowork session and answer the questions.",
+ "Paste the instruction below as the task. Pick Friday, 3pm. It runs in the cloud with the laptop shut."],
+ prompt:P3, where:"The scheduled task itself, inside the bot's project", after:[
+ "Every paid Claude plan has this. It is not extra.",
+ "The first two Fridays, read the whole list against the inbox.",
+ "After that, read the ASSUMPTIONS and the hot ones. That is the check."]},
+
+{sec:"Build one", h:"What you just <em>built</em>", rows:[
+ ["Brain","Claude's model","Came with the plan"],
+ ["Instructions","The brief from step 1","In the project"],
+ ["Context","Your business, in the project and your account","Session two"],
+ ["Tools","The inbox, through a connector","Step 2"],
+ ["The loop","It reads, sorts, decides, lists","Step 3 proved it"],
+ ["Standing","Friday, 3pm, without you","Step 4"]],
+ rowhead:["Part","In this bot","Where it came from"]},
+
+{sec:"Keep it safe", h:"Where <em>you</em> stay in", pts:[
+ "A bot does the work. You own the consequence. So you stay in wherever the consequence is real.",
+ "Spending money. Sending anything to a customer. Changing records. Anything legal. Anything public. Anything you cannot undo.",
+ "The bot prepares, you approve. That one rule is most of the safety.",
+ "A bot you cannot check is a bot you should not run. If you would not notice it going wrong, do not build it."]},
+
+{sec:"Keep it safe", h:"Where businesses get this <em>wrong</em>", pts:[
+ "They start with “we need an AI agent” and go looking for a job to give it.",
+ "Start with the job. Which jobs waste a person's time every week? Then ask: does AI help with it, do part of it, do all of it, and does it repeat?",
+ "Only then pick the tool. Usually it is the one you already pay for.",
+ "Do not buy a product because someone on YouTube said it changes everything. Ask what job it does that your current tools cannot."]},
+
+{sec:"Close", h:"One sentence to <em>keep</em>", pts:[
+ "A chatbot answers you. An agent does work for you. A standing agent keeps doing it.",
+ "Everything else is detail.",
+ "The skill used to be asking better questions. The skill now is delegation: objectives, rules, tools, and a place where you check.",
+ "Stop asking what AI can do. Ask what work happens every week in your business that you could hand over."]}
+];
+
+
+const deck = document.getElementById('deck');
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const flow=t=>{const out=[];for(const raw of t.split('\n')){const l=raw.replace(/\s+$/,'');const prev=out.length?out[out.length-1]:'';const item=x=>/^\s*([-\u2022*]|\d+[.)])\s/.test(x)||/^[A-Z][A-Z0-9 ]{2,}:/.test(x);const indented=/^\s+\S/.test(raw);if(l===''){out.push('');}else if(prev!==''&&(indented||/^[a-z]/.test(l)||(!item(l)&&!item(prev)))){out[out.length-1]=prev+' '+l.trim();}else{out.push(l);}}return out.join('\n');};
+
+S.forEach((s,i)=>{
+  const el = document.createElement('section');
+  el.className = 'slide' + (s.prompt?' has-prompt':'') + (s.cover?' cover':'') + (s.tiles?' tiles':'') + (s.rows?' has-rows':'') + (s.fig?' has-fig':'');
+  const num = i===0 ? '' : `<span class="n">${i}</span>`;
+  let left = `<div class="left">`;
+  if(s.sec) left += `<div class="kicker">${s.sec}</div>`;
+  left += `<h1>${s.h}</h1>`;
+  if(s.sub) left += `<div class="sub">${s.sub}</div>`;
+  if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
+  if(s.rows){ const hd=s.rowhead||["Step","What we do","Why it matters"]; const num=!s.rowhead; left += `<div class="rows"><div>${hd[0]}</div><div>${hd[1]}</div><div>${hd[2]}</div>${s.rows.map((r,i)=>`<div class="step">${num?`<b>${i+1}</b>`:''}${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div>`).join('')}</div>`; }
+  if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}"><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
+  if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`;
+  if(s.note) left += `<p class="note">${s.note}</p>`;
+  if(s.meta) left += `<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`;
+  left += `</div>`;
+  let right = '';
+  if(s.fig){ right = `<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`; }
+  if(s.prompt){
+    right = `<div class="pane">
+      <div class="pane-head"><span class="where">${s.where}</span><div class="btns"><button class="expand" data-i="${i}">EXPAND</button><button class="copy" data-i="${i}">COPY PROMPT</button></div></div>
+      <div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>
+      <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
+    </div>`;
+  }
+  const badge = `<div class="foot"><span>Magnum AI / Reference</span><span>${s.sec||'Bots'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
+  const dotag = (s.tag==='do' || s.prompt) ? '<div class="dotag">Do this now</div>' : '';
+  el.innerHTML = left + right + badge + dotag;
+  deck.appendChild(el);
+});
+
+const slides=[...document.querySelectorAll('.slide')];
+let cur=0;
+function show(n){
+  cur=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
+  document.getElementById('sec').textContent=S[cur].sec;
+  document.getElementById('count').textContent=cur===0?'':`${cur} / ${slides.length-1}`;
+  document.getElementById('fill').style.width=(cur/(slides.length-1)*100)+'%';
+  history.replaceState(null,'',cur?('#'+cur):location.pathname);
+  slides[cur].scrollTop=0;
+  checkMore();
+}
+// Skip basics: slides marked basic:true drop out of Next and Back when the
+// switch is on, so one deck serves a room that already knows the basics.
+let skip=/[?&]short\b/.test(location.search);
+const hasBasics=S.some(s=>s.basic);
+function step(d){let n=cur+d;while(skip&&n>0&&n<slides.length&&S[n].basic)n+=d;if(n<0||n>slides.length-1)return;show(n);}
+function toggleSkip(){skip=!skip;paintSkip();if(skip&&S[cur].basic)step(1);}
+function paintSkip(){const b=document.getElementById('skipbtn');b.hidden=!hasBasics;b.classList.toggle('on',skip);b.textContent=skip?'BASICS OFF':'SKIP BASICS';document.getElementById('menu').classList.toggle('skip',skip);}
+document.getElementById('next').onclick=()=>step(1);
+document.getElementById('prev').onclick=()=>step(-1);
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('reader').classList.contains('on')){if(e.key==='Escape')closeReader();return;}
+  if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();step(1);}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();step(-1);}
+  if(e.key==='m'||e.key==='M'){toggleMenu();}
+  if(e.key==='b'||e.key==='B'){toggleSkip();}
+});
+
+document.querySelectorAll('.copy').forEach(b=>{
+  b.onclick=async()=>{
+    const t=S[+b.dataset.i].prompt;
+    try{await navigator.clipboard.writeText(t);}
+    catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+    b.textContent='COPIED';b.classList.add('done');
+    setTimeout(()=>{b.textContent='COPY PROMPT';b.classList.remove('done');},1800);
+  };
+});
+
+const ml=document.getElementById('menulist');
+let lastSec=null;
+S.forEach((s,i)=>{
+  if(i===0)return;
+  if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
+  const li=document.createElement('li');if(s.basic)li.className='basic';
+  const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
+  li.appendChild(b);ml.appendChild(li);
+});
+function checkMore(){document.querySelectorAll('.slide.on .pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');if(!pre)return;p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});}
+document.querySelectorAll('.prewrap pre').forEach(pre=>pre.addEventListener('scroll',checkMore));
+window.addEventListener('resize',checkMore);
+document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const s=S[+b.dataset.i];document.getElementById('rwhere').textContent=s.where;document.getElementById('rpre').textContent=flow(s.prompt);document.getElementById('rcopy').dataset.i=b.dataset.i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;};});
+function closeReader(){document.getElementById('reader').classList.remove('on');}
+function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+paintSkip();
+document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
+
+// Fit every slide to the screen. The decks are laid out for a box of
+// FIT_W by FIT_H (the tallest slide at a 1440-wide window) and scaled to
+// whatever the deck area actually is, so nothing spills past the box and
+// the footer never prints over the last line. One zoom for the whole deck
+// keeps the text size consistent from slide to slide. Prompt text and the
+// points beside it hold a real-pixel floor (see the pre rule in the CSS) so
+// a small window scrolls the prompt rather than shrinking it.
+const FIT_W=1340, FIT_H=770;
+function fit(){
+  const r=document.getElementById('deck').getBoundingClientRect();
+  const z=Math.max(0.4,Math.min((r.width-20)/FIT_W,(r.height-20)/FIT_H,1.35));
+  document.querySelectorAll('.slide').forEach(s=>{s.style.zoom=z;});
+  document.documentElement.style.setProperty('--z',z); // prompt text floors read this
+  checkMore();
+}
+window.addEventListener('resize',fit);
+fit();
+show(parseInt(location.hash.slice(1))||0);
+</script>
+</body>
+</html>

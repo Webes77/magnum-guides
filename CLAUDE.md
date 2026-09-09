@@ -149,13 +149,29 @@ look; do not restyle it to the members area.
 
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
-deck.
+deck. On 9 Sep a fourth deck was added outside the ladder: `bots/`,
+Chatbots, Agents and Bots, a reference deck like Fine-Tune, linked from
+the front page under Your Sessions as "watch before session one". It
+came from a ChatGPT-written explainer James supplied, stress-tested and
+rebuilt: the four-level ladder (brain, helper, agent, standing agent),
+chatbot versus agent, automation versus agent, the parts of a bot, a
+glossary, what is out there (Claude, ChatGPT agents and workspace
+agents, Grok Bot, OpenClaw, each search-verified third-party on 9 Sep
+and framed as what it is and who it is for, not training), then a
+four-step build of one bot in Claude, the Friday enquiries bot, on a
+Cowork scheduled task. James asked for the vendor slides and the build
+after hearing the case against; both are his call. Three prompts, on
+the shelf under `Reference · Chatbots, Agents and Bots` as
+`design-the-bot`, `bot-test-run`, `friday-enquiries-bot`. Card at
+`assets/thumbnails/bots.jpg`, source `bots/thumbnail.html`. The deck
+check covers it. The shelf is 37 cards.
 
 | Session | Folder | Slides | Prompts |
 |---|---|---|---|
 | One, AI Foundations | `ai-foundations/` | 30 | 6 |
 | Two, Make Claude Yours | `make-claude-yours/` | 37 | 5 |
 | Three, Work That Runs Without You | `runs-without-you/` | 17 | 4 |
+| Reference, Chatbots, Agents and Bots | `bots/` | 26 | 3 |
 
 On 7 Sep the homework slides came out of all three decks ("Before next
 time" in one and three, "Suggested Tasks" in two). James does not want
@@ -284,7 +300,10 @@ spreadsheets and handwritten notes as inputs. Details in
 
 ## Next
 
-Where the last session stopped (7 Sep, night): Foundations is ready for
+Where the last session stopped (9 Sep): the bots reference deck is live
+and James has not yet read it through. That read is the next thing; the
+vendor slides (ChatGPT, Grok Bot, OpenClaw) carry dated facts and want a
+re-check before any room sees them after October. Before that (7 Sep, night): Foundations is ready for
 the 8 Sep occupational therapy room at 30 slides with the OT example
 set on the main slides. Swap `const EG = EGS.ot` back to `EGS.trades`
 after that session, or add a set for the next room. The open work, in
