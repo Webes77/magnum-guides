@@ -17,15 +17,15 @@ Builds the client-facing HTML documents Magnum AI sends to clients: rollout plan
 
 ## Document structure (in order)
 
-1. **Hero**: mono eyebrow with a leading rust rule (Prepared for [Client] · Magnum AI · [Month Year]), Oswald uppercase title carrying one rust word or a stacked second line in rust (two-part titles stack, e.g. "Operations Review" over "and Recommendations" in rust), short document-voice sub-line, animated "Begin ⌄" scroll cue.
+1. **Hero**: mono eyebrow with a leading coral rule (Prepared for [Client] · Magnum AI · [Month Year]), Oswald uppercase title carrying one coral word or a stacked second line in coral (two-part titles stack, e.g. "Operations Review" over "and Recommendations" in coral), short document-voice sub-line, animated "Begin ⌄" scroll cue.
 2. **Why / intro** (optional hook): short reminder of why the client is doing this, grounded in facts about their business. One Oswald lead line plus one body paragraph.
 3. **The approach**: how the work is delivered (e.g. background build + one day together; review method for a review doc).
-4. **Summary, the main points**: 2×2 grid of numbered cards, rust Oswald numerals, one-line-plus card bodies.
+4. **Summary, the main points**: 2×2 grid of numbered cards, coral Oswald numerals, one-line-plus card bodies.
 
 **Clarity dependency.** Before writing any steps, checklist, procedure or rollout sequence, load `/mnt/skills/user/asd-ste100-clarity/SKILL.md`. Apply it to instructional blocks only: phase steps, setup instructions, action lists, prerequisites and warnings. Never apply it to the intro, the why-this-matters section, transitions or the close, which stay in voice. Run its nine-point clarity check on the instructional blocks only before delivering. If a block moves from voice to clarity, name that in one line.
 
 5. **The work, item by item**: numbered expandable stage cards. Each opens to labelled rows: **What it is / What it does for you / What's needed from you** (for a review document: **The problem / The fix / What it affects / The action / The cost**). Every card expands; uniform interaction.
-6. **The day / agenda + confirm box** (rollout docs): agenda blocks framed as "a suggested shape, final running order agreed together", then a rust-bordered confirm box with numbered direct questions (date confirmation, the pre-work meeting, etc.).
+6. **The day / agenda + confirm box** (rollout docs): agenda blocks framed as "a suggested shape, final running order agreed together", then a navy confirm box with numbered direct questions (date confirmation, the pre-work meeting, etc.).
 7. **Beyond the setup**: future capabilities as expandable cards labelled "What it would do", under an explicit eyebrow: "separate work, scoped later" and a lede stating "Not part of the setup fee."
 8. **Costs**: always last. Divider-labelled rows: Magnum AI fees first (Setup, Monthly), then "Tools, billed to you directly, at cost" with real researched prices (never "scoped with you" or other vague cost language, look prices up). Footnote covers: setup fee = the initial agreed scope (state the realistic duration, e.g. first three to four weeks); monthly starts only once that's delivered and agreed; month to month, no lock-in, 30 days' notice; tool prices in USD move with exchange rates.
 9. **Footer**: Magnum logo centred, "Magnum AI · magnumai.com.au".
@@ -34,37 +34,38 @@ Builds the client-facing HTML documents Magnum AI sends to clients: rollout plan
 The house style is written up in full at
 https://webes77.github.io/magnum-guides/brand/. That page is the source of
 truth. This block is the working summary.
-- Ground: paper `#EEE6D3` carrying the fine grid texture (a radial dot plus two
+- Ground: paper `#FBFBF9` carrying the fine grid texture (a radial dot plus two
   hairline rules at 26px). A flat paper ground looks unfinished. Cards and
-  panels sit on paper deep `#E4DAC4`.
+  panels sit on paper deep `#FFFFFF`.
 - **Un-flippable render**: the old rule still applies, inverted. Hard-code the
   background as literal hex on BOTH `html` and `body` (CSS *and* inline style
   attributes), plus `<meta name="color-scheme" content="light">`,
   `<meta name="theme-color" content="#1E1B17">`, and `color-scheme: light` in
   `:root`. Never rely on a CSS variable alone for the page background. Forced
   dark mode and preview panes will otherwise invert it.
-- Ink `#1E1B17`, rust `#B8452A`, olive `#6C7A3F`, body `#2B2823`, card text
-  `#3A3630`, muted `#6F675C`. Rust is the only accent. Olive is for figures and
-  ticks only and never carries text.
-- Thin rust progress bar fixed at the top of the viewport, width driven by scroll.
+- Navy `#1F2A37` for the hero and any dark block. Ink `#1E1B17`, coral
+  `#DE4A3C`, slate `#5B6B7A`, body `#2B2823`, card text `#3A3630`, muted
+  `#7A7A7A`. Coral is the only accent. Slate is for ticks only and never
+  carries text.
+- Thin coral progress bar fixed at the top of the viewport, width driven by scroll.
 - Type: Oswald 600/700 uppercase for the hero, section headings, card and stage
   titles. IBM Plex Sans 400/500 for everything else. IBM Plex Mono 11 to 12px,
   uppercase, letter-spaced .14 to .28em, for eyebrows, dates, metadata and
   footers. **Discipline rule: never more than two type treatments in one block.**
-  Rust appears only on eyebrows, numerals, rules, prices and a single emphasis
+  Coral appears only on eyebrows, numerals, rules, prices and a single emphasis
   word. Never inline mid-paragraph.
-- Headings carry one rust word, not a gold italic. Oswald italic is not in the
+- Headings carry one coral word, not a gold italic. Oswald italic is not in the
   system; do not substitute one. Two-part titles stack, with the second line in
-  rust.
-- Cards: 3px ink border, 6px hard offset shadow (`box-shadow:6px 6px 0 var(--ink)`),
-  no radius, no blur. Interactive cards lift 2px on hover and the shadow grows
-  to 9px. Static cards do not lift. Open state moves the border to rust and the
+  coral.
+- Cards: white, 2px ink border, no shadow, no radius. Interactive cards turn
+  the border coral on hover. Static cards do not change. Open state moves the border to rust and the
   chevron rotates.
 - Cards within a section share one type: all with images, or all without.
 - Pricing is neutral. Never red, never visually alarming, never the hero of the
   page.
-- Retired: black and gold, Playfair Display, Inter, rounded corners, soft
-  shadows. Do not reintroduce them.
+- Retired: black and gold, the beige and rust system, Playfair Display,
+  Inter, rounded corners, shadows of any kind, textures. Do not reintroduce
+  them.
 
 ## Writing rules (these caused the most rejections, follow strictly)
 

@@ -46,11 +46,19 @@ These are absolute. Do not relitigate them.
 ## House style
 
 `brand/index.html` is the visual spec. `brand/magnum-house-style/SKILL.md`
-is the enforcement skill. Paper `#EEE6D3`, ink `#1E1B17`, rust `#B8452A`,
-olive `#6C7A3F`. Oswald for display, IBM Plex Sans for body, IBM Plex Mono
-for labels and prompts. Cards: 3px ink border, 6px hard offset shadow, no
-radius, no blur. Black and gold is retired. Do not introduce a fourth
-typeface.
+is the enforcement skill; `brand/house-style-block.md` is the paste-ready
+version for other skills. Since 9 Sep: paper `#FBFBF9` (flat, no
+texture), white `#FFFFFF` cards with a 2px ink border and no shadow, navy
+`#1F2A37` for the masthead band, footers, figure plates and dark cards,
+ink `#1E1B17`, coral `#DE4A3C` as the one accent for anything you read,
+bright coral `#FF6F5E` for fills on navy and badges only, coral tint
+`#FBE1D8` for tags, slate `#5B6B7A` for ticks and figure detail. The CSS
+token names did not change: `--rust` holds coral, `--olive` holds slate.
+Oswald for display, IBM Plex Sans for body, IBM Plex Mono for labels and
+prompts. Retired: black and gold, and the beige and rust system (paper
+`#EEE6D3`, rust `#B8452A`, olive `#6C7A3F`, grid texture, offset
+shadows). Do not introduce a fourth typeface. Fine-Tune keeps its own
+look.
 
 ## Where we are
 
@@ -300,6 +308,18 @@ spreadsheets and handwritten notes as inputs. Details in
   slides are built for that.
 
 ## Next
+
+On 9 Sep, later, the whole members area moved to the white, navy and
+coral palette in one pass (see House style above): every page, all four
+decks, the shelf, the Field Notes, the brand page, the manual, the rollout
+exemplar, the card sources and templates, and all eleven share cards
+re-rendered. The swap was scripted (simple token and hex replacements
+plus texture and shadow removal) and the deck check passed after it.
+Fine-Tune and its card were left alone. Field Note 01 has no card
+source, so its card is still the old look; regenerate it from
+`templates/field-note-thumbnail.html` when convenient. James chose this
+look from mockups after supplying a white, red-orange reference; the
+decision and the hex values are final.
 
 Where the last session stopped (9 Sep): the bots reference deck is live
 and James has not yet read it through. That read is the next thing; the

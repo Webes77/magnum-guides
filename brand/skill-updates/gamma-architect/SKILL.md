@@ -138,27 +138,30 @@ The house style. Full reference at https://webes77.github.io/magnum-guides/brand
 Black and gold is retired: never #D4AF37, never #0E0D0B, never Bebas Neue,
 Playfair Display or Inter.
 
-- Ground: paper #EEE6D3. Cards and panels: paper deep #E4DAC4.
+- Ground: paper #FBFBF9. Cards and panels: paper deep #FFFFFF.
 - Ink #1E1B17 for headings, borders and rules. Body text #2B2823.
-- Rust #B8452A is the only accent: one rust word in a heading, a rust
-  label, a rust numeral. Nothing else is coloured.
-- Olive #6C7A3F for figures, ticks and diagram fills only. Olive never
-  carries text.
+- Navy #1F2A37 for title slides, section breaks and any dark block. Every
+  deck has some navy; it is where the weight is.
+- Coral #DE4A3C is the only accent: one coral word in a heading, a label,
+  a numeral. Bright coral #FF6F5E for fills on navy only. Nothing else is
+  coloured.
+- Slate #5B6B7A for ticks and diagram detail only. Slate never carries text.
 - Type: Oswald 600 or 700, uppercase, for headlines and card titles.
   IBM Plex Sans for body. IBM Plex Mono, uppercase, letter spaced, for
   eyebrows, dates and labels. If Gamma cannot load a face, fall back to
   Arial Narrow for headlines and Arial for body. Never a fourth face.
-- Cards: 3px ink border, hard 6px offset shadow, no radius, no blur.
+- Cards: white, 2px ink border, no shadow, no radius.
 - Light only. No dark slides, no gradients, no stock photos, no
   tech-circuit aesthetic, no glowing blue anything, no QR codes.
 - No em dashes.
 
-Style prompt for Gamma, paste as written: "Cream paper background
-#EEE6D3 with a faint fine grid. Ink black #1E1B17 headings in Oswald,
-uppercase, condensed. Body in IBM Plex Sans. Small uppercase mono labels.
-One accent colour, rust #B8452A, used sparingly. Cards with a thick black
-border and a hard offset shadow, no rounded corners, no blur. Flat line
-illustrations in ink with rust and olive fills. Editorial, printed, calm."
+Style prompt for Gamma, paste as written: "Off-white background
+#FBFBF9, flat. Ink black #1E1B17 headings in Oswald, uppercase, condensed.
+Body in IBM Plex Sans. Small uppercase mono labels. Deep navy #1F2A37
+blocks for title and section slides. One accent colour, coral #DE4A3C,
+used sparingly. Cards with a thin black border, no shadow, no rounded
+corners. Flat line illustrations in ink on navy with coral and slate
+fills. Editorial, printed, calm."
 
 ## Hard rules
 

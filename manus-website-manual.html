@@ -10,8 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#1E1B17; --paper:#EEE6D3; --panel:#E4DAC4; --hair:#C9BFAC;
-  --muted:#6F675C; --accent:#B8452A; --accent-dark:#C9542F;
+  --ink:#1E1B17;
+  --navy:#1F2A37;
+  --coral-bright:#FF6F5E;
+  --tint:#FBE1D8; --paper:#FBFBF9; --panel:#FFFFFF; --hair:#C9BFAC;
+  --muted:#6F675C; --accent:#FF6F5E; --accent-dark:#C9542F;
   --grid:rgba(120,90,60,.13);
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --body:'IBM Plex Sans',system-ui,sans-serif;
@@ -19,7 +22,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{font-family:var(--body);color:var(--ink);background-color:var(--paper);background-image:radial-gradient(var(--grid) 1.2px, transparent 1.3px),linear-gradient(rgba(120,90,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,90,60,.05) 1px,transparent 1px);background-size:26px 26px,26px 26px,26px 26px;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);color:var(--ink);background-color:var(--paper);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
 /* Running header */
 .runhead{position:fixed;top:0;left:0;right:0;background:var(--paper);z-index:100;padding:20px 48px 0}
 .runhead-inner{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
@@ -51,10 +54,10 @@ section{padding-top:96px;position:relative}
 .secnum{font-family:var(--display);font-weight:700;font-size:150px;line-height:1;color:var(--paper);-webkit-text-stroke:1.5px rgba(30,27,23,.26);position:absolute;top:52px;right:0;z-index:0;user-select:none;pointer-events:none}
 .seclabel{font-weight:bold;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 /* Phase divider bands */
-.phase{background:var(--ink);color:var(--paper);margin:110px -56px 0 -72px;padding:64px 72px}
+.phase{background:var(--navy);color:#F4F1EA;margin:110px -56px 0 -72px;padding:64px 72px}
 .phase .pnum{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:4px;color:var(--accent-dark);text-transform:uppercase;margin-bottom:10px}
 .phase h2{color:var(--paper);font-size:clamp(44px,5vw,72px);margin:0}
-.phase p{color:#C9BFAF;margin:14px 0 0;max-width:56ch;font-size:16px}
+.phase p{color:#C8CDD3;margin:14px 0 0;max-width:56ch;font-size:16px}
 ul,ol{margin:0 0 18px 22px;max-width:66ch}
 li{margin-bottom:7px}
 strong{font-weight:bold}
@@ -80,7 +83,7 @@ strong{font-weight:bold}
 .prompt{background:var(--ink);margin:26px 0 34px;max-width:72ch}
 .prompt-head{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid #413931}
 .prompt-head span{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--paper)}
-.prompt pre{padding:24px 26px;white-space:pre-wrap;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:#EEE6D3}
+.prompt pre{padding:24px 26px;white-space:pre-wrap;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:#FFFFFF}
 .copybtn{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;background:var(--paper);color:var(--ink);border:none;padding:8px 18px;cursor:pointer;transition:background .12s}
 .copybtn:hover,.copybtn.copied{background:var(--accent-dark)}
 /* Numbered circles */
@@ -93,10 +96,10 @@ strong{font-weight:bold}
 .flow .arrow{text-align:center;font-weight:bold;padding:3px 0;color:var(--muted)}
 .flow .step .n{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;display:block;margin-bottom:3px}
 /* Dark closing */
-.dark{background:var(--ink);color:var(--paper);padding:72px 72px;margin:60px -56px 0 -72px}
+.dark{background:var(--navy);color:#F4F1EA;padding:72px 72px;margin:60px -56px 0 -72px}
 .dark h2{color:var(--paper)}
 .dark .goldline{color:var(--accent-dark);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:1.1;margin-top:20px}
-.dark p{color:#C9BFAF}
+.dark p{color:#C8CDD3}
 /* FAQ */
 details{border-bottom:1px solid var(--hair);max-width:70ch}
 details summary{font-weight:bold;font-size:15px;padding:16px 0;cursor:pointer;list-style:none;position:relative;padding-right:34px}
@@ -122,7 +125,7 @@ details .a p:last-child{margin-bottom:0}
   .dark{margin:48px -22px 0;padding:48px 24px}
   .pair,.check{grid-template-columns:1fr;column-count:1}
   .specrow{grid-template-columns:1fr;gap:2px}
-  .navtoggle{display:block;position:fixed;top:9px;right:16px;z-index:110;background:var(--ink);color:var(--paper);border:none;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:2px;padding:8px 14px;cursor:pointer}
+  .navtoggle{display:block;position:fixed;top:9px;right:16px;z-index:110;background:var(--navy);color:#F4F1EA;border:none;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:2px;padding:8px 14px;cursor:pointer}
 }
 @media print{.runhead,nav,.navtoggle{display:none}.wrap{padding:0}main{padding:0}.phase,.dark{margin:40px 0 0}}
 </style>
@@ -743,9 +746,9 @@ After making the changes, check desktop and mobile layouts and confirm that no e
 <section id="final" style="padding-top:40px">
 <div class="dark">
 <h2>The Final Rule</h2>
-<p style="color:#EEE6D3;max-width:60ch">A good client website should have four characteristics:</p>
+<p style="color:#FFFFFF;max-width:60ch">A good client website should have four characteristics:</p>
 <p class="goldline">Easy to build.<br>Easy to use.<br>Easy to update.<br>Easy to leave.</p>
-<p style="color:#EEE6D3;margin-top:20px;max-width:60ch">If we've achieved all four, we've built it properly. If it only looks pretty, we've only done the first half of the job.</p>
+<p style="color:#FFFFFF;margin-top:20px;max-width:60ch">If we've achieved all four, we've built it properly. If it only looks pretty, we've only done the first half of the job.</p>
 </div>
 </section>
 

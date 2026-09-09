@@ -1,6 +1,6 @@
 ---
 name: magnum-house-style
-description: Enforces Magnum AI's visual identity on anything that gets designed: HTML documents, decks, slides, artifacts, one-pagers, service menus, thumbnails, social cards, web pages. Paper, ink and rust, with Oswald for display and IBM Plex Sans and Mono for everything else. Trigger this automatically whenever visual output is being produced, regardless of which other skill is also running. It applies on top of magnum-client-rollout-doc, magnum-service-menu-writer, gamma-architect, design-director, sales-training-deck-writer and any other skill that produces something a person will look at. Also trigger when James says a deliverable "looks off-brand", "does not match the members area", "looks like the old one", or asks what the house colours or fonts are.
+description: Enforces Magnum AI's visual identity on anything that gets designed: HTML documents, decks, slides, artifacts, one-pagers, service menus, thumbnails, social cards, web pages. White, navy and coral, with Oswald for display and IBM Plex Sans and Mono for everything else. Trigger this automatically whenever visual output is being produced, regardless of which other skill is also running. It applies on top of magnum-client-rollout-doc, magnum-service-menu-writer, gamma-architect, design-director, sales-training-deck-writer and any other skill that produces something a person will look at. Also trigger when James says a deliverable "looks off-brand", "does not match the members area", "looks like the old one", or asks what the house colours or fonts are.
 ---
 
 # Magnum AI house style
@@ -16,26 +16,33 @@ fetching anything.
 ## The tokens
 
 Paste this at the top of any new page. Every value below comes from it.
+The token is still named `--rust` and its value is coral; `--olive` is
+slate. The names stayed so nothing broke on 9 September 2026 when the
+palette changed.
 
 ```css
 :root{
-  --paper:#EEE6D3;    /* page ground, always with the grid texture */
-  --paper-2:#E4DAC4;  /* cards and panels */
-  --ink:#1E1B17;      /* mastheads, borders, headings, offset shadows */
-  --body:#2B2823;     /* running text on paper */
-  --rust:#B8452A;     /* the only accent */
-  --olive:#6C7A3F;    /* figures and ticks only */
-  --char:#3A3630;     /* text inside cards */
-  --mute:#6F675C;     /* notes and secondary lines */
-  --grid:rgba(120,90,60,.13);
+  --paper:#FBFBF9;        /* page ground, flat, no texture */
+  --paper-2:#FFFFFF;      /* cards and panels */
+  --navy:#1F2A37;         /* masthead band, footers, figure plates, dark cards */
+  --ink:#1E1B17;          /* text, borders, headings */
+  --body:#2B2823;         /* running text on paper */
+  --rust:#DE4A3C;         /* the accent: coral. anything you read */
+  --coral-bright:#FF6F5E; /* fills only: badges, bars, figure stripes */
+  --tint:#FBE1D8;         /* tags and marks */
+  --olive:#5B6B7A;        /* slate: ticks and figure detail, never text */
+  --char:#3A3630;         /* text inside cards */
+  --mute:#7A7A7A;         /* notes and secondary lines */
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
 }
 ```
 
-The paper ground always carries its texture: a radial dot plus two hairline
-rules, all at 26px. A flat paper ground looks unfinished.
+The ground is flat. No grid, no dots, no texture. Weight comes from the
+navy blocks: every screen carries one, the masthead band on a page, the
+figure plate or footer on a slide. On navy, text is `#F4F1EA` and muted
+text `#C8CDD3`.
 
 ## Type
 
@@ -60,36 +67,40 @@ machines cannot depend on a font that might not be there.
 
 ## The card
 
-One component does most of the work. 3px ink border, 6px hard offset shadow
-(`box-shadow:6px 6px 0 var(--ink)`), no radius, no blur.
-
-Interactive cards lift 2px on hover and the shadow grows to 9px. Static cards
-do not lift, because a lift on something unclickable is a lie.
+One component does most of the work. White, 2px ink border, no shadow, no
+radius. Interactive cards turn their border coral on hover. Static cards
+do not change, because a change on something unclickable is a lie.
 
 ## Rules
 
-- Rust is the only accent. One accent colour per page.
-- Olive never carries text. Figures, ticks and confirmation marks only.
-- Every label is mono, uppercase, letter spaced, with a rule running off right.
-- Headings carry one rust word. Not an italic, because Oswald italic is not in
-  the system.
-- Cards within a section share one type: all with images, or all without. A
-  tall image card beside a short text card leaves a hole and reads as a bug.
-- Never ship a placeholder card. An empty section beats advertising an empty
-  room.
-- Light pages must not flip. Hard-code the ground as literal hex on both `html`
-  and `body`, in CSS and inline, with `color-scheme: light` and
-  `<meta name="color-scheme" content="light">`. Forced dark mode and preview
-  panes will otherwise invert it.
+- Coral is the only accent. Deep coral (`--rust`) for anything you read.
+  Bright coral for fills on navy and for badges, never small text on
+  white. The tint for tags and marks. One accent colour per page.
+- Slate never carries text. Ticks, secondary lines and figure detail only.
+- Every label is mono, uppercase, letter spaced, with a rule running off
+  right.
+- Headings carry one coral word. Not an italic, because Oswald italic is
+  not in the system.
+- Figures sit on a navy plate: white shapes, a bright coral stripe, slate
+  ticks. No gradients.
+- Cards within a section share one type: all with images, or all without.
+- Never ship a placeholder card. An empty section beats advertising an
+  empty room.
+- Light pages must not flip. Hard-code the ground as literal hex on both
+  `html` and `body`, in CSS and inline, with `color-scheme: light` and
+  `<meta name="color-scheme" content="light">`.
 
 ## Retired. Do not reintroduce
 
 - Black and gold, including `#D4AF37` and `#0E0D0B`.
+- The beige and rust system of August and early September 2026: paper
+  `#EEE6D3`, rust `#B8452A`, olive `#6C7A3F`, the grid texture, the 6px
+  offset shadow.
 - Playfair Display, Inter, Bebas Neue, Archivo Narrow.
 - Rounded corners and soft blurred shadows.
 
-These came from documents that predate this system. If a brief, a template or
-an older file reaches for them, use the tokens above instead and say so.
+These came from documents that predate this system. If a brief, a template
+or an older file reaches for them, use the tokens above instead and say so.
 
 ## Imagery
 
@@ -107,8 +118,8 @@ In order of preference:
 3. **Photography of real work.** Real clients, real sites, real hands on real
    tools. A photo of an actual tradesman's van earns its place. A stock photo of
    someone smiling at a laptop does not.
-4. **Line illustration**, as used in the deck figures. Flat ink line work,
-   rust and olive fills, no gradients.
+4. **Line illustration**, as used in the deck figures. Flat ink line work
+   on a navy plate, coral and slate fills, no gradients.
 
 Never: stock photography, circuit boards, neural networks, glowing blue
 anything, abstract AI gradients, 3D renders, isometric business people, or an
@@ -123,7 +134,7 @@ strong enough.
 
 - Does every layout have something to look at, and is it real rather than
   decorative?
-- Is rust doing a job on every appearance, or is it just present?
+- Is coral doing a job on every appearance, or is it just present?
 - Is the display type uppercase and condensed?
 - Does it still read printed in black and white?
 - If a layout feels full, cut content rather than shrink the type.

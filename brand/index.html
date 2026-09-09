@@ -12,14 +12,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#EEE6D3;
-  --paper-2:#E4DAC4;
+  --paper:#FBFBF9;
+  --paper-2:#FFFFFF;
   --ink:#1E1B17;
+  --navy:#1F2A37;
+  --coral-bright:#FF6F5E;
+  --tint:#FBE1D8;
   --body:#2B2823;
-  --rust:#B8452A;
-  --olive:#6C7A3F;
+  --rust:#DE4A3C;
+  --olive:#5B6B7A;
   --char:#3A3630;
-  --mute:#6F675C;
+  --mute:#7A7A7A;
   --grid:rgba(120,90,60,.13);
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
@@ -29,19 +32,15 @@
 html{scroll-behavior:smooth;background:var(--paper)}
 body{font-family:var(--sans);font-size:17px;line-height:1.6;color:var(--body);
   background-color:var(--paper);
-  background-image:
-    radial-gradient(var(--grid) 1.2px, transparent 1.3px),
-    linear-gradient(rgba(120,90,60,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(120,90,60,.05) 1px,transparent 1px);
-  background-size:26px 26px,26px 26px,26px 26px;
+  
   -webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding:0 40px}
 
-.masthead{background:var(--ink);color:var(--paper);padding:44px 0 52px;border-bottom:4px solid var(--rust)}
+.masthead{background:var(--navy);color:#F4F1EA;padding:44px 0 52px;border-bottom:4px solid var(--coral-bright)}
 .masthead .brand{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;border-bottom:1px solid var(--rust);padding-bottom:4px;display:inline-block}
 .masthead h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(46px,8vw,88px);line-height:.9;margin-top:26px}
 .masthead h1 em{font-style:normal;color:var(--rust)}
-.masthead p{font-size:18px;color:#C9BFAF;max-width:52ch;margin-top:20px;line-height:1.55}
+.masthead p{font-size:18px;color:#C8CDD3;max-width:52ch;margin-top:20px;line-height:1.55}
 
 main{padding:44px 0 20px}
 .back{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-bottom:34px}
@@ -52,14 +51,14 @@ section{margin-bottom:52px}
 .note{font-size:15.5px;color:var(--mute);max-width:66ch;margin-bottom:24px}
 
 .swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.sw{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.sw{border:2px solid var(--ink);}
 .sw .chip{height:88px}
-.sw .info{background:var(--paper-2);border-top:3px solid var(--ink);padding:12px 14px}
+.sw .info{background:var(--paper-2);border-top:2px solid var(--ink);padding:12px 14px}
 .sw .nm{font-family:var(--display);font-weight:600;font-size:16px;text-transform:uppercase;color:var(--ink)}
 .sw .hex{font-family:var(--mono);font-size:12px;color:var(--char);margin-top:2px}
 .sw .use{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.45}
 
-.panel{background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:28px 30px}
+.panel{background:var(--paper-2);border:2px solid var(--ink);padding:28px 30px}
 .type-row{padding:18px 0;border-top:1px solid rgba(30,27,23,.22)}
 .type-row:first-child{border-top:0;padding-top:0}
 .type-row .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
@@ -75,10 +74,10 @@ section{margin-bottom:52px}
 .rules li b{color:var(--ink);font-weight:600}
 .rules.no li::before{background:var(--char)}
 
-pre{font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--ink);color:var(--paper);padding:20px 22px;overflow-x:auto;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+pre{font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--navy);color:#F4F1EA;padding:20px 22px;overflow-x:auto;border:2px solid var(--ink);}
 
 .demo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.card{display:flex;flex-direction:column;background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.card{display:flex;flex-direction:column;background:var(--paper-2);border:2px solid var(--ink);}
 .card .inner{padding:24px 26px 26px}
 .card .date{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
 .card h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.12;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
@@ -86,7 +85,7 @@ pre{font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--ink)
 .card p{font-size:15.5px;color:var(--char);line-height:1.55}
 .card .go{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-top:16px;display:block}
 
-footer{background:var(--ink);color:#9C9285;margin-top:40px;padding:34px 0}
+footer{background:var(--navy);color:#8E97A3;margin-top:40px;padding:34px 0}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 footer b{color:var(--paper);font-weight:500}
 
@@ -115,16 +114,19 @@ footer b{color:var(--paper);font-weight:500}
 
   <section>
     <div class="label">Palette</div>
-    <p class="note">Seven values. Rust is the only accent. Olive appears in figures and confirmation marks, never in text.</p>
+    <p class="note">Eleven values. Coral is the only accent, in three strengths. Navy carries the weight. Slate is the quiet second colour and never carries text.</p>
     <div class="swatches">
-      <div class="sw"><div class="chip" style="background:#EEE6D3"></div><div class="info"><div class="nm">Paper</div><div class="hex">#EEE6D3</div><div class="use">Page ground, always with the fine grid texture.</div></div></div>
-      <div class="sw"><div class="chip" style="background:#E4DAC4"></div><div class="info"><div class="nm">Paper deep</div><div class="hex">#E4DAC4</div><div class="use">Cards and panels, so they lift off the ground.</div></div></div>
-      <div class="sw"><div class="chip" style="background:#1E1B17"></div><div class="info"><div class="nm">Ink</div><div class="hex">#1E1B17</div><div class="use">Mastheads, footers, borders, headings, offset shadows.</div></div></div>
-      <div class="sw"><div class="chip" style="background:#B8452A"></div><div class="info"><div class="nm">Rust</div><div class="hex">#B8452A</div><div class="use">The accent. Labels, dates, links, one emphasis word.</div></div></div>
-      <div class="sw"><div class="chip" style="background:#6C7A3F"></div><div class="info"><div class="nm">Olive</div><div class="hex">#6C7A3F</div><div class="use">Figures and ticks only. Never body text, never a link.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FBFBF9;border-bottom:1px solid #DADAD5"></div><div class="info"><div class="nm">Paper</div><div class="hex">#FBFBF9</div><div class="use">Page ground. Warm off-white, flat, no texture.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #DADAD5"></div><div class="info"><div class="nm">White</div><div class="hex">#FFFFFF</div><div class="use">Cards and panels. Two-pixel ink border, no shadow.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1F2A37"></div><div class="info"><div class="nm">Navy</div><div class="hex">#1F2A37</div><div class="use">The masthead band, footers, figure plates, cover slides, dark cards. Where the weight is.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1E1B17"></div><div class="info"><div class="nm">Ink</div><div class="hex">#1E1B17</div><div class="use">Text, borders, headings.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#DE4A3C"></div><div class="info"><div class="nm">Coral</div><div class="hex">#DE4A3C</div><div class="use">The accent. One word in a heading, labels, links, numbers. Anything you read.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FF6F5E"></div><div class="info"><div class="nm">Coral bright</div><div class="hex">#FF6F5E</div><div class="use">Fills only. Badges, bars, the stripe in a figure, the rule under the band. Never small text on white.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FBE1D8"></div><div class="info"><div class="nm">Coral tint</div><div class="hex">#FBE1D8</div><div class="use">Tags, marks, highlighted lines. The pale wash.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5B6B7A"></div><div class="info"><div class="nm">Slate</div><div class="hex">#5B6B7A</div><div class="use">Ticks, secondary lines, figure detail. The quiet second colour.</div></div></div>
       <div class="sw"><div class="chip" style="background:#2B2823"></div><div class="info"><div class="nm">Body</div><div class="hex">#2B2823</div><div class="use">Running text on paper.</div></div></div>
       <div class="sw"><div class="chip" style="background:#3A3630"></div><div class="info"><div class="nm">Char</div><div class="hex">#3A3630</div><div class="use">Text inside cards and panels.</div></div></div>
-      <div class="sw"><div class="chip" style="background:#6F675C"></div><div class="info"><div class="nm">Mute</div><div class="hex">#6F675C</div><div class="use">Section notes and secondary lines.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#7A7A7A"></div><div class="info"><div class="nm">Mute</div><div class="hex">#7A7A7A</div><div class="use">Section notes and secondary lines.</div></div></div>
     </div>
   </section>
 
@@ -152,7 +154,7 @@ footer b{color:var(--paper);font-weight:500}
 
   <section>
     <div class="label">The card</div>
-    <p class="note">One component does most of the work. Three-pixel ink border, six-pixel hard offset shadow, no rounded corners. On hover it lifts two pixels and the shadow grows.</p>
+    <p class="note">One component does most of the work. White, two-pixel ink border, no shadow, no rounded corners. On hover the border turns coral.</p>
     <div class="demo">
       <div class="card"><div class="inner">
         <div class="date">23 August 2026</div>
@@ -174,12 +176,12 @@ footer b{color:var(--paper);font-weight:500}
   <section>
     <div class="label">Rules</div>
     <ul class="rules">
-      <li><b>Rust is the only accent.</b> One accent colour per page. Gold belongs to the old system and is retired.</li>
-      <li><b>Olive never carries text.</b> It exists for figures, ticks and confirmation marks.</li>
+      <li><b>Coral is the only accent.</b> Deep coral for anything you read. Bright coral for fills on navy and badges, never small text on white. The tint for tags. Rust, beige, black and gold are retired.</li>
+      <li><b>Slate never carries text.</b> It exists for ticks, secondary lines and figure detail.</li>
       <li><b>Uppercase Oswald for every heading.</b> Sentence case display type belongs to a different brand.</li>
       <li><b>Every label is mono, uppercase, letter spaced,</b> with a rule running off to the right.</li>
-      <li><b>Hard shadows, no blur, no radius.</b> The offset shadow is the signature. Soft shadows and rounded corners are the previous system.</li>
-      <li><b>Paper always carries the grid texture.</b> A flat paper ground looks unfinished.</li>
+      <li><b>Flat. No shadows, no blur, no radius.</b> Structure comes from the ink border, the navy blocks and thin rules. Offset shadows and rounded corners are previous systems.</li>
+      <li><b>The ground is flat.</b> Off-white, no texture. Weight comes from navy, not from pattern.</li>
       <li><b>Cards within a section share one type.</b> All image, or all text.</li>
       <li><b>Never ship a placeholder card.</b> An empty section is better than advertising an empty room.</li>
     </ul>
@@ -199,15 +201,17 @@ footer b{color:var(--paper);font-weight:500}
     <div class="label">Copy the tokens</div>
     <p class="note">Paste this block at the top of any new page. Every value on this page comes from it.</p>
 <pre>:root{
-  --paper:#EEE6D3;    /* page ground, with the grid texture */
-  --paper-2:#E4DAC4;  /* cards and panels */
-  --ink:#1E1B17;      /* mastheads, borders, headings, shadows */
-  --body:#2B2823;     /* running text */
-  --rust:#B8452A;     /* the only accent */
-  --olive:#6C7A3F;    /* figures and ticks only */
-  --char:#3A3630;     /* text inside cards */
-  --mute:#6F675C;     /* notes and secondary lines */
-  --grid:rgba(120,90,60,.13);
+  --paper:#FBFBF9;        /* page ground, flat, no texture */
+  --paper-2:#FFFFFF;      /* cards and panels */
+  --navy:#1F2A37;         /* masthead band, footers, figure plates, dark cards */
+  --ink:#1E1B17;          /* text, borders, headings */
+  --body:#2B2823;         /* running text */
+  --rust:#DE4A3C;         /* the accent: coral. anything you read */
+  --coral-bright:#FF6F5E; /* fills only: badges, bars, stripes */
+  --tint:#FBE1D8;         /* tags and marks */
+  --olive:#5B6B7A;        /* slate. ticks and figure detail */
+  --char:#3A3630;         /* text inside cards */
+  --mute:#7A7A7A;         /* notes and secondary lines */
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;

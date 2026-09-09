@@ -25,13 +25,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#EEE6D3;
-  --paper-2:#E4DAC4;
+  --paper:#FBFBF9;
+  --paper-2:#FFFFFF;
   --ink:#1E1B17;
+  --navy:#1F2A37;
+  --coral-bright:#FF6F5E;
+  --tint:#FBE1D8;
   --body:#2B2823;
-  --rust:#B8452A;
+  --rust:#DE4A3C;
   --char:#3A3630;
-  --mute:#6F675C;
+  --mute:#7A7A7A;
   --grid:rgba(120,90,60,.13);
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
@@ -42,20 +45,16 @@ html{scroll-behavior:smooth;background:var(--paper)}
 body{
   font-family:var(--sans);font-size:17px;line-height:1.6;color:var(--body);
   background-color:var(--paper);
-  background-image:
-    radial-gradient(var(--grid) 1.2px, transparent 1.3px),
-    linear-gradient(rgba(120,90,60,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(120,90,60,.05) 1px,transparent 1px);
-  background-size:26px 26px,26px 26px,26px 26px;
+  
   -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 40px}
 
-.masthead{background:var(--ink);color:var(--paper);padding:44px 0 52px;border-bottom:4px solid var(--rust)}
+.masthead{background:var(--navy);color:#F4F1EA;padding:44px 0 52px;border-bottom:4px solid var(--coral-bright)}
 .masthead .brand{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--paper);border-bottom:1px solid var(--rust);padding-bottom:4px;display:inline-block}
 .masthead h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(46px,8vw,88px);line-height:.9;letter-spacing:-.01em;margin-top:26px;color:var(--paper)}
 .masthead h1 em{font-style:normal;color:var(--rust)}
-.masthead p{font-size:18px;color:#C9BFAF;max-width:48ch;margin-top:20px;line-height:1.55}
+.masthead p{font-size:18px;color:#C8CDD3;max-width:48ch;margin-top:20px;line-height:1.55}
 
 main{padding:34px 0 20px}
 .back{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-bottom:34px}
@@ -68,13 +67,13 @@ section{margin-bottom:54px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .card{
   display:flex;flex-direction:column;text-decoration:none;color:inherit;
-  background:var(--paper-2);border:3px solid var(--ink);
-  box-shadow:6px 6px 0 var(--ink);
+  background:var(--paper-2);border:2px solid var(--ink);
+  
   transition:transform .14s ease, box-shadow .14s ease;
 }
-.card:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--ink)}
+.card:hover{border-color:var(--rust)}
 .card:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
-.card img{display:block;width:100%;height:auto;border-bottom:3px solid var(--ink);background:var(--paper)}
+.card img{display:block;width:100%;height:auto;border-bottom:2px solid var(--ink);background:var(--paper)}
 .card .inner{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
 .card .date{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
 .card h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.12;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
@@ -82,11 +81,11 @@ section{margin-bottom:54px}
 .card p{font-size:15.5px;color:var(--char);line-height:1.55;margin:0}
 .card .go{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-top:auto;padding-top:18px}
 
-.about{background:var(--paper-2);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:28px 30px;margin-bottom:46px;max-width:760px}
+.about{background:var(--paper-2);border:2px solid var(--ink);padding:28px 30px;margin-bottom:46px;max-width:760px}
 .about h2{font-family:var(--display);font-weight:600;font-size:24px;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
 .about p{font-size:15.5px;color:var(--char);line-height:1.6}
 
-footer{background:var(--ink);color:#9C9285;margin-top:40px;padding:34px 0}
+footer{background:var(--navy);color:#8E97A3;margin-top:40px;padding:34px 0}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 footer b{color:var(--paper);font-weight:500}
 
