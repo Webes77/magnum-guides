@@ -150,8 +150,9 @@ look; do not restyle it to the members area.
 The session ladder is complete at three. There is no session four. Decided
 on 3 Sep. Session three closes by pointing at paid build work, not another
 deck. On 9 Sep a fourth deck was added outside the ladder: `bots/`,
-Chatbots, Agents and Bots, a reference deck like Fine-Tune, linked from
-the front page under Your Sessions as "watch before session one". It
+Chatbots, Agents and Bots, a reference deck like Fine-Tune. On the front page it is block 00,
+Learn the words, at the front of the Start Here strip (now four blocks,
+`.grid.four`), and a reference line under Your Sessions. It
 came from a ChatGPT-written explainer James supplied, stress-tested and
 rebuilt: the four-level ladder (brain, helper, agent, standing agent),
 chatbot versus agent, automation versus agent, the parts of a bot, a
