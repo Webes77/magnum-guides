@@ -201,6 +201,41 @@ standard chats. That is what James's own Mac did on 3 and 11 Sep; nothing
 third-party was found either way. If a client reports the tools in a
 standard chat, the "What it cannot do" wording is the line to soften.
 
+The front page was reworked on 11 Sep after James said it read as busy,
+the writing was too light, and it needed a better index. The layout did not
+change: masthead, Start Here, the courses, the shelf, This Week, Tool
+Manuals and By Industry are where they were, and no URL moved. Seven
+previews were built and thrown away; James chose the original layout plus
+only what worked, and that is what shipped.
+
+What changed. The six levers now sit beside the masthead headline as six
+sliders, drawn in the deck's figure language, clear of the headline at
+1440, 1280 and 1024 and hidden under 820px. The section nav lifted out of
+the masthead into a bar that sticks to the top, marks the section you are
+in, and collapses to a dropdown under 820px. Contrast was measured, not
+eyeballed: `--mute` went from `#7A7A7A` (4.14:1) to `#63615C` (5.97:1), a
+new `--coral-text` `#C63A2A` (5.02:1) carries every small mono line, the
+section notes and card metadata moved onto body and char ink at weight
+500, and the dark card's date went bright coral (2.8:1 to 5.32:1). Every
+text and background pair on the page passes at both widths. One oversized
+levers watermark sits in the lower right of the paper, hidden on the phone
+and in print; it is a single mark, not a repeating texture, so the grid
+retired on 9 Sep stays retired. The copy is neutral for a public reader:
+courses rather than sessions, and no line assuming the reader sat in a
+room. The `#sessions` anchor is unchanged.
+
+`--rust` on the front page is now `#EF4029`, a hotter coral, used only on
+display type (the headline accent and the 00 to 03 numbers). Every other
+page still holds `#DE4A3C`. That is a deliberate split, not an oversight:
+James asked for more neon, neon cannot carry small text on white (`#FF6F5E`
+is 2.64:1 on paper), and taking the hotter value site-wide is the same
+sweep as 9 Sep across every page, all four decks, the shelf, the cards and
+the brand page. It waits for James to say go.
+
+Two things the front page still carries that James flagged and chose to
+keep: Start Here and the courses list the same three courses twice, which
+is baked into the layout he prefers, and the shelf appears in both places.
+
 On 7 Sep the homework slides came out of all three decks ("Before next
 time" in one and three, "Suggested Tasks" in two). James does not want
 anyone leaving with tasks. Make Claude Yours gained "The map" after "What
@@ -369,37 +404,46 @@ order of value:
 1. James has not yet looked at the Manus Bridge walkthrough live, on a
    phone or a laptop. That is the next thing.
 
-2. James to look at the rebuilt front page and the indexed shelf live, on
-   a phone as well as a laptop. Both were verified locally only.
-3. James to glance at Make Claude Yours slide 31 in the live desktop app.
+2. The hotter coral. `--rust` `#EF4029` is on the front page only. If
+   James wants it everywhere it is a scripted pass across every page, all
+   four decks, the shelf, the card sources, the eleven share cards and the
+   brand page, plus the house style skill and its two reference files, and
+   the deck check after. If he does not, the front page reverts to
+   `#DE4A3C` in one edit. Do not leave it split for long.
+
+3. James to look at the reworked front page and the indexed shelf live, on
+   a phone as well as a laptop. Both were verified locally only. The
+   sticky nav's dropdown only appears under 820px, so the phone is the
+   only place to check it.
+4. James to glance at Make Claude Yours slide 31 in the live desktop app.
    Sources agree with the slide; nobody has seen the menu itself from here.
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-4. The newsletter routines need three things from James before Saturday
+5. The newsletter routines need three things from James before Saturday
    12 Sep: attach Gmail and Google Drive to the three This Week in AI
    routines in the Routines UI; add the `magnum-newsletter` repo to the
    routine environment's sources so the publish run can push (until then
    it falls back to Drive and an email with the manual command); and
    nothing else. The first draft lands Saturday 12 Sep 6am.
-5. James to check the front page live: This Week should show the Field
+6. James to check the front page live: This Week should show the Field
    Note card, the latest edition card, and under them the three earlier
    Field Notes beside the three previous editions. The
    `sunday-brief/2026-09-06` branch is done with and can be deleted on
    GitHub.
-6. Done 6 Sep: the routine carries the mechanical duplicate test. A
+7. Done 6 Sep: the routine carries the mechanical duplicate test. A
    session can now update the routine prompt itself with `update_trigger`
    and read it back with `list_triggers`; the how is in
    `notes/sunday-brief-prompt.md`. Next run is Sunday 13 Sep, 6am.
-7. The desktop folders, once James uploads them. The only material never
+8. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-8. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
+9. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
    2, by hand, since the Gamma connector cannot move or delete. The Drive
    tidy ran on 4 Sep: the retired January to March workspace is archived,
    duplicates sit in `_Review before deleting 2026-09` under Magnum
    Business for James to empty, and the log is `_Declutter log` in the same
    folder. Two loose PNGs and the API Key folder are still James's call.
-9. Industry guide, one only, once James names the trade.
+10. Industry guide, one only, once James names the trade.
 
 ## How things get built
 
