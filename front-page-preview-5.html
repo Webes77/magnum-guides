@@ -63,7 +63,7 @@ body{
 .masthead p{font-size:18px;color:#C8CDD3;max-width:46ch;margin-top:20px;line-height:1.55}
 
 /* SECTIONS */
-main.wrap{padding-top:34px;padding-bottom:54px}
+main.wrap{padding-top:34px;padding-bottom:26px}
 section{margin-bottom:54px}
 .label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;gap:14px;margin-bottom:8px}
 .label::after{content:"";flex:1;height:2px;background:var(--ink)}
@@ -197,6 +197,7 @@ footer b{color:var(--paper);font-weight:500}
 
 /* RANK · everything below the courses sits a level down */
 .quiet{margin-bottom:42px}
+#week{margin-bottom:10px}
 .quiet .label{font-size:11px;letter-spacing:.20em;margin-bottom:6px}
 .quiet .label::after{height:1px;background:rgba(30,27,23,.35)}
 .quiet .note{font-size:14.5px;margin-bottom:18px}
@@ -394,6 +395,21 @@ section,.start{scroll-margin-top:64px}
 .opening .say{font-size:16.5px}
 @media(max-width:820px){
   .opening .intro{grid-template-columns:1fr;gap:18px}
+}
+
+/* coral for reading is too dark on navy: the dark cards take the bright one */
+.card.dark .date{color:var(--coral-bright)}
+
+/* the reference band had its three lines jammed together */
+.band .cols{gap:0 76px}
+.shelf-list a{padding:22px 0}
+.shelf-list .m{color:var(--coral-bright);font-size:11px;margin-bottom:9px}
+.shelf-list h4{font-size:19px;margin:0 0 8px;letter-spacing:.005em}
+.shelf-list p{font-size:15px;line-height:1.5;color:#D2D7DC;max-width:44ch}
+.band .note{margin-bottom:14px}
+@media(max-width:820px){
+  .band .cols{gap:0}
+  .shelf-list a{padding:20px 0}
 }
 </style>
 </head>
