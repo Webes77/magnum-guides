@@ -183,6 +183,24 @@ check covers it. The shelf is 37 cards.
 | Three, Work That Runs Without You | `runs-without-you/` | 17 | 4 |
 | Reference, Chatbots, Agents and Bots | `bots/` | 26 | 3 |
 
+The Manus Bridge walkthrough went live on 11 Sep as the second Tool
+Manual, at `manus-bridge/`, with its card source beside it and the card at
+`assets/thumbnails/manus-bridge.jpg`. It qualifies under the 4 Sep Tool
+Manuals rule on both counts: Manus does a job Claude does not, and the
+bridge has done paid work (one client at $250 plus GST as the test install,
+a second quoted at $500 plus GST). The page is one file in the house style:
+what it is, how it operates, what it can and cannot do, a five-stage
+run-through with copy buttons, and three habits. The example products are
+five office chairs from a furniture catalogue with supplier names and SKUs;
+the client's name was removed under hard rule 5. The bridge itself is not in
+this repo; it ships to clients as a zip from James's Mac. Not a deck, so
+`tools/check-decks.js` does not cover it. One claim on the page is observed,
+not search-verified, under hard rule 10: that servers added through
+`claude_desktop_config.json` show their tools in Cowork sessions and not in
+standard chats. That is what James's own Mac did on 3 and 11 Sep; nothing
+third-party was found either way. If a client reports the tools in a
+standard chat, the "What it cannot do" wording is the line to soften.
+
 On 7 Sep the homework slides came out of all three decks ("Before next
 time" in one and three, "Suggested Tasks" in two). James does not want
 anyone leaving with tasks. Make Claude Yours gained "The map" after "What
@@ -348,37 +366,40 @@ order of value:
    given in chat, and nothing should be deleted, only moved to a dated
    review folder.
 
-1. James to look at the rebuilt front page and the indexed shelf live, on
+1. James has not yet looked at the Manus Bridge walkthrough live, on a
+   phone or a laptop. That is the next thing.
+
+2. James to look at the rebuilt front page and the indexed shelf live, on
    a phone as well as a laptop. Both were verified locally only.
-2. James to glance at Make Claude Yours slide 31 in the live desktop app.
+3. James to glance at Make Claude Yours slide 31 in the live desktop app.
    Sources agree with the slide; nobody has seen the menu itself from here.
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-3. The newsletter routines need three things from James before Saturday
+4. The newsletter routines need three things from James before Saturday
    12 Sep: attach Gmail and Google Drive to the three This Week in AI
    routines in the Routines UI; add the `magnum-newsletter` repo to the
    routine environment's sources so the publish run can push (until then
    it falls back to Drive and an email with the manual command); and
    nothing else. The first draft lands Saturday 12 Sep 6am.
-4. James to check the front page live: This Week should show the Field
+5. James to check the front page live: This Week should show the Field
    Note card, the latest edition card, and under them the three earlier
    Field Notes beside the three previous editions. The
    `sunday-brief/2026-09-06` branch is done with and can be deleted on
    GitHub.
-5. Done 6 Sep: the routine carries the mechanical duplicate test. A
+6. Done 6 Sep: the routine carries the mechanical duplicate test. A
    session can now update the routine prompt itself with `update_trigger`
    and read it back with `list_triggers`; the how is in
    `notes/sunday-brief-prompt.md`. Next run is Sunday 13 Sep, 6am.
-6. The desktop folders, once James uploads them. The only material never
+7. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-7. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
+8. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
    2, by hand, since the Gamma connector cannot move or delete. The Drive
    tidy ran on 4 Sep: the retired January to March workspace is archived,
    duplicates sit in `_Review before deleting 2026-09` under Magnum
    Business for James to empty, and the log is `_Declutter log` in the same
    folder. Two loose PNGs and the API Key folder are still James's call.
-8. Industry guide, one only, once James names the trade.
+9. Industry guide, one only, once James names the trade.
 
 ## How things get built
 

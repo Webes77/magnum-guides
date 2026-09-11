@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Manus Bridge Walkthrough · card</title>
+<!--
+  CARD SOURCE · Manus Bridge Walkthrough
+  ======================================
+  The 1200x630 card for the members area home page and for link previews.
+  Built from ../templates/guide-thumbnail.html.
+
+  To re-render after an edit: render at a true 1200x630 viewport, quality 90,
+  and save the JPEG to ../assets/thumbnails/manus-bridge.jpg
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFBF9;
+  --paper-deep:#FBE1D8;
+  --ink:#1E1B17;
+  --navy:#1F2A37;
+  --coral-bright:#FF6F5E;
+  --tint:#FBE1D8;
+  --rust:#DE4A3C;
+  --tan:#FBE1D8;
+  --olive:#5B6B7A;
+  --charcoal:#3A3630;
+  --taupe:#7A7A7A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:630px;overflow:hidden;background:#1F2A37;font-family:'IBM Plex Sans',Arial,sans-serif;color:var(--ink)}
+
+.card{
+  width:1200px;height:630px;
+  background-color:var(--paper);
+  border:11px solid #1F2A37;
+  padding:34px 42px 26px;
+  display:flex;flex-direction:column;
+}
+
+.masthead{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:4px solid var(--ink);padding-bottom:12px;gap:16px}
+.mh-title{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:700;font-size:23px;letter-spacing:.16em;text-transform:uppercase;line-height:1;display:block}
+.mh-sub{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--charcoal);display:block;margin-top:8px}
+.mh-issue{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:600;font-size:19px;letter-spacing:.1em;border:3px solid var(--ink);padding:4px 14px 5px;background:var(--paper-deep);white-space:nowrap}
+
+.body{flex:1;display:grid;grid-template-columns:1.2fr .8fr;gap:34px;padding-top:24px;min-height:0}
+
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";flex:1;height:3px;background:var(--ink);opacity:.85}
+
+h1{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:700;text-transform:uppercase;line-height:.94;letter-spacing:-.005em;font-size:64px;margin-top:16px}
+.kicker{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:26px;text-transform:uppercase;letter-spacing:.03em;color:var(--rust);margin-top:16px}
+.slug{margin-top:auto;border-top:3px solid var(--ink);padding-top:12px;display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--charcoal)}
+.slug b{font-weight:600;color:var(--rust)}
+.left{display:flex;flex-direction:column;min-height:0}
+
+.plate{background:var(--navy);border:4px solid var(--ink);padding:20px 22px 18px;display:flex;flex-direction:column;justify-content:space-between;min-height:0;overflow:hidden}
+.doc-wrap{flex:1 1 0;display:flex;align-items:center;justify-content:center;padding-bottom:6px;min-height:0}
+.doc-wrap svg{width:auto;height:100%;max-width:100%;display:block}
+.plate-cap{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#F4F1EA;border-top:3px solid rgba(244,241,234,.5);padding-top:10px;margin-top:14px;line-height:1.6}
+
+.foot{border-top:3px solid var(--ink);margin-top:20px;padding-top:11px;display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal)}
+.foot .mid{color:var(--taupe)}
+.foot .pg{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Tool manual</span>
+      <span class="mh-sub">Magnum AI</span>
+    </div>
+    <div class="mh-issue">45 Min</div>
+  </header>
+
+  <div class="body">
+    <div class="left">
+      <div class="eyebrow">Manus Bridge</div>
+      <h1>Brief<br>Claude.<br>Manus<br>builds it.</h1>
+      <div class="kicker">One loop. No copy and paste.</div>
+      <div class="slug">
+        <span><b>Works in</b> Claude Cowork and Manus</span>
+        <span><b>You need</b> both accounts</span>
+      </div>
+    </div>
+
+    <div class="plate">
+      <div class="doc-wrap">
+        <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Claude and Manus joined by a loop. The revision goes back into the same job.">
+          <!-- two white stations -->
+          <rect x="18" y="86" width="140" height="86" fill="#F4F1EA" stroke="#F4F1EA" stroke-width="4"/>
+          <rect x="222" y="86" width="140" height="86" fill="#F4F1EA" stroke="#F4F1EA" stroke-width="4"/>
+          <text x="88" y="124" text-anchor="middle" fill="#1F2A37" font-family="Oswald,'Arial Narrow',sans-serif" font-weight="700" font-size="24" letter-spacing="1">CLAUDE</text>
+          <text x="88" y="150" text-anchor="middle" fill="#5B6B7A" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="2">BRIEFS. READS.</text>
+          <text x="292" y="124" text-anchor="middle" fill="#1F2A37" font-family="Oswald,'Arial Narrow',sans-serif" font-weight="700" font-size="24" letter-spacing="1">MANUS</text>
+          <text x="292" y="150" text-anchor="middle" fill="#5B6B7A" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="2">BUILDS.</text>
+          <!-- forward: white -->
+          <path d="M162 112 L212 112" stroke="#F4F1EA" stroke-width="5" fill="none"/>
+          <path d="M218 112 l-12 -7 v14 z" fill="#F4F1EA"/>
+          <!-- back: the one bright coral stripe, the revision into the same job -->
+          <path d="M292 176 L292 236 L88 236 L88 180" stroke="#FF6F5E" stroke-width="6" fill="none"/>
+          <path d="M88 174 l-8 12 h16 z" fill="#FF6F5E"/>
+          <text x="190" y="262" text-anchor="middle" fill="#FF6F5E" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="2.4">SAME JOB, CONTEXT KEPT</text>
+          <!-- slate ticks -->
+          <g stroke="#5B6B7A" stroke-width="3">
+            <path d="M18 60 v10"/><path d="M88 60 v10"/><path d="M158 60 v10"/>
+            <path d="M222 60 v10"/><path d="M292 60 v10"/><path d="M362 60 v10"/>
+          </g>
+          <path d="M18 66 H362" stroke="#5B6B7A" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="plate-cap">Fig. 01 / The revision goes back into the job that built it<br>Published by Magnum AI</div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>Five prompts, in order</span>
+    <span class="mid">Brief / Send / Build / Read / Revise</span>
+    <span class="pg">Magnum AI</span>
+  </footer>
+
+</div>
+</body>
+</html>

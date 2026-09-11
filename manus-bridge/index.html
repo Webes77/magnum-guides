@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manus Bridge Walkthrough · Magnum AI</title>
+<meta name="description" content="What the Manus Bridge is, how the loop works, what it will and will not do, and five prompts you run in order to see it for yourself.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/manus-bridge/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Manus Bridge Walkthrough">
+<meta property="og:description" content="Brief Claude. Manus builds it. One loop, no copy and paste.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/manus-bridge/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/manus-bridge.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Manus Bridge Walkthrough, a Magnum AI tool manual">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Manus Bridge Walkthrough">
+<meta name="twitter:description" content="Brief Claude. Manus builds it. One loop, no copy and paste.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/manus-bridge.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+    --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+    --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+    --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+    --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  :root{color-scheme:light}
+  html,body{background:#FBFBF9 !important;color:#2B2823;}
+  body{
+    color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;
+    margin:0;padding:0 20px 90px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:48px 0 26px;margin:0 -20px 40px;}
+  .masthead .wrap{padding:0 20px;}
+  .masthead h1{color:var(--on-navy);}
+  .masthead h1 em{color:var(--coral-bright);}
+  .masthead .label{color:var(--coral-bright);}
+  .masthead .label::after{background:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  h1{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h1 em,h2 em,h3 em{font-style:normal;color:var(--rust);}
+
+  /* contents strip */
+  .contents{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 48px;padding:0;list-style:none;
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;
+  }
+  .contents a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:2px;}
+  .contents a:hover,.contents a:focus-visible{color:var(--rust);outline:none;}
+
+  section{margin:0 0 56px;scroll-margin-top:24px;}
+  .label{
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.20em;
+    color:var(--rust);margin:0 0 16px;display:flex;align-items:center;gap:14px;
+  }
+  .label::after{content:"";flex:1;height:1px;background:var(--ink);}
+  h2{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(26px,4vw,36px);line-height:1.05;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h3{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:22px;line-height:1.1;color:var(--ink);margin:0 0 10px;
+  }
+  p{max-width:64ch;}
+  p.lead{font-size:18px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+  .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 22px 24px;}
+  .card h3{font-size:20px;margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--char);margin:0;max-width:none;}
+  .card ul{margin:0;padding:0;list-style:none;}
+  .card li{font-size:15.5px;color:var(--char);padding:7px 0 7px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12);}
+  .card li:last-child{border-bottom:none;}
+  .card li::before{position:absolute;left:0;top:7px;font-family:var(--mono);font-size:13px;font-weight:500;}
+  .yes li::before{content:"\2713";color:var(--olive);}
+  .stop li::before{content:"\2715";color:var(--rust);}
+
+  .figure{margin:0 0 20px;overflow-x:auto;}
+  .figure svg{display:block;min-width:640px;width:100%;height:auto;}
+  figcaption{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-top:12px;}
+
+  /* stages */
+  .stage{border-top:2px solid var(--ink);padding-top:22px;margin-top:34px;}
+  .stage-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;}
+  .stage-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--rust);}
+  .stage-time{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-left:auto;white-space:nowrap;}
+
+  .prompt{position:relative;margin:16px 0 18px;}
+  .prompt pre{
+    font-family:var(--mono);font-size:13px;line-height:1.55;background:var(--paper-2);
+    border:2px solid var(--ink);padding:18px 20px 18px;
+    margin:0;white-space:pre-wrap;word-break:break-word;color:var(--ink);
+  }
+  .copy{
+    position:absolute;top:-14px;right:14px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    background:var(--navy);color:#FFFFFF;border:0;padding:7px 12px;cursor:pointer;
+    transition:transform .12s ease,background .12s ease;
+  }
+  .copy:hover,.copy:focus-visible{background:var(--rust);outline:none;transform:translateY(-2px);}
+  .copy.done{background:var(--tint);color:var(--ink);}
+
+  .say{
+    border-left:5px solid var(--rust);background:var(--tint);
+    padding:12px 16px;margin:0 0 6px;max-width:64ch;
+  }
+  .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
+  .say strong{color:var(--rust);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+
+  .tablewrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);}
+  table{border-collapse:collapse;width:100%;min-width:520px;}
+  th,td{text-align:left;padding:12px 18px;border-bottom:1px solid rgba(30,27,23,.16);vertical-align:top;font-size:15.5px;color:var(--char);}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.gone{color:var(--mute);text-decoration:line-through;}
+  td.mono{font-family:var(--mono);font-size:13.5px;color:var(--ink);white-space:nowrap;}
+
+  code{font-family:var(--mono);font-size:13.5px;background:var(--paper-2);border:1px solid rgba(30,27,23,.28);padding:1px 6px;color:var(--ink);}
+
+  footer{background:var(--navy);color:var(--on-navy-mute);margin-top:60px;padding:22px 20px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  }
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .card{break-inside:avoid}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+    <p class="label"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;·&nbsp; Members walkthrough &nbsp;·&nbsp; 45 minutes</p>
+    <h1>Manus Bridge <em>Walkthrough</em></h1>
+    <p class="sub">What it is, how it works, what it will and will not do, and five prompts you run in order to see it for yourself. Have Cowork open in another window before you start.</p>
+  </div></header>
+  <div class="wrap">
+
+  <ul class="contents">
+    <li><a href="#what">What it is</a></li>
+    <li><a href="#how">How it operates</a></li>
+    <li><a href="#can">What it can do</a></li>
+    <li><a href="#cant">What it cannot do</a></li>
+    <li><a href="#run">The run-through</a></li>
+    <li><a href="#habits">Three habits</a></li>
+  </ul>
+
+  <!-- ============ WHAT IT IS ============ -->
+  <section id="what">
+    <p class="label">01 · What it is</p>
+    <h2>One conversation instead of two</h2>
+    <p class="lead">Manus builds things. Claude briefs, judges and revises them. Used separately, you are the courier: write the brief in Claude, paste it into Manus, wait, copy the result back into Claude, explain what is wrong, screenshot it, paste the fix into Manus, and watch Manus rebuild half of what was already right.</p>
+    <p>The bridge is a small program on your own machine that connects the two. Claude starts the Manus job, watches it, reads the result, and sends your revision into the <em>same</em> job. You never leave the window. Nothing is uploaded anywhere new and your Manus key stays on your computer.</p>
+  </section>
+
+  <!-- ============ HOW IT OPERATES ============ -->
+  <section id="how">
+    <p class="label">02 · How it operates</p>
+    <h2>Brief, send, build, read, revise</h2>
+    <figure class="figure">
+      <svg viewBox="0 0 880 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five stage loop: brief, send, build, read and revise, with revisions returning into the same Manus job.">
+        <g fill="none" stroke="#1E1B17" stroke-width="3">
+          <rect x="12" y="46" width="142" height="60"/><rect x="190" y="46" width="142" height="60"/>
+          <rect x="368" y="46" width="142" height="60"/><rect x="546" y="46" width="142" height="60"/>
+          <rect x="724" y="46" width="142" height="60"/>
+        </g>
+        <g fill="#7A7A7A" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.6">
+          <text x="12" y="34">01</text><text x="190" y="34">02</text><text x="368" y="34">03</text>
+          <text x="546" y="34">04</text><text x="724" y="34">05</text>
+        </g>
+        <g fill="#1E1B17" font-family="Oswald,'Arial Narrow',sans-serif" font-weight="600" font-size="19" letter-spacing="0.5">
+          <text x="34" y="76">BRIEF</text><text x="212" y="76">SEND</text><text x="390" y="76">BUILD</text>
+          <text x="568" y="76">READ</text><text x="746" y="76">REVISE</text>
+        </g>
+        <g fill="#7A7A7A" font-family="'IBM Plex Sans',sans-serif" font-size="12.5">
+          <text x="34" y="95">in Claude</text><text x="212" y="95">to Manus</text><text x="390" y="95">Manus works</text>
+          <text x="568" y="95">back in Claude</text><text x="746" y="95">you approve</text>
+        </g>
+        <g stroke="#1E1B17" stroke-width="3" fill="none">
+          <path d="M154 76 L184 76"/><path d="M332 76 L362 76"/><path d="M510 76 L540 76"/><path d="M688 76 L718 76"/>
+        </g>
+        <g fill="#1E1B17">
+          <path d="M184 76 l-9 -5 v10 z"/><path d="M362 76 l-9 -5 v10 z"/><path d="M540 76 l-9 -5 v10 z"/><path d="M718 76 l-9 -5 v10 z"/>
+        </g>
+        <path d="M795 106 L795 176 L439 176 L439 112" fill="none" stroke="#DE4A3C" stroke-width="3" stroke-dasharray="9 7"/>
+        <path d="M439 112 l-6 11 h12 z" fill="#DE4A3C"/>
+        <text x="459" y="200" fill="#DE4A3C" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="2.2">SAME JOB, FULL CONTEXT KEPT</text>
+      </svg>
+      <figcaption>The red line is the whole product. A revision goes back into the job that built it.</figcaption>
+    </figure>
+    <p>Five tools appear in Claude once it is installed. You will not type their names much, because you ask in plain English and Claude picks the right one. But it helps to know what is there.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">manus_create_task</td><td>Starts a job. <code>lite</code> for drafts, <code>standard</code> for real work, <code>max</code> when quality beats credits.</td></tr>
+          <tr><td class="mono">manus_get_status</td><td>Running, waiting on you, finished or failed.</td></tr>
+          <tr><td class="mono">manus_get_result</td><td>Reads back what Manus said and made, files included.</td></tr>
+          <tr><td class="mono">manus_send_message</td><td>Sends a revision into the same job.</td></tr>
+          <tr><td class="mono">manus_confirm_action</td><td>Approves something Manus paused on. Never fires without you.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT CAN DO ============ -->
+  <section id="can">
+    <p class="label">03 · What it can do</p>
+    <h2>Anything Manus builds, in one loop</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Pages and sites</h3>
+        <p>Landing pages, collection pages, campaign pages, whole small sites. Manus builds them, Claude checks them against your brief, you revise in a sentence.</p>
+      </div>
+      <div class="card">
+        <h3>Copy at volume</h3>
+        <p>Product descriptions, category copy, SEO fields, email sequences. Brief the voice once, do twenty at a time, fix the three that missed without touching the seventeen that landed.</p>
+      </div>
+      <div class="card">
+        <h3>Code and templates</h3>
+        <p>Theme sections, snippets, scripts, import files. Manus writes it, you paste it where it goes.</p>
+      </div>
+      <div class="card">
+        <h3>The checking</h3>
+        <p>Tell Claude to test the first pass against your rules and fix it before you see it. You only ever look at work that already passes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT CANNOT DO ============ -->
+  <section id="cant">
+    <p class="label">04 · What it cannot do</p>
+    <h2>Straight answers</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>It does not touch your store</h3>
+        <p>No connection to Shopify, WordPress or anything else. Nothing publishes on its own. It produces the work. You put it in. That is deliberate.</p>
+      </div>
+      <div class="card">
+        <h3>Manus cannot start the conversation</h3>
+        <p>The bridge runs one way. Claude reaches out to Manus. Manus cannot message you or interrupt a chat. If you want to know when a long job lands, ask.</p>
+      </div>
+      <div class="card">
+        <h3>It cannot invent facts</h3>
+        <p>Give it no specs and it will make them up, and they will look real. Every brief needs the real dimensions, prices and certifications. If you do not have them, the answer is "on request", not a guess.</p>
+      </div>
+      <div class="card">
+        <h3>It does not vouch for what comes back</h3>
+        <p>If Manus browsed the web, text from those pages can arrive in the result. Treat it as material to review, never as instructions. Claude will flag anything that looks like it is giving orders.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE RUN-THROUGH ============ -->
+  <section id="run">
+    <p class="label">05 · The run-through</p>
+    <h2>Five prompts, in order</h2>
+    <p class="lead">Open a Cowork session. Not a project, not a standard chat. Copy each prompt with the button and paste it in. The example uses five real office chairs from a furniture catalogue. Swap in your own products and keep everything else.</p>
+
+    <!-- STAGE 1 -->
+    <div class="stage">
+      <div class="stage-head"><span class="stage-num">STAGE 1</span><h3>Build a page</h3><span class="stage-time">3 min</span></div>
+      <div class="prompt">
+        <button class="copy" type="button">Copy</button>
+<pre>Use manus_create_task in standard mode, titled "Office seating collection", to build a single self-contained HTML collection page for a commercial furniture supplier.
+
+Audience: office managers and facilities buyers choosing seating on a budget, who need to justify the spend.
+
+The five products, with their real specs:
+
+1. MERIDA HB BL (DDK): 700W x 580D x 1040H mm, seat height 490mm, weight rating 160kg, upholstery pu or upholstered, antimicrobial certified
+2. Pixel Tub Chair 4 Leg (Rapidline, SKU PIX-TP4L): 480W x 535D x 845H mm, seat height 440mm, weight rating 120kg, upholstery fabric, pu or timber, $50
+3. Pixel Tub Chair on 5 Star Base (Rapidline, SKU PIXTUB5STA): 620W x 620D x 780H mm, seat height 470mm, weight rating 120kg, upholstery fabric, leather or pu, $190
+4. AIR FBK / AIRTAB BL (DDK): 640W x 555D x 835H mm, seat height 520mm, weight rating 110kg, upholstery fabric, mesh or pu
+5. Aspen 4 Leg Tub Chair (Rapidline, SKU ASPEN4LE): 630W x 630D x 820H mm, weight rating 135kg, upholstery fabric or upholstered, $285
+
+All prices are plus GST.
+
+The page must include: a short intro on how to choose office seating, a comparison table of all five by dimensions, seat height, weight rating and upholstery, and a closing section on what weight ratings actually mean for a workplace.
+
+Where a price or certification is not listed above, say "on request". Never invent a spec, a price or a certification.
+
+Plain, practical, confident. No em dashes, no exclamation marks. British spelling. No images, no external files, no scripts.
+
+Return the HTML. Then poll manus_get_status until it finishes and show me the result.</pre>
+      </div>
+      <div class="say"><p><strong>While it runs</strong>Normally you would be sat in Manus watching this, then copying it into Claude to check. You are doing neither. It will tell you when it is done. If Manus pauses to approve a setup step, that is normal. Approve it.</p></div>
+    </div>
+
+    <!-- STAGE 2 -->
+    <div class="stage">
+      <div class="stage-head"><span class="stage-num">STAGE 2</span><h3>The revision</h3><span class="stage-time">2 min</span></div>
+      <p>This is the one that matters. Everything else is setup for this.</p>
+      <div class="prompt">
+        <button class="copy" type="button">Copy</button>
+<pre>Send a revision with manus_send_message: make the weight ratings section twice as long and move it above the comparison table. Change nothing else.</pre>
+      </div>
+      <div class="say"><p><strong>What to look for</strong>The table is identical. The intro is identical. Only the section you named moved. If you had started a new Manus job for that, you would have a different page. This kept everything and changed one thing.</p></div>
+    </div>
+
+    <!-- STAGE 3 -->
+    <div class="stage">
+      <div class="stage-head"><span class="stage-num">STAGE 3</span><h3>A fussy change</h3><span class="stage-time">2 min</span></div>
+      <p>Prove it holds under precision, not just big moves.</p>
+      <div class="prompt">
+        <button class="copy" type="button">Copy</button>
+<pre>Send a revision with manus_send_message: in the comparison table, add a column showing seat height in centimetres alongside the millimetre figure. Leave every other value and all the prose exactly as it is.</pre>
+      </div>
+      <div class="say"><p><strong>What to look for</strong>One new column, correct maths, nothing else touched. This is the kind of change that used to cost you a rebuild.</p></div>
+    </div>
+
+    <!-- STAGE 4 -->
+    <div class="stage">
+      <div class="stage-head"><span class="stage-num">STAGE 4</span><h3>Let Claude do the checking</h3><span class="stage-time">4 min</span></div>
+      <p>Manus gets the first pass wrong more often than not. This is how you stop ever seeing it.</p>
+      <div class="prompt">
+        <button class="copy" type="button">Copy</button>
+<pre>Use manus_create_task in standard mode to write product descriptions for the same five products, 120 to 160 words each, same voice and same rules as before.
+
+Before you show me anything, check the result against every rule: word counts, no invented specs, no em dashes, no exclamation marks, British spelling. If anything fails, send the fixes into the same Manus job. Do not start a new job. Only show me the result once it passes, and tell me what you had to fix.</pre>
+      </div>
+      <div class="say"><p><strong>What to look for</strong>Claude will usually report that it had to fix something. That was the pass you would have seen, screenshotted and explained by hand. You never saw it.</p></div>
+    </div>
+
+    <!-- STAGE 5 -->
+    <div class="stage">
+      <div class="stage-head"><span class="stage-num">STAGE 5</span><h3>Your own products</h3><span class="stage-time">5 min</span></div>
+      <p>Now do Stage 1 again with five of your own products. Real specs, real names. Do this before the session ends or it will not stick.</p>
+      <div class="prompt">
+        <button class="copy" type="button">Copy</button>
+<pre>Use manus_create_task in standard mode, titled "[YOUR COLLECTION NAME]", to build a single self-contained HTML collection page.
+
+Audience: [WHO BUYS AND WHAT THEY NEED TO JUSTIFY]
+
+The products, with their real specs:
+1. [NAME (SUPPLIER, SKU): dimensions, key specs, price]
+2. [...]
+3. [...]
+4. [...]
+5. [...]
+
+The page must include: a short intro on how to choose, a comparison table of all five by the specs that matter, and a closing section on [THE THING BUYERS ASK ABOUT].
+
+Where a spec is not listed above, say "on request". Never invent a spec, a price or a certification.
+
+Plain, practical, confident. No em dashes, no exclamation marks. British spelling. No images, no external files, no scripts.
+
+Return the HTML. Then poll manus_get_status until it finishes and show me the result.</pre>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="stage-head"><span class="stage-num">THEN</span><h3>What just disappeared</h3></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Before</th><th>Now</th></tr></thead>
+          <tbody>
+            <tr><td>Write the brief in Manus</td><td>Write the brief in Claude</td></tr>
+            <tr><td class="gone">Sit and watch it build</td><td>Get told when it is done</td></tr>
+            <tr><td class="gone">Copy the output out of Manus</td><td>It is already in front of you</td></tr>
+            <tr><td class="gone">Paste it into Claude</td><td></td></tr>
+            <tr><td class="gone">Screenshot what is wrong</td><td></td></tr>
+            <tr><td class="gone">Explain it again in Manus</td><td>One sentence, same job</td></tr>
+            <tr><td class="gone">Manus rebuilds half of it</td><td>Only what you asked for changes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HABITS ============ -->
+  <section id="habits">
+    <p class="label">06 · Three habits</p>
+    <h2>What separates people who use it from people who stop</h2>
+    <div class="cards">
+      <div class="card yes">
+        <h3>Never ship pass one</h3>
+        <ul>
+          <li>Manus loses the brief mid-task. Often.</li>
+          <li>Check the first result against your rules</li>
+          <li>Or make Claude check it, as in Stage 4</li>
+          <li>One revision usually fixes it</li>
+        </ul>
+      </div>
+      <div class="card yes">
+        <h3>The brief is the skill</h3>
+        <ul>
+          <li>Name the deliverable exactly</li>
+          <li>Give real specs, never "make it good"</li>
+          <li>List what it must never do</li>
+          <li>Say what to return</li>
+        </ul>
+      </div>
+      <div class="card stop">
+        <h3>Know where to stop</h3>
+        <ul>
+          <li>Approve scaffolds and file writes freely</li>
+          <li>Stop on anything that deploys publicly</li>
+          <li>Stop on sending email or messages</li>
+          <li>Stop on outside accounts or credit warnings</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:22px">The first solo brief is usually too vague, and the result gets blamed on Manus. Knowing that in advance turns it into a lesson instead of a support call.</p>
+  </section>
+
+  <footer>
+    <span>magnumai.com.au</span>
+    <span>Manus Bridge v1.0</span>
+    <span>Members walkthrough · plus GST</span>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = btn.parentElement.querySelector('pre');
+      var text = pre.innerText;
+      function done() {
+        btn.textContent = 'Copied';
+        btn.classList.add('done');
+        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(); });
+      } else { fallback(); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        s.removeAllRanges();
+      }
+    });
+  });
+</script>
+</body>
+</html>
