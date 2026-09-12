@@ -125,3 +125,23 @@ four-block card.
 
 Both cards are on the shelf, 39 in total, carrying `added:'2026-09-12'`.
 They show New until 26 Sep.
+
+### Corrected the same day
+
+James read `four-block-image` on the live shelf and said it gave the
+reader nothing. He was right, and the review missed it. Against the
+standards it failed part one item five, examples are the strongest
+steering tool: the card carried four labels and four descriptions of what
+to write, and no example at all. It also failed the golden rule in item
+one, because "describe the visual treatment" tells a reader with no
+context nothing they did not already know.
+
+Rewritten to show one filled-in brief (a walnut dining chair shot for a
+square social tile, space kept clear for a headline) above the blank, and
+the placeholders now name the kind of input wanted rather than repeating
+the block name. The two closing rules gained their reasons, per item two.
+Nothing else about the card moved.
+
+The lesson for the routine: a card made only of placeholders passes every
+mechanical check and still teaches nothing. Ask of every prompt card
+whether a reader could write a good one straight after reading it.

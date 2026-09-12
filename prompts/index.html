@@ -294,18 +294,33 @@ const S=[
 
 /* ---------- From the Sunday Brief ---------- */
 {kind:'prompt', id:'four-block-image', sec:'From the Sunday Brief', title:'Structure an image prompt in four blocks', where:'Briefing an AI image tool for anything client-facing: a social tile, a hero image, a product shot.', type:'image', when:'start', hook:"Get on-brand images every time by briefing your AI like a designer would.", added:'2026-09-12', levers:['Context','Constraints','Format','Output'],
-prompt:`SUBJECT: [describe literally what should be in the frame]
+prompt:`Four blocks, one per line. Here is one filled in, then the blank
+to copy.
 
-STYLE: [describe the visual treatment, medium, mood and lighting]
+WORKED EXAMPLE
 
-LAYOUT: [describe the composition: where the subject sits, how
-much space around it, any areas reserved for text]
+SUBJECT: One mid-century walnut dining chair, three-quarter view,
+standing on a plain concrete floor.
+STYLE: Editorial product photography. Soft daylight from the left,
+one long shadow, matte finish, no reflections, muted palette.
+LAYOUT: Chair in the lower right third. Top left third left empty
+for a headline. Square crop.
+TEXT: "Built to outlast the room"
 
-TEXT: "[any words that must appear exactly as written]"
+YOUR BRIEF
 
-Keep each block on its own line rather than combining them into
-one run-on sentence. If this image will be placed onto something
-else afterwards, ask for a transparent background.`},
+SUBJECT: [one concrete sentence: what is literally in the frame,
+and from what angle]
+STYLE: [medium, lighting direction, finish, palette, mood]
+LAYOUT: [where the subject sits, the crop, and any area you are
+keeping clear for words]
+TEXT: "[the exact words, or delete this line if there are none]"
+
+Keep each block on its own line, because the generators read them in
+order and a run-on sentence blurs the four into one. Name the angle in
+SUBJECT, because "a chair" and "a chair from low, three-quarter" are
+different pictures. If the image is going onto something else
+afterwards, ask for a transparent background.`},
 
 {kind:'prompt', id:'approve-before-sending', sec:'From the Sunday Brief', title:'Never let it send anything', where:'Once, when you first connect it to your email or calendar', type:'rules', when:'setup', hook:"It drafts, you decide. Nothing leaves your inbox without you.", added:'2026-09-06', levers:['Constraints','Output'],
 prompt:`This is a standing rule for anything you do with my email, my calendar

@@ -194,7 +194,10 @@ chose the skeleton, so the two were split by subject rather than merged:
 `four-block-image` is the image card, and `image-prompt` narrowed to video
 and gained a run-length line. Its id did not change, because links to
 `#image-prompt` may exist; only the title, hook, `where` and body moved.
-The shelf is 39 cards.
+The shelf is 39 cards. `four-block-image` was
+rewritten the same day after James said it gave the reader nothing: it
+carried four labels and no example, which fails item five of the review
+standards. It now shows one filled-in brief above the blank.
 
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
