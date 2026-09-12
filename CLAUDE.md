@@ -299,10 +299,15 @@ get back where it went wrong and a fresh brief to restart from). Both
 are on the shelf as `state-of-play` and `chat-rescue`, deck and shelf
 identical. Foundations is 30 slides, six prompts. The shelf is 34 cards.
 
-Gotcha found the same day: GitHub Pages did not rebuild for any push that
-sent `main` and the session branch in one command. Push `main` on its own
-(`git push origin main`), then the branch, and confirm a "pages build and
-deployment" run appears for the commit.
+Gotcha found the same day, and hit again on 12 Sep: GitHub Pages does not
+rebuild when `main` and the session branch go up together. Two separate
+`git push` commands is not enough if they run in the same shell
+invocation; on 12 Sep `f3c3463` sat on `main` with no build queued four
+minutes later. The order that works is: push `main` on its own
+(`git push origin main`), wait until a "pages build and deployment" run
+appears for that exact sha, and only then push the branch. If the run
+never appears, `main` needs a fresh commit to trigger one, so do not
+report anything as live on the strength of the push alone.
 
 Also live: Fine-Tune (`fine-tune/`, restyled to the house style on 9 Sep
 at James's request, content unchanged, safe drawing kept), the Manus
