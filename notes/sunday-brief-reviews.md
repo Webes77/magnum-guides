@@ -81,3 +81,47 @@ it in words; it now also gives the routine a mechanical test to apply
 before it judges: same `type`, same `when`, same artefact produced means
 duplicate. The line is in `notes/sunday-brief-prompt.md` for James to
 paste into the routine.
+
+---
+
+## 12 Sep 2026, two cards supplied in chat
+
+Not a branch. James pasted two finished cards and asked whether they made
+sense before they went on the shelf. Reviewed the same way.
+
+### Card one, `ai-search-check`, recipe
+
+Kept as written. No counterpart on the shelf: the only other monthly
+review card is `monthly-review`, which audits scheduled tasks. Six steps,
+one action each, verb first, a real trigger, and step six closes the loop
+rather than leaving it a one-off.
+
+One edit. `where` said "once a quarter" while `when` filed it under Every
+month. The card now says monthly and step six keeps the three-month
+re-run, so the cadence in the two fields agrees.
+
+### Card two, `four-block-image`, prompt
+
+Failed the mechanical duplicate test as written: `image-prompt` already
+sat at type `image`, moment `start`, with the same four levers and the
+same thing in hand. That is the test firing correctly.
+
+It was not a pure duplicate. The existing card asks Claude to write the
+prompt in three parts, subject and action, camera, mood. The new one is a
+skeleton the reader fills in and pastes straight into the tool, and it
+carries two blocks the shelf had never had: LAYOUT, where the subject
+sits and what space is reserved, and TEXT, words that must appear exactly.
+Both are what goes wrong on client-facing tiles.
+
+James chose the skeleton, so the two were split by subject rather than
+merged. `four-block-image` is now the image card. `image-prompt` narrowed
+to video, where its camera and motion parts are the strongest thing on the
+shelf, and gained a run-length line. Its id did not change, because links
+to `#image-prompt` may already exist; only its title, hook, `where` and
+body moved. Its `where` now points a reader after a still image at the
+four-block card.
+
+### Outcome
+
+Both cards are on the shelf, 39 in total, carrying `added:'2026-09-12'`.
+They show New until 26 Sep.

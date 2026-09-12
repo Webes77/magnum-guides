@@ -174,7 +174,7 @@ after hearing the case against; both are his call. Three prompts, on
 the shelf under `Reference · Chatbots, Agents and Bots` as
 `design-the-bot`, `bot-test-run`, `friday-enquiries-bot`. Card at
 `assets/thumbnails/bots.jpg`, source `bots/thumbnail.html`. The deck
-check covers it. The shelf is 37 cards.
+check covers it.
 
 | Session | Folder | Slides | Prompts |
 |---|---|---|---|
@@ -182,6 +182,19 @@ check covers it. The shelf is 37 cards.
 | Two, Make Claude Yours | `make-claude-yours/` | 37 | 5 |
 | Three, Work That Runs Without You | `runs-without-you/` | 17 | 4 |
 | Reference, Chatbots, Agents and Bots | `bots/` | 26 | 3 |
+
+On 12 Sep James supplied two cards in chat rather than on a branch, and
+both were reviewed against the bar the same way; the entry is in
+`notes/sunday-brief-reviews.md`. The recipe `ai-search-check` went on as
+written, with its cadence reconciled (`where` said quarterly while `when`
+filed it monthly). The prompt `four-block-image` failed the mechanical
+duplicate test against `image-prompt`, same type, same moment, same
+levers, but carried two blocks the shelf never had, LAYOUT and TEXT. James
+chose the skeleton, so the two were split by subject rather than merged:
+`four-block-image` is the image card, and `image-prompt` narrowed to video
+and gained a run-length line. Its id did not change, because links to
+`#image-prompt` may exist; only the title, hook, `where` and body moved.
+The shelf is 39 cards.
 
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at

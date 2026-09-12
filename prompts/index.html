@@ -293,6 +293,20 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- From the Sunday Brief ---------- */
+{kind:'prompt', id:'four-block-image', sec:'From the Sunday Brief', title:'Structure an image prompt in four blocks', where:'Briefing an AI image tool for anything client-facing: a social tile, a hero image, a product shot.', type:'image', when:'start', hook:"Get on-brand images every time by briefing your AI like a designer would.", added:'2026-09-12', levers:['Context','Constraints','Format','Output'],
+prompt:`SUBJECT: [describe literally what should be in the frame]
+
+STYLE: [describe the visual treatment, medium, mood and lighting]
+
+LAYOUT: [describe the composition: where the subject sits, how
+much space around it, any areas reserved for text]
+
+TEXT: "[any words that must appear exactly as written]"
+
+Keep each block on its own line rather than combining them into
+one run-on sentence. If this image will be placed onto something
+else afterwards, ask for a transparent background.`},
+
 {kind:'prompt', id:'approve-before-sending', sec:'From the Sunday Brief', title:'Never let it send anything', where:'Once, when you first connect it to your email or calendar', type:'rules', when:'setup', hook:"It drafts, you decide. Nothing leaves your inbox without you.", added:'2026-09-06', levers:['Constraints','Output'],
 prompt:`This is a standing rule for anything you do with my email, my calendar
 or my files, because a message sent in my name cannot be unsent.
@@ -685,8 +699,8 @@ assumptions, a scenario table, the recommendation or the missing
 information, the pre-mortem, the next action. Stop after the next action.
 
 Start by asking: what is the decision, and when does it have to be made?`},
-{kind:'prompt', id:'image-prompt', sec:'Magnum AI library', title:'Write an image or video prompt', where:'Before you open the image or video tool', type:'image', when:'start', hook:"Three parts, one paragraph, a picture that looks like you meant it.", added:'2026-09-04', levers:['Context','Constraints','Format','Output'],
-prompt:`Write me a prompt for an image or video generator. Build it in three parts,
+{kind:'prompt', id:'image-prompt', sec:'Magnum AI library', title:'Write a video prompt', where:'Before you open the video tool. For a still image, use the four-block image card instead.', type:'image', when:'start', hook:"Three parts, one paragraph, a shot that moves the way you meant.", added:'2026-09-04', levers:['Context','Constraints','Format','Output'],
+prompt:`Write me a prompt for a video generator. Build it in three parts,
 in this order, because that is the order the generators read:
 
 1. Subject and action. Who or what, and what they are doing. One concrete
@@ -697,8 +711,9 @@ in this order, because that is the order the generators read:
 3. Mood. What the viewer should feel, in three or four words. "Calm,
    proud, unhurried."
 
-What I want: [describe the picture roughly, in your own words]
-Where it will be used: [website hero / social post / slide / video]
+What I want: [describe the shot roughly, in your own words]
+Where it will be used: [website hero / social post / ad / showreel]
+How long it runs: [three seconds / eight seconds / fifteen seconds]
 What must stay out of it: [logos, text, faces, brands]
 
 Give me the finished prompt as one paragraph, then a second version with
@@ -1141,6 +1156,16 @@ Be blunt. A task I do not read is worse than no task, because it looks like
 coverage.`},
 
 /* ---------- Recipes ---------- */
+{kind:'recipe', id:'ai-search-check', sec:'From the Sunday Brief', title:'Check where you actually show up in AI search', where:'Before a website refresh, then once a month to see how AI assistants describe your business.', type:'review', when:'monthly', hook:"Find out what AI assistants tell people about you first.", added:'2026-09-12',
+steps:[
+ 'Ask three different AI assistants where they would send someone looking for your service in your area.',
+ 'Note whether your business gets named in any of the three answers.',
+ 'Ask one assistant a real question a customer would ask, and check whether your own site is cited.',
+ 'List every page on your site that answers a genuine customer question in plain language.',
+ 'Write one FAQ-style page for each common question with no matching page yet.',
+ 'Re-run the same three questions in three months and compare what changed.'
+]},
+
 {kind:'recipe', id:'set-up-in-order', sec:'Recipes', title:'Set Claude up in the right order', where:'Once when you start. Again for each new job.', type:'instructions', when:'setup', hook:"Account, project, files, first job. Nine steps, once.", rank:1,
 steps:[
  'Open a new chat. Run <b>Your account instructions</b>.',
