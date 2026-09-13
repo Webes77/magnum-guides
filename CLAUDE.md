@@ -109,10 +109,9 @@ moment and shows a rust "Start with this" tag; James sets it, the routine
 never does. Nine cards are ranked, three per moment for Starting a task,
 Before you act and Setting up. `added` (YYYY-MM-DD) shows an olive "New"
 tag for fourteen days. The sixteen library cards carry `added:'2026-09-04'`.
-Two things were proposed and deferred on 6 Sep: a `topic` field
-(communication, conflict, money, files) waits until a moment passes twenty
-cards, and pre-written Cowork skill cards wait until one paying client has
-run one for a month. Neither is a decision to never build.
+Two things were proposed and deferred on 6 Sep. The `topic` field shipped
+on 13 Sep as `station` (see the Research station below). Pre-written Cowork
+skill cards still wait until one paying client has run one for a month.
 
 On 4 Sep (evening) the shelf grew from 14 cards to 30. Sixteen came from
 James's own prompt library in Drive (the Five Role Prompts, four of the
@@ -198,6 +197,32 @@ The shelf is 39 cards. `four-block-image` was
 rewritten the same day after James said it gave the reader nothing: it
 carried four labels and no example, which fails item five of the review
 standards. It now shows one filled-in brief above the blank.
+
+On 13 Sep the shelf gained its first station. James supplied a finished
+Research section, seven prompts built on the six levers in order, and asked
+for headed areas so a reader can pick the kind of work they are doing.
+That resolves the `topic` field deferred on 6 Sep: the field is called
+`station`, it names an area of work rather than a source, and it sits
+alongside `when` rather than replacing it. `STATIONS`, `STATION_NOTES` and
+`STATION_HEAD` live next to `LEVERS` at the top of the script. The vault
+chooser gained a second row, "Or pick an area", and the filter row gained
+an Area chip. Picking an area shows a header block (the routing table, the
+shared rules, a count) above that area's cards. A card with no station
+never appears in a station view, so nothing else on the shelf moved, and a
+deep link to a station card opens its area automatically.
+
+The seven Research prompts are `trust-test`, `shortlist`, `briefing`,
+`idea-test`, `business-check`, `post-call-intel` and `build-path`, all
+`sec:'Research'`, `station:'research'`, `added:'2026-09-13'`, all six
+levers on each. They are byte-identical to the file James supplied and
+were verified as such after insertion. They are far longer than anything
+else on the shelf: 4,809 to 9,598 characters against a shelf median of
+1,065, which is part of why they needed their own area. The shared blocks
+behind them (constraints, evidence grades, verdict labels, complexity
+tiers) are versioned at `notes/research-engine-master.md`; change a rule
+there first, then paste it over the same block in every prompt that uses
+it. The shelf is 46 cards. Its copy also moved from sessions to courses,
+matching the front page.
 
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at

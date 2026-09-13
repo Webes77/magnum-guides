@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <title>Prompt Shelf · Magnum AI</title>
-<meta name="description" content="Every prompt from the Magnum AI sessions in one place, ready to copy, with the levers each one pulls marked.">
+<meta name="description" content="Every prompt from the Magnum AI courses in one place, ready to copy, with the levers each one pulls marked.">
 <meta name="author" content="Magnum AI">
 <link rel="canonical" href="https://webes77.github.io/magnum-guides/prompts/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Magnum AI">
 <meta property="og:title" content="Prompt Shelf · Magnum AI">
-<meta property="og:description" content="Every prompt from the sessions in one place, ready to copy, with the levers each one pulls marked.">
+<meta property="og:description" content="Every prompt from the courses in one place, ready to copy, with the levers each one pulls marked.">
 <meta property="og:url" content="https://webes77.github.io/magnum-guides/prompts/">
 <meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/prompt-shelf.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Magnum AI Prompt Shelf, every prompt from the sessions ready to copy">
+<meta property="og:image:alt" content="The Magnum AI Prompt Shelf, every prompt from the courses ready to copy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Prompt Shelf · Magnum AI">
-<meta name="twitter:description" content="Every prompt from the sessions in one place, ready to copy, with the levers each one pulls marked.">
+<meta name="twitter:description" content="Every prompt from the courses in one place, ready to copy, with the levers each one pulls marked.">
 <meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/prompt-shelf.jpg">
 <meta name="theme-color" content="#1E1B17">
 
@@ -190,6 +190,23 @@ footer b{color:var(--paper);font-weight:500}
   .prewrap pre{max-height:none;overflow:visible}
   .grid{display:block}
 }
+
+/* ---------- STATIONS ---------- */
+#shead{margin:0 0 40px}
+#shead .snote{font-size:16px;color:var(--char);max-width:66ch;margin:0 0 22px}
+.stable{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);margin-bottom:22px}
+.stable table{border-collapse:collapse;width:100%;min-width:560px}
+.stable th,.stable td{text-align:left;padding:11px 16px;border-bottom:1px solid rgba(30,27,23,.16);font-size:15px;color:var(--char);vertical-align:top}
+.stable th{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink)}
+.stable tbody tr:last-child td{border-bottom:none}
+.stable td.sp{font-weight:600;color:var(--ink);white-space:nowrap}
+.stable td.sr{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.snotes{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px;max-width:74ch}
+.snotes li{font-size:15px;line-height:1.5;color:var(--char);padding-left:18px;position:relative}
+.snotes li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--rust)}
+#shead .scount{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:0}
+.vareas{margin-top:38px}
+.vareas .label{margin-bottom:14px}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -198,7 +215,7 @@ footer b{color:var(--paper);font-weight:500}
   <div class="wrap">
     <div class="brand">Magnum AI</div>
     <h1>Prompt<br><em>Shelf</em></h1>
-    <p>Every prompt from the sessions, in one place and ready to copy. Take one, change the bracketed bits, use it today.</p>
+    <p>Every prompt from the courses, in one place and ready to copy. Take one, change the bracketed bits, use it today.</p>
   </div>
 </header>
 
@@ -225,9 +242,9 @@ footer b{color:var(--paper);font-weight:500}
     <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act on an answer, setting up, every week, every month. The row of chips narrows it further by type, or by a single lever. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
   </div>
 
-  <div class="vault" id="vault" aria-label="Choose a moment">
+  <div class="vault" id="vault" aria-label="Choose a moment or an area">
     <div class="label">Where are you?</div>
-    <p class="note">Pick the moment you are in. The cards for it open below. Or narrow by type or lever below.</p>
+    <p class="note">Pick the moment you are in, or the area you are working on. The cards open below, and you can narrow further by type or lever.</p>
     <div class="vgrid" id="vgrid"></div>
   </div>
 
@@ -281,6 +298,34 @@ footer b{color:var(--paper);font-weight:500}
 const LEVERS=['Role','Context','Constraints','Tone','Format','Output'];
 const TYPES=[['interview','Interview'],['instructions','Instructions'],['rules','Rules'],['review','Review'],['writing','Writing'],['image','Image'],['scheduled','Scheduled']];
 const WHENS=[['start','Starting a task'],['before-acting','Before you act on an answer'],['setup','Setting up'],['weekly','Every week'],['monthly','Every month'],['new','New']];
+/* Stations are the areas of work a reader picks, as opposed to WHENS, which is
+   the moment they are in. A card with no station simply never appears in a
+   station view. Add the next one here, and give it a header block below. */
+const STATIONS=[['research','Research']];
+const STATION_NOTES={
+  'research':'Seven prompts for the research you do before you commit money, time or your reputation. Each one answers a single question, so pick by the question you are asking.'
+};
+const STATION_HEAD={
+  'research':{
+    rows:[
+      ['Is this claim true?','Trust Test','Stops to check first'],
+      ['Which option should I pick?','Shortlist','Stops to check first'],
+      ['What do I need to know about this?','Briefing','Stops to check first'],
+      ['Will this idea work?','Idea Test','Runs straight through'],
+      ['Who am I dealing with?','Business Check','Runs straight through'],
+      ['What came out of that conversation?','Post-Call Intel','Stops to check first'],
+      ['How do I build this?','Build Path','Stops to check first']
+    ],
+    notes:[
+      'Every prompt searches the web before it answers, and grades each source from A for primary evidence down to D for marketing, testimonials and forums. Anything it cannot confirm is listed as Not verified rather than guessed.',
+      'Every answer opens with the verdict or the short version, so you can read the top and stop there. The prompts that end in a decision all use the same four verdicts: GO, GO WITH CONDITIONS, WAIT and NO.',
+      'Some stop to check with you before they research, because a wrong starting point sends every search after the wrong answer. Correcting it at the stop takes a minute. Correcting a finished report takes a new report.',
+      'Use a tool with web search switched on. Paste the prompt, replace the text in square brackets with your own, and send it as one message.',
+      'Post-Call Intel and Build Path work as a pair. Run Post-Call Intel after a conversation about a business, then take any goal it marks GO into Build Path.'
+    ]
+  }
+};
+
 const WHEN_NOTES={
   'start':'The first thing you paste into a new chat.',
   'before-acting':'The check step. Run it before an answer turns into an action.',
@@ -291,6 +336,699 @@ const WHEN_NOTES={
 };
 
 const S=[
+
+/* ---------- Research ---------- */
+{kind:'prompt', id:'trust-test', sec:'Research', station:'research', title:'Trust Test', where:'Someone makes a claim you are about to act on: a podcast, a video, a sales pitch, a vendor email, or advice from another business owner.', type:'review', when:'before-acting', hook:"Test a claim before you put money behind it.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`<my_input>
+[Paste the claim or the full transcript. Then add: the decision this feeds, one line about your business, and what it costs you if the claim is wrong.]
+</my_input>
+
+## Role
+
+You test whether an idea deserves to be trusted before someone puts money, time or reputation behind it. You are sceptical and fair. You have no loyalty to the person who made the claim and no interest in proving them wrong.
+
+## Context
+
+My input is at the top of this message. It contains an idea to test: a claim, a pitch, a piece of advice, or a transcript of a podcast, video, webinar or sales call. It should also tell you the decision the idea feeds, something about my business, and what it costs me if the idea is wrong. If any of these are missing, ask for them at the stop. Do not hold up the work for them.
+
+Set your research depth by the stakes:
+- Low stakes (cheap and easy to reverse): test the load-bearing claims and keep each check brief.
+- High stakes (costly or hard to reverse): test every load-bearing claim in depth, with at least three independent sources per claim, or state that fewer exist.
+- If I have not given the stakes by the end of Stage 1, treat them as high.
+
+Work in two stages.
+
+### Stage 1: Claim map
+
+1. Read the whole input before you write anything.
+2. State the idea in one sentence, in the strongest form the person making it would agree with.
+3. List every statement the idea depends on. Sort each one:
+   - Claim: a statement of fact that can be checked.
+   - Opinion: a judgement that cannot be checked.
+   - Anecdote: a story used as proof.
+4. Mark each claim as load-bearing or supporting. A claim is load-bearing if the idea fails when the claim is false.
+5. If the input is a transcript, flag names and terms that look mistranscribed. Give your best reading and mark each one [CONFIRM].
+6. Identify the incentive of the person making the claim: what they sell, who pays them, and what they gain if the audience believes it.
+7. Stop. Show me the claim map. Ask me which claims to test and for any missing context.
+
+If I reply "go", test every load-bearing claim. If my input says "run it straight through", skip the stop.
+
+### Stage 2: Trust Report
+
+For each claim I choose:
+1. Search for the strongest evidence against the claim.
+2. Search for the strongest evidence for the claim.
+3. Trace the claim to its original source.
+4. Give the claim a claim verdict.
+
+Then:
+5. Work out where the idea holds for my business and where it breaks.
+6. Design the cheapest test that proves or disproves the idea in my business.
+
+Claim verdicts: HOLDS, HOLDS WITH CONDITIONS, UNPROVEN, FALSE.
+
+Overall verdicts:
+- GO: the idea holds up and suits my situation.
+- GO WITH CONDITIONS: the idea holds up if a specific condition is met. Name the condition.
+- WAIT: the evidence is too thin to act on yet.
+- NO: the idea does not hold up, or costs more than it returns.
+
+Evidence grades:
+- A. Primary: official documentation, pricing pages, changelogs, published research, and government or regulator sources. Official sources count as A for what a product does and costs, not for results it promises.
+- B. Independent: a practitioner, reviewer or expert with no stake in the outcome, showing their own results or method.
+- C. Secondary: journalism, industry reports and roundups that summarise other sources.
+- D. Interested: marketing, sales material, affiliate content, testimonials, social posts and forums.
+
+## Constraints
+
+- Search before you answer, using today's date. If you do not have web search, finish any stage that needs no searching, then stop and tell me to switch it on. Never write the research from memory, because products, prices and rules change often.
+- For every important claim, search for the strongest evidence against it before the evidence for it.
+- Trace every important claim to its original source. A page that repeats a claim is not evidence for it.
+- Grade every source with the evidence grades.
+- Cite sources with this tool's built-in citations and name the publisher in the text. Never type out a web address, because typed addresses are often wrong.
+- If a result is close but not a match, for example a different year, country, pricing tier, product version or parent company, state the mismatch before you use it.
+- If you cannot verify something, write "Not verified" and state what you searched for.
+- Flag any source about AI tools, software features or pricing that is older than 6 months.
+- The default location is Australia. Use another country only if the input names one.
+- Give prices in the currency the seller charges. If that is not AUD, add the approximate AUD amount. State whether tax is included.
+- Keep names, contact details and confidential figures out of search queries. Describe the situation in general terms instead.
+- If the answer touches law, tax, privacy, finance or health, flag it and name the type of professional who must confirm it before I act.
+- Keep what the source said separate from what your research found. Never blend the two in one sentence.
+- UNPROVEN is a verdict. Give it plainly and say what evidence is missing.
+
+## Tone
+
+Plain English. Direct and sceptical. Write like an adviser who has checked the facts, not a salesperson and not a critic hunting for faults. No hype. Explain any technical term in one line the first time you use it. Australian English spelling.
+
+## Format
+
+Stage 1, the claim map:
+1. The idea: one sentence.
+2. The incentive: two sentences maximum.
+3. A table with four columns: number, statement, type (claim, opinion or anecdote), and load-bearing or supporting.
+4. Transcription flags, if any.
+5. Your question.
+
+Stage 2, the Trust Report, in this order:
+1. Verdict. The overall verdict in capitals and one or two sentences on why. 60 words maximum.
+2. Claim by claim. For each claim: the claim, the claim verdict, the strongest case against, the strongest case for, the best evidence grade found, and the sources. 150 words maximum per claim.
+3. Fit for you. Where the idea holds for my business and where it breaks.
+4. What would change the verdict. The specific evidence that would move it up or down.
+5. The cheapest test. What to do, what to measure, the result that counts as a pass, and a time limit.
+6. Not verified. Everything you could not confirm, and what you searched for.
+
+Use a heading for each section. No introduction and no closing summary.
+
+## Output
+
+Stage 1: the claim map, then stop and wait for my reply.
+Stage 2: the Trust Report.`},
+
+{kind:'prompt', id:'shortlist', sec:'Research', station:'research', title:'Shortlist', where:'Choosing between tools, platforms, suppliers or services, and you want the options narrowed properly.', type:'review', when:'start', hook:"One pick, the real monthly cost, and the watch-outs.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`<my_input>
+[Describe what you need it to do. List the options you are considering, or write "find the options". Add your budget, the tools it must work with, and what matters most to you.]
+</my_input>
+
+## Role
+
+You help people choose between options. You are practical and sceptical of marketing. You have no loyalty to any vendor. You judge options on fit for this business, not on the length of the feature list.
+
+## Context
+
+My input is at the top of this message. It describes what I need, the options I am considering or a request to find them, my budget, the tools the option must work with, and what matters most to me. Write "Not stated" for anything missing and carry on.
+
+Work in two stages.
+
+### Stage 1: Criteria and options
+
+1. State the job the option must do, in one sentence.
+2. Set the criteria from my input:
+   - Must-haves: an option that fails one is out.
+   - Nice-to-haves: ranked by what I said matters most.
+3. Add up to three criteria I did not mention that commonly decide this kind of choice. Mark each one ADDED.
+4. List the options: mine, plus up to three others worth considering, each marked ADDED. If I named no options, find up to five.
+5. Stop. Show me the criteria and options. Ask me to confirm or correct them.
+
+If I reply "go", research every option on the list. If my input says "run it straight through", skip the stop.
+
+### Stage 2: Shortlist
+
+For each option:
+1. Check each must-have against current official documentation or pricing. If the option fails a must-have, mark it out and name the must-have it fails.
+2. Search for the strongest evidence against it: limits, complaints from real users, pricing traps, and support in Australia.
+3. Search for the strongest evidence for it, from businesses like mine.
+4. Work out the real cost: setup cost, and the monthly cost on the plan I would actually need.
+5. Give it a verdict.
+
+Then:
+6. Choose one pick.
+7. Name the runner-up and the situation where it would be the better pick.
+
+Verdicts:
+- GO: meets every must-have, works reliably today, and suits my situation.
+- GO WITH CONDITIONS: suits me if a specific condition is met. Name the condition.
+- WAIT: not reliable yet, or the evidence is too thin to choose it.
+- NO: fails a must-have, or costs more than it returns.
+
+Evidence grades:
+- A. Primary: official documentation, pricing pages, changelogs, published research, and government or regulator sources. Official sources count as A for what a product does and costs, not for results it promises.
+- B. Independent: a practitioner, reviewer or expert with no stake in the outcome, showing their own results or method.
+- C. Secondary: journalism, industry reports and roundups that summarise other sources.
+- D. Interested: marketing, sales material, affiliate content, testimonials, social posts and forums.
+
+## Constraints
+
+- Search before you answer, using today's date. If you do not have web search, finish any stage that needs no searching, then stop and tell me to switch it on. Never write the research from memory, because products, prices and rules change often.
+- For every important claim, search for the strongest evidence against it before the evidence for it.
+- Trace every important claim to its original source. A page that repeats a claim is not evidence for it.
+- Grade every source with the evidence grades.
+- Cite sources with this tool's built-in citations and name the publisher in the text. Never type out a web address, because typed addresses are often wrong.
+- If a result is close but not a match, for example a different year, country, pricing tier, product version or parent company, state the mismatch before you use it.
+- If you cannot verify something, write "Not verified" and state what you searched for.
+- Flag any source about AI tools, software features or pricing that is older than 6 months.
+- The default location is Australia. Use another country only if the input names one.
+- Give prices in the currency the seller charges. If that is not AUD, add the approximate AUD amount. State whether tax is included.
+- Keep names, contact details and confidential figures out of search queries. Describe the situation in general terms instead.
+- If the answer touches law, tax, privacy, finance or health, flag it and name the type of professional who must confirm it before I act.
+- Compare options on the plan I would need, not the cheapest advertised plan, because entry plans often leave out the features that matter.
+- Treat comparison pages written by one of the vendors as grade D.
+- Give one pick. Never hand me an unranked list of options.
+
+## Tone
+
+Plain English. Direct, practical and sceptical. No hype and no sales language. Explain any technical term in one line the first time you use it. Australian English spelling.
+
+## Format
+
+Stage 1:
+1. The job: one sentence.
+2. Must-haves: a numbered list.
+3. Nice-to-haves: a numbered list in rank order.
+4. Options: one line each.
+5. Your question.
+
+Stage 2, the Shortlist, in this order:
+1. The pick. The verdict in capitals, the pick, the real monthly cost, and why. 60 words maximum.
+2. Comparison. A table with six columns: option, verdict, must-haves met (yes, or the one it fails), real monthly cost, best at, and main drawback.
+3. Why the pick won. 100 words maximum.
+4. Runner-up. The runner-up and the situation where it wins.
+5. Watch-outs before you sign up. Up to five: contract length, lock-in, data export, price rises, or anything else that bites later.
+6. Not verified. Everything you could not confirm, and what you searched for.
+
+Use a heading for each section. No introduction and no closing summary.
+
+## Output
+
+Stage 1: the criteria and options, then stop and wait for my reply.
+Stage 2: the Shortlist.`},
+
+{kind:'prompt', id:'briefing', sec:'Research', station:'research', title:'Briefing', where:'Getting across a topic fast: an industry before a client meeting, or a new rule that affects your business.', type:'interview', when:'start', hook:"Know what is settled, what is disputed, and what is moving.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`<my_input>
+[Name the topic. Say why you need it: the meeting, decision or task. Say what you already know. Write "quick" or "deep".]
+</my_input>
+
+## Role
+
+You brief busy people on topics they need to understand fast. You are accurate, plain and neutral. You focus on what the reader will do with the information.
+
+## Context
+
+My input is at the top of this message. It names a topic, why I need it, what I already know, and whether I want a quick or deep briefing. If I did not choose, give a quick briefing. Write "Not stated" for anything else missing and carry on.
+
+Work in two stages.
+
+### Stage 1: Scope
+
+1. State the main question the briefing must answer, in one sentence, based on why I need it.
+2. List up to six sub-questions that together answer the main question, most important first.
+3. List what you will leave out and why, including anything I already know.
+4. Stop. Show me the scope. Ask me to confirm or correct it.
+
+If I reply "go", research the scope as it stands. If my input says "run it straight through", skip the stop.
+
+### Stage 2: Briefing
+
+1. Research each sub-question. Prefer grade A and B sources.
+2. Where credible sources disagree, set out each position and its strongest evidence. Say which position has the better evidence.
+3. Separate settled facts from open debates.
+4. Identify what changed in the last 12 months and what is due to change, with dates.
+5. Work out what the findings mean for me, given why I need them.
+
+Evidence grades:
+- A. Primary: official documentation, pricing pages, changelogs, published research, and government or regulator sources. Official sources count as A for what a product does and costs, not for results it promises.
+- B. Independent: a practitioner, reviewer or expert with no stake in the outcome, showing their own results or method.
+- C. Secondary: journalism, industry reports and roundups that summarise other sources.
+- D. Interested: marketing, sales material, affiliate content, testimonials, social posts and forums.
+
+## Constraints
+
+- Search before you answer, using today's date. If you do not have web search, finish any stage that needs no searching, then stop and tell me to switch it on. Never write the research from memory, because products, prices and rules change often.
+- For every important claim, search for the strongest evidence against it before the evidence for it.
+- Trace every important claim to its original source. A page that repeats a claim is not evidence for it.
+- Grade every source with the evidence grades.
+- Cite sources with this tool's built-in citations and name the publisher in the text. Never type out a web address, because typed addresses are often wrong.
+- If a result is close but not a match, for example a different year, country, pricing tier, product version or parent company, state the mismatch before you use it.
+- If you cannot verify something, write "Not verified" and state what you searched for.
+- Flag any source about AI tools, software features or pricing that is older than 6 months.
+- The default location is Australia. Use another country only if the input names one.
+- Give prices in the currency the seller charges. If that is not AUD, add the approximate AUD amount. State whether tax is included.
+- Keep names, contact details and confidential figures out of search queries. Describe the situation in general terms instead.
+- If the answer touches law, tax, privacy, finance or health, flag it and name the type of professional who must confirm it before I act.
+- Label every opinion and say who holds it. Never present an opinion as a fact.
+- Include history only where it explains how things stand today.
+- Quick briefing: 600 words maximum. Deep briefing: 1,500 words maximum.
+
+## Tone
+
+Plain English. Direct and neutral. Write for a smart person who is new to the topic. No hype. Explain any technical term in one line the first time you use it. Australian English spelling.
+
+## Format
+
+Stage 1, the scope:
+1. The main question: one sentence.
+2. Sub-questions: a numbered list.
+3. Left out: one line each.
+4. Your question.
+
+Stage 2, the Briefing, in this order:
+1. The short version. The answer to the main question in five sentences or fewer.
+2. Key terms. Up to eight, one line each.
+3. What is settled.
+4. What is disputed. For each dispute: the positions, the evidence for each, and which is stronger.
+5. What is changing. Recent and coming changes, with dates.
+6. What this means for you. Tied to the meeting, decision or task in my input.
+7. Questions to ask. Up to five questions for the meeting or for an expert.
+8. Not verified. Everything you could not confirm, and what you searched for.
+
+Use a heading for each section. No introduction and no closing summary.
+
+## Output
+
+Stage 1: the scope, then stop and wait for my reply.
+Stage 2: the Briefing.`},
+
+{kind:'prompt', id:'idea-test', sec:'Research', station:'research', title:'Idea Test', where:'You have a business idea and want it tested before you spend money on it.', type:'review', when:'before-acting', hook:"Find the assumption your idea dies on, before it does.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`<my_input>
+[Describe the idea. Add who it is for, how it makes money, what you would need to spend or change, and what it costs you if it fails. Include any prices, costs or numbers you already know.]
+</my_input>
+
+## Role
+
+You test business ideas before money goes in. You are sceptical, fair and commercially minded. You have no interest in talking the idea up or talking it down.
+
+## Context
+
+My input is at the top of this message. It describes an idea, who it is for, how it makes money, what I would need to spend or change, and what it costs me if it fails. Write "Not stated" for anything missing and carry on.
+
+Work through these steps in order:
+1. State the idea in one sentence, in its strongest form.
+2. List the assumptions the idea depends on. Check at least these: people want it, people will pay the price, customers can be reached at a workable cost, it can be delivered at a workable cost, competitors leave room, and the rules allow it.
+3. Mark each assumption as load-bearing or supporting. An assumption is load-bearing if the idea fails when it is false.
+4. For each load-bearing assumption, search for the strongest evidence against it, then the strongest evidence for it. Look for demand signals, competitor prices, complaints about current options, and rules or licences that apply.
+5. Find businesses already doing this or something close. Record what they charge and what their customers complain about. Existing competitors are evidence of demand as well as competition.
+6. Give each assumption a claim verdict.
+7. Work out what has to be true to break even, using only figures from my input or from sources. Label every figure with where it came from.
+8. Give the idea an overall verdict.
+9. Design the cheapest test that proves or disproves the riskiest load-bearing assumption before full spend.
+
+Claim verdicts: HOLDS, HOLDS WITH CONDITIONS, UNPROVEN, FALSE.
+
+Overall verdicts:
+- GO: the idea holds up and suits my situation.
+- GO WITH CONDITIONS: the idea holds up if a specific condition is met. Name the condition.
+- WAIT: the evidence is too thin to spend money yet.
+- NO: the idea does not hold up, or costs more than it returns.
+
+Evidence grades:
+- A. Primary: official documentation, pricing pages, changelogs, published research, and government or regulator sources. Official sources count as A for what a product does and costs, not for results it promises.
+- B. Independent: a practitioner, reviewer or expert with no stake in the outcome, showing their own results or method.
+- C. Secondary: journalism, industry reports and roundups that summarise other sources.
+- D. Interested: marketing, sales material, affiliate content, testimonials, social posts and forums.
+
+## Constraints
+
+- Search before you answer, using today's date. If you do not have web search, finish any stage that needs no searching, then stop and tell me to switch it on. Never write the research from memory, because products, prices and rules change often.
+- For every important claim, search for the strongest evidence against it before the evidence for it.
+- Trace every important claim to its original source. A page that repeats a claim is not evidence for it.
+- Grade every source with the evidence grades.
+- Cite sources with this tool's built-in citations and name the publisher in the text. Never type out a web address, because typed addresses are often wrong.
+- If a result is close but not a match, for example a different year, country, pricing tier, product version or parent company, state the mismatch before you use it.
+- If you cannot verify something, write "Not verified" and state what you searched for.
+- Flag any source about AI tools, software features or pricing that is older than 6 months.
+- The default location is Australia. Use another country only if the input names one.
+- Give prices in the currency the seller charges. If that is not AUD, add the approximate AUD amount. State whether tax is included.
+- Keep names, contact details and confidential figures out of search queries. Describe the situation in general terms instead.
+- If the answer touches law, tax, privacy, finance or health, flag it and name the type of professional who must confirm it before I act.
+- Never invent market sizes, conversion rates or statistics to fill the numbers. If the figures are not available, say which figures are missing.
+- Treat a single success story as an anecdote, not evidence of demand.
+
+## Tone
+
+Plain English. Direct, commercial and sceptical. Write for the owner who will put their own money in. No hype. Explain any technical term in one line the first time you use it. Australian English spelling.
+
+## Format
+
+In this order:
+1. Verdict. The overall verdict in capitals and one or two sentences on why. 60 words maximum.
+2. Assumptions. A table with four columns: assumption, load-bearing or supporting, claim verdict, and a one-line reason.
+3. Who is already doing it. Up to five businesses: what they offer, what they charge, and what their customers complain about.
+4. The numbers. What has to be true to break even, with every figure labelled by source. If figures are missing, list them.
+5. The biggest risk. One paragraph.
+6. The cheapest test. What to do, what to measure, the result that counts as a pass, the time limit, and the cost.
+7. What would change the verdict. The specific evidence that would move it up or down.
+8. Not verified. Everything you could not confirm, and what you searched for.
+
+Use a heading for each section. No introduction and no closing summary.
+
+## Output
+
+The report, in the format above.`},
+
+{kind:'prompt', id:'business-check', sec:'Research', station:'research', title:'Business Check', where:'Before you sign with a supplier, partner with a business, pitch a prospect or size up a competitor.', type:'review', when:'before-acting', hook:"Know who you are dealing with before you commit.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`<my_input>
+[Name the business. Add its website if you have it, your relationship to it (supplier, partner, prospect or competitor), and what is at stake.]
+</my_input>
+
+## Role
+
+You check out businesses before someone deals with them. You are neutral and factual. You report what the public record shows, not rumour.
+
+## Context
+
+My input is at the top of this message. It names a business, my relationship to it, and what is at stake. Write "Not stated" for anything missing and carry on.
+
+My relationship decides what matters most:
+- Supplier or partner: reliability, signs of financial trouble, disputes, reviews from other businesses, and contract and payment terms.
+- Prospect: what they sell, their size, recent news, their likely priorities and problems, and how they describe themselves.
+- Competitor: their offer, pricing, positioning, reviews, and where they are strong and weak.
+
+Work through these steps in order:
+1. Confirm the identity of the business: legal name, ABN or company number where public, location, trading history and website. If more than one business could match, stop and ask me which one.
+2. Search public business sources: official business registers, the business's own website, news, reviews, regulator actions, court or insolvency notices, and industry listings.
+3. Search for negative signals first: complaints, disputes, regulator actions, insolvency notices, and patterns in bad reviews.
+4. Search for positive signals: awards, long-term clients, consistent good reviews, and industry standing.
+5. Separate what the business says about itself from what others say about it.
+6. Apply the lens for my relationship.
+7. If the relationship is supplier, partner or prospect, give a verdict on going ahead. If it is competitor, give no verdict.
+
+Verdicts:
+- GO: no red flags that matter for this deal.
+- GO WITH CONDITIONS: go ahead if a specific condition is met, such as a contract term. Name the condition.
+- WAIT: too little information to decide. Say what to find out first.
+- NO: red flags that make this deal a bad risk.
+
+Evidence grades:
+- A. Primary: official documentation, pricing pages, changelogs, published research, and government or regulator sources. Official sources count as A for what a product does and costs, not for results it promises.
+- B. Independent: a practitioner, reviewer or expert with no stake in the outcome, showing their own results or method.
+- C. Secondary: journalism, industry reports and roundups that summarise other sources.
+- D. Interested: marketing, sales material, affiliate content, testimonials, social posts and forums.
+
+## Constraints
+
+- Search before you answer, using today's date. If you do not have web search, finish any stage that needs no searching, then stop and tell me to switch it on. Never write the research from memory, because products, prices and rules change often.
+- For every important claim, search for the strongest evidence against it before the evidence for it.
+- Trace every important claim to its original source. A page that repeats a claim is not evidence for it.
+- Grade every source with the evidence grades.
+- Cite sources with this tool's built-in citations and name the publisher in the text. Never type out a web address, because typed addresses are often wrong.
+- If a result is close but not a match, for example a different year, country, pricing tier, product version or parent company, state the mismatch before you use it.
+- If you cannot verify something, write "Not verified" and state what you searched for.
+- Flag any source about AI tools, software features or pricing that is older than 6 months.
+- The default location is Australia. Use another country only if the input names one.
+- Give prices in the currency the seller charges. If that is not AUD, add the approximate AUD amount. State whether tax is included.
+- Keep names, contact details and confidential figures out of search queries. Describe the situation in general terms instead.
+- If the answer touches law, tax, privacy, finance or health, flag it and name the type of professional who must confirm it before I act.
+- Research the business, not people. Never look up the private details of owners, staff or customers, such as home addresses, personal social media or family members. You may state a person's name only where it appears in a public business record, such as a director listed on a register.
+- Treat one bad review as an anecdote. Report a pattern only when several independent sources show it.
+- If the identity of the business is uncertain, say so at the top of the report.
+
+## Tone
+
+Plain English. Neutral and factual. No speculation about motives. Explain any technical term in one line the first time you use it. Australian English spelling.
+
+## Format
+
+In this order:
+1. The short version. The verdict in capitals if the relationship calls for one, and the main finding. 60 words maximum.
+2. Identity. Legal name, ABN or company number, location, trading since, website, and how confident you are that this is the right business.
+3. What they do. Three sentences maximum.
+4. Red flags. Up to five, each with its evidence grade.
+5. Green flags. Up to five, each with its evidence grade.
+6. For your relationship:
+   - Supplier or partner: questions to ask before signing, and contract terms to check.
+   - Prospect: their likely priorities, conversation openers, and topics to avoid.
+   - Competitor: where they beat me, where I beat them, and a pricing comparison if prices are public.
+7. Not verified. Everything you could not confirm, and what you searched for.
+
+Use a heading for each section. No introduction and no closing summary.
+
+## Output
+
+The report, in the format above.`},
+
+{kind:'prompt', id:'post-call-intel', sec:'Research', station:'research', title:'Post-Call Intel', where:'After a conversation about a business, when you need what they want, where they are, and what is worth doing.', type:'interview', when:'start', hook:"Turn a conversation into goals worth acting on.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`<transcript>
+[Paste the full transcript here.]
+</transcript>
+
+<notes>
+[Type anything the conversation did not cover, such as budget. If there is nothing to add, delete this line.]
+</notes>
+
+## Role
+
+You turn conversations about a business into a clear brief, then research what needs researching. You are practical and sceptical. You have no loyalty to any vendor, any tool, or anyone in the conversation, including me.
+
+## Context
+
+The transcript at the top of this message is a conversation about a business, usually from a meeting recorder. In this prompt, "the client" means the person whose business the conversation is about. The client may be a customer of mine, a business partner, or me. The transcript and my notes are the whole brief. Do not ask me to fill in a template.
+
+Conversations about goals are messy. The client describes what they want in pieces, spread across the call, mixed with small talk and stories. Their goals are often at different stages: some work but are slow, some are broken, and some are not built yet. Goals often depend on each other. Numbers and business rules get said out loud, then garbled by the transcription. Your first job is to turn all of that into a brief the client would read and say "that is exactly what I meant".
+
+Use the speaker labels to work out who wants what. If the labels are missing or wrong, work it out from context and say so.
+
+If the transcript is not a conversation about a business, for example a podcast or a webinar, treat each idea worth acting on as a goal, and build the client snapshot from the business named in my notes.
+
+Work in two stages.
+
+### Stage 1: Goal brief
+
+1. Read the whole transcript before you write anything.
+2. Build a client snapshot: the business, what it sells and to whom, team size, the tools it uses now, skill level with technology, budget, and constraints. Write "Not stated" for anything the transcript does not cover.
+3. Find the underlying goal: the outcome the client keeps coming back to, in their own words. It is often different from the first thing they ask for.
+4. List each goal the client raised, up to eight. For each goal, record:
+   - Now: how it works today, or "Not built".
+   - Wanted: the end result the client described.
+   - Gap: what stands between Now and Wanted.
+   - Stage: WORKING BUT SLOW, BROKEN, or NOT BUILT.
+   - Evidence: a quote from the transcript of 25 words or fewer, with its timestamp if the transcript has one.
+5. Record every business rule, formula, number, rate and threshold the client stated, exactly as said. If a value looks garbled or incomplete, give your best reading and mark it [CONFIRM]. Never correct a value without marking it.
+6. Map the dependencies: which goals rely on another goal being done first. Mark the keystone: the goal that, once done, moves the most other goals forward.
+7. Give each goal a path:
+   - RESEARCH: the answer is out in the world, for example which tool can do the job or what it costs.
+   - DIAGNOSE: the answer is inside the client's own setup, for example why something stopped working. Web research cannot answer these.
+8. Flag names, products and terms that look mistranscribed. Give your best reading and mark each one [CONFIRM].
+9. List the claims and suggestions made in the conversation that affect a decision, with who made each one. This includes my claims and suggestions. Treat them all as untested.
+10. Stop. Show me the goal brief. Ask me to confirm the [CONFIRM] items and correct anything else.
+
+Keep personal stories, family matters, health details and anything said in confidence out of the brief. Use them only to understand what the client cares about.
+
+If I reply "go", research the keystone first, then the other RESEARCH goals in dependency order, then the claims. If my notes say "run it straight through", skip the stop.
+
+### Stage 2: Intel Brief
+
+For each RESEARCH goal:
+1. Search for the strongest evidence that it will not work or is not worth doing.
+2. Search for the strongest evidence that it will work.
+3. Find the realistic ways to deliver it.
+4. Choose one recommendation. Prefer the lowest complexity tier that closes the gap, because every tier up adds cost and something else to maintain.
+5. Name the next best option and why it lost.
+6. Check the recommendation against the client snapshot and the business rules.
+7. Give it a verdict.
+
+For each DIAGNOSE goal, do not search for a fix. List the checks to run, in order, and what each result would mean.
+
+For each claim, search for evidence against it and for it, then give it a claim verdict.
+
+Complexity tiers:
+- Set up: configure an existing product. No code and no connections between tools.
+- Connect: link two or more tools with an automation platform such as Make or Zapier, or with a built-in integration.
+- Build: custom code, a custom AI agent, or an API integration.
+
+Verdicts for goals:
+- GO: works reliably today and suits this client.
+- GO WITH CONDITIONS: works if a specific condition is met. Name the condition.
+- WAIT: not reliable yet, or the evidence is too thin to act on.
+- NO: does not work, or costs more than it returns for this client.
+
+Claim verdicts: HOLDS, HOLDS WITH CONDITIONS, UNPROVEN, FALSE.
+
+Evidence grades:
+- A. Primary: official documentation, pricing pages, changelogs, published research, and government or regulator sources. Official sources count as A for what a product does and costs, not for results it promises.
+- B. Independent: a practitioner, reviewer or expert with no stake in the outcome, showing their own results or method.
+- C. Secondary: journalism, industry reports and roundups that summarise other sources.
+- D. Interested: marketing, sales material, affiliate content, testimonials, social posts and forums.
+
+## Constraints
+
+- Search before you answer, using today's date. If you do not have web search, finish any stage that needs no searching, then stop and tell me to switch it on. Never write the research from memory, because products, prices and rules change often.
+- For every important claim, search for the strongest evidence against it before the evidence for it.
+- Trace every important claim to its original source. A page that repeats a claim is not evidence for it.
+- Grade every source with the evidence grades.
+- Cite sources with this tool's built-in citations and name the publisher in the text. Never type out a web address, because typed addresses are often wrong.
+- If a result is close but not a match, for example a different year, country, pricing tier, product version or parent company, state the mismatch before you use it.
+- If you cannot verify something, write "Not verified" and state what you searched for.
+- Flag any source about AI tools, software features or pricing that is older than 6 months.
+- The default location is Australia. Use another country only if the input names one.
+- Give prices in the currency the seller charges. If that is not AUD, add the approximate AUD amount. State whether tax is included.
+- Keep names, contact details and confidential figures out of search queries. Describe the situation in general terms instead.
+- If the answer touches law, tax, privacy, finance or health, flag it and name the type of professional who must confirm it before I act.
+- Use the client's business rules and numbers exactly as confirmed. Never replace them with industry averages.
+- Give one recommendation per goal. Never hand me an unranked list of options.
+- Do not summarise the conversation back to me beyond the goal brief.
+
+## Tone
+
+Plain English. Direct, practical and sceptical. Write for the person who will scope and build the solution. No hype and no sales language. Explain any technical term in one line the first time you use it. Australian English spelling.
+
+## Format
+
+Stage 1, the goal brief, in this order:
+1. The underlying goal. One or two sentences, in the client's words where possible.
+2. Client snapshot. One line per field.
+3. Goals. One block per goal with Now, Wanted, Gap, Stage and Evidence. If the client raised more than eight goals, list the rest under Parked, one line each.
+4. Business rules. A table with three columns: rule, value as stated, and status (CLEAR or [CONFIRM]).
+5. Dependencies. One line per dependency, with the keystone marked.
+6. Paths. Each goal marked RESEARCH or DIAGNOSE.
+7. Transcription flags.
+8. Claims to test. One line each, with who made the claim.
+9. Your question.
+
+Stage 2, the Intel Brief, in this order:
+1. The short version. One line per goal: the goal, the verdict, and the recommendation. Keystone first.
+2. Research goals, in dependency order. For each goal, 300 words maximum, not counting sources:
+   - Verdict: the verdict in capitals and two sentences on why.
+   - Recommendation: the tool or approach, how it works in five steps or fewer, the complexity tier, the setup cost and the monthly running cost.
+   - Next best option: one sentence, and why it lost.
+   - Risks: limits, privacy and data storage, lock-in, and what breaks first.
+   - Sources: each with its evidence grade.
+3. Diagnose first. For each DIAGNOSE goal: the checks in order, and what each result means.
+4. Claims checked. For each claim: who made it, the claim verdict, and one sentence on why.
+5. Questions for the next conversation. Up to five questions only the client can answer, where the answer would change a recommendation.
+6. Not verified. Everything you could not confirm, and what you searched for.
+
+Use a heading for each section. No introduction and no closing summary.
+
+## Output
+
+Stage 1: the goal brief, then stop and wait for my reply.
+Stage 2: the Intel Brief.`},
+
+{kind:'prompt', id:'build-path', sec:'Research', station:'research', title:'Build Path', where:'You know what you want to build with AI or automation and need the best current way to build it.', type:'instructions', when:'start', hook:"The shortest safe route from idea to working build.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`<my_input>
+[Describe what you want to build: what it must do, who uses it, the tools you already have, who will build it and keep it running, and your budget. Rough notes are fine. You can paste a goal from an Intel Brief, including its business rules.]
+</my_input>
+
+## Role
+
+You work out the best current way to build something with AI or automation. You are practical and sceptical of vendor claims. You are loyal only to what works for the person who will build and run the solution. You recommend the simplest build that does the job.
+
+## Context
+
+My input is at the top of this message. It describes what I want to build, who uses it, the tools the business already pays for, who will build and maintain it and their skill level, the budget, and any constraints. The input may be rough notes or a goal from an Intel Brief. Write "Not stated" for anything missing and carry on.
+
+Work in two stages.
+
+### Stage 1: Build brief
+
+1. Write the definition of done: what triggers the solution, what it produces, who uses the output, and how often it runs.
+2. List the facts the build depends on that my input does not give, where the answer would change the approach.
+3. List the approaches you will research. Include each of these that applies:
+   - Existing tools: a feature inside a tool the business already pays for.
+   - Off the shelf: a product built to do this job.
+   - Connected: an automation platform such as Make or Zapier linking tools together.
+   - Custom: custom code, a custom AI agent, or an API integration.
+4. Stop. Show me the build brief. Ask me to correct the definition of done and answer the open facts.
+
+If I reply "go", research every approach on the list. If my input says "run it straight through", skip the stop.
+
+### Stage 2: Build Plan
+
+For each approach:
+1. Search for the strongest evidence that it will fail or cost more than expected: limits, known failures, pricing traps, missing integrations, and availability in Australia.
+2. Search for the strongest evidence that it works for a business like this one.
+3. Check it against the build brief: existing tools, skill level, budget and constraints.
+4. Give it a verdict.
+
+Then:
+5. Choose one recommendation. Prefer the lowest complexity tier that meets the definition of done, because every tier up adds cost and something else to maintain.
+6. Name the next best option and why it lost.
+7. Write the build steps for the recommendation, starting with the smallest version that proves it works.
+8. Write the tests that prove the build meets the definition of done.
+9. Work out what it takes to keep the build running.
+
+Complexity tiers:
+- Set up: configure an existing product. No code and no connections between tools.
+- Connect: link two or more tools with an automation platform or a built-in integration.
+- Build: custom code, a custom AI agent, or an API integration.
+
+Verdicts:
+- GO: works reliably today and suits this build.
+- GO WITH CONDITIONS: works if a specific condition is met. Name the condition.
+- WAIT: not reliable yet, or the evidence is too thin to act on.
+- NO: does not work, or costs more than it returns.
+
+Evidence grades:
+- A. Primary: official documentation, pricing pages, changelogs, published research, and government or regulator sources. Official sources count as A for what a product does and costs, not for results it promises.
+- B. Independent: a practitioner, reviewer or expert with no stake in the outcome, showing their own results or method.
+- C. Secondary: journalism, industry reports and roundups that summarise other sources.
+- D. Interested: marketing, sales material, affiliate content, testimonials, social posts and forums.
+
+## Constraints
+
+- Search before you answer, using today's date. If you do not have web search, finish any stage that needs no searching, then stop and tell me to switch it on. Never write the research from memory, because products, prices and rules change often.
+- For every important claim, search for the strongest evidence against it before the evidence for it.
+- Trace every important claim to its original source. A page that repeats a claim is not evidence for it.
+- Grade every source with the evidence grades.
+- Cite sources with this tool's built-in citations and name the publisher in the text. Never type out a web address, because typed addresses are often wrong.
+- If a result is close but not a match, for example a different year, country, pricing tier, product version or parent company, state the mismatch before you use it.
+- If you cannot verify something, write "Not verified" and state what you searched for.
+- Flag any source about AI tools, software features or pricing that is older than 6 months.
+- The default location is Australia. Use another country only if the input names one.
+- Give prices in the currency the seller charges. If that is not AUD, add the approximate AUD amount. State whether tax is included.
+- Keep names, contact details and confidential figures out of search queries. Describe the situation in general terms instead.
+- If the answer touches law, tax, privacy, finance or health, flag it and name the type of professional who must confirm it before I act.
+- Give menu names, settings and technical details only when current documentation confirms them. Where it does not, describe the step in general terms and add [CHECK CURRENT DOCS], because interfaces change often and a wrong menu name stops a build.
+- Use any business rules in my input exactly as given. Never replace them with assumptions.
+- Give one recommendation. Never hand me an unranked list of options.
+
+## Tone
+
+Plain English. Direct and practical. Write for the person who will build it. No hype. Explain any technical term in one line the first time you use it. Australian English spelling.
+
+## Format
+
+Stage 1, the build brief:
+1. Definition of done: four lines, one each for trigger, output, user and frequency.
+2. Open facts: a numbered list, five items maximum.
+3. Approaches to research: one line each.
+4. Your question.
+
+Stage 2, the Build Plan, in this order:
+1. The short version. The verdict in capitals, the recommendation, the complexity tier, the setup cost and the monthly running cost. 60 words maximum.
+2. Options compared. A table with six columns: approach, verdict, complexity tier, setup cost, monthly cost, and the main reason for the verdict.
+3. Before you start. The accounts, access, data and decisions the build needs, as a checklist.
+4. Build steps. Numbered steps, one action per step, in the order they happen. Phase 1 is the smallest version that proves it works, 12 steps maximum. Phase 2 covers what to add once Phase 1 passes its tests.
+5. Tests. Up to five tests. For each: what to do, and the result that counts as a pass.
+6. Keeping it running. What needs checking, how often, what breaks first, and an estimate of hours per month, marked as an estimate.
+7. Risks. Up to five, each with how to reduce it.
+8. Not verified. Everything you could not confirm, and what you searched for.
+
+Use a heading for each section. No introduction and no closing summary.
+
+## Output
+
+Stage 1: the build brief, then stop and wait for my reply.
+Stage 2: the Build Plan.`},
 
 /* ---------- From the Sunday Brief ---------- */
 {kind:'prompt', id:'four-block-image', sec:'From the Sunday Brief', title:'Structure an image prompt in four blocks', where:'Briefing an AI image tool for anything client-facing: a social tile, a hero image, a product shot.', type:'image', when:'start', hook:"Get on-brand images every time by briefing your AI like a designer would.", added:'2026-09-12', levers:['Context','Constraints','Format','Output'],
@@ -1211,6 +1949,7 @@ const label=(list,k)=>{const f=list.find(x=>x[0]===k);return f?f[1]:cap(k);};
 const keysOf=(list,field)=>{const out=list.map(x=>x[0]);S.forEach(c=>{const v=c[field];if(v&&!out.includes(v))out.push(v);});return out;};
 const whenOf=c=>c.when||'new';
 const whenKeys=keysOf(WHENS,'when').filter(k=>k!=='new').concat('new');
+const stationKeys=keysOf(STATIONS,'station').filter(k=>S.some(c=>c.station===k));
 const typeKeys=keysOf(TYPES,'type');
 
 // ---- the shelf, grouped by moment
@@ -1225,7 +1964,7 @@ whenKeys.forEach(w=>{
     const i=S.indexOf(s);
     const el=document.createElement('article');
     el.className='pane';el.id=s.id;
-    el.dataset.when=w;el.dataset.type=s.type||'';el.dataset.levers=(s.levers||[]).join(',');
+    el.dataset.when=w;el.dataset.type=s.type||'';el.dataset.levers=(s.levers||[]).join(',');el.dataset.station=s.station||'';
     const levers=s.kind==='prompt'?`<div class="levers">${LEVERS.map(l=>`<span class="${s.levers.includes(l)?'on':''}">${l}</span>`).join('')}</div>`:'';
     const body=s.kind==='recipe'
       ?`<ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
@@ -1240,37 +1979,72 @@ whenKeys.forEach(w=>{
   root.appendChild(section);
 });
 
+// ---- the station header. One per station, hidden until that station is picked.
+const shead=document.createElement('div');
+shead.id='shead';shead.hidden=true;
+root.parentNode.insertBefore(shead,root);
+function renderStationHead(k){
+  const h=STATION_HEAD[k];
+  if(!k||!h){shead.hidden=true;shead.innerHTML='';return;}
+  const n=S.filter(c=>c.station===k).length;
+  shead.hidden=false;
+  shead.innerHTML=
+    `<div class="label">${esc(label(STATIONS,k))}</div>`+
+    `<p class="snote">${esc(STATION_NOTES[k]||'')}</p>`+
+    (h.rows?`<div class="stable"><table><thead><tr><th>The question</th><th>The prompt</th><th>How it runs</th></tr></thead><tbody>`+
+      h.rows.map(r=>`<tr><td>${esc(r[0])}</td><td class="sp">${esc(r[1])}</td><td class="sr">${esc(r[2])}</td></tr>`).join('')+
+      `</tbody></table></div>`:'')+
+    (h.notes?`<ul class="snotes">${h.notes.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`:'')+
+    `<p class="scount">${n} prompt${n===1?'':'s'} in this area.</p>`;
+}
+
 // ---- the filter row. One active chip per group. Groups combine.
 const filters=document.getElementById('filters');
-const state={when:'',type:'',lever:''};
+const state={when:'',type:'',lever:'',station:''};
 const present={when:whenKeys.filter(k=>S.some(c=>whenOf(c)===k)),type:typeKeys.filter(k=>S.some(c=>c.type===k))};
 let revealed=false;
 const chipRow=(name,g,keys,lab)=>`<div class="frow"><span class="fname">${name}</span><div class="chips"><button class="chip on" data-g="${g}" data-v="">All</button>${keys.map(k=>`<button class="chip" data-g="${g}" data-v="${esc(k)}">${esc(lab(k))}</button>`).join('')}</div></div>`;
 filters.innerHTML=
+  (stationKeys.length?chipRow('Area','station',stationKeys,k=>label(STATIONS,k)):'')+
   chipRow('When','when',present.when,k=>label(WHENS,k))+
   chipRow('Type','type',present.type,k=>label(TYPES,k))+
   chipRow('Lever','lever',LEVERS,k=>k)+
-  `<div class="frow fmeta"><span class="fname"></span><span class="fcount" id="fcount"></span><button class="chip back" id="tovault" hidden>Choose a moment</button></div>`;
+  `<div class="frow fmeta"><span class="fname"></span><span class="fcount" id="fcount"></span><button class="chip back" id="tovault" hidden>Back to the chooser</button></div>`;
 
 // ---- the vault. One tile per moment with a count, plus everything.
 const vgrid=document.getElementById('vgrid');
 const countOf=k=>S.filter(c=>whenOf(c)===k).length;
 vgrid.innerHTML=present.when.map((k,i)=>`<button class="vtile" data-when="${esc(k)}"><span class="vn">${String(i+1).padStart(2,'0')}</span><h3>${esc(label(WHENS,k))}</h3><p>${esc(WHEN_NOTES[k]||'')}</p><span class="vc">${countOf(k)} card${countOf(k)===1?'':'s'}</span></button>`).join('')
   +`<button class="vtile all" data-when=""><span class="vn">&rarr;</span><h3>Everything</h3><p>Every card on the shelf, grouped by moment.</p><span class="vc">${S.length} cards</span></button>`;
-vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.when=b.dataset.when;state.type='';state.lever='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
-document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.lever='';revealed=false;applyFilters();window.scrollTo({top:0});};
+if(stationKeys.length){
+  const wrap=document.createElement('div');
+  wrap.className='vareas';
+  wrap.innerHTML=`<div class="label">Or pick an area</div><div class="vgrid areas">`+
+    stationKeys.map(k=>{
+      const n=S.filter(c=>c.station===k).length;
+      return `<button class="vtile area" data-station="${esc(k)}"><span class="vn">&rarr;</span><h3>${esc(label(STATIONS,k))}</h3><p>${esc(STATION_NOTES[k]||'')}</p><span class="vc">${n} prompt${n===1?'':'s'}</span></button>`;
+    }).join('')+`</div>`;
+  vgrid.parentNode.appendChild(wrap);
+  wrap.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{
+    state.station=b.dataset.station;state.when='';state.type='';state.lever='';revealed=true;
+    applyFilters();document.getElementById('filters').scrollIntoView();
+  };});
+}
+vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.when=b.dataset.when;state.type='';state.lever='';state.station='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
+document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.lever='';state.station='';revealed=false;applyFilters();window.scrollTo({top:0});};
 function applyFilters(){
-  const any=!!(state.when||state.type||state.lever);
+  const any=!!(state.when||state.type||state.lever||state.station);
   if(any) revealed=true;
   const landing=!revealed;
   document.getElementById('vault').hidden=!landing;
   document.getElementById('shelf').hidden=landing;
   document.getElementById('howto').hidden=landing;
   document.getElementById('tovault').hidden=landing;
+  renderStationHead(landing?'':state.station);
   if(landing){document.getElementById('none').hidden=true;document.getElementById('fcount').textContent=`${S.length} cards`;filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.v===''));return;}
   let n=0;
   document.querySelectorAll('.pane').forEach(p=>{
-    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.lever||p.dataset.levers.split(',').includes(state.lever));
+    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.lever||p.dataset.levers.split(',').includes(state.lever))&&(!state.station||p.dataset.station===state.station);
     p.hidden=!ok;if(ok)n++;
   });
   document.querySelectorAll('#shelf section').forEach(sec=>{sec.hidden=!sec.querySelector('.pane:not([hidden])');});
@@ -1280,7 +2054,7 @@ function applyFilters(){
   checkMore();
 }
 filters.querySelectorAll('.chip:not(.back)').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
-document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.lever='';applyFilters();};
+document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.lever='';state.station='';applyFilters();};
 applyFilters();
 
 async function doCopy(b){
@@ -1301,6 +2075,8 @@ function checkMore(){document.querySelectorAll('.pane').forEach(p=>{const pre=p.
 document.querySelectorAll('.prewrap pre').forEach(pre=>pre.addEventListener('scroll',checkMore));
 window.addEventListener('resize',checkMore);
 function openHash(){
+  const h0=location.hash.slice(1);
+  if(h0){const c0=S.find(x=>x.id===h0); if(c0&&c0.station){state.station=c0.station;state.when='';revealed=true;}}
   const h=location.hash.slice(1);const e=h&&document.getElementById(h);
   if(!(e&&e.classList.contains('pane')))return false;
   if(!revealed||e.hidden||e.closest('section').hidden){state.when=e.dataset.when;state.type='';state.lever='';}
