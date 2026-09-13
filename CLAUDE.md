@@ -224,6 +224,24 @@ there first, then paste it over the same block in every prompt that uses
 it. The shelf is 46 cards. Its copy also moved from sessions to courses,
 matching the front page.
 
+Same day, James read the cards and said the prompt text looked strange and
+did not explain why he would use it. Both faults were mine. The cards
+dropped a reader straight from a long all-caps `where` line into
+`<my_input>` tags and `## Role` headings, and `flow()` was reflowing that
+machine-facing scaffolding into runs of prose. And the explanation existed
+in the file he supplied: each prompt carries the question it answers, what
+to include, what comes back and a numbered how-to, and only "use it when"
+had been carried across. Two fixes. `flow()` now returns a prompt
+untouched when it carries its own structure (a line starting with a
+markdown heading or an XML tag), so authored prompts of that kind display
+as written; older cards still reflow exactly as before. And an optional
+`brief` field on a card renders above the levers strip: the question in
+full size, what to give it and what comes back side by side, and the
+numbered steps behind a collapsed toggle. All seven `where` lines were
+shortened, because that style sets them in uppercase mono and a 130
+character sentence in caps is unreadable. Any future long prompt card
+should carry a `brief`.
+
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
 `assets/thumbnails/manus-bridge.jpg`. It qualifies under the 4 Sep Tool

@@ -207,6 +207,26 @@ footer b{color:var(--paper);font-weight:500}
 #shead .scount{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:0}
 .vareas{margin-top:38px}
 .vareas .label{margin-bottom:14px}
+
+/* ---------- THE CARD BRIEF ---------- */
+/* Long prompts need to say what they are for before a reader meets the
+   machine-facing text. Every line here comes from the source section. */
+.brief{border-bottom:2px solid var(--ink);padding:18px 22px 16px;background:var(--paper)}
+.brief .bq{font-size:17px;line-height:1.4;color:var(--ink);font-weight:600;margin:0 0 14px}
+.brief .bq span,.brief .brow span{display:block;font-family:var(--mono);font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--coral-text);font-weight:500;margin-bottom:5px}
+.brief .brow{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px}
+.brief .brow p{margin:0;font-size:14.5px;line-height:1.45;color:var(--char)}
+.bsteps{margin-top:14px;border-top:1px solid rgba(30,27,23,.18);padding-top:10px}
+.bsteps summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:10px}
+.bsteps summary::-webkit-details-marker{display:none}
+.bsteps summary::after{content:"\25BE";color:var(--coral-text)}
+.bsteps[open] summary::after{content:"\25B4"}
+.bsteps summary:hover{color:var(--coral-text)}
+.bsteps ol{margin:12px 0 4px;padding-left:20px}
+.bsteps li{font-size:14.5px;line-height:1.5;color:var(--char);margin-bottom:6px}
+@media(max-width:700px){.brief .brow{grid-template-columns:1fr;gap:14px}}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -338,7 +358,7 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- Research ---------- */
-{kind:'prompt', id:'trust-test', sec:'Research', station:'research', title:'Trust Test', where:'Someone makes a claim you are about to act on: a podcast, a video, a sales pitch, a vendor email, or advice from another business owner.', type:'review', when:'before-acting', hook:"Test a claim before you put money behind it.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'trust-test', sec:'Research', station:'research', title:'Trust Test', where:'Before you act on a claim', type:'review', when:'before-acting', hook:"Test a claim before you put money behind it.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'Is this claim true?', bring:'the claim or the full transcript, the decision it feeds, one line about your business, and what it costs you if the claim is wrong.', back:'a claim map first. Then a Trust Report with a verdict, the evidence for and against each claim, and the cheapest way to test the idea in your own business.', steps:['If the decision is costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message. The AI returns a claim map and stops.','If the claim map is wrong, type your corrections.','Type "go" and send the message.','Before you act, open the sources behind the verdict.']},
 prompt:`<my_input>
 [Paste the claim or the full transcript. Then add: the decision this feeds, one line about your business, and what it costs you if the claim is wrong.]
 </my_input>
@@ -444,7 +464,7 @@ Use a heading for each section. No introduction and no closing summary.
 Stage 1: the claim map, then stop and wait for my reply.
 Stage 2: the Trust Report.`},
 
-{kind:'prompt', id:'shortlist', sec:'Research', station:'research', title:'Shortlist', where:'Choosing between tools, platforms, suppliers or services, and you want the options narrowed properly.', type:'review', when:'start', hook:"One pick, the real monthly cost, and the watch-outs.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'shortlist', sec:'Research', station:'research', title:'Shortlist', where:'Choosing between options', type:'review', when:'start', hook:"One pick, the real monthly cost, and the watch-outs.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'Which option should I pick?', bring:'what you need it to do, the options you are considering (or ask it to find them), your budget, the tools it must work with, and what matters most to you.', back:'the criteria and options first. Then one pick, a comparison table, the real monthly cost, and the watch-outs before you sign up.', steps:['If the decision is costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message. The AI returns the criteria and options, then stops.','If a criterion or option is wrong, type your corrections.','Type "go" and send the message.','Before you sign up, open the sources behind the pick.']},
 prompt:`<my_input>
 [Describe what you need it to do. List the options you are considering, or write "find the options". Add your budget, the tools it must work with, and what matters most to you.]
 </my_input>
@@ -542,7 +562,7 @@ Use a heading for each section. No introduction and no closing summary.
 Stage 1: the criteria and options, then stop and wait for my reply.
 Stage 2: the Shortlist.`},
 
-{kind:'prompt', id:'briefing', sec:'Research', station:'research', title:'Briefing', where:'Getting across a topic fast: an industry before a client meeting, or a new rule that affects your business.', type:'interview', when:'start', hook:"Know what is settled, what is disputed, and what is moving.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'briefing', sec:'Research', station:'research', title:'Briefing', where:'Getting across a topic fast', type:'interview', when:'start', hook:"Know what is settled, what is disputed, and what is moving.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'What do I need to know about this?', bring:'the topic, why you need it (the meeting, decision or task), what you already know, and whether you want a quick or a deep briefing.', back:'the scope first. Then a briefing that separates what is settled, what is disputed and what is changing, and what it means for you.', steps:['If you need a deep briefing, switch on deep research. For a quick briefing, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message. The AI returns the scope and stops.','If the scope is wrong, type your corrections.','Type "go" and send the message.','Before you rely on a point, open the source behind it.']},
 prompt:`<my_input>
 [Name the topic. Say why you need it: the meeting, decision or task. Say what you already know. Write "quick" or "deep".]
 </my_input>
@@ -627,7 +647,7 @@ Use a heading for each section. No introduction and no closing summary.
 Stage 1: the scope, then stop and wait for my reply.
 Stage 2: the Briefing.`},
 
-{kind:'prompt', id:'idea-test', sec:'Research', station:'research', title:'Idea Test', where:'You have a business idea and want it tested before you spend money on it.', type:'review', when:'before-acting', hook:"Find the assumption your idea dies on, before it does.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'idea-test', sec:'Research', station:'research', title:'Idea Test', where:'Before you spend on an idea', type:'review', when:'before-acting', hook:"Find the assumption your idea dies on, before it does.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'Will this idea work?', bring:'the idea, who it is for, how it makes money, what you would need to spend or change, and what it costs you if it fails.', back:'a verdict, the assumptions the idea depends on and whether each one holds, who is already doing it, the break-even numbers, and the cheapest test to run first.', steps:['If the idea is costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message.','Before you spend money, open the sources behind the verdict.']},
 prompt:`<my_input>
 [Describe the idea. Add who it is for, how it makes money, what you would need to spend or change, and what it costs you if it fails. Include any prices, costs or numbers you already know.]
 </my_input>
@@ -704,7 +724,7 @@ Use a heading for each section. No introduction and no closing summary.
 
 The report, in the format above.`},
 
-{kind:'prompt', id:'business-check', sec:'Research', station:'research', title:'Business Check', where:'Before you sign with a supplier, partner with a business, pitch a prospect or size up a competitor.', type:'review', when:'before-acting', hook:"Know who you are dealing with before you commit.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'business-check', sec:'Research', station:'research', title:'Business Check', where:'Before you commit to a business', type:'review', when:'before-acting', hook:"Know who you are dealing with before you commit.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'Who am I dealing with?', bring:'the business name, its website if you have it, your relationship to it (supplier, partner, prospect or competitor), and what is at stake.', back:'the short version, the business\'s identity, red and green flags, and a section written for your relationship: questions to ask a supplier, openers for a prospect, or where you beat a competitor.', steps:['If the deal is costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message.','Before you sign or pitch, open the sources behind the red flags and the verdict.']},
 prompt:`<my_input>
 [Name the business. Add its website if you have it, your relationship to it (supplier, partner, prospect or competitor), and what is at stake.]
 </my_input>
@@ -785,7 +805,7 @@ Use a heading for each section. No introduction and no closing summary.
 
 The report, in the format above.`},
 
-{kind:'prompt', id:'post-call-intel', sec:'Research', station:'research', title:'Post-Call Intel', where:'After a conversation about a business, when you need what they want, where they are, and what is worth doing.', type:'interview', when:'start', hook:"Turn a conversation into goals worth acting on.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'post-call-intel', sec:'Research', station:'research', title:'Post-Call Intel', where:'Straight after a conversation', type:'interview', when:'start', hook:"Turn a conversation into goals worth acting on.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'What came out of that conversation?', bring:'the full transcript, not the meeting recorder\'s summary. Add anything the conversation did not cover, such as budget.', back:'a goal brief first. It shows the underlying goal, each goal\'s current state against what was wanted, the business rules and numbers stated in the call, which goal unlocks the others, and what needs research versus a look inside the business\'s own setup. Then an Intel Brief with a verdict and a recommendation for each goal.', steps:['If the builds discussed are costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with the full transcript and your notes.','Send the message. The AI returns the goal brief and stops.','Check every item marked [CONFIRM] and type the correct values.','If anything else in the goal brief is wrong, type your corrections.','Type "go" and send the message.','Before you act on a recommendation, open the sources behind it.','The goal brief is useful on its own. You can stop after step 4 and use it to plan the next session.']},
 prompt:`<transcript>
 [Paste the full transcript here.]
 </transcript>
@@ -923,7 +943,7 @@ Use a heading for each section. No introduction and no closing summary.
 Stage 1: the goal brief, then stop and wait for my reply.
 Stage 2: the Intel Brief.`},
 
-{kind:'prompt', id:'build-path', sec:'Research', station:'research', title:'Build Path', where:'You know what you want to build with AI or automation and need the best current way to build it.', type:'instructions', when:'start', hook:"The shortest safe route from idea to working build.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'build-path', sec:'Research', station:'research', title:'Build Path', where:'Before you start building', type:'instructions', when:'start', hook:"The shortest safe route from idea to working build.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'How do I build this?', bring:'what it must do, who uses it, the tools you already have, who will build it and keep it running, and your budget. Rough notes are fine.', back:'a build brief with a definition of done first. Then a Build Plan: the options compared, the recommended approach, step-by-step build instructions, tests that prove it works, and what it takes to keep it running.', steps:['If the build is costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message. The AI returns a build brief and stops.','If the definition of done is wrong, type the correction.','Type answers to any open facts you can answer.','Type "go" and send the message.','Before you build, open the sources behind the recommendation.']},
 prompt:`<my_input>
 [Describe what you want to build: what it must do, who uses it, the tools you already have, who will build it and keep it running, and your budget. Rough notes are fine. You can paste a goal from an Intel Brief, including its business rules.]
 </my_input>
@@ -1938,7 +1958,11 @@ steps:[
 // Engine. Same reflow as the decks: authored line breaks become paragraphs for
 // display, lists and ALL-CAPS labels keep their own lines.
 // ---------------------------------------------------------------------------
-const flow=t=>{const out=[];for(const raw of t.split('\n')){const l=raw.replace(/\s+$/,'');const prev=out.length?out[out.length-1]:'';const item=x=>/^\s*([-•*]|\d+[.)])\s/.test(x)||/^[A-Z][A-Z0-9 ]{2,}:/.test(x);const indented=/^\s+\S/.test(raw);if(l===''){out.push('');}else if(prev!==''&&(indented||/^[a-z]/.test(l)||(!item(l)&&!item(prev)))){out[out.length-1]=prev+' '+l.trim();}else{out.push(l);}}return out.join('\n');};
+// A prompt written with its own structure (XML tags, or headings like ## Role)
+// is shown exactly as authored. Reflowing it joins the tags and headings into
+// runs of prose, which is what made the research cards read strangely.
+const structured=t=>/^\s*(#{1,4}\s|<[a-z_]+>)/m.test(t);
+const flow=t=>{ if(structured(t)) return t;const out=[];for(const raw of t.split('\n')){const l=raw.replace(/\s+$/,'');const prev=out.length?out[out.length-1]:'';const item=x=>/^\s*([-•*]|\d+[.)])\s/.test(x)||/^[A-Z][A-Z0-9 ]{2,}:/.test(x);const indented=/^\s+\S/.test(raw);if(l===''){out.push('');}else if(prev!==''&&(indented||/^[a-z]/.test(l)||(!item(l)&&!item(prev)))){out[out.length-1]=prev+' '+l.trim();}else{out.push(l);}}return out.join('\n');};
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const stepsText=s=>s.steps.map((t,i)=>`${i+1}. ${t.replace(/<[^>]+>/g,'')}`).join('\n');
 const copyText=s=>s.kind==='recipe'?stepsText(s):s.prompt;
@@ -1969,11 +1993,16 @@ whenKeys.forEach(w=>{
     const body=s.kind==='recipe'
       ?`<ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
       :`<div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>`;
+    const brief=s.brief?`<div class="brief">
+        <p class="bq"><span>The question</span>${esc(s.brief.q)}</p>
+        <div class="brow"><p><span>What to give it</span>${esc(s.brief.bring)}</p><p><span>What comes back</span>${esc(s.brief.back)}</p></div>
+        <details class="bsteps"><summary>How to run it, in ${s.brief.steps.length} steps</summary><ol>${s.brief.steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>
+      </div>`:'';
     const expand=s.kind==='prompt'?`<button class="expand" data-i="${i}">Expand</button>`:'';
     const fresh=s.added&&(Date.now()-Date.parse(s.added))<14*864e5;
     const meta=`<span class="meta">${s.rank?'<i class="pick">Start with this</i>':''}${fresh?'<i class="new">New</i>':''}${s.type?`<i class="type">${esc(label(TYPES,s.type))}</i>`:''}${s.kind==='recipe'&&s.sec!=='Recipes'?'<i class="type">Recipe</i>':''}<i class="src">${esc(s.sec)}</i></span>`;
     const hook=s.hook?`<span class="hook">${esc(s.hook)}</span>`:'';
-    el.innerHTML=`<div class="pane-head"><h3><a href="#${s.id}">${esc(s.title)}</a>${hook}<span class="where">${esc(s.where)}</span>${meta}</h3><div class="btns">${expand}<button class="copy" data-i="${i}">${copyLabel(s)}</button></div></div>${levers}${body}`;
+    el.innerHTML=`<div class="pane-head"><h3><a href="#${s.id}">${esc(s.title)}</a>${hook}<span class="where">${esc(s.where)}</span>${meta}</h3><div class="btns">${expand}<button class="copy" data-i="${i}">${copyLabel(s)}</button></div></div>${brief}${levers}${body}`;
     grid.appendChild(el);
   });
   root.appendChild(section);
