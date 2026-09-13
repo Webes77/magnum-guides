@@ -578,15 +578,24 @@ order of value:
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-6. The newsletter routines need one thing from James, and it is the
-   biggest open item on this list. Gmail and Google Drive are attached to
-   all three; that part is done. The `magnum-newsletter` repo is still not
-   in the routine environment's sources, so the publish run cannot push.
-   Proof: the 6 Sep run finished at 06:05 UTC and that edition's commit
-   landed at 07:47 UTC from a chat session. No publish run has ever
-   finished on its own. He adds it in the environment settings; a session
-   cannot. Optional, and only for self-hosting a video Magnum:
-   `cdn.midjourney.com` on the environment's allowed hosts.
+6. Done, 13 Sep, and it closes what was the biggest item on this list.
+   All four routines now carry their repositories, so they can push:
+   draft has `magnum-guides` and `magnum-newsletter`, publish and publish
+   retry have `magnum-newsletter`, Sunday Brief has `magnum-guides`.
+   Gmail and Google Drive were already attached. The environment
+   (`env_01K1ftemDMFMTg9W6sXokavM`, named Wheable, shared by all four)
+   now runs Custom network access with `cdn.midjourney.com` on the
+   allowed list plus the default package-manager list, so a video Magnum
+   self-hosts instead of hotlinking.
+
+   Two things learned doing it. A repository is a per-routine setting on
+   the strip along the bottom of the Instructions box, labelled "Select a
+   repository"; the cloud icon beside it is the environment and is the
+   easy mis-tap. Changing the environment hits all four routines at once,
+   changing a repository does not. Before this, no publish run had ever
+   finished on its own: the 6 Sep run ended at 06:05 UTC and that
+   edition's commit landed at 07:47 UTC from a chat session. The first
+   fully unattended publish is Sunday 20 Sep 4pm. Watch that one.
 
    On 13 Sep the 2026-09-13 edition was published by hand from this
    session because the Magnum was a video and the routines only knew about
