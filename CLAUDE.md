@@ -324,15 +324,20 @@ get back where it went wrong and a fresh brief to restart from). Both
 are on the shelf as `state-of-play` and `chat-rescue`, deck and shelf
 identical. Foundations is 30 slides, six prompts. The shelf is 34 cards.
 
-Gotcha found the same day, and hit again on 12 Sep: GitHub Pages does not
-rebuild when `main` and the session branch go up together. Two separate
-`git push` commands is not enough if they run in the same shell
-invocation; on 12 Sep `f3c3463` sat on `main` with no build queued four
-minutes later. The order that works is: push `main` on its own
-(`git push origin main`), wait until a "pages build and deployment" run
-appears for that exact sha, and only then push the branch. If the run
-never appears, `main` needs a fresh commit to trigger one, so do not
-report anything as live on the strength of the push alone.
+Gotcha, hit three times now: a push to `main` does not reliably queue a
+"pages build and deployment" run. On 12 Sep `f3c3463` sat on `main` with
+no build after four minutes; on 13 Sep the merge commit `ff68f09` did the
+same, and that one went up with `main` on its own, so the earlier theory
+that it was caused by pushing `main` and the branch together is wrong.
+What is known: some pushes do not trigger, and the next push to `main`
+always does, carrying the earlier commits with it. So treat it this way.
+Push `main` on its own, then poll the Actions API for a run whose
+`head_sha` is that exact commit. If none appears within about two minutes,
+push one more commit to `main` (there is usually something real to write,
+otherwise the note itself) and watch again. Check the Pages deployments
+endpoint, not the push output: `git push` reporting success says only that
+the ref moved. Never tell James something is live on the strength of a
+push.
 
 Also live: Fine-Tune (`fine-tune/`, restyled to the house style on 9 Sep
 at James's request, content unchanged, safe drawing kept), the Manus
