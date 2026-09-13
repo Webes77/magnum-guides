@@ -649,6 +649,13 @@ order of value:
 - Case-insensitive grep for "Inter" matches "interaction". Use word
   boundaries when checking for retired fonts.
 - A Word lock file (`~$name.docx`) is not a document.
+- `outlook-send` cannot send from a Claude Code session. The sandbox
+  refuses the call to the Make webhook before it runs, so nothing reaches
+  Make and there is no failed execution to hunt for. Make itself is fine.
+  James holds the fix and applies it himself; a session cannot. Read
+  `notes/outlook-send-sandbox-block.md` before touching this. A blocked
+  send is reported as blocked, never rerouted through Gmail, which sends
+  from the wrong address. Cowork is unaffected.
 
 ## Deeper reading
 
