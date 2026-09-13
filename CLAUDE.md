@@ -270,6 +270,28 @@ under James's name would put a one-sided account of a live dispute in
 front of clients. Sources: openai.com/index/navier-stokes-solution,
 Quanta, Fortune and TechCrunch, all 8 Sep 2026.
 
+A monthly fact check went in on 13 Sep, at James's request, after the
+privacy article showed how quietly a live slide can go wrong. Three files:
+`notes/fact-register.md` lists every claim in the members area that can go
+stale, 22 rows, each with where it lives, when it was last checked and its
+source grade; `notes/fact-check-prompt.md` is the versioned routine prompt;
+`notes/fact-check-log.md` takes one entry per run. The register is
+deliberately bounded. A claim earns a row only if it asserts something
+about a third-party product, plan or policy and a client acting on it
+while wrong would be misled. Teaching, method and the 6 Levers are not on
+it and never go stale. Magnum pricing is never a routine's to touch.
+
+The routine is `trig_01Ug88bf3JAkccEhX6f7Nd2x`, cron `0 21 1 * *`, the 1st
+of each month at 21:00 UTC, 7am Gold Coast on the 2nd, fresh session each
+fire, first run 1 Oct 2026. It never edits `main`: it opens a branch named
+`fact-check/<date>` and emails James, the same shape as the Sunday Brief.
+It cannot work until James adds `webes77/magnum-guides` to the routine's
+sources and attaches Gmail in the Routines UI, because a session cannot do
+either. Two rows are standing exceptions it will report every run until
+James closes them: row 11, Record a skill, never seen in the live product
+from here, and row 15, the Cowork tools claim, James's own observation with
+nothing third-party either way.
+
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
 `assets/thumbnails/manus-bridge.jpg`. It qualifies under the 4 Sep Tool
@@ -501,23 +523,29 @@ order of value:
 1. James has not yet looked at the Manus Bridge walkthrough live, on a
    phone or a laptop. That is the next thing.
 
-2. The hotter coral. `--rust` `#EF4029` is on the front page only. If
+2. The fact-check routine needs two things from James before 1 Oct, both
+   in the Routines UI and neither doable from a session: add
+   `webes77/magnum-guides` to the sources of `trig_01Ug88bf3JAkccEhX6f7Nd2x`,
+   and attach Gmail to it. Without them the first run has nothing to read
+   and no way to report.
+
+3. The hotter coral. `--rust` `#EF4029` is on the front page only. If
    James wants it everywhere it is a scripted pass across every page, all
    four decks, the shelf, the card sources, the eleven share cards and the
    brand page, plus the house style skill and its two reference files, and
    the deck check after. If he does not, the front page reverts to
    `#DE4A3C` in one edit. Do not leave it split for long.
 
-3. James to look at the reworked front page and the indexed shelf live, on
+4. James to look at the reworked front page and the indexed shelf live, on
    a phone as well as a laptop. Both were verified locally only. The
    sticky nav's dropdown only appears under 820px, so the phone is the
    only place to check it.
-4. James to glance at Make Claude Yours slide 31 in the live desktop app.
+5. James to glance at Make Claude Yours slide 31 in the live desktop app.
    Sources agree with the slide; nobody has seen the menu itself from here.
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-5. The newsletter routines need one thing from James, and it is the
+6. The newsletter routines need one thing from James, and it is the
    biggest open item on this list. Gmail and Google Drive are attached to
    all three; that part is done. The `magnum-newsletter` repo is still not
    in the routine environment's sources, so the publish run cannot push.
@@ -543,24 +571,24 @@ order of value:
    to Midjourney's CDN, which is a host James does not control; the mp4 is
    in the Drive folder and can be self-hosted the day the network allows
    it.
-6. James to check the front page live: This Week should show the Field
+7. James to check the front page live: This Week should show the Field
    Note card, the latest edition card, and under them the three earlier
    Field Notes beside the three previous editions. The
    `sunday-brief/2026-09-06` branch is done with and can be deleted on
    GitHub.
-7. Done 6 Sep: the routine carries the mechanical duplicate test. A
+8. Done 6 Sep: the routine carries the mechanical duplicate test. A
    session can now update the routine prompt itself with `update_trigger`
    and read it back with `list_triggers`; the how is in
    `notes/sunday-brief-prompt.md`. Next run is Sunday 13 Sep, 6am.
-8. The desktop folders, once James uploads them. The only material never
+9. The desktop folders, once James uploads them. The only material never
    swept. See "Still to sweep" at the end of `notes/training-audit.md`.
-9. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
+10. Housekeeping (not urgent): the 38 Gamma duplicates listed under Source
    2, by hand, since the Gamma connector cannot move or delete. The Drive
    tidy ran on 4 Sep: the retired January to March workspace is archived,
    duplicates sit in `_Review before deleting 2026-09` under Magnum
    Business for James to empty, and the log is `_Declutter log` in the same
    folder. Two loose PNGs and the API Key folder are still James's call.
-10. Industry guide, one only, once James names the trade.
+11. Industry guide, one only, once James names the trade.
 
 ## How things get built
 
