@@ -242,6 +242,34 @@ shortened, because that style sets them in uppercase mono and a 130
 character sentence in caps is unreadable. Any future long prompt card
 should carry a `brief`.
 
+On 13 Sep a third-party article on AI privacy (Ruben Hassaid, shared by
+James) surfaced a defect in live training material, which is worth more
+than the article was. Two slides in Make Claude Yours were corrected, and
+the deck check passed after. "The private chat" said an incognito chat is
+"not saved, not remembered, and not in your history", which is true for
+the individual and incomplete for the client it was written for. Anthropic's
+own pages confirm an incognito chat is kept for 30 days (longer under an
+Enterprise custom retention setting) and appears in the organisation data
+export a Team or Enterprise Primary Owner can run. The slide now says
+private from your sidebar, not from your employer. "Your chats stay yours"
+gained the consequence of leaving the training toggle on: Anthropic keeps
+consumer chats for up to five years with it on, against 30 days with it
+off. Both verified through WebSearch against `support.claude.com` and
+`privacy.claude.com`, which are reachable in results even though direct
+fetch is blocked.
+
+The article's own hook was not used and should not be. It tells the
+Navier-Stokes story as Buckmaster and Alpoge solving the Millennium Prize
+problem first and OpenAI then cracking it after hearing a rumour. The
+record is contested: OpenAI says their work addressed the forced Euler
+equations, a related but distinct problem, and that Buckmaster's Codex
+prompts in the preceding two months could not have influenced its system
+including through training, while conceding it cannot rule out
+de-identified data contributing generally. Repeating the article's version
+under James's name would put a one-sided account of a live dispute in
+front of clients. Sources: openai.com/index/navier-stokes-solution,
+Quanta, Fortune and TechCrunch, all 8 Sep 2026.
+
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
 `assets/thumbnails/manus-bridge.jpg`. It qualifies under the 4 Sep Tool
