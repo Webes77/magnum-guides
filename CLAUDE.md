@@ -441,12 +441,32 @@ order of value:
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
-5. The newsletter routines need three things from James before Saturday
-   12 Sep: attach Gmail and Google Drive to the three This Week in AI
-   routines in the Routines UI; add the `magnum-newsletter` repo to the
-   routine environment's sources so the publish run can push (until then
-   it falls back to Drive and an email with the manual command); and
-   nothing else. The first draft lands Saturday 12 Sep 6am.
+5. The newsletter routines need one thing from James, and it is the
+   biggest open item on this list. Gmail and Google Drive are attached to
+   all three; that part is done. The `magnum-newsletter` repo is still not
+   in the routine environment's sources, so the publish run cannot push.
+   Proof: the 6 Sep run finished at 06:05 UTC and that edition's commit
+   landed at 07:47 UTC from a chat session. No publish run has ever
+   finished on its own. He adds it in the environment settings; a session
+   cannot. Optional, and only for self-hosting a video Magnum:
+   `cdn.midjourney.com` on the environment's allowed hosts.
+
+   On 13 Sep the 2026-09-13 edition was published by hand from this
+   session because the Magnum was a video and the routines only knew about
+   stills. Three things changed in `magnum-newsletter`, all pushed:
+   `tools/build_edition.py` renders a `<video>` when the Magnum section
+   carries `video_url` and takes `--magnum-video` to self-host a local
+   file (James's own patch); the publish gate now accepts either a
+   `magnum.*` image or a `Magnum video:` URL line in `notes.txt`, fetches
+   the video and self-hosts it when the network allows and hotlinks it
+   when it does not; and the draft routine now writes three Magnum prompts
+   instead of one so James picks, with a `Magnum prompt:` line in
+   `notes.txt` carrying his choice onto the page. `ROUTINE.md` holds all
+   three prompts verbatim and all three live triggers were verified
+   byte-identical to it after the update. The 13 Sep Magnum is hotlinked
+   to Midjourney's CDN, which is a host James does not control; the mp4 is
+   in the Drive folder and can be self-hosted the day the network allows
+   it.
 6. James to check the front page live: This Week should show the Field
    Note card, the latest edition card, and under them the three earlier
    Field Notes beside the three previous editions. The
