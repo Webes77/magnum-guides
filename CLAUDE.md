@@ -292,6 +292,39 @@ James closes them: row 11, Record a skill, never seen in the live product
 from here, and row 15, the Cowork tools claim, James's own observation with
 nothing third-party either way.
 
+Two things were agreed on 13 Sep and not built. They are the next
+session's work.
+
+**The privacy reference page.** Decided: a reference page, not a Field
+Note, titled "AI Privacy: What Is Kept, and Who Can See It". James's
+reason is that he refers people to it when they ask, which happens often,
+so it needs a plain title that survives arriving as a link with no
+context. It is undated and maintained in place, because a numbered Field
+Note reads as stale in six months and privacy settings move constantly.
+Precedent is Fine-Tune: undated, referenced, outside the ladder. The cost
+James accepted is upkeep, realistically a re-check each quarter, which the
+fact-check routine now covers. Structure agreed: what actually happens to
+what you type; what is kept and for how long, per plan; who can see it,
+which is where the incognito and Team plan point lands; what to switch
+off, as a numbered settings pass for Claude and for ChatGPT; what never to
+put in at all; and a short "if you only do three things". Every setting
+claim verified the way the two slides were, against the vendors' own pages
+through WebSearch. Nothing from the Hassaid article's Navier-Stokes
+opening, for the reasons above. The memory audit prompt it ends on goes on
+the shelf as a card, filed under Setting up.
+
+**The weekly Field Note routine.** James wants the Field Note drafted
+automatically once a week, midweek, because This Week in AI already runs
+Saturday and Sunday. Not started. The obvious shape is the Sunday Brief's:
+a routine that drafts onto a branch and emails him, never publishing on
+its own, with `newsletter/README.md` as the build steps and the six-section
+structure of Field Note 04 as the template. Two things to settle before
+building. Where the week's idea comes from, since the Sunday Brief already
+reads the newsletters and feeds the shelf, and a second routine reading the
+same inbox would duplicate it. And whether a drafted Field Note is worth
+having at all if James rewrites it in his voice anyway, which is what
+happened with 03 and 04. Ask him both before building.
+
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
 `assets/thumbnails/manus-bridge.jpg`. It qualifies under the 4 Sep Tool
