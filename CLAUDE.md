@@ -279,6 +279,29 @@ cards go from 1,240px to 591px closed, which is the "too much to scroll"
 complaint fixed. All 47 ids unchanged, script parses, no sideways scroll at
 1440, 1280, 820 or 390.
 
+Last on 14 Sep, the shelf gained a fill-in layer. A prompt with five or six
+bracketed blanks scattered through it is the one nobody edits correctly by
+hand, and missing one gives a broken answer. Five cards carry three or more
+real blanks and now carry a small form above the prompt: `write-the-quote`
+(6), `week-of-posts` (5), `write-the-sop` (4), `difficult-email` (4),
+`image-prompt` (4). What a client types goes into the prompt on screen and
+onto the clipboard. A blank offering a choice ("low / medium / high") renders
+as a dropdown rather than a text box.
+
+Two rules make it safe. A bracket in capitals is a marker the AI outputs
+(`[CONFIRM]`, `[CHECK]`, `[CHECK CURRENT DOCS]`, `[NEEDS CONFIRMING]`) and
+never becomes a field, which is why the Research cards get no form despite
+having brackets. And a card with nothing typed is byte-identical to the
+authored prompt, verified across all 43 prompt cards, so an untouched card
+behaves exactly as it always did. Substitution is split and join rather than
+a regex, because a blank's label carries slashes and commas a pattern would
+eat. Clearing every field restores the authored text exactly.
+
+The shelf was scoped honestly before it was built: 24 of 43 cards have no
+blanks at all, so this was never a whole-shelf feature. Do not extend it to
+cards with one or two blanks; the form costs more attention than it saves
+there.
+
 Two more faults James found reading it back, same day. The primer read as
 clutter because the lever name and the bold lead said the same thing twice:
 ROLE followed by "Give it a role". The restatement went, the numbers went,

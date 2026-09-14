@@ -294,6 +294,22 @@ footer b{color:var(--paper);font-weight:500}
 .pnote{margin:0;padding:8px 18px 0;background:var(--prompt-bg);
   font-size:13px;line-height:1.45;color:var(--char)}
 .pnote b{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ink)}
+
+/* ---- fill in the blanks ------------------------------------------------- */
+.filler{background:#FFFFFF;border-bottom:2px solid var(--ink);padding:14px 18px 16px}
+.flabel{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--coral-text);font-weight:500}
+.flabel span{color:var(--mute);letter-spacing:.08em;font-size:10.5px;text-transform:none}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 14px}
+.fgrid label{display:flex;flex-direction:column;gap:4px}
+.fgrid label>span{font-size:12.5px;line-height:1.3;color:var(--char)}
+.fgrid input,.fgrid select{font-family:var(--mono);font-size:13px;color:var(--ink);
+  background:var(--paper);border:2px solid rgba(30,27,23,.3);padding:7px 9px;width:100%}
+.fgrid input:focus,.fgrid select:focus{outline:none;border-color:var(--rust)}
+.fgrid input::placeholder{color:#9AA0A6}
+.pane.isfilled .plabel span::after{content:" \00b7 your details are in";color:var(--coral-text)}
+@media print{.filler{display:none}}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -2061,7 +2077,33 @@ const structured=t=>/^\s*(#{1,4}\s|<[a-z_]+>)/m.test(t);
 const flow=t=>{ if(structured(t)) return t;const out=[];for(const raw of t.split('\n')){const l=raw.replace(/\s+$/,'');const prev=out.length?out[out.length-1]:'';const item=x=>/^\s*([-•*]|\d+[.)])\s/.test(x)||/^[A-Z][A-Z0-9 ]{2,}:/.test(x);const indented=/^\s+\S/.test(raw);if(l===''){out.push('');}else if(prev!==''&&(indented||/^[a-z]/.test(l)||(!item(l)&&!item(prev)))){out[out.length-1]=prev+' '+l.trim();}else{out.push(l);}}return out.join('\n');};
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const stepsText=s=>s.steps.map((t,i)=>`${i+1}. ${t.replace(/<[^>]+>/g,'')}`).join('\n');
-const copyText=s=>s.kind==='recipe'?stepsText(s):s.prompt;
+/* Fill-in-the-blanks. A prompt with five or six bracketed blanks scattered
+   through it is the one nobody edits correctly by hand: miss one and the
+   answer comes back broken. Cards with three or more real blanks get a small
+   form, and what you type goes into the prompt and onto the clipboard.
+   Nothing typed means the prompt is byte-identical to the authored text, so
+   a card left alone behaves exactly as it always did. James, 14 Sep.
+
+   A bracket in CAPITALS ([CONFIRM], [CHECK], [NEEDS CONFIRMING]) is a marker
+   the AI outputs, not a blank for the client, so it never becomes a field. */
+const MARKER=/^[A-Z][A-Z \/]*$/;
+const FILLED={};
+function fillsOf(t){
+  const out=[];
+  (t.match(/\[([^\]\n]{2,120})\]/g)||[]).forEach(m=>{
+    const v=m.slice(1,-1);
+    if(!MARKER.test(v.trim())&&!out.includes(v))out.push(v);
+  });
+  return out;
+}
+/* A blank offering a choice ("low / medium / high") becomes a dropdown. */
+const choicesOf=t=>{
+  if(!t.includes(' / '))return null;
+  const parts=t.split(' / ').map(x=>x.trim());
+  return parts.length>=2&&parts.every(x=>x&&x.length<=32)?parts:null;
+};
+const promptOf=s=>FILLED[s.id]||s.prompt;
+const copyText=s=>s.kind==='recipe'?stepsText(s):promptOf(s);
 /* Display only. A client opening a Research card met <my_input> and ## Role
    before a word of English and read the whole thing as code, which is exactly
    the reaction that stops them copying it. So the scaffolding is dimmed and
@@ -2118,7 +2160,20 @@ whenKeys.forEach(w=>{
     // its own colour, and nothing that is merely explanation sits on top of it.
     const body=s.kind==='recipe'
       ?`<div class="plabel steps-label">The steps</div><ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
-      :`<div class="plabel">The prompt<span>Copy it, paste it into a new chat</span></div>`
+      :(()=>{
+          const f=fillsOf(s.prompt);
+          const form=f.length<3?'':`<div class="filler">
+            <div class="flabel">Fill these in<span>The prompt below fills itself as you type</span></div>
+            <div class="fgrid">${f.map((t,n)=>{
+              const ch=choicesOf(t);
+              const field=ch
+                ? `<select data-fid="${esc(s.id)}" data-ft="${esc(t)}"><option value="">Choose one</option>${ch.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`
+                : `<input type="text" data-fid="${esc(s.id)}" data-ft="${esc(t)}" placeholder="${esc(t.length>44?t.slice(0,44)+'...':t)}">`;
+              return `<label><span>${esc(t)}</span>${field}</label>`;
+            }).join('')}</div>
+          </div>`;
+          return form+`<div class="plabel">The prompt<span>Copy it, paste it into a new chat</span></div>`;
+        })()
        +(hasScaffolding(s.prompt)?`<p class="pnote">Type your own words where it says <b>[in the square brackets]</b>. Leave the faint lines as they are: they tell the AI where your text stops and its instructions start.</p>`:'')
        +`<div class="prewrap"><pre>${dim(esc(flow(s.prompt)))}</pre></div>`;
     // The long explanation folds away. Closed by default: a reader who wants
@@ -2231,7 +2286,26 @@ document.querySelectorAll('.copy').forEach(b=>{b.onclick=()=>doCopy(b);});
 
 const reader=document.getElementById('reader');
 function closeReader(){reader.classList.remove('on');}
-document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const s=S[+b.dataset.i];document.getElementById('rwhere').textContent=s.title;document.getElementById('rpre').textContent=flow(s.prompt);document.getElementById('rcopy').dataset.i=b.dataset.i;reader.classList.add('on');document.getElementById('rpre').scrollTop=0;};});
+document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const s=S[+b.dataset.i];document.getElementById('rwhere').textContent=s.title;document.getElementById('rpre').textContent=flow(promptOf(s));document.getElementById('rcopy').dataset.i=b.dataset.i;reader.classList.add('on');document.getElementById('rpre').scrollTop=0;};});
+
+// Rebuild a card's prompt from its form. Split and join, not a regex, because
+// a blank's label can carry slashes and other characters a pattern would eat.
+function refill(id){
+  const s=S.find(c=>c.id===id); if(!s)return;
+  const pane=document.getElementById(id); if(!pane)return;
+  let out=s.prompt;
+  pane.querySelectorAll('[data-fid]').forEach(el=>{
+    const v=el.value.trim();
+    if(v)out=out.split('['+el.dataset.ft+']').join(v);
+  });
+  FILLED[id]=out===s.prompt?null:out;
+  const pre=pane.querySelector('.prewrap pre');
+  if(pre)pre.innerHTML=dim(esc(flow(out)));
+  pane.classList.toggle('isfilled',!!FILLED[id]);
+  checkMore();
+}
+document.addEventListener('input',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);});
+document.addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&reader.classList.contains('on'))closeReader();});
 
 function checkMore(){document.querySelectorAll('.pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');if(!pre)return;p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});}
