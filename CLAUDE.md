@@ -242,6 +242,28 @@ shortened, because that style sets them in uppercase mono and a 130
 character sentence in caps is unreadable. Any future long prompt card
 should carry a `brief`.
 
+On 14 Sep the levers strip came off the cards. James said there was too much
+reference to the six levers and the page had gone too busy to use, and he was
+right: every prompt card drew all six levers as boxes with the unused ones
+greyed, so a card pulling three levers still showed six. Across 43 prompt
+cards the average was 4.1 lit, and 30 cards carried at least one dead box. The
+levers are taught once now, in the primer at the top of the shelf and in the
+courses, and the card is the prompt. Hard rule 3 is untouched: the six labels
+and their order are unchanged, they just stop being repeated 43 times. The
+Lever filter chip reads `data-levers` on the element, not the strip, so it
+still works and was tested (Tone returns 19 cards, matching the source).
+
+Two changes went with it. The `where` line came out of tracked uppercase mono
+into sentence case at 13px, because it is the second line a reader meets and a
+long one set in capitals is unreadable, the same fault fixed on the Research
+cards the day before. The authored `where` text was not reworded, only
+restyled. And the `brief` block on the seven Research cards was made properly
+readable at James's request: body and steps from 14.5px to 15.5px with more
+line height, labels from 10px to 11px with the tracking cut from .2em to
+.12em, and the prompt itself from 13.5px to 14px with more room above it. All
+46 ids are unchanged and all 43 prompt bodies are byte-identical, checked
+against the previous commit.
+
 On 13 Sep a third-party article on AI privacy (Ruben Hassaid, shared by
 James) surfaced a defect in live training material, which is worth more
 than the article was. Two slides in Make Claude Yours were corrected, and

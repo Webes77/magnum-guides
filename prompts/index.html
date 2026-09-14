@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <title>Prompt Shelf · Magnum AI</title>
-<meta name="description" content="Every prompt from the Magnum AI courses in one place, ready to copy, with the levers each one pulls marked.">
+<meta name="description" content="Every prompt from the Magnum AI courses in one place, ready to copy, grouped by the moment you would use one.">
 <meta name="author" content="Magnum AI">
 <link rel="canonical" href="https://webes77.github.io/magnum-guides/prompts/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Magnum AI">
 <meta property="og:title" content="Prompt Shelf · Magnum AI">
-<meta property="og:description" content="Every prompt from the courses in one place, ready to copy, with the levers each one pulls marked.">
+<meta property="og:description" content="Every prompt from the courses in one place, ready to copy, grouped by the moment you would use one.">
 <meta property="og:url" content="https://webes77.github.io/magnum-guides/prompts/">
 <meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/prompt-shelf.jpg">
 <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="The Magnum AI Prompt Shelf, every prompt from the courses ready to copy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Prompt Shelf · Magnum AI">
-<meta name="twitter:description" content="Every prompt from the courses in one place, ready to copy, with the levers each one pulls marked.">
+<meta name="twitter:description" content="Every prompt from the courses in one place, ready to copy, grouped by the moment you would use one.">
 <meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/prompt-shelf.jpg">
 <meta name="theme-color" content="#1E1B17">
 
@@ -132,7 +132,9 @@ section{margin-bottom:54px}
 .pane-head h3{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase}
 .pane-head h3 a{color:inherit;text-decoration:none}
 .pane-head h3 a:hover{color:#FF6F5E}
-.pane-head .where{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C8CDD3;margin-top:6px}
+/* When to use it. Sentence case, not mono caps: it sits under the hook as a
+   quiet second line, and a long one set in tracked capitals is unreadable. */
+.pane-head .where{display:block;font-family:var(--sans);font-weight:400;font-size:13px;line-height:1.45;letter-spacing:0;text-transform:none;color:#C3CAD2;margin-top:5px;max-width:52ch}
 .btns{display:flex;gap:8px;flex-shrink:0}
 .copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .15s}
 .copy:hover{background:#d2553a}
@@ -140,13 +142,9 @@ section{margin-bottom:54px}
 .expand{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .expand:hover{border-color:#FF6F5E;color:#FF6F5E}
 
-/* the levers strip */
-.levers{display:flex;flex-wrap:wrap;gap:5px;padding:12px 18px 0;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.levers span{border:2px solid var(--ink);padding:2px 7px;color:var(--mute);border-color:rgba(30,27,23,.28)}
-.levers span.on{background:var(--navy);color:#F4F1EA;border-color:var(--ink)}
 
 .prewrap{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
-.prewrap pre{font-family:var(--mono);font-size:13.5px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word;padding:14px 18px 22px;max-height:340px;overflow:auto;color:var(--ink)}
+.prewrap pre{font-family:var(--mono);font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word;padding:18px 18px 22px;max-height:340px;overflow:auto;color:var(--ink)}
 .prewrap::after{content:"More below";position:absolute;left:0;right:0;bottom:0;padding:26px 18px 8px;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 70%);pointer-events:none;opacity:0;transition:opacity .15s}
 .pane.more .prewrap::after{opacity:1}
 
@@ -211,21 +209,21 @@ footer b{color:var(--paper);font-weight:500}
 /* ---------- THE CARD BRIEF ---------- */
 /* Long prompts need to say what they are for before a reader meets the
    machine-facing text. Every line here comes from the source section. */
-.brief{border-bottom:2px solid var(--ink);padding:18px 22px 16px;background:var(--paper)}
-.brief .bq{font-size:17px;line-height:1.4;color:var(--ink);font-weight:600;margin:0 0 14px}
-.brief .bq span,.brief .brow span{display:block;font-family:var(--mono);font-size:10px;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--coral-text);font-weight:500;margin-bottom:5px}
-.brief .brow{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px}
-.brief .brow p{margin:0;font-size:14.5px;line-height:1.45;color:var(--char)}
+.brief{border-bottom:2px solid var(--ink);padding:20px 22px 18px;background:var(--paper)}
+.brief .bq{font-size:18.5px;line-height:1.35;color:var(--ink);font-weight:600;margin:0 0 14px}
+.brief .bq span,.brief .brow span{display:block;font-family:var(--mono);font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--coral-text);font-weight:500;margin-bottom:6px}
+.brief .brow{display:grid;grid-template-columns:1fr 1fr;gap:18px 30px}
+.brief .brow p{margin:0;font-size:15.5px;line-height:1.6;color:var(--ink)}
 .bsteps{margin-top:14px;border-top:1px solid rgba(30,27,23,.18);padding-top:10px}
-.bsteps summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:10px}
+.bsteps summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:10px}
 .bsteps summary::-webkit-details-marker{display:none}
 .bsteps summary::after{content:"\25BE";color:var(--coral-text)}
 .bsteps[open] summary::after{content:"\25B4"}
 .bsteps summary:hover{color:var(--coral-text)}
 .bsteps ol{margin:12px 0 4px;padding-left:20px}
-.bsteps li{font-size:14.5px;line-height:1.5;color:var(--char);margin-bottom:6px}
+.bsteps li{font-size:15.5px;line-height:1.6;color:var(--ink);margin-bottom:9px}
 @media(max-width:700px){.brief .brow{grid-template-columns:1fr;gap:14px}}
 </style>
 </head>
@@ -258,7 +256,7 @@ footer b{color:var(--paper);font-weight:500}
   <div class="about" id="howto" hidden>
     <h2>How to use <em>a card</em></h2>
     <p><span class="key">Copy</span> puts the exact prompt on your clipboard. <span class="key">Expand</span> opens it full screen for reading. Anything in [square brackets] is yours to fill in before you send it.</p>
-    <p>The strip above each prompt shows which of the six levers it pulls on: Role, Context, Constraints, Tone, Format, Output. Read the strip, then read the prompt, and you can see the method doing its work before you use it.</p>
+    <p>Every card is built on the six levers: Role, Context, Constraints, Tone, Format, Output. You do not need to know them to use a card, the prompt already does the work. If you want to see the method, the chips at the top filter the whole shelf by a single lever, and <a href="../ai-foundations/">session one</a> teaches all six.</p>
     <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act on an answer, setting up, every week, every month. The row of chips narrows it further by type, or by a single lever. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
   </div>
 
@@ -1989,7 +1987,11 @@ whenKeys.forEach(w=>{
     const el=document.createElement('article');
     el.className='pane';el.id=s.id;
     el.dataset.when=w;el.dataset.type=s.type||'';el.dataset.levers=(s.levers||[]).join(',');el.dataset.station=s.station||'';
-    const levers=s.kind==='prompt'?`<div class="levers">${LEVERS.map(l=>`<span class="${s.levers.includes(l)?'on':''}">${l}</span>`).join('')}</div>`:'';
+    // The levers are taught once, in the primer at the top of this page and in
+    // the courses. They are not repeated on every card: 43 strips of six boxes
+    // buried the prompt, which is the thing a client came for. The data stays
+    // on the element, so the Lever filter chip still works. Changed 14 Sep.
+    const levers='';
     const body=s.kind==='recipe'
       ?`<ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
       :`<div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>`;
