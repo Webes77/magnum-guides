@@ -498,6 +498,159 @@ himself rewriting the rules and the exercises as well as the voice blocks, the
 routine is doing the wrong half and the answer is to narrow it, not to widen
 it. Give it a month.
 
+**The team seats guide and its recommendation tool.** Built 14 Sep, live at
+`team-seats/`, titled "Should You Move Your Team onto Paid Claude or ChatGPT
+Seats?". James supplied the finished prose and a tool spec; both were locked
+and neither was rewritten. The prose on the page is byte-faithful to what he
+handed over, verified by diffing the rendered text against his file, and the
+section order is his.
+
+It was built twice on the same day and the second version is the one that
+matters. The first carried a flat cost calculator, staff count in and both
+platforms' cost out. James replaced it, and the reasoning is worth keeping
+because it will apply to the next tool: the calculator answered "what does
+this cost", which is a question with no interesting answer here, because the
+two platforms price identically. The decision an owner is actually stuck on
+is personal accounts versus a team plan, which does have differentiating
+factors. The tool now asks four questions (team size, turnover, how sensitive
+the work is, who is already paying personally) and returns a lean with the
+reasons for that specific situation. Platform choice dropped out of the tool
+entirely and lives in the guide as the second question.
+
+Scoring runs one way only, toward Team, and Personal is the default lean when
+the score stays low. That was the spec's call and it is a good one: points in
+both directions double-count the same fact. Four bands, not two, so mixed
+signals can be said out loud while still landing on a side every time. Max
+score is 7. The score is never shown to the reader; it is an internal
+weighting. All 81 answer combinations are tested, and the test asserts more
+than the band: that no bullet describes an answer the reader did not give (a
+"some turnover" answer never comes back as "high turnover"), that no template
+placeholder leaks, and that bullets never repeat.
+
+The weighting flaw flagged on 14 Sep is fixed. Team size used to cap at +2,
+the same as turnover and sensitivity, so headcount could never carry a verdict
+on its own. The 11 to 15 band scores 3 now and the maximum is 8. Twelve of the
+81 combinations changed band, all of them 11 to 15 teams, and the shape of the
+change is that a large team with one mild secondary factor now tips to Team:
+eleven to fifteen people with some turnover and nothing else was a Personal
+lean and is now a Team lean.
+
+Two things about that fix are worth keeping, because both were wrong in the
+first telling of it.
+
+The worked example given to James was not a case that moved. Eleven to fifteen
+people, stable, non-sensitive, nobody paying, scored 2 before and 3 after, and
+both land in Band 2. The argument for the fix was right and the example chosen
+to carry it was not. Check a proposed weighting change against the band table,
+not against one case that sounds persuasive.
+
+And the fix broke the Band 4 summary, which no test caught because the summary
+was a fixed string. At +2, Band 4 could not be reached without turnover
+scoring at least 1, so "Team size, turnover, and the kind of work going
+through it all point the same way" was always true. At +3 a stable team can
+reach Band 4, and that line then claims agreement from a factor that scored
+zero. It is now used only when all three really do agree; otherwise the
+summary names the two factors that carry it. The test asserts it: a summary
+may never name a factor the reader scored zero on.
+
+The page layout changed with it. Six accordions, all closed on load, headed
+with the questions a client actually asks ("What's the catch?", "What happens
+to a staff member's chats if they leave?") rather than the guide's own
+section nouns. Native `<details>`, no library, multiple open at once so two
+sections can be compared. The closed stack is the contents page, which is why
+the old contents strip came off: it would have been a second index of the
+same six things. Page order is the short version open, the tool, the
+accordions, then What It Comes Down To open.
+
+A link with a hash opens its accordion rather than scrolling to a closed
+heading. That covers the verdict's link to the Cost section and any link
+someone pastes later.
+
+No price is computed anywhere on the page now. Every figure is hand-written
+HTML in the Cost accordion, so a price change is made in four places (the
+table, the worked examples, the short version, the footer date) and the tool
+never needs touching.
+
+The $100 bug, reported 14 Sep: there was not one. 20 staff at $20 returned
+$400 on every input path tested, typing, spinner, paste and the monthly
+toggle, and the arithmetic was correct at 2, 5, 10, 19, 20, 50 and 250. The
+only state producing $100 was five seats, the field's hardcoded default on
+load, and the static worked-examples list four lines below reads "5 staff,
+annual billing: $100/month". Most likely the page at rest was read as a
+computed answer. The calculator is gone either way. Worth recording because
+the shape will recur: a tool that renders a default result on load looks
+identical to one that has answered you. The new tool opens on question one
+and shows no verdict until four answers are in, which removes that failure
+mode by construction.
+
+Fifteen rows are in `notes/fact-register.md` (34 to 48) because nearly every
+line of this page is a third-party product claim. One caveat is recorded
+there and matters: James verified the prices against `claude.com/pricing` and
+`openai.com/business/pricing` before handing the content over, and those
+hosts are blocked from the sandbox, so nothing on this page was re-verified
+from a session. Under hard rule 10 the first fact-check run over rows 34 to
+48 is a first check, not a re-check.
+
+Front page: a fourth reference line under the courses, beside Chatbots,
+Fine-Tune and Privacy. That is the minimum needed to stop the page being an
+orphan and it uses the existing `.ref` pattern with nothing moved. James
+asked on 14 Sep to be asked before the front page is touched, so if the
+slight redesign relocates where references live, this line moves with them.
+Card at `assets/thumbnails/team-seats.jpg`, source `team-seats/thumbnail.html`,
+re-rendered when the tool changed because the old card advertised a
+calculator. Not a deck, so `tools/check-decks.js` does not cover it, though it
+was run and passed.
+
+Three things landed on 15 Sep after James read it back, each as its own
+commit at his instruction.
+
+The verdict opens by restating the answers. One sentence under the headline:
+"Based on a 6 to 10 person team with some turnover, mostly personal use, and
+nobody currently paying, here's what fits." Every phrase comes from the answer
+tapped rather than a paraphrase, so it introduces no wording the reader has
+not already seen. Each option carries a `recap` field for this, kept separate
+from `sum`, which the Band 3 and Band 4 summaries use, because the two slots
+need different grammar: "a stable team" reads correctly in "Between a stable
+team and regular client data" and wrongly in "a 2 to 5 person team with a
+stable team". All 81 recaps are distinct and well formed.
+
+A reset you can reach. One already sat on the verdict card, which was the part
+worth checking, but on a 390 by 844 phone it was 833px down an 883px block. The
+head bar carries the same control now: "Four questions" while asking, "Your
+answer" with Start again on the right once the verdict shows. Both run one
+`restart()`. The bug found doing it is the one to remember: the head element
+was held in a variable named `head` and `verdict()` declares a local `var head`
+for the headline string, so the local shadowed the element and the bar silently
+never updated. It is `headEl` now, and the test caught it only because it
+asserted the control exists and is visible rather than trusting the code to
+have run.
+
+And the page took the index-entry headings from `4acf4ac` the same day. It was
+built on the old 12px mono `.label` and carried both faults that pass found
+elsewhere: the masthead breadcrumb reused `.label`, and every section put an
+h2 directly under it. So `--coral-ghost`, `.crumb` for the breadcrumb, three
+numbered index entries, and `.label + h2` stepping down to a deck line, taken
+from `brand/magnum-house-style/reference/tokens.css` rather than copied off a
+peer. The six accordion headings are deliberately left unnumbered: they are
+already the page's index, and two numbered indexes on one page is the busyness
+the change exists to remove.
+
+One thing James has not settled. The Band 3 summary names two factors the new
+recap listed one line above it ("Based on a 6 to 10 person team with some
+turnover, a mix of personal and client work..." then "Between a mix of personal
+and client work and some turnover..."). That is real repetition and it arrived
+with the recap, not before it. The fix is to drop the factor names from the
+Band 3 summary and let the recap carry them, but the summary copy is his, so
+it waits.
+
+Two small things to know. The page carries one piece of prose that is not
+James's: the masthead standfirst, which is page furniture the guide file did
+not have. And two gaps in the spec were filled rather than queried, both
+noted for him: Band 2 gets no caveat line (the spec gives one only to Bands 1
+and 3, and Band 2's headline already carries the watch-it message), and ties
+between equal-scoring questions break in the order sensitivity, turnover,
+size, spend.
+
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
 `assets/thumbnails/manus-bridge.jpg`. It qualifies under the 4 Sep Tool
@@ -963,11 +1116,19 @@ area on his phone and it reads correctly.
 The shelf keeps its name. James was asked directly on 15 Sep after saying
 "Prompt Library" twice, and confirmed Prompt Shelf stays.
 
-Where the session before that stopped (14 Sep): three things shipped. The midweek Field
+Also on 15 Sep, on a branch and not yet merged: the team seats guide at
+`team-seats/`, rebuilt around a four-question personal-versus-team tool
+after James replaced the flat cost calculator. It carries the swept
+palette, so nothing on the members area is left on the old coral.
+
+Where the session before that stopped (14 Sep): four things shipped. The midweek Field
 Note routine is built and live, and needs its repository and connectors
 attached before it fires on Wednesday 16 Sep (item 2 below), which is the one
-thing waiting on James. The levers strip came off the Prompt Shelf cards. And
-the privacy reference page is live at `privacy/`. Nothing from the 13 Sep
+thing waiting on James. The levers strip came off the Prompt Shelf cards. The
+privacy reference page is live at `privacy/`. And the team seats guide is live
+at `team-seats/`, carrying the first interactive tool on the members area that
+is not a prompt: four questions returning a personal-versus-team lean, with
+the guide beneath it as six closed accordions. Nothing from the 13 Sep
 handover is outstanding.
 
 James also said he wants a slight redesign of the members area. The shelf
@@ -997,8 +1158,17 @@ order of value:
    given in chat, and nothing should be deleted, only moved to a dated
    review folder.
 
-1. James has not yet looked at the Manus Bridge walkthrough live, on a
-   phone or a laptop. That is the next thing.
+1. James has not yet looked at the Manus Bridge walkthrough live, nor the
+   team seats guide, which went to `main` on 15 Sep. On team seats the tool
+   is the part to check on a phone: four taps to a verdict, the recap line,
+   and the reset in the head bar. Verified locally at 1440, 1280, 820 and 390
+   only. Two things wait on him there, both in the team seats block above:
+   whether the Band 3 summary should stop repeating the recap, and whether to
+   log which band each run lands on. On the second, there is no logging
+   mechanism in this repo and cannot be one without a third-party service;
+   band counts also cannot answer the question asked of them, because a
+   distribution with no accuracy signal reads the same whether the weights
+   are wrong or most small businesses genuinely are borderline.
 
 2. Done for the Field Note routine (`trig_016pPJPsm8D3yUZs81wquraU`), 15 Sep:
    repository and connectors both attached, confirmed by James, who asked not

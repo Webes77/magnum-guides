@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should You Move Your Team onto Paid Claude or ChatGPT Seats? · Magnum AI</title>
+<meta name="description" content="Four questions give you a straight answer on personal accounts versus team plans. Then the detail: what it costs, what setting it up involves, what you gain, what you give up, and what happens when someone leaves.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/team-seats/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Should You Move Your Team onto Paid Claude or ChatGPT Seats?">
+<meta property="og:description" content="Four questions, then a straight answer on personal accounts versus team plans.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/team-seats/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/team-seats.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Should You Move Your Team onto Paid Claude or ChatGPT Seats, a Magnum AI reference page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Should You Move Your Team onto Paid Claude or ChatGPT Seats?">
+<meta name="twitter:description" content="Four questions, then a straight answer on personal accounts versus team plans.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/team-seats.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* House style, 14 September 2026. Tokens are the same block as every other
+     page here; the canonical copy is brand/magnum-house-style/reference/tokens.css.
+     --rust holds coral and --olive holds slate; the names stayed so older
+     files did not break. Two coral values: --rust #EF4029 is 3.73:1 and is
+     for display type, fills, borders and figures only; --coral-text #C63A2A
+     is 5.02:1 and carries anything under 18px. */
+  :root{
+    --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+    --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A;--coral-ghost:#F7BAB0; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
+    --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+    --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+    --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  :root{color-scheme:light}
+  html,body{background:#FBFBF9 !important;color:#2B2823;}
+  body{
+    color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;
+    margin:0;padding:0 20px 90px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:48px 0 26px;margin:0 -20px 40px;}
+  .masthead .wrap{padding:0 20px;}
+  .masthead h1{color:var(--on-navy);}
+  .masthead h1 em{color:var(--coral-bright);}
+  .masthead .crumb{color:var(--coral-bright);}
+  .masthead .crumb::after{background:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  h1{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h1 em,h2 em,h3 em{font-style:normal;color:var(--rust);}
+
+  /* the verification line, verbatim from the guide */
+  .verified{font-family:var(--mono);font-size:12px;color:var(--mute);margin:0 0 40px;
+    padding-top:14px;border-top:1px solid var(--hair);max-width:64ch;line-height:1.5;}
+
+  section{margin:0 0 52px;scroll-margin-top:24px;}
+  /* a breadcrumb is not a section heading */
+  .crumb{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.20em;color:var(--coral-text);margin:0 0 16px;
+    display:flex;align-items:center;gap:14px}
+  .crumb::after{content:"";flex:1;height:1px;background:var(--ink)}
+  .label{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;
+    text-transform:uppercase;letter-spacing:-.005em;color:var(--ink);
+    display:flex;align-items:center;gap:0 20px;margin:0 0 18px;
+    border-top:3px solid var(--ink);padding-top:16px}
+  .label::before{content:attr(data-n);font-family:var(--display);font-weight:700;
+    font-size:56px;line-height:.82;letter-spacing:-.02em;color:var(--coral-ghost);
+    transition:color .18s ease}
+  .label:not([data-n])::before{display:none}
+  section:hover > .label::before{color:var(--rust)}
+  @media(max-width:820px){.label{font-size:27px;gap:0 14px}.label::before{font-size:38px}}
+  h2{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(26px,4vw,36px);line-height:1.05;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  /* The index entry is the section heading. An h2 right under it is the
+     section's point, so it steps down to a deck line instead of competing. */
+  .label + h2{font-size:clamp(17px,2.1vw,20px);font-weight:500;letter-spacing:.01em;
+    text-transform:none;color:var(--body);margin:0 0 18px;max-width:52ch}
+  h3{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:22px;line-height:1.1;color:var(--ink);margin:0 0 10px;
+  }
+  p{max-width:64ch;}
+  p.lead{font-size:18px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+  .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 22px 24px;}
+  .card h3{font-size:20px;margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--char);margin:0;max-width:none;}
+
+  .tablewrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);}
+  table{border-collapse:collapse;width:100%;min-width:520px;}
+  th,td{text-align:left;padding:12px 18px;border-bottom:1px solid rgba(30,27,23,.16);vertical-align:top;font-size:15.5px;color:var(--char);}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.mono{font-family:var(--mono);font-size:13.5px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+  th.plat{color:var(--ink);}
+
+  .say{
+    border-left:5px solid var(--rust);background:var(--tint);
+    padding:12px 16px;margin:18px 0 6px;max-width:64ch;
+  }
+  .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
+  .say strong{color:var(--coral-text);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+
+  footer{background:var(--navy);color:var(--on-navy-mute);margin-top:60px;padding:22px 20px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  }
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .card,.acc{break-inside:avoid}
+    .quiz{display:none}
+    .acc-body{display:block !important}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ---- the accordions ------------------------------------------------- */
+  /* Six questions, all closed on load. The closed stack is the contents
+     page: a reader picks the question they actually have. Multiple can be
+     open at once, so two sections can be compared side by side. */
+  .acc{border:2px solid var(--ink);background:var(--paper-2);margin:0 0 12px;scroll-margin-top:16px;}
+  .acc>summary{
+    cursor:pointer;list-style:none;padding:17px 20px 18px;display:flex;align-items:baseline;gap:16px;
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(17px,2.4vw,21px);line-height:1.12;color:var(--ink);
+    transition:background .12s ease;
+  }
+  .acc>summary::-webkit-details-marker{display:none;}
+  .acc>summary::marker{content:"";}
+  .acc>summary:hover{background:var(--tint);}
+  .acc>summary:focus-visible{outline:2px solid var(--rust);outline-offset:-4px;}
+  .acc>summary .sign{
+    margin-left:auto;font-family:var(--mono);font-size:22px;line-height:1;font-weight:400;
+    color:var(--rust);flex:0 0 auto;align-self:center;
+  }
+  .acc[open]>summary{background:var(--tint);border-bottom:2px solid var(--ink);}
+  .acc[open]>summary .sign::after{content:"\2212";}
+  .acc:not([open])>summary .sign::after{content:"+";}
+  .acc-body{padding:22px 20px 26px;}
+  .acc-body>*:first-child{margin-top:0;}
+  .acc-body p:last-child{margin-bottom:0;}
+
+  /* the worked examples under the cost table */
+  .worked{list-style:none;margin:20px 0 0;padding:0;
+    display:grid;grid-template-columns:1fr 1fr;gap:0 28px;}
+  .worked li{font-size:15.5px;color:var(--char);padding:9px 0;
+    border-bottom:1px solid rgba(30,27,23,.14);}
+  .worked b{color:var(--ink);font-weight:600;}
+
+  /* the bullet lists in What you gain and What you give up */
+  .points{list-style:none;margin:0;padding:0;}
+  .points>li{position:relative;padding:0 0 15px 24px;margin:0 0 15px;max-width:66ch;
+    border-bottom:1px solid rgba(30,27,23,.14);font-size:16px;color:var(--char);}
+  .points>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .points>li::before{position:absolute;left:0;top:1px;font-family:var(--mono);font-size:13px;font-weight:500;}
+  .points>li b{color:var(--ink);font-weight:600;}
+  .gain>li::before{content:"\2713";color:var(--olive);}
+  .cost>li::before{content:"\2715";color:var(--coral-text);}
+
+  /* the two setup columns */
+  .setup .card h3{margin-bottom:14px;}
+  .setup ol{counter-reset:s;list-style:none;margin:0;padding:0;}
+  .setup ol>li{counter-increment:s;position:relative;padding:0 0 14px 34px;margin:0 0 14px;
+    border-bottom:1px solid rgba(30,27,23,.14);font-size:15.5px;color:var(--char);line-height:1.5;}
+  .setup ol>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .setup ol>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--coral-text);}
+
+  /* the checks in Before you decide */
+  .checks{margin:0;padding:0;}
+  .checks>li{border-top:2px solid var(--ink);padding-top:18px;margin-top:26px;list-style:none;}
+  .checks>li:first-child{margin-top:0;}
+  .checks h3{font-size:19px;margin-bottom:8px;}
+  .checks p{font-size:15.5px;color:var(--char);margin:0;}
+
+  /* the closing plate */
+  .comes{background:var(--navy);color:var(--on-navy);border:2px solid var(--ink);padding:26px 26px 28px;}
+  .comes h2{color:var(--on-navy);margin-bottom:16px;}
+  .comes p{font-size:17px;line-height:1.5;color:var(--on-navy);max-width:60ch;margin:0 0 14px;}
+  .comes p:last-child{margin-bottom:0;}
+  .comes b{color:var(--coral-bright);font-weight:600;}
+
+  /* ---- the recommendation tool ---------------------------------------- */
+  /* Four questions, one at a time, tap to answer. The score is an internal
+     weighting only and is never shown: a reader gets the lean and the
+     reasons, not the maths. */
+  .quiz{border:2px solid var(--ink);background:var(--paper-2);margin:0;}
+  .quiz-head{background:var(--tint);border-bottom:2px solid var(--ink);padding:12px 20px;
+    display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink);}
+  .quiz-head span{color:var(--mute);letter-spacing:.08em;font-size:10.5px;text-transform:none;}
+  /* the same reset as the one at the foot of the verdict, put where it is
+     reachable without scrolling the whole card on a phone */
+  .head-again{margin-left:auto;background:none;border:0;padding:0;cursor:pointer;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--coral-text);font-weight:500;border-bottom:2px solid var(--rust);}
+  .head-again:hover,.head-again:focus-visible{color:var(--ink);outline:none;}
+
+  .steps-bar{display:flex;gap:5px;padding:16px 20px 14px;}
+  .steps-bar i{flex:1;height:4px;background:var(--hair);}
+  .steps-bar i.on{background:var(--rust);}
+
+  .qbody{padding:0 20px 22px;}
+  .qnum{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--coral-text);margin:0 0 10px;font-weight:500;}
+  .qtext{font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(19px,2.8vw,25px);line-height:1.12;color:var(--ink);margin:0 0 18px;max-width:26ch;text-wrap:balance;}
+  .opts{display:flex;flex-direction:column;gap:10px;}
+  .opt{
+    display:block;width:100%;text-align:left;cursor:pointer;
+    font-family:var(--sans);font-size:16px;line-height:1.4;color:var(--char);
+    background:var(--paper);border:2px solid rgba(30,27,23,.3);padding:14px 16px;
+    transition:border-color .12s ease,background .12s ease,color .12s ease;
+  }
+  .opt:hover{border-color:var(--rust);background:var(--paper-2);color:var(--ink);}
+  .opt:focus-visible{outline:2px solid var(--rust);outline-offset:-5px;}
+  .qback{background:none;border:0;padding:12px 0 0;cursor:pointer;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);}
+  .qback:hover,.qback:focus-visible{color:var(--coral-text);outline:none;}
+
+  /* the verdict, on the navy plate used for emphasis elsewhere on the page */
+  .verdict{background:var(--navy);color:var(--on-navy);padding:24px 22px 26px;}
+  .lean{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;
+    color:var(--coral-bright);margin:0 0 10px;}
+  .verdict h3{font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(22px,3.4vw,30px);line-height:1.05;color:var(--on-navy);margin:0 0 12px;max-width:24ch;text-wrap:balance;}
+  /* their answers, quieter than the reasoning that follows */
+  .vrecap{font-size:14.5px;line-height:1.5;color:var(--on-navy-mute);margin:0 0 14px;
+    max-width:58ch;border-left:3px solid var(--coral-bright);padding-left:12px;}
+  .vsum{font-size:16.5px;line-height:1.5;color:var(--on-navy);margin:0 0 20px;max-width:56ch;}
+  .vpts{list-style:none;margin:0 0 18px;padding:0;}
+  .vpts li{position:relative;padding:0 0 11px 22px;margin:0 0 11px;max-width:58ch;
+    font-size:15.5px;line-height:1.45;color:var(--on-navy);
+    border-bottom:1px solid rgba(244,241,234,.22);}
+  .vpts li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .vpts li::before{content:"\2013";position:absolute;left:0;top:0;color:var(--coral-bright);
+    font-family:var(--mono);font-size:14px;}
+  .vcav{font-size:14.5px;line-height:1.5;color:var(--on-navy-mute);margin:18px 0 0;max-width:58ch;
+    border-top:1px solid rgba(244,241,234,.28);padding-top:14px;}
+  .vnext{border-top:2px solid var(--ink);background:var(--paper);padding:16px 20px 18px;}
+  .vnext p{font-size:15px;line-height:1.5;color:var(--char);margin:0;max-width:62ch;}
+  .vnext a{color:var(--coral-text);font-weight:600;}
+  .again{background:none;border:0;padding:12px 0 0;cursor:pointer;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);}
+  .again:hover,.again:focus-visible{color:var(--coral-text);outline:none;}
+
+  @media (max-width:640px){
+    .worked{grid-template-columns:1fr;}
+    .acc>summary{padding:15px 16px 16px;gap:12px;}
+    .acc-body{padding:20px 16px 24px;}
+  }
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+    <p class="crumb"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;·&nbsp; Reference &nbsp;·&nbsp; Team seats</p>
+    <h1>Should you move your team <em>onto paid seats?</em></h1>
+    <p class="sub">Four questions below give you a straight answer for your own situation. The detail sits under it, one question at a time, so you only open what you actually need.</p>
+  </div></header>
+  <div class="wrap">
+
+  <p class="verified">Verified against claude.com/pricing and openai.com/business/pricing, 14 September 2026.</p>
+
+  <!-- ============ THE SHORT VERSION · always open ============ -->
+  <section id="short">
+    <p class="label" data-n="01">The short version</p>
+    <h2>Cost will not decide this</h2>
+    <p class="lead">A standard business seat on either platform costs the same: USD $20 per person per month on annual billing, or USD $25 month to month. Both let you start with as few as 2 people. A 5-person team runs about USD $100/month, a 10-person team about USD $200/month, on annual billing, before GST and AUD conversion.</p>
+    <p>Cost won't decide this for you, because it's nearly identical on both sides. What actually changes is control: one bill, a usage dashboard, the ability to cut someone off the day they leave, and a default promise your business chats aren't used to train the AI. That last one isn't the default on free or personal accounts.</p>
+  </section>
+
+  <!-- ============ THE TOOL ============ -->
+  <section id="check">
+    <p class="label" data-n="02">Work out your answer</p>
+    <h2>Personal accounts, or a team plan?</h2>
+    <p style="margin-bottom:22px">This is the decision most owners are actually stuck on, and it has nothing to do with which platform you pick. Four questions, about twenty seconds.</p>
+
+    <div class="quiz">
+      <div class="quiz-head" id="quizhead">Four questions <span>tap an answer, no typing</span></div>
+      <div class="steps-bar" id="bar" aria-hidden="true"></div>
+      <div id="quizout" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ THE DETAIL · six closed accordions ============ -->
+  <section id="detail">
+    <p class="label" data-n="03">The detail</p>
+    <h2>Open only what you need</h2>
+
+    <details class="acc" id="cost">
+      <summary>What's this actually going to cost me?<span class="sign"></span></summary>
+      <div class="acc-body">
+
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr><th></th><th class="plat">Claude Team</th><th class="plat">ChatGPT Business</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Standard seat, annual</td><td class="mono">$20/person/month</td><td class="mono">$20/person/month</td></tr>
+              <tr><td>Standard seat, monthly</td><td class="mono">$25/person/month</td><td class="mono">$25/person/month</td></tr>
+              <tr><td>Premium seat, annual</td><td class="mono">$100/person/month</td><td class="mono">$100/person/month</td></tr>
+              <tr><td>Premium seat, monthly</td><td class="mono">$125/person/month</td><td class="mono">$125/person/month</td></tr>
+              <tr><td>Minimum seats</td><td class="mono">2</td><td class="mono">2</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="margin-top:20px">A seat is one paid login for one person. Premium gives more usage headroom (roughly 5x standard) for anyone running the AI hard all day. Most teams put everyone on standard and bump one or two heavy users to premium.</p>
+
+        <ul class="worked">
+          <li><b>5 staff, annual billing:</b> $100/month = $1,200/year, either platform.</li>
+          <li><b>10 staff, annual billing:</b> $200/month = $2,400/year, either platform.</li>
+          <li><b>5 staff, monthly billing:</b> $125/month = $1,500/year, either platform.</li>
+          <li><b>10 staff, monthly billing:</b> $250/month = $3,000/year, either platform.</li>
+        </ul>
+
+        <p style="margin-top:24px">Annual saves 20% over monthly, but it's paid up front for the year and you can't claw money back if the team shrinks. Removing someone frees the seat for someone else; your bill doesn't drop until renewal. Adding a seat mid-year triggers an immediate charge for the rest of the term, on both platforms.</p>
+
+        <div class="say">
+          <strong>Australian buyers</strong>
+          <p>All prices above are USD. Your card converts at the day's rate plus any foreign transaction fee, so budget more than the sticker price in AUD terms, and it'll shift slightly month to month. GST applies to digital services sold to Australian customers; check whether checkout prices are GST-inclusive and keep the tax invoice for your BAS.</p>
+        </div>
+
+      </div>
+    </details>
+
+    <details class="acc" id="setup">
+      <summary>How long is this going to take me to set up?<span class="sign"></span></summary>
+      <div class="acc-body">
+
+        <p>Realistically a coffee-break job.</p>
+
+        <div class="cards setup" style="margin-top:20px">
+          <div class="card">
+            <h3>Claude Team</h3>
+            <ol>
+              <li>Owner signs up at claude.ai with a business email (personal Gmail/Hotmail addresses aren't allowed for the account creating the organisation), picks Team, chooses billing frequency and seat count.</li>
+              <li>Owner goes to Organization settings &rarr; Members &rarr; Add member, enters staff emails, picks seat type and role. A whole list can be pasted at once, or shared via join link.</li>
+              <li>Each staff member gets an invite email and clicks to join. That's the one thing they have to do themselves. Invite stays valid about 21 days.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>ChatGPT Business</h3>
+            <ol>
+              <li>Owner starts the Business sign-up at chatgpt.com with a business email, buys at least 2 seats, picks billing frequency. Whoever signs up becomes the workspace owner.</li>
+              <li>Owner goes to Workspace settings &rarr; Members &rarr; Invite member, types emails or uploads a CSV with roles and seat types.</li>
+              <li>Staff accept the invite email. If they have no existing ChatGPT account, one gets created as they join.</li>
+            </ol>
+          </div>
+        </div>
+
+        <p style="margin-top:24px">Either way: 10 to 20 minutes for the owner, a couple of minutes per staff member to accept. No install required, no technical person needed. A pending, not-yet-accepted invite still uses up a paid seat on both platforms, so don't buy seats faster than people are actually joining.</p>
+
+      </div>
+    </details>
+
+    <details class="acc" id="gain">
+      <summary>What do I actually get for paying?<span class="sign"></span></summary>
+      <div class="acc-body">
+        <ul class="points gain">
+          <li><b>You can see if it's actually being used.</b> Claude Team gives the Owner weekly/monthly active user counts and per-person usage. ChatGPT Business gives a Workspace analytics table with the same. This is how you know if $20 a head is money well spent or wasted, without asking anyone.</li>
+          <li><b>Instant cutoff when someone leaves.</b> Remove them from Members and their access ends immediately. No power to do that on a personal account.</li>
+          <li><b>One bill.</b> Everything on the owner's card, one subscription, instead of chasing reimbursements or having zero visibility.</li>
+          <li><b>More usage than free, and than personal Pro.</b> Standard seats beat personal Pro modestly; premium seats give substantially more, and each person has their own pool so one heavy user doesn't starve everyone else.</li>
+          <li><b>No training on your data, by default.</b> This is the real gap. On personal ChatGPT (Free, Plus, Pro) and personal Claude (Free, Pro, Max), training is ON by default unless each person opts out individually. On both business tiers it's flipped: off by default, stated as a contractual commitment, not a toggle someone might forget to flip.</li>
+          <li><b>Shared context.</b> Load your brand guidelines, pricing, or SOPs into a shared workspace once; everyone draws on the same material instead of re-explaining the business every time.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc" id="give-up">
+      <summary>What's the catch?<span class="sign"></span></summary>
+      <div class="acc-body">
+        <ul class="points cost">
+          <li><b>Cost</b>, obviously. From $0 or scattered personal subscriptions to a committed bill, 2-seat minimum, annual billing locks you in for the year with no refund on downsizing.</li>
+          <li><b>The "just for me" feel.</b> A personal account belongs to the individual. On a business seat the workspace belongs to the company. Moving a personal Claude account across is one-way: once moved, it can't be moved back. Staff can keep a separate personal account running alongside if they want that space back.</li>
+          <li><b>Some staff may feel watched.</b> Be upfront about this. Dashboards show usage patterns (how much, how often), not a live read of conversations. Neither platform lets an owner casually browse a staff member's individual chats from the admin screen; on Claude the only route to actual chat content is a deliberate one-off export by the Primary Owner, not routine monitoring. The perception is still real and worth naming to your team directly rather than letting it fester.</li>
+          <li><b>A few personal-account extras don't carry over on Claude Team:</b> publishing artifacts, public share links, and custom skills (which need exporting first, with no automatic migration).</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="acc" id="memory">
+      <summary>What happens to a staff member's chats if they leave?<span class="sign"></span></summary>
+      <div class="acc-body">
+        <p>Moving a personal account onto a business seat is a choice each staff member makes at join time: keep the personal account separate, or merge it in. If they merge, chats and saved memory move across, the merge is irreversible on both platforms, and the personal account is closed. Memory and preferences are tied to the individual, not shared or transferable to teammates.</p>
+        <p>When someone leaves and you revoke their seat, access ends immediately on both platforms. On Claude, their chats become inaccessible to the rest of the org (the Primary Owner can still export data if needed), and re-adding the same email restores everything. On ChatGPT, removing someone reassigns their projects and GPTs to a workspace owner, but their personal conversations aren't transferred or visible to anyone, and are restored if they're re-added. You keep the business's shared work either way; you don't inherit a leaver's private chat history through the normal admin screens.</p>
+      </div>
+    </details>
+
+    <details class="acc" id="decide">
+      <summary>What should I check before I commit?<span class="sign"></span></summary>
+      <div class="acc-body">
+        <p>A few practical checks that will come up before you commit:</p>
+        <ul class="checks" style="margin-top:22px">
+          <li>
+            <h3>What will your team actually use it for?</h3>
+            <p>Cost is close enough that it shouldn't be the deciding factor. What decides it is which tool your team actually prefers opening, because adoption dies fast when people don't like using it. Worth a quick trial with 2 to 3 staff before buying seats for everyone.</p>
+          </li>
+          <li>
+            <h3>Anyone already paying personally?</h3>
+            <p>If half your team already has ChatGPT Plus or Claude Pro running on their own card, that's wasted spend layered on top either way. Worth checking before you commit to new seats.</p>
+          </li>
+          <li>
+            <h3>Business email required.</h3>
+            <p>Both platforms need a proper business email address, not a personal Gmail, for the account that sets up the organisation. Sort this before signup day so nobody hits a wall partway through.</p>
+          </li>
+          <li>
+            <h3>Variable or seasonal staff.</h3>
+            <p>If your team includes casuals, subcontractors, or people who come and go, the annual billing lock-in is a real cost trap, not a hypothetical one. Monthly billing costs more per seat but gives you the flexibility to add and drop people as headcount actually changes.</p>
+          </li>
+          <li>
+            <h3>Regulated industries.</h3>
+            <p>If you're in health, legal, or financial services, "no training on your data by default" may not be enough on its own to satisfy your obligations. Worth a quick check with whoever handles your compliance, regardless of which platform you pick.</p>
+          </li>
+        </ul>
+      </div>
+    </details>
+
+  </section>
+
+  <!-- ============ WHAT IT COMES DOWN TO · always open ============ -->
+  <section id="comes">
+    <div class="comes">
+      <h2>What it comes down to</h2>
+      <p>Here's what it comes down to for a business your size: the money and the setup are nearly identical on both, so the real decision is whether <b>the control and the privacy default</b> are worth a per-seat bill to you, and if they are, <b>which one your team will actually open every day</b>.</p>
+      <p>If you ever outgrow this setup, both vendors have an Enterprise tier built for that scale.</p>
+    </div>
+  </section>
+
+  </div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Prices last checked · 14 September 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script>
+(function () {
+  'use strict';
+
+  /* Personal accounts vs a team plan. Platform choice is deliberately not
+     asked about: the two price identically, so it is a near coin-flip and
+     belongs in the guide below as a second question, not in here.
+
+     Points only ever run toward Team. Personal is the default lean when the
+     Team score stays low, which keeps the weighting from double-counting in
+     both directions. The score itself is never shown to the reader. */
+
+  var Q = [
+    {
+      q: 'How many staff would be using it?',
+      /* 11 to 15 scores 3, not 2, so headcount alone can carry a verdict.
+         At +2 a stable fifteen-person team doing non-sensitive work with
+         nobody paying personally scored 2 and landed on a Personal lean,
+         which is the case the guide's own "one bill" and "see if it is
+         being used" arguments are strongest against. At +3 it lands on a
+         Band 2 flag instead. Max total is 8. */
+      opts: [
+        { label: '2 to 5',   pts: 0, sum: 'a team of two to five',    recap: 'a 2 to 5 person team' },
+        { label: '6 to 10',  pts: 1, sum: 'a team of six to ten',     recap: 'a 6 to 10 person team' },
+        { label: '11 to 15', pts: 3, sum: 'a team of eleven to fifteen', recap: 'an 11 to 15 person team' }
+      ],
+      flag: 'how many people are using it',
+      flagPoint: 'If the team grows, the visibility a team plan gives you starts to matter.',
+      low: "Your team's small enough that per-seat admin overhead barely pays for itself yet.",
+      mid: "At this size, being able to see who's actually using it stops the spend being a guess."
+    },
+    {
+      q: 'Does your team mostly stay, or does it turn over?',
+      opts: [
+        { label: 'Stable core, people rarely leave',                     pts: 0, sum: 'a stable team', recap: 'little turnover' },
+        { label: 'Some turnover, casuals or contractors come and go',    pts: 1, sum: 'some turnover', recap: 'some turnover' },
+        { label: 'High turnover, regular churn',                         pts: 2, sum: 'regular churn', recap: 'high turnover' }
+      ],
+      flag: 'how often people are coming and going',
+      flagPoint: 'If people start coming and going more often, instant access cutoff stops being optional.',
+      low: "Low turnover means you're not dealing with the access-cutoff problem team plans solve.",
+      mid: 'With people coming and going, instant access cutoff is worth having rather than hoping someone remembers to ask for a password back.',
+      high: 'High turnover makes instant access cutoff genuinely important, not just convenient.'
+    },
+    {
+      q: 'Would staff be putting client info or business documents into it, or mostly just personal productivity (drafting, brainstorming, personal tasks)?',
+      opts: [
+        { label: 'Mostly personal productivity, nothing sensitive',        pts: 0, sum: 'mostly personal productivity', recap: 'mostly personal use' },
+        { label: 'A mix of both',                                          pts: 1, sum: 'a mix of personal and client work', recap: 'a mix of personal and client work' },
+        { label: 'Regularly handling client data or business documents',   pts: 2, sum: 'regular client data', recap: 'regular client data' }
+      ],
+      flag: 'how much client or business data is going through it',
+      flagPoint: 'If more client work starts going through it, the training opt-out default becomes worth paying for.',
+      low: "If nobody's handling client data, the training opt-out default matters less right now.",
+      mid: 'Handling client data means the training opt-out default is doing real work, not just a nice-to-have.',
+      high: 'Regular client or business data means the training opt-out default is protecting real exposure.'
+    },
+    {
+      /* Both "yes" answers score 1, not 2. Existing personal spend is a
+         consolidation argument, not a control one, so it should not weigh
+         as heavily as size, turnover or sensitivity. */
+      q: 'Is anyone already paying for a personal plan out of their own pocket?',
+      opts: [
+        { label: "No, nobody's paying for one currently",                 pts: 0, sum: 'nobody paying personally', recap: 'nobody currently paying' },
+        { label: 'Yes, one or two people are',                            pts: 1, sum: 'one or two people already paying', recap: 'one or two people already paying',
+          mid: 'Consolidating one or two personal subscriptions into one bill is a clean win either way.' },
+        { label: 'Yes, most or all of the team already pay personally',   pts: 1, sum: 'most of the team already paying', recap: 'most of the team already paying',
+          mid: "Consolidating everyone's personal subscriptions into one bill is a clean win either way." }
+      ],
+      flag: 'what your team is already paying personally',
+      flagPoint: 'If more of the team starts paying personally, consolidating onto one bill is close to free.',
+      low: "No one's currently paying out of pocket, so there's no consolidation win either.",
+      high: 'Consolidating existing personal spend into one bill is close to a wash on cost, while fixing the visibility and control gap.'
+    }
+  ];
+
+  /* Tie-break order when two questions score the same: sensitivity, then
+     turnover, then size, then existing spend. Most decision-relevant first. */
+  var TIE = [2, 1, 0, 3];
+
+  /* True of any team plan regardless of the answers, both taken from the
+     guide's own What you gain list. Only ever used to top a verdict up to
+     its bullet count when the answers give too few specific reasons. */
+  var RESERVE = [
+    'One bill for the lot beats chasing reimbursements or having no idea what is being spent.',
+    'A shared workspace means your pricing and brand guidelines get loaded once, not re-explained every time.'
+  ];
+
+  /* Pad to a minimum without ever repeating a line already shown. */
+  function topUp(list, min, pool) {
+    for (var i = 0; i < pool.length && list.length < min; i++) {
+      if (list.indexOf(pool[i]) === -1) { list.push(pool[i]); }
+    }
+    return list;
+  }
+
+  var answers = [null, null, null, null];
+  var step = 0;
+
+  var out = document.getElementById('quizout');
+  var bar = document.getElementById('bar');
+  var headEl = document.getElementById('quizhead');
+  var HEAD_ASK = 'Four questions <span>tap an answer, no typing</span>';
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function drawBar(n) {
+    var h = '';
+    for (var i = 0; i < Q.length; i++) { h += '<i class="' + (i < n ? 'on' : '') + '"></i>'; }
+    bar.innerHTML = h;
+  }
+
+  function opt(i) { return Q[i].opts[answers[i]]; }
+  function pts(i) { return opt(i).pts; }
+
+  /* the single highest-scoring question, ties broken by TIE */
+  function topFactor() {
+    var best = TIE[0];
+    for (var k = 0; k < TIE.length; k++) {
+      if (pts(TIE[k]) > pts(best)) { best = TIE[k]; }
+    }
+    return best;
+  }
+
+  /* the two highest-scoring questions, in score order */
+  function topTwo() {
+    var order = TIE.slice().sort(function (a, b) { return pts(b) - pts(a); });
+    return [order[0], order[1]];
+  }
+
+  function verdict() {
+    var score = 0, i;
+    for (i = 0; i < Q.length; i++) { score += pts(i); }
+
+    var lean, head, summary, bullets = [], caveat = '';
+
+    if (score <= 1) {
+      lean = 'Personal accounts';
+      head = 'Personal plans are probably enough for now.';
+      summary = "With a small, stable team doing mostly personal productivity work, there's not much a team plan buys you yet that you're not already getting.";
+      for (i = 0; i < Q.length; i++) { if (pts(i) === 0) { bullets.push(Q[i].low); } }
+      bullets = bullets.slice(0, 3);
+      caveat = 'Worth revisiting if your team grows, turnover picks up, or you start putting client work through it.';
+
+    } else if (score <= 3) {
+      var f = topFactor();
+      lean = 'Personal accounts';
+      head = 'Personal plans still make sense, but keep an eye on ' + Q[f].flag + '.';
+      summary = 'Most of your situation points to personal being fine, but ' + Q[f].flag + ' is worth watching.';
+      bullets.push(Q[f].flagPoint);
+      for (i = 0; i < Q.length; i++) { if (pts(i) === 0) { bullets.push(Q[i].low); } }
+      var watch = [];
+      for (i = 0; i < TIE.length; i++) {
+        if (TIE[i] !== f && pts(TIE[i]) >= 1) { watch.push(Q[TIE[i]].flagPoint); }
+      }
+      topUp(bullets, 3, watch);
+      bullets = bullets.slice(0, 4);
+
+    } else if (score <= 5) {
+      var two = topTwo();
+      lean = 'A team plan';
+      head = "A team plan is the better move, though it's not overwhelming.";
+      summary = 'Between ' + opt(two[0]).sum + ' and ' + opt(two[1]).sum +
+                ", a team plan starts earning its cost, though it's not a slam dunk.";
+      for (i = 0; i < Q.length; i++) {
+        if (pts(i) >= 1) { bullets.push(opt(i).mid || Q[i].mid); }
+      }
+      topUp(bullets, 3, RESERVE);
+      bullets = bullets.slice(0, 4);
+      caveat = "If budget's tight right now, this isn't urgent, it's a should, not a must.";
+
+    } else {
+      lean = 'A team plan';
+      head = 'A team plan is the clear move here.';
+      /* The spec's line names size, turnover and the work as agreeing. Since
+         11 to 15 scores 3, Band 4 is now reachable with a stable team, where
+         that line would be false. Use it only when all three really do agree,
+         and otherwise name the two that carry it. */
+      if (pts(0) >= 1 && pts(1) >= 1 && pts(2) >= 1) {
+        summary = 'Team size, turnover, and the kind of work going through it all point the same way.';
+      } else {
+        var t4 = topTwo();
+        summary = 'Between ' + opt(t4[0]).sum + ' and ' + opt(t4[1]).sum + ', the answer is not close.';
+      }
+      /* Each bullet takes the wording that matches the answer actually given,
+         so a "mix" answer never comes back described as "regular" anything. */
+      if (pts(0) >= 1) { bullets.push('At ' + opt(0).sum + ', per-seat admin visibility pays for itself quickly.'); }
+      if (pts(1) >= 1) { bullets.push(pts(1) === 2 ? Q[1].high : Q[1].mid); }
+      if (pts(2) >= 1) { bullets.push(pts(2) === 2 ? Q[2].high : Q[2].mid); }
+      if (pts(3) >= 1) { bullets.push(Q[3].high); }
+      topUp(bullets, 4, RESERVE);
+      bullets = bullets.slice(0, 5);
+    }
+
+    /* One sentence restating what they answered, so the verdict is visibly
+       a reply to them rather than a generic result. Every phrase comes from
+       the answer they tapped. */
+    var recap = 'Based on ' + opt(0).recap + ' with ' + opt(1).recap + ', ' +
+                opt(2).recap + ', and ' + opt(3).recap + ", here's what fits.";
+
+    var h = '<div class="verdict">' +
+      '<p class="lean">Our read &nbsp;·&nbsp; ' + esc(lean) + '</p>' +
+      '<h3>' + esc(head) + '</h3>' +
+      '<p class="vrecap">' + esc(recap) + '</p>' +
+      '<p class="vsum">' + esc(summary) + '</p>' +
+      '<ul class="vpts">';
+    for (i = 0; i < bullets.length; i++) { h += '<li>' + esc(bullets[i]) + '</li>'; }
+    h += '</ul>';
+    if (caveat) { h += '<p class="vcav">' + esc(caveat) + '</p>'; }
+    h += '</div>' +
+      '<div class="vnext"><p>If team plans are the right move, cost is nearly identical between Claude and ChatGPT. ' +
+      '<a href="#cost">See the platform comparison below</a> for the difference that actually matters.</p>' +
+      '<button type="button" class="again js-again" id="again">Start again</button></div>';
+
+    out.innerHTML = h;
+    drawBar(Q.length);
+    headEl.innerHTML = 'Your answer <span>four questions, answered</span>' +
+      '<button type="button" class="head-again js-again">Start again</button>';
+  }
+
+  function restart() {
+    answers = [null, null, null, null];
+    step = 0;
+    render();
+    document.getElementById('check').scrollIntoView({ block: 'start' });
+  }
+  /* delegated, so both resets work no matter which render put them there */
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList && e.target.classList.contains('js-again')) { restart(); }
+  });
+
+  function render() {
+    if (step >= Q.length) { verdict(); return; }
+
+    drawBar(step);
+    headEl.innerHTML = HEAD_ASK;
+    var q = Q[step], h = '<div class="qbody">' +
+      '<p class="qnum">Question ' + (step + 1) + ' of ' + Q.length + '</p>' +
+      '<p class="qtext">' + esc(q.q) + '</p>' +
+      '<div class="opts">';
+    for (var i = 0; i < q.opts.length; i++) {
+      h += '<button type="button" class="opt" data-i="' + i + '">' + esc(q.opts[i].label) + '</button>';
+    }
+    h += '</div>';
+    if (step > 0) { h += '<button type="button" class="qback" id="back">Back a question</button>'; }
+    h += '</div>';
+    out.innerHTML = h;
+
+    var btns = out.querySelectorAll('.opt');
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].addEventListener('click', function () {
+        answers[step] = parseInt(this.getAttribute('data-i'), 10);
+        step++;
+        render();
+      });
+    }
+    var back = document.getElementById('back');
+    if (back) {
+      back.addEventListener('click', function () { step--; render(); });
+    }
+  }
+
+  render();
+
+  /* A link to a section opens that accordion rather than scrolling to a
+     closed heading. Works for the verdict's cost link and for any link
+     someone pastes with a hash on the end. */
+  function openHash(hash) {
+    if (!hash) { return null; }
+    var el = document.querySelector(hash);
+    if (el && el.tagName === 'DETAILS') { el.open = true; }
+    return el;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) { return; }
+    var el = openHash(a.getAttribute('href'));
+    if (!el) { return; }
+    e.preventDefault();
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', a.getAttribute('href'));
+  });
+  if (location.hash) {
+    var landed = openHash(location.hash);
+    if (landed) { landed.scrollIntoView({ block: 'start' }); }
+  }
+})();
+</script>
+</body>
+</html>

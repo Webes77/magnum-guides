@@ -99,6 +99,39 @@ Row 28 is the standing exception on this page, the same shape as rows 11 and
 15. The two Claude memory menu paths are third-party reporting, said so on
 the page, and nobody has seen those menus in the live product from here.
 
+## Team seats reference page
+
+Prices are the whole point of this page and both vendors state they can
+change without notice, so this section is the one most likely to move. No
+price is computed anywhere on the page: every figure is hand-written HTML.
+A price change has to be made in the Cost accordion's table, in the worked
+examples beneath it, in the short version at the top, and in the footer date,
+or the page contradicts itself. The recommendation tool does no arithmetic
+and carries no prices, so it never needs touching for a price change.
+
+| # | Claim | Where | Last checked | Grade |
+|---|---|---|---|---|
+| 34 | Claude Team standard seat: USD $20 per seat per month billed annually, $25 monthly | `team-seats` the short version, and the Cost accordion | 2026-09-14 | A |
+| 35 | ChatGPT Business standard seat: USD $20 per seat per month billed annually, $25 monthly | same | 2026-09-14 | A |
+| 36 | Premium seat: USD $100 annual, $125 monthly, both vendors | `team-seats` Cost accordion | 2026-09-14 | A |
+| 37 | Minimum 2 seats on both platforms | `team-seats` the short version, and the Cost accordion | 2026-09-14 | A |
+| 38 | Premium gives roughly 5x standard usage headroom | `team-seats` Cost accordion | 2026-09-14 | A |
+| 39 | Adding a seat mid-term charges immediately for the rest of the term; removing one frees the seat but does not drop the bill until renewal, both vendors | `team-seats` Cost accordion | 2026-09-14 | A |
+| 40 | Claude Team setup path: Organization settings, Members, Add member; business email required to create the org; invite valid about 21 days | `team-seats` Setup accordion | 2026-09-14 | A |
+| 41 | ChatGPT Business setup path: Workspace settings, Members, Invite member, with CSV upload; business email required; account created on join if none exists | `team-seats` Setup accordion | 2026-09-14 | A |
+| 42 | A pending, unaccepted invite still consumes a paid seat on both platforms | `team-seats` Setup accordion | 2026-09-14 | A |
+| 43 | Claude Team gives the Owner weekly and monthly active user counts and per-person usage; ChatGPT Business gives a Workspace analytics table | `team-seats` What you gain accordion | 2026-09-14 | A |
+| 44 | Business tiers do not train on your data by default on both platforms; personal tiers train by default unless each person opts out | `team-seats` the short version and What you gain | 2026-09-14 | A |
+| 45 | Moving a personal Claude account onto a team seat is one-way and cannot be reversed; merging closes the personal account on both platforms | `team-seats` What's the catch and Memory and leavers | 2026-09-14 | A |
+| 46 | Claude Team drops artifact publishing, public share links and custom skills, which need manual export | `team-seats` What's the catch accordion | 2026-09-14 | A |
+| 47 | On Claude the only route to a staff member's chat content is a deliberate export by the Primary Owner, not the admin screen | `team-seats` What's the catch accordion | 2026-09-14 | A |
+| 48 | Revoking a seat ends access immediately; re-adding the same email restores the account on both platforms. ChatGPT reassigns projects and GPTs to a workspace owner but not personal conversations | `team-seats` Memory and leavers accordion | 2026-09-14 | A |
+
+Rows 34 to 48 came in with the page on 14 September 2026 and were verified by
+James against `claude.com/pricing` and `openai.com/business/pricing` before he
+handed the content over, not re-verified from a session. Treat the first
+routine run over this section as a first check, not a re-check.
+
 ## Not on this list, deliberately
 
 The 6 Levers, the method, the prompts themselves, the exercises, anything
