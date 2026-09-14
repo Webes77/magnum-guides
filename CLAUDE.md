@@ -56,7 +56,8 @@ for any coral text under 18px, bright coral `#FF6F5E` for fills on navy and
 badges only, coral tint `#FBE1D8` for tags, slate `#5B6B7A` for ticks and
 figure detail, mute `#63615C` for notes and secondary lines (since 15 Sep,
 was `#7A7A7A` at 4.14:1), ghost coral `#F7BAB0` for the resting index number
-on a section heading and nothing else (since 15 Sep). The CSS token names did
+on a section heading and nothing else, and `#A1524E` for the same number on a
+navy ground (both since 15 Sep). The CSS token names did
 not change: `--rust` holds coral, `--olive` holds slate.
 Oswald for display, IBM Plex Sans for body, IBM Plex Mono for labels and
 prompts. Retired: black and gold, and the beige and rust system (paper
@@ -872,6 +873,45 @@ hairline under a sticky bar, not a decorative shadow. The shelf's `More below`
 gradient is load-bearing under hard rule 11, which requires a clipped prompt
 to say so. Deck check, field note check and the style checker all pass.
 
+Same treatment went onto the decks on 15 Sep, at James's request. The deck's
+index is the slide list behind the SLIDES button, so that is where it landed,
+in all four decks through the shared engine.
+
+Section names in that list were 12px mono and slide numbers were buried inside
+the button text as `12. Why it starts to drift`. The number is its own column
+now, ghosted, and it fills bright coral with the title going white when the
+cursor is on the row. Section names are Oswald at 24px over a hairline, and
+the panel's own heading is Oswald at 40px under a bright coral rule. This is
+the one place the reference's glow works literally, because the list sits on
+navy, so light reads as light.
+
+New token `--coral-ghost-navy` `#A1524E`, bright coral at 58 per cent over
+navy, 2.65:1. It is the resting index number on a dark ground and nothing
+else, the dark-ground twin of `--coral-ghost` on paper. Neither is text you
+read; the title beside it carries that job.
+
+Two bugs made and caught in the same pass, both worth recording. `#menu
+button` also matches the CLOSE button, so `width:100%` stretched it across the
+whole viewport and off screen. The rules are scoped to `#menulist button` now.
+And the `basics` tag is a `::after` on the button, which the new grid placed
+as a third grid item, so it dropped into the number column; it carries
+`grid-column:2`. Both were found by asserting in the browser rather than
+looking at the render: the close button's rect against the viewport, and the
+resting and hover colours read off `getComputedStyle`.
+
+One retired value went with it. The menu overlay was `rgba(74,66,60,.97)`, a
+beige-system brown, and the footer nav buttons were bordered `#8C8275` from
+the same dead palette. Overlay is navy now and the borders are `var(--olive)`.
+
+Still off-palette in the deck engine and left alone deliberately, because
+fixing them means auditing the engine's whole palette rather than the index:
+`#46545F` (`--olive-2`), `#C8402F`, `#8E97A3`, `#3A4756`, a `box-shadow` and
+the `More below` gradient, which hard rule 11 requires. `#6F675C`, another
+beige-system grey, survives in two `runs-without-you` figures and as `--muted`
+in `manus-website-manual.html`. Worth a pass, not urgent.
+
+Deck check passes at all four window sizes across all four decks.
+
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
 all eight pages. The Field Note routine is set up. James confirmed the
@@ -1016,8 +1056,8 @@ order of value:
 - Each document keeps its card source next to it (`*-thumbnail.html` or
   `thumbnail.html`). Cards are 1200x630 JPEG q90 in `assets/thumbnails/`.
   Reusable source in `templates/guide-thumbnail.html`.
-- The three decks share one engine (CSS and JS). A fix to the engine goes
-  into all three files. The only differences between them are metadata,
+- The four decks share one engine (CSS and JS). A fix to the engine goes
+  into all four files. The only differences between them are metadata,
   prompts, figures, and the slide array.
 - `tools/check-decks.js` measures every slide of every deck at four window
   sizes: overflow, anything printing over the footer, elements overlapping,
