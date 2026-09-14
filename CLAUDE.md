@@ -593,8 +593,13 @@ get back where it went wrong and a fresh brief to restart from). Both
 are on the shelf as `state-of-play` and `chat-rescue`, deck and shelf
 identical. Foundations is 30 slides, six prompts. The shelf is 34 cards.
 
-Gotcha, hit three times now: a push to `main` does not reliably queue a
-"pages build and deployment" run. On 12 Sep `f3c3463` sat on `main` with
+Gotcha, hit four times now: a push to `main` does not reliably queue a
+"pages build and deployment" run. On 14 Sep it added a detail worth having.
+The push of `75aa0c7` queued no run of its own, and the run that was sitting
+in the queue at the time carried `head_sha` `ab77610`, the previous commit.
+So the failure mode is not always "no run appears", it can also be "a run
+appears for the commit before yours". Match on `head_sha`, never on the fact
+that a run exists. On 12 Sep `f3c3463` sat on `main` with
 no build after four minutes; on 13 Sep the merge commit `ff68f09` did the
 same, and that one went up with `main` on its own, so the earlier theory
 that it was caused by pushing `main` and the branch together is wrong.
