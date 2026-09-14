@@ -237,6 +237,9 @@
     color:var(--coral-bright);margin:0 0 10px;}
   .verdict h3{font-family:var(--display);font-weight:700;text-transform:uppercase;
     font-size:clamp(22px,3.4vw,30px);line-height:1.05;color:var(--on-navy);margin:0 0 12px;max-width:24ch;text-wrap:balance;}
+  /* their answers, quieter than the reasoning that follows */
+  .vrecap{font-size:14.5px;line-height:1.5;color:var(--on-navy-mute);margin:0 0 14px;
+    max-width:58ch;border-left:3px solid var(--coral-bright);padding-left:12px;}
   .vsum{font-size:16.5px;line-height:1.5;color:var(--on-navy);margin:0 0 20px;max-width:56ch;}
   .vpts{list-style:none;margin:0 0 18px;padding:0;}
   .vpts li{position:relative;padding:0 0 11px 22px;margin:0 0 11px;max-width:58ch;
@@ -467,9 +470,9 @@
          being used" arguments are strongest against. At +3 it lands on a
          Band 2 flag instead. Max total is 8. */
       opts: [
-        { label: '2 to 5',   pts: 0, sum: 'a team of two to five' },
-        { label: '6 to 10',  pts: 1, sum: 'a team of six to ten' },
-        { label: '11 to 15', pts: 3, sum: 'a team of eleven to fifteen' }
+        { label: '2 to 5',   pts: 0, sum: 'a team of two to five',    recap: 'a 2 to 5 person team' },
+        { label: '6 to 10',  pts: 1, sum: 'a team of six to ten',     recap: 'a 6 to 10 person team' },
+        { label: '11 to 15', pts: 3, sum: 'a team of eleven to fifteen', recap: 'an 11 to 15 person team' }
       ],
       flag: 'how many people are using it',
       flagPoint: 'If the team grows, the visibility a team plan gives you starts to matter.',
@@ -479,9 +482,9 @@
     {
       q: 'Does your team mostly stay, or does it turn over?',
       opts: [
-        { label: 'Stable core, people rarely leave',                     pts: 0, sum: 'a stable team' },
-        { label: 'Some turnover, casuals or contractors come and go',    pts: 1, sum: 'some turnover' },
-        { label: 'High turnover, regular churn',                         pts: 2, sum: 'regular churn' }
+        { label: 'Stable core, people rarely leave',                     pts: 0, sum: 'a stable team', recap: 'little turnover' },
+        { label: 'Some turnover, casuals or contractors come and go',    pts: 1, sum: 'some turnover', recap: 'some turnover' },
+        { label: 'High turnover, regular churn',                         pts: 2, sum: 'regular churn', recap: 'high turnover' }
       ],
       flag: 'how often people are coming and going',
       flagPoint: 'If people start coming and going more often, instant access cutoff stops being optional.',
@@ -492,9 +495,9 @@
     {
       q: 'Would staff be putting client info or business documents into it, or mostly just personal productivity (drafting, brainstorming, personal tasks)?',
       opts: [
-        { label: 'Mostly personal productivity, nothing sensitive',        pts: 0, sum: 'mostly personal productivity' },
-        { label: 'A mix of both',                                          pts: 1, sum: 'a mix of personal and client work' },
-        { label: 'Regularly handling client data or business documents',   pts: 2, sum: 'regular client data' }
+        { label: 'Mostly personal productivity, nothing sensitive',        pts: 0, sum: 'mostly personal productivity', recap: 'mostly personal use' },
+        { label: 'A mix of both',                                          pts: 1, sum: 'a mix of personal and client work', recap: 'a mix of personal and client work' },
+        { label: 'Regularly handling client data or business documents',   pts: 2, sum: 'regular client data', recap: 'regular client data' }
       ],
       flag: 'how much client or business data is going through it',
       flagPoint: 'If more client work starts going through it, the training opt-out default becomes worth paying for.',
@@ -508,10 +511,10 @@
          as heavily as size, turnover or sensitivity. */
       q: 'Is anyone already paying for a personal plan out of their own pocket?',
       opts: [
-        { label: "No, nobody's paying for one currently",                 pts: 0, sum: 'nobody paying personally' },
-        { label: 'Yes, one or two people are',                            pts: 1, sum: 'one or two people already paying',
+        { label: "No, nobody's paying for one currently",                 pts: 0, sum: 'nobody paying personally', recap: 'nobody currently paying' },
+        { label: 'Yes, one or two people are',                            pts: 1, sum: 'one or two people already paying', recap: 'one or two people already paying',
           mid: 'Consolidating one or two personal subscriptions into one bill is a clean win either way.' },
-        { label: 'Yes, most or all of the team already pay personally',   pts: 1, sum: 'most of the team already paying',
+        { label: 'Yes, most or all of the team already pay personally',   pts: 1, sum: 'most of the team already paying', recap: 'most of the team already paying',
           mid: "Consolidating everyone's personal subscriptions into one bill is a clean win either way." }
       ],
       flag: 'what your team is already paying personally',
@@ -639,9 +642,16 @@
       bullets = bullets.slice(0, 5);
     }
 
+    /* One sentence restating what they answered, so the verdict is visibly
+       a reply to them rather than a generic result. Every phrase comes from
+       the answer they tapped. */
+    var recap = 'Based on ' + opt(0).recap + ' with ' + opt(1).recap + ', ' +
+                opt(2).recap + ', and ' + opt(3).recap + ", here's what fits.";
+
     var h = '<div class="verdict">' +
       '<p class="lean">Our read &nbsp;·&nbsp; ' + esc(lean) + '</p>' +
       '<h3>' + esc(head) + '</h3>' +
+      '<p class="vrecap">' + esc(recap) + '</p>' +
       '<p class="vsum">' + esc(summary) + '</p>' +
       '<ul class="vpts">';
     for (i = 0; i < bullets.length; i++) { h += '<li>' + esc(bullets[i]) + '</li>'; }
