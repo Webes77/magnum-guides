@@ -874,10 +874,12 @@ to say so. Deck check, field note check and the style checker all pass.
 
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
-all eight pages. James confirmed the Field Note routine now carries
-`webes77/magnum-guides`; whether Gmail and Drive are attached cannot be seen
-from a session and the routine has never run, so the first fire on Wednesday
-16 Sep is the proof. Nothing else waits on him but a look on his phone.
+all eight pages. The Field Note routine is set up. James confirmed the
+repository and the connectors on 15 Sep and asked, plainly, to stop being
+asked about it. Do not raise it again. The first fire is Wednesday 16 Sep and
+the run itself is the only remaining signal; if it fails, read the failure,
+do not ask him whether he did the setup. He has also looked at the members
+area on his phone and it reads correctly.
 
 The shelf keeps its name. James was asked directly on 15 Sep after saying
 "Prompt Library" twice, and confirmed Prompt Shelf stays.
@@ -919,14 +921,19 @@ order of value:
 1. James has not yet looked at the Manus Bridge walkthrough live, on a
    phone or a laptop. That is the next thing.
 
-2. Two routines need the same thing from James in the Routines UI, and a
-   session can do neither. The Field Note routine
-   (`trig_016pPJPsm8D3yUZs81wquraU`) needs `webes77/magnum-guides` as its
-   repository plus Gmail and Google Drive attached, and it fires Wednesday
-   16 Sep, so this one is first. The fact-check routine
-   (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) needs the same repository and Gmail
-   before 1 Oct. Without them each first run has nothing to read and no way
-   to report.
+2. Done for the Field Note routine (`trig_016pPJPsm8D3yUZs81wquraU`), 15 Sep:
+   repository and connectors both attached, confirmed by James, who asked not
+   to be asked again. First fire Wednesday 16 Sep. Watch the run, not him.
+
+   Still open: the fact-check routine (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) needs
+   the same repository and Gmail before 1 Oct. Raise it once, near the date,
+   and not before.
+
+   Standing note for every future session. `list_triggers` returns the
+   schedule and the run history but never the attached repository or
+   connectors, so a session cannot verify this and must not keep asking. If a
+   run fails for want of a connector, the failure says so and that is the
+   thing to act on.
 
 3. Done, 14 Sep. The hotter coral is site-wide and the split is closed.
    Keep `tools/`-style discipline on it: the contrast audit that took this
@@ -934,10 +941,9 @@ order of value:
    and the rule it enforces is that `--rust` never paints text under 18px.
    Use `--coral-text` there.
 
-4. James to look at the reworked front page and the indexed shelf live, on
-   a phone as well as a laptop. Both were verified locally only. The
-   sticky nav's dropdown only appears under 820px, so the phone is the
-   only place to check it.
+4. Done, 15 Sep. James checked the front page on his phone and it reads
+   correctly, including the sticky nav's dropdown, which only appears under
+   820px.
 5. James to glance at Make Claude Yours slide 31 in the live desktop app.
    Sources agree with the slide; nobody has seen the menu itself from here.
    The shelf recipe "Set Claude up in the right order" and the account and
