@@ -142,7 +142,7 @@ Playfair Display or Inter.
 - Ink #1E1B17 for headings, borders and rules. Body text #2B2823.
 - Navy #1F2A37 for title slides, section breaks and any dark block. Every
   deck has some navy; it is where the weight is.
-- Coral #DE4A3C is the only accent: one coral word in a heading, a label,
+- Coral #EF4029 is the only accent: one coral word in a heading, a label,
   a numeral. Bright coral #FF6F5E for fills on navy only. Nothing else is
   coloured.
 - Slate #5B6B7A for ticks and diagram detail only. Slate never carries text.
@@ -158,7 +158,7 @@ Playfair Display or Inter.
 Style prompt for Gamma, paste as written: "Off-white background
 #FBFBF9, flat. Ink black #1E1B17 headings in Oswald, uppercase, condensed.
 Body in IBM Plex Sans. Small uppercase mono labels. Deep navy #1F2A37
-blocks for title and section slides. One accent colour, coral #DE4A3C,
+blocks for title and section slides. One accent colour, coral #EF4029,
 used sparingly. Cards with a thin black border, no shadow, no rounded
 corners. Flat line illustrations in ink on navy with coral and slate
 fills. Editorial, printed, calm."

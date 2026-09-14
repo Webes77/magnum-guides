@@ -33,7 +33,8 @@ palette changed.
   --navy:#1F2A37;         /* masthead band, footers, figure plates, dark cards */
   --ink:#1E1B17;          /* text, borders, headings */
   --body:#2B2823;         /* running text on paper */
-  --rust:#DE4A3C;         /* the accent: coral. anything you read */
+  --rust:#EF4029;
+  --coral-text:#C63A2A;   /* small text: labels, meta, links. 5.02:1 on paper */         /* the accent: coral. anything you read */
   --coral-bright:#FF6F5E; /* fills only: badges, bars, figure stripes */
   --tint:#FBE1D8;         /* tags and marks */
   --olive:#5B6B7A;        /* slate: ticks and figure detail, never text */

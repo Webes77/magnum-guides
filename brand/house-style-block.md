@@ -21,7 +21,7 @@ Colours:
 - Navy `#1F2A37`: the masthead band, footers, figure plates, cover slides,
   dark cards. This is where the weight is. Every screen has one navy block.
 - Ink `#1E1B17`: text, borders, headings.
-- Coral `#DE4A3C`: the one accent, for anything you read. One coral word in
+- Coral `#EF4029`: the one accent, for anything you read. One coral word in
   a heading, labels, links, numbers.
 - Coral bright `#FF6F5E`: fills only. Badges, bars, the stripe inside a
   figure, the rule under the navy band. Never small text on white.
@@ -61,7 +61,8 @@ CSS tokens:
 ```css
 :root{
   --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
-  --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+  --body:#2B2823; --rust:#EF4029;
+  --coral-text:#C63A2A;   /* small text: labels, meta, links. 5.02:1 on paper */ --coral-bright:#FF6F5E; --tint:#FBE1D8;
   --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;

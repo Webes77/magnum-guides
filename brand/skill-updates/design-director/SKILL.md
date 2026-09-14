@@ -50,7 +50,7 @@ Every document uses the Magnum AI house style unless James says the
 client's own brand overrides it. Ground off-white (#FBFBF9), cards and
 panels white (#FFFFFF), a deep navy block (#1F2A37) for the cover, section
 breaks and any dark area, ink (#1E1B17) for text and rules, coral
-(#DE4A3C) as the one accent for anything read, bright coral (#FF6F5E) for
+(#EF4029) as the one accent for anything read, bright coral (#FF6F5E) for
 fills on navy only, coral tint (#FBE1D8) for tags, slate (#5B6B7A) for
 ticks. Type: Oswald or the closest condensed grotesk for headings,
 uppercase; IBM Plex Sans for body; IBM Plex Mono for labels. Cards carry a
@@ -104,10 +104,10 @@ Each example below is annotated with the specific problem it solves, use these t
 *"Design the cover section of a one-page service menu for an AI consultancy. Audience: small business owners and coaches who have already had a discovery call. This document confirms their decision, it does not sell. Aesthetic: editorial restraint, printed, calm. Deep navy ground (#1F2A37), large-scale condensed uppercase display type in Oswald or the closest condensed grotesk (not Playfair, not Inter, not Bebas), consultant name and business name in tracked uppercase IBM Plex Mono at small scale. One word of the title in coral (#FF6F5E); everything else warm white (#F4F1EA). Deliberate negative space. No gradients, no decorative elements, no icons, no shadows. Bottom-align the document title."*
 
 **Problem: presenting tiered pricing without cards, borders, or SaaS layout patterns**
-*"Maintain the typographic system established in the cover, now on an off-white ground (#FBFBF9) with ink text (#1E1B17). Design the services section listing three consulting tiers. Each tier: name in Oswald at 28pt, uppercase; one-line descriptor in IBM Plex Sans at 13pt; price in IBM Plex Mono, right-aligned, in coral (#DE4A3C). No background fills, no divider icons, no shadows. Separate tiers with a 2px ink rule and generous vertical space (minimum 48pt between items). The section feels like a price list in a very good restaurant menu: quiet, confident, inevitable."*
+*"Maintain the typographic system established in the cover, now on an off-white ground (#FBFBF9) with ink text (#1E1B17). Design the services section listing three consulting tiers. Each tier: name in Oswald at 28pt, uppercase; one-line descriptor in IBM Plex Sans at 13pt; price in IBM Plex Mono, right-aligned, in coral (#EF4029). No background fills, no divider icons, no shadows. Separate tiers with a 2px ink rule and generous vertical space (minimum 48pt between items). The section feels like a price list in a very good restaurant menu: quiet, confident, inevitable."*
 
 **Problem: shifting to a trades/small business register without losing visual quality**
-*"Design the cover of a client proposal for a building contractor. Audience: homeowners who have received a verbal quote and are deciding whether to proceed. Register: dependable craftsmanship, not luxury. Background: off-white (#FBFBF9). Large headline in Oswald or the closest condensed grotesk, heavy weight, uppercase, ink (#1E1B17), with one word in coral (#DE4A3C). Contractor name and trade below in IBM Plex Mono, uppercase, tracked +20, smaller scale. One 2px ink rule to anchor the header base, and a navy band (#1F2A37) across the top carrying the trade name in warm white. No photography placeholders, no icon sets, no rounded corners, no shadows. Clean, grounded, trustworthy."*
+*"Design the cover of a client proposal for a building contractor. Audience: homeowners who have received a verbal quote and are deciding whether to proceed. Register: dependable craftsmanship, not luxury. Background: off-white (#FBFBF9). Large headline in Oswald or the closest condensed grotesk, heavy weight, uppercase, ink (#1E1B17), with one word in coral (#EF4029). Contractor name and trade below in IBM Plex Mono, uppercase, tracked +20, smaller scale. One 2px ink rule to anchor the header base, and a navy band (#1F2A37) across the top carrying the trade name in warm white. No photography placeholders, no icon sets, no rounded corners, no shadows. Clean, grounded, trustworthy."*
 
 ---
 

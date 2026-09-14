@@ -534,13 +534,32 @@ retired on 9 Sep stays retired. The copy is neutral for a public reader:
 courses rather than sessions, and no line assuming the reader sat in a
 room. The `#sessions` anchor is unchanged.
 
-`--rust` on the front page is now `#EF4029`, a hotter coral, used only on
-display type (the headline accent and the 00 to 03 numbers). Every other
-page still holds `#DE4A3C`. That is a deliberate split, not an oversight:
-James asked for more neon, neon cannot carry small text on white (`#FF6F5E`
-is 2.64:1 on paper), and taking the hotter value site-wide is the same
-sweep as 9 Sep across every page, all four decks, the shelf, the cards and
-the brand page. It waits for James to say go.
+`--rust` is `#EF4029` everywhere since 14 Sep. James said go, and the sweep
+ran across 34 HTML files, ten house-style docs and skill files, and all
+fourteen share cards, re-rendered with the fonts inlined.
+
+The sweep carried a second change it could not do without. `#EF4029` is
+3.73:1 on paper, so it fails AA for normal text. So did the coral it
+replaced: `#DE4A3C` was 3.94:1, also under the 4.5 bar, which means the site
+had this fault before the hotter value arrived and the front page was the
+only page already fixed. Every page now carries both tokens, the front
+page's pattern taken site-wide: `--rust` `#EF4029` for display type, fills,
+borders and figures, and `--coral-text` `#C63A2A` (5.02:1) for anything
+small enough to read. Which rules needed which was measured in the browser,
+not guessed: an audit walks every element on fifteen pages, computes the
+contrast against its real painted background, and reports failures by
+selector. It went 80 failures to zero, and zero is the number to keep.
+
+Two faults the 9 Sep restyle missed turned up in the same pass. `fine-tune`
+still set Inter in three SVG text elements, and `templates/guide-template.html`
+set Inter as its body font, so anything built from that template inherited a
+retired typeface. Both now carry the house faces. This is the exact trap the
+gotcha below warns about: a case-insensitive grep for "Inter" matches
+"interaction", "interface" and "Interview", which is how they survived.
+
+`prompts/index.html` also used `var(--coral-text)` without ever defining it,
+from 13 Sep when the brief block landed. Undefined, so those labels rendered
+in plain ink rather than coral. Defining the token everywhere fixed it.
 
 Two things the front page still carries that James flagged and chose to
 keep: Start Here and the courses list the same three courses twice, which
@@ -754,12 +773,11 @@ order of value:
    before 1 Oct. Without them each first run has nothing to read and no way
    to report.
 
-3. The hotter coral. `--rust` `#EF4029` is on the front page only. If
-   James wants it everywhere it is a scripted pass across every page, all
-   four decks, the shelf, the card sources, the eleven share cards and the
-   brand page, plus the house style skill and its two reference files, and
-   the deck check after. If he does not, the front page reverts to
-   `#DE4A3C` in one edit. Do not leave it split for long.
+3. Done, 14 Sep. The hotter coral is site-wide and the split is closed.
+   Keep `tools/`-style discipline on it: the contrast audit that took this
+   from 80 failures to zero is worth re-running after any palette change,
+   and the rule it enforces is that `--rust` never paints text under 18px.
+   Use `--coral-text` there.
 
 4. James to look at the reworked front page and the indexed shelf live, on
    a phone as well as a laptop. Both were verified locally only. The

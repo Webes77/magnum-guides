@@ -40,7 +40,7 @@
      too close to see. Same family as the navy, nothing new introduced. */
   --prompt-bg:#EBEFF3;
   --body:#2B2823;
-  --rust:#DE4A3C;
+  --rust:#EF4029; --coral-text:#C63A2A;
   --olive:#5B6B7A;
   --char:#3A3630;
   --mute:#7A7A7A;
@@ -92,7 +92,7 @@ main{padding:34px 0 20px}
 .filters{background:var(--paper-2);border:2px solid var(--ink);padding:10px 20px 8px;margin-bottom:44px}
 .frow{display:flex;align-items:flex-start;gap:14px;padding:9px 0;border-top:1px solid rgba(30,27,23,.18)}
 .frow:first-child{border-top:0}
-.fname{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);width:58px;flex-shrink:0;padding-top:7px}
+.fname{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);width:58px;flex-shrink:0;padding-top:7px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{background:transparent;color:var(--ink);border:2px solid var(--ink);padding:4px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;line-height:1.4}
 .chip:hover{background:var(--paper-2)}
@@ -125,7 +125,7 @@ main{padding:34px 0 20px}
 
 /* SECTIONS */
 section{margin-bottom:54px}
-.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;gap:14px;margin-bottom:8px}
 .label::after{content:"";flex:1;height:2px;background:var(--ink)}
 .note{font-size:15px;color:var(--mute);max-width:64ch;margin-bottom:24px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
@@ -149,7 +149,7 @@ section{margin-bottom:54px}
 
 .prewrap{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
 .prewrap pre{font-family:var(--mono);font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word;padding:16px 18px 22px;max-height:340px;overflow:auto;color:var(--navy);background:var(--prompt-bg)}
-.prewrap::after{content:"More below";position:absolute;left:0;right:0;bottom:0;padding:26px 18px 8px;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 70%);pointer-events:none;opacity:0;transition:opacity .15s}
+.prewrap::after{content:"More below";position:absolute;left:0;right:0;bottom:0;padding:26px 18px 8px;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 70%);pointer-events:none;opacity:0;transition:opacity .15s}
 .pane.more .prewrap::after{opacity:1}
 
 /* recipe steps */

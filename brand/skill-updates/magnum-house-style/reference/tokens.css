@@ -4,7 +4,8 @@
 
 :root{
   --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
-  --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+  --body:#2B2823; --rust:#EF4029;
+  --coral-text:#C63A2A;   /* small text: labels, meta, links. 5.02:1 on paper */ --coral-bright:#FF6F5E; --tint:#FBE1D8;
   --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
   --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
