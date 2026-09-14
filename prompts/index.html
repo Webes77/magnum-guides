@@ -1503,6 +1503,26 @@ steps:[
 ]},
 
 /* ---------- Reference · Chatbots, Agents and Bots ---------- */
+{kind:'prompt', id:'memory-audit', sec:'Reference · AI privacy', title:'Audit what it remembers about you', where:'Once now, then every few months', type:'review', when:'setup', hook:"See what it has stored about you, and what should not be there.", added:'2026-09-14', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are auditing what you have stored about me, so I can decide
+what should not be there.
+
+I run a small business. Anything you remember about me can turn up
+in future answers, and some of it may be commercially sensitive or
+about other people who never agreed to it.
+
+Work only from what you actually have stored. Do not guess, do not
+infer from this conversation, and do not fill in gaps. If you cannot
+see your own stored memory, say so plainly and stop.
+
+Answer in this exact format:
+WHAT YOU REMEMBER: every item, grouped by topic, in plain sentences.
+SHOULD NOT BE THERE: any item naming a client, a person who is not
+me, a price, a contract, a login, or a health or financial detail.
+One line each, with why it is a problem.
+SAFE TO KEEP: the rest, in one line.
+
+Stop after that list.`},
 {kind:'prompt', id:'design-the-bot', sec:'Reference · Chatbots, Agents and Bots', title:'Design the bot', where:'A new chat, in the project the bot will live in', type:'interview', when:'setup', hook:"Say a repeated job out loud and get back the brief for a bot.", added:'2026-09-09', levers:['Context','Constraints','Format','Output'],
 prompt:`I want to hand one repeated job to a bot. Interview me before you build
 anything.

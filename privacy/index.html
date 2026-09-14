@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Privacy: What Is Kept, and Who Can See It · Magnum AI</title>
+<meta name="description" content="What actually happens to what you type into Claude and ChatGPT, how long it is kept on each plan, who can retrieve it, the settings to switch off, and what never to paste in at all.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/privacy/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="AI Privacy: What Is Kept, and Who Can See It">
+<meta property="og:description" content="What is stored, how long for, who can retrieve it, and the settings to switch off today.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/privacy/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/privacy.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI Privacy: What Is Kept, and Who Can See It, a Magnum AI reference page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Privacy: What Is Kept, and Who Can See It">
+<meta name="twitter:description" content="What is stored, how long for, who can retrieve it, and the settings to switch off today.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/privacy.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+    --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+    --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+    --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+    --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  :root{color-scheme:light}
+  html,body{background:#FBFBF9 !important;color:#2B2823;}
+  body{
+    color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;
+    margin:0;padding:0 20px 90px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:48px 0 26px;margin:0 -20px 40px;}
+  .masthead .wrap{padding:0 20px;}
+  .masthead h1{color:var(--on-navy);}
+  .masthead h1 em{color:var(--coral-bright);}
+  .masthead .label{color:var(--coral-bright);}
+  .masthead .label::after{background:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  h1{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h1 em,h2 em,h3 em{font-style:normal;color:var(--rust);}
+
+  /* contents strip */
+  .contents{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 48px;padding:0;list-style:none;
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;
+  }
+  .contents a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:2px;}
+  .contents a:hover,.contents a:focus-visible{color:var(--rust);outline:none;}
+
+  section{margin:0 0 56px;scroll-margin-top:24px;}
+  .label{
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.20em;
+    color:var(--rust);margin:0 0 16px;display:flex;align-items:center;gap:14px;
+  }
+  .label::after{content:"";flex:1;height:1px;background:var(--ink);}
+  h2{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(26px,4vw,36px);line-height:1.05;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h3{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:22px;line-height:1.1;color:var(--ink);margin:0 0 10px;
+  }
+  p{max-width:64ch;}
+  p.lead{font-size:18px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+  .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 22px 24px;}
+  .card h3{font-size:20px;margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--char);margin:0;max-width:none;}
+  .card ul{margin:0;padding:0;list-style:none;}
+  .card li{font-size:15.5px;color:var(--char);padding:7px 0 7px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12);}
+  .card li:last-child{border-bottom:none;}
+  .card li::before{position:absolute;left:0;top:7px;font-family:var(--mono);font-size:13px;font-weight:500;}
+  .yes li::before{content:"\2713";color:var(--olive);}
+  .stop li::before{content:"\2715";color:var(--rust);}
+
+  .figure{margin:0 0 20px;overflow-x:auto;}
+  .figure svg{display:block;min-width:640px;width:100%;height:auto;}
+  figcaption{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-top:12px;}
+
+  /* stages */
+  .stage{border-top:2px solid var(--ink);padding-top:22px;margin-top:34px;}
+  .stage-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;}
+  .stage-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--rust);}
+  .stage-time{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-left:auto;white-space:nowrap;}
+
+  .prompt{position:relative;margin:16px 0 18px;}
+  .prompt pre{
+    font-family:var(--mono);font-size:13px;line-height:1.55;background:var(--paper-2);
+    border:2px solid var(--ink);padding:18px 20px 18px;
+    margin:0;white-space:pre-wrap;word-break:break-word;color:var(--ink);
+  }
+  .copy{
+    position:absolute;top:-14px;right:14px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    background:var(--navy);color:#FFFFFF;border:0;padding:7px 12px;cursor:pointer;
+    transition:transform .12s ease,background .12s ease;
+  }
+  .copy:hover,.copy:focus-visible{background:var(--rust);outline:none;transform:translateY(-2px);}
+  .copy.done{background:var(--tint);color:var(--ink);}
+
+  .say{
+    border-left:5px solid var(--rust);background:var(--tint);
+    padding:12px 16px;margin:0 0 6px;max-width:64ch;
+  }
+  .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
+  .say strong{color:var(--rust);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+
+  .tablewrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);}
+  table{border-collapse:collapse;width:100%;min-width:520px;}
+  th,td{text-align:left;padding:12px 18px;border-bottom:1px solid rgba(30,27,23,.16);vertical-align:top;font-size:15.5px;color:var(--char);}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.gone{color:var(--mute);text-decoration:line-through;}
+  td.mono{font-family:var(--mono);font-size:13.5px;color:var(--ink);white-space:nowrap;}
+
+  code{font-family:var(--mono);font-size:13.5px;background:var(--paper-2);border:1px solid rgba(30,27,23,.28);padding:1px 6px;color:var(--ink);}
+
+  footer{background:var(--navy);color:var(--on-navy-mute);margin-top:60px;padding:22px 20px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  }
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .card{break-inside:avoid}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ---- this page only ------------------------------------------------ */
+  /* the numbered settings pass */
+  .steps{counter-reset:s;list-style:none;margin:0;padding:0;}
+  .steps>li{counter-increment:s;position:relative;padding:0 0 20px 52px;margin:0 0 20px;
+    border-bottom:1px solid rgba(30,27,23,.14);}
+  .steps>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .steps>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--rust);}
+  .steps h3{font-size:19px;margin-bottom:6px;}
+  .steps p{font-size:15.5px;color:var(--char);margin:0 0 6px;}
+  .steps p:last-child{margin-bottom:0;}
+  /* a settings path, so a reader can follow it with their thumb */
+  .path{font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--tint);
+    border:1px solid rgba(30,27,23,.2);padding:3px 8px;display:inline-block;margin-bottom:8px;}
+  /* a claim we could not verify against the vendor's own page */
+  .flag{border-left:5px solid var(--olive);background:#FFFFFF;border-top:1px solid var(--hair);
+    border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);
+    padding:12px 16px;margin:14px 0 0;max-width:64ch;}
+  .flag p{margin:0;font-size:14.5px;color:var(--char);max-width:none;}
+  .flag strong{color:var(--olive);font-weight:600;font-family:var(--mono);font-size:11px;
+    text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+  /* the three things, at the end */
+  .three{background:var(--navy);color:var(--on-navy);border:2px solid var(--ink);padding:26px 26px 28px;}
+  .three h2{color:var(--on-navy);margin-bottom:18px;}
+  .three ol{margin:0;padding:0 0 0 22px;}
+  .three li{font-size:17px;line-height:1.5;color:var(--on-navy);margin-bottom:12px;max-width:60ch;}
+  .three li:last-child{margin-bottom:0;}
+  .three li b{color:var(--coral-bright);font-weight:600;}
+  .three ol::marker{color:var(--coral-bright);}
+  /* the sources block */
+  .sources{border-top:2px solid var(--ink);padding-top:18px;margin-top:8px;}
+  .sources p{font-size:14.5px;color:var(--char);}
+  .sources ul{margin:0;padding:0 0 0 20px;}
+  .sources li{font-size:14px;color:var(--char);margin-bottom:7px;line-height:1.5;}
+  .sources a{color:var(--rust);}
+  @media (max-width:560px){
+    .steps>li{padding-left:40px;}
+    .three{padding:20px 18px 22px;}
+  }
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+    <p class="label"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;·&nbsp; Reference &nbsp;·&nbsp; AI privacy</p>
+    <h1>What is kept, <em>and who can see it</em></h1>
+    <p class="sub">Three different questions get treated as one. Whether what you type is stored, whether it is used to train the model, and whether a person can read it. They have different answers and different switches. This page gives you all three, then the settings to change today.</p>
+  </div></header>
+  <div class="wrap">
+
+  <ul class="contents">
+    <li><a href="#happens">What happens to what you type</a></li>
+    <li><a href="#kept">What is kept, and for how long</a></li>
+    <li><a href="#who">Who can see it</a></li>
+    <li><a href="#switch">What to switch off</a></li>
+    <li><a href="#never">What never to put in</a></li>
+    <li><a href="#three">If you only do three things</a></li>
+  </ul>
+
+  <!-- ============ 01 WHAT HAPPENS ============ -->
+  <section id="happens">
+    <p class="label">01 · What happens to what you type</p>
+    <h2>Three questions, not one</h2>
+    <p class="lead">Your message leaves your device, travels to the company's servers, gets processed there, and the answer comes back. That is true of every one of these tools, on every plan, including the ones that call themselves private. Nothing is processed on your laptop.</p>
+    <p>From there, three things happen independently, and almost everyone collapses them into a single worry.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Is it stored</h3>
+        <p>Almost always yes, for a period. The period changes with your plan and with one toggle. Deleting a chat removes it from your screen straight away, and from the company's systems within thirty days, not instantly.</p>
+      </div>
+      <div class="card">
+        <h3>Is it used to train</h3>
+        <p>On a personal Claude or ChatGPT account, yes by default. On a business or enterprise account, no by default. This is the one you can turn off in about fifteen seconds, and it is the one that changes how long things are kept.</p>
+      </div>
+      <div class="card">
+        <h3>Can a person read it</h3>
+        <p>The one people never ask about, and the one that actually bites. On a work account the answer is usually yes, an administrator can retrieve it, and no setting you control changes that.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 WHAT IS KEPT ============ -->
+  <section id="kept">
+    <p class="label">02 · What is kept, and for how long</p>
+    <h2>The numbers, per plan</h2>
+    <p>The single biggest number on this page is the first row. Leaving the training setting on does not only mean your chats train the model. It extends how long they are kept from thirty days to five years.</p>
+
+    <h3 style="margin-top:28px">Claude</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Your situation</th><th class="mono">Kept for</th><th>Used to train</th></tr></thead>
+        <tbody>
+          <tr><td>Free, Pro or Max, with <em>Help improve Claude</em> on. This is the default.</td><td class="mono">Up to 5 years</td><td>Yes</td></tr>
+          <tr><td>Free, Pro or Max, with it switched off</td><td class="mono">30 days</td><td>No</td></tr>
+          <tr><td>An incognito chat. Kept out of your history, not out of the company's records.</td><td class="mono">30 days</td><td>No</td></tr>
+          <tr><td>Team or Enterprise</td><td class="mono">Your org's policy</td><td>No, not by default</td></tr>
+          <tr><td>A chat you delete</td><td class="mono">Up to 30 days</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px">On Enterprise an administrator can set a custom retention period, and the floor is thirty days. If nobody sets one, the default is to keep conversation and project data indefinitely. Worth asking whoever runs your account which of those you are on.</p>
+
+    <h3 style="margin-top:34px">ChatGPT</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Your situation</th><th class="mono">Kept for</th><th>Used to train</th></tr></thead>
+        <tbody>
+          <tr><td>Free, Plus or Pro, with <em>Improve the model for everyone</em> on. This is the default.</td><td class="mono">In your history</td><td>Yes</td></tr>
+          <tr><td>Free, Plus or Pro, with it switched off. Chats still appear in your history.</td><td class="mono">In your history</td><td>No</td></tr>
+          <tr><td>A Temporary Chat. Not in your history, and it creates no memories.</td><td class="mono">30 days</td><td>No</td></tr>
+          <tr><td>Business, Enterprise or Edu</td><td class="mono">Your org's policy</td><td>No, not by default</td></tr>
+          <tr><td>A chat you delete</td><td class="mono">Up to 30 days</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="say">
+      <p><strong>The catch most people miss</strong>Deleting a chat does not delete what the tool remembered from it. Memory is a separate store with its own list and its own delete button. Section 04 covers both.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 WHO CAN SEE IT ============ -->
+  <section id="who">
+    <p class="label">03 · Who can see it</p>
+    <h2>Private from your sidebar is not private from your employer</h2>
+    <p class="lead">This is the part worth reading twice, because the wording of the feature actively encourages the wrong conclusion.</p>
+    <p>An incognito chat in Claude is not saved to your history and is not used for training. Both true. What it is not is invisible. It is still kept for thirty days, or longer if your organisation's retention policy says so. And on a Team or Enterprise plan, incognito chats are included in the organisation data export that account Owners can run, and in the Compliance API on Enterprise.</p>
+    <p>So if you are on a work account and you open an incognito chat to ask something you would rather your employer did not see, you have hidden it from yourself and from nobody else.</p>
+    <div class="cards" style="margin-top:26px">
+      <div class="card">
+        <h3>On a personal account</h3>
+        <ul class="yes">
+          <li>Nobody at your workplace can pull your chats.</li>
+          <li>Staff access at the company is limited and audited, but not zero.</li>
+          <li>A legal request or a breach is still a real path, whatever your settings say.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>On a work account</h3>
+        <ul class="stop">
+          <li>Assume an administrator can retrieve anything you type.</li>
+          <li>Incognito and temporary chats are included in that.</li>
+          <li>On ChatGPT Enterprise and Edu the compliance tools cover conversations, files and memories.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:22px">ChatGPT Business is slightly different in the detail: an administrator does not automatically get a window into your ordinary chats, but Enterprise and Edu workspaces have a compliance platform that records conversations, uploaded files, memories and users. The practical advice does not change. On an account your employer pays for, write as though it can be read back to you.</p>
+  </section>
+
+  <!-- ============ 04 WHAT TO SWITCH OFF ============ -->
+  <section id="switch">
+    <p class="label">04 · What to switch off</p>
+    <h2>Ten minutes, once</h2>
+    <p class="lead">Do these in order. The first one in each list is the one that matters most, and none of them costs you anything you will notice in daily use.</p>
+
+    <h3 style="margin-top:30px">In Claude</h3>
+    <ol class="steps">
+      <li>
+        <h3>Turn off model training</h3>
+        <span class="path">Settings &rsaquo; Privacy &rsaquo; Help improve Claude</span>
+        <p>Switch it off. This stops new chats being used for training, and it drops retention from up to five years back to thirty days. It is the single highest-value switch on this page.</p>
+      </li>
+      <li>
+        <h3>Turn off or pause memory</h3>
+        <span class="path">Settings &rsaquo; Memory &rsaquo; Generate memory from chats</span>
+        <p>Switch it off if you do not want it building a profile of you across chats. Pausing keeps what is already stored but stops it being used or added to.</p>
+      </li>
+      <li>
+        <h3>Read what it already remembers, and delete</h3>
+        <span class="path">Settings &rsaquo; Memory &rsaquo; Topics</span>
+        <p>Turning memory off does not delete what is already there. Open the list, read it properly, and delete anything naming a client, a price, a contract or a person who is not you. Reset clears the lot.</p>
+        <p>The prompt at the foot of this page gets Claude to summarise what it is holding, so you have something to check that list against.</p>
+      </li>
+      <li>
+        <h3>Use an incognito chat for the genuinely sensitive one-off</h3>
+        <p>Useful on a personal account. On a work account, read section 03 first, because it does not do what the name suggests.</p>
+      </li>
+    </ol>
+    <div class="flag">
+      <p><strong>Say where this came from</strong>The two memory paths above are third-party reporting, not something confirmed against Anthropic's own help pages from here. The menus move. If what you see does not match, the setting still exists under Settings, so go looking rather than assuming it is gone.</p>
+    </div>
+
+    <h3 style="margin-top:36px">In ChatGPT</h3>
+    <ol class="steps">
+      <li>
+        <h3>Turn off model training</h3>
+        <span class="path">Settings &rsaquo; Data Controls &rsaquo; Improve the model for everyone</span>
+        <p>Switch it off. New conversations still appear in your history, they are just no longer used to train the model.</p>
+      </li>
+      <li>
+        <h3>Turn off memory</h3>
+        <span class="path">Settings &rsaquo; Personalization &rsaquo; Memory</span>
+        <p>Switch it off and it stops creating and using memories.</p>
+      </li>
+      <li>
+        <h3>Clear what it has already saved</h3>
+        <span class="path">Settings &rsaquo; Personalization &rsaquo; Manage memory</span>
+        <p>Same trap as Claude. Turning memory off leaves the existing memories in place, and deleting a chat does not delete the memories that chat created. Open the list and delete them yourself.</p>
+      </li>
+      <li>
+        <h3>Use a Temporary Chat for the one-offs</h3>
+        <p>The Temporary button sits at the top right of a new chat. It stays out of your history, creates no memories and is not used for training. It is still kept thirty days.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ 05 WHAT NEVER TO PUT IN ============ -->
+  <section id="never">
+    <p class="label">05 · What never to put in</p>
+    <h2>The settings do not cover everything</h2>
+    <p class="lead">Every switch in section 04 controls training and retention. None of them controls what happens if the company receives a legal request, if there is a breach, or if somebody gets into your own account. Deletion is not instant either. So some things are better not typed at all.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Never paste</h3>
+        <ul class="stop">
+          <li>Passwords, API keys, bank details, anything that is a credential.</li>
+          <li>Tax file numbers, Medicare numbers, passport or licence numbers.</li>
+          <li>Anything under an NDA you have not read recently.</li>
+          <li>A customer database, an export, or a whole list of people's details.</li>
+          <li>Health information or employee records about a named person.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Fine to paste</h3>
+        <ul class="yes">
+          <li>Your own drafts, emails and notes.</li>
+          <li>A quote or a proposal with the client's name taken out.</li>
+          <li>Numbers with the identifying detail stripped, which is usually one find and replace.</li>
+          <li>Anything already published.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="say" style="margin-top:24px">
+      <p><strong>The test that settles most of it</strong>If this exact message were read out in a dispute, or landed in a journalist's inbox, would it cost you a client, a contract or a relationship? If yes, take the names out first. That takes about ten seconds and removes most of the risk on this page.</p>
+    </div>
+    <p style="margin-top:22px">Third parties are the part people forget. Your own risk is yours to take. Pasting a client's contract, a supplier's pricing or an employee's medical certificate is a decision you are making on behalf of somebody who never agreed to it.</p>
+  </section>
+
+  <!-- ============ 06 THREE THINGS ============ -->
+  <section id="three">
+    <p class="label">06 · If you only do three things</p>
+    <div class="three">
+      <h2>Three things</h2>
+      <ol>
+        <li><b>Turn the training toggle off</b> in both tools. Under a minute each, and on Claude it cuts retention from five years to thirty days.</li>
+        <li><b>Open the memory list and read it.</b> Not the toggle, the list. Delete anything naming a client, a price or a person who is not you.</li>
+        <li><b>On a work account, assume an administrator can read it</b>, incognito and temporary chats included. Write accordingly.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ THE PROMPT ============ -->
+  <section id="audit">
+    <p class="label">The prompt · Audit what it remembers</p>
+    <h2>See what it is holding about you</h2>
+    <p>Run this in Claude or ChatGPT. It does not replace the memory list in your settings, it gives you something to check that list against, in plain sentences rather than a wall of fragments. The settings list is the authoritative one and the only place you can actually delete.</p>
+    <div class="prompt">
+      <button class="copy" type="button" data-copy>Copy prompt</button>
+      <pre>You are auditing what you have stored about me, so I can decide
+what should not be there.
+
+I run a small business. Anything you remember about me can turn up
+in future answers, and some of it may be commercially sensitive or
+about other people who never agreed to it.
+
+Work only from what you actually have stored. Do not guess, do not
+infer from this conversation, and do not fill in gaps. If you cannot
+see your own stored memory, say so plainly and stop.
+
+Answer in this exact format:
+WHAT YOU REMEMBER: every item, grouped by topic, in plain sentences.
+SHOULD NOT BE THERE: any item naming a client, a person who is not
+me, a price, a contract, a login, or a health or financial detail.
+One line each, with why it is a problem.
+SAFE TO KEEP: the rest, in one line.
+
+Stop after that list.</pre>
+    </div>
+    <p>Then open the memory list in your settings and delete from there. The prompt tells you what to look for. It cannot delete anything itself.</p>
+    <p style="margin-top:10px">This prompt is on the <a href="../prompts/#memory-audit">Prompt Shelf</a> under Setting up, so it is one copy away next time.</p>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section id="sources">
+    <p class="label">Where these numbers come from</p>
+    <div class="sources">
+      <p>Every retention period and setting on this page was checked against the companies' own help and policy pages. Privacy settings move, so this page is maintained in place rather than dated as an issue, and the numbers are re-checked each quarter. The two Claude memory menu paths in section 04 are third-party reporting and are marked as such where they appear.</p>
+      <ul>
+        <li>Anthropic · <a href="https://www.anthropic.com/news/updates-to-our-consumer-terms">Updates to our consumer terms and privacy policy</a>, for the five year and thirty day retention periods and the Help improve Claude setting.</li>
+        <li>Claude Help Center · <a href="https://support.claude.com/en/articles/12260368-use-incognito-chats">Use incognito chats</a>, for the thirty day retention, the organisation data export and the Compliance API.</li>
+        <li>Claude Help Center · <a href="https://support.claude.com/en/articles/8230524-delete-or-rename-a-conversation">Delete or rename a conversation</a>, and Anthropic's Privacy Center on deletion, for the thirty day back-end deletion window.</li>
+        <li>Anthropic Privacy Center · <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">How long do you store my organization's data</a>, for custom retention on Enterprise.</li>
+        <li>OpenAI Help Center · <a href="https://help.openai.com/en/articles/7730893-data-controls-faq">Data Controls FAQ</a> and <a href="https://help.openai.com/en/articles/8914046-temporary-chat-faq">Temporary Chat FAQ</a>, for the training toggle and Temporary Chat.</li>
+        <li>OpenAI Help Center · <a href="https://help.openai.com/en/articles/8590148-memory-faq">Memory FAQ</a>, for turning memory off and managing saved memories.</li>
+        <li>OpenAI · <a href="https://openai.com/enterprise-privacy/">Enterprise privacy</a> and the <a href="https://help.openai.com/en/articles/9261474-openai-compliance-platform-for-enterprise-and-edu-customers">Compliance Platform</a>, for business data not being trained on by default and what the compliance tools cover.</li>
+      </ul>
+    </div>
+  </section>
+
+  </div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Settings last checked · 14 September 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script>
+
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var pre = btn.parentElement.querySelector('pre');
+      var text = pre.innerText;
+      function done() {
+        btn.textContent = 'Copied';
+        btn.classList.add('done');
+        setTimeout(function () { btn.textContent = label; btn.classList.remove('done'); }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(); });
+      } else { fallback(); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        s.removeAllRanges();
+      }
+    });
+  });
+</script>
+</body>
+</html>

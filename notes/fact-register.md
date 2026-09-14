@@ -73,6 +73,32 @@ sees them after October 2026.
 | 21 | Manus task modes lite, standard and max | `manus-bridge` How it operates | never | observed only |
 | 22 | Manus hosting and billing, who owns what | `manus-website-manual` | never | observed only |
 
+## AI privacy reference page
+
+Added 14 Sep with the page. This page is the reason the register exists: it
+is a page of nothing but third-party policy, it carries a "Settings last
+checked" line in its footer, and James refers clients to it. Every row here
+is re-checked on the routine's quarterly pass, and the footer date is
+updated in the same commit.
+
+| # | Claim | Where | Last checked | Grade |
+|---|---|---|---|---|
+| 23 | Claude consumer, training on, keeps chats up to 5 years; off keeps 30 days | `privacy` section 02 | 2026-09-14 | A |
+| 24 | Claude incognito chats are kept 30 days, or longer under an org retention policy | `privacy` sections 02 and 03 | 2026-09-14 | A |
+| 25 | Claude incognito chats are in the org data export Owners can run, and the Enterprise Compliance API | `privacy` section 03 | 2026-09-14 | A |
+| 26 | Claude Enterprise can set custom retention, floor 30 days; indefinite if none is set | `privacy` section 02 | 2026-09-14 | A |
+| 27 | A deleted chat goes from the back end within 30 days, both tools | `privacy` section 02 | 2026-09-14 | A |
+| 28 | Claude memory paths: Settings, Memory, Generate memory from chats, and Topics | `privacy` section 04 | 2026-09-14 | C, flagged on the page |
+| 29 | ChatGPT training toggle is Settings, Data Controls, Improve the model for everyone | `privacy` section 04 | 2026-09-14 | A |
+| 30 | ChatGPT Temporary Chat: not in history, no memories, not trained on, kept 30 days | `privacy` sections 02 and 04 | 2026-09-14 | A |
+| 31 | ChatGPT memory paths: Settings, Personalization, Memory and Manage memory | `privacy` section 04 | 2026-09-14 | A |
+| 32 | Business and enterprise data is not used for training by default, both vendors | `privacy` sections 02 and 03 | 2026-09-14 | A |
+| 33 | ChatGPT Enterprise and Edu compliance tools cover conversations, files and memories | `privacy` section 03 | 2026-09-14 | A |
+
+Row 28 is the standing exception on this page, the same shape as rows 11 and
+15. The two Claude memory menu paths are third-party reporting, said so on
+the page, and nobody has seen those menus in the live product from here.
+
 ## Not on this list, deliberately
 
 The 6 Levers, the method, the prompts themselves, the exercises, anything

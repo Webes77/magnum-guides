@@ -295,7 +295,8 @@ Quanta, Fortune and TechCrunch, all 8 Sep 2026.
 A monthly fact check went in on 13 Sep, at James's request, after the
 privacy article showed how quietly a live slide can go wrong. Three files:
 `notes/fact-register.md` lists every claim in the members area that can go
-stale, 22 rows, each with where it lives, when it was last checked and its
+stale, 33 rows since the privacy page landed, each with where it lives, when
+it was last checked and its
 source grade; `notes/fact-check-prompt.md` is the versioned routine prompt;
 `notes/fact-check-log.md` takes one entry per run. The register is
 deliberately bounded. A claim earns a row only if it asserts something
@@ -314,27 +315,41 @@ James closes them: row 11, Record a skill, never seen in the live product
 from here, and row 15, the Cowork tools claim, James's own observation with
 nothing third-party either way.
 
-Two things were agreed on 13 Sep and not built. The Field Note routine was
-built on 14 Sep and is below. The privacy reference page is still the next
-session's work.
+Two things were agreed on 13 Sep and not built. Both were built on 14 Sep and
+are below.
 
-**The privacy reference page.** Decided: a reference page, not a Field
-Note, titled "AI Privacy: What Is Kept, and Who Can See It". James's
-reason is that he refers people to it when they ask, which happens often,
-so it needs a plain title that survives arriving as a link with no
-context. It is undated and maintained in place, because a numbered Field
-Note reads as stale in six months and privacy settings move constantly.
-Precedent is Fine-Tune: undated, referenced, outside the ladder. The cost
-James accepted is upkeep, realistically a re-check each quarter, which the
-fact-check routine now covers. Structure agreed: what actually happens to
-what you type; what is kept and for how long, per plan; who can see it,
-which is where the incognito and Team plan point lands; what to switch
-off, as a numbered settings pass for Claude and for ChatGPT; what never to
-put in at all; and a short "if you only do three things". Every setting
-claim verified the way the two slides were, against the vendors' own pages
-through WebSearch. Nothing from the Hassaid article's Navier-Stokes
-opening, for the reasons above. The memory audit prompt it ends on goes on
-the shelf as a card, filed under Setting up.
+**The privacy reference page.** Built 14 Sep and live at `privacy/`, titled
+"AI Privacy: What Is Kept, and Who Can See It". Undated and maintained in
+place, precedent Fine-Tune, because a numbered Field Note reads as stale in
+six months and privacy settings move constantly. The agreed structure shipped
+as written: what happens to what you type, what is kept and for how long per
+plan, who can see it, a numbered settings pass for Claude and for ChatGPT,
+what never to put in at all, and a short three things. It ends on the memory
+audit prompt, which is on the shelf as `memory-audit` under Setting up and is
+byte-identical to the copy on the page.
+
+The spine of the page is that three separate questions get collapsed into
+one: is it stored, is it used to train, can a person read it. Different
+answers, different switches, and the third is the one nobody asks about. The
+sharpest thing on it is the incognito point from 13 Sep, now given its own
+section: private from your sidebar is not private from your employer.
+
+Every claim was search-verified against the vendors' own pages under hard
+rule 10 and the page carries its sources. Two exceptions are marked on the
+page itself: the Claude memory menu paths are third-party reporting, because
+nobody has seen those menus in the live product from here. Nothing from the
+Hassaid article's Navier-Stokes opening, for the reasons above.
+
+One judgement call worth knowing about. The page is undated as agreed, but
+the footer carries "Settings last checked · 14 September 2026". A page of
+nothing but third-party policy needs to tell a reader how fresh it is, and
+that is not the same as numbering it like an issue. Eleven rows went into
+`notes/fact-register.md` (23 to 33) so the quarterly re-check has something
+to work, and the footer date gets updated in the same commit as the re-check.
+
+Front page: a third reference line under the courses, beside Chatbots and
+Fine-Tune. Card at `assets/thumbnails/privacy.jpg`, source `privacy/thumbnail.html`.
+Not a deck, so `tools/check-decks.js` does not cover it.
 
 **The weekly Field Note routine.** Built 14 Sep. Both open questions were put
 to James first and he settled both.
@@ -602,10 +617,16 @@ Fine-Tune, its card and the Buyer's Agents guide moved too. Field Note
 look from mockups after supplying a white, red-orange reference; the
 decision and the hex values are final.
 
-Where this session stopped (14 Sep): the midweek Field Note routine is
-built and live, and needs its repository and connectors attached before it
-fires on Wednesday 16 Sep (item 2 below). The privacy reference page is
-still unbuilt and is the next session's work.
+Where this session stopped (14 Sep): three things shipped. The midweek Field
+Note routine is built and live, and needs its repository and connectors
+attached before it fires on Wednesday 16 Sep (item 2 below), which is the one
+thing waiting on James. The levers strip came off the Prompt Shelf cards. And
+the privacy reference page is live at `privacy/`. Nothing from the 13 Sep
+handover is outstanding.
+
+James also said he wants a slight redesign of the members area. The shelf
+change was the first piece of it. What else he means has not been scoped, so
+ask before touching the front page.
 
 Where the session before that stopped (9 Sep): the bots reference deck is
 live and James has not yet read it through. That read is the next thing; the
