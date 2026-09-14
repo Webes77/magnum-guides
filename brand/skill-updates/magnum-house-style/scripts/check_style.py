@@ -22,7 +22,7 @@ from pathlib import Path
 
 PALETTE = {
     "FBFBF9", "FFFFFF", "1F2A37", "1E1B17", "2B2823", "3A3630", "63615C",
-    "EF4029", "C63A2A", "FF6F5E", "FBE1D8", "5B6B7A", "F4F1EA", "C8CDD3", "DADAD5",
+    "EF4029", "C63A2A", "F7BAB0", "FF6F5E", "FBE1D8", "5B6B7A", "F4F1EA", "C8CDD3", "DADAD5",
     "000000",  # allowed for print-only rules and SVG strokes that read as ink
 }
 RETIRED = {
