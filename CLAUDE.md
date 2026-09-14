@@ -493,6 +493,69 @@ himself rewriting the rules and the exercises as well as the voice blocks, the
 routine is doing the wrong half and the answer is to narrow it, not to widen
 it. Give it a month.
 
+**The team seats guide and its calculator.** Built 14 Sep, live at
+`team-seats/`, titled "Should You Move Your Team onto Paid Claude or ChatGPT
+Seats?". James supplied the finished prose and a calculator spec; both were
+locked and neither was rewritten. The prose on the page is byte-faithful to
+what he handed over, verified by diffing the rendered text against his file,
+and the section order is his.
+
+Undated and maintained in place, the same call as Fine-Tune and the privacy
+page, because seat prices move and a numbered issue reads as stale. The
+footer carries "Prices last checked · 14 September 2026" and the guide's own
+verification line sits under the contents strip, verbatim.
+
+One page, not two. The calculator sits at the top of section 02, Cost, ahead
+of the price table, so a reader gets their own number before the general one.
+That follows the privacy page, which carries its `memory-audit` prompt as a
+section inside the guide rather than as a separate tool, and the Manus Bridge
+walkthrough, which carries five. There is no standalone-tool pattern on the
+members area and this did not start one.
+
+The calculator is cost-only by design and that is worth defending, because it
+will look like a missing feature to anyone who did not read the spec. The two
+platforms price identically on standard seats, so a recommendation engine
+would be inventing a difference on the one variable that has none. Both
+result cards are the same navy plate, the same size, the same type, no winner
+styling, and that equality is asserted in the deck check sense: a test
+compares the two cards' computed styles and box sizes and they match exactly.
+The guide carries the real decision factors in prose, which is where they
+belong.
+
+The seat prices are separate constants per vendor, never one shared value,
+because Anthropic and OpenAI price independently. The "they are the same"
+fact lives in the values only, never in the display logic. Premium seat
+constants are recorded in a comment and deliberately unused: premium is out
+of scope for v1 and is the obvious next addition if James wants it. There is
+no lead capture, no email gate, no currency conversion, and no use-case
+questions, all four ruled out in the spec.
+
+Fifteen rows went into `notes/fact-register.md` (34 to 48) because nearly
+every line of this page is a third-party product claim. One caveat is
+recorded there and matters: James verified the prices against
+`claude.com/pricing` and `openai.com/business/pricing` before handing the
+content over, and those hosts are blocked from the sandbox, so nothing on
+this page was re-verified from a session. Under hard rule 10 the first
+fact-check run over rows 34 to 48 is a first check, not a re-check.
+
+Front page: a fourth reference line under the courses, beside Chatbots,
+Fine-Tune and Privacy. That is the minimum needed to stop the page being an
+orphan and it uses the existing `.ref` pattern with nothing moved. James
+asked on 14 Sep to be asked before the front page is touched, so if the
+slight redesign relocates where references live, this line moves with them.
+Card at `assets/thumbnails/team-seats.jpg`, source `team-seats/thumbnail.html`.
+Not a deck, so `tools/check-decks.js` does not cover it, though it was run and
+passed.
+
+Three small things to know. The staff field is a number input and anything
+under two seats replaces the results with the minimum-seats message rather
+than showing a zero, which is the spec's requirement and also stops an empty
+field rendering a broken sum. The billing radios are visually hidden behind
+their labels, which is the standard accessible toggle and means a test has to
+click the label, not the input. And the page carries one piece of prose that
+is not James's: the masthead standfirst, which is page furniture the guide
+file did not have. Everything inside the sections is his.
+
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
 `assets/thumbnails/manus-bridge.jpg`. It qualifies under the 4 Sep Tool
@@ -708,12 +771,14 @@ Fine-Tune, its card and the Buyer's Agents guide moved too. Field Note
 look from mockups after supplying a white, red-orange reference; the
 decision and the hex values are final.
 
-Where this session stopped (14 Sep): three things shipped. The midweek Field
+Where this session stopped (14 Sep): four things shipped. The midweek Field
 Note routine is built and live, and needs its repository and connectors
 attached before it fires on Wednesday 16 Sep (item 2 below), which is the one
-thing waiting on James. The levers strip came off the Prompt Shelf cards. And
-the privacy reference page is live at `privacy/`. Nothing from the 13 Sep
-handover is outstanding.
+thing waiting on James. The levers strip came off the Prompt Shelf cards. The
+privacy reference page is live at `privacy/`. And the team seats guide and its
+cost calculator are live at `team-seats/`, the first interactive tool on the
+members area that is not a prompt. Nothing from the 13 Sep handover is
+outstanding.
 
 James also said he wants a slight redesign of the members area. The shelf
 change was the first piece of it. What else he means has not been scoped, so
@@ -743,7 +808,12 @@ order of value:
    review folder.
 
 1. James has not yet looked at the Manus Bridge walkthrough live, on a
-   phone or a laptop. That is the next thing.
+   phone or a laptop, nor the team seats guide. Both are the next thing.
+   On team seats, the calculator is the part to check on a phone: the two
+   result cards stack under 640px and the billing toggle is the only control
+   that has never been tapped on glass. Verified locally at 1440, 1280, 820
+   and 390 only. If he wants the premium seat toggle, the constants are
+   already in the script waiting for it.
 
 2. Two routines need the same thing from James in the Routines UI, and a
    session can do neither. The Field Note routine

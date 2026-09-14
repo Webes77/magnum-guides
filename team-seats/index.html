@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should You Move Your Team onto Paid Claude or ChatGPT Seats? · Magnum AI</title>
+<meta name="description" content="What a paid business seat costs on Claude Team and ChatGPT Business, what setting it up actually involves, what you gain, what you give up, and a calculator that gives you the number for your own headcount.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/team-seats/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Should You Move Your Team onto Paid Claude or ChatGPT Seats?">
+<meta property="og:description" content="The cost is the same on both. So the decision is control, and whether your team will actually open it.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/team-seats/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/team-seats.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Should You Move Your Team onto Paid Claude or ChatGPT Seats, a Magnum AI reference page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Should You Move Your Team onto Paid Claude or ChatGPT Seats?">
+<meta name="twitter:description" content="The cost is the same on both. So the decision is control, and whether your team will actually open it.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/team-seats.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* House style, 9 September 2026. Tokens are the same block as every other
+     page here; the canonical copy is brand/magnum-house-style/reference/tokens.css.
+     --rust holds coral and --olive holds slate; the names stayed so older
+     files did not break. */
+  :root{
+    --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+    --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+    --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+    --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+    --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  :root{color-scheme:light}
+  html,body{background:#FBFBF9 !important;color:#2B2823;}
+  body{
+    color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;
+    margin:0;padding:0 20px 90px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:48px 0 26px;margin:0 -20px 40px;}
+  .masthead .wrap{padding:0 20px;}
+  .masthead h1{color:var(--on-navy);}
+  .masthead h1 em{color:var(--coral-bright);}
+  .masthead .label{color:var(--coral-bright);}
+  .masthead .label::after{background:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  h1{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h1 em,h2 em,h3 em{font-style:normal;color:var(--rust);}
+
+  /* contents strip */
+  .contents{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 22px;padding:0;list-style:none;
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;
+  }
+  .contents a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:2px;}
+  .contents a:hover,.contents a:focus-visible{color:var(--rust);outline:none;}
+
+  /* the verification line, verbatim from the guide */
+  .verified{font-family:var(--mono);font-size:12px;color:var(--mute);margin:0 0 48px;
+    padding-top:14px;border-top:1px solid var(--hair);max-width:64ch;line-height:1.5;}
+
+  section{margin:0 0 56px;scroll-margin-top:24px;}
+  .label{
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.20em;
+    color:var(--rust);margin:0 0 16px;display:flex;align-items:center;gap:14px;
+  }
+  .label::after{content:"";flex:1;height:1px;background:var(--ink);}
+  h2{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(26px,4vw,36px);line-height:1.05;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h3{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:22px;line-height:1.1;color:var(--ink);margin:0 0 10px;
+  }
+  p{max-width:64ch;}
+  p.lead{font-size:18px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+  .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 22px 24px;}
+  .card h3{font-size:20px;margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--char);margin:0;max-width:none;}
+
+  .tablewrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);}
+  table{border-collapse:collapse;width:100%;min-width:520px;}
+  th,td{text-align:left;padding:12px 18px;border-bottom:1px solid rgba(30,27,23,.16);vertical-align:top;font-size:15.5px;color:var(--char);}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.mono{font-family:var(--mono);font-size:13.5px;color:var(--ink);white-space:nowrap;}
+  th.plat{color:var(--ink);}
+
+  .say{
+    border-left:5px solid var(--rust);background:var(--tint);
+    padding:12px 16px;margin:18px 0 6px;max-width:64ch;
+  }
+  .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
+  .say strong{color:var(--rust);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+
+  code{font-family:var(--mono);font-size:13.5px;background:var(--paper-2);border:1px solid rgba(30,27,23,.28);padding:1px 6px;color:var(--ink);}
+
+  footer{background:var(--navy);color:var(--on-navy-mute);margin-top:60px;padding:22px 20px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  }
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .card,.calc{break-inside:avoid}
+    .controls{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ---- this page only ------------------------------------------------ */
+
+  /* the worked examples under the cost table */
+  .worked{list-style:none;margin:20px 0 0;padding:0;
+    display:grid;grid-template-columns:1fr 1fr;gap:0 28px;}
+  .worked li{font-size:15.5px;color:var(--char);padding:9px 0;
+    border-bottom:1px solid rgba(30,27,23,.14);}
+  .worked b{color:var(--ink);font-weight:600;}
+
+  /* the bullet lists in What you gain and What you give up */
+  .points{list-style:none;margin:0;padding:0;}
+  .points>li{position:relative;padding:0 0 15px 24px;margin:0 0 15px;max-width:66ch;
+    border-bottom:1px solid rgba(30,27,23,.14);font-size:16px;color:var(--char);}
+  .points>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .points>li::before{position:absolute;left:0;top:1px;font-family:var(--mono);font-size:13px;font-weight:500;}
+  .points>li b{color:var(--ink);font-weight:600;}
+  .gain>li::before{content:"\2713";color:var(--olive);}
+  .cost>li::before{content:"\2715";color:var(--rust);}
+
+  /* the two setup columns */
+  .setup .card h3{margin-bottom:14px;}
+  .setup ol{counter-reset:s;list-style:none;margin:0;padding:0;}
+  .setup ol>li{counter-increment:s;position:relative;padding:0 0 14px 34px;margin:0 0 14px;
+    border-bottom:1px solid rgba(30,27,23,.14);font-size:15.5px;color:var(--char);line-height:1.5;}
+  .setup ol>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .setup ol>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--rust);}
+
+  /* the checks in Before you decide */
+  .checks>li{border-top:2px solid var(--ink);padding-top:18px;margin-top:26px;list-style:none;}
+  .checks{margin:0;padding:0;}
+  .checks>li:first-child{margin-top:0;}
+  .checks h3{font-size:19px;margin-bottom:8px;}
+  .checks p{font-size:15.5px;color:var(--char);margin:0;}
+
+  /* the closing plate */
+  .comes{background:var(--navy);color:var(--on-navy);border:2px solid var(--ink);padding:26px 26px 28px;}
+  .comes h2{color:var(--on-navy);margin-bottom:16px;}
+  .comes p{font-size:17px;line-height:1.5;color:var(--on-navy);max-width:60ch;margin:0 0 14px;}
+  .comes p:last-child{margin-bottom:0;}
+  .comes b{color:var(--coral-bright);font-weight:600;}
+
+  /* ---- the calculator ------------------------------------------------- */
+  .calc{border:2px solid var(--ink);background:var(--paper-2);margin:0 0 30px;}
+  .calc-head{background:var(--tint);border-bottom:2px solid var(--ink);padding:12px 20px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    color:var(--ink);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;}
+  .calc-head span{color:var(--mute);letter-spacing:.08em;font-size:10.5px;text-transform:none;}
+
+  .controls{padding:18px 20px 20px;border-bottom:2px solid var(--ink);
+    display:flex;flex-wrap:wrap;gap:20px 34px;align-items:flex-end;}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field>.flab{font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--rust);font-weight:500;}
+  .controls input[type=number]{font-family:var(--mono);font-size:16px;color:var(--ink);
+    background:var(--paper);border:2px solid rgba(30,27,23,.3);padding:9px 11px;width:130px;}
+  .controls input[type=number]:focus{outline:none;border-color:var(--rust);}
+
+  .toggle{display:flex;position:relative;border:2px solid rgba(30,27,23,.3);}
+  .toggle input{position:absolute;opacity:0;width:0;height:0;}
+  .toggle label{font-family:var(--mono);font-size:12px;text-transform:uppercase;
+    letter-spacing:.14em;color:var(--char);background:var(--paper);
+    padding:11px 17px;cursor:pointer;user-select:none;
+    border-right:2px solid rgba(30,27,23,.3);transition:background .12s ease,color .12s ease;}
+  .toggle label:last-of-type{border-right:none;}
+  .toggle input:checked+label{background:var(--navy);color:#FFFFFF;}
+  .toggle input:focus-visible+label{outline:2px solid var(--rust);outline-offset:-2px;}
+
+  .results{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  /* Both platforms get the identical plate. No winner styling, by design:
+     the numbers are the same, so the cards must look the same. */
+  .plat-card{background:var(--navy);border:2px solid var(--ink);padding:18px 20px 20px;color:var(--on-navy);}
+  .plat-card h3{color:var(--on-navy);font-size:20px;margin-bottom:4px;}
+  .plat-card .vendor{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--on-navy-mute);margin:0 0 16px;}
+  .fig{font-family:var(--display);font-weight:700;font-size:38px;line-height:1;
+    color:var(--coral-bright);letter-spacing:.01em;}
+  .fig-unit{font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--on-navy-mute);margin:7px 0 0;}
+  .fig-row{padding:0 0 14px;margin:0 0 14px;border-bottom:1px solid rgba(244,241,234,.28);}
+  .fig-row:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+  .fig-row.annual .fig{font-size:27px;color:var(--on-navy);}
+
+  .invalid{padding:26px 20px 28px;}
+  .invalid p{font-family:var(--sans);font-size:17px;color:var(--ink);margin:0;max-width:56ch;
+    border-left:5px solid var(--rust);background:var(--tint);padding:14px 18px;}
+
+  .flagline{padding:0 20px 18px;}
+  .flagline p{font-family:var(--mono);font-size:12.5px;line-height:1.5;color:var(--char);
+    margin:0;max-width:none;border-top:1px solid var(--hair);padding-top:14px;}
+  .flagline b{color:var(--rust);font-weight:500;}
+  .calc-foot{border-top:2px solid var(--ink);padding:12px 20px 14px;background:var(--paper);
+    font-family:var(--mono);font-size:11.5px;line-height:1.55;color:var(--char);
+    letter-spacing:.02em;max-width:none;}
+
+  @media (max-width:640px){
+    .results{grid-template-columns:1fr;}
+    .controls{gap:18px 24px;}
+    .worked{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+    <p class="label"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;·&nbsp; Reference &nbsp;·&nbsp; Claude Team vs ChatGPT Business</p>
+    <h1>Should you move your team <em>onto paid seats?</em></h1>
+    <p class="sub">The money is the same on both platforms, so the money is not the decision. What you are actually buying is control, one bill, and a privacy default nobody has to remember to switch on. Work out your number below, then read what you get for it.</p>
+  </div></header>
+  <div class="wrap">
+
+  <ul class="contents">
+    <li><a href="#short">The short version</a></li>
+    <li><a href="#cost">Cost</a></li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#gain">What you gain</a></li>
+    <li><a href="#give-up">What you give up</a></li>
+    <li><a href="#memory">Memory and leavers</a></li>
+    <li><a href="#decide">Before you decide</a></li>
+  </ul>
+
+  <p class="verified">Verified against claude.com/pricing and openai.com/business/pricing, 14 September 2026.</p>
+
+  <!-- ============ 01 THE SHORT VERSION ============ -->
+  <section id="short">
+    <p class="label">01 · The short version</p>
+    <h2>Cost will not decide this</h2>
+    <p class="lead">A standard business seat on either platform costs the same: USD $20 per person per month on annual billing, or USD $25 month to month. Both let you start with as few as 2 people. A 5-person team runs about USD $100/month, a 10-person team about USD $200/month, on annual billing, before GST and AUD conversion.</p>
+    <p>Cost won't decide this for you, because it's nearly identical on both sides. What actually changes is control: one bill, a usage dashboard, the ability to cut someone off the day they leave, and a default promise your business chats aren't used to train the AI. That last one isn't the default on free or personal accounts.</p>
+  </section>
+
+  <!-- ============ 02 COST ============ -->
+  <section id="cost">
+    <p class="label">02 · Cost</p>
+    <h2>What it costs you</h2>
+
+    <!-- The calculator. Cost-only by design: the two platforms price
+         identically, so a recommendation engine here would invent a
+         difference on the one variable that has none. -->
+    <div class="calc">
+      <div class="calc-head">Your number <span>staff count in, both platforms out</span></div>
+
+      <div class="controls">
+        <div class="field">
+          <label class="flab" for="staff">How many staff</label>
+          <input type="number" id="staff" min="1" step="1" value="5" inputmode="numeric" autocomplete="off">
+        </div>
+        <div class="field">
+          <span class="flab">Billing</span>
+          <div class="toggle" role="group" aria-label="Billing frequency">
+            <input type="radio" name="freq" id="freq-annual" value="annual" checked>
+            <label for="freq-annual">Annual</label>
+            <input type="radio" name="freq" id="freq-monthly" value="monthly">
+            <label for="freq-monthly">Monthly</label>
+          </div>
+        </div>
+      </div>
+
+      <div id="out" aria-live="polite"></div>
+
+      <p class="calc-foot" id="calcfoot"></p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th></th><th class="plat">Claude Team</th><th class="plat">ChatGPT Business</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Standard seat, annual</td><td class="mono">$20/person/month</td><td class="mono">$20/person/month</td></tr>
+          <tr><td>Standard seat, monthly</td><td class="mono">$25/person/month</td><td class="mono">$25/person/month</td></tr>
+          <tr><td>Premium seat, annual</td><td class="mono">$100/person/month</td><td class="mono">$100/person/month</td></tr>
+          <tr><td>Premium seat, monthly</td><td class="mono">$125/person/month</td><td class="mono">$125/person/month</td></tr>
+          <tr><td>Minimum seats</td><td class="mono">2</td><td class="mono">2</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:20px">A seat is one paid login for one person. Premium gives more usage headroom (roughly 5x standard) for anyone running the AI hard all day. Most teams put everyone on standard and bump one or two heavy users to premium.</p>
+
+    <ul class="worked">
+      <li><b>5 staff, annual billing:</b> $100/month = $1,200/year, either platform.</li>
+      <li><b>10 staff, annual billing:</b> $200/month = $2,400/year, either platform.</li>
+      <li><b>5 staff, monthly billing:</b> $125/month = $1,500/year, either platform.</li>
+      <li><b>10 staff, monthly billing:</b> $250/month = $3,000/year, either platform.</li>
+    </ul>
+
+    <p style="margin-top:24px">Annual saves 20% over monthly, but it's paid up front for the year and you can't claw money back if the team shrinks. Removing someone frees the seat for someone else; your bill doesn't drop until renewal. Adding a seat mid-year triggers an immediate charge for the rest of the term, on both platforms.</p>
+
+    <div class="say">
+      <strong>Australian buyers</strong>
+      <p>All prices above are USD. Your card converts at the day's rate plus any foreign transaction fee, so budget more than the sticker price in AUD terms, and it'll shift slightly month to month. GST applies to digital services sold to Australian customers; check whether checkout prices are GST-inclusive and keep the tax invoice for your BAS.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 SETUP ============ -->
+  <section id="setup">
+    <p class="label">03 · Setup</p>
+    <h2>Realistically a coffee-break job</h2>
+
+    <div class="cards setup">
+      <div class="card">
+        <h3>Claude Team</h3>
+        <ol>
+          <li>Owner signs up at claude.ai with a business email (personal Gmail/Hotmail addresses aren't allowed for the account creating the organisation), picks Team, chooses billing frequency and seat count.</li>
+          <li>Owner goes to Organization settings &rarr; Members &rarr; Add member, enters staff emails, picks seat type and role. A whole list can be pasted at once, or shared via join link.</li>
+          <li>Each staff member gets an invite email and clicks to join. That's the one thing they have to do themselves. Invite stays valid about 21 days.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>ChatGPT Business</h3>
+        <ol>
+          <li>Owner starts the Business sign-up at chatgpt.com with a business email, buys at least 2 seats, picks billing frequency. Whoever signs up becomes the workspace owner.</li>
+          <li>Owner goes to Workspace settings &rarr; Members &rarr; Invite member, types emails or uploads a CSV with roles and seat types.</li>
+          <li>Staff accept the invite email. If they have no existing ChatGPT account, one gets created as they join.</li>
+        </ol>
+      </div>
+    </div>
+
+    <p style="margin-top:24px">Either way: 10 to 20 minutes for the owner, a couple of minutes per staff member to accept. No install required, no technical person needed. A pending, not-yet-accepted invite still uses up a paid seat on both platforms, so don't buy seats faster than people are actually joining.</p>
+  </section>
+
+  <!-- ============ 04 WHAT YOU GAIN ============ -->
+  <section id="gain">
+    <p class="label">04 · What you gain</p>
+    <h2>What the bill actually buys</h2>
+    <ul class="points gain">
+      <li><b>You can see if it's actually being used.</b> Claude Team gives the Owner weekly/monthly active user counts and per-person usage. ChatGPT Business gives a Workspace analytics table with the same. This is how you know if $20 a head is money well spent or wasted, without asking anyone.</li>
+      <li><b>Instant cutoff when someone leaves.</b> Remove them from Members and their access ends immediately. No power to do that on a personal account.</li>
+      <li><b>One bill.</b> Everything on the owner's card, one subscription, instead of chasing reimbursements or having zero visibility.</li>
+      <li><b>More usage than free, and than personal Pro.</b> Standard seats beat personal Pro modestly; premium seats give substantially more, and each person has their own pool so one heavy user doesn't starve everyone else.</li>
+      <li><b>No training on your data, by default.</b> This is the real gap. On personal ChatGPT (Free, Plus, Pro) and personal Claude (Free, Pro, Max), training is ON by default unless each person opts out individually. On both business tiers it's flipped: off by default, stated as a contractual commitment, not a toggle someone might forget to flip.</li>
+      <li><b>Shared context.</b> Load your brand guidelines, pricing, or SOPs into a shared workspace once; everyone draws on the same material instead of re-explaining the business every time.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 05 WHAT YOU GIVE UP ============ -->
+  <section id="give-up">
+    <p class="label">05 · What you give up</p>
+    <h2>The other side of it</h2>
+    <ul class="points cost">
+      <li><b>Cost</b>, obviously. From $0 or scattered personal subscriptions to a committed bill, 2-seat minimum, annual billing locks you in for the year with no refund on downsizing.</li>
+      <li><b>The "just for me" feel.</b> A personal account belongs to the individual. On a business seat the workspace belongs to the company. Moving a personal Claude account across is one-way: once moved, it can't be moved back. Staff can keep a separate personal account running alongside if they want that space back.</li>
+      <li><b>Some staff may feel watched.</b> Be upfront about this. Dashboards show usage patterns (how much, how often), not a live read of conversations. Neither platform lets an owner casually browse a staff member's individual chats from the admin screen; on Claude the only route to actual chat content is a deliberate one-off export by the Primary Owner, not routine monitoring. The perception is still real and worth naming to your team directly rather than letting it fester.</li>
+      <li><b>A few personal-account extras don't carry over on Claude Team:</b> publishing artifacts, public share links, and custom skills (which need exporting first, with no automatic migration).</li>
+    </ul>
+  </section>
+
+  <!-- ============ 06 MEMORY AND LEAVERS ============ -->
+  <section id="memory">
+    <p class="label">06 · Memory and leavers</p>
+    <h2>What moves, and what stays</h2>
+    <p>Moving a personal account onto a business seat is a choice each staff member makes at join time: keep the personal account separate, or merge it in. If they merge, chats and saved memory move across, the merge is irreversible on both platforms, and the personal account is closed. Memory and preferences are tied to the individual, not shared or transferable to teammates.</p>
+    <p>When someone leaves and you revoke their seat, access ends immediately on both platforms. On Claude, their chats become inaccessible to the rest of the org (the Primary Owner can still export data if needed), and re-adding the same email restores everything. On ChatGPT, removing someone reassigns their projects and GPTs to a workspace owner, but their personal conversations aren't transferred or visible to anyone, and are restored if they're re-added. You keep the business's shared work either way; you don't inherit a leaver's private chat history through the normal admin screens.</p>
+  </section>
+
+  <!-- ============ 07 BEFORE YOU DECIDE ============ -->
+  <section id="decide">
+    <p class="label">07 · Before you decide</p>
+    <h2>A few practical checks</h2>
+    <p>A few practical checks that will come up before you commit:</p>
+    <ul class="checks">
+      <li>
+        <h3>What will your team actually use it for?</h3>
+        <p>Cost is close enough that it shouldn't be the deciding factor. What decides it is which tool your team actually prefers opening, because adoption dies fast when people don't like using it. Worth a quick trial with 2 to 3 staff before buying seats for everyone.</p>
+      </li>
+      <li>
+        <h3>Anyone already paying personally?</h3>
+        <p>If half your team already has ChatGPT Plus or Claude Pro running on their own card, that's wasted spend layered on top either way. Worth checking before you commit to new seats.</p>
+      </li>
+      <li>
+        <h3>Business email required.</h3>
+        <p>Both platforms need a proper business email address, not a personal Gmail, for the account that sets up the organisation. Sort this before signup day so nobody hits a wall partway through.</p>
+      </li>
+      <li>
+        <h3>Variable or seasonal staff.</h3>
+        <p>If your team includes casuals, subcontractors, or people who come and go, the annual billing lock-in is a real cost trap, not a hypothetical one. Monthly billing costs more per seat but gives you the flexibility to add and drop people as headcount actually changes.</p>
+      </li>
+      <li>
+        <h3>Regulated industries.</h3>
+        <p>If you're in health, legal, or financial services, "no training on your data by default" may not be enough on its own to satisfy your obligations. Worth a quick check with whoever handles your compliance, regardless of which platform you pick.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ WHAT IT COMES DOWN TO ============ -->
+  <section id="comes">
+    <div class="comes">
+      <h2>What it comes down to</h2>
+      <p>Here's what it comes down to for a business your size: the money and the setup are nearly identical on both, so the real decision is whether <b>the control and the privacy default</b> are worth a per-seat bill to you, and if they are, <b>which one your team will actually open every day</b>.</p>
+      <p>If you ever outgrow this setup, both vendors have an Enterprise tier built for that scale.</p>
+    </div>
+  </section>
+
+  </div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Prices last checked · 14 September 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script>
+(function () {
+  'use strict';
+
+  /* Seat prices, USD per seat per month. Verified against claude.com/pricing
+     and openai.com/business/pricing on 14 September 2026. Both vendors state
+     prices are subject to change.
+
+     The two vendors are identical on standard seats today. They are kept as
+     separate constants on purpose: Anthropic and OpenAI set prices
+     independently and could diverge at any time, so the "they are the same"
+     fact lives in the values, never in the display logic. */
+  var CLAUDE_STANDARD_ANNUAL   = 20;
+  var CLAUDE_STANDARD_MONTHLY  = 25;
+  var CLAUDE_MIN_SEATS         = 2;
+
+  var CHATGPT_STANDARD_ANNUAL  = 20;
+  var CHATGPT_STANDARD_MONTHLY = 25;
+  var CHATGPT_MIN_SEATS        = 2;
+
+  /* Premium seats are out of scope for v1. The constants are recorded here so
+     a future toggle has one place to read from, and are deliberately unused:
+       CLAUDE_PREMIUM_ANNUAL = 100, CLAUDE_PREMIUM_MONTHLY = 125
+       CHATGPT_PREMIUM_ANNUAL = 100, CHATGPT_PREMIUM_MONTHLY = 125 */
+
+  var VERIFIED = '14 September 2026';
+
+  var MIN_SEATS = Math.max(CLAUDE_MIN_SEATS, CHATGPT_MIN_SEATS);
+
+  var staffEl = document.getElementById('staff');
+  var outEl   = document.getElementById('out');
+  var footEl  = document.getElementById('calcfoot');
+  var freqEls = document.querySelectorAll('input[name="freq"]');
+
+  footEl.textContent = 'Standard seat pricing, verified ' + VERIFIED +
+    '. Prices set by Anthropic and OpenAI directly and may change without notice.';
+
+  function money(n) {
+    return '$' + n.toLocaleString('en-AU');
+  }
+
+  function frequency() {
+    for (var i = 0; i < freqEls.length; i++) {
+      if (freqEls[i].checked) { return freqEls[i].value; }
+    }
+    return 'annual';
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function platformCard(name, vendor, monthly, annualTotal, annualLabel) {
+    return '' +
+      '<div class="plat-card">' +
+        '<h3>' + esc(name) + '</h3>' +
+        '<p class="vendor">' + esc(vendor) + '</p>' +
+        '<div class="fig-row">' +
+          '<div class="fig">' + esc(money(monthly)) + '</div>' +
+          '<p class="fig-unit">per month, USD</p>' +
+        '</div>' +
+        '<div class="fig-row annual">' +
+          '<div class="fig">' + esc(money(annualTotal)) + '</div>' +
+          '<p class="fig-unit">a year ' + esc(annualLabel) + '</p>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function flagLine() {
+    return '<div class="flagline"><p><b>Prices in USD.</b> Your AUD cost will be higher once ' +
+      'currency conversion and GST apply.</p></div>';
+  }
+
+  function render() {
+    var raw = staffEl.value.trim();
+    var staff = parseInt(raw, 10);
+
+    /* Below the seat minimum, or nothing typed at all: replace the output
+       with the message. Never show a $0 or a half-finished sum. */
+    if (raw === '' || !isFinite(staff) || staff < MIN_SEATS) {
+      outEl.innerHTML =
+        '<div class="invalid"><p>Both platforms require a minimum of ' + MIN_SEATS +
+        ' seats. Try a higher number to see your cost.</p></div>';
+      return;
+    }
+
+    var annual = frequency() === 'annual';
+
+    var claudeMonthly  = staff * (annual ? CLAUDE_STANDARD_ANNUAL  : CLAUDE_STANDARD_MONTHLY);
+    var chatgptMonthly = staff * (annual ? CHATGPT_STANDARD_ANNUAL : CHATGPT_STANDARD_MONTHLY);
+
+    var claudeAnnualTotal  = claudeMonthly  * 12;
+    var chatgptAnnualTotal = chatgptMonthly * 12;
+
+    var annualLabel = annual ? 'if billed annually' : 'if billed monthly';
+
+    outEl.innerHTML =
+      '<div class="results">' +
+        platformCard('Claude Team', 'Anthropic', claudeMonthly, claudeAnnualTotal, annualLabel) +
+        platformCard('ChatGPT Business', 'OpenAI', chatgptMonthly, chatgptAnnualTotal, annualLabel) +
+      '</div>' +
+      flagLine();
+  }
+
+  staffEl.addEventListener('input', render);
+  for (var i = 0; i < freqEls.length; i++) {
+    freqEls[i].addEventListener('change', render);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
