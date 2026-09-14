@@ -778,17 +778,27 @@ control. It reads `Jump to a section` now, fixed, and the current section is
 marked inside the open list instead (`.subnav-list a.is-current`). The spy
 maps both nav variants now rather than only `.subnav-row`.
 
-**Not built, and it needs James.** The third finding is that the same four
-courses appear three times under three different names: Start Here step 01
-is `How to talk to it`, the card below it is `Stop prompting. Start
-talking.`, its meta says `Course one · AI Foundations`, and the `.ref` line
-points at `bots/` which was already step 00. Someone who knows the material
+**Built after James said go.** The third finding was that the same four
+courses appeared three times under three different names: Start Here step 01
+was `How to talk to it`, the card below it was `Stop prompting. Start
+talking.`, its meta said `Course one · AI Foundations`, and a `.ref` line
+pointed at `bots/` which was already step 00. Someone who knows the material
 reads a name and a tagline. A first-timer reads four items and cannot tell
 what they have already covered, and on a phone the duplicate set arrives
-immediately after the first. The fix is one canonical name per course used
-everywhere, with the tagline demoted to body copy. It is not built because
-the duplication is the thing James looked at on 11 Sep and chose to keep.
-Changing it is his call, not a defect fix.
+immediately after the first.
+
+Every course now carries one name in both places: Chatbots, Agents and Bots,
+AI Foundations, Make Claude Yours, Work That Runs Without You. The plain
+English line that used to be the Start Here heading is not lost, it leads
+the description underneath (`How to talk to it. What it is, the 6 Levers`),
+which is where it does the work without competing with the name. The card
+taglines went the same way into body copy. Step metas shortened to `Course
+one`, `Course two`, `Course three`, since the name is now in the heading
+above them. The `.ref` line to `bots/` came out of the courses section
+because step 00 links it six inches higher up. This overturns the 11 Sep
+decision to keep the duplication; James looked at it again on 15 Sep with
+the outside read in front of him and changed his mind. No URL moved and
+`#sessions` is unchanged.
 
 Same day, the grey. `--mute` was `#7A7A7A` (4.14:1 on paper) on every page
 except the front one, which moved to `#63615C` (5.97:1) on 11 Sep. 37 real
