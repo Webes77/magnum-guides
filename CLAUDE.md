@@ -525,14 +525,31 @@ than the band: that no bullet describes an answer the reader did not give (a
 "some turnover" answer never comes back as "high turnover"), that no template
 placeholder leaks, and that bullets never repeat.
 
-One flaw in the weighting is James's to settle, flagged 14 Sep and built as
-specced. Team size caps at +2, the same as turnover and sensitivity, so a
-stable fifteen-person team doing non-sensitive work with nobody paying
-personally scores 2 and gets a Personal lean. Fifteen people on personal
-accounts with no central bill is the case the guide's own "one bill" and "see
-if it's being used" arguments are strongest against. If he wants it changed,
-the fix is +3 for the 11 to 15 band, which lifts that case to a Band 2 flag
-without disturbing anything else.
+The weighting flaw flagged on 14 Sep is fixed. Team size used to cap at +2,
+the same as turnover and sensitivity, so headcount could never carry a verdict
+on its own. The 11 to 15 band scores 3 now and the maximum is 8. Twelve of the
+81 combinations changed band, all of them 11 to 15 teams, and the shape of the
+change is that a large team with one mild secondary factor now tips to Team:
+eleven to fifteen people with some turnover and nothing else was a Personal
+lean and is now a Team lean.
+
+Two things about that fix are worth keeping, because both were wrong in the
+first telling of it.
+
+The worked example given to James was not a case that moved. Eleven to fifteen
+people, stable, non-sensitive, nobody paying, scored 2 before and 3 after, and
+both land in Band 2. The argument for the fix was right and the example chosen
+to carry it was not. Check a proposed weighting change against the band table,
+not against one case that sounds persuasive.
+
+And the fix broke the Band 4 summary, which no test caught because the summary
+was a fixed string. At +2, Band 4 could not be reached without turnover
+scoring at least 1, so "Team size, turnover, and the kind of work going
+through it all point the same way" was always true. At +3 a stable team can
+reach Band 4, and that line then claims agreement from a factor that scored
+zero. It is now used only when all three really do agree; otherwise the
+summary names the two factors that carry it. The test asserts it: a summary
+may never name a factor the reader scored zero on.
 
 The page layout changed with it. Six accordions, all closed on load, headed
 with the questions a client actually asks ("What's the catch?", "What happens

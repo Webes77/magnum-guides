@@ -446,10 +446,16 @@
   var Q = [
     {
       q: 'How many staff would be using it?',
+      /* 11 to 15 scores 3, not 2, so headcount alone can carry a verdict.
+         At +2 a stable fifteen-person team doing non-sensitive work with
+         nobody paying personally scored 2 and landed on a Personal lean,
+         which is the case the guide's own "one bill" and "see if it is
+         being used" arguments are strongest against. At +3 it lands on a
+         Band 2 flag instead. Max total is 8. */
       opts: [
         { label: '2 to 5',   pts: 0, sum: 'a team of two to five' },
         { label: '6 to 10',  pts: 1, sum: 'a team of six to ten' },
-        { label: '11 to 15', pts: 2, sum: 'a team of eleven to fifteen' }
+        { label: '11 to 15', pts: 3, sum: 'a team of eleven to fifteen' }
       ],
       flag: 'how many people are using it',
       flagPoint: 'If the team grows, the visibility a team plan gives you starts to matter.',
@@ -485,7 +491,7 @@
     {
       /* Both "yes" answers score 1, not 2. Existing personal spend is a
          consolidation argument, not a control one, so it should not weigh
-         as heavily as size, turnover or sensitivity. Max total is 7. */
+         as heavily as size, turnover or sensitivity. */
       q: 'Is anyone already paying for a personal plan out of their own pocket?',
       opts: [
         { label: "No, nobody's paying for one currently",                 pts: 0, sum: 'nobody paying personally' },
@@ -599,7 +605,16 @@
     } else {
       lean = 'A team plan';
       head = 'A team plan is the clear move here.';
-      summary = 'Team size, turnover, and the kind of work going through it all point the same way.';
+      /* The spec's line names size, turnover and the work as agreeing. Since
+         11 to 15 scores 3, Band 4 is now reachable with a stable team, where
+         that line would be false. Use it only when all three really do agree,
+         and otherwise name the two that carry it. */
+      if (pts(0) >= 1 && pts(1) >= 1 && pts(2) >= 1) {
+        summary = 'Team size, turnover, and the kind of work going through it all point the same way.';
+      } else {
+        var t4 = topTwo();
+        summary = 'Between ' + opt(t4[0]).sum + ' and ' + opt(t4[1]).sum + ', the answer is not close.';
+      }
       /* Each bullet takes the wording that matches the answer actually given,
          so a "mix" answer never comes back described as "regular" anything. */
       if (pts(0) >= 1) { bullets.push('At ' + opt(0).sum + ', per-seat admin visibility pays for itself quickly.'); }
