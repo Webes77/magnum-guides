@@ -292,7 +292,8 @@ James closes them: row 11, Record a skill, never seen in the live product
 from here, and row 15, the Cowork tools claim, James's own observation with
 nothing third-party either way.
 
-Two things were agreed on 13 Sep and not built. They are the next
+Two things were agreed on 13 Sep and not built. The Field Note routine was
+built on 14 Sep and is below. The privacy reference page is still the next
 session's work.
 
 **The privacy reference page.** Decided: a reference page, not a Field
@@ -313,17 +314,62 @@ through WebSearch. Nothing from the Hassaid article's Navier-Stokes
 opening, for the reasons above. The memory audit prompt it ends on goes on
 the shelf as a card, filed under Setting up.
 
-**The weekly Field Note routine.** James wants the Field Note drafted
-automatically once a week, midweek, because This Week in AI already runs
-Saturday and Sunday. Not started. The obvious shape is the Sunday Brief's:
-a routine that drafts onto a branch and emails him, never publishing on
-its own, with `newsletter/README.md` as the build steps and the six-section
-structure of Field Note 04 as the template. Two things to settle before
-building. Where the week's idea comes from, since the Sunday Brief already
-reads the newsletters and feeds the shelf, and a second routine reading the
-same inbox would duplicate it. And whether a drafted Field Note is worth
-having at all if James rewrites it in his voice anyway, which is what
-happened with 03 and 04. Ask him both before building.
+**The weekly Field Note routine.** Built 14 Sep. Both open questions were put
+to James first and he settled both.
+
+Where the week's idea comes from: the Sunday Brief, not a second pass over the
+same inbox. The Sunday Brief already ends LEARN THIS PROPERLY with `FIELD
+NOTE: yes` plus a headline or `FIELD NOTE: no`. That line is now the
+commission, and it goes into the week's vault file as a fifth section,
+`## field-note-commission`. The Wednesday routine reads the vault file, never
+the inbox. That was not only a duplication argument: the Sunday Brief's Step 7
+trashes the week's newsletters after it sends, so a second reader could not
+work even if it were wanted. When the verdict is `no` the routine does not
+skip the week, it falls back to a Prompt Shelf card that has never carried an
+issue. Forty-six cards against four issues, so the fallback has years in it.
+
+How much it writes: the scaffold, not the prose. James rewrote 03 and 04 in
+his own voice, so a routine writing finished sentences is writing something
+that gets thrown away. What took the hour was everything else, and that is
+what arrives done: the seven pages, the five rules, the prompt card checked
+against the review standards, the five exercises, the head tags, the card
+source, the card image, and both index links. Every block he writes carries an
+`EDIT · VOICE` comment and the email lists them, so he can work from the email
+alone. A coral draft band sits at the top of the page until he deletes it, and
+the check fails while it is still there.
+
+Five files carry it. `templates/field-note-template.html` is issue 04's shape
+with the copy taken out and every editable spot marked, spliced from 04 so the
+house style and the print rules are the same bytes. `tools/check-field-note.js`
+is the gate: house rules, page numbers, one masthead number, one footer run,
+head tags against the filename, card source and card image, both index links,
+and under `--shape` the template's seven pages, five rules, one prompt, five
+exercises. It passes on all four live issues, and its one warning, that Field
+Note 01 has no card source, is the gap already recorded under Next.
+`notes/field-note-prompt.md` is the versioned prompt, `notes/field-note-log.md`
+is the per-branch log and the list of cards already taught, and
+`newsletter/README.md` carries the whole thing.
+
+The routine is `trig_016pPJPsm8D3yUZs81wquraU`, cron `0 20 * * 2`, Wednesday
+6am Gold Coast, fresh session each fire, first fire Wednesday 16 Sep. It drafts
+onto `field-note/<date>` and emails James. It never publishes, never pushes to
+`main`, never opens a pull request. Both prompts were pushed to their live
+routines with `update_trigger` and read back byte-identical, so
+`notes/field-note-prompt.md` and `notes/sunday-brief-prompt.md` are what
+actually runs.
+
+Two things James must do in the Routines UI before 16 Sep, neither doable from
+a session. Add `webes77/magnum-guides` as the routine's repository, and attach
+Gmail and Google Drive. `create_trigger` refused the connectors outright: this
+organisation does not allow it, and a session can only pass through connectors
+it holds itself. Until both are done the first fire has nothing to read and no
+way to report.
+
+One thing to watch rather than assume. The bet is that a scaffold is worth
+having. `notes/field-note-log.md` is where that gets judged: if James finds
+himself rewriting the rules and the exercises as well as the voice blocks, the
+routine is doing the wrong half and the answer is to narrow it, not to widen
+it. Give it a month.
 
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
@@ -446,6 +492,10 @@ website manual, AI for Buyer's Agents (`ba-growth/`, the only By Industry
 entry; restyled 9 Sep, the client name removed from its subtitle per hard
 rule 5, mangled arrows and dashes repaired).
 
+Since 14 Sep a routine drafts the next issue every Wednesday 6am onto a
+branch (see the Field Note routine above). The four live issues were all
+written by hand.
+
 Four Weekly Field Notes are in `newsletter/`: 01 Clarity, 02 Context,
 03 Talking (added 4 Sep, written from a note James was sent, in his voice),
 04 Cutting (drafted 4 Sep evening from the 20 per cent rule in James's own
@@ -530,8 +580,13 @@ Fine-Tune, its card and the Buyer's Agents guide moved too. Field Note
 look from mockups after supplying a white, red-orange reference; the
 decision and the hex values are final.
 
-Where the last session stopped (9 Sep): the bots reference deck is live
-and James has not yet read it through. That read is the next thing; the
+Where this session stopped (14 Sep): the midweek Field Note routine is
+built and live, and needs its repository and connectors attached before it
+fires on Wednesday 16 Sep (item 2 below). The privacy reference page is
+still unbuilt and is the next session's work.
+
+Where the session before that stopped (9 Sep): the bots reference deck is
+live and James has not yet read it through. That read is the next thing; the
 vendor slides (ChatGPT, Grok Bot, OpenClaw) carry dated facts and want a
 re-check before any room sees them after October. Before that (7 Sep, night): Foundations is ready for
 the 8 Sep occupational therapy room at 30 slides with the OT example
@@ -556,11 +611,14 @@ order of value:
 1. James has not yet looked at the Manus Bridge walkthrough live, on a
    phone or a laptop. That is the next thing.
 
-2. The fact-check routine needs two things from James before 1 Oct, both
-   in the Routines UI and neither doable from a session: add
-   `webes77/magnum-guides` to the sources of `trig_01Ug88bf3JAkccEhX6f7Nd2x`,
-   and attach Gmail to it. Without them the first run has nothing to read
-   and no way to report.
+2. Two routines need the same thing from James in the Routines UI, and a
+   session can do neither. The Field Note routine
+   (`trig_016pPJPsm8D3yUZs81wquraU`) needs `webes77/magnum-guides` as its
+   repository plus Gmail and Google Drive attached, and it fires Wednesday
+   16 Sep, so this one is first. The fact-check routine
+   (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) needs the same repository and Gmail
+   before 1 Oct. Without them each first run has nothing to read and no way
+   to report.
 
 3. The hotter coral. `--rust` `#EF4029` is on the front page only. If
    James wants it everywhere it is a scripted pass across every page, all
@@ -579,7 +637,9 @@ order of value:
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.
 6. Done, 13 Sep, and it closes what was the biggest item on this list.
-   All four routines now carry their repositories, so they can push:
+   Five routines now, since the Field Note routine was added on 14 Sep and
+   is the one exception: it is the only one without its repository, and
+   item 2 above is that fix. The other four carry theirs, so they can push:
    draft has `magnum-guides` and `magnum-newsletter`, publish and publish
    retry have `magnum-newsletter`, Sunday Brief has `magnum-guides`.
    Gmail and Google Drive were already attached. The environment

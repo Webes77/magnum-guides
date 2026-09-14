@@ -51,12 +51,19 @@ thing in the client's hand means duplicate. Reviews of each branch live in
 4. If the week's LEARN THIS PROPERLY technique would carry a Field Note, the
    brief says so in one line. It does not write the Field Note. That stays in
    James's voice.
+5. That same line is the commission for the midweek Field Note routine, which
+   fires Wednesday 6am and drafts the issue onto a branch. It reads the vault
+   file, not the inbox, so the FIELD NOTE verdict is written into the vault
+   file as a fifth section, `## field-note-commission`. Added 14 Sep. Without
+   it the Wednesday routine has nothing to read and falls back to the shelf.
+   See `notes/field-note-prompt.md`.
 
 The vault is the `Vault` folder in James's Drive, synced to his Mac. It
 holds the four standing files (tools-library, prompts-library, content-ideas,
 sales-lessons). The Drive connector cannot edit an existing file's content,
 so the routine writes one new dated file a week, `sunday-brief-YYYY-MM-DD.md`,
-into that folder with a section per vault file. The four standing files are
+into that folder with a section per vault file, plus the fifth section the
+Field Note routine reads. The four standing files are
 never touched by the routine. The shelf is the vault's curated, generic,
 approved subset.
 
@@ -158,7 +165,9 @@ Never write rank. Rank pins a card to the top of its moment and James sets it by
 
 The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a hook and an added date, has a type and a when from the lists above or neither, and carries no rank. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If the push is refused, put the complete card objects, exactly as written, into the vault file's prompts-library section under a heading SHELF CARDS NOT PUSHED, so James can paste them. If there are no FOR THE SHELF items, do nothing in the repo.
 
-Step 6, vault. Write one markdown file into James's Drive Vault folder (folder id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l) using the Google Drive connector's create_file with title sunday-brief-YYYY-MM-DD.md, contentMimeType text/markdown, disableConversionToGoogleType true, parentId set to that folder. The file has four sections headed ## tools-library, ## prompts-library, ## content-ideas, ## sales-lessons, each holding the week's raw material for that vault with full detail, sources and dates. Sources and client names are allowed here; this file is private. An empty section says "Nothing this week." Never modify, rename or move any existing file in that folder.
+Step 6, vault. Write one markdown file into James's Drive Vault folder (folder id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l) using the Google Drive connector's create_file with title sunday-brief-YYYY-MM-DD.md, contentMimeType text/markdown, disableConversionToGoogleType true, parentId set to that folder. The file has five sections headed ## tools-library, ## prompts-library, ## content-ideas, ## sales-lessons, ## field-note-commission. The first four each hold the week's raw material for that vault with full detail, sources and dates. Sources and client names are allowed here; this file is private. An empty section says "Nothing this week." Never modify, rename or move any existing file in that folder.
+
+The fifth section, ## field-note-commission, is read on Wednesday by the Field Note routine, which drafts the issue. It is the only part of this file another routine depends on, so write it every week even when the answer is no. If Step 3 ended LEARN THIS PROPERLY with FIELD NOTE: no, the whole section is the single word none. If it ended with FIELD NOTE: yes, the section carries four things and nothing else: the headline exactly as you wrote it in the brief; the teaching core in one paragraph, which is the mechanism the issue would explain, not a summary of the news; the id of the shelf card the issue should carry on page 05, taken from prompts/index.html, or the words no card if none fits; and one line on who it is for and what they get wrong today. No sources, no dates, no client names in this section, because it is the one part of the file that ends up shaping a public page.
 
 Step 7, tidy the inbox. Do this only after the brief has actually been sent in Step 4. Using the Gmail connector's trash_thread, move to trash every thread in the covered window that you read or skipped in Step 2. Exceptions, absolute: never trash anything from ruben@substack.com (Ruben Hassid); his posts stay in the inbox untouched. Never trash anything outside the window, anything in Sent, or any thread you did not list in Step 2. Trash only, never permanent delete; Gmail keeps trash for 30 days. If the send in Step 4 failed, skip this step entirely so nothing is lost before James has the brief.
 
