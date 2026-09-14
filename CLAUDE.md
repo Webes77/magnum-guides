@@ -242,7 +242,44 @@ shortened, because that style sets them in uppercase mono and a 130
 character sentence in caps is unreadable. Any future long prompt card
 should carry a `brief`.
 
-On 14 Sep the levers strip came off the cards. James said there was too much
+Later on 14 Sep the shelf was reworked again after James read it and said it
+was still confusing. Four faults, all his, all real.
+
+The primer said "Those five are the six levers in working order" over five
+lines, and Tone was not among them. It is now six lines, one per lever, with
+the lever name as the marker in the left margin so a reader can point at a
+line and name it. Retitled The method in six lines.
+
+The filter row was 25 chips of jargon. The type values (interview,
+instructions, rules, review, writing, image, scheduled) meant nothing to
+anyone who had not sat in a course, so they now say what a card does for you:
+Asks you questions, Writes your setup, Sets the rules, Checks your work,
+Writes something you send, Makes a picture, Runs on a timer. The group is
+headed What it does. The Lever chip went entirely, because after the strip
+came off the cards it filtered by something invisible. `before-acting`
+shortened to Before you act. The keys never changed, only the labels, so
+every card's stored `type` is untouched.
+
+Recipes sat inside the prompt lists with nothing marking them. Each moment
+now splits into two headed groups: Prompts to copy, then Step by step. An
+empty group never renders, and `applyFilters` hides a group with no visible
+card as well as an empty section.
+
+The prompt is now told apart from the writing around it. It sits on a navy
+wash (`--prompt-bg` `#EBEFF3`, a new token, same family as the navy) in navy
+ink rather than ink on white, under a coral label reading The prompt, copy it,
+paste it into a new chat. Recipes get The steps in slate.
+
+And the long explanation folds away. James asked for a dropdown called The
+reasons holding the detail, with the prompt directly below and the card head
+answering only what is this for and how does it help me. The `brief` block on
+the seven Research cards now sits inside a closed `<details class="reasons">`,
+with the inner steps toggle flattened so there are no nested dropdowns. Those
+cards go from 1,240px to 591px closed, which is the "too much to scroll"
+complaint fixed. All 47 ids unchanged, script parses, no sideways scroll at
+1440, 1280, 820 or 390.
+
+Earlier on 14 Sep the levers strip came off the cards. James said there was too much
 reference to the six levers and the page had gone too busy to use, and he was
 right: every prompt card drew all six levers as boxes with the unused ones
 greyed, so a card pulling three levers still showed six. Across 43 prompt

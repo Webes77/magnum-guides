@@ -35,6 +35,10 @@
   --navy:#1F2A37;
   --coral-bright:#FF6F5E;
   --tint:#FBE1D8;
+  /* A wash of the house navy, for the prompt panel only. The prompt has to be
+     tellable from the writing around it at a glance, and paper on white was
+     too close to see. Same family as the navy, nothing new introduced. */
+  --prompt-bg:#EBEFF3;
   --body:#2B2823;
   --rust:#DE4A3C;
   --olive:#5B6B7A;
@@ -144,7 +148,7 @@ section{margin-bottom:54px}
 
 
 .prewrap{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
-.prewrap pre{font-family:var(--mono);font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word;padding:18px 18px 22px;max-height:340px;overflow:auto;color:var(--ink)}
+.prewrap pre{font-family:var(--mono);font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word;padding:16px 18px 22px;max-height:340px;overflow:auto;color:var(--navy);background:var(--prompt-bg)}
 .prewrap::after{content:"More below";position:absolute;left:0;right:0;bottom:0;padding:26px 18px 8px;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 70%);pointer-events:none;opacity:0;transition:opacity .15s}
 .pane.more .prewrap::after{opacity:1}
 
@@ -225,6 +229,58 @@ footer b{color:var(--paper);font-weight:500}
 .bsteps ol{margin:12px 0 4px;padding-left:20px}
 .bsteps li{font-size:15.5px;line-height:1.6;color:var(--ink);margin-bottom:9px}
 @media(max-width:700px){.brief .brow{grid-template-columns:1fr;gap:14px}}
+
+/* ---- the prompt, told apart from the explanation ------------------------
+   James, 14 Sep: the prompt needs to be a different colour from the writing
+   around it, and a reader should not have to work out which is which. So the
+   prompt sits on paper rather than the card's white, in navy rather than ink,
+   under a coral label that says what it is and what to do with it. */
+.plabel{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding:12px 18px 0;background:var(--prompt-bg);
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--coral-text);font-weight:500}
+.plabel span{color:var(--mute);letter-spacing:.08em;font-size:10.5px}
+.plabel.steps-label{color:var(--olive)}
+.pane .steps{background:var(--prompt-bg)}
+
+/* ---- the reasons. Closed by default, because the prompt comes first. ---- */
+.reasons{border-bottom:2px solid var(--ink);background:#FFFFFF}
+.reasons summary{list-style:none;cursor:pointer;padding:12px 18px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);display:flex;align-items:center;gap:10px}
+.reasons summary::-webkit-details-marker{display:none}
+.reasons summary::after{content:"\25BE";color:var(--coral-text);margin-left:auto}
+.reasons[open] summary::after{content:"\25B4"}
+.reasons summary:hover,.reasons summary:focus-visible{color:var(--coral-text);outline:none}
+.reasons .brief{border-bottom:0;padding-top:4px}
+.bslabel{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--coral-text);font-weight:500;margin-bottom:8px}
+.bsteps{margin-top:16px;border-top:1px solid rgba(30,27,23,.18);padding-top:12px}
+
+/* ---- prompts and step-by-steps, kept apart inside a moment -------------- */
+.subgroup{margin-bottom:30px}
+.subgroup:last-child{margin-bottom:0}
+.sublabel{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 14px;
+  font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ink)}
+.sublabel span{font-family:var(--sans);font-weight:400;font-size:14px;letter-spacing:0;
+  text-transform:none;color:var(--mute)}
+
+/* ---- the primer's six lines, one per lever ----------------------------- */
+.pintro{margin:0 0 14px}
+/* The lever name is the marker, so the six read straight down the left in
+   order and a reader can point at a line and name the lever. */
+.levers-list{list-style:none;counter-reset:none;margin:0;padding:0}
+.levers-list li{display:grid;grid-template-columns:112px 1fr;gap:0 18px;align-items:baseline;
+  padding:9px 0;border-bottom:1px solid rgba(30,27,23,.12)}
+.levers-list li:last-child{border-bottom:none}
+.levers-list li::before{content:none}
+.levers-list li i{font-style:normal;font-family:var(--mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);font-weight:500;
+  white-space:nowrap}
+@media (max-width:560px){
+  .levers-list li{grid-template-columns:1fr;gap:3px}
+}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -242,27 +298,31 @@ footer b{color:var(--paper);font-weight:500}
   <a class="back" href="../index.html">&larr; Back to the members area</a>
 
   <div class="about primer">
-    <h2>The method in <em>five lines</em></h2>
-    <ol>
-      <li><span><b>Give it a role.</b> One sentence on who it is being sharpens everything after it.</span></li>
-      <li><span><b>Say what you want, plainly, and why.</b> It follows instructions literally now, and a reason lets it handle the case you did not name.</span></li>
-      <li><span><b>Tell it what to do, not what to avoid.</b> A rule with its reason beats a list of don&rsquo;ts.</span></li>
-      <li><span><b>Tell it when to ask and when to stop.</b> If it might not know, it should say so rather than guess. Give it a finish line so it does not pad.</span></li>
-      <li><span><b>Show it an example when the shape matters.</b> One good example beats a paragraph of description.</span></li>
+    <h2>The method in <em>six lines</em></h2>
+    <p class="pintro">One line per lever, in the order you use them. Every card below is built on these six.</p>
+    <ol class="levers-list">
+      <li><i>Role</i><span><b>Give it a role.</b> One sentence on who it is being sharpens everything after it.</span></li>
+      <li><i>Context</i><span><b>Tell it the situation.</b> It cannot see your business. What it does not know, it invents.</span></li>
+      <li><i>Constraints</i><span><b>Say what to do, and what not to.</b> A rule with its reason beats a list of don&rsquo;ts, and it follows instructions literally now.</span></li>
+      <li><i>Tone</i><span><b>Say how it should sound.</b> Plain, warm, blunt, formal. Left unsaid, it defaults to corporate.</span></li>
+      <li><i>Format</i><span><b>Show the shape you want back.</b> A list, a table, an email, a one-page brief. One example beats a paragraph of description.</span></li>
+      <li><i>Output</i><span><b>Say what finished looks like.</b> Give it a stopping point, or it pads. If it might not know, it should say so rather than guess.</span></li>
     </ol>
-    <p>Those five are the six levers in working order: Role, Context, Constraints, Tone, Format, Output. Every card below is built on them. <a href="../ai-foundations/">Session one</a> teaches them properly.</p>
+    <p><a href="../ai-foundations/">Session one</a> teaches all six properly.</p>
   </div>
 
   <div class="about" id="howto" hidden>
     <h2>How to use <em>a card</em></h2>
-    <p><span class="key">Copy</span> puts the exact prompt on your clipboard. <span class="key">Expand</span> opens it full screen for reading. Anything in [square brackets] is yours to fill in before you send it.</p>
-    <p>Every card is built on the six levers: Role, Context, Constraints, Tone, Format, Output. You do not need to know them to use a card, the prompt already does the work. If you want to see the method, the chips at the top filter the whole shelf by a single lever, and <a href="../ai-foundations/">session one</a> teaches all six.</p>
-    <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act on an answer, setting up, every week, every month. The row of chips narrows it further by type, or by a single lever. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
+    <p>Every card has the same three parts. The <b>title and the line under it</b> say what it is for and what you get. <span class="key">The reasons</span> opens up to show what to give it, what comes back, and how to run it, and it stays shut until you want it. <b>The prompt</b> is the panel underneath, and it is always the part in a different colour.</p>
+    <p><span class="key">Copy prompt</span> puts the exact prompt on your clipboard. <span class="key">Expand</span> opens it full screen for reading. Anything in [square brackets] is yours to fill in before you send it.</p>
+    <p>Some cards are <b>step by step</b> rather than a prompt. They sit in their own group under the prompts, and the button says <span class="key">Copy steps</span>. Nothing to paste, just a short routine to follow.</p>
+    <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act, setting up, every week, every month. The chips at the top narrow it further by what a card does for you. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
+    <p>Every card is built on the six levers at the top of this page. You do not need to know them to use one, the prompt already does that work. <a href="../ai-foundations/">Session one</a> teaches all six.</p>
   </div>
 
   <div class="vault" id="vault" aria-label="Choose a moment or an area">
     <div class="label">Where are you?</div>
-    <p class="note">Pick the moment you are in, or the area you are working on. The cards open below, and you can narrow further by type or lever.</p>
+    <p class="note">Pick the moment you are in, or the area you are working on. The cards open below, and you can narrow further by what a card does for you.</p>
     <div class="vgrid" id="vgrid"></div>
   </div>
 
@@ -314,8 +374,13 @@ footer b{color:var(--paper);font-weight:500}
 // The levers array names only the levers the prompt actually pulls on.
 // ---------------------------------------------------------------------------
 const LEVERS=['Role','Context','Constraints','Tone','Format','Output'];
-const TYPES=[['interview','Interview'],['instructions','Instructions'],['rules','Rules'],['review','Review'],['writing','Writing'],['image','Image'],['scheduled','Scheduled']];
-const WHENS=[['start','Starting a task'],['before-acting','Before you act on an answer'],['setup','Setting up'],['weekly','Every week'],['monthly','Every month'],['new','New']];
+/* What a card does for you, in the client's words. These labels show on the
+   card and in the filter row, so they say the outcome rather than name a
+   category. Renamed 14 Sep: "interview", "rules" and "review" meant nothing to
+   anyone who had not sat in a course. The keys never change; cards store the
+   key, not the label. */
+const TYPES=[['interview','Asks you questions'],['instructions','Writes your setup'],['rules','Sets the rules'],['review','Checks your work'],['writing','Writes something you send'],['image','Makes a picture'],['scheduled','Runs on a timer']];
+const WHENS=[['start','Starting a task'],['before-acting','Before you act'],['setup','Setting up'],['weekly','Every week'],['monthly','Every month'],['new','New']];
 /* Stations are the areas of work a reader picks, as opposed to WHENS, which is
    the moment they are in. A card with no station simply never appears in a
    station view. Add the next one here, and give it a header block below. */
@@ -2000,8 +2065,18 @@ whenKeys.forEach(w=>{
   const items=S.filter(c=>whenOf(c)===w).sort((a,b)=>(a.rank||99)-(b.rank||99));
   if(!items.length)return;
   const section=document.createElement('section');section.dataset.when=w;
-  section.innerHTML=`<div class="label">${esc(label(WHENS,w))}</div><p class="note">${esc(WHEN_NOTES[w]||'')}</p><div class="grid"></div>`;
-  const grid=section.querySelector('.grid');
+  // Two kinds of card look identical until you reach the button: one hands you
+  // a prompt to paste, the other a set of steps to follow. Split 14 Sep so a
+  // reader knows which they are looking at before they open it. A group with
+  // nothing in it never renders.
+  const prompts=items.filter(c=>c.kind!=='recipe');
+  const recipes=items.filter(c=>c.kind==='recipe');
+  const sub=(name,note)=>`<div class="subgroup"><div class="sublabel">${name}<span>${note}</span></div><div class="grid"></div></div>`;
+  section.innerHTML=`<div class="label">${esc(label(WHENS,w))}</div><p class="note">${esc(WHEN_NOTES[w]||'')}</p>`
+    +(prompts.length?sub('Prompts to copy','Paste it into a new chat.'):'')
+    +(recipes.length?sub('Step by step','A short routine to follow, not a prompt.'):'');
+  const grids=section.querySelectorAll('.grid');
+  const gridFor=c=>c.kind==='recipe'?grids[prompts.length?1:0]:grids[0];
   items.forEach(s=>{
     const i=S.indexOf(s);
     const el=document.createElement('article');
@@ -2012,20 +2087,28 @@ whenKeys.forEach(w=>{
     // buried the prompt, which is the thing a client came for. The data stays
     // on the element, so the Lever filter chip still works. Changed 14 Sep.
     const levers='';
+    // The prompt is the thing they came for, so it carries its own label and
+    // its own colour, and nothing that is merely explanation sits on top of it.
     const body=s.kind==='recipe'
-      ?`<ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
-      :`<div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>`;
-    const brief=s.brief?`<div class="brief">
-        <p class="bq"><span>The question</span>${esc(s.brief.q)}</p>
-        <div class="brow"><p><span>What to give it</span>${esc(s.brief.bring)}</p><p><span>What comes back</span>${esc(s.brief.back)}</p></div>
-        <details class="bsteps"><summary>How to run it, in ${s.brief.steps.length} steps</summary><ol>${s.brief.steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></details>
-      </div>`:'';
+      ?`<div class="plabel steps-label">The steps</div><ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
+      :`<div class="plabel">The prompt<span>Copy it, paste it into a new chat</span></div><div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>`;
+    // The long explanation folds away. Closed by default: a reader who wants
+    // the prompt should not have to scroll past half a page to reach it.
+    // Added 14 Sep at James's request.
+    const brief=s.brief?`<details class="reasons">
+        <summary>The reasons</summary>
+        <div class="brief">
+          <p class="bq"><span>The question it answers</span>${esc(s.brief.q)}</p>
+          <div class="brow"><p><span>What to give it</span>${esc(s.brief.bring)}</p><p><span>What comes back</span>${esc(s.brief.back)}</p></div>
+          <div class="bsteps"><div class="bslabel">How to run it, in ${s.brief.steps.length} steps</div><ol>${s.brief.steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>
+        </div>
+      </details>`:'';
     const expand=s.kind==='prompt'?`<button class="expand" data-i="${i}">Expand</button>`:'';
     const fresh=s.added&&(Date.now()-Date.parse(s.added))<14*864e5;
     const meta=`<span class="meta">${s.rank?'<i class="pick">Start with this</i>':''}${fresh?'<i class="new">New</i>':''}${s.type?`<i class="type">${esc(label(TYPES,s.type))}</i>`:''}${s.kind==='recipe'&&s.sec!=='Recipes'?'<i class="type">Recipe</i>':''}<i class="src">${esc(s.sec)}</i></span>`;
     const hook=s.hook?`<span class="hook">${esc(s.hook)}</span>`:'';
     el.innerHTML=`<div class="pane-head"><h3><a href="#${s.id}">${esc(s.title)}</a>${hook}<span class="where">${esc(s.where)}</span>${meta}</h3><div class="btns">${expand}<button class="copy" data-i="${i}">${copyLabel(s)}</button></div></div>${brief}${levers}${body}`;
-    grid.appendChild(el);
+    gridFor(s).appendChild(el);
   });
   root.appendChild(section);
 });
@@ -2051,15 +2134,14 @@ function renderStationHead(k){
 
 // ---- the filter row. One active chip per group. Groups combine.
 const filters=document.getElementById('filters');
-const state={when:'',type:'',lever:'',station:''};
+const state={when:'',type:'',station:''};
 const present={when:whenKeys.filter(k=>S.some(c=>whenOf(c)===k)),type:typeKeys.filter(k=>S.some(c=>c.type===k))};
 let revealed=false;
 const chipRow=(name,g,keys,lab)=>`<div class="frow"><span class="fname">${name}</span><div class="chips"><button class="chip on" data-g="${g}" data-v="">All</button>${keys.map(k=>`<button class="chip" data-g="${g}" data-v="${esc(k)}">${esc(lab(k))}</button>`).join('')}</div></div>`;
 filters.innerHTML=
   (stationKeys.length?chipRow('Area','station',stationKeys,k=>label(STATIONS,k)):'')+
   chipRow('When','when',present.when,k=>label(WHENS,k))+
-  chipRow('Type','type',present.type,k=>label(TYPES,k))+
-  chipRow('Lever','lever',LEVERS,k=>k)+
+  chipRow('What it does','type',present.type,k=>label(TYPES,k))+
   `<div class="frow fmeta"><span class="fname"></span><span class="fcount" id="fcount"></span><button class="chip back" id="tovault" hidden>Back to the chooser</button></div>`;
 
 // ---- the vault. One tile per moment with a count, plus everything.
@@ -2077,14 +2159,14 @@ if(stationKeys.length){
     }).join('')+`</div>`;
   vgrid.parentNode.appendChild(wrap);
   wrap.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{
-    state.station=b.dataset.station;state.when='';state.type='';state.lever='';revealed=true;
+    state.station=b.dataset.station;state.when='';state.type='';revealed=true;
     applyFilters();document.getElementById('filters').scrollIntoView();
   };});
 }
-vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.when=b.dataset.when;state.type='';state.lever='';state.station='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
-document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.lever='';state.station='';revealed=false;applyFilters();window.scrollTo({top:0});};
+vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.when=b.dataset.when;state.type='';state.station='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
+document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.station='';revealed=false;applyFilters();window.scrollTo({top:0});};
 function applyFilters(){
-  const any=!!(state.when||state.type||state.lever||state.station);
+  const any=!!(state.when||state.type||state.station);
   if(any) revealed=true;
   const landing=!revealed;
   document.getElementById('vault').hidden=!landing;
@@ -2095,9 +2177,10 @@ function applyFilters(){
   if(landing){document.getElementById('none').hidden=true;document.getElementById('fcount').textContent=`${S.length} cards`;filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.v===''));return;}
   let n=0;
   document.querySelectorAll('.pane').forEach(p=>{
-    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.lever||p.dataset.levers.split(',').includes(state.lever))&&(!state.station||p.dataset.station===state.station);
+    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.station||p.dataset.station===state.station);
     p.hidden=!ok;if(ok)n++;
   });
+  document.querySelectorAll('#shelf .subgroup').forEach(g=>{g.hidden=!g.querySelector('.pane:not([hidden])');});
   document.querySelectorAll('#shelf section').forEach(sec=>{sec.hidden=!sec.querySelector('.pane:not([hidden])');});
   document.getElementById('none').hidden=n>0;
   document.getElementById('fcount').textContent=any?`${n} of ${S.length} cards`:`${S.length} cards`;
@@ -2105,7 +2188,7 @@ function applyFilters(){
   checkMore();
 }
 filters.querySelectorAll('.chip:not(.back)').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
-document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.lever='';state.station='';applyFilters();};
+document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.station='';applyFilters();};
 applyFilters();
 
 async function doCopy(b){
@@ -2130,7 +2213,7 @@ function openHash(){
   if(h0){const c0=S.find(x=>x.id===h0); if(c0&&c0.station){state.station=c0.station;state.when='';revealed=true;}}
   const h=location.hash.slice(1);const e=h&&document.getElementById(h);
   if(!(e&&e.classList.contains('pane')))return false;
-  if(!revealed||e.hidden||e.closest('section').hidden){state.when=e.dataset.when;state.type='';state.lever='';}
+  if(!revealed||e.hidden||e.closest('section').hidden){state.when=e.dataset.when;state.type='';}
   revealed=true;
   applyFilters();
   e.scrollIntoView();
