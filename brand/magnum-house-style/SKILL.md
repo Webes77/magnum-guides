@@ -39,7 +39,7 @@ palette changed.
   --tint:#FBE1D8;         /* tags and marks */
   --olive:#5B6B7A;        /* slate: ticks and figure detail, never text */
   --char:#3A3630;         /* text inside cards */
-  --mute:#7A7A7A;         /* notes and secondary lines */
+  --mute:#63615C;         /* notes and secondary lines */
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;

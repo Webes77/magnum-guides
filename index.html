@@ -61,6 +61,10 @@ body{
 .masthead h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(52px,9vw,104px);line-height:.9;letter-spacing:-.01em;margin-top:26px;color:var(--paper)}
 .masthead h1 em{font-style:normal;color:var(--rust)}
 .masthead p{font-size:18px;color:#C8CDD3;max-width:46ch;margin-top:20px;line-height:1.55}
+.mast-cta{display:inline-block;margin-top:26px;background:var(--coral-bright);color:var(--ink);
+  font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:.02em;text-transform:uppercase;
+  text-decoration:none;padding:13px 26px;border:2px solid var(--coral-bright)}
+.mast-cta:hover{background:transparent;color:var(--coral-bright)}
 
 /* SECTIONS */
 main.wrap{padding-top:56px;padding-bottom:20px}
@@ -148,10 +152,12 @@ footer b{color:var(--paper);font-weight:500}
   .grid,.grid.three,.grid.four,.duo{grid-template-columns:1fr}
   .start{margin:0 0 44px}
   .start .grid{gap:12px}
-  .step{flex-direction:row;align-items:baseline;gap:14px;min-height:0;padding:14px 18px}
-  .step .n{font-size:26px}
-  .step h3{margin-top:0;font-size:19px}
-  .step p,.step .meta{display:none}
+  .step{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:3px;
+    align-items:baseline;min-height:0;padding:14px 18px}
+  .step .n{font-size:26px;grid-column:1;grid-row:1}
+  .step h3{margin-top:0;font-size:19px;grid-column:2;grid-row:1}
+  .step p{grid-column:2;grid-row:2;font-size:14px;margin-top:0}
+  .step .meta{display:none}
   .card.wide{flex-direction:column}
   .card.wide img{width:100%;border-right:0;border-bottom:2px solid var(--ink)}
   .card.wide .inner{padding:24px 26px 26px}
@@ -211,6 +217,7 @@ section,.start{scroll-margin-top:64px}
   .subnav-list a{font-family:var(--mono);font-size:12px;letter-spacing:.18em;
     text-transform:uppercase;color:#C8CDD3;text-decoration:none;
     padding:12px 0;border-top:1px solid rgba(244,241,234,.18)}
+  .subnav-list a.is-current{color:var(--coral-bright)}
   section,.start{scroll-margin-top:56px}
 }
 
@@ -244,6 +251,7 @@ main.wrap::before{
       <div class="mast-text">
         <h1>Members<br><em>Area</em></h1>
         <p>Start with the courses, in order. Take your prompts from the shelf. Read the Field Note when it lands.</p>
+        <a class="mast-cta" href="ai-foundations/">Start course one &rarr;</a>
       </div>
       <figure class="levers">
         <svg viewBox="0 0 470 392" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -290,7 +298,7 @@ main.wrap::before{
       <a href="#industry">By industry</a>
     </div>
     <details class="subnav-drop">
-      <summary><span class="here">Courses</span></summary>
+      <summary>Jump to a section</summary>
       <div class="subnav-list">
         <a href="#sessions">Courses</a>
         <a href="#prompts">Prompt Shelf</a>
@@ -553,9 +561,10 @@ main.wrap::before{
 // Marks the section you are in, in the sticky bar.
 (function () {
   var ids = ['sessions','prompts','week','manuals','industry'];
-  var links = {}, here = document.querySelector('.subnav-drop .here');
-  document.querySelectorAll('.subnav-row a').forEach(function (a) {
-    links[a.getAttribute('href').slice(1)] = a;
+  var links = {};
+  document.querySelectorAll('.subnav-row a, .subnav-list a').forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    (links[id] = links[id] || []).push(a);
   });
   var seen = {};
   var io = new IntersectionObserver(function (entries) {
@@ -563,8 +572,9 @@ main.wrap::before{
     var best = null, bestV = 0;
     ids.forEach(function (id) { if ((seen[id] || 0) > bestV) { bestV = seen[id]; best = id; } });
     if (!best) return;
-    Object.keys(links).forEach(function (id) { links[id].classList.toggle('is-current', id === best); });
-    if (here && links[best]) here.textContent = links[best].textContent;
+    Object.keys(links).forEach(function (id) {
+      links[id].forEach(function (a) { a.classList.toggle('is-current', id === best); });
+    });
   }, { rootMargin: '-64px 0px -55% 0px', threshold: [0, .25, .5, 1] });
   ids.forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   document.querySelectorAll('.subnav-list a').forEach(function (a) {

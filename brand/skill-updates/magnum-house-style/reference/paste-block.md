@@ -31,7 +31,7 @@ Colours:
 - Slate `#5B6B7A`: ticks, secondary lines, figure detail. Slate never
   carries text.
 - Body `#2B2823` for running text, Char `#3A3630` inside cards, Mute
-  `#7A7A7A` for notes. On navy, text is `#F4F1EA` and muted text `#C8CDD3`.
+  `#63615C` for notes, 5.97:1 on paper. `#7A7A7A` was 4.14:1 and failed. On navy, text is `#F4F1EA` and muted text `#C8CDD3`.
 
 Type, three faces, one job each, never a fourth:
 

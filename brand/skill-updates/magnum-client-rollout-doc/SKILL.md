@@ -45,7 +45,7 @@ truth. This block is the working summary.
   dark mode and preview panes will otherwise invert it.
 - Navy `#1F2A37` for the hero and any dark block. Ink `#1E1B17`, coral
   `#EF4029`, slate `#5B6B7A`, body `#2B2823`, card text `#3A3630`, muted
-  `#7A7A7A`. Coral is the only accent. Slate is for ticks only and never
+  `#63615C`. Coral is the only accent. Slate is for ticks only and never
   carries text.
 - Thin coral progress bar fixed at the top of the viewport, width driven by scroll.
 - Type: Oswald 600/700 uppercase for the hero, section headings, card and stage
