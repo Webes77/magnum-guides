@@ -63,8 +63,11 @@ Oswald for display, IBM Plex Sans for body, IBM Plex Mono for labels and
 prompts. Retired: black and gold, and the beige and rust system (paper
 `#EEE6D3`, rust `#B8452A`, olive `#6C7A3F`, grid texture, offset
 shadows). Do not introduce a fourth typeface. Since 9 Sep (night) Fine-Tune and
-the Buyer's Agents guide carry it too; nothing on the members area is
-in an older style.
+the Buyer's Agents guide carry it too. The claim that nothing was left in an
+older style was wrong twice and both are now closed: the Manus website manual
+was still on the beige system, and all four Field Notes still carried the
+retired offset shadow, both found and fixed on 15 Sep. Twelve share card
+sources remain, deliberately, and are listed below.
 
 ## Where we are
 
@@ -1103,6 +1106,50 @@ of them. All 32 are middots now, and `check_style.py` matches `&mdash;`,
 carrying both forms. A full-site sweep with the fixed checker returns nothing.
 If another rule is ever checked by searching for a literal character, ask what
 its entity is first.
+
+Last on 15 Sep, the Field Notes. James asked whether everything was sorted, and
+the honest answer was no: all four issues were still in the retired style, which
+the handover had claimed was swept on 9 Sep. It was not.
+
+The visible fault was the 9 Sep offset shadow, still live on the rule and
+exercise numbers as a five-layer stacked `text-shadow`. That is the exact
+treatment retired with the beige system, and the Field Notes were the only
+thing on the members area still doing it. Gone from all four issues and from
+`templates/field-note-template.html`, which matters most because the Wednesday
+routine builds from it.
+
+With it went the beige-system values: `#F6ECDC` to `#F4F1EA`, `#C9BFAC` to
+`#C8CDD3`, `#8F8779` to `#8E97A3`, and `'Helvetica Neue'` out of the body stack,
+since a fourth typeface is a fourth typeface even as a fallback. That half was
+invisible, because every one of those sat on a dark ground where the retired
+cream and the house cream are two shades apart. The shadow was the part a
+reader could see.
+
+One thing proposed and not built, because the proposal was wrong. The rule
+numbers were going to take the ghost-to-solid index treatment with everything
+else. They should not. A Field Note is a print document with its own print
+rules, those numbers are numbered content rather than navigation, and a ghosted
+number prints at twenty per cent. They stay full `--rust`. The index treatment
+is for section headings you move between, not for numbered items inside a
+document.
+
+`check_style.py` gained two refinements in the same pass, both because it was
+flagging correct work. `border-radius:50%` is a circle, and circles are in the
+figure language; only other radii are rounded corners now. And a `box-shadow`
+with no blur and no spread is drawing a bar, not casting a shadow, which is how
+the Field Note icons stack rules (`box-shadow:0 13px 0 var(--rust)`) and how
+the front page draws its sticky hairline. Both changes were proven against a
+fixture carrying the allowed and the banned form of each, so the test tightens
+rather than just going quiet.
+
+What is left, and it is deliberate. Twelve `*-thumbnail.html` share card
+sources still carry `#F6ECDC` or `#7A7A7A`. Every one paints a caption on a
+slate or navy plate where the retired value and the house value are
+indistinguishable, and changing a source without re-rendering its JPEG puts the
+two out of step. Re-render the card set and fix all twelve sources in the same
+commit, next time the cards move for another reason. Also still open and the
+same call: `#8E97A3` (4.92:1 on navy, used site-wide), `#46545F`, `#C8402F`
+and `#3A4756` in the deck engine.
 
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across

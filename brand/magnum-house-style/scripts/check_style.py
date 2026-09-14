@@ -89,8 +89,12 @@ def check_text_like(path, text, kind):
             issues.append((line_of(text, m.start()), f"off-system font '{f}'"))
     # css shapes
     for pat, msg in [
-        (r"border-radius\s*:\s*(?!0(px|%)?\s*[;}!])[^;}]+", "rounded corners (border-radius)"),
-        (r"box-shadow\s*:\s*(?!none)[^;}]+", "drop shadow (box-shadow)"),
+        # 50% is a circle, not a rounded corner. Circles are in the figure language.
+        (r"border-radius\s*:\s*(?!0(px|%)?\s*[;}!])(?!50%\s*[;}])[^;}]+", "rounded corners (border-radius)"),
+        # A shadow with no blur and no spread is drawing a bar, not casting a shadow.
+        # Field Note icons stack rules that way: box-shadow:0 13px 0 var(--rust).
+        (r"box-shadow\s*:\s*(?!none)(?!(?:[^;}]*?\b0\s+-?\d+(?:\.\d+)?(?:px|em|rem)\s+0\b)[^;}]*[;}])[^;}]+",
+         "drop shadow (box-shadow)"),
         (r"text-shadow\s*:\s*(?!none)[^;}]+", "text shadow"),
         (r"(linear|radial|conic)-gradient\(", "gradient"),
         (r"background(-image)?\s*:\s*url\([^)]*(grid|dots?|texture|noise)[^)]*\)", "background texture"),
