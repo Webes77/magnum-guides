@@ -279,6 +279,31 @@ cards go from 1,240px to 591px closed, which is the "too much to scroll"
 complaint fixed. All 47 ids unchanged, script parses, no sideways scroll at
 1440, 1280, 820 or 390.
 
+Two more faults James found reading it back, same day. The primer read as
+clutter because the lever name and the bold lead said the same thing twice:
+ROLE followed by "Give it a role". The restatement went, the numbers went,
+and the six lever names are now the only marker, aligned down the left. The
+raggedness behind the complaint was a specificity bug: `.about ol li` outranks
+a bare `.levers-list li`, so the list stayed flex and kept drawing its
+counter. The rules now carry the parent selector.
+
+And the Research prompts opened with `<my_input>` and `## Role` before a word
+of English, which James said reads as code and stops a client copying it.
+Fixed by display only: the tags dim to a light slate, the headings drop to
+slate, and a plain line above the panel says to type in the square brackets
+and leave the faint lines alone. The prompts themselves are untouched and
+still byte-identical to the file James supplied. That is safe because
+`copyText` reads `s.prompt`, the stored text, never the DOM, which was
+verified for all seven cards after the change.
+
+One bug was introduced and caught in the same pass, worth recording because
+the shape of it will recur. The dimming regex ended `\s*$` under the `m`
+flag, and `\s` swallowed the newline after each tag, so every Research
+prompt lost a blank line on screen while the clipboard stayed correct. It is
+`[ \t]*$` now. The check that caught it was diffing the rendered text against
+the authored text, not eyeballing the render, and all 43 prompt cards are now
+verified to display exactly what they store.
+
 Earlier on 14 Sep the levers strip came off the cards. James said there was too much
 reference to the six levers and the page had gone too busy to use, and he was
 right: every prompt card drew all six levers as boxes with the unused ones

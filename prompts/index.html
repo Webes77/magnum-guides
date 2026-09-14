@@ -268,19 +268,32 @@ footer b{color:var(--paper);font-weight:500}
 
 /* ---- the primer's six lines, one per lever ----------------------------- */
 .pintro{margin:0 0 14px}
-/* The lever name is the marker, so the six read straight down the left in
-   order and a reader can point at a line and name the lever. */
-.levers-list{list-style:none;counter-reset:none;margin:0;padding:0}
-.levers-list li{display:grid;grid-template-columns:112px 1fr;gap:0 18px;align-items:baseline;
-  padding:9px 0;border-bottom:1px solid rgba(30,27,23,.12)}
-.levers-list li:last-child{border-bottom:none}
-.levers-list li::before{content:none}
-.levers-list li i{font-style:normal;font-family:var(--mono);font-size:11px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);font-weight:500;
+/* The lever name is the only marker. No number, and no bold restatement of
+   the lever in the line, because "ROLE" followed by "Give it a role" was the
+   same thing said twice and it read as clutter. Two weights, six rows. */
+/* .about ol li outranks a bare .levers-list li, so these carry the parent
+   selector. Without it the list stayed flex and kept drawing its counter,
+   which is what made the six lines sit ragged. */
+.about ol.levers-list{counter-reset:none;margin:6px 0 14px;padding:0}
+.about ol.levers-list li{display:grid;grid-template-columns:132px 1fr;gap:0 18px;
+  align-items:baseline;padding:10px 0;border-top:1px solid rgba(30,27,23,.10)}
+.about ol.levers-list li:first-child{border-top:0}
+.about ol.levers-list li::before{content:none;display:none}
+.about ol.levers-list li i{font-style:normal;font-family:var(--display);font-weight:600;
+  font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
   white-space:nowrap}
+.about ol.levers-list li span{color:var(--char)}
 @media (max-width:560px){
-  .levers-list li{grid-template-columns:1fr;gap:3px}
+  .about ol.levers-list li{grid-template-columns:1fr;gap:2px;padding:9px 0}
+  .about ol.levers-list li i{font-size:13px;color:var(--coral-text)}
 }
+
+/* the machine-facing parts of a prompt, quietened */
+.prewrap pre .mach{color:#9AA7B4}
+.prewrap pre .mhead{color:var(--olive);font-weight:500}
+.pnote{margin:0;padding:8px 18px 0;background:var(--prompt-bg);
+  font-size:13px;line-height:1.45;color:var(--char)}
+.pnote b{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ink)}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -301,12 +314,12 @@ footer b{color:var(--paper);font-weight:500}
     <h2>The method in <em>six lines</em></h2>
     <p class="pintro">One line per lever, in the order you use them. Every card below is built on these six.</p>
     <ol class="levers-list">
-      <li><i>Role</i><span><b>Give it a role.</b> One sentence on who it is being sharpens everything after it.</span></li>
-      <li><i>Context</i><span><b>Tell it the situation.</b> It cannot see your business. What it does not know, it invents.</span></li>
-      <li><i>Constraints</i><span><b>Say what to do, and what not to.</b> A rule with its reason beats a list of don&rsquo;ts, and it follows instructions literally now.</span></li>
-      <li><i>Tone</i><span><b>Say how it should sound.</b> Plain, warm, blunt, formal. Left unsaid, it defaults to corporate.</span></li>
-      <li><i>Format</i><span><b>Show the shape you want back.</b> A list, a table, an email, a one-page brief. One example beats a paragraph of description.</span></li>
-      <li><i>Output</i><span><b>Say what finished looks like.</b> Give it a stopping point, or it pads. If it might not know, it should say so rather than guess.</span></li>
+      <li><i>Role</i><span>Tell it who it is, in one sentence. That line sharpens everything after it.</span></li>
+      <li><i>Context</i><span>Tell it the situation. It cannot see your business, and what it does not know, it invents.</span></li>
+      <li><i>Constraints</i><span>Say what to do and what not to. A rule with its reason beats a list of don&rsquo;ts.</span></li>
+      <li><i>Tone</i><span>Say how it should sound. Plain, warm, blunt, formal. Left unsaid, it defaults to corporate.</span></li>
+      <li><i>Format</i><span>Show the shape you want back. A list, a table, an email. One example beats a paragraph describing it.</span></li>
+      <li><i>Output</i><span>Say what finished looks like. Give it a stopping point, or it pads.</span></li>
     </ol>
     <p><a href="../ai-foundations/">Session one</a> teaches all six properly.</p>
   </div>
@@ -2049,6 +2062,20 @@ const flow=t=>{ if(structured(t)) return t;const out=[];for(const raw of t.split
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const stepsText=s=>s.steps.map((t,i)=>`${i+1}. ${t.replace(/<[^>]+>/g,'')}`).join('\n');
 const copyText=s=>s.kind==='recipe'?stepsText(s):s.prompt;
+/* Display only. A client opening a Research card met <my_input> and ## Role
+   before a word of English and read the whole thing as code, which is exactly
+   the reaction that stops them copying it. So the scaffolding is dimmed and
+   the headings drop to slate, and the English carries the panel. The copy
+   button reads s.prompt, the authored text, so nothing here can change what
+   lands on the clipboard. James, 14 Sep. */
+// [ \t]* not \s*: with the m flag \s swallows the newline after the tag and
+// the prompt loses a blank line on screen. Caught by diffing the rendered
+// text against the authored text, 14 Sep.
+const MACHINE=/^(&lt;\/?[a-zA-Z_][\w.-]*&gt;)[ \t]*$/gm;
+const dim=h=>h
+  .replace(MACHINE,'<span class="mach">$1</span>')
+  .replace(/^(##+ .*)$/gm,'<span class="mhead">$1</span>');
+const hasScaffolding=t=>/^<\/?[a-zA-Z_][\w.-]*>[ \t]*$/m.test(t);
 const copyLabel=s=>s.kind==='recipe'?'Copy steps':'Copy prompt';
 
 const cap=k=>k.replace(/-/g,' ').replace(/^\w/,c=>c.toUpperCase());
@@ -2091,7 +2118,9 @@ whenKeys.forEach(w=>{
     // its own colour, and nothing that is merely explanation sits on top of it.
     const body=s.kind==='recipe'
       ?`<div class="plabel steps-label">The steps</div><ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
-      :`<div class="plabel">The prompt<span>Copy it, paste it into a new chat</span></div><div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>`;
+      :`<div class="plabel">The prompt<span>Copy it, paste it into a new chat</span></div>`
+       +(hasScaffolding(s.prompt)?`<p class="pnote">Type your own words where it says <b>[in the square brackets]</b>. Leave the faint lines as they are: they tell the AI where your text stops and its instructions start.</p>`:'')
+       +`<div class="prewrap"><pre>${dim(esc(flow(s.prompt)))}</pre></div>`;
     // The long explanation folds away. Closed by default: a reader who wants
     // the prompt should not have to scroll past half a page to reach it.
     // Added 14 Sep at James's request.
