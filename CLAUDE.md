@@ -536,8 +536,9 @@ written by hand.
 Four Weekly Field Notes are in `newsletter/`: 01 Clarity, 02 Context,
 03 Talking (added 4 Sep, written from a note James was sent, in his voice),
 04 Cutting (drafted 4 Sep evening from the 20 per cent rule in James's own
-library, carrying the shelf card "Cut it to the 20 per cent"; on the branch
-for James to read in his voice before it merges).
+library, carrying the shelf card "Cut it to the 20 per cent"). All four are
+on `main` and linked from the front page and the archive; the note that 04
+was still on a branch was stale and was corrected on 14 Sep.
 Each issue is one self-contained HTML file with its card source beside it.
 The front page shows the newest two or three; the archive shows all.
 
