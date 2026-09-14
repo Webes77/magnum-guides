@@ -8,7 +8,7 @@ Reports, per file:
   - retired or off-palette colours (hex values not in the token table)
   - off-system fonts (Inter, Playfair, Bebas, Roboto, Calibri, ...)
   - rounded corners, box shadows, gradients, background textures
-  - em dashes anywhere in the text
+  - em dashes anywhere in the text, including the &mdash; entity forms
   - the word "solid" in prose (CSS `border: 2px solid` is ignored)
   - more than one navy element per slide (pptx only, heuristic)
 
@@ -45,6 +45,9 @@ SYSTEM_FONTS = {"oswald", "ibm plex sans", "ibm plex mono", "arial", "arial narr
 
 HEX_RE = re.compile(r"#([0-9a-fA-F]{6})\b|#([0-9a-fA-F]{3})\b(?![0-9a-fA-F])")
 EM_DASH = "—"
+# An em dash also hides as an HTML entity, which a search for the character
+# alone never finds. Cost a hard rule 1 breach on the Manus manual, 15 Sep 2026.
+EM_DASH_ANY = r"—|&mdash;|&#8212;|&#x2014;"
 
 
 def expand3(h):
@@ -105,12 +108,11 @@ def check_text_like(path, text, kind):
         prose = re.sub(r"`[^`\n]*`", mask, prose)
     if kind == "js":  # dashType:"solid" and friends are API values
         prose = re.sub(r"[\"'][^\"'\n]*solid[^\"'\n]*[\"']", mask, prose, flags=re.I)
-    for m in re.finditer(EM_DASH, prose):
-        issues.append((line_of(text, text.find(EM_DASH)), "em dash in text"))
-        break  # one report per file is enough; count it
-    n_em = prose.count(EM_DASH)
-    if n_em > 1:
-        issues[-1] = (issues[-1][0], f"em dash in text ({n_em} occurrences)")
+    hits = list(re.finditer(EM_DASH_ANY, prose, flags=re.I))
+    if hits:
+        issues.append((line_of(text, hits[0].start()), "em dash in text"))
+        if len(hits) > 1:
+            issues[-1] = (issues[-1][0], f"em dash in text ({len(hits)} occurrences)")
     for m in re.finditer(r"\bsolid\b", prose, flags=re.I):
         issues.append((line_of(text, m.start()), "the word 'solid' in prose"))
     return issues
@@ -147,7 +149,7 @@ def check_ooxml(path):
                     issues.append((label, "gradient fill"))
                 text = " ".join(re.findall(r"<(?:a|w):t[^>]*>([^<]*)</(?:a|w):t>", xml))
                 if EM_DASH in text:
-                    issues.append((label, f"em dash in text ({text.count(EM_DASH)} occurrences)"))
+                    issues.append((label, f"em dash in text ({len(re.findall(EM_DASH_ANY, text, flags=re.I))} occurrences)"))
                 for m in re.finditer(r"\bsolid\b", text, flags=re.I):
                     issues.append((label, "the word 'solid' in prose"))
                 # navy count per slide (pptx)

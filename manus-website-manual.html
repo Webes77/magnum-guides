@@ -13,9 +13,10 @@
   --ink:#1E1B17;
   --navy:#1F2A37;
   --coral-bright:#FF6F5E;
-  --tint:#FBE1D8; --paper:#FBFBF9; --panel:#FFFFFF; --hair:#C9BFAC;
-  --muted:#6F675C; --accent:#FF6F5E; --accent-dark:#C9542F;
-  --grid:rgba(120,90,60,.13);
+  --tint:#FBE1D8; --paper:#FBFBF9; --panel:#FFFFFF; --hair:#DADAD5;
+  --rust:#EF4029;         /* display type, fills, borders, figures */
+  --coral-text:#C63A2A;   /* anything under 18px you read. 5.02:1 on paper */
+  --muted:#63615C;        /* 5.97:1. the old warm grey was 4.14:1 and failed */
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --body:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -27,7 +28,7 @@ body{font-family:var(--body);color:var(--ink);background-color:var(--paper);font
 .runhead{position:fixed;top:0;left:0;right:0;background:var(--paper);z-index:100;padding:20px 48px 0}
 .runhead-inner{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
 .runhead .brand{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
-.runhead .marker{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.runhead .marker{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--coral-text)}
 /* Layout */
 .wrap{display:flex;max-width:1360px;margin:0 auto;padding-top:62px}
 nav{width:264px;flex-shrink:0;position:sticky;top:62px;height:calc(100vh - 62px);overflow-y:auto;padding:56px 28px 80px 48px}
@@ -36,7 +37,7 @@ nav .navlabel{display:none}
 nav a{display:block;color:var(--muted);text-decoration:none;font-size:12.5px;padding:4px 0;line-height:1.4;transition:color .12s}
 nav a:hover{color:var(--ink)}
 nav a.active{color:var(--ink);font-weight:bold}
-nav a.active::before{content:"";display:inline-block;width:14px;height:2px;background:var(--accent);vertical-align:middle;margin-right:8px}
+nav a.active::before{content:"";display:inline-block;width:14px;height:2px;background:var(--coral-bright);vertical-align:middle;margin-right:8px}
 nav .navgroup{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;margin:30px 0 10px;color:var(--ink)}
 nav .navgroup:first-of-type{margin-top:0}
 main{flex:1;min-width:0;padding:0 56px 140px 72px;max-width:900px}
@@ -52,10 +53,10 @@ section{padding-top:96px;position:relative}
 .kicker{display:none}
 /* Signature: ghost part numeral */
 .secnum{font-family:var(--display);font-weight:700;font-size:150px;line-height:1;color:var(--paper);-webkit-text-stroke:1.5px rgba(30,27,23,.26);position:absolute;top:52px;right:0;z-index:0;user-select:none;pointer-events:none}
-.seclabel{font-weight:bold;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.seclabel{font-weight:bold;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--coral-text);margin-bottom:14px}
 /* Phase divider bands */
 .phase{background:var(--navy);color:#F4F1EA;margin:110px -56px 0 -72px;padding:64px 72px}
-.phase .pnum{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:4px;color:var(--accent-dark);text-transform:uppercase;margin-bottom:10px}
+.phase .pnum{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:4px;color:var(--coral-bright);text-transform:uppercase;margin-bottom:10px}
 .phase h2{color:var(--paper);font-size:clamp(44px,5vw,72px);margin:0}
 .phase p{color:#C8CDD3;margin:14px 0 0;max-width:56ch;font-size:16px}
 ul,ol{margin:0 0 18px 22px;max-width:66ch}
@@ -81,11 +82,11 @@ strong{font-weight:bold}
 .check li::before{content:"";position:absolute;left:0;top:5px;width:13px;height:13px;border:1.5px solid var(--ink);background:var(--paper)}
 /* Prompt block: ink */
 .prompt{background:var(--ink);margin:26px 0 34px;max-width:72ch}
-.prompt-head{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid #413931}
+.prompt-head{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;border-bottom:1px solid rgba(244,241,234,.22)}
 .prompt-head span{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--paper)}
 .prompt pre{padding:24px 26px;white-space:pre-wrap;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:#FFFFFF}
 .copybtn{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;background:var(--paper);color:var(--ink);border:none;padding:8px 18px;cursor:pointer;transition:background .12s}
-.copybtn:hover,.copybtn.copied{background:var(--accent-dark)}
+.copybtn:hover,.copybtn.copied{background:var(--rust)}
 /* Numbered circles */
 .numlist{list-style:none;margin-left:0;counter-reset:step;max-width:66ch}
 .numlist li{counter-increment:step;position:relative;padding-left:48px;margin-bottom:14px;min-height:30px}
@@ -98,7 +99,7 @@ strong{font-weight:bold}
 /* Dark closing */
 .dark{background:var(--navy);color:#F4F1EA;padding:72px 72px;margin:60px -56px 0 -72px}
 .dark h2{color:var(--paper)}
-.dark .goldline{color:var(--accent-dark);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:1.1;margin-top:20px}
+.dark .goldline{color:var(--coral-bright);font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(34px,4vw,54px);line-height:1.1;margin-top:20px}
 .dark p{color:#C8CDD3}
 /* FAQ */
 details{border-bottom:1px solid var(--hair);max-width:70ch}
@@ -186,7 +187,7 @@ details .a p:last-child{margin-bottom:0}
 <section id="intro" style="padding-top:64px">
 <h1>The Manus<br>Website Manual</h1>
 <p class="subtitle">A no-coder's guide to building, launching and managing client websites.</p>
-<p class="version">Version 1.0 &mdash; August 2026</p>
+<p class="version">Version 1.0 &middot; August 2026</p>
 <h3>What this manual is for</h3>
 <p>This is the standard process for building websites for clients using Manus. You do <strong>not</strong> need to be a web developer.</p>
 <p>You do need to know: what you are building, what Manus should handle, what another system should handle, who owns everything, how the client will update things later, and how you get out if something goes wrong.</p>
@@ -211,25 +212,25 @@ details .a p:last-child{margin-bottom:0}
 <div class="secnum">02</div><p class="seclabel">Part 2</p>
 <h2>First Decision: What Are We Actually Building?</h2>
 <p>Before touching Manus, put the website into one of these buckets.</p>
-<h3>Type A &mdash; The Simple Business Website</h3>
+<h3>Type A &middot; The Simple Business Website</h3>
 <p>Builder, electrician, consultant, recruiter, accountant, commercial furniture business, local service company. Typical pages: Home, About, Services, Projects, Testimonials, Contact.</p>
 <div class="box"><p><strong>Verdict: Manus. Keep it simple.</strong> No database unless there is a reason for one.</p></div>
-<h3>Type B &mdash; The Frequently Updated Website</h3>
+<h3>Type B &middot; The Frequently Updated Website</h3>
 <p>Pub, restaurant, club, venue, recruitment company, accommodation business, events business. Things that change: events, menus, jobs, specials, projects, team members, news.</p>
 <div class="box"><p><strong>Verdict: Manus + structured database.</strong> Do not bury information that changes every week inside the page design.</p></div>
 <p>Manus projects can use a managed MySQL database, and records can be viewed, added, edited and deleted through its data interface. Better still, if the client needs to update the content themselves, build them a deliberately simple admin page. Example: <strong>clientwebsite.com.au/admin</strong>. They log in and see Events, Add Event, a handful of fields, Save. That's it.</p>
 <div class="panel"><p>Do not give Dave from the pub the keys to the entire website because he wants to change Saturday night's band.</p></div>
-<h3>Type C &mdash; The Booking Website</h3>
+<h3>Type C &middot; The Booking Website</h3>
 <p>Mountain biking, tours, appointments, accommodation, classes, experiences. First question: <strong>does the client already use booking software?</strong></p>
 <div class="box"><p><strong>If yes: do not rebuild it.</strong> Connect or embed the existing booking platform. Manus can communicate with third-party systems through REST APIs where required.</p><p>Your job is: website &rarr; beautiful information &rarr; obvious BOOK NOW button &rarr; existing booking system. Do not accidentally build Expedia.</p></div>
 <p>If they don't have booking software, assess that separately before promising anything.</p>
-<h3>Type D &mdash; E-Commerce</h3>
+<h3>Type D &middot; E-Commerce</h3>
 <p>100 products, stock levels, sizes, colours, discount codes, shipping, refunds, collections.</p>
 <div class="box"><p><strong>Recommended setup: Manus = website/storefront. Shopify = commerce engine.</strong></p><p>Manus officially supports connecting a Shopify commerce backend, including products, collections, inventory and checkout. The client changes products in Shopify. Manus displays the shop. Shopify handles the serious commerce machinery.</p></div>
 <p>Do not make someone's stock control system dependent on asking an AI agent to change a webpage.</p>
-<h3>Type E &mdash; Simple Payments</h3>
+<h3>Type E &middot; Simple Payments</h3>
 <p>A $100 booking deposit, paid consultation, membership, fixed-price service, simple subscription. Consider <strong>Manus + Stripe</strong>. Manus can create and test Stripe payments in a sandbox before connecting the real Stripe account.</p>
-<h3>Type F &mdash; "This Is Starting to Sound Like Software"</h3>
+<h3>Type F &middot; "This Is Starting to Sound Like Software"</h3>
 <p>Warning signs: users need individual dashboards, different permission levels, live availability, synchronising with three systems, customers creating accounts and managing orders, thousands of database records, complex calculations.</p>
 <div class="panel"><p>Manus can technically build sophisticated web applications. But commercially, stop calling this a website. Scope it separately.</p></div>
 </section>
@@ -364,13 +365,13 @@ Build the complete first version and then give me a list of anything still requi
 <div class="secnum">10</div><p class="seclabel">Part 10</p>
 <h2>Client Self-Editing</h2>
 <p>There are three models.</p>
-<h3>Model 1 &mdash; You update everything</h3>
+<h3>Model 1 &middot; You update everything</h3>
 <p>Best for tiny businesses, infrequent changes, clients who don't want another login, maintenance retainers. Client emails "Change Friday's band to The Pork Chops." You update it. Done. This is the easiest model.</p>
-<h3>Model 2 &mdash; Client edits structured content</h3>
+<h3>Model 2 &middot; Client edits structured content</h3>
 <p>Best for pubs, events, vacancies, menus, projects, accommodation, regular news. Build a simple password-protected admin area. Manus supports login systems and role-based restrictions for specific pages such as /admin.</p>
 <p>Example admin: Website Manager. EVENTS. MENU. SPECIALS. Nothing else.</p>
 <div class="panel"><p>Do not build WordPress inside Manus. Give them only what they genuinely need.</p></div>
-<h3>Model 3 &mdash; Client works inside Manus</h3>
+<h3>Model 3 &middot; Client works inside Manus</h3>
 <p>Manus has collaborative tasks where invited collaborators can see the work and prompt Manus themselves. I would <strong>not use this as the normal client handover model</strong>. Because the client who only wanted to change a photo can now tell Manus: "Make the entire website red and add a spinning kangaroo."</p>
 <p>Use collaboration when genuinely useful. Use an admin panel for routine content.</p>
 </section>
@@ -447,11 +448,11 @@ Build the complete first version and then give me a list of anything still requi
 <div class="secnum">17</div><p class="seclabel">Part 17</p>
 <h2>Who Pays for Hosting?</h2>
 <p>Pick one model and be clear.</p>
-<h3>Option A &mdash; Included in your maintenance service</h3>
+<h3>Option A &middot; Included in your maintenance service</h3>
 <p>You manage Manus hosting, updates, backups, monitoring. Client pays one monthly fee. Simplest client experience.</p>
-<h3>Option B &mdash; Client owns/pays everything</h3>
+<h3>Option B &middot; Client owns/pays everything</h3>
 <p>More admin. Cleaner separation.</p>
-<h3>Option C &mdash; Hybrid</h3>
+<h3>Option C &middot; Hybrid</h3>
 <p>Client owns important external accounts. You manage Manus and include normal hosting within a maintenance fee, subject to reasonable usage.</p>
 <div class="box"><p><strong>Recommended model for smaller managed clients: Hybrid.</strong> Client owns their domain and important business systems. You manage the Manus website.</p></div>
 </section>
@@ -688,37 +689,37 @@ After making the changes, check desktop and mobile layouts and confirm that no e
 <h2>The Standard Operating Process</h2>
 <p>This is the version to remember.</p>
 <div class="flow">
-<div class="step"><span class="n">1 &mdash; Discover</span>What does the client actually need?</div>
+<div class="step"><span class="n">1 &middot; Discover</span>What does the client actually need?</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">2 &mdash; Classify</span>Simple / Dynamic / Booking / E-commerce / Application.</div>
+<div class="step"><span class="n">2 &middot; Classify</span>Simple / Dynamic / Booking / E-commerce / Application.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">3 &mdash; Collect</span>Brand, copy, images, domain and systems.</div>
+<div class="step"><span class="n">3 &middot; Collect</span>Brand, copy, images, domain and systems.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">4 &mdash; Build</span>Create first version in Manus.</div>
+<div class="step"><span class="n">4 &middot; Build</span>Create first version in Manus.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">5 &mdash; Structure</span>Put frequently changing content into databases.</div>
+<div class="step"><span class="n">5 &middot; Structure</span>Put frequently changing content into databases.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">6 &mdash; Connect</span>Forms, booking, Shopify, Stripe, APIs.</div>
+<div class="step"><span class="n">6 &middot; Connect</span>Forms, booking, Shopify, Stripe, APIs.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">7 &mdash; Review</span>You review before client sees it.</div>
+<div class="step"><span class="n">7 &middot; Review</span>You review before client sees it.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">8 &mdash; Client Approval</span>Facts, content, functionality and design.</div>
+<div class="step"><span class="n">8 &middot; Client Approval</span>Facts, content, functionality and design.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">9 &mdash; Protect</span>GitHub + copy/export + account ownership.</div>
+<div class="step"><span class="n">9 &middot; Protect</span>GitHub + copy/export + account ownership.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">10 &mdash; Connect the Bloody Domain</span>Change only the required DNS records.</div>
+<div class="step"><span class="n">10 &middot; Connect the Bloody Domain</span>Change only the required DNS records.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">11 &mdash; Test</span>Desktop, mobile, forms, booking, payments.</div>
+<div class="step"><span class="n">11 &middot; Test</span>Desktop, mobile, forms, booking, payments.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">12 &mdash; SEO + Analytics</span>Enable and verify.</div>
+<div class="step"><span class="n">12 &middot; SEO + Analytics</span>Enable and verify.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">13 &mdash; Billing</span>Make sure the live website isn't going to disappear because someone forgot twenty bucks.</div>
+<div class="step"><span class="n">13 &middot; Billing</span>Make sure the live website isn't going to disappear because someone forgot twenty bucks.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">14 &mdash; Launch</span>Website live.</div>
+<div class="step"><span class="n">14 &middot; Launch</span>Website live.</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">15 &mdash; Handover</span>Who owns what and who changes what?</div>
+<div class="step"><span class="n">15 &middot; Handover</span>Who owns what and who changes what?</div>
 <div class="arrow">&darr;</div>
-<div class="step"><span class="n">16 &mdash; Maintain</span>Check it. Update it. Charge appropriately for doing so.</div>
+<div class="step"><span class="n">16 &middot; Maintain</span>Check it. Update it. Charge appropriately for doing so.</div>
 </div>
 </section>
 

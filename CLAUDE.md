@@ -912,6 +912,45 @@ in `manus-website-manual.html`. Worth a pass, not urgent.
 
 Deck check passes at all four window sizes across all four decks.
 
+The Manus website manual was brought onto the house palette on 15 Sep, and it
+was a bigger job than the one hex that started it. `#6F675C` was the visible
+symptom; the page was still running the beige system underneath it: `--hair`
+`#C9BFAC`, `--accent-dark` `#C9542F`, a dead `--grid` at
+`rgba(120,90,60,.13)`, and a `#413931` hairline inside the ink prompt block.
+It carried no `--rust` or `--coral-text`, so it had never had the two-coral
+split at all.
+
+A browser audit against real painted backgrounds found three failing rules
+across 40 elements, all of them bright coral `#FF6F5E` used as small text on
+paper at 11 and 12px (2.64:1) plus `#C9542F` at 15px (3.32:1). Bright coral is
+a fill colour and the house style says so; it was carrying the running head
+marker and every one of the 34 section labels. Those are `--coral-text` now,
+the one genuine fill use (the nav's active dash) is `--coral-bright`, the copy
+button's hover is `--rust`, and the `.goldline` on the navy block is
+`--coral-bright`.
+
+One fix needed a second pass, and it is the kind that will recur. `.phase
+.pnum` went to `--coral-text` with the rest and still failed at 2.8:1, because
+`.phase` is a navy block and `#C63A2A` is tuned for paper. On navy the house
+value is `--coral-bright` at 5.32:1. The audit caught it because it measures
+the ground each element actually sits on rather than assuming paper. Zero
+failures now, and the style checker passes the file clean.
+
+The 150px section numbers on that page are a false positive worth knowing
+about: they are `--paper` fill with an ink stroke, so an audit reading only
+`color` calls them 1:1. They are outlined numbers, which is the index
+treatment this site arrived at independently on 15 Sep. The audit skips
+anything with a non-zero `-webkit-text-stroke-width`.
+
+**A hard rule 1 breach that every check had missed.** The page carried 29
+em dashes and the brand page 3, all written as `&mdash;`. Every sweep this
+repo has ever run looked for the character, so an entity was invisible to all
+of them. All 32 are middots now, and `check_style.py` matches `&mdash;`,
+`&#8212;` and `&#x2014;` as well as the character, verified against a fixture
+carrying both forms. A full-site sweep with the fixed checker returns nothing.
+If another rule is ever checked by searching for a literal character, ask what
+its entity is first.
+
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
 all eight pages. The Field Note routine is set up. James confirmed the
@@ -1103,6 +1142,10 @@ order of value:
   a panel does nothing until they are reflowed.
 - Case-insensitive grep for "Inter" matches "interaction". Use word
   boundaries when checking for retired fonts.
+- An em dash hides as `&mdash;` (also `&#8212;`, `&#x2014;`) and a grep for
+  the character finds none of them. Found 15 Sep with 32 live on two pages
+  after months of clean sweeps. `check_style.py` now catches all four forms;
+  use it rather than a grep.
 - A Word lock file (`~$name.docx`) is not a document.
 - `outlook-send` cannot send from a Claude Code session. The sandbox
   refuses the call to the Make webhook before it runs, so nothing reaches
