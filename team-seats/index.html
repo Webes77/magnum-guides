@@ -208,6 +208,12 @@
     display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;
     font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink);}
   .quiz-head span{color:var(--mute);letter-spacing:.08em;font-size:10.5px;text-transform:none;}
+  /* the same reset as the one at the foot of the verdict, put where it is
+     reachable without scrolling the whole card on a phone */
+  .head-again{margin-left:auto;background:none;border:0;padding:0;cursor:pointer;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--coral-text);font-weight:500;border-bottom:2px solid var(--rust);}
+  .head-again:hover,.head-again:focus-visible{color:var(--ink);outline:none;}
 
   .steps-bar{display:flex;gap:5px;padding:16px 20px 14px;}
   .steps-bar i{flex:1;height:4px;background:var(--hair);}
@@ -289,7 +295,7 @@
     <p style="margin-bottom:22px">This is the decision most owners are actually stuck on, and it has nothing to do with which platform you pick. Four questions, about twenty seconds.</p>
 
     <div class="quiz">
-      <div class="quiz-head">Four questions <span>tap an answer, no typing</span></div>
+      <div class="quiz-head" id="quizhead">Four questions <span>tap an answer, no typing</span></div>
       <div class="steps-bar" id="bar" aria-hidden="true"></div>
       <div id="quizout" aria-live="polite"></div>
     </div>
@@ -549,6 +555,8 @@
 
   var out = document.getElementById('quizout');
   var bar = document.getElementById('bar');
+  var headEl = document.getElementById('quizhead');
+  var HEAD_ASK = 'Four questions <span>tap an answer, no typing</span>';
 
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -660,22 +668,30 @@
     h += '</div>' +
       '<div class="vnext"><p>If team plans are the right move, cost is nearly identical between Claude and ChatGPT. ' +
       '<a href="#cost">See the platform comparison below</a> for the difference that actually matters.</p>' +
-      '<button type="button" class="again" id="again">Start again</button></div>';
+      '<button type="button" class="again js-again" id="again">Start again</button></div>';
 
     out.innerHTML = h;
     drawBar(Q.length);
-    document.getElementById('again').addEventListener('click', function () {
-      answers = [null, null, null, null];
-      step = 0;
-      render();
-      document.getElementById('check').scrollIntoView({ block: 'start' });
-    });
+    headEl.innerHTML = 'Your answer <span>four questions, answered</span>' +
+      '<button type="button" class="head-again js-again">Start again</button>';
   }
+
+  function restart() {
+    answers = [null, null, null, null];
+    step = 0;
+    render();
+    document.getElementById('check').scrollIntoView({ block: 'start' });
+  }
+  /* delegated, so both resets work no matter which render put them there */
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList && e.target.classList.contains('js-again')) { restart(); }
+  });
 
   function render() {
     if (step >= Q.length) { verdict(); return; }
 
     drawBar(step);
+    headEl.innerHTML = HEAD_ASK;
     var q = Q[step], h = '<div class="qbody">' +
       '<p class="qnum">Question ' + (step + 1) + ' of ' + Q.length + '</p>' +
       '<p class="qtext">' + esc(q.q) + '</p>' +
