@@ -601,6 +601,48 @@ re-rendered when the tool changed because the old card advertised a
 calculator. Not a deck, so `tools/check-decks.js` does not cover it, though it
 was run and passed.
 
+Three things landed on 15 Sep after James read it back, each as its own
+commit at his instruction.
+
+The verdict opens by restating the answers. One sentence under the headline:
+"Based on a 6 to 10 person team with some turnover, mostly personal use, and
+nobody currently paying, here's what fits." Every phrase comes from the answer
+tapped rather than a paraphrase, so it introduces no wording the reader has
+not already seen. Each option carries a `recap` field for this, kept separate
+from `sum`, which the Band 3 and Band 4 summaries use, because the two slots
+need different grammar: "a stable team" reads correctly in "Between a stable
+team and regular client data" and wrongly in "a 2 to 5 person team with a
+stable team". All 81 recaps are distinct and well formed.
+
+A reset you can reach. One already sat on the verdict card, which was the part
+worth checking, but on a 390 by 844 phone it was 833px down an 883px block. The
+head bar carries the same control now: "Four questions" while asking, "Your
+answer" with Start again on the right once the verdict shows. Both run one
+`restart()`. The bug found doing it is the one to remember: the head element
+was held in a variable named `head` and `verdict()` declares a local `var head`
+for the headline string, so the local shadowed the element and the bar silently
+never updated. It is `headEl` now, and the test caught it only because it
+asserted the control exists and is visible rather than trusting the code to
+have run.
+
+And the page took the index-entry headings from `4acf4ac` the same day. It was
+built on the old 12px mono `.label` and carried both faults that pass found
+elsewhere: the masthead breadcrumb reused `.label`, and every section put an
+h2 directly under it. So `--coral-ghost`, `.crumb` for the breadcrumb, three
+numbered index entries, and `.label + h2` stepping down to a deck line, taken
+from `brand/magnum-house-style/reference/tokens.css` rather than copied off a
+peer. The six accordion headings are deliberately left unnumbered: they are
+already the page's index, and two numbered indexes on one page is the busyness
+the change exists to remove.
+
+One thing James has not settled. The Band 3 summary names two factors the new
+recap listed one line above it ("Based on a 6 to 10 person team with some
+turnover, a mix of personal and client work..." then "Between a mix of personal
+and client work and some turnover..."). That is real repetition and it arrived
+with the recap, not before it. The fix is to drop the factor names from the
+Band 3 summary and let the recap carry them, but the summary copy is his, so
+it waits.
+
 Two small things to know. The page carries one piece of prose that is not
 James's: the masthead standfirst, which is page furniture the guide file did
 not have. And two gaps in the spec were filled rather than queried, both
@@ -1077,14 +1119,17 @@ order of value:
    given in chat, and nothing should be deleted, only moved to a dated
    review folder.
 
-1. James has not yet looked at the Manus Bridge walkthrough live, on a
-   phone or a laptop, nor the team seats guide. Both are the next thing.
-   On team seats, the tool and the accordions are the parts to check on a
-   phone: four taps to a verdict, then the six headings as the index.
-   Verified locally at 1440, 1280, 820 and 390 only. One open decision is
-   his: team size caps at +2 in the scoring, so a stable fifteen-person team
-   doing non-sensitive work lands on a Personal lean. See the weighting note
-   above; the fix is one number.
+1. James has not yet looked at the Manus Bridge walkthrough live, nor the
+   team seats guide, which went to `main` on 15 Sep. On team seats the tool
+   is the part to check on a phone: four taps to a verdict, the recap line,
+   and the reset in the head bar. Verified locally at 1440, 1280, 820 and 390
+   only. Two things wait on him there, both in the team seats block above:
+   whether the Band 3 summary should stop repeating the recap, and whether to
+   log which band each run lands on. On the second, there is no logging
+   mechanism in this repo and cannot be one without a third-party service;
+   band counts also cannot answer the question asked of them, because a
+   distribution with no accuracy signal reads the same whether the weights
+   are wrong or most small businesses genuinely are borderline.
 
 2. Done for the Field Note routine (`trig_016pPJPsm8D3yUZs81wquraU`), 15 Sep:
    repository and connectors both attached, confirmed by James, who asked not
