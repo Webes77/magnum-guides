@@ -1,12 +1,18 @@
-/* Magnum AI house style, 9 September 2026. White paper, navy, coral.
+/* Magnum AI house style, 14 September 2026. White paper, navy, coral.
    Paste at the top of any new page. --rust holds coral and --olive holds
-   slate; the names stayed so older files did not break. */
+   slate; the names stayed so older files did not break.
+
+   Two coral values, and the difference matters. --rust #EF4029 is 3.73:1 on
+   paper: display type, fills, borders and figures only. --coral-text #C63A2A
+   is 5.02:1 and carries anything under 18px. Never paint small text with
+   --rust. Every page on the members area was audited against this on 14 Sep
+   and the count of failures is zero; keep it there. */
 
 :root{
   --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
   --body:#2B2823; --rust:#EF4029;
   --coral-text:#C63A2A;   /* small text: labels, meta, links. 5.02:1 on paper */ --coral-bright:#FF6F5E; --tint:#FBE1D8;
-  --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+  --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;   /* 5.97:1. #7A7A7A was 4.14:1 and failed */
   --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
@@ -32,7 +38,7 @@ a.card:hover,.card.is-link:hover{border-color:var(--rust)}
   color:var(--on-navy)}
 
 .label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:12px}
+  text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;gap:12px}
 .label::after{content:"";flex:1;height:1px;background:var(--ink)}
 
 .tag{background:var(--tint);color:var(--ink);font-family:var(--mono);font-size:11px;

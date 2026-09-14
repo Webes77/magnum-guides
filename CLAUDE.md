@@ -557,6 +557,17 @@ retired typeface. Both now carry the house faces. This is the exact trap the
 gotcha below warns about: a case-insensitive grep for "Inter" matches
 "interaction", "interface" and "Interview", which is how they survived.
 
+The paste-ready sources were carrying the same fault they exist to prevent.
+`brand/magnum-house-style/reference/tokens.css`, the two `paste-block.md`
+copies and `brand/house-style-block.md` all set `.label` at 12px in
+`var(--rust)`, and all shipped `--mute:#7A7A7A` (4.14:1), the value the front
+page moved off on 11 Sep. So anything built from the canonical block
+inherited two contrast failures on day one. Fixed 14 Sep in all five files,
+and the header comment now states the two-coral rule rather than leaving it
+to be rediscovered. This matters more than it did: James connected Claude
+Design to GitHub the same day, so these files stop being a zip he remembers
+to re-upload and become what design work actually reads.
+
 `prompts/index.html` also used `var(--coral-text)` without ever defining it,
 from 13 Sep when the brief block landed. Undefined, so those labels rendered
 in plain ink rather than coral. Defining the token everywhere fixed it.
