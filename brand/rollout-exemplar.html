@@ -26,7 +26,7 @@
   --navy:#1F2A37;
   --coral-bright:#FF6F5E;
   --tint:#FBE1D8;--body:#2B2823;
-  --rust:#DE4A3C;--olive:#5B6B7A;--char:#3A3630;--mute:#7A7A7A;
+  --rust:#EF4029; --coral-text:#C63A2A;--olive:#5B6B7A;--char:#3A3630;--mute:#63615C;
   --grid:rgba(120,90,60,.13);
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
@@ -43,7 +43,7 @@ body{font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--body);
 
 #progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--rust);z-index:100}
 
-.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:24px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);margin-bottom:24px}
 .eyebrow::after{content:"";flex:1;height:2px;background:var(--ink);max-width:380px}
 
 nav{background:var(--ink);padding:20px 0}
@@ -54,7 +54,7 @@ nav .for{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transfo
 nav .clogo{height:24px;display:block}
 
 .hero{background:var(--navy);color:#F4F1EA;padding:64px 0 76px;border-bottom:4px solid var(--coral-bright)}
-.hero .eyebrow{color:var(--rust)}
+.hero .eyebrow{color:var(--coral-text)}
 .hero .eyebrow::after{background:var(--rust);opacity:.5}
 .hero h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(46px,8vw,92px);line-height:.9;letter-spacing:-.01em}
 .hero h1 em{font-style:normal;color:var(--rust);display:block}
@@ -96,13 +96,13 @@ p.body:last-child{margin-bottom:0}
 .stage.open .stage-body{max-height:620px}
 .stage-inner{padding:0 28px 26px 84px}
 .stage-row{padding:14px 0;border-top:1px solid rgba(30,27,23,.2)}
-.stage-row .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:5px}
+.stage-row .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);margin-bottom:5px}
 .stage-row .v{font-size:15.5px;color:var(--char);line-height:1.6}
 @media(max-width:640px){.stage-inner{padding-left:28px}}
 
 .agenda{display:grid;gap:16px;margin-top:34px}
 .ag{background:var(--paper-2);border:2px solid var(--ink);padding:26px 28px}
-.ag .when{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.ag .when{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);margin-bottom:8px}
 .ag h3{font-family:var(--display);font-weight:600;font-size:21px;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
 .ag p{font-size:15.5px;color:var(--char);line-height:1.6}
 
@@ -111,15 +111,15 @@ p.body:last-child{margin-bottom:0}
 .confirm p{font-size:16px;color:#C8CDD3;max-width:64ch;margin-bottom:10px;line-height:1.7}
 .confirm .qs{margin-top:22px;padding-top:22px;border-top:2px solid rgba(244,241,234,.25)}
 .confirm .q{font-size:16px;color:var(--paper);margin-bottom:10px;display:flex;gap:12px}
-.confirm .q span{font-family:var(--display);font-weight:700;color:var(--rust);font-size:18px;flex:0 0 auto}
+.confirm .q span{font-family:var(--display);font-weight:700;color:var(--coral-text);font-size:18px;flex:0 0 auto}
 
 .costs{margin-top:34px}
 .cost-row{display:flex;justify-content:space-between;align-items:baseline;gap:28px;padding:20px 0;border-bottom:1px solid rgba(30,27,23,.2)}
 .cost-row .cn{font-family:var(--display);font-weight:600;font-size:19px;text-transform:uppercase;color:var(--ink)}
 .cost-row .cd{font-size:14px;color:var(--mute);margin-top:4px}
 .cost-row .ca{font-family:var(--display);font-weight:600;font-size:22px;color:var(--ink);white-space:nowrap}
-.cost-row.fee .cn,.cost-row.fee .ca{color:var(--rust)}
-.cost-divider{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);padding-top:26px;margin-bottom:-6px}
+.cost-row.fee .cn,.cost-row.fee .ca{color:var(--coral-text)}
+.cost-divider{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral-text);padding-top:26px;margin-bottom:-6px}
 .cost-foot{font-size:14px;color:var(--mute);margin-top:22px;line-height:1.7;max-width:70ch}
 
 footer{background:var(--navy);color:#8E97A3;padding:44px 0;text-align:center;margin-top:20px}

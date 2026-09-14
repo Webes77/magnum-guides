@@ -30,8 +30,8 @@
 <style>
   :root{
     --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
-    --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
-    --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+    --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
     --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
     --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
     --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
@@ -69,7 +69,7 @@
   section{margin:0 0 56px;scroll-margin-top:24px;}
   .label{
     font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.20em;
-    color:var(--rust);margin:0 0 16px;display:flex;align-items:center;gap:14px;
+    color:var(--coral-text);margin:0 0 16px;display:flex;align-items:center;gap:14px;
   }
   .label::after{content:"";flex:1;height:1px;background:var(--ink);}
   h2{
@@ -101,7 +101,7 @@
   /* stages */
   .stage{border-top:2px solid var(--ink);padding-top:22px;margin-top:34px;}
   .stage-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;}
-  .stage-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--rust);}
+  .stage-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--coral-text);}
   .stage-time{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-left:auto;white-space:nowrap;}
 
   .prompt{position:relative;margin:16px 0 18px;}
@@ -124,7 +124,7 @@
     padding:12px 16px;margin:0 0 6px;max-width:64ch;
   }
   .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
-  .say strong{color:var(--rust);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+  .say strong{color:var(--coral-text);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
 
   .tablewrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);}
   table{border-collapse:collapse;width:100%;min-width:520px;}
@@ -184,7 +184,7 @@
           <rect x="368" y="46" width="142" height="60"/><rect x="546" y="46" width="142" height="60"/>
           <rect x="724" y="46" width="142" height="60"/>
         </g>
-        <g fill="#7A7A7A" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.6">
+        <g fill="#63615C" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing="1.6">
           <text x="12" y="34">01</text><text x="190" y="34">02</text><text x="368" y="34">03</text>
           <text x="546" y="34">04</text><text x="724" y="34">05</text>
         </g>
@@ -192,7 +192,7 @@
           <text x="34" y="76">BRIEF</text><text x="212" y="76">SEND</text><text x="390" y="76">BUILD</text>
           <text x="568" y="76">READ</text><text x="746" y="76">REVISE</text>
         </g>
-        <g fill="#7A7A7A" font-family="'IBM Plex Sans',sans-serif" font-size="12.5">
+        <g fill="#63615C" font-family="'IBM Plex Sans',sans-serif" font-size="12.5">
           <text x="34" y="95">in Claude</text><text x="212" y="95">to Manus</text><text x="390" y="95">Manus works</text>
           <text x="568" y="95">back in Claude</text><text x="746" y="95">you approve</text>
         </g>
@@ -202,9 +202,9 @@
         <g fill="#1E1B17">
           <path d="M184 76 l-9 -5 v10 z"/><path d="M362 76 l-9 -5 v10 z"/><path d="M540 76 l-9 -5 v10 z"/><path d="M718 76 l-9 -5 v10 z"/>
         </g>
-        <path d="M795 106 L795 176 L439 176 L439 112" fill="none" stroke="#DE4A3C" stroke-width="3" stroke-dasharray="9 7"/>
-        <path d="M439 112 l-6 11 h12 z" fill="#DE4A3C"/>
-        <text x="459" y="200" fill="#DE4A3C" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="2.2">SAME JOB, FULL CONTEXT KEPT</text>
+        <path d="M795 106 L795 176 L439 176 L439 112" fill="none" stroke="#EF4029" stroke-width="3" stroke-dasharray="9 7"/>
+        <path d="M439 112 l-6 11 h12 z" fill="#EF4029"/>
+        <text x="459" y="200" fill="#EF4029" font-family="'IBM Plex Mono',monospace" font-size="11.5" letter-spacing="2.2">SAME JOB, FULL CONTEXT KEPT</text>
       </svg>
       <figcaption>The red line is the whole product. A revision goes back into the job that built it.</figcaption>
     </figure>

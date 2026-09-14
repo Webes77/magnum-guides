@@ -32,9 +32,9 @@
   --coral-bright:#FF6F5E;
   --tint:#FBE1D8;
   --body:#2B2823;
-  --rust:#DE4A3C;
+  --rust:#EF4029; --coral-text:#C63A2A;
   --char:#3A3630;
-  --mute:#7A7A7A;
+  --mute:#63615C;
   --grid:rgba(120,90,60,.13);
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
@@ -60,7 +60,7 @@ main{padding:34px 0 20px}
 .back{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-bottom:34px}
 .back:hover{color:var(--rust)}
 section{margin-bottom:54px}
-.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;gap:14px;margin-bottom:8px}
 .label::after{content:"";flex:1;height:2px;background:var(--ink)}
 .note{font-size:15px;color:var(--mute);max-width:64ch;margin-bottom:24px}
 
@@ -75,11 +75,11 @@ section{margin-bottom:54px}
 .card:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
 .card img{display:block;width:100%;height:auto;border-bottom:2px solid var(--ink);background:var(--paper)}
 .card .inner{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
-.card .date{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.card .date{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);margin-bottom:8px}
 .card h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.12;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
 .card .meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
 .card p{font-size:15.5px;color:var(--char);line-height:1.55;margin:0}
-.card .go{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-top:auto;padding-top:18px}
+.card .go{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);margin-top:auto;padding-top:18px}
 
 .about{background:var(--paper-2);border:2px solid var(--ink);padding:28px 30px;margin-bottom:46px;max-width:760px}
 .about h2{font-family:var(--display);font-weight:600;font-size:24px;text-transform:uppercase;color:var(--ink);margin-bottom:10px}

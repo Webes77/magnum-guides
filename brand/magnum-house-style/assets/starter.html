@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en-AU" style="background:#FBFBF9">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Magnum AI · Starter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Magnum AI house style, 14 September 2026. White paper, navy, coral.
+   --rust holds coral and --olive holds slate; the names stayed so older
+   files did not break. --rust #EF4029 is 3.73:1 on paper: display type,
+   fills, borders and figures only. --coral-text #C63A2A is 5.02:1 and
+   carries anything under 18px. For a published artifact, drop the doctype,
+   html, head and body tags and keep everything from <style> down. */
+:root{
+  --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+  --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E;
+  --tint:#FBE1D8; --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
+  --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+  --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'Courier New',monospace;
+  color-scheme:light;
+}
+html,body{background:#FBFBF9 !important;color-scheme:light}
+body{color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;margin:0}
+
+h1,h2,h3{font-family:var(--display);font-weight:600;text-transform:uppercase;
+  line-height:1;color:var(--ink);margin:0 0 14px;letter-spacing:.01em}
+h1{font-size:clamp(40px,6vw,64px)}
+h2{font-size:30px}
+h3{font-size:20px;margin-bottom:8px}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--rust)}
+p{margin:0 0 12px}
+a{color:var(--coral-text)}
+
+.masthead{background:var(--navy);color:var(--on-navy);
+  border-bottom:4px solid var(--coral-bright);padding:44px 30px 38px}
+.masthead .inner{max-width:1040px;margin:0 auto}
+.masthead h1{color:var(--on-navy)}
+.masthead h1 em{color:var(--coral-bright)}
+.masthead .label{color:var(--coral-bright)}
+.masthead .label::after{background:var(--on-navy-mute)}
+.masthead .sub{color:var(--on-navy-mute);margin:0}
+
+.wrap{max-width:1040px;margin:0 auto;padding:40px 30px}
+section{margin:0 0 44px}
+
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;
+  gap:12px;margin:0 0 16px}
+.label::after{content:"";flex:1;height:1px;background:var(--ink)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 26px;
+  font-size:15.5px;color:var(--char)}
+.card p:last-child{margin:0}
+a.card{display:block;text-decoration:none;color:var(--char)}
+a.card:hover,.card.is-link:hover{border-color:var(--coral-text)}
+
+.plate{background:var(--navy);border:2px solid var(--ink);padding:26px;
+  color:var(--on-navy);margin:0}
+.plate svg{display:block;width:100%;height:auto}
+.plate figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--on-navy-mute);margin-top:14px}
+
+.tag{background:var(--tint);color:var(--ink);font-family:var(--mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;display:inline-block}
+.badge{background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;padding:3px 8px;display:inline-block}
+.note{color:var(--mute);font-size:14px}
+.tick{color:var(--olive)}
+.num{font-family:var(--display);font-weight:700;font-size:72px;line-height:.9;color:var(--rust)}
+
+footer{background:var(--navy);color:var(--on-navy-mute);font-family:var(--mono);
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:22px 30px;
+  border-top:4px solid var(--coral-bright)}
+
+@media print{
+  @page{size:A4;margin:16mm 14mm 18mm}
+  html,body{background:#FBFBF9}
+  .masthead,.plate,footer,.badge{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,figure{break-inside:avoid}
+  h1,h2,h3{break-after:avoid}
+}
+</style>
+</head>
+<body style="background:#FBFBF9">
+
+<header class="masthead">
+  <div class="inner">
+    <div class="label">Magnum AI · Foundations</div>
+    <h1>Build the <em>system</em>,<br>not the prompt</h1>
+    <p class="sub">Session summary · 9 September 2026</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="label">What we covered</div>
+    <div class="grid">
+      <article class="card">
+        <h3>Role</h3>
+        <p>Who the model is for this job, stated before anything else.</p>
+      </article>
+      <article class="card">
+        <h3>Context</h3>
+        <p>What it needs to know about the business, the customer and the moment.</p>
+      </article>
+      <article class="card">
+        <h3>Constraints</h3>
+        <p>What it must not do, and the limits it works inside.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">The workflow</div>
+    <figure class="plate">
+      <svg viewBox="0 0 900 220" role="img" aria-label="Three-step workflow">
+        <g fill="none" stroke="#F4F1EA" stroke-width="2">
+          <rect x="30" y="60" width="220" height="100"/>
+          <rect x="340" y="60" width="220" height="100"/>
+          <rect x="650" y="60" width="220" height="100"/>
+        </g>
+        <g stroke="#5B6B7A" stroke-width="2">
+          <line x1="250" y1="110" x2="340" y2="110"/>
+          <line x1="560" y1="110" x2="650" y2="110"/>
+        </g>
+        <rect x="30" y="160" width="220" height="6" fill="#FF6F5E"/>
+        <g fill="#F4F1EA" font-family="IBM Plex Mono, Courier New, monospace" font-size="14" letter-spacing="2">
+          <text x="140" y="116" text-anchor="middle">INPUT</text>
+          <text x="450" y="116" text-anchor="middle">SYSTEM</text>
+          <text x="760" y="116" text-anchor="middle">OUTPUT</text>
+        </g>
+      </svg>
+      <figcaption>Fig. 1 · Where the work happens</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="label">Next step</div>
+    <p>Foundations Session, 90 minutes. Price quoted plus GST. <span class="tag">Booked</span></p>
+    <p class="note">Confidential to the client. Not for redistribution.</p>
+  </section>
+
+</main>
+
+<footer>magnumai.com.au · Gold Coast · prices plus GST</footer>
+
+</body>
+</html>

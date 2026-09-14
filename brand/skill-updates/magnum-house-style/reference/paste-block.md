@@ -21,7 +21,9 @@ Colours:
 - Navy `#1F2A37`: the masthead band, footers, figure plates, cover slides,
   dark cards. This is where the weight is. Every screen has one navy block.
 - Ink `#1E1B17`: text, borders, headings.
-- Coral `#DE4A3C`: the one accent, for anything you read. One coral word in
+- Coral `#EF4029`: the one accent, for display type, fills and figures.
+  Under 18px use `#C63A2A`, because `#EF4029` is 3.73:1 on paper and fails.
+  One coral word in
   a heading, labels, links, numbers.
 - Coral bright `#FF6F5E`: fills only. Badges, bars, the stripe inside a
   figure, the rule under the navy band. Never small text on white.
@@ -29,7 +31,7 @@ Colours:
 - Slate `#5B6B7A`: ticks, secondary lines, figure detail. Slate never
   carries text.
 - Body `#2B2823` for running text, Char `#3A3630` inside cards, Mute
-  `#7A7A7A` for notes. On navy, text is `#F4F1EA` and muted text `#C8CDD3`.
+  `#63615C` for notes. On navy, text is `#F4F1EA` and muted text `#C8CDD3`.
 
 Type, three faces, one job each, never a fourth:
 
@@ -61,8 +63,8 @@ CSS tokens:
 ```css
 :root{
   --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
-  --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
-  --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+  --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E;
+  --tint:#FBE1D8; --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -72,7 +74,7 @@ body{background:var(--paper);color:var(--body);font-family:var(--sans)}
 .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 26px}
 .card:hover{border-color:var(--rust)}
 .label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--rust)}
+  text-transform:uppercase;color:var(--coral-text)}
 .tag{background:var(--tint);color:var(--ink);font-family:var(--mono);
   font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px}
 .badge{background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink)}

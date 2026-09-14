@@ -61,6 +61,10 @@ body{
 .masthead h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(52px,9vw,104px);line-height:.9;letter-spacing:-.01em;margin-top:26px;color:var(--paper)}
 .masthead h1 em{font-style:normal;color:var(--rust)}
 .masthead p{font-size:18px;color:#C8CDD3;max-width:46ch;margin-top:20px;line-height:1.55}
+.mast-cta{display:inline-block;margin-top:26px;background:var(--coral-bright);color:var(--ink);
+  font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:.02em;text-transform:uppercase;
+  text-decoration:none;padding:13px 26px;border:2px solid var(--coral-bright)}
+.mast-cta:hover{background:transparent;color:var(--coral-bright)}
 
 /* SECTIONS */
 main.wrap{padding-top:56px;padding-bottom:20px}
@@ -148,10 +152,12 @@ footer b{color:var(--paper);font-weight:500}
   .grid,.grid.three,.grid.four,.duo{grid-template-columns:1fr}
   .start{margin:0 0 44px}
   .start .grid{gap:12px}
-  .step{flex-direction:row;align-items:baseline;gap:14px;min-height:0;padding:14px 18px}
-  .step .n{font-size:26px}
-  .step h3{margin-top:0;font-size:19px}
-  .step p,.step .meta{display:none}
+  .step{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:3px;
+    align-items:baseline;min-height:0;padding:14px 18px}
+  .step .n{font-size:26px;grid-column:1;grid-row:1}
+  .step h3{margin-top:0;font-size:19px;grid-column:2;grid-row:1}
+  .step p{grid-column:2;grid-row:2;font-size:14px;margin-top:0}
+  .step .meta{display:none}
   .card.wide{flex-direction:column}
   .card.wide img{width:100%;border-right:0;border-bottom:2px solid var(--ink)}
   .card.wide .inner{padding:24px 26px 26px}
@@ -211,6 +217,7 @@ section,.start{scroll-margin-top:64px}
   .subnav-list a{font-family:var(--mono);font-size:12px;letter-spacing:.18em;
     text-transform:uppercase;color:#C8CDD3;text-decoration:none;
     padding:12px 0;border-top:1px solid rgba(244,241,234,.18)}
+  .subnav-list a.is-current{color:var(--coral-bright)}
   section,.start{scroll-margin-top:56px}
 }
 
@@ -244,6 +251,7 @@ main.wrap::before{
       <div class="mast-text">
         <h1>Members<br><em>Area</em></h1>
         <p>Start with the courses, in order. Take your prompts from the shelf. Read the Field Note when it lands.</p>
+        <a class="mast-cta" href="ai-foundations/">Start course one &rarr;</a>
       </div>
       <figure class="levers">
         <svg viewBox="0 0 470 392" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -290,7 +298,7 @@ main.wrap::before{
       <a href="#industry">By industry</a>
     </div>
     <details class="subnav-drop">
-      <summary><span class="here">Courses</span></summary>
+      <summary>Jump to a section</summary>
       <div class="subnav-list">
         <a href="#sessions">Courses</a>
         <a href="#prompts">Prompt Shelf</a>
@@ -310,27 +318,27 @@ main.wrap::before{
     <div class="grid four">
       <a class="step" href="bots/">
         <span class="n">00</span>
-        <h3>Learn the words</h3>
-        <p>Chatbots, agents and bots. What they are, what is out there, and one built in Claude.</p>
+        <h3>Chatbots, Agents and Bots</h3>
+        <p>Learn the words. What they are, what is out there, and one built in Claude.</p>
         <span class="meta">Reference &middot; Before course one</span>
       </a>
       <a class="step" href="ai-foundations/">
         <span class="n">01</span>
-        <h3>How to talk to it</h3>
-        <p>What it is, the 6 Levers, and how to make it honest. Nothing to set up.</p>
-        <span class="meta">Course one &middot; AI Foundations</span>
+        <h3>AI Foundations</h3>
+        <p>How to talk to it. What it is, the 6 Levers, and how to make it honest. Nothing to set up.</p>
+        <span class="meta">Course one</span>
       </a>
       <a class="step" href="make-claude-yours/">
         <span class="n">02</span>
-        <h3>Teach it your business</h3>
-        <p>Your account, your instructions, your first project and skill.</p>
-        <span class="meta">Course two &middot; Make Claude Yours</span>
+        <h3>Make Claude Yours</h3>
+        <p>Teach it your business. Your account, your instructions, your first project and skill.</p>
+        <span class="meta">Course two</span>
       </a>
       <a class="step" href="runs-without-you/">
         <span class="n">03</span>
-        <h3>Put one job on a timer</h3>
-        <p>Scheduled tasks that run with the laptop shut.</p>
-        <span class="meta">Course three &middot; Work That Runs Without You</span>
+        <h3>Work That Runs Without You</h3>
+        <p>Put one job on a timer. Scheduled tasks that run with the laptop shut.</p>
+        <span class="meta">Course three</span>
       </a>
     </div>
   </div>
@@ -344,9 +352,9 @@ main.wrap::before{
       <a class="card thumb" href="ai-foundations/">
         <img src="assets/thumbnails/ai-foundations.jpg" alt="AI Foundations, a Magnum AI course" width="1200" height="630" loading="lazy">
         <div class="inner">
-          <h3>Stop prompting. Start talking.</h3>
-          <div class="meta">Course one &middot; AI Foundations</div>
-          <p>How it actually works, the 6 Levers, and how to make it tell you the truth instead of agreeing with you. Nothing to set up.</p>
+          <h3>AI Foundations</h3>
+          <div class="meta">Course one &middot; Nothing to set up</div>
+          <p>Stop prompting. Start talking. How it actually works, the 6 Levers, and how to make it tell you the truth instead of agreeing with you.</p>
           <span class="go">Open the course &rarr;</span>
         </div>
       </a>
@@ -364,15 +372,14 @@ main.wrap::before{
       <a class="card thumb" href="runs-without-you/">
         <img src="assets/thumbnails/runs-without-you.jpg" alt="Work That Runs Without You, a Magnum AI course" width="1200" height="630" loading="lazy">
         <div class="inner">
-          <h3>Set it once. It runs without you.</h3>
-          <div class="meta">Course three &middot; Work That Runs Without You</div>
-          <p>Scheduled tasks in Cowork. Which jobs earn a timer, how to brief one that cannot ask you a question at 6am, and how to catch one going quietly bad.</p>
+          <h3>Work That Runs Without You</h3>
+          <div class="meta">Course three &middot; Scheduled tasks</div>
+          <p>Set it once and it runs without you. Which jobs earn a timer, how to brief one that cannot ask you a question at 6am, and how to catch one going quietly bad.</p>
           <span class="go">Open the course &rarr;</span>
         </div>
       </a>
 
     </div>
-    <p class="ref">Before course one, or any time the words confuse you: <a href="bots/">Chatbots, Agents and Bots &rarr;</a></p>
     <p class="ref">Reference for what course two sets up: <a href="fine-tune/">Fine-Tune the AI You Already Use &rarr;</a></p>
     <p class="ref">What these tools keep, and who can read it: <a href="privacy/">AI Privacy: What Is Kept, and Who Can See It &rarr;</a></p>
     <p class="ref">Before you put staff on paid seats: <a href="team-seats/">Should You Move Your Team onto Paid Seats? &rarr;</a></p>
@@ -554,9 +561,10 @@ main.wrap::before{
 // Marks the section you are in, in the sticky bar.
 (function () {
   var ids = ['sessions','prompts','week','manuals','industry'];
-  var links = {}, here = document.querySelector('.subnav-drop .here');
-  document.querySelectorAll('.subnav-row a').forEach(function (a) {
-    links[a.getAttribute('href').slice(1)] = a;
+  var links = {};
+  document.querySelectorAll('.subnav-row a, .subnav-list a').forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    (links[id] = links[id] || []).push(a);
   });
   var seen = {};
   var io = new IntersectionObserver(function (entries) {
@@ -564,8 +572,9 @@ main.wrap::before{
     var best = null, bestV = 0;
     ids.forEach(function (id) { if ((seen[id] || 0) > bestV) { bestV = seen[id]; best = id; } });
     if (!best) return;
-    Object.keys(links).forEach(function (id) { links[id].classList.toggle('is-current', id === best); });
-    if (here && links[best]) here.textContent = links[best].textContent;
+    Object.keys(links).forEach(function (id) {
+      links[id].forEach(function (a) { a.classList.toggle('is-current', id === best); });
+    });
   }, { rootMargin: '-64px 0px -55% 0px', threshold: [0, .25, .5, 1] });
   ids.forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   document.querySelectorAll('.subnav-list a').forEach(function (a) {

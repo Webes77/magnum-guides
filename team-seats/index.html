@@ -29,14 +29,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 
-  /* House style, 9 September 2026. Tokens are the same block as every other
+  /* House style, 14 September 2026. Tokens are the same block as every other
      page here; the canonical copy is brand/magnum-house-style/reference/tokens.css.
      --rust holds coral and --olive holds slate; the names stayed so older
-     files did not break. */
+     files did not break. Two coral values: --rust #EF4029 is 3.73:1 and is
+     for display type, fills, borders and figures only; --coral-text #C63A2A
+     is 5.02:1 and carries anything under 18px. */
   :root{
     --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
-    --body:#2B2823; --rust:#DE4A3C; --coral-bright:#FF6F5E; --tint:#FBE1D8;
-    --olive:#5B6B7A; --char:#3A3630; --mute:#7A7A7A;
+    --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
     --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
     --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
     --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
@@ -70,7 +72,7 @@
   section{margin:0 0 52px;scroll-margin-top:24px;}
   .label{
     font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.20em;
-    color:var(--rust);margin:0 0 16px;display:flex;align-items:center;gap:14px;
+    color:var(--coral-text);margin:0 0 16px;display:flex;align-items:center;gap:14px;
   }
   .label::after{content:"";flex:1;height:1px;background:var(--ink);}
   h2{
@@ -102,7 +104,7 @@
     padding:12px 16px;margin:18px 0 6px;max-width:64ch;
   }
   .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
-  .say strong{color:var(--rust);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+  .say strong{color:var(--coral-text);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
 
   footer{background:var(--navy);color:var(--on-navy-mute);margin-top:60px;padding:22px 20px;
     font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
@@ -158,7 +160,7 @@
   .points>li::before{position:absolute;left:0;top:1px;font-family:var(--mono);font-size:13px;font-weight:500;}
   .points>li b{color:var(--ink);font-weight:600;}
   .gain>li::before{content:"\2713";color:var(--olive);}
-  .cost>li::before{content:"\2715";color:var(--rust);}
+  .cost>li::before{content:"\2715";color:var(--coral-text);}
 
   /* the two setup columns */
   .setup .card h3{margin-bottom:14px;}
@@ -167,7 +169,7 @@
     border-bottom:1px solid rgba(30,27,23,.14);font-size:15.5px;color:var(--char);line-height:1.5;}
   .setup ol>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
   .setup ol>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;
-    font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--rust);}
+    font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--coral-text);}
 
   /* the checks in Before you decide */
   .checks{margin:0;padding:0;}
@@ -199,7 +201,7 @@
 
   .qbody{padding:0 20px 22px;}
   .qnum{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
-    color:var(--rust);margin:0 0 10px;font-weight:500;}
+    color:var(--coral-text);margin:0 0 10px;font-weight:500;}
   .qtext{font-family:var(--display);font-weight:600;text-transform:uppercase;
     font-size:clamp(19px,2.8vw,25px);line-height:1.12;color:var(--ink);margin:0 0 18px;max-width:26ch;text-wrap:balance;}
   .opts{display:flex;flex-direction:column;gap:10px;}
@@ -210,10 +212,10 @@
     transition:border-color .12s ease,background .12s ease,color .12s ease;
   }
   .opt:hover{border-color:var(--rust);background:var(--paper-2);color:var(--ink);}
-  .opt:focus-visible{outline:none;border-color:var(--rust);box-shadow:inset 0 0 0 2px var(--tint);}
+  .opt:focus-visible{outline:2px solid var(--rust);outline-offset:-5px;}
   .qback{background:none;border:0;padding:12px 0 0;cursor:pointer;
     font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);}
-  .qback:hover,.qback:focus-visible{color:var(--rust);outline:none;}
+  .qback:hover,.qback:focus-visible{color:var(--coral-text);outline:none;}
 
   /* the verdict, on the navy plate used for emphasis elsewhere on the page */
   .verdict{background:var(--navy);color:var(--on-navy);padding:24px 22px 26px;}
@@ -233,10 +235,10 @@
     border-top:1px solid rgba(244,241,234,.28);padding-top:14px;}
   .vnext{border-top:2px solid var(--ink);background:var(--paper);padding:16px 20px 18px;}
   .vnext p{font-size:15px;line-height:1.5;color:var(--char);margin:0;max-width:62ch;}
-  .vnext a{color:var(--rust);font-weight:600;}
+  .vnext a{color:var(--coral-text);font-weight:600;}
   .again{background:none;border:0;padding:12px 0 0;cursor:pointer;
     font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);}
-  .again:hover,.again:focus-visible{color:var(--rust);outline:none;}
+  .again:hover,.again:focus-visible{color:var(--coral-text);outline:none;}
 
   @media (max-width:640px){
     .worked{grid-template-columns:1fr;}

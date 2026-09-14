@@ -50,10 +50,13 @@ is the enforcement skill; `brand/house-style-block.md` is the paste-ready
 version for other skills. Since 9 Sep: paper `#FBFBF9` (flat, no
 texture), white `#FFFFFF` cards with a 2px ink border and no shadow, navy
 `#1F2A37` for the masthead band, footers, figure plates and dark cards,
-ink `#1E1B17`, coral `#DE4A3C` as the one accent for anything you read,
-bright coral `#FF6F5E` for fills on navy and badges only, coral tint
-`#FBE1D8` for tags, slate `#5B6B7A` for ticks and figure detail. The CSS
-token names did not change: `--rust` holds coral, `--olive` holds slate.
+ink `#1E1B17`, coral `#EF4029` (since 14 Sep, was `#DE4A3C`) as the one
+accent for display type, fills, borders and figures, deep coral `#C63A2A`
+for any coral text under 18px, bright coral `#FF6F5E` for fills on navy and
+badges only, coral tint `#FBE1D8` for tags, slate `#5B6B7A` for ticks and
+figure detail, mute `#63615C` for notes and secondary lines (since 15 Sep,
+was `#7A7A7A` at 4.14:1). The CSS token names did not change: `--rust`
+holds coral, `--olive` holds slate.
 Oswald for display, IBM Plex Sans for body, IBM Plex Mono for labels and
 prompts. Retired: black and gold, and the beige and rust system (paper
 `#EEE6D3`, rust `#B8452A`, olive `#6C7A3F`, grid texture, offset
@@ -628,13 +631,51 @@ retired on 9 Sep stays retired. The copy is neutral for a public reader:
 courses rather than sessions, and no line assuming the reader sat in a
 room. The `#sessions` anchor is unchanged.
 
-`--rust` on the front page is now `#EF4029`, a hotter coral, used only on
-display type (the headline accent and the 00 to 03 numbers). Every other
-page still holds `#DE4A3C`. That is a deliberate split, not an oversight:
-James asked for more neon, neon cannot carry small text on white (`#FF6F5E`
-is 2.64:1 on paper), and taking the hotter value site-wide is the same
-sweep as 9 Sep across every page, all four decks, the shelf, the cards and
-the brand page. It waits for James to say go.
+`--rust` is `#EF4029` everywhere since 14 Sep. James said go, and the sweep
+ran across 34 HTML files, ten house-style docs and skill files, and all
+fourteen share cards, re-rendered with the fonts inlined.
+
+The sweep carried a second change it could not do without. `#EF4029` is
+3.73:1 on paper, so it fails AA for normal text. So did the coral it
+replaced: `#DE4A3C` was 3.94:1, also under the 4.5 bar, which means the site
+had this fault before the hotter value arrived and the front page was the
+only page already fixed. Every page now carries both tokens, the front
+page's pattern taken site-wide: `--rust` `#EF4029` for display type, fills,
+borders and figures, and `--coral-text` `#C63A2A` (5.02:1) for anything
+small enough to read. Which rules needed which was measured in the browser,
+not guessed: an audit walks every element on fifteen pages, computes the
+contrast against its real painted background, and reports failures by
+selector. It went 80 failures to zero on coral, and zero is the number to
+keep. Corrected 15 Sep: that audit was scoped to coral and did not catch
+`--mute`, so "zero failures" was overstated on the day. See the grey sweep
+below.
+
+Two faults the 9 Sep restyle missed turned up in the same pass. `fine-tune`
+still set Inter in three SVG text elements, and `templates/guide-template.html`
+set Inter as its body font, so anything built from that template inherited a
+retired typeface. Both now carry the house faces. This is the exact trap the
+gotcha below warns about: a case-insensitive grep for "Inter" matches
+"interaction", "interface" and "Interview", which is how they survived.
+
+The paste-ready sources were carrying the same fault they exist to prevent.
+`brand/magnum-house-style/reference/tokens.css`, the two `paste-block.md`
+copies and `brand/house-style-block.md` all set `.label` at 12px in
+`var(--rust)`, and all shipped `--mute:#7A7A7A` (4.14:1), the value the front
+page moved off on 11 Sep. So anything built from the canonical block
+inherited two contrast failures on day one. Fixed 14 Sep in all five files,
+and the header comment now states the two-coral rule rather than leaving it
+to be rediscovered. Corrected 15 Sep: the 14 Sep pass changed the CSS in
+`tokens.css` but not the prose lines in the two `paste-block.md` copies,
+`brand/house-style-block.md` or `magnum-client-rollout-doc/SKILL.md`, which
+still named `#7A7A7A` in words. Those are fixed now. The lesson is that a
+value lives in two forms in these files, a declaration and a sentence, and
+a sed on one does not touch the other. This matters more than it did: James connected Claude
+Design to GitHub the same day, so these files stop being a zip he remembers
+to re-upload and become what design work actually reads.
+
+`prompts/index.html` also used `var(--coral-text)` without ever defining it,
+from 13 Sep when the brief block landed. Undefined, so those labels rendered
+in plain ink rather than coral. Defining the token everywhere fixed it.
 
 Two things the front page still carries that James flagged and chose to
 keep: Start Here and the courses list the same three courses twice, which
@@ -802,7 +843,86 @@ Fine-Tune, its card and the Buyer's Agents guide moved too. Field Note
 look from mockups after supplying a white, red-orange reference; the
 decision and the hex values are final.
 
-Where this session stopped (14 Sep): four things shipped. The midweek Field
+On 15 Sep James put the front page to Claude Design over the GitHub
+connection he had just made, and asked it for the three things most in a
+first-time reader's way. All three checked out against the files and two
+were built the same day. This is the first outside read of the members area
+and the connection is worth keeping: it reads the repo rather than a
+description of it, and it caught the one grey nobody had.
+
+**Built.** The masthead carries a primary action, `Start course one`, a
+bright coral block with ink text (6.28:1) pointing at `ai-foundations/`.
+Before it, eleven cards carried identical weight and an identical coral
+`Open the course`, so the page told a reader to start in order and gave
+them nothing to press.
+
+The phone no longer deletes the part that explains itself. `.step p` and
+`.step .meta` were both hidden under 820px, so Start Here collapsed to four
+bare condensed-uppercase titles with the levers figure gone too, which left
+a first screen of a headline, one line, and four cryptic labels. The steps
+are now a two-column grid on the phone, number beside title, description
+under it, and the course label is the thing that goes instead. Most readers
+are on a phone, so they were getting the least explanatory version of the
+only element whose job is orientation.
+
+And the sticky nav says what it does. Its summary read `Courses`, the
+current section name, rewritten by the IntersectionObserver as you scrolled,
+so the one navigation aid on the page looked like a heading rather than a
+control. It reads `Jump to a section` now, fixed, and the current section is
+marked inside the open list instead (`.subnav-list a.is-current`). The spy
+maps both nav variants now rather than only `.subnav-row`.
+
+**Built after James said go.** The third finding was that the same four
+courses appeared three times under three different names: Start Here step 01
+was `How to talk to it`, the card below it was `Stop prompting. Start
+talking.`, its meta said `Course one · AI Foundations`, and a `.ref` line
+pointed at `bots/` which was already step 00. Someone who knows the material
+reads a name and a tagline. A first-timer reads four items and cannot tell
+what they have already covered, and on a phone the duplicate set arrives
+immediately after the first.
+
+Every course now carries one name in both places: Chatbots, Agents and Bots,
+AI Foundations, Make Claude Yours, Work That Runs Without You. The plain
+English line that used to be the Start Here heading is not lost, it leads
+the description underneath (`How to talk to it. What it is, the 6 Levers`),
+which is where it does the work without competing with the name. The card
+taglines went the same way into body copy. Step metas shortened to `Course
+one`, `Course two`, `Course three`, since the name is now in the heading
+above them. The `.ref` line to `bots/` came out of the courses section
+because step 00 links it six inches higher up. This overturns the 11 Sep
+decision to keep the duplication; James looked at it again on 15 Sep with
+the outside read in front of him and changed his mind. No URL moved and
+`#sessions` is unchanged.
+
+Same day, the grey. `--mute` was `#7A7A7A` (4.14:1 on paper) on every page
+except the front one, which moved to `#63615C` (5.97:1) on 11 Sep. 37 real
+uses across 11 files, all small text between 10.5px and 17px. All swept to
+`#63615C`. `fine-tune` carried its own `--muted:#7A7A7A` plus two literal
+uses, and a `--faint:#9A9A9A` at 2.72:1 that set the footer signature at
+11px; those are `#63615C` and `#706D69` (4.97:1). The `manus-bridge` figure
+text was `#7A7A7A` in SVG fills and is `#63615C`. The brand page swatch and
+its printed token block both published the failing value and now publish the
+passing one.
+
+Two `thumbnail.html` sources still carry `--taupe:#7A7A7A`. Left alone
+deliberately: they are 1200x630 share cards, the text on them is large, and
+changing the source without re-rendering the JPEG would put the two out of
+step. Re-render them with the cards next time the card set moves.
+
+The deck check passed after the token swap (110 slides, four decks, four
+window sizes).
+
+Where this session stopped (15 Sep): the outside read of the front page is
+above. The one thing waiting on James is the duplicate course names, and
+the Field Note routine still needs its repository and connectors before it
+fires on Wednesday 16 Sep (item 2 below).
+
+Also on 15 Sep, on a branch and not yet merged: the team seats guide at
+`team-seats/`, rebuilt around a four-question personal-versus-team tool
+after James replaced the flat cost calculator. It carries the swept
+palette, so nothing on the members area is left on the old coral.
+
+Where the session before that stopped (14 Sep): four things shipped. The midweek Field
 Note routine is built and live, and needs its repository and connectors
 attached before it fires on Wednesday 16 Sep (item 2 below), which is the one
 thing waiting on James. The levers strip came off the Prompt Shelf cards. The
@@ -857,12 +977,11 @@ order of value:
    before 1 Oct. Without them each first run has nothing to read and no way
    to report.
 
-3. The hotter coral. `--rust` `#EF4029` is on the front page only. If
-   James wants it everywhere it is a scripted pass across every page, all
-   four decks, the shelf, the card sources, the eleven share cards and the
-   brand page, plus the house style skill and its two reference files, and
-   the deck check after. If he does not, the front page reverts to
-   `#DE4A3C` in one edit. Do not leave it split for long.
+3. Done, 14 Sep. The hotter coral is site-wide and the split is closed.
+   Keep `tools/`-style discipline on it: the contrast audit that took this
+   from 80 failures to zero is worth re-running after any palette change,
+   and the rule it enforces is that `--rust` never paints text under 18px.
+   Use `--coral-text` there.
 
 4. James to look at the reworked front page and the indexed shelf live, on
    a phone as well as a laptop. Both were verified locally only. The
