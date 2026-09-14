@@ -16,7 +16,7 @@
    html, head and body tags and keep everything from <style> down. */
 :root{
   --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
-  --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E;
+  --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A;--coral-ghost:#F7BAB0; --coral-bright:#FF6F5E;
   --tint:#FBE1D8; --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
   --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
@@ -48,10 +48,22 @@ a{color:var(--coral-text)}
 .wrap{max-width:1040px;margin:0 auto;padding:40px 30px}
 section{margin:0 0 44px}
 
-.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;
-  gap:12px;margin:0 0 16px}
-.label::after{content:"";flex:1;height:1px;background:var(--ink)}
+.label{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;
+  text-transform:uppercase;letter-spacing:-.005em;color:var(--ink);
+  display:flex;align-items:center;gap:0 20px;margin:0 0 18px;
+  border-top:3px solid var(--ink);padding-top:16px}
+.label::before{content:attr(data-n);font-family:var(--display);font-weight:700;
+  font-size:56px;line-height:.82;letter-spacing:-.02em;color:var(--coral-ghost);
+  transition:color .18s ease}
+.label:not([data-n])::before{display:none}
+.label::after{content:none}
+section:hover > .label::before,section:focus-within > .label::before,
+.start:hover > .label::before,article:hover > .label::before{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){.label::before{transition:none}}
+@media(max-width:820px){
+  .label{font-size:27px;gap:0 14px;padding-top:13px;margin-bottom:14px}
+  .label::before{font-size:38px}
+}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 26px;

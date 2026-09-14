@@ -45,7 +45,10 @@ Type, three faces, one job each, never a fourth:
 The card: white, 2px ink border, no shadow, no radius. On hover the border
 turns coral. Static cards do not move.
 
-Labels: mono, uppercase, letter spaced, with a thin ink rule running off to
+Section headings are index entries: a big ghosted coral number that fills to
+full coral when the cursor is in that section, then the section name in
+Oswald beside it, over a 3px ink rule. A breadcrumb uses .crumb, which keeps
+the old small mono line with a thin ink rule running off to
 the right.
 
 Figures: drawn in ink on a navy plate. Shapes white, the accent stripe in
@@ -64,7 +67,8 @@ CSS tokens:
 :root{
   --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
   --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A;
-  --coral-text:#C63A2A;   /* small text: labels, meta, links. 5.02:1 on paper */ --coral-bright:#FF6F5E; --tint:#FBE1D8;
+  --coral-text:#C63A2A;   /* small text: labels, meta, links. 5.02:1 on paper */
+  --coral-ghost:#F7BAB0;  /* the resting index number. coral at 35% over paper */ --coral-bright:#FF6F5E; --tint:#FBE1D8;
   --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
@@ -74,7 +78,15 @@ body{background:var(--paper);color:var(--body);font-family:var(--sans)}
 .masthead{background:var(--navy);color:#F4F1EA;border-bottom:4px solid var(--coral-bright)}
 .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 26px}
 .card:hover{border-color:var(--rust)}
-.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;
+.label{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;
+  text-transform:uppercase;color:var(--ink);display:flex;align-items:center;
+  gap:0 20px;margin:0 0 18px;border-top:3px solid var(--ink);padding-top:16px}
+.label::before{content:attr(data-n);font-family:var(--display);font-weight:700;
+  font-size:56px;line-height:.82;color:var(--coral-ghost);transition:color .18s ease}
+.label:not([data-n])::before{display:none}
+section:hover > .label::before{color:var(--rust)}
+@media(max-width:820px){.label{font-size:27px}.label::before{font-size:38px}}
+.crumb{font-family:var(--mono);font-size:11.5px;letter-spacing:.20em;
   text-transform:uppercase;color:var(--coral-text)}
 .tag{background:var(--tint);color:var(--ink);font-family:var(--mono);
   font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px}

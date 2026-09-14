@@ -58,6 +58,7 @@ been re-checked against it since.
 | mute | `#63615C` | Notes and secondary lines. 5.97:1 on paper; replaces `#7A7A7A`, which was 4.14:1 and failed |
 | rust (coral) | `#EF4029` | Display type, fills, borders and figures. 3.73:1 on paper: never small text |
 | coral-text | `#C63A2A` | Anything under 18px you read: labels, links, captions, metadata. 5.02:1 on paper |
+| coral-ghost | `#F7BAB0` | The resting index number on a section heading. Never text you read |
 | coral-bright | `#FF6F5E` | Fills only: badges, bars, the stripe under a navy band, figure stripes. Never small text on white |
 | tint | `#FBE1D8` | Tags, marks, highlighted lines |
 | olive (slate) | `#5B6B7A` | Ticks and figure detail. Never carries text |
@@ -94,8 +95,23 @@ might not be there. `reference/office.md` carries the exact stacks.
 somewhere turns its border coral on hover. A static card does not change,
 because movement on something unclickable is a lie.
 
-**The label.** Mono, uppercase, letter spaced, coral-text (it is small text),
-with a 1px ink rule running off to the right. Every section opens with one.
+**The label.** Every section opens with one, and it is an index entry, not a
+caption. A ghosted coral number (`coral-ghost`) in Oswald at roughly 56px,
+the section name beside it in Oswald at 40px ink, both sitting under a 3px
+ink rule. The number fills to full `rust` while the cursor is anywhere in
+that section, which is the one piece of movement the system allows, because
+it tells the reader where they are. Number the sections whenever they run in
+an order; leave `data-n` off and the number hides itself. On the phone the
+name drops to 27px and the number to 38px.
+
+Changed 15 September 2026. It was a 12px mono eyebrow, and James said the
+section names were the size of captions on a page whose whole job is finding
+things. If an `h2` sits directly under a label, step it down to a deck line
+(around 20px, sentence case, `body` colour): two uppercase headings stacked
+is the busyness this change exists to remove.
+
+**The breadcrumb.** Not a label. Use `.crumb`, which keeps the old treatment:
+mono, uppercase, letter spaced, coral-text, thin ink rule running right.
 
 **The navy block.** Masthead with a 4px bright coral rule under it; or a
 figure plate with a 2px ink border; or a footer in mono. One per screen.

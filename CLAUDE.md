@@ -55,8 +55,9 @@ accent for display type, fills, borders and figures, deep coral `#C63A2A`
 for any coral text under 18px, bright coral `#FF6F5E` for fills on navy and
 badges only, coral tint `#FBE1D8` for tags, slate `#5B6B7A` for ticks and
 figure detail, mute `#63615C` for notes and secondary lines (since 15 Sep,
-was `#7A7A7A` at 4.14:1). The CSS token names did not change: `--rust`
-holds coral, `--olive` holds slate.
+was `#7A7A7A` at 4.14:1), ghost coral `#F7BAB0` for the resting index number
+on a section heading and nothing else (since 15 Sep). The CSS token names did
+not change: `--rust` holds coral, `--olive` holds slate.
 Oswald for display, IBM Plex Sans for body, IBM Plex Mono for labels and
 prompts. Retired: black and gold, and the beige and rust system (paper
 `#EEE6D3`, rust `#B8452A`, olive `#6C7A3F`, grid texture, offset
@@ -929,10 +930,70 @@ step. Re-render them with the cards next time the card set moves.
 The deck check passed after the token swap (110 slides, four decks, four
 window sizes).
 
+Also 15 Sep, the section heading. James has raised this several times and was
+right every time: `.label` was a 12px mono eyebrow, so on a page whose whole
+job is finding things the section names were the size of captions. He sent a
+reference (Danny Dimas, `dannydigitalbrain.netlify.app`, blocked from the
+sandbox but readable in his screenshot): ghosted outline numbers down the left
+of a contents list, the live one filled and glowing.
+
+It is an index entry now, not a caption. A ghosted coral number in Oswald at
+56px sits beside the section name in Oswald at 40px ink, both under a 3px ink
+rule. The number fills to full `--rust` while the cursor is anywhere in that
+section. That is the one piece of movement the system allows, because it tells
+a reader where they are rather than decorating.
+
+The glow was not copied and should not be. Danny's page is near-black, so
+light reads as luminous; ours is white paper and the house style bans glows
+and shadows outright. Ghost to solid is the same idea translated to the ground
+it sits on.
+
+Rolled across all eight pages that carry a `.label`: the front page (six
+sections numbered 01 to 06), `privacy/` and `manus-bridge/` (which already
+carried `01 ·` inside the label text, so the number lifted into `data-n`),
+`brand/` (numbered 01 to 07), `prompts/`, `newsletter/`, and both
+`starter.html` templates. `data-n` is optional: leave it off and the number
+hides itself, which is how the shelf's dynamic moment and area headings work.
+
+Two faults found and fixed in the same pass. `privacy/` and `manus-bridge/`
+open with a breadcrumb that reused `.label`, so it would have become a 40px
+heading; it has its own `.crumb` class now, carrying the old small mono
+treatment. And both pages put an `h2` directly under each label, which gave
+two stacked uppercase headings, the exact busyness this change exists to
+remove. `.label + h2` steps down to a deck line at around 20px, sentence
+case, body colour. That is also the shape of Danny's list: number, title,
+subtitle.
+
+The Prompt Shelf section on the front page was rewritten for the same reason
+James raised it. It said PROMPT SHELF, then a paragraph listing the five
+filing moments, then a card headed `Every prompt. One shelf.`: the name three
+times in three shapes with taxonomy in between. It is one name and one line
+now, and the card said `Fourteen cards and counting` when there are 47.
+
+The skill carries all of it, which is the part that stops this recurring:
+`SKILL.md` (both copies) has the rewritten label component, the `.crumb` rule,
+the `.label + h2` note and the `coral-ghost` row; `tokens.css`, both
+`paste-block.md` copies and `house-style-block.md` carry the CSS and the
+token; and `scripts/check_style.py` learned `F7BAB0`, since it correctly
+flagged the new token as off-palette on first run.
+
+Two checker findings are accepted functional exceptions, stated here rather
+than fixed. The sticky nav's `box-shadow:0 1px 0 rgba(0,0,0,.18)` is a
+hairline under a sticky bar, not a decorative shadow. The shelf's `More below`
+gradient is load-bearing under hard rule 11, which requires a clipped prompt
+to say so. Deck check, field note check and the style checker all pass.
+
 Where this session stopped (15 Sep): the outside read of the front page is
-above. The one thing waiting on James is the duplicate course names, and
-the Field Note routine still needs its repository and connectors before it
-fires on Wednesday 16 Sep (item 2 below).
+above, all three findings built. The section heading is an index entry across
+all eight pages. The Field Note routine is set up. James confirmed the
+repository and the connectors on 15 Sep and asked, plainly, to stop being
+asked about it. Do not raise it again. The first fire is Wednesday 16 Sep and
+the run itself is the only remaining signal; if it fails, read the failure,
+do not ask him whether he did the setup. He has also looked at the members
+area on his phone and it reads correctly.
+
+The shelf keeps its name. James was asked directly on 15 Sep after saying
+"Prompt Library" twice, and confirmed Prompt Shelf stays.
 
 Also on 15 Sep, on a branch and not yet merged: the team seats guide at
 `team-seats/`, rebuilt around a four-question personal-versus-team tool
@@ -985,14 +1046,19 @@ order of value:
    doing non-sensitive work lands on a Personal lean. See the weighting note
    above; the fix is one number.
 
-2. Two routines need the same thing from James in the Routines UI, and a
-   session can do neither. The Field Note routine
-   (`trig_016pPJPsm8D3yUZs81wquraU`) needs `webes77/magnum-guides` as its
-   repository plus Gmail and Google Drive attached, and it fires Wednesday
-   16 Sep, so this one is first. The fact-check routine
-   (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) needs the same repository and Gmail
-   before 1 Oct. Without them each first run has nothing to read and no way
-   to report.
+2. Done for the Field Note routine (`trig_016pPJPsm8D3yUZs81wquraU`), 15 Sep:
+   repository and connectors both attached, confirmed by James, who asked not
+   to be asked again. First fire Wednesday 16 Sep. Watch the run, not him.
+
+   Still open: the fact-check routine (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) needs
+   the same repository and Gmail before 1 Oct. Raise it once, near the date,
+   and not before.
+
+   Standing note for every future session. `list_triggers` returns the
+   schedule and the run history but never the attached repository or
+   connectors, so a session cannot verify this and must not keep asking. If a
+   run fails for want of a connector, the failure says so and that is the
+   thing to act on.
 
 3. Done, 14 Sep. The hotter coral is site-wide and the split is closed.
    Keep `tools/`-style discipline on it: the contrast audit that took this
@@ -1000,10 +1066,9 @@ order of value:
    and the rule it enforces is that `--rust` never paints text under 18px.
    Use `--coral-text` there.
 
-4. James to look at the reworked front page and the indexed shelf live, on
-   a phone as well as a laptop. Both were verified locally only. The
-   sticky nav's dropdown only appears under 820px, so the phone is the
-   only place to check it.
+4. Done, 15 Sep. James checked the front page on his phone and it reads
+   correctly, including the sticky nav's dropdown, which only appears under
+   820px.
 5. James to glance at Make Claude Yours slide 31 in the live desktop app.
    Sources agree with the slide; nobody has seen the menu itself from here.
    The shelf recipe "Set Claude up in the right order" and the account and

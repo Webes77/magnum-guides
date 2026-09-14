@@ -38,8 +38,8 @@
   --rust:#EF4029;         /* hotter. display type only: 3.73:1, large-text safe */
   --olive:#5B6B7A;
   --char:#3A3630;
-  --mute:#63615C;          /* was #7A7A7A at 4.14:1, now 5.97:1 */
-  --coral-text:#C63A2A;    /* small text only: labels, meta, go links. 5.02:1 */
+  --mute:#63615C;          /* 5.97:1. the old mute grey was 4.14:1 and failed */
+  --coral-text:#C63A2A;--coral-ghost:#F7BAB0;    /* small text only: labels, meta, go links. 5.02:1 */
   --grid:rgba(120,90,60,.13);
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
@@ -69,8 +69,22 @@ body{
 /* SECTIONS */
 main.wrap{padding-top:56px;padding-bottom:20px}
 section{margin-bottom:54px}
-.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;gap:14px;margin-bottom:8px}
-.label::after{content:"";flex:1;height:2px;background:var(--ink)}
+.label{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;
+  text-transform:uppercase;letter-spacing:-.005em;color:var(--ink);
+  display:flex;align-items:center;gap:0 20px;margin:0 0 18px;
+  border-top:3px solid var(--ink);padding-top:16px}
+.label::before{content:attr(data-n);font-family:var(--display);font-weight:700;
+  font-size:56px;line-height:.82;letter-spacing:-.02em;color:var(--coral-ghost);
+  transition:color .18s ease}
+.label:not([data-n])::before{display:none}
+.label::after{content:none}
+section:hover > .label::before,section:focus-within > .label::before,
+.start:hover > .label::before,article:hover > .label::before{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){.label::before{transition:none}}
+@media(max-width:820px){
+  .label{font-size:27px;gap:0 14px;padding-top:13px;margin-bottom:14px}
+  .label::before{font-size:38px}
+}
 .note{font-size:15.5px;font-weight:500;color:var(--body);max-width:62ch;margin-bottom:24px}
 
 /* CARDS */
@@ -314,7 +328,7 @@ main.wrap::before{
 
   <!-- START HERE · the path through the members area -->
   <div class="start">
-    <div class="label">Start here</div>
+    <div class="label" data-n="01">Start here</div>
     <div class="grid four">
       <a class="step" href="bots/">
         <span class="n">00</span>
@@ -345,7 +359,7 @@ main.wrap::before{
 
   <!-- YOUR SESSIONS -->
   <section id="sessions">
-    <div class="label">The courses</div>
+    <div class="label" data-n="02">The courses</div>
     <p class="note">Three courses, in order. Each carries every prompt used in it, so you can work through it at your own pace and come back to any part of it later.</p>
     <div class="grid three">
 
@@ -387,16 +401,16 @@ main.wrap::before{
 
   <!-- PROMPT SHELF · cumulative, undated. Fed by the Sunday Brief -->
   <section id="prompts">
-    <div class="label">Prompt Shelf</div>
-    <p class="note">Every prompt from the courses, grouped by when you would run it: starting a task, before you act on an answer, setting up, every week, every month. Undated, so it grows without going stale.</p>
+    <div class="label" data-n="03">Prompt Shelf</div>
+    <p class="note">Every prompt from every course, ready to copy. Pick the moment you are in and the shelf hands you the prompt for it.</p>
     <div class="grid" style="grid-template-columns:1fr">
 
       <a class="card thumb wide" href="prompts/">
         <img src="assets/thumbnails/prompt-shelf.jpg" alt="The Magnum AI Prompt Shelf, every prompt from the courses ready to copy" width="1200" height="630" loading="lazy">
         <div class="inner">
-          <h3>Every prompt. One shelf.</h3>
-          <div class="meta">Living page &middot; Prompts and recipes</div>
-          <p>Fourteen cards and counting. Find the moment you are in, copy the card, change the bracketed bits, use it today.</p>
+          <h3>Prompt Shelf</h3>
+          <div class="meta">Living page &middot; 47 cards</div>
+          <p>Every prompt. One shelf. Copy the card, change the bits in brackets, use it today. New cards land every week and nothing is dated, so it never goes out of print.</p>
           <span class="go">Open the shelf &rarr;</span>
         </div>
       </a>
@@ -406,7 +420,7 @@ main.wrap::before{
 
   <!-- THIS WEEK · the latest Field Note and the latest edition -->
   <section id="week">
-    <div class="label">This week</div>
+    <div class="label" data-n="04">This week</div>
     <p class="note">Two weekly reads. The Field Note is one idea worked through properly, with the prompts and exercises to use it the same day. This Week in AI is the four-minute briefing on what moved.</p>
     <div class="grid">
 
@@ -456,7 +470,7 @@ main.wrap::before{
 
     <!-- TOOL MANUALS · one tool, one manual, only after paid work -->
     <section id="manuals">
-      <div class="label">Tool manuals</div>
+      <div class="label" data-n="05">Tool manuals</div>
       <p class="note">Manuals for tools that do a job Claude does not. One tool, one manual, and only once it has done real work.</p>
       <div class="grid">
 
@@ -485,7 +499,7 @@ main.wrap::before{
 
     <!-- BY INDUSTRY -->
     <section id="industry">
-      <div class="label">By industry</div>
+      <div class="label" data-n="06">By industry</div>
       <p class="note">Where AI actually earns its place in a particular trade, written for how that business already runs.</p>
       <div class="grid">
 

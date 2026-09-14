@@ -19,7 +19,7 @@
   --coral-bright:#FF6F5E;
   --tint:#FBE1D8;
   --body:#2B2823;
-  --rust:#EF4029; --coral-text:#C63A2A;
+  --rust:#EF4029; --coral-text:#C63A2A;--coral-ghost:#F7BAB0;
   --olive:#5B6B7A;
   --char:#3A3630;
   --mute:#63615C;
@@ -46,8 +46,22 @@ main{padding:44px 0 20px}
 .back{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-bottom:34px}
 .back:hover{color:var(--rust)}
 section{margin-bottom:52px}
-.label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;gap:14px;margin-bottom:8px}
-.label::after{content:"";flex:1;height:2px;background:var(--ink)}
+.label{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;
+  text-transform:uppercase;letter-spacing:-.005em;color:var(--ink);
+  display:flex;align-items:center;gap:0 20px;margin:0 0 18px;
+  border-top:3px solid var(--ink);padding-top:16px}
+.label::before{content:attr(data-n);font-family:var(--display);font-weight:700;
+  font-size:56px;line-height:.82;letter-spacing:-.02em;color:var(--coral-ghost);
+  transition:color .18s ease}
+.label:not([data-n])::before{display:none}
+.label::after{content:none}
+section:hover > .label::before,section:focus-within > .label::before,
+.start:hover > .label::before,article:hover > .label::before{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){.label::before{transition:none}}
+@media(max-width:820px){
+  .label{font-size:27px;gap:0 14px;padding-top:13px;margin-bottom:14px}
+  .label::before{font-size:38px}
+}
 .note{font-size:15.5px;color:var(--mute);max-width:66ch;margin-bottom:24px}
 
 .swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
@@ -114,7 +128,7 @@ footer b{color:var(--paper);font-weight:500}
   <p class="note" style="margin-top:14px">Download this page as a PDF: <a href="Magnum-AI-House-Style.pdf" download style="color:var(--coral-text)">Magnum AI House Style</a>. The paste-ready block for skills: <a href="house-style-block.md" download style="color:var(--coral-text)">house-style-block.md</a>.</p>
 
   <section>
-    <div class="label">Palette</div>
+    <div class="label" data-n="01">Palette</div>
     <p class="note">Eleven values. Coral is the only accent, in three strengths. Navy carries the weight. Slate is the quiet second colour and never carries text.</p>
     <div class="swatches">
       <div class="sw"><div class="chip" style="background:#FBFBF9;border-bottom:1px solid #DADAD5"></div><div class="info"><div class="nm">Paper</div><div class="hex">#FBFBF9</div><div class="use">Page ground. Warm off-white, flat, no texture.</div></div></div>
@@ -132,7 +146,7 @@ footer b{color:var(--paper);font-weight:500}
   </section>
 
   <section>
-    <div class="label">Type</div>
+    <div class="label" data-n="02">Type</div>
     <p class="note">Three faces, each with one job. Never introduce a fourth.</p>
     <div class="panel">
       <div class="type-row">
@@ -154,7 +168,7 @@ footer b{color:var(--paper);font-weight:500}
   </section>
 
   <section>
-    <div class="label">The card</div>
+    <div class="label" data-n="03">The card</div>
     <p class="note">One component does most of the work. White, two-pixel ink border, no shadow, no rounded corners. On hover the border turns coral.</p>
     <div class="demo">
       <div class="card"><div class="inner">
@@ -175,7 +189,7 @@ footer b{color:var(--paper);font-weight:500}
   </section>
 
   <section>
-    <div class="label">Rules</div>
+    <div class="label" data-n="04">Rules</div>
     <ul class="rules">
       <li><b>Coral is the only accent.</b> Deep coral for anything you read. Bright coral for fills on navy and badges, never small text on white. The tint for tags. Rust, beige, black and gold are retired.</li>
       <li><b>Slate never carries text.</b> It exists for ticks, secondary lines and figure detail.</li>
@@ -189,7 +203,7 @@ footer b{color:var(--paper);font-weight:500}
   </section>
 
   <section>
-    <div class="label">Do not</div>
+    <div class="label" data-n="05">Do not</div>
     <ul class="rules no">
       <li>Introduce a fourth typeface, or Playfair, Bebas Neue, Archivo Narrow or Inter. Those came from documents that predate this system.</li>
       <li>Use black and gold. Retired.</li>
@@ -199,7 +213,7 @@ footer b{color:var(--paper);font-weight:500}
   </section>
 
   <section>
-    <div class="label">Copy the tokens</div>
+    <div class="label" data-n="06">Copy the tokens</div>
     <p class="note">Paste this block at the top of any new page. Every value on this page comes from it.</p>
 <pre>:root{
   --paper:#FBFBF9;        /* page ground, flat, no texture */
@@ -220,7 +234,7 @@ footer b{color:var(--paper);font-weight:500}
   </section>
 
   <section>
-    <div class="label">Where this applies</div>
+    <div class="label" data-n="07">Where this applies</div>
     <p class="note">Live in this system: the members area, the Field Note archive, both Field Note issues, the Make Claude Yours deck, and every social thumbnail.</p>
     <p class="note">Still on older looks, in this order of priority: the Fine-Tune manual, the Manus manual, and the weekly newsletter masthead in the magnum-newsletter repository. Newsletter issues already sent keep the look they were sent in.</p>
     <p class="note">Deliberately left alone: the Louise Kearns guide, the BA Growth guide, and the GIG and Easy Fit documents. Already delivered.</p>
