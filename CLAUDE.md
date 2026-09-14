@@ -493,68 +493,99 @@ himself rewriting the rules and the exercises as well as the voice blocks, the
 routine is doing the wrong half and the answer is to narrow it, not to widen
 it. Give it a month.
 
-**The team seats guide and its calculator.** Built 14 Sep, live at
+**The team seats guide and its recommendation tool.** Built 14 Sep, live at
 `team-seats/`, titled "Should You Move Your Team onto Paid Claude or ChatGPT
-Seats?". James supplied the finished prose and a calculator spec; both were
-locked and neither was rewritten. The prose on the page is byte-faithful to
-what he handed over, verified by diffing the rendered text against his file,
-and the section order is his.
+Seats?". James supplied the finished prose and a tool spec; both were locked
+and neither was rewritten. The prose on the page is byte-faithful to what he
+handed over, verified by diffing the rendered text against his file, and the
+section order is his.
 
-Undated and maintained in place, the same call as Fine-Tune and the privacy
-page, because seat prices move and a numbered issue reads as stale. The
-footer carries "Prices last checked · 14 September 2026" and the guide's own
-verification line sits under the contents strip, verbatim.
+It was built twice on the same day and the second version is the one that
+matters. The first carried a flat cost calculator, staff count in and both
+platforms' cost out. James replaced it, and the reasoning is worth keeping
+because it will apply to the next tool: the calculator answered "what does
+this cost", which is a question with no interesting answer here, because the
+two platforms price identically. The decision an owner is actually stuck on
+is personal accounts versus a team plan, which does have differentiating
+factors. The tool now asks four questions (team size, turnover, how sensitive
+the work is, who is already paying personally) and returns a lean with the
+reasons for that specific situation. Platform choice dropped out of the tool
+entirely and lives in the guide as the second question.
 
-One page, not two. The calculator sits at the top of section 02, Cost, ahead
-of the price table, so a reader gets their own number before the general one.
-That follows the privacy page, which carries its `memory-audit` prompt as a
-section inside the guide rather than as a separate tool, and the Manus Bridge
-walkthrough, which carries five. There is no standalone-tool pattern on the
-members area and this did not start one.
+Scoring runs one way only, toward Team, and Personal is the default lean when
+the score stays low. That was the spec's call and it is a good one: points in
+both directions double-count the same fact. Four bands, not two, so mixed
+signals can be said out loud while still landing on a side every time. Max
+score is 7. The score is never shown to the reader; it is an internal
+weighting. All 81 answer combinations are tested, and the test asserts more
+than the band: that no bullet describes an answer the reader did not give (a
+"some turnover" answer never comes back as "high turnover"), that no template
+placeholder leaks, and that bullets never repeat.
 
-The calculator is cost-only by design and that is worth defending, because it
-will look like a missing feature to anyone who did not read the spec. The two
-platforms price identically on standard seats, so a recommendation engine
-would be inventing a difference on the one variable that has none. Both
-result cards are the same navy plate, the same size, the same type, no winner
-styling, and that equality is asserted in the deck check sense: a test
-compares the two cards' computed styles and box sizes and they match exactly.
-The guide carries the real decision factors in prose, which is where they
-belong.
+One flaw in the weighting is James's to settle, flagged 14 Sep and built as
+specced. Team size caps at +2, the same as turnover and sensitivity, so a
+stable fifteen-person team doing non-sensitive work with nobody paying
+personally scores 2 and gets a Personal lean. Fifteen people on personal
+accounts with no central bill is the case the guide's own "one bill" and "see
+if it's being used" arguments are strongest against. If he wants it changed,
+the fix is +3 for the 11 to 15 band, which lifts that case to a Band 2 flag
+without disturbing anything else.
 
-The seat prices are separate constants per vendor, never one shared value,
-because Anthropic and OpenAI price independently. The "they are the same"
-fact lives in the values only, never in the display logic. Premium seat
-constants are recorded in a comment and deliberately unused: premium is out
-of scope for v1 and is the obvious next addition if James wants it. There is
-no lead capture, no email gate, no currency conversion, and no use-case
-questions, all four ruled out in the spec.
+The page layout changed with it. Six accordions, all closed on load, headed
+with the questions a client actually asks ("What's the catch?", "What happens
+to a staff member's chats if they leave?") rather than the guide's own
+section nouns. Native `<details>`, no library, multiple open at once so two
+sections can be compared. The closed stack is the contents page, which is why
+the old contents strip came off: it would have been a second index of the
+same six things. Page order is the short version open, the tool, the
+accordions, then What It Comes Down To open.
 
-Fifteen rows went into `notes/fact-register.md` (34 to 48) because nearly
-every line of this page is a third-party product claim. One caveat is
-recorded there and matters: James verified the prices against
-`claude.com/pricing` and `openai.com/business/pricing` before handing the
-content over, and those hosts are blocked from the sandbox, so nothing on
-this page was re-verified from a session. Under hard rule 10 the first
-fact-check run over rows 34 to 48 is a first check, not a re-check.
+A link with a hash opens its accordion rather than scrolling to a closed
+heading. That covers the verdict's link to the Cost section and any link
+someone pastes later.
+
+No price is computed anywhere on the page now. Every figure is hand-written
+HTML in the Cost accordion, so a price change is made in four places (the
+table, the worked examples, the short version, the footer date) and the tool
+never needs touching.
+
+The $100 bug, reported 14 Sep: there was not one. 20 staff at $20 returned
+$400 on every input path tested, typing, spinner, paste and the monthly
+toggle, and the arithmetic was correct at 2, 5, 10, 19, 20, 50 and 250. The
+only state producing $100 was five seats, the field's hardcoded default on
+load, and the static worked-examples list four lines below reads "5 staff,
+annual billing: $100/month". Most likely the page at rest was read as a
+computed answer. The calculator is gone either way. Worth recording because
+the shape will recur: a tool that renders a default result on load looks
+identical to one that has answered you. The new tool opens on question one
+and shows no verdict until four answers are in, which removes that failure
+mode by construction.
+
+Fifteen rows are in `notes/fact-register.md` (34 to 48) because nearly every
+line of this page is a third-party product claim. One caveat is recorded
+there and matters: James verified the prices against `claude.com/pricing` and
+`openai.com/business/pricing` before handing the content over, and those
+hosts are blocked from the sandbox, so nothing on this page was re-verified
+from a session. Under hard rule 10 the first fact-check run over rows 34 to
+48 is a first check, not a re-check.
 
 Front page: a fourth reference line under the courses, beside Chatbots,
 Fine-Tune and Privacy. That is the minimum needed to stop the page being an
 orphan and it uses the existing `.ref` pattern with nothing moved. James
 asked on 14 Sep to be asked before the front page is touched, so if the
 slight redesign relocates where references live, this line moves with them.
-Card at `assets/thumbnails/team-seats.jpg`, source `team-seats/thumbnail.html`.
-Not a deck, so `tools/check-decks.js` does not cover it, though it was run and
-passed.
+Card at `assets/thumbnails/team-seats.jpg`, source `team-seats/thumbnail.html`,
+re-rendered when the tool changed because the old card advertised a
+calculator. Not a deck, so `tools/check-decks.js` does not cover it, though it
+was run and passed.
 
-Three small things to know. The staff field is a number input and anything
-under two seats replaces the results with the minimum-seats message rather
-than showing a zero, which is the spec's requirement and also stops an empty
-field rendering a broken sum. The billing radios are visually hidden behind
-their labels, which is the standard accessible toggle and means a test has to
-click the label, not the input. And the page carries one piece of prose that
-is not James's: the masthead standfirst, which is page furniture the guide
-file did not have. Everything inside the sections is his.
+Two small things to know. The page carries one piece of prose that is not
+James's: the masthead standfirst, which is page furniture the guide file did
+not have. And two gaps in the spec were filled rather than queried, both
+noted for him: Band 2 gets no caveat line (the spec gives one only to Bands 1
+and 3, and Band 2's headline already carries the watch-it message), and ties
+between equal-scoring questions break in the order sensitivity, turnover,
+size, spend.
 
 The Manus Bridge walkthrough went live on 11 Sep as the second Tool
 Manual, at `manus-bridge/`, with its card source beside it and the card at
@@ -775,10 +806,11 @@ Where this session stopped (14 Sep): four things shipped. The midweek Field
 Note routine is built and live, and needs its repository and connectors
 attached before it fires on Wednesday 16 Sep (item 2 below), which is the one
 thing waiting on James. The levers strip came off the Prompt Shelf cards. The
-privacy reference page is live at `privacy/`. And the team seats guide and its
-cost calculator are live at `team-seats/`, the first interactive tool on the
-members area that is not a prompt. Nothing from the 13 Sep handover is
-outstanding.
+privacy reference page is live at `privacy/`. And the team seats guide is live
+at `team-seats/`, carrying the first interactive tool on the members area that
+is not a prompt: four questions returning a personal-versus-team lean, with
+the guide beneath it as six closed accordions. Nothing from the 13 Sep
+handover is outstanding.
 
 James also said he wants a slight redesign of the members area. The shelf
 change was the first piece of it. What else he means has not been scoped, so
@@ -809,11 +841,12 @@ order of value:
 
 1. James has not yet looked at the Manus Bridge walkthrough live, on a
    phone or a laptop, nor the team seats guide. Both are the next thing.
-   On team seats, the calculator is the part to check on a phone: the two
-   result cards stack under 640px and the billing toggle is the only control
-   that has never been tapped on glass. Verified locally at 1440, 1280, 820
-   and 390 only. If he wants the premium seat toggle, the constants are
-   already in the script waiting for it.
+   On team seats, the tool and the accordions are the parts to check on a
+   phone: four taps to a verdict, then the six headings as the index.
+   Verified locally at 1440, 1280, 820 and 390 only. One open decision is
+   his: team size caps at +2 in the scoring, so a stable fifteen-person team
+   doing non-sensitive work lands on a Personal lean. See the weighting note
+   above; the fix is one number.
 
 2. Two routines need the same thing from James in the Routines UI, and a
    session can do neither. The Field Note routine
