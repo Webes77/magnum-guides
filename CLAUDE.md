@@ -638,13 +638,34 @@ peer. The six accordion headings are deliberately left unnumbered: they are
 already the page's index, and two numbered indexes on one page is the busyness
 the change exists to remove.
 
-One thing James has not settled. The Band 3 summary names two factors the new
-recap listed one line above it ("Based on a 6 to 10 person team with some
-turnover, a mix of personal and client work..." then "Between a mix of personal
-and client work and some turnover..."). That is real repetition and it arrived
-with the recap, not before it. The fix is to drop the factor names from the
-Band 3 summary and let the recap carry them, but the summary copy is his, so
-it waits.
+Fixed the same day James asked, and wider than he asked, which he was told.
+He named Band 3, where the summary listed two factors the recap had just
+listed. The same fault was in all four: Band 1 paraphrased three of the four
+recap items, Band 2 repeated the factor its own headline names, and Band 4
+named the categories. One fault, four instances, all of them introduced by the
+recap rather than present before it, so fixing only the one he saw would have
+left three for him to find.
+
+Each summary now carries only what the recap and the headline do not. Band 1
+says what a team plan would buy that he is not already getting. Band 2 says
+nothing else in the answers is pushing the same way yet. Band 3 says more than
+one thing is pushing at once, which is where the per-seat bill starts paying
+for itself. Band 4 says nothing in the answers pulls the other way, which is
+true for every combination in that band because no answer in this model ever
+scores toward Personal, so a zero is neutral and never opposed.
+
+Two things fell out of it. `topTwo()` existed only to feed the two summaries
+that named factors, so it is gone. And the Band 4 branch added earlier the
+same day, the one that picked between a fixed line and a named pair because
+the fixed line could claim turnover agreed when it had scored zero, is gone
+with it: no factor is named there any more, so the fault cannot recur. The
+assertion that caught it stays and now holds trivially, which is the right
+place for a guard.
+
+The test carries the new rule too. It splits the recap sentence into its
+phrases and fails if any of them appears in that verdict's summary, so the
+next person to write a summary cannot reintroduce this without the suite
+saying so.
 
 Two small things to know. The page carries one piece of prose that is not
 James's: the masthead standfirst, which is page furniture the guide file did
@@ -1209,9 +1230,8 @@ order of value:
    team seats guide, which went to `main` on 15 Sep. On team seats the tool
    is the part to check on a phone: four taps to a verdict, the recap line,
    and the reset in the head bar. Verified locally at 1440, 1280, 820 and 390
-   only. Two things wait on him there, both in the team seats block above:
-   whether the Band 3 summary should stop repeating the recap, and whether to
-   log which band each run lands on. On the second, there is no logging
+   only. One thing waits on him there: whether to log which band each run
+   lands on. There is no logging
    mechanism in this repo and cannot be one without a third-party service;
    band counts also cannot answer the question asked of them, because a
    distribution with no accuracy signal reads the same whether the weights

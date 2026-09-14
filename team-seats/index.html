@@ -580,12 +580,6 @@
     return best;
   }
 
-  /* the two highest-scoring questions, in score order */
-  function topTwo() {
-    var order = TIE.slice().sort(function (a, b) { return pts(b) - pts(a); });
-    return [order[0], order[1]];
-  }
-
   function verdict() {
     var score = 0, i;
     for (i = 0; i < Q.length; i++) { score += pts(i); }
@@ -595,7 +589,7 @@
     if (score <= 1) {
       lean = 'Personal accounts';
       head = 'Personal plans are probably enough for now.';
-      summary = "With a small, stable team doing mostly personal productivity work, there's not much a team plan buys you yet that you're not already getting.";
+      summary = "There is not much a team plan buys you yet that you are not already getting.";
       for (i = 0; i < Q.length; i++) { if (pts(i) === 0) { bullets.push(Q[i].low); } }
       bullets = bullets.slice(0, 3);
       caveat = 'Worth revisiting if your team grows, turnover picks up, or you start putting client work through it.';
@@ -604,7 +598,7 @@
       var f = topFactor();
       lean = 'Personal accounts';
       head = 'Personal plans still make sense, but keep an eye on ' + Q[f].flag + '.';
-      summary = 'Most of your situation points to personal being fine, but ' + Q[f].flag + ' is worth watching.';
+      summary = 'Nothing else in your answers is pushing the same way yet.';
       bullets.push(Q[f].flagPoint);
       for (i = 0; i < Q.length; i++) { if (pts(i) === 0) { bullets.push(Q[i].low); } }
       var watch = [];
@@ -615,11 +609,10 @@
       bullets = bullets.slice(0, 4);
 
     } else if (score <= 5) {
-      var two = topTwo();
       lean = 'A team plan';
       head = "A team plan is the better move, though it's not overwhelming.";
-      summary = 'Between ' + opt(two[0]).sum + ' and ' + opt(two[1]).sum +
-                ", a team plan starts earning its cost, though it's not a slam dunk.";
+      summary = 'More than one thing is pushing this way at once, which is usually where ' +
+                'the per-seat bill starts paying for itself.';
       for (i = 0; i < Q.length; i++) {
         if (pts(i) >= 1) { bullets.push(opt(i).mid || Q[i].mid); }
       }
@@ -630,16 +623,12 @@
     } else {
       lean = 'A team plan';
       head = 'A team plan is the clear move here.';
-      /* The spec's line names size, turnover and the work as agreeing. Since
-         11 to 15 scores 3, Band 4 is now reachable with a stable team, where
-         that line would be false. Use it only when all three really do agree,
-         and otherwise name the two that carry it. */
-      if (pts(0) >= 1 && pts(1) >= 1 && pts(2) >= 1) {
-        summary = 'Team size, turnover, and the kind of work going through it all point the same way.';
-      } else {
-        var t4 = topTwo();
-        summary = 'Between ' + opt(t4[0]).sum + ' and ' + opt(t4[1]).sum + ', the answer is not close.';
-      }
+      /* No factor is named here any more, which also retires the fault this
+         branch used to carry: the old fixed line claimed turnover agreed,
+         and at +3 for size a stable team can reach Band 4. Nothing in the
+         model ever argues toward Personal, so a zero is neutral, never
+         opposed, and this line is true for every Band 4 combination. */
+      summary = 'Nothing in your answers pulls the other way.';
       /* Each bullet takes the wording that matches the answer actually given,
          so a "mix" answer never comes back described as "regular" anything. */
       if (pts(0) >= 1) { bullets.push('At ' + opt(0).sum + ', per-seat admin visibility pays for itself quickly.'); }
