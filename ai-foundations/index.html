@@ -34,7 +34,7 @@
   --coral-bright:#FF6F5E;
   --tint:#FBE1D8;
   --body:#2B2823;
-  --rust:#EF4029; --coral-text:#C63A2A;
+  --rust:#EF4029;--coral-ghost-navy:#A1524E; --coral-text:#C63A2A;
   --olive:#5B6B7A;
   --olive-2:#46545F;
   --char:#3A3630;
@@ -164,23 +164,29 @@ pre{font-family:"IBM Plex Mono",monospace;font-size:max(14px,calc(15px / var(--z
 
 footer{display:flex;align-items:center;justify-content:space-between;padding:12px 40px}
 .nav{display:flex;gap:8px}
-.nav button{background:transparent;color:#FFFFFF;border:1px solid #8C8275;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+.nav button{background:transparent;color:#FFFFFF;border:1px solid var(--olive);padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
 .nav button:hover{border-color:#FFFFFF}
 .nav button.on{background:var(--rust);border-color:var(--rust)}
-#menulist li.basic button::after{content:"  basics";font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C8275}
+#menulist li.basic button::after{content:"basics";grid-column:2;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8E97A3;margin-top:2px}
 .menu.skip #menulist li.basic button{opacity:.38}
 .bar{flex:1;height:3px;background:#3A4756;margin:0 28px;position:relative}
 .bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
 .hint{color:#8E97A3;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
 
-#menu{position:fixed;inset:0;background:rgba(74,66,60,.97);display:none;padding:60px 80px;overflow:auto;color:#FFFFFF}
+#menu{position:fixed;inset:0;background:rgba(31,42,55,.975);display:none;padding:56px 80px;overflow:auto;color:#FFFFFF}
 #menu.on{display:block}
-#menu h2{font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:24px;color:#C8CDD3}
-#menu ol{list-style:none;columns:2;column-gap:60px;max-width:1000px}
-#menu li{break-inside:avoid;margin:0 0 6px}
-#menu li.sec{font-family:"IBM Plex Mono",monospace;color:#C8CDD3;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:18px}
-#menu button{background:none;border:0;color:#FFFFFF;font-size:18px;text-align:left;padding:4px 0}
-#menu button:hover{color:#FF6F5E}
+#menu h2{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;letter-spacing:-.005em;text-transform:uppercase;color:#FFFFFF;margin:0 0 26px;padding-top:14px;border-top:3px solid #FF6F5E}
+#menu ol{list-style:none;columns:2;column-gap:64px;max-width:1060px}
+#menu li{break-inside:avoid;margin:0 0 2px}
+#menu li.sec{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.05;letter-spacing:-.005em;text-transform:uppercase;color:#FFFFFF;margin:26px 0 10px;padding-top:10px;border-top:2px solid rgba(244,241,234,.26)}
+#menu li:first-child.sec{margin-top:0}
+#menulist button{background:none;border:0;color:#C8CDD3;font-size:17px;text-align:left;padding:5px 0;width:100%;
+  display:grid;grid-template-columns:42px 1fr;align-items:baseline;gap:0 14px;transition:color .14s ease}
+#menulist button .n{font-family:var(--display);font-weight:700;font-size:23px;line-height:1;
+  color:var(--coral-ghost-navy);transition:color .14s ease}
+#menulist button:hover,#menulist button:focus-visible{color:#FFFFFF}
+#menulist button:hover .n,#menulist button:focus-visible .n{color:#FF6F5E}
+@media(prefers-reduced-motion:reduce){#menulist button,#menulist button .n{transition:none}}
 #menu .close{position:fixed;top:20px;right:40px;color:#FFFFFF;background:transparent;border:1px solid #C8CDD3;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
 #menu .close:hover{border-color:#FFFFFF;color:#FF6F5E}
 
@@ -634,7 +640,10 @@ S.forEach((s,i)=>{
   if(i===0)return;
   if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
   const li=document.createElement('li');if(s.basic)li.className='basic';
-  const b=document.createElement('button');b.textContent=`${i}. ${s.h.replace(/<\/?em>/g,'')}`;b.onclick=()=>{show(i);toggleMenu();};
+  const b=document.createElement('button');
+  const n=document.createElement('span');n.className='n';n.textContent=String(i).padStart(2,'0');
+  const t=document.createElement('span');t.textContent=s.h.replace(/<\/?em>/g,'');
+  b.appendChild(n);b.appendChild(t);b.onclick=()=>{show(i);toggleMenu();};
   li.appendChild(b);ml.appendChild(li);
 });
 function checkMore(){document.querySelectorAll('.slide.on .pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');if(!pre)return;p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});}
