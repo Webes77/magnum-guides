@@ -858,14 +858,16 @@ Since 14 Sep a routine drafts the next issue every Wednesday 6am onto a
 branch (see the Field Note routine above). The four live issues were all
 written by hand.
 
-Four Weekly Field Notes are in `newsletter/`: 01 Clarity, 02 Context,
+Five Weekly Field Notes are in `newsletter/`: 01 Clarity, 02 Context,
 03 Talking (added 4 Sep, written from a note James was sent, in his voice),
 04 Cutting (drafted 4 Sep evening from the 20 per cent rule in James's own
-library, carrying the shelf card "Cut it to the 20 per cent"). All four are
+library, carrying the shelf card "Cut it to the 20 per cent"), 05 Arguing
+(the routine's first draft, 16 Sep, carrying the shelf card
+"Redline your own plan"). All five are
 on `main` and linked from the front page and the archive; the note that 04
 was still on a branch was stale and was corrected on 14 Sep.
 Each issue is one self-contained HTML file with its card source beside it.
-The front page shows the newest two or three; the archive shows all.
+The front page shows the newest four; the archive shows all.
 
 Make Claude Yours has been delivered to one client, on 3 Sep. Two problems
 came out of that run and both are fixed: prompts were mostly off-screen, and
@@ -1388,6 +1390,44 @@ file predates the `field-note-commission` section. That is the fallback
 behaving exactly as designed on the one week it was always going to be needed.
 The branch carries the page, the card source, the rendered card, both index
 links and its own log entry. James reads the diff; nothing is merged.
+
+Issue 05 went to `main` on 16 Sep after three rounds of James reading it, and
+each round changed the routine rather than only the issue.
+
+Round one: the routine was writing a scaffold and leaving 23 blank brackets
+for James. He overturned the 14 Sep decision that produced that. "It's never
+the rule that I'm going to write the piece. The whole point is to automate
+this." The routine now writes the whole issue in his voice through the
+`james-writes` skill, and the one thing it must never invent is a fact about
+James. If it needs a story, it builds it from something already recorded in
+this repository. Never attribute an event to him that was made up.
+
+Round two: too long and too busy. Measured rather than guessed: 1,618 words,
+9.5 phone screens, eight minutes, on a cover claiming three. He asked for a
+bottom line up front, so the issue now opens with a BLUF block carrying the
+hook, the prompt itself, and nothing else. The rest of the issue is still
+there, below it, for anyone who wants it. A reader on a phone on a Wednesday
+morning gets the usable thing in the first screen and can stop.
+
+Round three, and this is the rule worth keeping: an instruction is not a hook.
+"Stop asking whether the plan works" is a task. "It will tell you the plan is
+good. It has not checked." is a hook. James named the register, Stephen
+Bartlett on Diary of a CEO, and the psychology is the point: a reader who sees
+a wall of text does not start. The share card carries the same words, so what
+gets shared and what gets opened are the same sentence. The BLUF now ends at
+987px, 1.17 phone screens, 169 words.
+
+All three rules are in `templates/field-note-template.html` as `EDIT · VOICE`
+guidance and in `notes/field-note-prompt.md`, which was pushed to the live
+trigger and read back byte-identical. The prompt file had drifted from the
+trigger in seven places and was reconciled in the same pass; check them
+against each other before editing either.
+
+One thing left as it is, and it will show in the style checker. The Field Note
+share cards draw a stack of pages with a five-layer offset `box-shadow`, and
+all four of 02 to 05 plus the template carry it. Changing 05 alone would put
+it out of step with the three beside it on the front page. It goes when the
+card set is re-rendered, with the twelve sources already listed above.
 
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
