@@ -1230,12 +1230,30 @@ order of value:
    team seats guide, which went to `main` on 15 Sep. On team seats the tool
    is the part to check on a phone: four taps to a verdict, the recap line,
    and the reset in the head bar. Verified locally at 1440, 1280, 820 and 390
-   only. One thing waits on him there: whether to log which band each run
-   lands on. There is no logging
-   mechanism in this repo and cannot be one without a third-party service;
-   band counts also cannot answer the question asked of them, because a
-   distribution with no accuracy signal reads the same whether the weights
-   are wrong or most small businesses genuinely are borderline.
+   only. Nothing else waits on him there.
+
+   Band logging was asked for on 15 Sep and decided against the same day.
+   James wanted a count of which band each completed run lands on, as a
+   feedback loop on whether the weights call it right over time. It is not
+   built and should not be proposed again without a new reason. Two grounds,
+   and the second is the one that matters.
+
+   There is nowhere to put it. This is static GitHub Pages: no backend, no
+   workflows, no analytics anywhere in the repo, and the only `fetch` on the
+   whole site is the front page reading the newsletter's `issues.json`. A
+   browser cannot write a counter file. `localStorage` would sit on each
+   client's own device and James would never see it. Any real version means a
+   third-party service, which is a recurring cost and a new moving part on a
+   one-person business, and a tracker on the site that hosts the privacy page
+   is its own positioning problem.
+
+   And the metric cannot answer the question. A band distribution with no
+   accuracy signal reads identically whether the weighting is wrong or most
+   small businesses genuinely are borderline. It counts what people got, never
+   whether it was right. The thing that would close that loop, a one-tap "does
+   that sound right?" on the verdict, is ruled out by the same brief that asked
+   for the logging. Until that changes, the honest feedback loop is James
+   watching a client use it in a session, which he does anyway.
 
 2. Done for the Field Note routine (`trig_016pPJPsm8D3yUZs81wquraU`), 15 Sep:
    repository and connectors both attached, confirmed by James, who asked not
