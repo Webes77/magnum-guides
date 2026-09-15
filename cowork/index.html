@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cowork: What It Is and How to Set It Up &middot; Magnum AI</title>
+<meta name="description" content="Cowork is the mode where Claude does the job instead of answering you. What it is, how it differs from a chat, whether to open the desktop app or the web, the setup in six steps, and two prompts to run once it is on.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/cowork/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Cowork: What It Is and How to Set It Up">
+<meta property="og:description" content="The mode where Claude does the job instead of answering you. Set it up in six steps, then run the two prompts.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/cowork/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/cowork.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cowork: What It Is and How to Set It Up, a Magnum AI reference page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cowork: What It Is and How to Set It Up">
+<meta name="twitter:description" content="The mode where Claude does the job instead of answering you. Set it up in six steps, then run the two prompts.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/cowork.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+    --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A;--coral-ghost:#F7BAB0; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
+    --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+    --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+    --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  :root{color-scheme:light}
+  html,body{background:#FBFBF9 !important;color:#2B2823;}
+  body{
+    color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;
+    margin:0;padding:0 20px 90px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:48px 0 26px;margin:0 -20px 40px;}
+  .masthead .wrap{padding:0 20px;}
+  .masthead h1{color:var(--on-navy);}
+  .masthead h1 em{color:var(--coral-bright);}
+  .masthead .label{color:var(--coral-bright);}
+  .masthead .label::after{background:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  h1{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h1 em,h2 em,h3 em{font-style:normal;color:var(--rust);}
+
+  /* contents strip */
+  .contents{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 48px;padding:0;list-style:none;
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;
+  }
+  .contents a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:2px;}
+  .contents a:hover,.contents a:focus-visible{color:var(--rust);outline:none;}
+
+  section{margin:0 0 56px;scroll-margin-top:24px;}
+  .crumb{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;
+  letter-spacing:.20em;color:var(--coral-text);margin:0 0 16px;
+  display:flex;align-items:center;gap:14px}
+.crumb::after{content:"";flex:1;height:1px;background:var(--ink)}
+.masthead .crumb{color:var(--coral-bright)}
+.label{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;
+  text-transform:uppercase;letter-spacing:-.005em;color:var(--ink);
+  display:flex;align-items:center;gap:0 20px;margin:0 0 18px;
+  border-top:3px solid var(--ink);padding-top:16px}
+.label::before{content:attr(data-n);font-family:var(--display);font-weight:700;
+  font-size:56px;line-height:.82;letter-spacing:-.02em;color:var(--coral-ghost);
+  transition:color .18s ease}
+.label:not([data-n])::before{display:none}
+.label::after{content:none}
+section:hover > .label::before,section:focus-within > .label::before,
+.start:hover > .label::before,article:hover > .label::before{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){.label::before{transition:none}}
+@media(max-width:820px){
+  .label{font-size:27px;gap:0 14px;padding-top:13px;margin-bottom:14px}
+  .label::before{font-size:38px}
+}
+    h2{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(26px,4vw,36px);line-height:1.05;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  /* The index entry is the section heading. An h2 right under it is the
+     section's point, so it steps down to a deck line instead of competing. */
+  .label + h2{font-size:clamp(17px,2.1vw,20px);font-weight:500;letter-spacing:.01em;
+    text-transform:none;color:var(--body);margin:0 0 18px;max-width:52ch}
+  h3{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:22px;line-height:1.1;color:var(--ink);margin:0 0 10px;
+  }
+  p{max-width:64ch;}
+  p.lead{font-size:18px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+  .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 22px 24px;}
+  .card h3{font-size:20px;margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--char);margin:0;max-width:none;}
+  .card ul{margin:0;padding:0;list-style:none;}
+  .card li{font-size:15.5px;color:var(--char);padding:7px 0 7px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12);}
+  .card li:last-child{border-bottom:none;}
+  .card li::before{position:absolute;left:0;top:7px;font-family:var(--mono);font-size:13px;font-weight:500;}
+  .yes li::before{content:"\2713";color:var(--olive);}
+  .stop li::before{content:"\2715";color:var(--rust);}
+
+  .figure{margin:0 0 20px;overflow-x:auto;}
+  .figure svg{display:block;min-width:640px;width:100%;height:auto;}
+  figcaption{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-top:12px;}
+
+  /* stages */
+  .stage{border-top:2px solid var(--ink);padding-top:22px;margin-top:34px;}
+  .stage-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;}
+  .stage-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--coral-text);}
+  .stage-time{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-left:auto;white-space:nowrap;}
+
+  .prompt{position:relative;margin:16px 0 18px;}
+  .prompt pre{
+    font-family:var(--mono);font-size:13px;line-height:1.55;background:var(--paper-2);
+    border:2px solid var(--ink);padding:18px 20px 18px;
+    margin:0;white-space:pre-wrap;word-break:break-word;color:var(--ink);
+  }
+  .copy{
+    position:absolute;top:-14px;right:14px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    background:var(--navy);color:#FFFFFF;border:0;padding:7px 12px;cursor:pointer;
+    transition:transform .12s ease,background .12s ease;
+  }
+  .copy:hover,.copy:focus-visible{background:var(--rust);outline:none;transform:translateY(-2px);}
+  .copy.done{background:var(--tint);color:var(--ink);}
+
+  .say{
+    border-left:5px solid var(--rust);background:var(--tint);
+    padding:12px 16px;margin:0 0 6px;max-width:64ch;
+  }
+  .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
+  .say strong{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+
+  .tablewrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);}
+  table{border-collapse:collapse;width:100%;min-width:520px;}
+  th,td{text-align:left;padding:12px 18px;border-bottom:1px solid rgba(30,27,23,.16);vertical-align:top;font-size:15.5px;color:var(--char);}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.gone{color:var(--mute);text-decoration:line-through;}
+  td.mono{font-family:var(--mono);font-size:13.5px;color:var(--ink);white-space:nowrap;}
+
+  code{font-family:var(--mono);font-size:13.5px;background:var(--paper-2);border:1px solid rgba(30,27,23,.28);padding:1px 6px;color:var(--ink);}
+
+  footer{background:var(--navy);color:var(--on-navy-mute);margin-top:60px;padding:22px 20px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  }
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .card{break-inside:avoid}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ---- this page only ------------------------------------------------ */
+  /* the numbered setup pass */
+  .steps{counter-reset:s;list-style:none;margin:0;padding:0;}
+  .steps>li{counter-increment:s;position:relative;padding:0 0 20px 52px;margin:0 0 20px;
+    border-bottom:1px solid rgba(30,27,23,.14);}
+  .steps>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .steps>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--coral-text);}
+  .steps h3{font-size:19px;margin-bottom:6px;}
+  .steps p{font-size:15.5px;color:var(--char);margin:0 0 6px;}
+  .steps p:last-child{margin-bottom:0;}
+  /* a path through a menu, so a reader can follow it with their thumb */
+  .path{font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--tint);
+    border:1px solid rgba(30,27,23,.2);padding:3px 8px;display:inline-block;margin-bottom:8px;}
+  /* a claim we could not verify against Anthropic's own page */
+  .flag{border-left:5px solid var(--olive);background:#FFFFFF;border-top:1px solid var(--hair);
+    border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);
+    padding:12px 16px;margin:14px 0 0;max-width:64ch;}
+  .flag p{margin:0;font-size:14.5px;color:var(--char);max-width:none;}
+  .flag strong{color:var(--olive);font-weight:600;font-family:var(--mono);font-size:11px;
+    text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+
+  /* DRAFT ONLY. The band and every .check marker come out together, in one
+     commit, once James has confirmed the six lines in the live product.
+     Same pattern as the Field Note draft band. */
+  .draftband{background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);
+    padding:22px 24px 24px;margin:0 0 40px;}
+  .draftband h2{color:var(--ink);font-size:clamp(22px,3.2vw,30px);margin:0 0 10px;}
+  .draftband p{color:var(--ink);font-size:15.5px;max-width:66ch;margin:0 0 14px;}
+  .draftband ol{margin:0;padding:0 0 0 22px;}
+  .draftband li{color:var(--ink);font-size:15.5px;line-height:1.5;margin-bottom:9px;max-width:62ch;}
+  .draftband li:last-child{margin-bottom:0;}
+  .draftband a{color:var(--ink);}
+  .check{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+    letter-spacing:.14em;background:var(--coral-bright);color:var(--ink);padding:2px 7px;
+    display:inline-block;vertical-align:baseline;white-space:nowrap;}
+
+  /* the two prompts */
+  .promptcard{border-top:2px solid var(--ink);padding-top:22px;margin-top:38px;}
+  .promptcard:first-of-type{margin-top:0;}
+  .promptlabel{font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--coral-text);margin:0 0 10px;}
+  .after{background:var(--paper-2);border:2px solid var(--ink);padding:18px 20px 20px;margin-top:18px;}
+  .after h3{font-size:17px;margin-bottom:10px;}
+  .after ol{margin:0;padding:0 0 0 20px;}
+  .after li{font-size:15.5px;color:var(--char);margin-bottom:8px;line-height:1.5;}
+  .after li:last-child{margin-bottom:0;}
+  /* the sources block */
+  .sources{border-top:2px solid var(--ink);padding-top:18px;margin-top:8px;}
+  .sources p{font-size:14.5px;color:var(--char);}
+  .sources ul{margin:0;padding:0 0 0 20px;}
+  .sources li{font-size:14px;color:var(--char);margin-bottom:7px;line-height:1.5;}
+  .sources a{color:var(--coral-text);}
+  @media (max-width:560px){
+    .steps>li{padding-left:40px;}
+    .draftband{padding:18px 18px 20px;}
+  }
+</style></head>
+<body>
+<header class="masthead"><div class="wrap">
+    <p class="crumb"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;&middot;&nbsp; Reference &nbsp;&middot;&nbsp; Cowork</p>
+    <h1>Cowork, <em>set up properly</em></h1>
+    <p class="sub">A chat answers you. Cowork does the job. It is the same Claude you already pay for, in a mode where you hand over a task and get back the finished thing instead of a reply. This page is what it is, which one to open, the setup in six steps, and two prompts to run the day it is on.</p>
+  </div></header>
+  <div class="wrap">
+
+  <!-- ===================================================================
+       DRAFT BAND. Delete this whole block and every <span class="check">
+       marker in the same commit, once the six lines are confirmed live.
+       =================================================================== -->
+  <div class="draftband">
+    <h2>Draft. Six lines need eyes on the live product.</h2>
+    <p>Everything else on this page is verified against Anthropic's own documentation and sourced at the foot. These six are interface details that documentation either does not carry or carries in two versions. Each one is marked in place. Open Cowork once, check them in order, and the marks come off.</p>
+    <ol>
+      <li><a href="#setup">Step 01.</a> The Chat and Cowork control in the message box: what it is called and where it sits.</li>
+      <li><a href="#setup">Step 02.</a> What the folder access button actually says, and whether Desktop is grantable.</li>
+      <li><a href="#setup">Step 02.</a> Whether a session started on the desktop app reaches that folder once the work is running on Anthropic's servers.</li>
+      <li><a href="#differences">Moving files.</a> That Cowork can move and rename, not only read and write. You watched it do this on 9 September, so this is confirming what you saw.</li>
+      <li><a href="#setup">Step 05.</a> The skill creation path, and whether <em>Record a skill</em> is still in the plus menu. This also closes the check open since 4 September on Make Claude Yours slide 31.</li>
+      <li><a href="#setup">Step 06.</a> That <code>/schedule</code> is typed inside a task and that <em>Scheduled</em> is in the left sidebar.</li>
+    </ol>
+  </div>
+
+  <ul class="contents">
+    <li><a href="#what">What Cowork is</a></li>
+    <li><a href="#differences">How it differs from a chat</a></li>
+    <li><a href="#which">Desktop or web</a></li>
+    <li><a href="#setup">Setting it up</a></li>
+    <li><a href="#prompts">Two prompts to run first</a></li>
+  </ul>
+
+  <!-- ============ 01 WHAT IT IS ============ -->
+  <section id="what">
+    <p class="label" data-n="01">What Cowork is</p>
+    <h2>A second mode inside the Claude you already pay for</h2>
+    <p class="lead">There is nothing to buy. Cowork comes with Pro, Max, Team and Enterprise, and if you are reading this you are on one of them. If the question is which plan your staff should be on rather than whether you have Cowork, that is <a href="../team-seats/">a separate guide</a>.</p>
+    <p>The difference between a chat and Cowork is the difference between asking someone a question and giving them a job. In a chat you send a message and read the answer, then send the next one. You are doing the driving. In Cowork you describe the outcome you want, Claude works out the steps, then goes and does them: reading your files, writing new ones, running code, looking things up. It comes back when the work is finished.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>You describe the end</h3>
+        <p>Not the steps. &ldquo;Sort out my desktop and tell me what you moved&rdquo; is the whole instruction. Working out the order is its job, not yours.</p>
+      </div>
+      <div class="card">
+        <h3>It works on its own</h3>
+        <p>Many steps, one after another, without you approving each one. You set how often it stops to check with you, and that setting is yours to tighten.</p>
+      </div>
+      <div class="card">
+        <h3>You get the thing</h3>
+        <p>A tidied folder, a spreadsheet, a written report, a file on your disk. Not a description of how you might do it.</p>
+      </div>
+    </div>
+    <div class="say" style="margin-top:26px">
+      <p><strong>The one-line version</strong>A chat gives you an answer. Cowork gives you the work.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 DIFFERENCES ============ -->
+  <section id="differences">
+    <p class="label" data-n="02">How it differs from a chat</p>
+    <h2>Four differences that change what you can ask for</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>In a standard chat</th><th>In Cowork</th></tr></thead>
+        <tbody>
+          <tr><td>One message, one answer. You send the next instruction yourself.</td><td>One instruction, then as many steps as the job takes, until it is done.</td></tr>
+          <tr><td>It reads a file you upload or paste into the message box.</td><td>It works inside a folder you have given it: reading, editing, creating and moving files in place. <span class="check">Check 04</span></td></tr>
+          <tr><td>It stops when you close the window.</td><td>It keeps going after you close it, and a scheduled task runs with your computer switched off.</td></tr>
+          <tr><td>Nothing to set up. Open it and type.</td><td>A folder and your permission settings, done once, then left alone.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:34px">What carries across, and what does not</h3>
+    <p>This is the part people get wrong in both directions, so it is worth being exact.</p>
+    <p><b>Memory carries.</b> Since 25 August 2026, what Claude remembers about you and your business is one store shared by chat and Cowork. Something you established in a chat is there in a Cowork task, and something that came up in a Cowork task is there next time you chat. You can read the lot under <span class="path">Settings &rsaquo; Memory</span>, where it is listed by topic, and delete anything you would rather it forgot.</p>
+    <p><b>The conversation does not.</b> A new Cowork task does not go and read yesterday's chat thread. So anything a task needs in order to be done properly has to be in the task itself, in the folder you gave it, or in your instructions. That is why the setup below is worth the fifteen minutes.</p>
+  </section>
+
+  <!-- ============ 03 WHICH ONE ============ -->
+  <section id="which">
+    <p class="label" data-n="03">Desktop or web</p>
+    <h2>Open the desktop app</h2>
+    <p class="lead">That is the answer for almost everybody, for one reason: your files are on your computer, and the desktop app is what reaches them.</p>
+    <p>Cowork runs on desktop for Mac and Windows, on the web, and on the phone app. The work itself now happens on Anthropic's servers rather than on your machine, which is why a task keeps running after you close the lid and why a session you start at your desk is there on your phone. What the desktop app adds is the bridge to your own files and the built-in browser.</p>
+    <p>Web and mobile have been rolling out since 7 July 2026, starting with Max and working down the plans, and they are still in beta. Use them the way you would use a phone: to check on a task, read what came back, or start something while you are away from your desk. Do the setup on the desktop.</p>
+  </section>
+
+  <!-- ============ 04 SETTING IT UP ============ -->
+  <section id="setup">
+    <p class="label" data-n="04">Setting it up</p>
+    <h2>Six steps, about fifteen minutes, done once</h2>
+    <ol class="steps">
+      <li>
+        <h3>Open Cowork</h3>
+        <p>Open the Claude desktop app and sign in. In the message box, switch from Chat to Cowork. <span class="check">Check 01</span></p>
+        <p>You are in the right place when the box is asking you for a task rather than a message.</p>
+      </li>
+      <li>
+        <h3>Give it one folder</h3>
+        <p>Cowork does not create a folder for itself and there is no default location. You choose an existing folder and grant access to it, either in the settings or when Claude asks for it partway through a job. <span class="check">Check 02</span></p>
+        <p>Start with one folder, not your whole drive. A project folder, or Desktop if the first thing you want is the desktop cleared. You can add more later, and the smaller the first grant, the easier it is to see what it did.</p>
+        <div class="flag">
+          <p><strong>Worth knowing</strong>Granting a folder is not the same as uploading a file. Nothing is copied anywhere. Claude reads and changes the files where they already sit, which is the whole point, and also the reason the first prompt below never deletes anything. <span class="check">Check 03</span></p>
+        </div>
+      </li>
+      <li>
+        <h3>Set how often it checks with you</h3>
+        <p>Cowork asks before it uses a connected tool, and you control how often. The choice is between asking you every time, asking once and then carrying on, or not asking at all.</p>
+        <p>Start on the setting that asks every time. Once you have watched it work through two or three jobs and you trust what it reaches for, loosen it. Going the other way, tightening after something surprising, is a worse way to learn.</p>
+      </li>
+      <li>
+        <h3>Connect Gmail, Drive and Calendar once</h3>
+        <p class="path">Settings &rsaquo; Connectors</p>
+        <p>Connectors are not a separate Cowork setting. You authorise Gmail, Google Drive or Calendar once, in the same place you would for chat, and they are available in both. If you already connected them for your everyday chats, they are already on here and there is nothing to do at this step.</p>
+      </li>
+      <li>
+        <h3>Turn on skill creation</h3>
+        <p class="path">Settings &rsaquo; Capabilities &rsaquo; Skills</p>
+        <p>A skill is a job description you write once and Claude loads whenever it applies. Switch on the skill creator, and from then on you can describe a skill in an ordinary conversation and have Claude write it for you. The second prompt below ends by producing one. <span class="check">Check 05</span></p>
+      </li>
+      <li>
+        <h3>Schedule something, when you have a job worth repeating</h3>
+        <p>Type <code>/schedule</code> inside a Cowork task, or open <b>Scheduled</b> in the left sidebar to see and manage the ones you have. <span class="check">Check 06</span></p>
+        <p>Scheduled tasks run on Anthropic's servers, so your computer does not need to be awake or even on. Leave this one until you have a job you have run by hand a few times and want repeated. A schedule is a good way to automate a job you have already got right, and a fast way to repeat one you have not.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ 05 THE PROMPTS ============ -->
+  <section id="prompts">
+    <p class="label" data-n="05">Two prompts to run first</p>
+    <h2>One proves it works on your files. One gets it writing like you.</h2>
+    <p>Both are on the <a href="../prompts/">Prompt Shelf</a> under Setting up, so you can find them again without coming back here. Paste each into a new Cowork task.</p>
+
+    <div class="promptcard" id="clear-the-desktop">
+      <p class="promptlabel">Prompt one &middot; run it in a Cowork task with your Desktop folder granted</p>
+      <h3>Clear the desktop</h3>
+      <p>The first job worth giving it, because the result is visible in ten minutes and it teaches you what folder access actually means. It never deletes anything. Every file it touches goes into one dated review folder with a written record of where each one came from, and you empty that folder yourself when you are satisfied.</p>
+<div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You are a careful assistant sorting out my computer desktop. Nothing on it
+is yours to throw away, so this job is to sort and move, never to delete.
+
+Work only in the folder I have given you access to.
+
+The rules, and why each one is there:
+- Move files, never delete them. I am the only one who knows which of these
+  still matter, so the deciding is mine to do.
+- Put everything you move into one folder named Review, followed by today&#x27;s
+  date, so nothing is lost while I work through it.
+- Leave anything you cannot identify exactly where it is, and list it for
+  me. A guess about where a file belongs is worse than leaving it alone.
+- Check with me before moving anything that looks like it is in use: a file
+  changed today, or a lock file.
+
+Work through this in order:
+1. List what is on the desktop. Group it by what it is: documents,
+   images, screenshots, installers, folders, and anything else.
+2. Show me the groups, tell me how many files are in each, and say where
+   you propose to put each group. Then wait for me to say go.
+3. Once I say go, create the folders and move the files.
+4. Write a file named what-moved.md inside the review folder, listing every
+   file, where it came from and where it went, so I can undo any single
+   move by hand.
+
+Stop after step 4. Tell me what you left behind and why.</pre>
+</div>
+      <div class="after">
+        <h3>After it runs</h3>
+        <ol>
+          <li>Open <code>what-moved.md</code> in the review folder before you open anything else. It is the list of every move, and it is what makes each one reversible.</li>
+          <li>Work through the review folder yourself. Nothing has been deleted, so there is no hurry and no risk in taking a week over it.</li>
+          <li>If it left files behind and told you why, that is the prompt working. Files in use and files it could not identify are meant to stay put.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="promptcard" id="writing-style-skill">
+      <p class="promptlabel">Prompt two &middot; run it in a Cowork task with Gmail connected</p>
+      <h3>Learn how I write, from my sent mail</h3>
+      <p>The complaint about AI writing is that it does not sound like you. This is the fix, and it works because the evidence already exists: a few hundred emails you wrote yourself. The prompt reads your sent mail, tells you what it found, asks you what to keep, and turns the answer into a skill that loads every time you ask for something written.</p>
+<div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You are a writing analyst working out how I actually write, so that Claude
+can draft in my voice instead of its own.
+
+Read my sent mail only. What I received is other people&#x27;s writing, and it
+would teach you the wrong voice.
+
+Count an email as mine when I wrote it from scratch, it runs to more than
+about eighty words, and it went to a real person. Skip forwards, one-line
+replies, automated mail, and anything I pasted in from somewhere else,
+because none of it shows how I write.
+
+Work through this in order:
+1. Read at least thirty of my sent emails from the last twelve months.
+2. Tell me what you found, under these headings:
+   - Sentence length and rhythm, with two real examples.
+   - Words and phrases I use often, and ones I never use.
+   - How I open, and how I sign off.
+   - How formal I am, and whether that changes with who I am writing to.
+   - What I do that most people do not.
+3. Mark any point you are drawing from fewer than five emails as
+   [NEEDS CONFIRMING], so I can tell a real pattern from a one-off.
+4. Ask me which of it to keep, and which is a habit I would rather drop.
+   Ask one question at a time and wait for my answer.
+5. Write the result as a skill: a description saying when it should fire,
+   then the rules for writing as me, each rule with its reason.
+
+Stop after step 5 and show me the skill. I will save it myself.</pre>
+</div>
+      <div class="after">
+        <h3>After it runs</h3>
+        <ol>
+          <li>Read what it says about your writing before you agree to any of it. Some of what it finds will be your voice and some will be a habit you have been meaning to drop, and only you can tell which is which.</li>
+          <li>Anything marked <code>[NEEDS CONFIRMING]</code> came from too few examples to trust. Confirm it or cut it.</li>
+          <li>Save the skill yourself once you are happy with it. Then test it: ask for an email in a new session and see whether it sounds like you.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="sources" style="margin-top:44px">
+      <p><b>Where this came from.</b> Every product claim on this page was checked against Anthropic's own documentation on 15 September 2026. Cowork has changed shape more than once this year and the support site currently carries some older articles alongside current ones, so anything here that stops matching what you see on screen is worth telling James about rather than working around.</p>
+      <ul>
+        <li>Anthropic &middot; <a href="https://claude.com/product/cowork">Claude Cowork</a>, for what it is and what it does.</li>
+        <li>Anthropic Help Centre &middot; <a href="https://support.claude.com/en/articles/13345190">Getting started with Claude Cowork</a>, for starting a session, permissions and scheduling.</li>
+        <li>Anthropic Help Centre &middot; <a href="https://support.claude.com/en/articles/14479288">Claude Cowork architecture overview</a>, for where the work actually runs.</li>
+        <li>Anthropic Help Centre &middot; <a href="https://support.claude.com/en/articles/15520349">Use Claude Cowork on web, desktop and mobile</a>, for which platforms and which plans.</li>
+        <li>Anthropic Help Centre &middot; <a href="https://support.claude.com/en/articles/12138966">Release notes</a>, for the 7 July web and mobile beta and the 25 August shared memory.</li>
+        <li>Anthropic Help Centre &middot; <a href="https://support.claude.com/en/articles/12599426">How to create a skill with Claude through conversation</a>, for the skill creator.</li>
+      </ul>
+    </div>
+  </section>
+
+  </div>
+<footer>
+  <span>Magnum AI &middot; magnumai.com.au</span>
+  <span>Settings last checked &middot; 15 September 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script>
+
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var pre = btn.parentElement.querySelector('pre');
+      var text = pre.innerText;
+      function done() {
+        btn.textContent = 'Copied';
+        btn.classList.add('done');
+        setTimeout(function () { btn.textContent = label; btn.classList.remove('done'); }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(); });
+      } else { fallback(); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        s.removeAllRanges();
+      }
+    });
+  });
+</script>
+</body>
+</html>

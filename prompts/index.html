@@ -422,7 +422,7 @@ const LEVERS=['Role','Context','Constraints','Tone','Format','Output'];
    category. Renamed 14 Sep: "interview", "rules" and "review" meant nothing to
    anyone who had not sat in a course. The keys never change; cards store the
    key, not the label. */
-const TYPES=[['interview','Asks you questions'],['instructions','Writes your setup'],['rules','Sets the rules'],['review','Checks your work'],['writing','Writes something you send'],['image','Makes a picture'],['scheduled','Runs on a timer']];
+const TYPES=[['does','Does a job for you'],['interview','Asks you questions'],['instructions','Writes your setup'],['rules','Sets the rules'],['review','Checks your work'],['writing','Writes something you send'],['image','Makes a picture'],['scheduled','Runs on a timer']];
 const WHENS=[['start','Starting a task'],['before-acting','Before you act'],['setup','Setting up'],['weekly','Every week'],['monthly','Every month'],['new','New']];
 /* Stations are the areas of work a reader picks, as opposed to WHENS, which is
    the moment they are in. A card with no station simply never appears in a
@@ -462,6 +462,64 @@ const WHEN_NOTES={
 };
 
 const S=[
+
+/* ---------- Reference · Cowork ---------- */
+{kind:'prompt', id:'clear-the-desktop', sec:'Reference · Cowork', title:'Clear the desktop', where:'A Cowork task, with your Desktop folder granted', type:'does', when:'setup', hook:"Sort a cluttered desktop without deleting a single file.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are a careful assistant sorting out my computer desktop. Nothing on it
+is yours to throw away, so this job is to sort and move, never to delete.
+
+Work only in the folder I have given you access to.
+
+The rules, and why each one is there:
+- Move files, never delete them. I am the only one who knows which of these
+  still matter, so the deciding is mine to do.
+- Put everything you move into one folder named Review, followed by today's
+  date, so nothing is lost while I work through it.
+- Leave anything you cannot identify exactly where it is, and list it for
+  me. A guess about where a file belongs is worse than leaving it alone.
+- Check with me before moving anything that looks like it is in use: a file
+  changed today, or a lock file.
+
+Work through this in order:
+1. List what is on the desktop. Group it by what it is: documents,
+   images, screenshots, installers, folders, and anything else.
+2. Show me the groups, tell me how many files are in each, and say where
+   you propose to put each group. Then wait for me to say go.
+3. Once I say go, create the folders and move the files.
+4. Write a file named what-moved.md inside the review folder, listing every
+   file, where it came from and where it went, so I can undo any single
+   move by hand.
+
+Stop after step 4. Tell me what you left behind and why.`},
+
+{kind:'prompt', id:'writing-style-skill', sec:'Reference · Cowork', title:'Learn how I write, from my sent mail', where:'A Cowork task, with Gmail connected', type:'instructions', when:'setup', hook:"Turn your own sent mail into a skill that writes like you.", added:'2026-09-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a writing analyst working out how I actually write, so that Claude
+can draft in my voice instead of its own.
+
+Read my sent mail only. What I received is other people's writing, and it
+would teach you the wrong voice.
+
+Count an email as mine when I wrote it from scratch, it runs to more than
+about eighty words, and it went to a real person. Skip forwards, one-line
+replies, automated mail, and anything I pasted in from somewhere else,
+because none of it shows how I write.
+
+Work through this in order:
+1. Read at least thirty of my sent emails from the last twelve months.
+2. Tell me what you found, under these headings:
+   - Sentence length and rhythm, with two real examples.
+   - Words and phrases I use often, and ones I never use.
+   - How I open, and how I sign off.
+   - How formal I am, and whether that changes with who I am writing to.
+   - What I do that most people do not.
+3. Mark any point you are drawing from fewer than five emails as
+   [NEEDS CONFIRMING], so I can tell a real pattern from a one-off.
+4. Ask me which of it to keep, and which is a habit I would rather drop.
+   Ask one question at a time and wait for my answer.
+5. Write the result as a skill: a description saying when it should fire,
+   then the rules for writing as me, each rule with its reason.
+
+Stop after step 5 and show me the skill. I will save it myself.`},
 
 /* ---------- Research ---------- */
 {kind:'prompt', id:'trust-test', sec:'Research', station:'research', title:'Trust Test', where:'Before you act on a claim', type:'review', when:'before-acting', hook:"Test a claim before you put money behind it.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'Is this claim true?', bring:'the claim or the full transcript, the decision it feeds, one line about your business, and what it costs you if the claim is wrong.', back:'a claim map first. Then a Trust Report with a verdict, the evidence for and against each claim, and the cheapest way to test the idea in your own business.', steps:['If the decision is costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message. The AI returns a claim map and stops.','If the claim map is wrong, type your corrections.','Type "go" and send the message.','Before you act, open the sources behind the verdict.']},
@@ -1900,8 +1958,8 @@ work delivered, what you check with me before doing.
 What does not belong here: client names, prices, anything that changes
 often. That lives in the files and folders I give you.
 
-Cowork does not read my chats, so these instructions must stand on their
-own. Interview me first.
+A new Cowork task does not read yesterday's chat, so these instructions
+must stand on their own. Interview me first.
 
 Ask me one question at a time. Wait for my answer before asking the next.
 Cover these, in this order:

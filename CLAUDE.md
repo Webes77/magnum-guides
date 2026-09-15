@@ -877,6 +877,100 @@ Foundations gained a slide, "It reads what you hand it", on photos, PDFs,
 spreadsheets and handwritten notes as inputs. Details in
 `notes/training-audit.md`, Source 2.
 
+**The Cowork setup guide.** Built 15 Sep and live at `cowork/`, titled
+"Cowork: What It Is and How to Set It Up". The brief at
+`notes/cowork-guide-brief.md` was followed as written and not re-scoped: five
+sections in James's order, the paid-plan reader assumed in the first line with
+one link out to `team-seats/`, desktop and web both covered with the trade-off
+kept to three lines, and two prompts at the end.
+
+It ships as a draft, deliberately. A bright coral band at the top lists six
+interface lines that need eyes on the live product, each anchored to where it
+sits, and each marked in place with a `[CHECK]` span. That is the two-part
+approach the brief agreed on 15 Sep: research settles what it can, the rest
+gets a visible mark and James checks six specific lines rather than a page.
+The band and every mark come off in one commit once he has confirmed them.
+
+The six are the Chat and Cowork control in the message box, what the folder
+access button says and whether Desktop is grantable, whether a desktop session
+still reaches that folder now the work runs on Anthropic's servers, that
+Cowork can move and rename files rather than only read them, the skill
+creation path, and the `/schedule` and Scheduled routes. Two of them buy
+something beyond this page. The move-and-rename check confirms what James
+watched happen on his own Mac on 9 Sep, which is currently the only evidence
+for it. And the skill creation check closes the question open since 4 Sep on
+Make Claude Yours slide 31, because the research found a different route to
+creating a skill (Settings, Capabilities, Skills, then written through
+conversation) and did not find Record a skill in the plus menu at all. That is
+not proof it has gone, but it is a second signal, and he will be one click
+away while checking.
+
+Twelve rows went into `notes/fact-register.md` (49 to 60). Six carry
+"pending live check" in the grade column and stay that way until the band
+comes off.
+
+The research turned up one documentation hazard worth keeping. Anthropic's
+support site currently serves both a current and a stale version of article
+13345190. The stale one describes Cowork as desktop-only with everything
+running on your own machine, which was true earlier this year. Anything that
+appears to contradict this page wholesale should start by establishing which
+version it is reading.
+
+Two prompts, both reviewed against `notes/prompt-review-standards.md`, both on
+the shelf under Setting up and byte-identical to the page, verified by
+extracting from both files and comparing rather than by eye.
+`clear-the-desktop` carries the safety rule the brief called non-negotiable in
+its own text: it moves, never deletes, everything goes to one dated review
+folder, and it writes `what-moved.md` listing every move so any single one can
+be undone by hand. `writing-style-skill` reads sent mail only, marks anything
+drawn from fewer than five examples `[NEEDS CONFIRMING]`, and stops before
+saving so James saves the skill himself, which is the draft-for-approval rule
+from the standards.
+
+The shelf is 49 cards and gained its first new type since the 14 Sep pruning:
+`does`, labelled "Does a job for you". None of the seven existing types
+described a card that goes and works on your files, which is what every Cowork
+card will be, so the new key is broad enough to hold the next ones rather than
+invented for one card. That is one new chip in a filter row James deliberately
+cut down, so it should be the last one for a while.
+
+Front page: a fifth reference line under the courses, beside Chatbots,
+Fine-Tune, Privacy and Team Seats, using the existing `.ref` pattern with
+nothing moved. Card at `assets/thumbnails/cowork.jpg`, source
+`cowork/thumbnail.html`. Not a deck, so `tools/check-decks.js` does not cover
+it, though it was run and passed.
+
+**A live prompt was wrong and is fixed.** P4 in Make Claude Yours, the Cowork
+instructions prompt, told the model "Cowork does not read my chats, so these
+instructions must stand on their own." Memory has been one store shared by
+chat and Cowork since 25 August, which CLAUDE.md has recorded since 4 Sep
+saying the decks were corrected to match. This line survived that correction.
+The instruction was right and the reason was wrong, so only the reason
+changed: it now reads "A new Cowork task does not read yesterday's chat",
+which is true, survives the next memory change, and matches what the new guide
+says. Fixed in the deck and on the shelf in the same commit, per the standing
+rule. Same class of defect as the privacy slides found on 13 Sep: a product
+fact quietly going stale inside live training material.
+
+**Two contrast faults, one mine and one inherited.** The breadcrumb on
+`cowork/`, `privacy/` and `manus-bridge/` set `--coral-text` on the navy
+masthead at 2.80:1. That is exactly the fault the Manus manual had on 15 Sep,
+where `#C63A2A` is tuned for paper and the navy value is `--coral-bright`;
+copying the privacy shell copied the bug. All three now carry
+`.masthead .crumb{color:var(--coral-bright)}`. And the `.say` block's label
+set `--coral-text` on the coral tint at 4.17:1, live on both older pages and
+not caught by the 14 Sep sweep, which measured coral on paper. The token set
+has no small-coral-on-tint value, so the label takes ink; the coral signal is
+the 5px border and the tint itself, so nothing is lost. Zero failures across
+`cowork/`, `privacy/`, `manus-bridge/` and the front page at 1440, 1280, 820
+and 390.
+
+**The contrast audit is a tool now, at `tools/check-contrast.js`.** It had
+been rebuilt from scratch in three separate sessions, which is how it kept
+arriving with a fresh bug. Run it against a local server with one or more
+paths; it exits 1 on any failure or any sideways scroll. The bug it arrived
+with this time is recorded in its header and below.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
@@ -1172,13 +1266,24 @@ commit, next time the cards move for another reason. Also still open and the
 same call: `#8E97A3` (4.92:1 on navy, used site-wide), `#46545F`, `#C8402F`
 and `#3A4756` in the deck engine.
 
-Next thing to build, scoped 15 Sep and not started: a Cowork setup guide as a
-reference page, beside Fine-Tune and Privacy. The whole brief is
-`notes/cowork-guide-brief.md`, including the research prompt that has to run
-before a word of it is written, because a setup guide is almost entirely
-interface and the sandbox cannot see the product. Read that file first. Do not
-re-scope it; James settled the audience, the platforms and the prompts on
-15 Sep and the reasoning is recorded.
+Done, 15 Sep: the Cowork setup guide is built and live at `cowork/`, following
+`notes/cowork-guide-brief.md` without re-scoping. See the entry under Where we
+are. The one thing outstanding on it is James's, and it is small: six marked
+lines checked in the live product, after which the draft band and the six
+`[CHECK]` spans come off in one commit and the six fact-register rows lose
+"pending live check". The research prompt in the brief is still the thing to
+re-run when the page goes stale; it was run on 15 Sep and its findings are on
+the page's sources block.
+
+Where this session stopped (15 Sep, later): the Cowork setup guide is built
+and live at `cowork/`, as a draft with six marked lines waiting on James in the
+live product. Two prompts went with it onto the shelf (49 cards). Along the way
+a live deck prompt was found asserting a product fact that stopped being true
+on 25 August, and two contrast faults were found and fixed, one of them
+inherited by copying the privacy shell and live on two older pages. The
+contrast audit is now `tools/check-contrast.js` rather than something each
+session rebuilds. Deck check, field note check, style checker and contrast
+audit all pass.
 
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
@@ -1409,6 +1514,13 @@ order of value:
   the character finds none of them. Found 15 Sep with 32 live on two pages
   after months of clean sweeps. `check_style.py` now catches all four forms;
   use it rather than a grep.
+- A contrast audit that trusts `getComputedStyle(el).display` reports ghost
+  failures. A descendant of a `display:none` parent returns its own specified
+  display, not `none`, so the front page's collapsed nav variant showed five
+  failures at 1440 including one at 1.01:1, which looked like a serious
+  regression and was not painted at all. Test the rendered box
+  (`getBoundingClientRect`), not the computed display. Found 15 Sep.
+  `tools/check-contrast.js` carries the guard.
 - A Word lock file (`~$name.docx`) is not a document.
 - `outlook-send` cannot send from a Claude Code session. The sandbox
   refuses the call to the Make webhook before it runs, so nothing reaches
