@@ -30,5 +30,16 @@ reading four pages of HTML. Add to it when an issue merges.
 
 ## Entries
 
-No branch yet. The routine's first fire is Wednesday 16 September 2026, 6am
-Gold Coast.
+### 2026-09-16
+
+Issue 05, Arguing. The Sunday Brief vault file for 2026-09-13 has no
+`## field-note-commission` section, since that run predates the section being
+added to the vault file on 14 Sep, so this issue came from the shelf fallback.
+Teaches `redline-your-plan`, "Redline your own plan", rank 1, moment
+before-acting, never before taught by a Field Note. Card check: the card lists
+Role among its levers but the prompt text carries no explicit role sentence;
+proposed fix given in the routine's email for James to apply in the deck and
+on the shelf together. `node tools/check-field-note.js --shape --draft` prints
+PASS. Card image rendered clean at 1200x630. Checked in the browser at 1440,
+820 and 390 wide: no console errors beyond blocked Google Fonts, no sideways
+scroll.
