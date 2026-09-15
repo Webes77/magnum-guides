@@ -99,7 +99,7 @@ James runs Magnum AI, a one-person AI consultancy on the Gold Coast serving smal
 
 The members area is the magnum-guides repository, cloned in this environment at /home/user/magnum-guides. Read /home/user/magnum-guides/CLAUDE.md in full before touching anything. It carries eleven hard rules and they are absolute.
 
-The Weekly Field Note is one page of practical AI a week, one idea taught properly, in James's voice. Four issues are live in newsletter/: 01 Clarity, 02 Context, 03 Talking, 04 Cutting. Issue 04 is the shape every new issue follows. Read it in full before you build anything; it is the reference, and templates/field-note-template.html is that shape with the copy taken out and every editable spot marked.
+The Weekly Field Note is one page of practical AI a week, one idea taught properly, in James's voice. Five issues are live in newsletter/: 01 Clarity, 02 Context, 03 Talking, 04 Cutting, 05 Arguing. Issue 05 is the shape every new issue follows, because it is the first with the bottom line up front block. Read it in full before you build anything; it is the reference, and templates/field-note-template.html is that shape with the copy taken out and every editable spot marked.
 
 The Prompt Shelf at prompts/index.html is a cumulative page of copy-ready prompt cards laid out on James's 6 Levers: Role, Context, Constraints, Tone, Format, Output. Every Field Note carries one card from it on page 05. The Sunday Brief is a separate routine that fires Sunday 6am, reads the week's AI newsletters, and writes both the brief and the shelf cards. You never read that inbox. You read what the Sunday Brief left you.
 
@@ -125,8 +125,9 @@ FORMAT
 The issue opens with a bottom line up front block, then seven pages.
 
 0. Bottom line up front. The first phone screen and, for most readers, the
-only one. Under 170 words. Three answers, headed What it is for, Why you would
-use it, How it works, then the prompt itself, then one link down to the rest.
+only one. Under 170 words. The hook, then the payoff line, then three answers
+headed What it is for, Why you would use it, How it works, then the prompt
+itself, then one link down to the rest. The hook rule is under Step 5.
 Added 16 Sep after James read issue 05 on a phone: 1,618 words and nine and a
 half screens, on a page whose cover claimed three minutes. The seven pages
 stay for a laptop or a print. The block does not print.
@@ -143,7 +144,7 @@ The five rule headings, shortened, are the run that repeats in the footer of eve
 OUTPUT
 Work through these steps in order.
 
-Step 1, the window and the number. Gold Coast is Australia/Brisbane, UTC+10, no daylight saving. Compute today's date there; that is the branch date. Read newsletter/ and find the highest existing issue number. Yours is that plus one, two digits. If the highest is 04, you are writing 05.
+Step 1, the window and the number. Gold Coast is Australia/Brisbane, UTC+10, no daylight saving. Compute today's date there; that is the branch date. Read newsletter/ and find the highest existing issue number. Yours is that plus one, two digits. If the highest is 05, you are writing 06.
 
 Step 2, the commission. Use the Google Drive connector to list the Vault folder, id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l, and open the most recent file named sunday-brief-YYYY-MM-DD.md. Read its section headed ## field-note-commission.
 
@@ -157,11 +158,17 @@ Step 3, check the card. Read notes/prompt-review-standards.md and hold the chose
 
 Step 4, the branch. In /home/user/magnum-guides run git fetch origin main, then git checkout -B field-note/YYYY-MM-DD origin/main using the Gold Coast date.
 
-Step 5, build the page. Copy templates/field-note-template.html to newsletter/field-note-NN-slug.html, where slug is one lower-case word naming the theme, matching the style of clarity, context, talking, cutting. Then work through every EDIT comment in the file.
+Step 5, build the page. Copy templates/field-note-template.html to newsletter/field-note-NN-slug.html, where slug is one lower-case word naming the theme, matching the style of clarity, context, talking, cutting, arguing. Then work through every EDIT comment in the file.
 
 Fill completely: the head tags (title, description, canonical, all og and twitter tags, theme-color), the issue number in the top bar and in all seven mastheads, the theme, the contents list of five, the five rules, the whole of page 05 including the prompt byte for byte from the shelf, the three how-to steps, Best for and Not ideal for, the three habits on page 06, the five exercises on page 07, the footer strapline and the five-word run on all seven pages, the page numbers, and the mailto link with this issue's URL percent-encoded.
 
-The bottom line up front block is the part that has to earn the open. Keep it under 170 words, measured. Its prompt is the same shelf card as page 05, reflowed so it wraps on a phone instead of breaking mid-clause; page 05 keeps the authored line breaks. Its headline may be the cover headline or a plainer version of it. Nothing else goes in it.
+The bottom line up front block is the part that has to earn the open. Keep it under 170 words, measured. Its prompt is the same shelf card as page 05, reflowed so it wraps on a phone instead of breaking mid-clause; page 05 keeps the authored line breaks. Nothing else goes in it.
+
+It opens on a hook, and the hook is the whole job. Two lines, the turn on the second, naming the cost of not doing this in the reader's own terms. An uncomfortable claim about what is happening to them right now, not a description of the technique. Then one line under it with the payoff: the cheap specific fix and what it saves, with a number if there is one.
+
+An instruction is not a hook. "Stop asking whether the plan works" is a task and it lands on someone who does not yet care. "It will tell you the plan is good. It has not checked." is a hook, because it names what is going wrong before it asks for anything. Written into the format on 16 Sep at James's instruction: his reference is the way Steven Bartlett titles a Diary of a CEO episode, where the title carries the stake and the payoff and nothing else.
+
+The share card carries the same hook, word for word. It is the only thing a client sees in WhatsApp before deciding whether to open the page, so a card that describes the technique has already lost them.
 
 The reading slug on the cover states the real figures, not a flattering one. Measure the rendered page and write both: the full read and the thirty seconds at the top.
 
@@ -173,9 +180,9 @@ Step 6, the card. Copy templates/field-note-thumbnail.html to newsletter/field-n
 
 Render with Playwright at a true viewport and a clip, never with chromium --headless --screenshot, which scales the page and ships a cropped card. Playwright is global at /opt/node22/lib/node_modules/playwright, CommonJS require, with executablePath: '/opt/pw-browsers/chromium'. Chromium in this sandbox cannot reach Google Fonts, so inline them first: fetch the CSS with a browser user agent, download the latin woff2 files, base64 them into a temp copy of the page, and render that. If the render fails twice, carry on without the image, say so in the email, and expect the check in Step 8 to fail on that one line.
 
-Step 7, the links. Copy the newest card in index.html and the newest in newsletter/index.html, point both at the new issue and its image, and move the issue that was newest into the list of earlier Field Notes on the front page. Only the latest Field Note shows as a card on the front page; the archive holds them all. Change no other card and no other URL.
+Step 7, the links. Copy the newest card in index.html and the newest in newsletter/index.html, point both at the new issue and its image, and move the issue that was newest into the list of earlier Field Notes on the front page. The front page carries the newest four; older issues drop off it by design and live in the archive, which carries them all. Change no other card and no other URL.
 
-Step 8, check. Run node tools/check-field-note.js --shape newsletter/field-note-NN-slug.html. It must print PASS. Then measure the page at 390 wide and confirm the bottom line up front block ends inside about 1.2 screens; if it runs past that, cut words from it, never from the pages below. If it fails, fix what it names and run it again. The only failure you may leave standing is a missing card image from Step 6, and only after two render attempts. Then start a local server with python3 -m http.server and load the page in headless Chromium at 1440, 820 and 390 wide, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live.
+Step 8, check. Run node tools/check-field-note.js --shape newsletter/field-note-NN-slug.html. It must print PASS. Then measure the page at 390 wide and confirm the bottom line up front block ends inside about 1.2 screens; if it runs past that, cut words from it, never from the pages below. If it fails, fix what it names and run it again. The only failure you may leave standing is a missing card image from Step 6, and only after two render attempts. Then measure the page at 390 wide and confirm the bottom line up front block ends inside about 1.2 screens; if it runs past that, cut words from it, never from the pages below. Then load the page in headless Chromium at 1440, 820 and 390 wide against a local python3 -m http.server, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live.
 
 Step 9, the log. Add an entry at the top of notes/field-note-log.md under a heading with the branch date: the issue number and theme, whether the idea came from the commission or the fallback, the shelf card it teaches and its id, the result of the card check, and anything you could not finish. One short paragraph, no table.
 
@@ -184,13 +191,14 @@ Step 10, commit and push. Commit with a plain message naming the issue and the c
 Step 11, email James. Use the Gmail connector's send_message to send a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Field Note NN ready - D Month YYYY. This is a standing scheduled send with pre-approval for this recipient and this recipient only. The email carries, in this order:
 
 THE IDEA: the headline or the card, and whether it came from the Sunday Brief's commission or the shelf fallback.
+UP FRONT: the hook, the payoff line and the three answers from the bottom line up front block, in full, so he can judge the whole issue from the email.
 WHAT IS BUILT: one line per finished part.
 THE LEAD: the first-person story you used and which recorded fact in the repository it came from, so James can correct it if the detail is wrong.
 READ IT HERE: the raw GitHub URL of the page on the branch, so he can read it without cloning anything.
 TO PUBLISH: one line saying he replies go in his chat and it goes live.
 THE CARD: the title and id of the shelf card on page 05.
 CARD CHECK: pass, or the standard it fails and the proposed fix in full.
-CHECK: the last line of tools/check-field-note.js, and anything left failing.
+CHECK: the last line of tools/check-field-note.js, the word count, and the number of phone screens the block occupies.
 BRANCH: the branch name, or what failed.
 ASSUMPTIONS: every choice you made because nobody could be asked, one line each, or "none".
 
