@@ -122,7 +122,15 @@ TONE
 The issue is written in James's voice through the james-writes skill: plain, Australian, short sentences, an analogy from outside computing, a real number, and an admission that he got something wrong. The instructional copy (the rules, the exercises, the how-to steps) is tighter still: verb first, one idea per sentence, no hedging. The email is a work note from a builder to the person who has to send it.
 
 FORMAT
-The issue is seven pages, in this order, and the template carries all seven.
+The issue opens with a bottom line up front block, then seven pages.
+
+0. Bottom line up front. The first phone screen and, for most readers, the
+only one. Under 170 words. Three answers, headed What it is for, Why you would
+use it, How it works, then the prompt itself, then one link down to the rest.
+Added 16 Sep after James read issue 05 on a phone: 1,618 words and nine and a
+half screens, on a page whose cover claimed three minutes. The seven pages
+stay for a laptop or a print. The block does not print.
+
 1. Cover: theme, headline, kicker, dek, the reading slug, the figure plate, and a before-and-after pair.
 2. Intro: the story, the mechanism, the contents list of five, the band.
 3. The argument: two cards on what each way gives you, the trap, the pull quote.
@@ -153,7 +161,11 @@ Step 5, build the page. Copy templates/field-note-template.html to newsletter/fi
 
 Fill completely: the head tags (title, description, canonical, all og and twitter tags, theme-color), the issue number in the top bar and in all seven mastheads, the theme, the contents list of five, the five rules, the whole of page 05 including the prompt byte for byte from the shelf, the three how-to steps, Best for and Not ideal for, the three habits on page 06, the five exercises on page 07, the footer strapline and the five-word run on all seven pages, the page numbers, and the mailto link with this issue's URL percent-encoded.
 
-Write out in full, through james-writes: the headline, the kicker, the dek, the before-and-after bodies, the lead and the four paragraphs under it, the intro note, the band text, the argument heading, the trap, the pull quote, the callout, the verdict. Nothing is left in square brackets.
+The bottom line up front block is the part that has to earn the open. Keep it under 170 words, measured. Its prompt is the same shelf card as page 05, reflowed so it wraps on a phone instead of breaking mid-clause; page 05 keeps the authored line breaks. Its headline may be the cover headline or a plainer version of it. Nothing else goes in it.
+
+The reading slug on the cover states the real figures, not a flattering one. Measure the rendered page and write both: the full read and the thirty seconds at the top.
+
+Write out in full, through james-writes: the bottom line up front block, the headline, the kicker, the dek, the before-and-after bodies, the lead and the four paragraphs under it, the intro note, the band text, the argument heading, the trap, the pull quote, the callout, the verdict. Nothing is left in square brackets.
 
 Delete every EDIT comment, including every EDIT · VOICE comment, once its block is written. Delete the draft band and its CSS. The issue you push is finished, not a scaffold.
 
@@ -163,7 +175,7 @@ Render with Playwright at a true viewport and a clip, never with chromium --head
 
 Step 7, the links. Copy the newest card in index.html and the newest in newsletter/index.html, point both at the new issue and its image, and move the issue that was newest into the list of earlier Field Notes on the front page. Only the latest Field Note shows as a card on the front page; the archive holds them all. Change no other card and no other URL.
 
-Step 8, check. Run node tools/check-field-note.js --shape newsletter/field-note-NN-slug.html. It must print PASS. If it fails, fix what it names and run it again. The only failure you may leave standing is a missing card image from Step 6, and only after two render attempts. Then start a local server with python3 -m http.server and load the page in headless Chromium at 1440, 820 and 390 wide, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live.
+Step 8, check. Run node tools/check-field-note.js --shape newsletter/field-note-NN-slug.html. It must print PASS. Then measure the page at 390 wide and confirm the bottom line up front block ends inside about 1.2 screens; if it runs past that, cut words from it, never from the pages below. If it fails, fix what it names and run it again. The only failure you may leave standing is a missing card image from Step 6, and only after two render attempts. Then start a local server with python3 -m http.server and load the page in headless Chromium at 1440, 820 and 390 wide, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live.
 
 Step 9, the log. Add an entry at the top of notes/field-note-log.md under a heading with the branch date: the issue number and theme, whether the idea came from the commission or the fallback, the shelf card it teaches and its id, the result of the card check, and anything you could not finish. One short paragraph, no table.
 

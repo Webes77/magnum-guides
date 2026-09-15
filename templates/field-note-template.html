@@ -678,6 +678,30 @@ pre{
 .draftband{width:100%;max-width:794px;margin:18px auto 0;padding:14px 18px;background:var(--tint);border:2px solid var(--rust);color:var(--ink);font:500 14px/1.5 'IBM Plex Sans',system-ui,sans-serif}
 .draftband b{font-family:'IBM Plex Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--coral-text)}
 @media print{.draftband{display:none}}
+
+/* BLUF. The whole issue on one phone screen: what it is for, why you would use
+   it, and the prompt. The seven pages stay below for anyone who wants them.
+   Added 16 Sep after James read issue 05 on a phone: 1,618 words and nine and a
+   half screens, on a page whose cover claimed three minutes. */
+.bluf{max-width:794px;margin:18px auto 0;background:var(--paper);border:2px solid var(--ink);padding:26px 28px 22px}
+.bluf .eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--coral-text);margin-bottom:14px}
+.bluf h2{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:700;font-size:clamp(26px,6vw,34px);
+  line-height:1.02;text-transform:uppercase;color:var(--ink);margin:0 0 16px}
+.bluf h2 em{font-style:normal;color:var(--rust)}
+.bluf dl{margin:0 0 18px;display:grid;gap:12px 16px}
+.bluf dt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--coral-text);margin-bottom:3px}
+.bluf dd{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
+.bluf .pbox{background:var(--ink);color:#FFFFFF;padding:16px 18px;margin:0 0 16px}
+.bluf .pbox b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);margin-bottom:10px;font-weight:500}
+.bluf .pbox pre{margin:0;padding:0;color:#FFFFFF;white-space:pre-wrap;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13.5px;line-height:1.6}
+.bluf .more{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--coral-text);text-decoration:none;
+  border-bottom:2px solid var(--rust);padding-bottom:3px}
+@media print{.bluf{display:none}}
 </style>
 </head>
 <body>
@@ -697,8 +721,42 @@ pre{
   <span class="issue">Weekly Field Note / No. NN</span>
 </nav>
 
+<!-- ============ BOTTOM LINE UP FRONT ============ -->
+<!-- The first phone screen, and for most readers the only one. Keep it under
+     about 170 words. Three answers and the prompt, nothing else. -->
+<section class="bluf">
+  <div class="eyebrow">Weekly Field Note / No. NN / [Theme]</div>
+  <!-- EDIT · VOICE: the same headline as the cover, or a plainer version of it. -->
+  <h2>[The issue in two lines. One coral word.]</h2>
+  <dl>
+    <div>
+      <dt>What it is for</dt>
+      <!-- EDIT · VOICE: one sentence. The job it does, not the idea behind it. -->
+      <dd>[One sentence: the job this does for the reader.]</dd>
+    </div>
+    <div>
+      <dt>Why you would use it</dt>
+      <!-- EDIT · VOICE: one or two sentences. The thing that goes wrong without it. -->
+      <dd>[One or two sentences: what goes wrong without it.]</dd>
+    </div>
+    <div>
+      <dt>How it works</dt>
+      <!-- EDIT · VOICE: one or two sentences. When to paste it and what to do
+           with the answer. No theory. -->
+      <dd>[One or two sentences: when to paste it and what to do with the answer.]</dd>
+    </div>
+  </dl>
+  <div class="pbox">
+    <b>The prompt</b>
+    <!-- The same shelf card as page 05, reflowed so it wraps to a phone instead
+         of breaking mid-clause. Page 05 keeps the authored line breaks. -->
+    <pre>[The prompt, reflowed: paragraph breaks kept, the 72-character line breaks removed.]</pre>
+  </div>
+  <a class="more" href="#more">Want the reasoning, five rules and five exercises &darr;</a>
+</section>
+
 <!-- ============ PAGE 1 · COVER ============ -->
-<section class="page p-cover">
+<section class="page p-cover" id="more">
   <header class="masthead">
     <div>
       <span class="mh-title">Weekly Field Note</span>
