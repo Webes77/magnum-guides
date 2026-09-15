@@ -205,9 +205,20 @@ function check(file) {
       if (!fs.existsSync(thumbJpg)) {
         fail.push(`no card image at assets/thumbnails/${stem}.jpg`);
       }
-      const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-      if (!home.includes(`newsletter/${base}`)) {
-        fail.push('the front page does not link this issue');
+      // The front page carries the latest issue as a card plus the three before
+      // it, four in all. An older issue drops off by design and lives in the
+      // archive. Found 16 Sep when issue 05 pushed issue 01 off and the check
+      // called a working front page a failure.
+      const FRONT_PAGE_SLOTS = 4;
+      const newest = fs.readdirSync(path.join(ROOT, 'newsletter'))
+        .filter(f => /^field-note-(\d\d)-[a-z]+\.html$/.test(f))
+        .sort()
+        .slice(-FRONT_PAGE_SLOTS);
+      if (newest.includes(base)) {
+        const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+        if (!home.includes(`newsletter/${base}`)) {
+          fail.push('the front page does not link this issue, and it is one of the newest four');
+        }
       }
       const archive = fs.readFileSync(path.join(ROOT, 'newsletter', 'index.html'), 'utf8');
       if (!archive.includes(`href="${base}"`)) {
