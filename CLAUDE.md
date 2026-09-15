@@ -1172,6 +1172,14 @@ commit, next time the cards move for another reason. Also still open and the
 same call: `#8E97A3` (4.92:1 on navy, used site-wide), `#46545F`, `#C8402F`
 and `#3A4756` in the deck engine.
 
+Next thing to build, scoped 15 Sep and not started: a Cowork setup guide as a
+reference page, beside Fine-Tune and Privacy. The whole brief is
+`notes/cowork-guide-brief.md`, including the research prompt that has to run
+before a word of it is written, because a setup guide is almost entirely
+interface and the sandbox cannot see the product. Read that file first. Do not
+re-scope it; James settled the audience, the platforms and the prompts on
+15 Sep and the reasoning is recorded.
+
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
 all eight pages. The Field Note routine is set up. James confirmed the
@@ -1418,5 +1426,8 @@ order of value:
 - `brand/rollout-exemplar.html`: the reference client document in the house
   style.
 - `newsletter/README.md`: how a Field Note is added.
+- `notes/cowork-guide-brief.md`: the scoped brief for the Cowork setup guide,
+  with its research prompt and the dated facts this repo already holds about
+  Cowork, all of which need re-verifying before they ship.
 - `README.md` and `ROADMAP.md`: the human-facing version of this file and
   the long-term plan for logins.
