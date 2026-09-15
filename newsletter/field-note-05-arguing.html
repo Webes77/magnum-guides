@@ -670,22 +670,9 @@ pre{
 .sicon.s6::after{content:"";position:absolute;left:30%;right:30%;top:30%;bottom:30%;border:4px solid var(--ink);border-radius:50%;background:var(--tan)}
 @media (max-width:620px){.two{grid-template-columns:1fr}.trap{grid-template-columns:1fr}.exr{grid-template-columns:48px 1fr}}
 
-/* Draft band. Only ever present on an unmerged draft. Deleted before merge. */
-.draftband{width:100%;max-width:794px;margin:18px auto 0;padding:14px 18px;background:var(--tint);border:2px solid var(--rust);color:var(--ink);font:500 14px/1.5 'IBM Plex Sans',system-ui,sans-serif}
-.draftband b{font-family:'IBM Plex Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--coral-text)}
-@media print{.draftband{display:none}}
 </style>
 </head>
 <body>
-
-<!-- ==========================================================
-     EDIT: delete this whole draft band before the issue merges.
-     tools/check-field-note.js fails while it is still here.
-     ========================================================== -->
-<div class="draftband">
-  <b>Draft.</b> The structure, the prompt and the exercises are built. The
-  sentences are not James's yet. Rewrite the marked blocks, then delete this band.
-</div>
 
 <nav class="sitebar">
   <a href="../index.html">&larr; Magnum AI Members Area</a>
@@ -706,20 +693,9 @@ pre{
     <div class="cover-top">
       <div class="cover-head">
         <div class="eyebrow">Arguing</div>
-        <!-- EDIT · VOICE: the headline. Three short lines, a turn on the second,
-             under nine words in total. This issue is about asking it to argue
-             against your own plan instead of agreeing with it, before you act
-             on the plan. The turn on line two or three should be the flip from
-             agreeing to arguing. -->
-        <h1>[Headline. Three lines, turn on line two or three, under nine words. Stop agreeing, start arguing.]</h1>
-        <!-- EDIT · VOICE: one line naming the thing most people get wrong, which
-             is asking it "does this work" and taking a confident yes as proof. -->
-        <div class="kicker">[One line: everybody asks it to check. Nobody asks it to argue.]</div>
-        <!-- EDIT · VOICE: the dek. Three sentences. What the reader gets by page 07:
-             one prompt that makes it argue against a plan before you act on it,
-             a rule for running it every time, and the discipline of fixing what
-             it finds instead of defending the plan back to it. -->
-        <p>[Dek. Three sentences: the prompt that argues against your own plan, the rule for using it every time, and fixing what it finds instead of defending the plan.]</p>
+        <h1>It agreed.<br>It was wrong.<br>Make it <em>argue</em>.</h1>
+        <div class="kicker">Everyone asks it to check the plan. Nobody asks it to attack the plan.</div>
+        <p>One prompt that makes it argue against your own plan before you act on it. A rule for running it every time, not only when you are already nervous. And the hard part, fixing what it finds instead of explaining why the plan is fine.</p>
         <div class="slug">
           <span><b>Reading time</b> three minutes</span>
           <span><b>Works in</b> Claude, ChatGPT, any of them</span>
@@ -743,16 +719,11 @@ pre{
     <div class="ba">
       <div class="ba-card">
         <div class="ba-head">Before / Asked it to check</div>
-        <!-- EDIT · VOICE: a real ask in quotes, asking it whether a plan works,
-             then two lines on the confident yes that comes back and why a yes
-             is not proof of anything. -->
-        <div class="ba-body">[Before, in quotes: "Does this plan work?" What comes back. Why a confident yes proves nothing.]</div>
+        <div class="ba-body">&ldquo;Does this plan work?&rdquo;<br><br>Back comes a yes, with four reasons why. It reads like a check. It is a compliment with bullet points, and you cannot tell the two apart until the thing falls over in front of someone.</div>
       </div>
       <div class="ba-card good">
         <div class="ba-head">After / Asked it to argue</div>
-        <!-- EDIT · VOICE: the same plan, asked to argue against it instead, then
-             what changes: the assumptions and the missing questions, not a yes. -->
-        <div class="ba-body">[After, in quotes: the same plan, asked to argue against it. What comes back instead: the assumptions, the missing questions.]</div>
+        <div class="ba-body">&ldquo;Argue against this plan. Name what I have assumed and what I have not asked.&rdquo;<br><br>Back comes the list you did not want. Three assumptions you never noticed you were making, and two questions you should have answered a week ago.</div>
       </div>
     </div>
   </div>
@@ -776,36 +747,16 @@ pre{
 
   <div class="sheet">
     <div class="eyebrow">This week</div>
-    <!-- EDIT · VOICE: the question the issue answers, as a statement. Something
-         like why a confident answer is not the same as a checked one. -->
-    <h2 class="lower">[Why a confident answer is not a checked one.]</h2>
+    <h2 class="lower">A confident answer and a checked answer look identical.</h2>
 
     <div class="intro-grid">
       <div class="intro-copy">
-        <!-- EDIT · VOICE: the lead is a first-person story. Something that actually
-             happened to James, with a number or a name in it. Five or six lines.
-             This is the block he rewrites first and the one that carries the issue.
-             A real plan he acted on because it sounded right, and what it cost him
-             to find the hole later instead of before. -->
-        <p class="lead">[Lead: a real plan James acted on because it sounded finished, and what it cost to find the hole later instead of before.]</p>
-        <!-- EDIT · VOICE: then the turn: an assistant is built to sound helpful,
-             not to find the flaw, so a confident answer and a checked answer
-             read identically until something breaks. -->
-        <p>[Turn: it is built to sound helpful, not to find the flaw, so a confident answer and a checked one read the same.]</p>
-        <!-- EDIT · VOICE: an analogy from outside computing. A builder, a kitchen,
-             a quote. One only. -->
-        <p>[One outside analogy, a builder or a tradesman who tells you the job is fine because you asked if it was fine.]</p>
-        <!-- EDIT · VOICE: what James did about it, including the time he spent
-             taking a plan at face value before he built the habit of arguing
-             with it first. Admit the wrong thing. -->
-        <p>[What James did about it, including the time he spent taking a plan at face value before he built the habit of arguing with it first.]</p>
-        <!-- EDIT · VOICE: the rule this issue teaches, stated once, flat, no
-             build-up. Something like: do not ask it if the plan works, ask it
-             to argue that it does not. -->
-        <p>[The rule, flat: do not ask if the plan works, ask it to argue that it does not.]</p>
-        <!-- EDIT · VOICE: the note is the issue in one contrast, agreeing against
-             arguing. -->
-        <div class="intro-note">[One line: agreeing tells you what you want to hear, arguing tells you what you need to know.]</div>
+        <p class="lead">I built a cost calculator for this members area. Staff count in, seat cost out. I asked the model whether it was the right tool and it said yes, with four reasons. So I shipped it. Two days later I looked properly and the thing was answering a question nobody asks, because both platforms charge the same twenty dollars a seat. The cost was never the decision.</p>
+        <p>It is built to be helpful. Helpful and correct are not the same job. So the checked answer and the polite one come back in the same tone, and you have no way to tell which one you got.</p>
+        <p>It is like asking a builder whether the job is fine. He says it is fine. He is not lying to you, he is answering the question you asked. Ask him what he would pull up if it were his own house and you get a completely different conversation.</p>
+        <p>I took plans at face value for the best part of a year. Not through laziness. The answers were good, good enough that checking them felt like doubting myself. Now nothing gets acted on until I have made it pull the plan apart first, and that takes about ninety seconds.</p>
+        <p>Do not ask it whether the plan works. Tell it to argue that it does not.</p>
+        <div class="intro-note">Agreeing tells you what you want to hear. Arguing tells you what you need to fix.</div>
       </div>
       <aside class="contents">
         <h3>In this issue</h3>
@@ -822,9 +773,7 @@ pre{
 
     <div class="band">
       <div class="num">→</div>
-      <!-- EDIT · VOICE: two halves, four words each, the whole issue. Something
-           like agreeing tells you nothing, arguing tells you where it breaks. -->
-      <div class="txt">[Agreeing tells you nothing.<br>Arguing tells you where it breaks.]
+      <div class="txt">Agreeing tells you nothing.<br>Arguing tells you where.
         <span class="sub">Weekly Field Note / Arguing</span>
       </div>
       <div class="ghost">No.<br>05</div>
@@ -850,12 +799,8 @@ pre{
 
   <div class="sheet">
     <div class="eyebrow">Agreeing and arguing</div>
-    <!-- EDIT · VOICE: the argument as two halves of one sentence, agreeing
-         against arguing. -->
-    <h2>[Ask it to agree, get a plan you have not tested. Ask it to argue, get the holes in it.]</h2>
-    <!-- EDIT · VOICE: one line on what both have in common, so the difference
-         lands. Both start from the same plan; only the instruction changes. -->
-    <p class="lead" style="margin-top:.9em">[One line: same plan, same model, only the instruction changes.]</p>
+    <h2>Ask it to agree and you get a plan you have not tested. Ask it to argue and you get the holes in it.</h2>
+    <p class="lead" style="margin-top:.9em">Same plan, same model, same afternoon. The only thing that changes is the instruction.</p>
 
     <div class="two">
       <div class="kcard frozen">
@@ -879,19 +824,12 @@ pre{
     <div class="trap">
       <div class="tl">The<br>trap</div>
       <div>
-        <!-- EDIT · VOICE: the near-miss. The thing that looks like the fix and is
-             not. Every issue has one. Here it is likely asking it to "check" or
-             "review" the plan, which still nudges it toward agreeing, rather than
-             telling it plainly to argue against the plan. Name it, then say
-             precisely how it differs. -->
-        <p>[The near-miss: asking it to check or review the plan. Say what it is.]</p>
-        <p>[Why that is not the fix: it still nudges toward agreement. The check that tells you which one you got.]</p>
+        <p>Asking it to check the plan. Or review it. Or sanity-check it, which sounds rigorous and is not.</p>
+        <p>Check still points it at agreement. It reads the plan, finds it reasonable, and tells you so. The word that changes the answer is argue. Run both on the same plan this afternoon and see which one hands you a list of problems.</p>
       </div>
     </div>
 
-    <!-- EDIT · VOICE: the pull quote. Two lines, the second undercuts the first.
-         Something like: it is not being helpful, it is agreeing with you. -->
-    <div class="quote">[It is not being helpful.<br><span>It is agreeing with you.</span>]</div>
+    <div class="quote">It was not checking your plan.<br><span>It was being polite about it.</span></div>
   </div>
 
   <footer class="foot">
@@ -914,9 +852,7 @@ pre{
   <div class="sheet">
     <div class="eyebrow">The deliverable</div>
     <h2>Five rules for arguing with it.</h2>
-    <!-- EDIT · VOICE: one line saying none of them need a new tool, just a
-         different instruction. -->
-    <p style="margin-top:.7em">[One line: none of them need a new tool, only a different instruction.]</p>
+    <p style="margin-top:.7em">None of them need a new tool. They need you to change one word.</p>
 
     <!-- Five rules, always five. Each heading is a command of three or four words.
          Each body is two sentences: what to do, then why it works. The five
@@ -959,9 +895,7 @@ pre{
       </div>
     </div>
 
-    <!-- EDIT · VOICE: two lines, the issue as an instruction, agreeing against
-         arguing. -->
-    <div class="callout">[Agreement is comfortable.<br>Arguing is useful.]</div>
+    <div class="callout">Agreement is comfortable.<br>Arguing is cheaper.</div>
   </div>
 
   <footer class="foot">
@@ -1072,12 +1006,8 @@ Then tell me the things I need to know about this that I have not asked you.</pr
     </div>
 
     <div class="verdict">
-      <!-- EDIT · VOICE: the verdict. The line the reader repeats to someone else.
-           Something like: it is not being difficult, it is doing the job you
-           actually asked for once you stop asking it to agree. -->
-      <div class="line">[It is not being difficult.<br><span>It is doing the job you asked for.</span>]</div>
-      <!-- EDIT · VOICE: one line telling them it works every time. -->
-      <div class="install">[One line: ask it to argue and it always finds something.]</div>
+      <div class="line">It is not being negative.<br><span>It is finally being useful.</span></div>
+      <div class="install">Ask it to argue and it finds something. Every time. Which tells you how much it was sitting on.</div>
     </div>
   </div>
 
@@ -1101,8 +1031,7 @@ Then tell me the things I need to know about this that I have not asked you.</pr
   <div class="sheet">
     <div class="eyebrow">Run it yourself</div>
     <h2>Five exercises. Two minutes to ten.</h2>
-    <!-- EDIT · VOICE: one line telling them not to take James's word for it. -->
-    <p style="margin-top:.7em">[One line: do not take my word for it, run it on your own plan.]</p>
+    <p style="margin-top:.7em">Do not take my word for it. Run it on the last plan it gave you.</p>
 
     <!-- Five exercises, always five, ordered shortest first. Each is three steps,
          one action per step, verb first, under twenty words. Each ends with What
@@ -1172,9 +1101,7 @@ Then tell me the things I need to know about this that I have not asked you.</pr
   </div>
 
   <footer class="foot">
-    <!-- EDIT · VOICE: the last page's left phrase is the callout from page 04,
-         once it is written: "Agreement is comfortable. Arguing is useful." -->
-    <span>[Same line as the callout on page 04.]</span>
+    <span>Agreement is comfortable. Arguing is cheaper.</span>
     <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
     <span class="pg">07 / 07</span>
   </footer>
