@@ -877,8 +877,11 @@ Foundations gained a slide, "It reads what you hand it", on photos, PDFs,
 spreadsheets and handwritten notes as inputs. Details in
 `notes/training-audit.md`, Source 2.
 
-**The Cowork setup guide.** Built 15 Sep and live at `cowork/`, titled
-"Cowork: What It Is and How to Set It Up". The brief at
+**The Cowork setup guide.** Built 15 Sep at `cowork/`, titled "Cowork: What
+It Is and How to Set It Up". Not on `main`: it sits on
+`claude/cowork-setup-guide-w0000v` as draft pull request #3, and it stays
+there until the six checks below are done, because the draft band on it is
+not something a client should meet. The brief at
 `notes/cowork-guide-brief.md` was followed as written and not re-scoped: five
 sections in James's order, the paid-plan reader assumed in the first line with
 one link out to `team-seats/`, desktop and web both covered with the trade-off
@@ -1266,18 +1269,20 @@ commit, next time the cards move for another reason. Also still open and the
 same call: `#8E97A3` (4.92:1 on navy, used site-wide), `#46545F`, `#C8402F`
 and `#3A4756` in the deck engine.
 
-Done, 15 Sep: the Cowork setup guide is built and live at `cowork/`, following
+Done, 15 Sep: the Cowork setup guide is built, following
 `notes/cowork-guide-brief.md` without re-scoping. See the entry under Where we
-are. The one thing outstanding on it is James's, and it is small: six marked
-lines checked in the live product, after which the draft band and the six
-`[CHECK]` spans come off in one commit and the six fact-register rows lose
-"pending live check". The research prompt in the brief is still the thing to
+are. It is on `claude/cowork-setup-guide-w0000v` as draft pull request #3 and
+not on `main`, deliberately. The one thing outstanding on it is James's, and it
+is small: six marked lines checked in the live product, after which the draft
+band and the six `[CHECK]` spans come off, the six fact-register rows lose
+"pending live check", and the branch merges. The research prompt in the brief is still the thing to
 re-run when the page goes stale; it was run on 15 Sep and its findings are on
 the page's sources block.
 
 Where this session stopped (15 Sep, later): the Cowork setup guide is built
-and live at `cowork/`, as a draft with six marked lines waiting on James in the
-live product. Two prompts went with it onto the shelf (49 cards). Along the way
+at `cowork/` and waiting on `claude/cowork-setup-guide-w0000v` as draft pull
+request #3, with six marked lines for James to confirm in the live product. It
+is not on `main` and should not go there while the draft band is on it. Two prompts went with it onto the shelf (49 cards). Along the way
 a live deck prompt was found asserting a product fact that stopped being true
 on 25 August, and two contrast faults were found and fixed, one of them
 inherited by copying the privacy shell and live on two older pages. The
