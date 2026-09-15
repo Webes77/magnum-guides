@@ -138,12 +138,15 @@ Eleven rows, added 15 September 2026 when `cowork/` was built. Nearly every
 line of a setup guide is a third-party interface claim, so the page is the
 densest thing on this register after team seats.
 
-Six of these ship with a visible `[CHECK]` marker on the page and a draft
-band at the top of it, because Anthropic's documentation either does not
-carry the detail or carries it in two versions. The page is a draft until
-James has confirmed them in the live product and the band comes off. Rows
-54 to 59 are the six. Until then their grade is the grade of the source, not
-a confirmation.
+These shipped 15 Sep. Six were briefly flagged on the page for James to
+confirm in the live product, which was the wrong call and is why hard rule 10
+was softened the same day: four of the six were already A-grade from
+Anthropic's own current documentation and were written loosely enough to
+survive being slightly wrong. The one genuine gap, whether Cowork reaches
+into a folder and moves files rather than only reading them, James settled
+from memory: it moved the files itself when his desktop was cleared on
+9 Sep. Row 55 is the only one still below A, and the page says so in its own
+text rather than holding the page.
 
 One documentation hazard is worth carrying forward for whoever re-checks
 this. The support site currently serves both a current and a stale version
@@ -159,12 +162,12 @@ which version of that article you are reading before changing anything.
 | 51 | A Cowork task does not read the content of your previous chat threads | `cowork` section 02, and prompt P4 in Make Claude Yours and on the shelf | 2026-09-15 | A |
 | 52 | Cowork runs on desktop for Mac and Windows, on web and on the phone app; web and mobile have been in beta since 7 July 2026, Max plans first | `cowork` section 03 | 2026-09-15 | A |
 | 53 | The work itself runs on Anthropic's servers rather than the user's machine, so a task survives closing the app | `cowork` section 03 | 2026-09-15 | A |
-| 54 | The message box carries a control switching between Chat and Cowork | `cowork` setup step 01 | 2026-09-15 | A, pending live check |
-| 55 | Cowork creates no folder and has no default location; the user grants an existing folder, and Desktop is grantable | `cowork` setup step 02 | 2026-09-15 | C, pending live check |
-| 56 | A session started in the desktop app reaches the granted local folder although the work runs on Anthropic's servers | `cowork` setup step 02 | 2026-09-15 | C, pending live check |
-| 57 | Cowork can move and rename files in a granted folder, not only read and write them | `cowork` section 02 table, and the clear-the-desktop prompt depends on it | 2026-09-15 | C, observed by James 9 Sep, pending live check |
-| 58 | Skill creation is switched on at Settings, Capabilities, Skills, after which a skill can be written through conversation | `cowork` setup step 05 | 2026-09-15 | A, pending live check |
-| 59 | A recurring task is set with /schedule inside a task or from Scheduled in the left sidebar, and runs with the computer off | `cowork` setup step 06 | 2026-09-15 | A, pending live check |
+| 54 | The message box carries a control switching between Chat and Cowork | `cowork` setup step 01 | 2026-09-15 | A |
+| 55 | Cowork creates no folder and has no default location; the user grants an existing folder, and Desktop is grantable. The access button's exact wording is community-sourced, so the page names no button and says on the page that the wording may differ | `cowork` setup step 02 | 2026-09-15 | C, and flagged in the page's own text |
+| 56 | A session started in the desktop app reaches the granted local folder although the work runs on Anthropic's servers | `cowork` setup step 02 | 2026-09-15 | B, confirmed by James from his 9 Sep desktop clear |
+| 57 | Cowork can move and rename files in a granted folder, not only read and write them | `cowork` section 02 table, and the clear-the-desktop prompt depends on it | 2026-09-15 | B, James watched it move the files on 9 Sep and confirmed it on 15 Sep |
+| 58 | Skill creation is switched on at Settings, Capabilities, Skills, after which a skill can be written through conversation | `cowork` setup step 05 | 2026-09-15 | A |
+| 59 | A recurring task is set with /schedule inside a task or from Scheduled in the left sidebar, and runs with the computer off | `cowork` setup step 06 | 2026-09-15 | A |
 | 60 | Connectors are authorised once at Settings, Connectors, and are then available in both chat and Cowork rather than needing a separate Cowork attachment | `cowork` setup step 04 | 2026-09-15 | A |
 
 ## Not on this list, deliberately

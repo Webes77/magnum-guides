@@ -34,6 +34,21 @@ These are absolute. Do not relitigate them.
     search-verified before it ships. Training knowledge is months behind.
     The primary docs (`support.claude.com`, `anthropic.com`) are blocked from
     the sandbox. WebSearch works. Say when a fact is third-party only.
+
+    The verifying is the session's job, and after that the monthly fact
+    check's. It is never James's. A fact that search cannot settle still
+    ships: write it loosely enough to survive being slightly wrong, carry a
+    visible line saying it is third-party or observed, and put a row in
+    `notes/fact-register.md` so the routine works it. Do not hold a page, do
+    not block a merge, and do not hand James a list of things to go and
+    confirm in the product. He built the fact check routine on 13 Sep so
+    that checking would stop being his work, so a session that sends the
+    checking back to him has inverted the rule rather than followed it.
+    Softened 15 Sep after exactly that happened on the Cowork guide: six
+    lines were flagged for him and four of them were already A-grade from
+    Anthropic's own current documentation. The one genuine gap was settled
+    in one sentence from James's own memory. Ask him a question when only he
+    holds the answer, and make it a question, not a task.
 11. A prompt on a slide is never shrunk, condensed, cut or reflowed to make
     it fit. Prompt text holds a floor of 15 real pixels at any window size
     (14 for the points beside it); a small window scrolls the pane and
@@ -877,40 +892,42 @@ Foundations gained a slide, "It reads what you hand it", on photos, PDFs,
 spreadsheets and handwritten notes as inputs. Details in
 `notes/training-audit.md`, Source 2.
 
-**The Cowork setup guide.** Built 15 Sep at `cowork/`, titled "Cowork: What
-It Is and How to Set It Up". Not on `main`: it sits on
-`claude/cowork-setup-guide-w0000v` as draft pull request #3, and it stays
-there until the six checks below are done, because the draft band on it is
-not something a client should meet. The brief at
+**The Cowork setup guide.** Built and shipped 15 Sep, live at `cowork/`,
+titled "Cowork: What It Is and How to Set It Up". The brief at
 `notes/cowork-guide-brief.md` was followed as written and not re-scoped: five
 sections in James's order, the paid-plan reader assumed in the first line with
 one link out to `team-seats/`, desktop and web both covered with the trade-off
 kept to three lines, and two prompts at the end.
 
-It ships as a draft, deliberately. A bright coral band at the top lists six
-interface lines that need eyes on the live product, each anchored to where it
-sits, and each marked in place with a `[CHECK]` span. That is the two-part
-approach the brief agreed on 15 Sep: research settles what it can, the rest
-gets a visible mark and James checks six specific lines rather than a page.
-The band and every mark come off in one commit once he has confirmed them.
+It briefly shipped as a draft, with a coral band listing six interface lines
+for James to confirm in the live product. That was wrong and it is the reason
+hard rule 10 was softened the same day. Read the rule before doing this again,
+because the mistake is easy to repeat and it looks like diligence.
 
-The six are the Chat and Cowork control in the message box, what the folder
-access button says and whether Desktop is grantable, whether a desktop session
-still reaches that folder now the work runs on Anthropic's servers, that
-Cowork can move and rename files rather than only read them, the skill
-creation path, and the `/schedule` and Scheduled routes. Two of them buy
-something beyond this page. The move-and-rename check confirms what James
-watched happen on his own Mac on 9 Sep, which is currently the only evidence
-for it. And the skill creation check closes the question open since 4 Sep on
-Make Claude Yours slide 31, because the research found a different route to
-creating a skill (Settings, Capabilities, Skills, then written through
-conversation) and did not find Record a skill in the plus menu at all. That is
-not proof it has gone, but it is a second signal, and he will be one click
-away while checking.
+What went wrong: the research came back warning that the support site serves
+one stale article alongside the current ones, and that warning got applied to
+things it did not touch. Four of the six flagged lines were already A-grade
+from Anthropic's own current documentation, and all four were written without
+naming a button, an icon or a menu, so they survive being slightly wrong
+anyway. Flagging them bought nothing and sent James to go and check his own
+training material, which is the opposite of what the fact check routine exists
+for. He said so, and he was right.
 
-Twelve rows went into `notes/fact-register.md` (49 to 60). Six carry
-"pending live check" in the grade column and stay that way until the band
-comes off.
+One of the six was real, and it was one question rather than a task: whether
+Cowork reaches into a folder and moves files or only reads them. The whole
+clear-the-desktop prompt rests on it and the only evidence was James watching
+it happen on 9 Sep. He confirmed it on 15 Sep, from memory, in one sentence.
+It moved the files itself. That is the shape this should take next time: ask
+him the question only he can answer, and ask it as a question.
+
+The band and all six marks are gone. One caveat stays, in the page's own text
+in the privacy page's style, because it is the one thing on the page that is
+not Anthropic's own words: the access button's exact wording is
+community-sourced, so the page names no button and tells the reader it may
+read differently on their screen.
+
+Twelve rows went into `notes/fact-register.md` (49 to 60). Row 55 is the only
+one below A grade and the page says so itself.
 
 The research turned up one documentation hazard worth keeping. Anthropic's
 support site currently serves both a current and a stale version of article
@@ -1269,20 +1286,24 @@ commit, next time the cards move for another reason. Also still open and the
 same call: `#8E97A3` (4.92:1 on navy, used site-wide), `#46545F`, `#C8402F`
 and `#3A4756` in the deck engine.
 
-Done, 15 Sep: the Cowork setup guide is built, following
+Done, 15 Sep: the Cowork setup guide is built and shipped, following
 `notes/cowork-guide-brief.md` without re-scoping. See the entry under Where we
-are. It is on `claude/cowork-setup-guide-w0000v` as draft pull request #3 and
-not on `main`, deliberately. The one thing outstanding on it is James's, and it
-is small: six marked lines checked in the live product, after which the draft
-band and the six `[CHECK]` spans come off, the six fact-register rows lose
-"pending live check", and the branch merges. The research prompt in the brief is still the thing to
+are, including the draft band that should not have been there and the softening
+of hard rule 10 that followed it. Nothing on it is outstanding and nothing on
+it is James's. He will feed back changes as he runs through it with clients,
+which is the normal way anything here gets better. The research prompt in the brief is still the thing to
 re-run when the page goes stale; it was run on 15 Sep and its findings are on
 the page's sources block.
 
 Where this session stopped (15 Sep, later): the Cowork setup guide is built
-at `cowork/` and waiting on `claude/cowork-setup-guide-w0000v` as draft pull
-request #3, with six marked lines for James to confirm in the live product. It
-is not on `main` and should not go there while the draft band is on it. Two prompts went with it onto the shelf (49 cards). Along the way
+and on `main` at `cowork/`, with two prompts on the shelf (49 cards). Hard
+rule 10 was softened the same day, at James's instruction, because this build
+sent the fact checking back to him and that is the opposite of why he built
+the routine. Slide 31 came off his list for the same reason. Along the way a
+live deck prompt was found asserting a product fact that stopped being true on
+25 August, and two contrast faults were found and fixed, one of them inherited
+by copying the privacy shell and live on two older pages. The contrast audit is
+now `tools/check-contrast.js` rather than something each session rebuilds. Two prompts went with it onto the shelf (49 cards). Along the way
 a live deck prompt was found asserting a product fact that stopped being true
 on 25 August, and two contrast faults were found and fixed, one of them
 inherited by copying the privacy shell and live on two older pages. The
@@ -1450,8 +1471,13 @@ order of value:
 4. Done, 15 Sep. James checked the front page on his phone and it reads
    correctly, including the sticky nav's dropdown, which only appears under
    820px.
-5. James to glance at Make Claude Yours slide 31 in the live desktop app.
-   Sources agree with the slide; nobody has seen the menu itself from here.
+5. Off James's list as of 15 Sep, under the softened hard rule 10. Make
+   Claude Yours slide 31 (Record a skill) has never been eyeballed in the
+   live product, three sources agree with it, and the 15 Sep Cowork research
+   did not find it while finding a different route to creating a skill. That
+   is now row 11's problem and the monthly fact check's, not a task for him.
+   If he happens to be in the plus menu he can say what he sees, but nobody
+   asks him again.
    The shelf recipe "Set Claude up in the right order" and the account and
    Cowork instruction prompts name the same Settings locations as the deck,
    so they move together if the deck changes.

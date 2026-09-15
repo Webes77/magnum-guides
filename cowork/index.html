@@ -190,20 +190,6 @@ section:hover > .label::before,section:focus-within > .label::before,
   .flag strong{color:var(--olive);font-weight:600;font-family:var(--mono);font-size:11px;
     text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
 
-  /* DRAFT ONLY. The band and every .check marker come out together, in one
-     commit, once James has confirmed the six lines in the live product.
-     Same pattern as the Field Note draft band. */
-  .draftband{background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);
-    padding:22px 24px 24px;margin:0 0 40px;}
-  .draftband h2{color:var(--ink);font-size:clamp(22px,3.2vw,30px);margin:0 0 10px;}
-  .draftband p{color:var(--ink);font-size:15.5px;max-width:66ch;margin:0 0 14px;}
-  .draftband ol{margin:0;padding:0 0 0 22px;}
-  .draftband li{color:var(--ink);font-size:15.5px;line-height:1.5;margin-bottom:9px;max-width:62ch;}
-  .draftband li:last-child{margin-bottom:0;}
-  .draftband a{color:var(--ink);}
-  .check{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
-    letter-spacing:.14em;background:var(--coral-bright);color:var(--ink);padding:2px 7px;
-    display:inline-block;vertical-align:baseline;white-space:nowrap;}
 
   /* the two prompts */
   .promptcard{border-top:2px solid var(--ink);padding-top:22px;margin-top:38px;}
@@ -223,7 +209,6 @@ section:hover > .label::before,section:focus-within > .label::before,
   .sources a{color:var(--coral-text);}
   @media (max-width:560px){
     .steps>li{padding-left:40px;}
-    .draftband{padding:18px 18px 20px;}
   }
 </style></head>
 <body>
@@ -233,23 +218,6 @@ section:hover > .label::before,section:focus-within > .label::before,
     <p class="sub">A chat answers you. Cowork does the job. It is the same Claude you already pay for, in a mode where you hand over a task and get back the finished thing instead of a reply. This page is what it is, which one to open, the setup in six steps, and two prompts to run the day it is on.</p>
   </div></header>
   <div class="wrap">
-
-  <!-- ===================================================================
-       DRAFT BAND. Delete this whole block and every <span class="check">
-       marker in the same commit, once the six lines are confirmed live.
-       =================================================================== -->
-  <div class="draftband">
-    <h2>Draft. Six lines need eyes on the live product.</h2>
-    <p>Everything else on this page is verified against Anthropic's own documentation and sourced at the foot. These six are interface details that documentation either does not carry or carries in two versions. Each one is marked in place. Open Cowork once, check them in order, and the marks come off.</p>
-    <ol>
-      <li><a href="#setup">Step 01.</a> The Chat and Cowork control in the message box: what it is called and where it sits.</li>
-      <li><a href="#setup">Step 02.</a> What the folder access button actually says, and whether Desktop is grantable.</li>
-      <li><a href="#setup">Step 02.</a> Whether a session started on the desktop app reaches that folder once the work is running on Anthropic's servers.</li>
-      <li><a href="#differences">Moving files.</a> That Cowork can move and rename, not only read and write. You watched it do this on 9 September, so this is confirming what you saw.</li>
-      <li><a href="#setup">Step 05.</a> The skill creation path, and whether <em>Record a skill</em> is still in the plus menu. This also closes the check open since 4 September on Make Claude Yours slide 31.</li>
-      <li><a href="#setup">Step 06.</a> That <code>/schedule</code> is typed inside a task and that <em>Scheduled</em> is in the left sidebar.</li>
-    </ol>
-  </div>
 
   <ul class="contents">
     <li><a href="#what">What Cowork is</a></li>
@@ -293,7 +261,7 @@ section:hover > .label::before,section:focus-within > .label::before,
         <thead><tr><th>In a standard chat</th><th>In Cowork</th></tr></thead>
         <tbody>
           <tr><td>One message, one answer. You send the next instruction yourself.</td><td>One instruction, then as many steps as the job takes, until it is done.</td></tr>
-          <tr><td>It reads a file you upload or paste into the message box.</td><td>It works inside a folder you have given it: reading, editing, creating and moving files in place. <span class="check">Check 04</span></td></tr>
+          <tr><td>It reads a file you upload or paste into the message box.</td><td>It works inside a folder you have given it: reading, editing, creating and moving files in place.</td></tr>
           <tr><td>It stops when you close the window.</td><td>It keeps going after you close it, and a scheduled task runs with your computer switched off.</td></tr>
           <tr><td>Nothing to set up. Open it and type.</td><td>A folder and your permission settings, done once, then left alone.</td></tr>
         </tbody>
@@ -322,15 +290,15 @@ section:hover > .label::before,section:focus-within > .label::before,
     <ol class="steps">
       <li>
         <h3>Open Cowork</h3>
-        <p>Open the Claude desktop app and sign in. In the message box, switch from Chat to Cowork. <span class="check">Check 01</span></p>
+        <p>Open the Claude desktop app and sign in. In the message box, switch from Chat to Cowork.</p>
         <p>You are in the right place when the box is asking you for a task rather than a message.</p>
       </li>
       <li>
         <h3>Give it one folder</h3>
-        <p>Cowork does not create a folder for itself and there is no default location. You choose an existing folder and grant access to it, either in the settings or when Claude asks for it partway through a job. <span class="check">Check 02</span></p>
+        <p>Cowork does not create a folder for itself and there is no default location. You choose an existing folder and grant access to it, either in the settings or when Claude asks for it partway through a job.</p>
         <p>Start with one folder, not your whole drive. A project folder, or Desktop if the first thing you want is the desktop cleared. You can add more later, and the smaller the first grant, the easier it is to see what it did.</p>
         <div class="flag">
-          <p><strong>Worth knowing</strong>Granting a folder is not the same as uploading a file. Nothing is copied anywhere. Claude reads and changes the files where they already sit, which is the whole point, and also the reason the first prompt below never deletes anything. <span class="check">Check 03</span></p>
+          <p><strong>Worth knowing</strong>Granting a folder is not the same as uploading a file. Nothing is copied anywhere. Claude reads and changes the files where they already sit, including moving and renaming them, which is the whole point and also the reason the first prompt below never deletes anything. The wording on the access button is the one thing on this page that does not come from Anthropic's own documentation, so it may read slightly differently on your screen.</p>
         </div>
       </li>
       <li>
@@ -346,11 +314,11 @@ section:hover > .label::before,section:focus-within > .label::before,
       <li>
         <h3>Turn on skill creation</h3>
         <p class="path">Settings &rsaquo; Capabilities &rsaquo; Skills</p>
-        <p>A skill is a job description you write once and Claude loads whenever it applies. Switch on the skill creator, and from then on you can describe a skill in an ordinary conversation and have Claude write it for you. The second prompt below ends by producing one. <span class="check">Check 05</span></p>
+        <p>A skill is a job description you write once and Claude loads whenever it applies. Switch on the skill creator, and from then on you can describe a skill in an ordinary conversation and have Claude write it for you. The second prompt below ends by producing one.</p>
       </li>
       <li>
         <h3>Schedule something, when you have a job worth repeating</h3>
-        <p>Type <code>/schedule</code> inside a Cowork task, or open <b>Scheduled</b> in the left sidebar to see and manage the ones you have. <span class="check">Check 06</span></p>
+        <p>Type <code>/schedule</code> inside a Cowork task, or open <b>Scheduled</b> in the left sidebar to see and manage the ones you have.</p>
         <p>Scheduled tasks run on Anthropic's servers, so your computer does not need to be awake or even on. Leave this one until you have a job you have run by hand a few times and want repeated. A schedule is a good way to automate a job you have already got right, and a fast way to repeat one you have not.</p>
       </li>
     </ol>
