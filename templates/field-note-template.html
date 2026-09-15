@@ -458,7 +458,7 @@ pre{
 .p-cover .slug{font-size:.6em;gap:7px}
 .p-cover .ba{margin-top:16px}
 
-.intro-grid{display:grid;grid-template-columns:1.28fr .72fr;gap:26px;align-items:start;margin-top:1em;padding-bottom:22px}
+.intro-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:26px;align-items:start;margin-top:1em;padding-bottom:22px}
 .intro-copy{display:flex;flex-direction:column}
 .intro-copy p{font-size:.94em;line-height:1.62}
 .intro-copy p+p{margin-top:.8em}
@@ -680,7 +680,7 @@ pre{
 @media print{.draftband{display:none}}
 
 /* BLUF. The whole issue on one phone screen: what it is for, why you would use
-   it, and the prompt. The seven pages stay below for anyone who wants them.
+   it, and the prompt. Three pages stay below for anyone who wants them.
    Added 16 Sep after James read issue 05 on a phone: 1,618 words and nine and a
    half screens, on a page whose cover claimed three minutes. */
 .bluf{max-width:794px;margin:18px auto 0;background:var(--paper);border:2px solid var(--ink);padding:26px 28px 22px}
@@ -695,8 +695,10 @@ pre{
   text-transform:uppercase;color:var(--coral-text);margin-bottom:3px}
 .bluf dd{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
 .bluf .pbox{background:var(--ink);color:#FFFFFF;padding:16px 18px;margin:0 0 16px}
+.bluf .pbox .phead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
 .bluf .pbox b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);margin-bottom:10px;font-weight:500}
+  letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);font-weight:500}
+.bluf .pbox .copy{font-size:10.5px;flex:none}
 .bluf .pbox pre{margin:0;padding:0;color:#FFFFFF;white-space:pre-wrap;
   font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13.5px;line-height:1.6}
 .bluf .more{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;
@@ -755,12 +757,13 @@ pre{
     </div>
   </dl>
   <div class="pbox">
-    <b>The prompt</b>
-    <!-- The same shelf card as page 05, reflowed so it wraps to a phone instead
-         of breaking mid-clause. Page 05 keeps the authored line breaks. -->
+    <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
+    <!-- The shelf card, reflowed so it wraps to a phone instead of breaking
+         mid-clause. This is the only copy of it in the issue. -->
     <pre>[The prompt, reflowed: paragraph breaks kept, the 72-character line breaks removed.]</pre>
   </div>
-  <a class="more" href="#more">Want the reasoning, five rules and five exercises &darr;</a>
+  <!-- EDIT · VOICE: what is actually below, in six words or fewer. -->
+  <a class="more" href="#more">[Why it happens, and the five rules] &darr;</a>
 </section>
 
 <!-- ============ PAGE 1 · COVER ============ -->
@@ -783,13 +786,12 @@ pre{
         <h1>The headline<br>goes here<br>in three lines.</h1>
         <!-- EDIT · VOICE: one line naming the thing most people get wrong. -->
         <div class="kicker">One line on what everybody does instead, and why it costs them.</div>
-        <!-- EDIT · VOICE: the dek. Three sentences. What the reader gets by page 07. -->
+        <!-- EDIT · VOICE: the dek. One sentence. What is on the three pages. -->
         <p>Two or three sentences that say what this issue actually hands over. Name the fix in plain words. Do not promise, describe.</p>
         <div class="slug">
           <!-- EDIT: reading time, usually three or four minutes -->
-          <span><b>Reading time</b> four minutes</span>
+          <span><b>Reading time</b> three minutes, or thirty seconds up top</span>
           <span><b>Works in</b> Claude, ChatGPT, any of them</span>
-          <span><b>Run it yourself</b> five exercises, page 07</span>
         </div>
       </div>
 
@@ -824,10 +826,10 @@ pre{
   </div>
 
   <footer class="foot">
-    <!-- EDIT: the five-word run and the strapline are identical on all seven pages -->
+    <!-- EDIT: the five-word run and the strapline are identical on all three pages -->
     <span>The strapline</span>
     <span class="mid">Rule one / Rule two / Rule three / Rule four / Rule five</span>
-    <span class="pg">01 / 07</span>
+    <span class="pg">01 / 03</span>
   </footer>
 </section>
 
@@ -859,19 +861,6 @@ pre{
         <!-- EDIT · VOICE: the note is the issue in one contrast. -->
         <div class="intro-note">The issue in one line, built as a contrast.</div>
       </div>
-      <aside class="contents">
-        <h3>In this issue</h3>
-        <ol>
-          <!-- EDIT: five section names, matching pages 03 to 07 -->
-          <li><b>The argument</b><span>03</span></li>
-          <li><b>Five rules</b><span>04</span></li>
-          <li><b>Prompt to steal</b><span>05</span></li>
-          <li><b>Make it automatic</b><span>06</span></li>
-          <li><b>Five exercises</b><span>07</span></li>
-        </ol>
-        <!-- EDIT: name the one exercise worth doing first and how long it takes -->
-        <div class="note"><b>Do exercise 1 first.</b><br>One line on what it is. Two minutes.</div>
-      </aside>
     </div>
 
     <div class="band">
@@ -887,70 +876,13 @@ pre{
   <footer class="foot">
     <span>The strapline</span>
     <span class="mid">Rule one / Rule two / Rule three / Rule four / Rule five</span>
-    <span class="pg">02 / 07</span>
+    <span class="pg">02 / 03</span>
   </footer>
 </section>
 
-<!-- ============ PAGE 3 · THE ARGUMENT ============ -->
-<section class="page p-why">
-  <header class="masthead">
-    <div>
-      <span class="mh-title">Weekly Field Note</span>
-      <span class="mh-sub">Practical AI</span>
-    </div>
-    <div class="mh-issue">No. NN</div>
-  </header>
 
-  <div class="sheet">
-    <!-- EDIT: the section name from the contents list -->
-    <div class="eyebrow">The argument</div>
-    <!-- EDIT · VOICE: the argument as two halves of one sentence -->
-    <h2>One way gives you this. The other gives you that.</h2>
-    <p class="lead" style="margin-top:.9em">One line on what both have in common, so the difference lands.</p>
 
-    <div class="two">
-      <div class="kcard frozen">
-        <!-- EDIT: what the wrong way hands over -->
-        <div class="khead">What the usual way gives you</div>
-        <div class="kbody">
-          <p>Two sentences on what actually arrives.</p>
-          <p>One sentence on the work it leaves with the reader, which is the work they were trying to hand over.</p>
-          <!-- EDIT: four nouns, the four things that arrive -->
-          <div class="klist">One<br>Two<br>Three<br>Four</div>
-        </div>
-      </div>
-      <div class="kcard living">
-        <div class="khead">What the fix gives you</div>
-        <div class="kbody">
-          <p>Two sentences on what arrives instead.</p>
-          <p>One sentence on the part nobody asks for and which saves the most time.</p>
-          <div class="klist">One<br>Two<br>Three<br>Four</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="trap">
-      <div class="tl">The<br>trap</div>
-      <div>
-        <!-- EDIT · VOICE: the near-miss. The thing that looks like the fix and is not.
-             Every issue has one. Name it, then say precisely how it differs. -->
-        <p>The thing that looks like the fix. Say what it is.</p>
-        <p>Why it is not the fix, in one mechanism, plus the check that tells the reader which one they got.</p>
-      </div>
-    </div>
-
-    <!-- EDIT · VOICE: the pull quote. Two lines, the second undercuts the first. -->
-    <div class="quote">It is not the thing you think.<br><span>It is the other thing.</span></div>
-  </div>
-
-  <footer class="foot">
-    <span>The strapline</span>
-    <span class="mid">Rule one / Rule two / Rule three / Rule four / Rule five</span>
-    <span class="pg">03 / 07</span>
-  </footer>
-</section>
-
-<!-- ============ PAGE 4 · FIVE RULES ============ -->
+<!-- ============ PAGE 3 · FIVE RULES ============ -->
 <section class="page p-diag">
   <header class="masthead">
     <div>
@@ -1014,231 +946,15 @@ pre{
   <footer class="foot">
     <span>The strapline</span>
     <span class="mid">Rule one / Rule two / Rule three / Rule four / Rule five</span>
-    <span class="pg">04 / 07</span>
+    <span class="pg">03 / 03</span>
   </footer>
 </section>
 
-<!-- ============ PAGE 5 · PROMPT TO STEAL ============ -->
-<section class="page p-prompt">
-  <header class="masthead">
-    <div>
-      <span class="mh-title">Weekly Field Note</span>
-      <span class="mh-sub">Practical AI</span>
-    </div>
-    <div class="mh-issue">No. NN</div>
-  </header>
 
-  <div class="sheet">
-    <div class="eyebrow">Prompt to steal</div>
-    <!-- EDIT: the shelf card's title, word for word -->
-    <h2>The prompt card title.</h2>
-    <p style="margin-top:.7em">This is the card from the Prompt Shelf. One line on what to paste and where.</p>
 
-    <div class="prompt">
-      <div class="prompt-head">
-        <!-- EDIT: same title again -->
-        <span>Prompt / The prompt card title</span>
-        <button class="copy" type="button" data-copy>Copy</button>
-      </div>
-      <!-- EDIT: the prompt, byte for byte as it appears on the Prompt Shelf.
-           Never reworded for the page. If it reads badly here, fix it in both
-           places at once. Hard line breaks at about 72 characters. -->
-      <pre>The prompt goes here, exactly as it is on the shelf.
 
-Role, Context, Constraints, Tone, Format, Output, in that order,
-wherever the prompt calls for them.
 
-Answer in this exact format:
-THE FIRST THING: what it gives back first.
-THE SECOND THING: the check that tells the reader it worked.
 
-Stop after that.</pre>
-      <!-- EDIT: the one thing people get wrong when they run it -->
-      <div class="tip"><b>Tip.</b> The mistake people make on the first run, and what to do instead.</div>
-    </div>
-
-    <div class="howto-label">Use it like this</div>
-    <div class="howto">
-      <!-- EDIT: three steps, one action each, verb first, under twenty words -->
-      <div class="hcard"><b>01</b><p>The first action, with what to have open.</p></div>
-      <div class="hcard"><b>02</b><p>The second action.</p></div>
-      <div class="hcard"><b>03</b><p>The third action, which is usually where to look first in the answer.</p></div>
-    </div>
-
-    <div class="duo">
-      <div class="pcard">
-        <h3>Best for</h3>
-        <!-- EDIT: the jobs it suits, named concretely -->
-        <p>Name three or four real jobs, not categories.</p>
-      </div>
-      <div class="pcard no">
-        <h3>Not ideal for</h3>
-        <!-- EDIT: where it fails. Every card has somewhere it fails. -->
-        <p>Name where it fails and why. Do not skip this one.</p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="foot">
-    <span>The strapline</span>
-    <span class="mid">Rule one / Rule two / Rule three / Rule four / Rule five</span>
-    <span class="pg">05 / 07</span>
-  </footer>
-</section>
-
-<!-- ============ PAGE 6 · MAKE IT AUTOMATIC ============ -->
-<section class="page p-auto">
-  <header class="masthead">
-    <div>
-      <span class="mh-title">Weekly Field Note</span>
-      <span class="mh-sub">Practical AI</span>
-    </div>
-    <div class="mh-issue">No. NN</div>
-  </header>
-
-  <div class="sheet">
-    <div class="eyebrow">Make it automatic</div>
-    <!-- EDIT: three words, the habit in three beats -->
-    <h2>One. Two. Three.</h2>
-    <p style="margin-top:.7em">Three habits. One is a prompt, two are discipline.</p>
-
-    <div class="flow">
-      <div class="stage">
-        <div class="stage-num">01</div>
-        <div class="stage-body">
-          <div class="sicon s1"></div>
-          <!-- EDIT: the set-once habit -->
-          <h3>The thing you set once</h3>
-          <p>Two sentences. What to save, and where, so it is one paste away.</p>
-          <div class="stag">Set once</div>
-        </div>
-      </div>
-      <div class="stage">
-        <div class="stage-num">02</div>
-        <div class="stage-body">
-          <div class="sicon s2"></div>
-          <!-- EDIT: the every-task habit -->
-          <h3>The thing you do every task</h3>
-          <p>Two sentences, with an example of the exact words in quotes.</p>
-          <div class="stag">Every task</div>
-        </div>
-      </div>
-      <div class="stage">
-        <div class="stage-num">03</div>
-        <div class="stage-body">
-          <div class="sicon s3"></div>
-          <!-- EDIT: the closing habit -->
-          <h3>The thing you do at the end</h3>
-          <p>Two sentences, ending in a test the reader can apply on the spot.</p>
-          <div class="stag">Every time</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="verdict">
-      <!-- EDIT · VOICE: the verdict. The line the reader repeats to someone else. -->
-      <div class="line">The claim.<br><span>The correction.</span></div>
-      <div class="install">One line telling them it works every time.</div>
-    </div>
-  </div>
-
-  <footer class="foot">
-    <span>The strapline</span>
-    <span class="mid">Rule one / Rule two / Rule three / Rule four / Rule five</span>
-    <span class="pg">06 / 07</span>
-  </footer>
-</section>
-
-<!-- ============ PAGE 7 · FIVE EXERCISES ============ -->
-<section class="page p-ex">
-  <header class="masthead">
-    <div>
-      <span class="mh-title">Weekly Field Note</span>
-      <span class="mh-sub">Practical AI</span>
-    </div>
-    <div class="mh-issue">No. NN</div>
-  </header>
-
-  <div class="sheet">
-    <div class="eyebrow">Run it yourself</div>
-    <!-- EDIT: the range, shortest to longest -->
-    <h2>Five exercises. Two minutes to ten.</h2>
-    <p style="margin-top:.7em">One line telling them not to take James's word for it.</p>
-
-    <!-- Five exercises, always five, ordered shortest first. Each is three steps,
-         one action per step, verb first, under twenty words. Each ends with What
-         you learn, which states the result, not the intention. -->
-    <div class="ex">
-      <div class="exr">
-        <div class="rnum">01</div>
-        <div>
-          <h3>The two-minute one</h3>
-          <ol>
-            <li>First action, with what to have open.</li>
-            <li>Second action.</li>
-            <li>Third action, usually where to look first.</li>
-          </ol>
-          <div class="learn"><b>What you learn.</b> The result, stated as a fact. Do this one first.</div>
-        </div>
-      </div>
-      <div class="exr">
-        <div class="rnum">02</div>
-        <div>
-          <h3>The comparison one</h3>
-          <ol>
-            <li>Do it the usual way.</li>
-            <li>New chat. Do it this issue's way.</li>
-            <li>Put them side by side.</li>
-          </ol>
-          <div class="learn"><b>What you learn.</b> The result.</div>
-        </div>
-      </div>
-      <div class="exr">
-        <div class="rnum">03</div>
-        <div>
-          <h3>The one on their own work</h3>
-          <ol>
-            <li>First action.</li>
-            <li>Second action.</li>
-            <li>Third action.</li>
-          </ol>
-          <div class="learn"><b>What you learn.</b> The result.</div>
-        </div>
-      </div>
-      <div class="exr">
-        <div class="rnum">04</div>
-        <div>
-          <h3>The one that proves the rule</h3>
-          <ol>
-            <li>First action.</li>
-            <li>Second action.</li>
-            <li>Third action.</li>
-          </ol>
-          <div class="learn"><b>What you learn.</b> The result.</div>
-        </div>
-      </div>
-      <div class="exr">
-        <div class="rnum">05</div>
-        <div>
-          <h3>The habit one</h3>
-          <ol>
-            <li>First action, today.</li>
-            <li>The test that says it worked.</li>
-            <li>Do it.</li>
-          </ol>
-          <div class="learn"><b>What you learn.</b> The result, and why the habit is worth keeping.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="foot">
-    <!-- EDIT: the last page's left phrase is the callout from page 04 -->
-    <span>The callout line.</span>
-    <span class="mid">Rule one / Rule two / Rule three / Rule four / Rule five</span>
-    <span class="pg">07 / 07</span>
-  </footer>
-</section>
 
 <div class="sitebar sharebar">
   <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
@@ -1251,7 +967,7 @@ Stop after that.</pre>
 <script>
 document.querySelectorAll('[data-copy]').forEach(function(btn){
   btn.addEventListener('click', function(){
-    var text = btn.closest('.prompt').querySelector('pre').innerText;
+    var text = btn.closest('.prompt, .pbox').querySelector('pre').innerText;
     var done = function(){
       btn.textContent = 'Copied';
       btn.classList.add('done');

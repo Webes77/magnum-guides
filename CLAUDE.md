@@ -1423,6 +1423,28 @@ trigger and read back byte-identical. The prompt file had drifted from the
 trigger in seven places and was reconciled in the same pass; check them
 against each other before editing either.
 
+Round four, 16 Sep, and it is the one that actually fixed the length. The
+BLUF had been put on top of the seven pages, so the issue got longer: 1,923
+words, 4.7 phone screens even after it. James read it again and said so. The
+seven pages are three now, and what came out is the argument for the shape.
+Page 03 argued the same point page 02 had already made. Page 05 reprinted the
+prompt that now sits up top. Page 06 was three habits. Page 07 was five
+exercises, which is the homework James took out of all three courses on 7 Sep
+because he does not want anyone leaving with tasks; it had been sitting in
+every Field Note since. Nothing was cut that the issue needed.
+
+Now: 851 words, three pages, 4.7 phone screens to 1.6, cover reading time
+three minutes rather than eight. The BLUF also gained the copy button, because
+the prompt now lives there and nowhere else, and a phone reader is not
+selecting five lines by hand.
+
+The template, `tools/check-field-note.js` and the live routine all moved with
+it, which is the part that matters: `--shape` is three pages, five rules and
+one prompt now, the check accepts a prompt in the BLUF as well as on a page,
+and the routine prompt carries the reasoning so the next issue arrives short
+rather than being cut by hand every week. If an issue feels thin at three
+pages, the idea is thin, and the answer is a different shelf card, not padding.
+
 One thing left as it is, and it will show in the style checker. The Field Note
 share cards draw a stack of pages with a five-layer offset `box-shadow`, and
 all four of 02 to 05 plus the template carry it. Changing 05 alone would put

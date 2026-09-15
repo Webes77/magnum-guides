@@ -18,7 +18,7 @@
  * every issue: no em dash, no "solid" in the copy, balanced markup, page numbers
  * that run in order, one masthead number, head tags that match the filename, a
  * card image, and a link from both index pages. The template's shape (seven
- * pages, five rules, one prompt, five exercises) applies only under --shape,
+ * pages, five rules, one prompt) applies only under --shape,
  * because issues 01 and 02 were written before that shape settled and are not
  * being rebuilt to it. Anything drafted from templates/field-note-template.html
  * is checked with --shape.
@@ -116,9 +116,14 @@ function check(file) {
     }
   }
 
+  // The prompt is the deliverable, so it has to be somewhere and it has to be
+  // copyable. Since issue 05 it may sit in the bottom-line-up-front block
+  // instead of on a page of its own, which is the short shape.
   const promptBlocks = html.match(/<div class="prompt">[\s\S]*?<div class="tip">/g) || [];
-  if (!promptBlocks.length) fail.push('no prompt block on the page');
-  promptBlocks.forEach((b, i) => {
+  const blufPrompt = html.match(/<div class="pbox">[\s\S]*?<\/section>/g) || [];
+  const allPrompts = promptBlocks.concat(blufPrompt);
+  if (!allPrompts.length) fail.push('no prompt block on the page');
+  allPrompts.forEach((b, i) => {
     if (!/data-copy/.test(b)) fail.push(`prompt block ${i + 1} has no copy button`);
     if (!/<pre>/.test(b)) fail.push(`prompt block ${i + 1} has no prompt text`);
   });
@@ -127,13 +132,11 @@ function check(file) {
 
   // ---- the template's shape --------------------------------------------
   if (wantShape || isTemplate) {
-    if (pages !== 7) fail.push(`${pages} pages, the template shape is 7`);
+    if (pages !== 3) fail.push(`${pages} pages, the template shape is 3`);
     const rules = (html.match(/<div class="rule">/g) || []).length;
-    if (rules !== 5) fail.push(`${rules} rules on page 04, the template shape is 5`);
-    const exr = (html.match(/<div class="exr">/g) || []).length;
-    if (exr !== 5) fail.push(`${exr} exercises on page 07, the template shape is 5`);
-    if (promptBlocks.length !== 1) {
-      fail.push(`${promptBlocks.length} prompt blocks, the template shape is exactly 1`);
+    if (rules !== 5) fail.push(`${rules} rules on page 03, the template shape is 5`);
+    if (allPrompts.length !== 1) {
+      fail.push(`${allPrompts.length} prompt blocks, the template shape is exactly 1`);
     }
   }
 

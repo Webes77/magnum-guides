@@ -17,11 +17,18 @@ which the Sunday Brief now writes into its vault file as a
 `## field-note-commission` section. When that says no, the routine teaches a
 Prompt Shelf card that has never carried an issue.
 
-The routine builds the structure and leaves the voice. Everything it finishes
-arrives done: the seven pages, the five rules, the prompt card, the five
-exercises, the head tags, the card source, the card image, and the two index
-links. Everything James writes carries an `EDIT · VOICE` comment in the file,
-and a coral draft band sits at the top of the page until he deletes it.
+The routine writes the whole issue in James's voice through the `james-writes`
+skill, and finishes everything around it: the three pages, the five rules, the
+prompt card, the head tags, the card source, the card image, and the two index
+links. James edits what it wrote or sends it as it stands. A coral draft band
+sits at the top of the page until he deletes it.
+
+An issue is a bottom line up front block and three pages, under 900 words. The
+block is the first phone screen and, for most readers, the only one: the hook,
+the payoff line, three short answers, and the prompt with its copy button. The
+three pages under it are the cover, this week, and the five rules. It was seven
+pages until 16 Sep, when James read issue 05 on a phone and the honest number
+was 1,923 words over nine and a half screens.
 
 The prompt is versioned at `../notes/field-note-prompt.md`. Change that file
 first, then push it to the routine. Each branch gets an entry in
@@ -42,8 +49,8 @@ draft band last.
 dash, no "solid" in the copy, balanced markup, page numbers in order, one
 masthead number, one footer run, head tags that match the filename, a card
 source and a card image, and a link from both index pages. Add `--shape` to
-hold a file to the template's seven pages, five rules, one prompt and five
-exercises, which issues 01 and 02 predate. Add `--draft` while the draft band
+hold a file to the template's three pages, five rules and one prompt, which
+issues 01 to 04 predate. Add `--draft` while the draft band
 is still on the page. Run it before any issue merges.
 
 ## Adding the next issue
