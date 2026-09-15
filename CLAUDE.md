@@ -936,18 +936,41 @@ running on your own machine, which was true earlier this year. Anything that
 appears to contradict this page wholesale should start by establishing which
 version it is reading.
 
-Two prompts, both reviewed against `notes/prompt-review-standards.md`, both on
-the shelf under Setting up and byte-identical to the page, verified by
-extracting from both files and comparing rather than by eye.
-`clear-the-desktop` carries the safety rule the brief called non-negotiable in
-its own text: it moves, never deletes, everything goes to one dated review
-folder, and it writes `what-moved.md` listing every move so any single one can
-be undone by hand. `writing-style-skill` reads sent mail only, marks anything
-drawn from fewer than five examples `[NEEDS CONFIRMING]`, and stops before
-saving so James saves the skill himself, which is the draft-for-approval rule
-from the standards.
+Five prompts, all reviewed against `notes/prompt-review-standards.md`, all on
+the shelf and byte-identical to the page, verified by extracting from both
+files and comparing rather than by eye.
 
-The shelf is 49 cards and gained its first new type since the 14 Sep pruning:
+It shipped with two, the two the brief named, and James came back the same day
+asking whether the prompts showed what Cowork does that a chat cannot. Half
+right, and the half he was right about is the one worth recording.
+`clear-the-desktop` does demonstrate it. `writing-style-skill` does not: a chat
+with Gmail connected reads sent mail perfectly well, so it was sitting on the
+page as a demonstration of nothing. It stays, because it is the thing that
+makes everything written afterwards sound like him, but the page now says
+plainly that it is the odd one out rather than implying otherwise. The brief
+said "named so far by James", which should have been read as a starting point
+rather than a list.
+
+Three were added, each chosen because a chat cannot do it at all.
+`sort-by-contents` opens every file and files on what the document says rather
+than its name, which is the job nobody does by hand because it means opening
+three hundred files. `folder-to-spreadsheet` reads a folder of receipts and
+invoices, including scans, and writes a spreadsheet next to them with a total,
+and it never calculates a figure it could not read. `scheduled-job` is the one
+with no chat equivalent whatsoever: it makes the job prove itself once while
+James watches, then puts it on a schedule that runs on Anthropic's servers with
+his machine shut. Its last rule is the one worth keeping, that a run with
+nothing to report writes so plainly, because otherwise a broken job and a quiet
+week produce the same empty folder.
+
+Two carry the safety rule the brief called non-negotiable, in their own text:
+`clear-the-desktop` and `sort-by-contents` move and never delete, everything
+goes to one dated folder, and each writes a record listing every move so any
+single one can be undone by hand. `writing-style-skill` stops before saving so
+James saves the skill himself, which is the draft-for-approval rule from the
+standards.
+
+The shelf is 52 cards and gained its first new type since the 14 Sep pruning:
 `does`, labelled "Does a job for you". None of the seven existing types
 described a card that goes and works on your files, which is what every Cowork
 card will be, so the new key is broad enough to hold the next ones rather than
@@ -1296,7 +1319,7 @@ re-run when the page goes stale; it was run on 15 Sep and its findings are on
 the page's sources block.
 
 Where this session stopped (15 Sep, later): the Cowork setup guide is built
-and on `main` at `cowork/`, with two prompts on the shelf (49 cards). Hard
+and on `main` at `cowork/`, with five prompts on the shelf (52 cards). Hard
 rule 10 was softened the same day, at James's instruction, because this build
 sent the fact checking back to him and that is the opposite of why he built
 the routine. Slide 31 came off his list for the same reason. Along the way a

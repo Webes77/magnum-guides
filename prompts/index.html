@@ -492,6 +492,89 @@ Work through this in order:
 
 Stop after step 4. Tell me what you left behind and why.`},
 
+{kind:'prompt', id:'sort-by-contents', sec:'Reference · Cowork', title:'Sort a folder by what is inside the files', where:'A Cowork task, with the messy folder granted', type:'does', when:'setup', hook:"File a folder on what the documents say, not what they are named.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are a careful assistant filing documents by what is actually inside
+them, not by what they are called. The names in a folder like this are
+usually wrong, which is the reason the filing never got done.
+
+Work only in the folder I have given you access to. Move files, never
+delete them, because I am the only one who can decide what goes.
+
+Open each file and read enough of it to tell what it is and who it
+concerns. Do not judge a file by its name or its extension.
+
+Work through this in order:
+1. Read every file in the folder, including the ones in subfolders.
+2. Propose a filing structure based on what you actually found, rather
+   than what you think I expect. Show me the folder names and how many
+   files go in each.
+3. List anything that does not fit, instead of forcing it into the
+   nearest folder. A misfiled document is harder to find than a loose one.
+4. Wait for me to say go.
+5. Once I say go, create the folders and move the files. Where a file name
+   tells me nothing, rename it as YYYY-MM-DD-who-what, taking the date
+   from inside the document rather than from the file.
+6. Write a file named filing-record.md listing every file, its old name
+   and place, and its new ones.
+
+Stop after step 6. Tell me how many files you could not identify.`},
+
+{kind:'prompt', id:'folder-to-spreadsheet', sec:'Reference · Cowork', title:'Turn a folder of documents into one spreadsheet', where:'A Cowork task, with the folder of documents granted', type:'does', when:'monthly', hook:"Point at a year of receipts, get back a spreadsheet with a total.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are a bookkeeper's assistant turning a pile of documents into one
+spreadsheet I can sort and total.
+
+Work in the folder I have given you access to. Read every document in it,
+including scans and photographs.
+
+Pull these fields out of each one:
+[List the columns you want. For example: date, supplier, description,
+amount excluding GST, GST, total, invoice number.]
+
+The rules, and why each one is there:
+- Take every figure from the document itself. Do not calculate a missing
+  total or read a date off the file name, because a number I did not
+  check is worse to me than a blank one.
+- Where a field is missing or you cannot read it, write NOT FOUND in that
+  cell and carry on.
+- Where a document is not the kind of thing I am asking about, leave it
+  out and list it separately rather than forcing a row out of it.
+
+Work through this in order:
+1. Read every document in the folder.
+2. Build a spreadsheet with one row per document and one column per
+   field, sorted oldest first.
+3. Add a last row totalling the number columns.
+4. Save it into the same folder as a spreadsheet file.
+5. Tell me how many documents you read, how many cells say NOT FOUND,
+   and which files you left out and why.
+
+Stop after step 5.`},
+
+{kind:'prompt', id:'scheduled-job', sec:'Reference · Cowork', title:'Set a job to run every week without you', where:'A Cowork task, once you have run the job by hand', type:'scheduled', when:'weekly', hook:"A job that runs on Monday whether your computer is on or not.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are setting up a job that will run on a schedule while I am not
+watching, so it has to be written to fail safely rather than to guess.
+
+The job:
+[Say what you want done, and how you want the result delivered. For
+example: check the shared folder for new enquiries and write a summary of
+anything that arrived since last week.]
+
+Before you schedule anything:
+1. Run the job once now, while I am here, and show me the result.
+2. Tell me what you would do if something is missing or unreadable on a
+   week when I am not around to ask.
+3. Wait for me to say go.
+
+Once I say go:
+4. Set the job to run [say when, for example every Monday at 7am].
+5. Write each result into the folder as its own file with the date in the
+   name, rather than replacing the last one, so I can see what changed.
+6. When there is nothing to report, write that plainly rather than
+   writing nothing, because an empty folder and a broken job look the
+   same from the outside.
+
+Stop after step 6. Tell me where the results will appear.`},
+
 {kind:'prompt', id:'writing-style-skill', sec:'Reference · Cowork', title:'Learn how I write, from my sent mail', where:'A Cowork task, with Gmail connected', type:'instructions', when:'setup', hook:"Turn your own sent mail into a skill that writes like you.", added:'2026-09-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a writing analyst working out how I actually write, so that Claude
 can draft in my voice instead of its own.
