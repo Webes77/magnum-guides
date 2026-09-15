@@ -224,7 +224,7 @@ section:hover > .label::before,section:focus-within > .label::before,
     <li><a href="#differences">How it differs from a chat</a></li>
     <li><a href="#which">Desktop or web</a></li>
     <li><a href="#setup">Setting it up</a></li>
-    <li><a href="#prompts">Two prompts to run first</a></li>
+    <li><a href="#prompts">Five prompts to run first</a></li>
   </ul>
 
   <!-- ============ 01 WHAT IT IS ============ -->
@@ -326,12 +326,13 @@ section:hover > .label::before,section:focus-within > .label::before,
 
   <!-- ============ 05 THE PROMPTS ============ -->
   <section id="prompts">
-    <p class="label" data-n="05">Two prompts to run first</p>
-    <h2>One proves it works on your files. One gets it writing like you.</h2>
-    <p>Both are on the <a href="../prompts/">Prompt Shelf</a> under Setting up, so you can find them again without coming back here. Paste each into a new Cowork task.</p>
+    <p class="label" data-n="05">Five prompts to run first</p>
+    <h2>Four of these are jobs a standard chat cannot do at all</h2>
+    <p>A chat can tell you how to tidy a folder. It cannot open the folder. The first four below need Cowork because they read and change files that live on your computer, or they keep running when you have shut the lid. The fifth is the one that pays you back every day afterwards.</p>
+    <p>All five are on the <a href="../prompts/">Prompt Shelf</a>, so you can find them again without coming back here. Paste each into a new Cowork task. Where a prompt has words in square brackets, replace them with your own.</p>
 
     <div class="promptcard" id="clear-the-desktop">
-      <p class="promptlabel">Prompt one &middot; run it in a Cowork task with your Desktop folder granted</p>
+      <p class="promptlabel">Prompt one &middot; a Cowork task, with your Desktop folder granted</p>
       <h3>Clear the desktop</h3>
       <p>The first job worth giving it, because the result is visible in ten minutes and it teaches you what folder access actually means. It never deletes anything. Every file it touches goes into one dated review folder with a written record of where each one came from, and you empty that folder yourself when you are satisfied.</p>
 <div class="prompt">
@@ -373,10 +374,136 @@ Stop after step 4. Tell me what you left behind and why.</pre>
       </div>
     </div>
 
+    <div class="promptcard" id="sort-by-contents">
+      <p class="promptlabel">Prompt two &middot; a Cowork task, with the messy folder granted</p>
+      <h3>Sort a folder by what is inside the files</h3>
+      <p>The one to run if you only run one. Every filing job you have put off is really the same problem: the names are wrong, so the only way to sort the folder is to open every file, and nobody has three hours. Cowork opens every file. It files on what the document actually says, not what someone typed in the name box eighteen months ago, and it renames the useless ones using the date it found inside.</p>
+<div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You are a careful assistant filing documents by what is actually inside
+them, not by what they are called. The names in a folder like this are
+usually wrong, which is the reason the filing never got done.
+
+Work only in the folder I have given you access to. Move files, never
+delete them, because I am the only one who can decide what goes.
+
+Open each file and read enough of it to tell what it is and who it
+concerns. Do not judge a file by its name or its extension.
+
+Work through this in order:
+1. Read every file in the folder, including the ones in subfolders.
+2. Propose a filing structure based on what you actually found, rather
+   than what you think I expect. Show me the folder names and how many
+   files go in each.
+3. List anything that does not fit, instead of forcing it into the
+   nearest folder. A misfiled document is harder to find than a loose one.
+4. Wait for me to say go.
+5. Once I say go, create the folders and move the files. Where a file name
+   tells me nothing, rename it as YYYY-MM-DD-who-what, taking the date
+   from inside the document rather than from the file.
+6. Write a file named filing-record.md listing every file, its old name
+   and place, and its new ones.
+
+Stop after step 6. Tell me how many files you could not identify.</pre>
+</div>
+      <div class="after">
+        <h3>After it runs</h3>
+        <ol>
+          <li>Read the structure it proposed before you say go. It filed on what it found, so the folders may not be the ones you expected, and that is usually the point.</li>
+          <li><code>filing-record.md</code> holds every old name and every new one. Nothing was deleted, so any move can be undone.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="promptcard" id="folder-to-spreadsheet">
+      <p class="promptlabel">Prompt three &middot; a Cowork task, with the folder of documents granted</p>
+      <h3>Turn a folder of documents into one spreadsheet</h3>
+      <p>Receipts, invoices, quotes, delivery dockets, a year of them as PDFs and photos. In a chat you would upload them one at a time and retype the numbers. Here you point at the folder once and get back a spreadsheet, saved next to them, with a total on the bottom. The rule that makes it trustworthy is that it never calculates a figure it could not read. A blank cell you can chase beats a number you cannot.</p>
+<div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You are a bookkeeper&#x27;s assistant turning a pile of documents into one
+spreadsheet I can sort and total.
+
+Work in the folder I have given you access to. Read every document in it,
+including scans and photographs.
+
+Pull these fields out of each one:
+[List the columns you want. For example: date, supplier, description,
+amount excluding GST, GST, total, invoice number.]
+
+The rules, and why each one is there:
+- Take every figure from the document itself. Do not calculate a missing
+  total or read a date off the file name, because a number I did not
+  check is worse to me than a blank one.
+- Where a field is missing or you cannot read it, write NOT FOUND in that
+  cell and carry on.
+- Where a document is not the kind of thing I am asking about, leave it
+  out and list it separately rather than forcing a row out of it.
+
+Work through this in order:
+1. Read every document in the folder.
+2. Build a spreadsheet with one row per document and one column per
+   field, sorted oldest first.
+3. Add a last row totalling the number columns.
+4. Save it into the same folder as a spreadsheet file.
+5. Tell me how many documents you read, how many cells say NOT FOUND,
+   and which files you left out and why.
+
+Stop after step 5.</pre>
+</div>
+      <div class="after">
+        <h3>After it runs</h3>
+        <ol>
+          <li>Search the sheet for <code>NOT FOUND</code> first. Those are the ones needing your eyes, and there should not be many.</li>
+          <li>Check the files it left out. A document it could not place is information, not a failure.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="promptcard" id="scheduled-job">
+      <p class="promptlabel">Prompt four &middot; a Cowork task, once you have a job you have run by hand</p>
+      <h3>Set a job to run every week without you</h3>
+      <p>This is the one no chat can touch. A scheduled Cowork task runs on Anthropic's servers, so it happens on Monday at seven whether your Mac is open, asleep or in a bag. The prompt makes it prove itself once while you watch before it goes anywhere near a schedule, because a job that runs unattended has nobody to ask when something is missing.</p>
+<div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You are setting up a job that will run on a schedule while I am not
+watching, so it has to be written to fail safely rather than to guess.
+
+The job:
+[Say what you want done, and how you want the result delivered. For
+example: check the shared folder for new enquiries and write a summary of
+anything that arrived since last week.]
+
+Before you schedule anything:
+1. Run the job once now, while I am here, and show me the result.
+2. Tell me what you would do if something is missing or unreadable on a
+   week when I am not around to ask.
+3. Wait for me to say go.
+
+Once I say go:
+4. Set the job to run [say when, for example every Monday at 7am].
+5. Write each result into the folder as its own file with the date in the
+   name, rather than replacing the last one, so I can see what changed.
+6. When there is nothing to report, write that plainly rather than
+   writing nothing, because an empty folder and a broken job look the
+   same from the outside.
+
+Stop after step 6. Tell me where the results will appear.</pre>
+</div>
+      <div class="after">
+        <h3>After it runs</h3>
+        <ol>
+          <li>Watch the first real run land. A scheduled job you have never seen produce a file is a job you are only assuming works.</li>
+          <li>The "nothing to report" line matters more than it looks. Without it, a broken job and a quiet week are the same empty folder.</li>
+        </ol>
+      </div>
+    </div>
+
     <div class="promptcard" id="writing-style-skill">
-      <p class="promptlabel">Prompt two &middot; run it in a Cowork task with Gmail connected</p>
+      <p class="promptlabel">Prompt five &middot; a Cowork task, with Gmail connected</p>
       <h3>Learn how I write, from my sent mail</h3>
-      <p>The complaint about AI writing is that it does not sound like you. This is the fix, and it works because the evidence already exists: a few hundred emails you wrote yourself. The prompt reads your sent mail, tells you what it found, asks you what to keep, and turns the answer into a skill that loads every time you ask for something written.</p>
+      <p>The odd one out, and worth running anyway. A chat with Gmail connected could read your sent mail too, so this is not a demonstration of Cowork. It is the thing that makes everything you write afterwards sound like you, which is why it belongs in the setup rather than in a course.</p>
+      <p>It works because the evidence already exists: a few hundred emails you wrote yourself. The prompt reads your sent mail, tells you what it found, asks you what to keep, and turns the answer into a skill that loads every time you ask for something written.</p>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a writing analyst working out how I actually write, so that Claude
