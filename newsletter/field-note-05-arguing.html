@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Weekly Field Note No. 05 · Arguing · Magnum AI</title>
+<meta name="description" content="Stop asking it to agree. Ask it to argue. One prompt argues against your own plan before you act on it, five rules for using it properly, and five exercises to try today.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/newsletter/field-note-05-arguing.html">
+
+<!-- Social preview · what clients see when this link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI · Weekly Field Note">
+<meta property="og:title" content="Weekly Field Note No. 05 · Arguing">
+<meta property="og:description" content="Stop asking it to agree. Ask it to argue. Five rules, one prompt, five exercises.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/newsletter/field-note-05-arguing.html">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Weekly Field Note No. 05 · Arguing, published by Magnum AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weekly Field Note No. 05 · Arguing">
+<meta name="twitter:description" content="Stop asking it to agree. Ask it to argue. Five rules, one prompt, five exercises.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg">
+<meta name="theme-color" content="#1F2A37">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFBF9;
+  --paper-deep:#FFFFFF;
+  --ink:#1E1B17;
+  --navy:#1F2A37;
+  --coral-bright:#FF6F5E;
+  --tint:#FBE1D8;
+  --rust:#EF4029; --coral-text:#C63A2A;
+  --tan:#FBE1D8;
+  --olive:#5B6B7A;
+  --charcoal:#3A3630;
+  --taupe:#8E97A3;
+  --hair:rgba(30,27,23,.24);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  background:#1F2A37;
+  font-family:'IBM Plex Sans',Arial,sans-serif;
+  color:var(--ink);
+  padding:16px 12px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+
+/* ---------- PAGE SHELL ---------- */
+.page{
+  width:100%;
+  max-width:794px;
+  background-color:var(--paper);
+  
+  border:9px solid var(--ink);
+  padding:26px 30px 20px;
+  display:flex;
+  flex-direction:column;
+  font-size:clamp(12.5px,3.25vw,16px);
+  position:relative;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+
+/* ---------- MASTHEAD ---------- */
+.masthead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  border-bottom:2px solid var(--ink);
+  padding-bottom:7px;
+  gap:12px;
+}
+.mh-title{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-weight:700;
+  font-size:1.06em;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  line-height:1;
+  display:block;
+}
+.mh-sub{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.56em;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--charcoal);
+  display:block;
+  margin-top:5px;
+}
+.mh-issue{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-weight:600;
+  font-size:.8em;
+  letter-spacing:.1em;
+  border:2px solid var(--ink);
+  padding:2px 9px 3px;
+  white-space:nowrap;
+  background:var(--paper-deep);
+}
+
+/* ---------- BODY GRID ---------- */
+.sheet{flex:1;padding-top:16px;display:flex;flex-direction:column}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.6em;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--coral-text);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::after{content:"";flex:1;height:2px;background:var(--ink);opacity:.85}
+
+h1,h2{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  line-height:.92;
+  letter-spacing:-.005em;
+}
+h1{font-size:3.35em}
+h2{font-size:2.12em;margin-top:.42em}
+h2.lower{text-transform:none;letter-spacing:-.01em}
+
+p{font-size:.83em;line-height:1.52;color:var(--charcoal)}
+p+p{margin-top:.72em}
+.lead{font-size:.92em;color:var(--ink)}
+
+/* ---------- FOOTER ---------- */
+.foot{
+  margin-top:auto;
+  border-top:2px solid var(--ink);
+  padding-top:7px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.53em;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--charcoal);
+}
+.foot .mid{color:var(--taupe);text-align:center}
+.foot .pg{color:var(--ink);font-weight:600}
+
+/* ---------- POSTER PLATE (signature) ---------- */
+.plate{
+  border:2px solid var(--ink);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:0;
+  overflow:hidden;
+}
+.plate-cap{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.52em;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  border-top:2px solid rgba(30,27,23,.45);
+  padding-top:6px;
+  margin-top:12px;
+}
+
+/* flat document illustration */
+.doc-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:6px 0}
+.doc{
+  position:relative;
+  width:60%;
+  aspect-ratio:.74;
+  background:var(--paper);
+  border:2px solid var(--ink);
+  padding:11% 12%;
+  
+}
+.doc i{display:block;height:5px;background:var(--charcoal);opacity:.75;margin-bottom:9px}
+.doc i:nth-child(1){width:70%;height:8px;opacity:1;background:var(--ink)}
+.doc i:nth-child(3){width:88%}
+.doc i:nth-child(4){width:62%}
+.doc i:nth-child(5){width:80%}
+.doc i:nth-child(6){width:45%;background:var(--rust);opacity:1}
+.tick{
+  position:absolute;
+  right:-14%;
+  bottom:-11%;
+  width:38%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--olive);
+  border:2px solid var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.tick::after{
+  content:"";
+  width:42%;
+  height:22%;
+  border-left:5px solid var(--paper);
+  border-bottom:5px solid var(--paper);
+  transform:rotate(-45deg) translate(6%,-18%);
+}
+
+/* ---------- COVER ---------- */
+.cover-top{display:grid;grid-template-columns:1.12fr .88fr;gap:20px;align-items:stretch}
+.cover-head h1{font-size:4.15em;margin-top:.14em}
+.cover-head .kicker{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.5em;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color:var(--rust);
+  margin-top:.55em;
+}
+.cover-head p{margin-top:.6em}
+.plate-rust{background:var(--navy)}
+.plate-rust .plate-cap{color:#F4F1EA;border-color:rgba(244,241,234,.5)}
+
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.ba-card{border:2px solid var(--ink);background:var(--paper-deep);display:flex;flex-direction:column}
+.ba-head{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.82em;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:5px 10px;
+  color:var(--paper);
+  background:var(--charcoal);
+}
+.ba-card.good .ba-head{background:var(--olive)}
+.ba-body{padding:11px 12px 12px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;line-height:1.62;color:var(--ink)}
+
+/* ---------- INTRO PAGE ---------- */
+.cols{columns:2;column-gap:26px;column-rule:1px solid var(--hair);margin-top:1em}
+.cols p{break-inside:avoid}
+.band{
+  margin-top:auto;
+  background:var(--ink);
+  color:var(--paper);
+  padding:15px 18px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.band .num{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:2.2em;
+  color:var(--rust);
+  line-height:.8;
+}
+.band .txt{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.2em;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:1.06;
+}
+
+.p-intro .band{flex:1;align-items:center;justify-content:space-between;padding:24px 26px}
+.p-intro .band .num{font-size:3.2em}
+.p-intro .band .txt{font-size:2.4em}
+.p-intro .band .sub{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;letter-spacing:.24em;text-transform:uppercase;color:var(--tan);margin-top:14px;display:block}
+.ghost{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:5.4em;line-height:.82;text-align:right;color:transparent;-webkit-text-stroke:2px var(--rust);letter-spacing:-.02em;flex:none}
+@media (max-width:620px){.ghost{display:none}}
+.p-intro .contents{align-self:start}
+
+/* ---------- THREE BLOCKS ---------- */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.tcard{border:2px solid var(--ink);padding:14px 13px 15px;background:var(--paper-deep);display:flex;flex-direction:column;gap:10px}
+.icon{width:42px;height:42px;border:2px solid var(--ink);position:relative;flex:none}
+.icon.i1{background:var(--rust);border-radius:50%}
+.icon.i1::after{content:"";position:absolute;inset:26% 46% 26% 46%;background:var(--paper)}
+.icon.i2{background:var(--olive)}
+.icon.i2::after{content:"";position:absolute;left:20%;top:24%;width:0;height:0;border-left:16px solid var(--paper);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.icon.i3{background:var(--tan)}
+.icon.i3::after{content:"";position:absolute;inset:22% 20%;border-top:5px solid var(--ink);border-bottom:5px solid var(--ink)}
+.tcard h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.94em;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  line-height:1.02;
+}
+.tcard p{font-size:.74em}
+.quote{
+  margin-top:auto;
+  border-top:2px solid var(--ink);
+  border-bottom:2px solid var(--ink);
+  padding:16px 0 17px;
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.62em;
+  line-height:1.02;
+  text-transform:uppercase;
+}
+.quote span{color:var(--rust)}
+
+/* ---------- RULES LIST ---------- */
+.rules{margin-top:14px;border-top:2px solid var(--ink)}
+.rule{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;padding:12px 0 13px;border-bottom:2px solid var(--ink)}
+.rnum{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.9em;
+  line-height:.8;
+  color:var(--rust);
+}
+.rule h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.12em;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:1;
+}
+.rule p{font-size:.78em;margin-top:5px}
+.callout{
+  margin-top:16px;
+  background:var(--olive);
+  color:#F4F1EA;
+  border:2px solid var(--ink);
+  padding:14px 16px;
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.16em;
+  line-height:1.06;
+  text-transform:uppercase;
+}
+
+/* ---------- PROMPT BLOCKS ---------- */
+.prompt{
+  border:2px solid var(--ink);
+  background:var(--paper-deep);
+  margin-top:12px;
+  position:relative;
+}
+.prompt-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:var(--ink);
+  color:var(--paper);
+  padding:5px 10px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.56em;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.copy{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:1em;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  background:var(--rust);
+  color:#F4F1EA;
+  border:1px solid #F4F1EA;
+  padding:2px 8px 3px;
+  cursor:pointer;
+}
+.copy:focus-visible{outline:3px solid var(--olive);outline-offset:2px}
+.copy.done{background:var(--olive)}
+pre{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.63em;
+  line-height:1.6;
+  padding:12px 13px 13px;
+  white-space:pre-wrap;
+  word-break:break-word;
+  color:var(--ink);
+  -webkit-user-select:text;
+  user-select:text;
+}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.pcard{border:2px solid var(--ink);padding:12px 13px 13px;background:var(--paper-deep)}
+.pcard h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.86em;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.pcard.no h3{color:var(--coral-text)}
+.pcard p{font-size:.76em}
+
+/* ---------- FLOW ---------- */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.stage{border:2px solid var(--ink);display:flex;flex-direction:column}
+.stage-num{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.5em;
+  line-height:1;
+  padding:6px 11px 7px;
+  color:#F4F1EA;
+  background:var(--charcoal);
+}
+.stage:nth-child(1) .stage-num{background:var(--rust)}
+.stage:nth-child(2) .stage-num{background:var(--olive)}
+.stage:nth-child(3) .stage-num{background:var(--tan);color:var(--ink)}
+.stage-body{padding:12px 13px 14px;background:var(--paper-deep);flex:1}
+.stage-body h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.92em;
+  text-transform:uppercase;
+  line-height:1.02;
+  letter-spacing:.03em;
+  margin-bottom:7px;
+}
+.stage-body p{font-size:.74em}
+.bigrule{
+  margin-top:20px;
+  border-top:2px solid var(--ink);
+  border-bottom:2px solid var(--ink);
+  padding:15px 0 16px;
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:1.5em;
+  line-height:1.04;
+  text-transform:uppercase;
+}
+.bigrule span{color:var(--rust)}
+.install{
+  margin-top:14px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:.64em;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--charcoal);
+}
+
+/* ---------- VERTICAL FILL ---------- */
+.p-cover .cover-top{flex:1;min-height:0}
+.p-cover .cover-head{display:flex;flex-direction:column}
+.p-cover .cover-head p{padding-top:.55em}
+.slug{margin-top:auto;border-top:2px solid var(--ink);padding-top:9px;display:flex;flex-direction:column;gap:5px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.55em;letter-spacing:.16em;text-transform:uppercase;color:var(--charcoal)}
+.slug b{font-weight:600;color:var(--coral-text)}
+.p-cover .doc{width:82%;aspect-ratio:.66}
+.p-cover .cover-head p{font-size:.97em;line-height:1.55}
+.p-cover .ba-body{font-size:.68em}
+.p-cover .ba-head{font-size:.9em;padding:6px 11px}
+.p-cover .slug{font-size:.6em;gap:7px}
+.p-cover .ba{margin-top:16px}
+
+.intro-grid{display:grid;grid-template-columns:1.28fr .72fr;gap:26px;align-items:start;margin-top:1em;padding-bottom:22px}
+.intro-copy{display:flex;flex-direction:column}
+.intro-copy p{font-size:.94em;line-height:1.62}
+.intro-copy p+p{margin-top:.8em}
+.intro-note{margin-top:auto;border-top:2px solid var(--ink);padding-top:10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal)}
+.contents{border:2px solid var(--ink);background:var(--paper-deep);display:flex;flex-direction:column}
+.contents h3{
+  font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  font-size:.8em;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--navy);color:#F4F1EA;padding:6px 11px 7px;
+}
+.contents ol{list-style:none;padding:6px 11px 4px;display:flex;flex-direction:column}
+.contents .note{margin-top:auto;border-top:2px solid var(--ink);padding:10px 11px 11px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.56em;line-height:1.7;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal)}
+.contents .note b{color:var(--coral-text);font-weight:600}
+.contents li{
+  display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:11px 0;border-bottom:1px solid var(--hair);
+}
+.contents li:last-child{border-bottom:0}
+.contents li b{font-weight:500}
+.contents li span{color:var(--coral-text);font-weight:600}
+
+.p-why .trio{flex:none}
+.p-why .tcard{justify-content:flex-start;padding:16px 15px 17px}
+.p-why .icon{width:60px;height:60px}
+.p-why .icon.i2::after{border-left-width:22px;border-top-width:12px;border-bottom-width:12px;left:22%;top:26%}
+.p-why .tcard p{font-size:.78em}
+.p-why .quote{flex:none;margin-top:auto;font-size:2.75em;padding:40px 0 42px}
+.swap{margin-top:22px;border:2px solid var(--ink);background:var(--paper-deep);display:grid;grid-template-columns:repeat(3,1fr)}
+.swap .cell{padding:15px 16px 16px;border-right:2px solid var(--ink)}
+.swap .cell:last-child{border-right:0}
+.swap .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.56em;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.swap .from{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.76em;color:var(--charcoal);margin-top:7px}
+.swap .to{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.1em;text-transform:uppercase;color:var(--coral-text);margin-top:8px;line-height:1.06}
+@media (max-width:620px){.swap{grid-template-columns:1fr}.swap .cell{border-right:0;border-bottom:2px solid var(--ink)}.swap .cell:last-child{border-bottom:0}}
+
+.p-rules .rules{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.p-rules .rule{flex:1;align-items:center;grid-template-columns:88px 1fr}
+.p-rules .rnum{font-size:3em}
+.p-rules .rule h3{font-size:1.5em}
+.p-rules .rule p{font-size:.88em;margin-top:7px}
+.p-rules .callout{font-size:1.36em;padding:18px 20px;margin-top:20px}
+
+.p-prompt .prompt{flex:none;margin-top:14px}
+.p-prompt pre{font-size:.9em;line-height:1.9;padding:18px 18px 20px}
+.tip{border-top:2px solid var(--ink);padding:9px 14px 10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.58em;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal)}
+.tip b{color:var(--coral-text);font-weight:600}
+.howto-label{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.58em;letter-spacing:.28em;text-transform:uppercase;color:var(--coral-text);margin-top:20px}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;align-content:start;margin-top:12px}
+.hcard{border-top:2px solid var(--ink);padding-top:10px}
+.hcard b{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.5em;color:var(--rust);display:block;line-height:1}
+.hcard p{font-size:.78em;margin-top:6px}
+.p-prompt .duo{margin-top:auto}
+
+.p-auto .flow{flex:1;min-height:0;margin-top:18px}
+.p-auto .stage-body{display:flex;flex-direction:column;gap:12px;padding:16px 15px 16px;justify-content:space-between}
+.stag{margin-top:auto;border-top:2px solid var(--ink);padding-top:10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.56em;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal)}
+.p-auto .stage-body h3{margin-bottom:0}
+.sicon{width:66px;height:66px;border:2px solid var(--ink);position:relative;flex:none}
+.sicon.s1{background:var(--paper)}
+.sicon.s1::before{content:"";position:absolute;left:18%;right:18%;top:26%;height:4px;background:var(--charcoal);box-shadow:0 13px 0 var(--rust),0 26px 0 var(--charcoal)}
+.sicon.s2{background:var(--paper)}
+.sicon.s2::before{content:"";position:absolute;inset:20%;border:3px solid var(--olive)}
+.sicon.s2::after{content:"";position:absolute;left:20%;right:20%;top:47%;height:3px;background:var(--charcoal)}
+.sicon.s3{background:var(--paper);border-radius:50%}
+.sicon.s3::after{content:"";position:absolute;inset:26%;background:var(--tan);border:2px solid var(--ink)}
+.p-auto .verdict{flex:none;display:flex;flex-direction:column;gap:16px;border:2px solid var(--ink);background:var(--paper-deep);margin-top:20px;padding:26px 26px 28px}
+.p-auto .verdict .line{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:2.1em;line-height:1.04;text-transform:uppercase}
+.p-auto .verdict .line span{color:var(--rust)}
+.p-auto .verdict .install{margin-top:0;border-top:2px solid var(--ink);padding-top:12px}
+
+.p-copy .sheet{padding-bottom:4px}
+.p-copy pre{font-size:.655em;line-height:1.62}
+.p-copy .prompt{margin-top:14px}
+
+/* page 6 type scale */
+.p-auto .sicon{width:88px;height:88px}
+.p-auto .sicon.s1::before{box-shadow:0 18px 0 var(--rust),0 36px 0 var(--charcoal);height:5px}
+.p-auto .stage-num{font-size:1.85em;padding:8px 13px 9px}
+.p-auto .stage-body{gap:18px;padding:20px 17px 18px}
+.p-auto .stage-body h3{font-size:1.22em}
+.p-auto .stage-body p{font-size:.94em;line-height:1.56}
+.p-auto .stag{font-size:.6em}
+.p-auto .verdict .line{font-size:2.3em}
+
+/* page 3 type scale */
+.p-why .tcard h3{font-size:1.2em}
+.p-why .tcard p{font-size:.94em;line-height:1.56}
+.p-why .icon{width:74px;height:74px}
+.p-why .tcard{gap:14px;padding:20px 17px 20px}
+
+/* page 5 type scale */
+.p-prompt .hcard b{font-size:2em}
+.p-prompt .hcard p{font-size:.88em}
+.p-prompt .pcard h3{font-size:.95em}
+.p-prompt .pcard p{font-size:.86em}
+.p-prompt .pcard{padding:15px 15px 16px}
+
+/* ---------- SITE BARS (screen only) ---------- */
+.sitebar{
+  width:100%;
+  max-width:794px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#C8CDD3;
+}
+.sitebar a{color:#C8CDD3;text-decoration:none;border-bottom:1px solid rgba(200,205,211,.4);padding-bottom:2px}
+.sitebar a:hover{color:var(--paper);border-bottom-color:var(--paper)}
+.sitebar .issue{color:#8E97A3;letter-spacing:.22em}
+.sharebar{justify-content:center;gap:10px;padding-top:2px}
+.sharebar .share-btn{
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#FFFFFF;
+  background:transparent;
+  border:1px solid rgba(237,227,207,.45);
+  padding:8px 14px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+.sharebar .share-btn:hover{background:rgba(237,227,207,.1);border-color:#FFFFFF}
+.sharebar .share-btn:focus-visible{outline:2px solid var(--olive);outline-offset:2px}
+.sharebar .share-btn.done{background:var(--olive);border-color:var(--olive);color:#F4F1EA}
+
+/* ---------- PRINT ---------- */
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff;padding:0;gap:0;display:block}
+  .page{
+    width:210mm;
+    height:297mm;
+    max-width:none;
+    font-size:15.4px;
+    border-width:8px;
+    page-break-after:always;
+    break-after:page;
+    overflow:hidden;
+  }
+  .page:last-child{page-break-after:auto;break-after:auto}
+  .copy{display:none}
+  .sitebar{display:none}
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width:620px){
+  body{padding:10px 8px 28px}
+  .cover-head h1{font-size:3.2em}
+  .page{padding:18px 17px 14px;border-width:7px}
+  .cover-top{grid-template-columns:1fr;gap:16px}
+  .cover-head h1{font-size:3.05em}
+  .p-cover .doc{width:56%;aspect-ratio:.76}
+  .p-cover .plate{padding:14px}
+  .ba,.trio,.duo,.flow{grid-template-columns:1fr}
+  .intro-grid{grid-template-columns:1fr;gap:18px;padding-bottom:14px}
+  .cols{columns:1}
+  .foot .mid{display:none}
+  .rule{grid-template-columns:48px 1fr;gap:12px}
+}
+
+/* ---------- NO. 02 ADDITIONS ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kcard{border:2px solid var(--ink);background:var(--paper-deep);display:flex;flex-direction:column}
+.kcard .khead{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.25em;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px 10px;color:#F4F1EA;background:var(--charcoal);line-height:1}
+.kcard.frozen .khead{background:var(--olive)}
+.kcard.living .khead{background:var(--rust)}
+.kcard .kbody{padding:14px 15px 15px;flex:1;display:flex;flex-direction:column;gap:9px}
+.kcard .kbody p{font-size:.86em;line-height:1.5}
+.kcard .klist{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.62em;line-height:1.75;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);border-top:2px solid var(--ink);padding-top:9px;margin-top:auto}
+.trap{margin-top:16px;border:2px solid var(--ink);background:var(--navy);color:#F4F1EA;padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.trap .tl{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.6em;text-transform:uppercase;color:var(--rust);line-height:.9}
+.trap p{color:var(--paper);font-size:.84em}
+.trap p+p{margin-top:.5em}
+.ex{margin-top:12px;border-top:2px solid var(--ink);flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.exr{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:11px 0 12px;border-bottom:2px solid var(--ink);align-items:start}
+.exr .rnum{font-size:2.2em}
+.exr h3{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:1.15em;text-transform:uppercase;letter-spacing:.02em;line-height:1}
+.exr ol{margin:6px 0 0 1.1em;font-size:.76em;line-height:1.5;color:var(--charcoal)}
+.exr ol li+li{margin-top:2px}
+.exr .learn{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.6em;letter-spacing:.1em;text-transform:uppercase;color:var(--coral-text);margin-top:6px}
+.exr .learn b{color:var(--ink);font-weight:600}
+.p-diag .rules{flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.p-diag .rule{flex:1;align-items:center;grid-template-columns:88px 1fr}
+.p-diag .rnum{font-size:3em}
+.p-diag .rule h3{font-size:1.45em}
+.p-diag .rule p{font-size:.88em;margin-top:7px}
+.p-diag .callout{font-size:1.36em;padding:18px 20px;margin-top:20px}
+.p-agents .flow{flex:1;min-height:0;margin-top:18px}
+.p-agents .stage-body{display:flex;flex-direction:column;gap:16px;padding:20px 17px 18px;justify-content:space-between}
+.p-agents .stage-num{font-size:1.85em;padding:8px 13px 9px}
+.p-agents .stage-body h3{font-size:1.22em;margin-bottom:0}
+.p-agents .stage-body p{font-size:.94em;line-height:1.56}
+.p-agents .stag{font-size:.6em}
+.p-agents .verdict{flex:none;display:flex;flex-direction:column;gap:16px;border:2px solid var(--ink);background:var(--paper-deep);margin-top:20px;padding:26px 26px 28px}
+.p-agents .verdict .line{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-size:2.1em;line-height:1.04;text-transform:uppercase}
+.p-agents .verdict .line span{color:var(--rust)}
+.p-agents .verdict .install{margin-top:0;border-top:2px solid var(--ink);padding-top:12px}
+.sicon.s4{background:var(--paper)}
+.sicon.s4::after{content:"";position:absolute;left:30%;right:30%;top:18%;bottom:18%;background:var(--rust);border:2px solid var(--ink)}
+.sicon.s5{background:var(--paper)}
+.sicon.s5::before{content:"";position:absolute;left:18%;right:18%;top:24%;height:4px;background:var(--charcoal);box-shadow:0 14px 0 var(--charcoal),0 28px 0 var(--olive)}
+.sicon.s6{background:var(--paper);border-radius:50%}
+.sicon.s6::after{content:"";position:absolute;left:30%;right:30%;top:30%;bottom:30%;border:4px solid var(--ink);border-radius:50%;background:var(--tan)}
+@media (max-width:620px){.two{grid-template-columns:1fr}.trap{grid-template-columns:1fr}.exr{grid-template-columns:48px 1fr}}
+
+/* Draft band. Only ever present on an unmerged draft. Deleted before merge. */
+.draftband{width:100%;max-width:794px;margin:18px auto 0;padding:14px 18px;background:var(--tint);border:2px solid var(--rust);color:var(--ink);font:500 14px/1.5 'IBM Plex Sans',system-ui,sans-serif}
+.draftband b{font-family:'IBM Plex Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--coral-text)}
+@media print{.draftband{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ==========================================================
+     EDIT: delete this whole draft band before the issue merges.
+     tools/check-field-note.js fails while it is still here.
+     ========================================================== -->
+<div class="draftband">
+  <b>Draft.</b> The structure, the prompt and the exercises are built. The
+  sentences are not James's yet. Rewrite the marked blocks, then delete this band.
+</div>
+
+<nav class="sitebar">
+  <a href="../index.html">&larr; Magnum AI Members Area</a>
+  <span class="issue">Weekly Field Note / No. 05</span>
+</nav>
+
+<!-- ============ PAGE 1 · COVER ============ -->
+<section class="page p-cover">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 05</div>
+  </header>
+
+  <div class="sheet">
+    <div class="cover-top">
+      <div class="cover-head">
+        <div class="eyebrow">Arguing</div>
+        <!-- EDIT · VOICE: the headline. Three short lines, a turn on the second,
+             under nine words in total. This issue is about asking it to argue
+             against your own plan instead of agreeing with it, before you act
+             on the plan. The turn on line two or three should be the flip from
+             agreeing to arguing. -->
+        <h1>[Headline. Three lines, turn on line two or three, under nine words. Stop agreeing, start arguing.]</h1>
+        <!-- EDIT · VOICE: one line naming the thing most people get wrong, which
+             is asking it "does this work" and taking a confident yes as proof. -->
+        <div class="kicker">[One line: everybody asks it to check. Nobody asks it to argue.]</div>
+        <!-- EDIT · VOICE: the dek. Three sentences. What the reader gets by page 07:
+             one prompt that makes it argue against a plan before you act on it,
+             a rule for running it every time, and the discipline of fixing what
+             it finds instead of defending the plan back to it. -->
+        <p>[Dek. Three sentences: the prompt that argues against your own plan, the rule for using it every time, and fixing what it finds instead of defending the plan.]</p>
+        <div class="slug">
+          <span><b>Reading time</b> three minutes</span>
+          <span><b>Works in</b> Claude, ChatGPT, any of them</span>
+          <span><b>Run it yourself</b> five exercises, page 07</span>
+        </div>
+      </div>
+
+      <!-- The figure plate. Keep one of the drawings already used in issues 01
+           to 04 unless a new one earns its place. Nothing new is drawn here. -->
+      <div class="plate plate-rust">
+        <div class="doc-wrap">
+          <div class="doc">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+            <div class="tick"></div>
+          </div>
+        </div>
+        <div class="plate-cap">Fig. 05 / The plan, argued against<br>Weekly Field Note, published by Magnum AI</div>
+      </div>
+    </div>
+
+    <div class="ba">
+      <div class="ba-card">
+        <div class="ba-head">Before / Asked it to check</div>
+        <!-- EDIT · VOICE: a real ask in quotes, asking it whether a plan works,
+             then two lines on the confident yes that comes back and why a yes
+             is not proof of anything. -->
+        <div class="ba-body">[Before, in quotes: "Does this plan work?" What comes back. Why a confident yes proves nothing.]</div>
+      </div>
+      <div class="ba-card good">
+        <div class="ba-head">After / Asked it to argue</div>
+        <!-- EDIT · VOICE: the same plan, asked to argue against it instead, then
+             what changes: the assumptions and the missing questions, not a yes. -->
+        <div class="ba-body">[After, in quotes: the same plan, asked to argue against it. What comes back instead: the assumptions, the missing questions.]</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that argues back</span>
+    <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
+    <span class="pg">01 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 2 · INTRO ============ -->
+<section class="page p-intro">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 05</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">This week</div>
+    <!-- EDIT · VOICE: the question the issue answers, as a statement. Something
+         like why a confident answer is not the same as a checked one. -->
+    <h2 class="lower">[Why a confident answer is not a checked one.]</h2>
+
+    <div class="intro-grid">
+      <div class="intro-copy">
+        <!-- EDIT · VOICE: the lead is a first-person story. Something that actually
+             happened to James, with a number or a name in it. Five or six lines.
+             This is the block he rewrites first and the one that carries the issue.
+             A real plan he acted on because it sounded right, and what it cost him
+             to find the hole later instead of before. -->
+        <p class="lead">[Lead: a real plan James acted on because it sounded finished, and what it cost to find the hole later instead of before.]</p>
+        <!-- EDIT · VOICE: then the turn: an assistant is built to sound helpful,
+             not to find the flaw, so a confident answer and a checked answer
+             read identically until something breaks. -->
+        <p>[Turn: it is built to sound helpful, not to find the flaw, so a confident answer and a checked one read the same.]</p>
+        <!-- EDIT · VOICE: an analogy from outside computing. A builder, a kitchen,
+             a quote. One only. -->
+        <p>[One outside analogy, a builder or a tradesman who tells you the job is fine because you asked if it was fine.]</p>
+        <!-- EDIT · VOICE: what James did about it, including the time he spent
+             taking a plan at face value before he built the habit of arguing
+             with it first. Admit the wrong thing. -->
+        <p>[What James did about it, including the time he spent taking a plan at face value before he built the habit of arguing with it first.]</p>
+        <!-- EDIT · VOICE: the rule this issue teaches, stated once, flat, no
+             build-up. Something like: do not ask it if the plan works, ask it
+             to argue that it does not. -->
+        <p>[The rule, flat: do not ask if the plan works, ask it to argue that it does not.]</p>
+        <!-- EDIT · VOICE: the note is the issue in one contrast, agreeing against
+             arguing. -->
+        <div class="intro-note">[One line: agreeing tells you what you want to hear, arguing tells you what you need to know.]</div>
+      </div>
+      <aside class="contents">
+        <h3>In this issue</h3>
+        <ol>
+          <li><b>Agreeing and arguing</b><span>03</span></li>
+          <li><b>Five rules</b><span>04</span></li>
+          <li><b>Prompt to steal</b><span>05</span></li>
+          <li><b>Make it automatic</b><span>06</span></li>
+          <li><b>Five exercises</b><span>07</span></li>
+        </ol>
+        <div class="note"><b>Do exercise 1 first.</b><br>Run the prompt on the last plan it gave you. Two minutes.</div>
+      </aside>
+    </div>
+
+    <div class="band">
+      <div class="num">→</div>
+      <!-- EDIT · VOICE: two halves, four words each, the whole issue. Something
+           like agreeing tells you nothing, arguing tells you where it breaks. -->
+      <div class="txt">[Agreeing tells you nothing.<br>Arguing tells you where it breaks.]
+        <span class="sub">Weekly Field Note / Arguing</span>
+      </div>
+      <div class="ghost">No.<br>05</div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that argues back</span>
+    <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
+    <span class="pg">02 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 3 · THE ARGUMENT ============ -->
+<section class="page p-why">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 05</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Agreeing and arguing</div>
+    <!-- EDIT · VOICE: the argument as two halves of one sentence, agreeing
+         against arguing. -->
+    <h2>[Ask it to agree, get a plan you have not tested. Ask it to argue, get the holes in it.]</h2>
+    <!-- EDIT · VOICE: one line on what both have in common, so the difference
+         lands. Both start from the same plan; only the instruction changes. -->
+    <p class="lead" style="margin-top:.9em">[One line: same plan, same model, only the instruction changes.]</p>
+
+    <div class="two">
+      <div class="kcard frozen">
+        <div class="khead">What agreement gives you</div>
+        <div class="kbody">
+          <p>A plan that sounds finished, because the model is built to sound helpful and agreeable, not to find the flaw.</p>
+          <p>You find the hole later, usually in front of the client, which is the work you were trying to hand over.</p>
+          <div class="klist">Confidence<br>Encouragement<br>Agreement<br>No warning</div>
+        </div>
+      </div>
+      <div class="kcard living">
+        <div class="khead">What arguing gives you</div>
+        <div class="kbody">
+          <p>The weak points named before you act, and the assumptions you did not know you were making.</p>
+          <p>And the questions you had not thought to answer, which is the part nobody asks for and which saves the most time.</p>
+          <div class="klist">The weak points<br>Your assumptions<br>Its questions<br>A plan you can defend</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trap">
+      <div class="tl">The<br>trap</div>
+      <div>
+        <!-- EDIT · VOICE: the near-miss. The thing that looks like the fix and is
+             not. Every issue has one. Here it is likely asking it to "check" or
+             "review" the plan, which still nudges it toward agreeing, rather than
+             telling it plainly to argue against the plan. Name it, then say
+             precisely how it differs. -->
+        <p>[The near-miss: asking it to check or review the plan. Say what it is.]</p>
+        <p>[Why that is not the fix: it still nudges toward agreement. The check that tells you which one you got.]</p>
+      </div>
+    </div>
+
+    <!-- EDIT · VOICE: the pull quote. Two lines, the second undercuts the first.
+         Something like: it is not being helpful, it is agreeing with you. -->
+    <div class="quote">[It is not being helpful.<br><span>It is agreeing with you.</span>]</div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that argues back</span>
+    <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
+    <span class="pg">03 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 4 · FIVE RULES ============ -->
+<section class="page p-diag">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 05</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">The deliverable</div>
+    <h2>Five rules for arguing with it.</h2>
+    <!-- EDIT · VOICE: one line saying none of them need a new tool, just a
+         different instruction. -->
+    <p style="margin-top:.7em">[One line: none of them need a new tool, only a different instruction.]</p>
+
+    <!-- Five rules, always five. Each heading is a command of three or four words.
+         Each body is two sentences: what to do, then why it works. The five
+         headings, shortened, are the run in the footer on every page. -->
+    <div class="rules">
+      <div class="rule">
+        <div class="rnum">01</div>
+        <div>
+          <h3>Argue, don't agree.</h3>
+          <p>Do not ask "does this work". Say "argue against this" instead. An assistant defaults to agreeing with whatever you put in front of it, so you have to ask it not to.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">02</div>
+        <div>
+          <h3>Name your assumptions.</h3>
+          <p>Get it to list what the plan depends on before it argues the case. A weak assumption named early is cheap to fix and expensive to find later.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">03</div>
+        <div>
+          <h3>Let it ask back.</h3>
+          <p>Read what it says it was not told, not only what it disagrees with. A gap in your own brief is a second finding, not a failure of the plan.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">04</div>
+        <div>
+          <h3>Argue before it ships.</h3>
+          <p>Run it on the plan, the quote or the email before a client sees it, not after. The argument is worth nothing once the thing is already out the door.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rnum">05</div>
+        <div>
+          <h3>Fix it. Don't defend it.</h3>
+          <p>Change what it finds instead of arguing back at it. The point of the exercise is a better plan, not a plan you talked it out of doubting.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIT · VOICE: two lines, the issue as an instruction, agreeing against
+         arguing. -->
+    <div class="callout">[Agreement is comfortable.<br>Arguing is useful.]</div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that argues back</span>
+    <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
+    <span class="pg">04 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 5 · PROMPT TO STEAL ============ -->
+<section class="page p-prompt">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 05</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Prompt to steal</div>
+    <h2>Redline your own plan.</h2>
+    <p style="margin-top:.7em">This is the card from the Prompt Shelf. Paste your plan or draft where the prompt below expects it.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <span>Prompt / Redline your own plan</span>
+        <button class="copy" type="button" data-copy>Copy</button>
+      </div>
+      <pre>Before I act on this, take the other side.
+
+Argue against it. Tell me where the logic is weakest, what I have assumed
+without checking, and what could go wrong that I have not accounted for.
+
+Then tell me the things I need to know about this that I have not asked you.</pre>
+      <div class="tip"><b>Tip.</b> Do not defend the plan back to it. Fix what it finds instead of arguing your case.</div>
+    </div>
+
+    <div class="howto-label">Use it like this</div>
+    <div class="howto">
+      <div class="hcard"><b>01</b><p>Get the plan or draft on screen, straight after it lands in the same chat.</p></div>
+      <div class="hcard"><b>02</b><p>Paste this prompt as your next message.</p></div>
+      <div class="hcard"><b>03</b><p>Read the assumptions and the missing questions before you read the argument itself.</p></div>
+    </div>
+
+    <div class="duo">
+      <div class="pcard">
+        <h3>Best for</h3>
+        <p>Any plan or draft before it reaches a client: a proposal, a price change, a build plan, a schedule.</p>
+      </div>
+      <div class="pcard no">
+        <h3>Not ideal for</h3>
+        <p>A plan already checked by someone else, or a fact it cannot verify itself. It argues from logic, not evidence.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that argues back</span>
+    <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
+    <span class="pg">05 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 6 · MAKE IT AUTOMATIC ============ -->
+<section class="page p-auto">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 05</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Make it automatic</div>
+    <h2>Ask. Argue. Fix.</h2>
+    <p style="margin-top:.7em">Three habits. One is a prompt, two are discipline.</p>
+
+    <div class="flow">
+      <div class="stage">
+        <div class="stage-num">01</div>
+        <div class="stage-body">
+          <div class="sicon s1"></div>
+          <h3>Keep the argument one paste away</h3>
+          <p>Save this prompt where you keep the others. Run it on the next plan before it goes anywhere.</p>
+          <div class="stag">Set once</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">02</div>
+        <div class="stage-body">
+          <div class="sicon s2"></div>
+          <h3>Ask it to argue first</h3>
+          <p>Before you act on anything it gives you, add "take the other side" to the same chat. Every task, not just the big ones.</p>
+          <div class="stag">Every task</div>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">03</div>
+        <div class="stage-body">
+          <div class="sicon s3"></div>
+          <h3>Fix what it finds</h3>
+          <p>Read the weak points and the missing questions before anything else. If nothing about the plan changes, you did not really argue.</p>
+          <div class="stag">Every time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <!-- EDIT · VOICE: the verdict. The line the reader repeats to someone else.
+           Something like: it is not being difficult, it is doing the job you
+           actually asked for once you stop asking it to agree. -->
+      <div class="line">[It is not being difficult.<br><span>It is doing the job you asked for.</span>]</div>
+      <!-- EDIT · VOICE: one line telling them it works every time. -->
+      <div class="install">[One line: ask it to argue and it always finds something.]</div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>AI that argues back</span>
+    <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
+    <span class="pg">06 / 07</span>
+  </footer>
+</section>
+
+<!-- ============ PAGE 7 · FIVE EXERCISES ============ -->
+<section class="page p-ex">
+  <header class="masthead">
+    <div>
+      <span class="mh-title">Weekly Field Note</span>
+      <span class="mh-sub">Practical AI</span>
+    </div>
+    <div class="mh-issue">No. 05</div>
+  </header>
+
+  <div class="sheet">
+    <div class="eyebrow">Run it yourself</div>
+    <h2>Five exercises. Two minutes to ten.</h2>
+    <!-- EDIT · VOICE: one line telling them not to take James's word for it. -->
+    <p style="margin-top:.7em">[One line: do not take my word for it, run it on your own plan.]</p>
+
+    <!-- Five exercises, always five, ordered shortest first. Each is three steps,
+         one action per step, verb first, under twenty words. Each ends with What
+         you learn, which states the result, not the intention. -->
+    <div class="ex">
+      <div class="exr">
+        <div class="rnum">01</div>
+        <div>
+          <h3>Argue with the last plan</h3>
+          <ol>
+            <li>Find the last plan or draft it gave you today.</li>
+            <li>Paste it back in and run the page 05 prompt.</li>
+            <li>Read what it assumed before you read the argument.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> Something in there was assumed, not checked. Do this one first.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">02</div>
+        <div>
+          <h3>Check, then argue</h3>
+          <ol>
+            <li>Ask "does this work" the way you normally would.</li>
+            <li>New chat. Paste the same plan, run the prompt instead.</li>
+            <li>Compare the two answers.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> The second answer finds something the first one missed.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">03</div>
+        <div>
+          <h3>Argue with your own draft</h3>
+          <ol>
+            <li>Paste an email or a quote you are about to send.</li>
+            <li>Run the prompt on it.</li>
+            <li>Read what it flags before you hit send.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> It catches the gap you would otherwise have found out about from the client.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">04</div>
+        <div>
+          <h3>Argue both sides</h3>
+          <ol>
+            <li>Run the prompt on a real plan.</li>
+            <li>Same chat, ask it to argue for the plan instead.</li>
+            <li>Compare the two arguments.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> It argues either side equally well, which is why you have to ask for the argument you need.</div>
+        </div>
+      </div>
+      <div class="exr">
+        <div class="rnum">05</div>
+        <div>
+          <h3>Put it at the top</h3>
+          <ol>
+            <li>Save the prompt where you keep your others, today.</li>
+            <li>Run it on the next plan before you act on it.</li>
+            <li>Fix one thing it found.</li>
+          </ol>
+          <div class="learn"><b>What you learn.</b> A plan with the holes found first is worth more than one with holes nobody has looked for yet.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <!-- EDIT · VOICE: the last page's left phrase is the callout from page 04,
+         once it is written: "Agreement is comfortable. Arguing is useful." -->
+    <span>[Same line as the callout on page 04.]</span>
+    <span class="mid">Don't agree / Name it / It asks back / Before it ships / Fix, don't defend</span>
+    <span class="pg">07 / 07</span>
+  </footer>
+</section>
+
+<div class="sitebar sharebar">
+  <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
+  <a class="share-btn" href="mailto:?subject=Weekly%20Field%20Note%20No.%2005%20%C2%B7%20Arguing&amp;body=Thought%20this%20one%20was%20worth%20passing%20on%3A%0A%0Ahttps%3A%2F%2Fwebes77.github.io%2Fmagnum-guides%2Fnewsletter%2Ffield-note-05-arguing.html">Email it to someone</a>
+  <a class="share-btn" href="../newsletter/">All Field Notes</a>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var text = btn.closest('.prompt').querySelector('pre').innerText;
+    var done = function(){
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+    } else {
+      fallback(text, done);
+    }
+  });
+});
+function fallback(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+var shareBtn = document.getElementById('share-link');
+if (shareBtn) {
+  shareBtn.addEventListener('click', function(){
+    var url = window.location.href.split('#')[0];
+    var done = function(){
+      shareBtn.textContent = 'Link copied';
+      shareBtn.classList.add('done');
+      setTimeout(function(){ shareBtn.textContent = 'Copy link to this Field Note'; shareBtn.classList.remove('done'); }, 1600);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done, function(){ fallback(url, done); });
+    } else {
+      fallback(url, done);
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
