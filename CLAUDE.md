@@ -1180,6 +1180,61 @@ interface and the sandbox cannot see the product. Read that file first. Do not
 re-scope it; James settled the audience, the platforms and the prompts on
 15 Sep and the reasoning is recorded.
 
+A fifth routine was proposed on 15 Sep and decided against the same day, after
+James asked for it to be stress tested. Do not propose it again before
+1 November without new evidence.
+
+The idea: a routine that researches what the model vendors have shipped, then
+silently updates live training on the members area to match, and separately
+writes a client-facing note about anything worth knowing.
+
+The second half already exists twice. This Week in AI is a weekly four-minute
+briefing on what moved, which is exactly "new model landed, here is what you
+use it for", and the Field Note is one idea taught properly. The 4 Sep decision
+against a third weekly publication stands. What the idea was really poking at
+is the positioning question between those two, open since 4 Sep, and a third
+product makes that worse rather than settling it.
+
+The first half is 80 per cent built as the fact-check routine, and the missing
+20 per cent is the part that should not be built. Silent replacement on `main`
+means a wrong menu path reaches a client under James's name with no diff and
+no signal. The branch costs ten minutes a month to read and prevents exactly
+that. The premise is also weaker than it looks: a new model does not
+invalidate the 6 Levers or how to talk to it. What goes stale is interfaces,
+plans and prices, which is what the register already tracks.
+
+The argument that settled it is hard rule 7. Four routines already touch this
+work and two of them had never fired. A fifth before any of them has run a
+month is how a one-person business acquires permanent operational complexity.
+Revisit in November from what the four actually produced.
+
+One piece of the idea was worth having and shipped the same day. The register
+tracks claims that can go wrong and nothing that is newly right, so the
+fact-check prompt gained a WORTH KNOWING section: at most three newly shipped
+things per run, only if a non-technical owner could use one this month in a
+sentence that needs no second explanation, explicitly excluding model names,
+prices, APIs, context windows and benchmarks. It reports and does not act: no
+page, no issue, no register row. It goes in the email and the log, not into
+the Sunday Brief's vault, because a routine writing into the vault would be a
+silent pipeline and this is meant to put one line in front of James once a
+month. `notes/fact-check-prompt.md` holds it and the live trigger was updated
+with `update_trigger` and read back byte-identical.
+
+Two facts learned reading the triggers back, both closing open items.
+
+The fact-check routine (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) already carries
+`Webes77/magnum-guides`, Gmail and Google Drive. Item 2 below is fully closed
+for both routines now, not just the Field Note. Do not raise it in October.
+
+And the Field Note routine fired for the first time on schedule, 15 Sep
+20:01 UTC, which is Wednesday 16 Sep 6:01am Gold Coast, and finished
+SUCCEEDED eleven minutes later. It pushed `field-note/2026-09-16` carrying
+Field Note 05, Arguing, built from the shelf fallback because the 13 Sep vault
+file predates the `field-note-commission` section. That is the fallback
+behaving exactly as designed on the one week it was always going to be needed.
+The branch carries the page, the card source, the rendered card, both index
+links and its own log entry. James reads the diff; nothing is merged.
+
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
 all eight pages. The Field Note routine is set up. James confirmed the
@@ -1263,13 +1318,12 @@ order of value:
    for the logging. Until that changes, the honest feedback loop is James
    watching a client use it in a session, which he does anyway.
 
-2. Done for the Field Note routine (`trig_016pPJPsm8D3yUZs81wquraU`), 15 Sep:
-   repository and connectors both attached, confirmed by James, who asked not
-   to be asked again. First fire Wednesday 16 Sep. Watch the run, not him.
-
-   Still open: the fact-check routine (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) needs
-   the same repository and Gmail before 1 Oct. Raise it once, near the date,
-   and not before.
+2. Done, and closed for both routines. The Field Note routine
+   (`trig_016pPJPsm8D3yUZs81wquraU`) fired successfully on its first run,
+   Wednesday 16 Sep 6am Gold Coast, and pushed `field-note/2026-09-16`.
+   The fact-check routine (`trig_01Ug88bf3JAkccEhX6f7Nd2x`) was read back on
+   15 Sep and already carries the repository, Gmail and Google Drive. Nothing
+   here waits on James and nothing here is to be raised with him again.
 
    Standing note for every future session. `list_triggers` returns the
    schedule and the run history but never the attached repository or

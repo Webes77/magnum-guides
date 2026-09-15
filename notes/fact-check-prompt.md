@@ -81,6 +81,21 @@ Rules that are not yours to break:
 - If a deck changed, run node tools/check-decks.js against a local server
   and do not push unless it prints PASS.
 
+One thing to look for that is not on the register. The register tracks
+claims that can go wrong. It tracks nothing that is newly right. While you
+are on the vendors' pages you will pass things that have shipped since the
+last run.
+
+Report at most three of them, and only if they clear this bar: a
+non-technical small business owner could use it this month, in a sentence
+you could say to them without explaining a second thing first. A new model
+name is not it. A price change is not it. A developer API, an SDK, a
+context window number and a benchmark are not it. "Claude can now read your
+calendar without you pasting anything in" is it.
+
+Do not act on these. Do not write a page, draft an issue, or add a register
+row for them. You are reporting, not deciding.
+
 Output, in this order:
 
 1. A branch named fact-check/<YYYY-MM-DD> carrying the edits and an
@@ -94,6 +109,11 @@ Output, in this order:
    VERIFIED with what you searched for, then one line saying everything
    else holds. If every row holds, say so in one line and send nothing
    else. A quiet month should read as one line, not a report.
+4. Last in the email, under the heading WORTH KNOWING, the at most three
+   newly shipped things from above. One line each, in the words you would
+   use to a client, with the source and its date. If nothing cleared the
+   bar, write "Nothing this month" and stop. Nothing beats padding this
+   section. The same lines go at the end of the log entry.
 
 Two standing exceptions, both in the register. Row 11, Record a skill, has
 never been seen in the live product from here; leave it as NOT VERIFIED
