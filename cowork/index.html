@@ -193,6 +193,50 @@ section:hover > .label::before,section:focus-within > .label::before,
     text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
 
 
+  /* A prompt folds away. The page is long because it carries five long
+     prompts, and no amount of prose trimming changes that. Same pattern the
+     shelf uses on the Research cards. Copy stays outside the fold, so the
+     prompt can be taken without being read. */
+  .promptfold{margin:16px 0 0;}
+  .promptfold>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;
+    gap:10px;font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--coral-text);padding:8px 0;}
+  .promptfold>summary::-webkit-details-marker{display:none;}
+  .promptfold>summary::before{content:"+";font-size:15px;line-height:1;width:18px;height:18px;
+    display:inline-flex;align-items:center;justify-content:center;
+    border:1.5px solid var(--coral-text);color:var(--coral-text);}
+  .promptfold[open]>summary::before{content:"\2013";}
+  .promptfold>summary:hover,.promptfold>summary:focus-visible{color:var(--rust);outline:none;}
+  .promptbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    border-top:1px solid var(--hair);margin-top:16px;padding-top:6px;}
+  .promptbar .copy{position:static;top:auto;right:auto;}
+  .promptfold .prompt{margin-top:6px;}
+  .promptfold .prompt .copy{display:none;}
+  /* The short version. The whole page in one screen, for a reader who is
+     in a session and being talked through it rather than reading. */
+  .short{background:var(--navy);color:var(--on-navy);border:2px solid var(--ink);
+    padding:26px 26px 28px;margin:0 0 44px;}
+  .short h2{color:var(--on-navy);font-size:clamp(22px,3.2vw,30px);margin:0 0 6px;}
+  .short .short-sub{font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--coral-bright);margin:0 0 20px;}
+  .short-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 34px;}
+  .short h3{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--on-navy-mute);margin:0 0 12px;}
+  .short ol{margin:0;padding:0;list-style:none;counter-reset:q;}
+  .short ol li{counter-increment:q;position:relative;padding:0 0 0 30px;margin-bottom:9px;
+    font-size:15.5px;line-height:1.45;color:var(--on-navy);}
+  .short ol li::before{content:counter(q,decimal-leading-zero);position:absolute;left:0;top:2px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--coral-bright);}
+  .short ol li:last-child{margin-bottom:0;}
+  .short a{color:var(--on-navy);text-decoration-color:var(--coral-bright);}
+  .short a:hover,.short a:focus-visible{color:var(--coral-bright);outline:none;}
+  .short .tail{margin:20px 0 0;font-size:14.5px;color:var(--on-navy-mute);max-width:60ch;}
+  @media(max-width:700px){.short-grid{grid-template-columns:1fr;gap:22px}
+    .short{padding:20px 18px 22px}}
+  /* what survives of the old After it runs box */
+  .afterline{font-size:15px;color:var(--char);margin:14px 0 0;max-width:64ch;
+    border-left:3px solid var(--olive);padding-left:14px;}
+  .afterline b{color:var(--ink);}
   /* the five prompts */
   .promptcard{border-top:2px solid var(--ink);padding-top:22px;margin-top:38px;}
   .promptcard:first-of-type{margin-top:0;}
@@ -223,6 +267,35 @@ section:hover > .label::before,section:focus-within > .label::before,
     <p class="sub">A chat answers you. Cowork does the job. It is the same Claude you already pay for, in a mode where you hand over a task and get back the finished thing instead of a reply. This page is what it is, which one to open, the setup in six steps, and five prompts to run the day it is on.</p>
   </div></header>
   <div class="wrap">
+
+  <div class="short">
+    <h2>The short version</h2>
+    <p class="short-sub">Everything below, on one screen</p>
+    <div class="short-grid">
+      <div>
+        <h3>Set it up once, about fifteen minutes</h3>
+        <ol>
+          <li>Open the desktop app. Switch the message box from Chat to Cowork.</li>
+          <li>Give it one folder. Start with one, not your whole drive.</li>
+          <li>Set it to check with you every time. Loosen it later.</li>
+          <li>Connect Gmail, Drive and Calendar once, in Settings.</li>
+          <li>Turn on skill creation, in Settings.</li>
+          <li>Schedule a job once you have one worth repeating.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Then run these</h3>
+        <ol>
+          <li><a href="#clear-the-desktop">Clear the desktop</a></li>
+          <li><a href="#sort-by-contents">Sort a folder by what is inside the files</a></li>
+          <li><a href="#folder-to-spreadsheet">Turn a folder of documents into one spreadsheet</a></li>
+          <li><a href="#scheduled-job">Set a job to run every week without you</a></li>
+          <li><a href="#writing-style-skill">Learn how I write, from my sent mail</a></li>
+        </ol>
+      </div>
+    </div>
+    <p class="tail">That is the whole guide. Everything under it is the same thing with the reasons attached, for when you want to know why a step is there.</p>
+  </div>
 
   <ul class="contents">
     <li><a href="#what">What Cowork is</a></li>
@@ -339,7 +412,8 @@ section:hover > .label::before,section:focus-within > .label::before,
     <div class="promptcard" id="clear-the-desktop">
       <p class="promptlabel">Prompt one &middot; a Cowork task, with your Desktop folder granted</p>
       <h3>Clear the desktop</h3>
-      <p>The first job worth giving it, because the result is visible in ten minutes and it teaches you what folder access actually means. It never deletes anything. Every file it touches goes into one dated review folder with a written record of where each one came from, and you empty that folder yourself when you are satisfied.</p>
+      <p>The first job worth giving it. The result is visible in ten minutes, and it teaches you what folder access really means. It never deletes: everything moves to one dated review folder with a written record of every move.</p>
+<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a careful assistant sorting out my computer desktop. Nothing on it
@@ -369,20 +443,15 @@ Work through this in order:
 
 Stop after step 4. Tell me what you left behind and why.</pre>
 </div>
-      <div class="after">
-        <h3>After it runs</h3>
-        <ol>
-          <li>Open <code>what-moved.md</code> in the review folder before you open anything else. It is the list of every move, and it is what makes each one reversible.</li>
-          <li>Work through the review folder yourself. Nothing has been deleted, so there is no hurry and no risk in taking a week over it.</li>
-          <li>If it left files behind and told you why, that is the prompt working. Files in use and files it could not identify are meant to stay put.</li>
-        </ol>
-      </div>
+
+</details></div>      <p class="afterline"><b>After it runs.</b> Open <code>what-moved.md</code> first. It is the list of every move, and it is what makes each one reversible.</p>
     </div>
 
     <div class="promptcard" id="sort-by-contents">
       <p class="promptlabel">Prompt two &middot; a Cowork task, with the messy folder granted</p>
       <h3>Sort a folder by what is inside the files</h3>
-      <p>The one to run if you only run one. Every filing job you have put off is really the same problem: the names are wrong, so the only way to sort the folder is to open every file, and nobody has three hours. Cowork opens every file. It files on what the document actually says, not what someone typed in the name box eighteen months ago, and it renames the useless ones using the date it found inside.</p>
+      <p>The one to run if you only run one. Every filing job you have put off is the same problem: the names are wrong, so sorting the folder means opening every file. Cowork opens every file.</p>
+<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a careful assistant filing documents by what is actually inside
@@ -411,19 +480,15 @@ Work through this in order:
 
 Stop after step 6. Tell me how many files you could not identify.</pre>
 </div>
-      <div class="after">
-        <h3>After it runs</h3>
-        <ol>
-          <li>Read the structure it proposed before you say go. It filed on what it found, so the folders may not be the ones you expected, and that is usually the point.</li>
-          <li><code>filing-record.md</code> holds every old name and every new one. Nothing was deleted, so any move can be undone.</li>
-        </ol>
-      </div>
+
+</details></div>      <p class="afterline"><b>After it runs.</b> Read the structure it proposes before you say go. It filed on what it found, so the folders may not be the ones you expected.</p>
     </div>
 
     <div class="promptcard" id="folder-to-spreadsheet">
       <p class="promptlabel">Prompt three &middot; a Cowork task, with the folder of documents granted</p>
       <h3>Turn a folder of documents into one spreadsheet</h3>
-      <p>Receipts, invoices, quotes, delivery dockets, a year of them as PDFs and photos. In a chat you would upload them one at a time and retype the numbers. Here you point at the folder once and get back a spreadsheet, saved next to them, with a total on the bottom. The rule that makes it trustworthy is that it never calculates a figure it could not read. A blank cell you can chase beats a number you cannot.</p>
+      <p>A year of receipts as PDFs and photos. In a chat you would upload them one at a time and retype the numbers. Here you point at the folder once. It never calculates a figure it could not read.</p>
+<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a bookkeeper&#x27;s assistant turning a pile of documents into one
@@ -456,19 +521,15 @@ Work through this in order:
 
 Stop after step 5.</pre>
 </div>
-      <div class="after">
-        <h3>After it runs</h3>
-        <ol>
-          <li>Search the sheet for <code>NOT FOUND</code> first. Those are the ones needing your eyes, and there should not be many.</li>
-          <li>Check the files it left out. A document it could not place is information, not a failure.</li>
-        </ol>
-      </div>
+
+</details></div>      <p class="afterline"><b>After it runs.</b> Search the sheet for <code>NOT FOUND</code>. Those are the only cells needing your eyes.</p>
     </div>
 
     <div class="promptcard" id="scheduled-job">
       <p class="promptlabel">Prompt four &middot; a Cowork task, once you have a job you have run by hand</p>
       <h3>Set a job to run every week without you</h3>
-      <p>This is the one no chat can touch. A scheduled Cowork task runs on Anthropic's servers, so it happens on Monday at seven whether your Mac is open, asleep or in a bag. The prompt makes it prove itself once while you watch before it goes anywhere near a schedule, because a job that runs unattended has nobody to ask when something is missing.</p>
+      <p>The one no chat can touch. A scheduled task runs on Anthropic's servers, so it happens on Monday at seven whether your Mac is open, asleep or in a bag.</p>
+<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are setting up a job that will run on a schedule while I am not
@@ -495,20 +556,15 @@ Once I say go:
 
 Stop after step 6. Tell me where the results will appear.</pre>
 </div>
-      <div class="after">
-        <h3>After it runs</h3>
-        <ol>
-          <li>Watch the first real run land. A scheduled job you have never seen produce a file is a job you are only assuming works.</li>
-          <li>The "nothing to report" line matters more than it looks. Without it, a broken job and a quiet week are the same empty folder.</li>
-        </ol>
-      </div>
+
+</details></div>      <p class="afterline"><b>After it runs.</b> Watch the first real run land. A scheduled job you have never seen produce a file is one you are only assuming works.</p>
     </div>
 
     <div class="promptcard" id="writing-style-skill">
       <p class="promptlabel">Prompt five &middot; a Cowork task, with Gmail connected</p>
       <h3>Learn how I write, from my sent mail</h3>
-      <p>The odd one out, and worth running anyway. A chat with Gmail connected could read your sent mail too, so this is not a demonstration of Cowork. It is the thing that makes everything you write afterwards sound like you, which is why it belongs in the setup rather than in a course.</p>
-      <p>It works because the evidence already exists: a few hundred emails you wrote yourself. The prompt reads your sent mail, tells you what it found, asks you what to keep, and turns the answer into a skill that loads every time you ask for something written.</p>
+      <p>The odd one out. A chat with Gmail connected could read your sent mail too, so this is not a demonstration of Cowork. It is what makes everything you write afterwards sound like you.</p>
+<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a writing analyst working out how I actually write, so that Claude
@@ -539,14 +595,8 @@ Work through this in order:
 
 Stop after step 5 and show me the skill. I will save it myself.</pre>
 </div>
-      <div class="after">
-        <h3>After it runs</h3>
-        <ol>
-          <li>Read what it says about your writing before you agree to any of it. Some of what it finds will be your voice and some will be a habit you have been meaning to drop, and only you can tell which is which.</li>
-          <li>Anything marked <code>[NEEDS CONFIRMING]</code> came from too few examples to trust. Confirm it or cut it.</li>
-          <li>Save the skill yourself once you are happy with it. Then test it: ask for an email in a new session and see whether it sounds like you.</li>
-        </ol>
-      </div>
+
+</details></div>      <p class="afterline"><b>After it runs.</b> Anything marked <code>[NEEDS CONFIRMING]</code> came from too few examples to trust. Confirm it or cut it.</p>
     </div>
 
     <div class="sources" style="margin-top:44px">
@@ -574,7 +624,7 @@ Stop after step 5 and show me the skill. I will save it myself.</pre>
     var label = btn.textContent;
     btn.addEventListener('click', function () {
       var pre = btn.parentElement.querySelector('pre');
-      var text = pre.innerText;
+      var text = pre.textContent;
       function done() {
         btn.textContent = 'Copied';
         btn.classList.add('done');
@@ -584,6 +634,8 @@ Stop after step 5 and show me the skill. I will save it myself.</pre>
         navigator.clipboard.writeText(text).then(done, function () { fallback(); });
       } else { fallback(); }
       function fallback() {
+        var d = btn.parentElement.querySelector('details');
+        if (d) { d.open = true; }
         var r = document.createRange(); r.selectNodeContents(pre);
         var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
         try { document.execCommand('copy'); done(); } catch (e) {}
