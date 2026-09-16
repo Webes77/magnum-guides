@@ -193,25 +193,6 @@ section:hover > .label::before,section:focus-within > .label::before,
     text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
 
 
-  /* A prompt folds away. The page is long because it carries five long
-     prompts, and no amount of prose trimming changes that. Same pattern the
-     shelf uses on the Research cards. Copy stays outside the fold, so the
-     prompt can be taken without being read. */
-  .promptfold{margin:16px 0 0;}
-  .promptfold>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;
-    gap:10px;font-family:var(--mono);font-size:11px;text-transform:uppercase;
-    letter-spacing:.16em;color:var(--coral-text);padding:8px 0;}
-  .promptfold>summary::-webkit-details-marker{display:none;}
-  .promptfold>summary::before{content:"+";font-size:15px;line-height:1;width:18px;height:18px;
-    display:inline-flex;align-items:center;justify-content:center;
-    border:1.5px solid var(--coral-text);color:var(--coral-text);}
-  .promptfold[open]>summary::before{content:"\2013";}
-  .promptfold>summary:hover,.promptfold>summary:focus-visible{color:var(--rust);outline:none;}
-  .promptbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-    border-top:1px solid var(--hair);margin-top:16px;padding-top:6px;}
-  .promptbar .copy{position:static;top:auto;right:auto;}
-  .promptfold .prompt{margin-top:6px;}
-  .promptfold .prompt .copy{display:none;}
   /* The short version. The whole page in one screen, for a reader who is
      in a session and being talked through it rather than reading. */
   .short{background:var(--navy);color:var(--on-navy);border:2px solid var(--ink);
@@ -413,7 +394,6 @@ section:hover > .label::before,section:focus-within > .label::before,
       <p class="promptlabel">Prompt one &middot; a Cowork task, with your Desktop folder granted</p>
       <h3>Clear the desktop</h3>
       <p>The first job worth giving it. The result is visible in ten minutes, and it teaches you what folder access really means. It never deletes: everything moves to one dated review folder with a written record of every move.</p>
-<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a careful assistant sorting out my computer desktop. Nothing on it
@@ -443,15 +423,13 @@ Work through this in order:
 
 Stop after step 4. Tell me what you left behind and why.</pre>
 </div>
-
-</details></div>      <p class="afterline"><b>After it runs.</b> Open <code>what-moved.md</code> first. It is the list of every move, and it is what makes each one reversible.</p>
+      <p class="afterline"><b>After it runs.</b> Open <code>what-moved.md</code> first. It is the list of every move, and it is what makes each one reversible.</p>
     </div>
 
     <div class="promptcard" id="sort-by-contents">
       <p class="promptlabel">Prompt two &middot; a Cowork task, with the messy folder granted</p>
       <h3>Sort a folder by what is inside the files</h3>
       <p>The one to run if you only run one. Every filing job you have put off is the same problem: the names are wrong, so sorting the folder means opening every file. Cowork opens every file.</p>
-<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a careful assistant filing documents by what is actually inside
@@ -480,15 +458,13 @@ Work through this in order:
 
 Stop after step 6. Tell me how many files you could not identify.</pre>
 </div>
-
-</details></div>      <p class="afterline"><b>After it runs.</b> Read the structure it proposes before you say go. It filed on what it found, so the folders may not be the ones you expected.</p>
+      <p class="afterline"><b>After it runs.</b> Read the structure it proposes before you say go. It filed on what it found, so the folders may not be the ones you expected.</p>
     </div>
 
     <div class="promptcard" id="folder-to-spreadsheet">
       <p class="promptlabel">Prompt three &middot; a Cowork task, with the folder of documents granted</p>
       <h3>Turn a folder of documents into one spreadsheet</h3>
       <p>A year of receipts as PDFs and photos. In a chat you would upload them one at a time and retype the numbers. Here you point at the folder once. It never calculates a figure it could not read.</p>
-<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a bookkeeper&#x27;s assistant turning a pile of documents into one
@@ -521,15 +497,13 @@ Work through this in order:
 
 Stop after step 5.</pre>
 </div>
-
-</details></div>      <p class="afterline"><b>After it runs.</b> Search the sheet for <code>NOT FOUND</code>. Those are the only cells needing your eyes.</p>
+      <p class="afterline"><b>After it runs.</b> Search the sheet for <code>NOT FOUND</code>. Those are the only cells needing your eyes.</p>
     </div>
 
     <div class="promptcard" id="scheduled-job">
       <p class="promptlabel">Prompt four &middot; a Cowork task, once you have a job you have run by hand</p>
       <h3>Set a job to run every week without you</h3>
       <p>The one no chat can touch. A scheduled task runs on Anthropic's servers, so it happens on Monday at seven whether your Mac is open, asleep or in a bag.</p>
-<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are setting up a job that will run on a schedule while I am not
@@ -556,15 +530,13 @@ Once I say go:
 
 Stop after step 6. Tell me where the results will appear.</pre>
 </div>
-
-</details></div>      <p class="afterline"><b>After it runs.</b> Watch the first real run land. A scheduled job you have never seen produce a file is one you are only assuming works.</p>
+      <p class="afterline"><b>After it runs.</b> Watch the first real run land. A scheduled job you have never seen produce a file is one you are only assuming works.</p>
     </div>
 
     <div class="promptcard" id="writing-style-skill">
       <p class="promptlabel">Prompt five &middot; a Cowork task, with Gmail connected</p>
       <h3>Learn how I write, from my sent mail</h3>
       <p>The odd one out. A chat with Gmail connected could read your sent mail too, so this is not a demonstration of Cowork. It is what makes everything you write afterwards sound like you.</p>
-<div class="promptbar"><button class="copy copy-out" type="button">Copy the prompt</button><details class="promptfold"><summary>Read it first</summary>
 <div class="prompt">
 <button class="copy" type="button">Copy</button>
 <pre>You are a writing analyst working out how I actually write, so that Claude
@@ -595,8 +567,7 @@ Work through this in order:
 
 Stop after step 5 and show me the skill. I will save it myself.</pre>
 </div>
-
-</details></div>      <p class="afterline"><b>After it runs.</b> Anything marked <code>[NEEDS CONFIRMING]</code> came from too few examples to trust. Confirm it or cut it.</p>
+      <p class="afterline"><b>After it runs.</b> Anything marked <code>[NEEDS CONFIRMING]</code> came from too few examples to trust. Confirm it or cut it.</p>
     </div>
 
     <div class="sources" style="margin-top:44px">
@@ -624,7 +595,7 @@ Stop after step 5 and show me the skill. I will save it myself.</pre>
     var label = btn.textContent;
     btn.addEventListener('click', function () {
       var pre = btn.parentElement.querySelector('pre');
-      var text = pre.textContent;
+      var text = pre.innerText;
       function done() {
         btn.textContent = 'Copied';
         btn.classList.add('done');
@@ -634,8 +605,6 @@ Stop after step 5 and show me the skill. I will save it myself.</pre>
         navigator.clipboard.writeText(text).then(done, function () { fallback(); });
       } else { fallback(); }
       function fallback() {
-        var d = btn.parentElement.querySelector('details');
-        if (d) { d.open = true; }
         var r = document.createRange(); r.selectNodeContents(pre);
         var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
         try { document.execCommand('copy'); done(); } catch (e) {}
