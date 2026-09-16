@@ -1504,6 +1504,33 @@ body after the `---` under `## The prompt` and push those exact bytes, never a
 retyped version. Reconciled and pushed on 16 Sep, 16,252 characters, read back
 identical.
 
+Round six, 16 Sep, two faults James found reading the rebuilt version, both
+about the reader rather than the content.
+
+The hook opened on a bare pronoun. "It will tell you the plan is good. It has
+not checked." Whoever wrote that knew what "it" was; a client meeting the line
+cold in WhatsApp does not, so the sentence asks them to work before it has
+earned anything. It reads "Your AI just told you the plan is good. It never
+checked." now, and the rule is in the routine: the hook names its subject in
+the first three words, never a bare pronoun. The card, the page and all three
+meta descriptions carry the same words, and the descriptions were stale
+anyway, still advertising five exercises that went on 16 Sep.
+
+And the three pages are behind one dropdown. Cutting seven pages to three made
+the issue shorter without making it lighter: the content was still sitting
+there on load, and James said it still reads as a pile of work. The page now
+loads at 2.2 phone screens with nothing on it but the hook, the three answers,
+the prompt and one bar reading "Why it agrees with you, and the five rules for
+arguing back". Opening it gives the same 5.5 screens as before, by choice
+rather than by default.
+
+The one thing to get right when this is copied: a closed `<details>` prints
+nothing, and a Field Note is a print document. The page forces it open on
+`beforeprint` and the print stylesheet strips the summary and the border, so
+a printed issue is exactly what it always was. That handler and the `.deep`
+CSS were lifted into `templates/field-note-template.html` verbatim rather than
+retyped, so the two cannot drift.
+
 One thing left as it is, and it will show in the style checker. The Field Note
 share cards draw a stack of pages with a five-layer offset `box-shadow`, and
 all four of 02 to 05 plus the template carry it. Changing 05 alone would put

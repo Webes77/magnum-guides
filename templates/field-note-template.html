@@ -705,6 +705,19 @@ pre{
   letter-spacing:.12em;text-transform:uppercase;color:var(--coral-text);text-decoration:none;
   border-bottom:2px solid var(--rust);padding-bottom:3px}
 @media print{.bluf{display:none}}
+.deep{max-width:794px;margin:18px auto 0;border:2px solid var(--ink);background:var(--paper)}
+.deep>summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+  font-size:15px;font-weight:500;line-height:1.4;color:var(--ink)}
+.deep>summary::-webkit-details-marker{display:none}
+.deep>summary::after{content:"Open";flex:none;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#FFFFFF;background:var(--rust);
+  padding:6px 12px 7px}
+.deep[open]>summary::after{content:"Close"}
+.deep[open]>summary{border-bottom:2px solid var(--ink)}
+.deep>summary:focus-visible{outline:3px solid var(--olive);outline-offset:2px}
+@media print{.deep{border:0;margin:0;max-width:none;background:none}
+  .deep>summary{display:none}}
 </style>
 </head>
 <body>
@@ -762,9 +775,14 @@ pre{
          mid-clause. This is the only copy of it in the issue. -->
     <pre>[The prompt, reflowed: paragraph breaks kept, the 72-character line breaks removed.]</pre>
   </div>
-  <!-- EDIT · VOICE: what is actually below, in six words or fewer. -->
-  <a class="more" href="#more">[Why it happens, and the five rules] &darr;</a>
 </section>
+
+<!-- Everything below loads closed. The first screen is the hook and the
+     prompt and nothing else, which is what James asked for on 16 Sep. -->
+<details class="deep" id="more">
+  <!-- EDIT · VOICE: what is actually in the three pages, one plain line. -->
+  <summary>[Why it happens, and the five rules for doing it properly]</summary>
+  <div class="deep-body">
 
 <!-- ============ PAGE 1 · COVER ============ -->
 <section class="page p-cover" id="more">
@@ -956,6 +974,9 @@ pre{
 
 
 
+  </div>
+</details>
+
 <div class="sitebar sharebar">
   <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
   <!-- EDIT: the mailto subject and body carry the issue number, theme and URL,
@@ -989,6 +1010,10 @@ function fallback(text, done){
   ta.select();
   try { document.execCommand('copy'); done(); } catch(e) {}
   document.body.removeChild(ta);
+}
+var deep = document.querySelector('.deep');
+if (deep) {
+  window.addEventListener('beforeprint', function(){ deep.open = true; });
 }
 var shareBtn = document.getElementById('share-link');
 if (shareBtn) {

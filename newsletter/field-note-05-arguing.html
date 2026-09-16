@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Weekly Field Note No. 05 · Arguing · Magnum AI</title>
-<meta name="description" content="Stop asking it to agree. Ask it to argue. One prompt argues against your own plan before you act on it, five rules for using it properly, and five exercises to try today.">
+<meta name="description" content="Your AI just told you the plan is good. It never checked. One prompt that makes it argue against your own plan before you act on it.">
 <meta name="author" content="Magnum AI">
 <link rel="canonical" href="https://webes77.github.io/magnum-guides/newsletter/field-note-05-arguing.html">
 
@@ -13,7 +13,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Magnum AI · Weekly Field Note">
 <meta property="og:title" content="Weekly Field Note No. 05 · Arguing">
-<meta property="og:description" content="Stop asking it to agree. Ask it to argue. Five rules, one prompt, five exercises.">
+<meta property="og:description" content="Your AI just told you the plan is good. It never checked. One prompt, ninety seconds.">
 <meta property="og:url" content="https://webes77.github.io/magnum-guides/newsletter/field-note-05-arguing.html">
 <meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="Weekly Field Note No. 05 · Arguing, published by Magnum AI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Weekly Field Note No. 05 · Arguing">
-<meta name="twitter:description" content="Stop asking it to agree. Ask it to argue. Five rules, one prompt, five exercises.">
+<meta name="twitter:description" content="Your AI just told you the plan is good. It never checked. One prompt, ninety seconds.">
 <meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg">
 <meta name="theme-color" content="#1F2A37">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -697,6 +697,19 @@ pre{
   letter-spacing:.12em;text-transform:uppercase;color:var(--coral-text);text-decoration:none;
   border-bottom:2px solid var(--rust);padding-bottom:3px}
 @media print{.bluf{display:none}}
+.deep{max-width:794px;margin:18px auto 0;border:2px solid var(--ink);background:var(--paper)}
+.deep>summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+  font-size:15px;font-weight:500;line-height:1.4;color:var(--ink)}
+.deep>summary::-webkit-details-marker{display:none}
+.deep>summary::after{content:"Open";flex:none;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#FFFFFF;background:var(--rust);
+  padding:6px 12px 7px}
+.deep[open]>summary::after{content:"Close"}
+.deep[open]>summary{border-bottom:2px solid var(--ink)}
+.deep>summary:focus-visible{outline:3px solid var(--olive);outline-offset:2px}
+@media print{.deep{border:0;margin:0;max-width:none;background:none}
+  .deep>summary{display:none}}
 </style>
 </head>
 <body>
@@ -709,7 +722,7 @@ pre{
 <!-- ============ BOTTOM LINE UP FRONT ============ -->
 <section class="bluf">
   <div class="eyebrow">Weekly Field Note / No. 05 / Arguing</div>
-  <h2>It will tell you the plan is good.<br>It has <em>not checked</em>.</h2>
+  <h2>Your AI just told you the plan is good.<br>It <em>never checked</em>.</h2>
   <p class="hook">One prompt. Ninety seconds. It finds the hole before your client does.</p>
   <dl>
     <div>
@@ -748,8 +761,11 @@ The things you would ask before you put your own name on this.
 
 If the plan holds up, say so in one line. Do not invent a fourth problem to look useful.</pre>
   </div>
-  <a class="more" href="#more">Why it agrees with you, and the five rules &darr;</a>
 </section>
+
+<details class="deep" id="more">
+  <summary>Why it agrees with you, and the five rules for arguing back</summary>
+  <div class="deep-body">
 
 <!-- ============ PAGE 1 · COVER ============ -->
 <section class="page p-cover" id="more">
@@ -919,6 +935,9 @@ If the plan holds up, say so in one line. Do not invent a fourth problem to look
 
 
 
+  </div>
+</details>
+
 <div class="sitebar sharebar">
   <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
   <a class="share-btn" href="mailto:?subject=Weekly%20Field%20Note%20No.%2005%20%C2%B7%20Arguing&amp;body=Thought%20this%20one%20was%20worth%20passing%20on%3A%0A%0Ahttps%3A%2F%2Fwebes77.github.io%2Fmagnum-guides%2Fnewsletter%2Ffield-note-05-arguing.html">Email it to someone</a>
@@ -950,6 +969,10 @@ function fallback(text, done){
   ta.select();
   try { document.execCommand('copy'); done(); } catch(e) {}
   document.body.removeChild(ta);
+}
+var deep = document.querySelector('.deep');
+if (deep) {
+  window.addEventListener('beforeprint', function(){ deep.open = true; });
 }
 var shareBtn = document.getElementById('share-link');
 if (shareBtn) {

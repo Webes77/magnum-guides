@@ -128,9 +128,17 @@ never more. Everything in the issue that is not the prompt is under 900 words.
 0. Bottom line up front. The first phone screen and, for most readers, the
 only one. The hook, then the payoff line, then three answers headed What it is
 for, Why you would use it, How it works, then the prompt itself with its copy
-button, then one link down to the rest. The hook rule is
-under Step 5. This is the only copy of the prompt in the issue. The block does
-not print.
+button. The hook rule is under Step 5. This is the only copy of the prompt in
+the issue. The block does not print.
+
+Nothing else is visible when the page loads. The three pages sit inside one
+closed dropdown under the block, headed with what is actually in them. James
+asked for this on 16 Sep, reading the three-page version: even at three pages
+the content underneath read as a pile of work, and a client opening a link on
+a Wednesday morning decides in a second whether this is going to cost them
+anything. Closed, the page is 2.2 phone screens and every one of them is the
+hook or the prompt. A dropdown that prints nothing is no use on a print
+document, so the page forces it open on beforeprint.
 
 1. Cover: theme, headline, kicker, a one-sentence dek, the reading slug, the figure plate, and a before-and-after pair.
 2. This week: the story, the analogy, the mechanism, the note, the band. Four paragraphs at most.
@@ -161,7 +169,17 @@ If the section says none, or the file is missing, or the folder cannot be read, 
 
 Either way, name the single shelf card the issue will carry before you build anything. An issue without a card on the shelf is not an issue you draft; if the commission names a technique with no card, pick the nearest existing card and say so under ASSUMPTIONS.
 
-Step 3, check the card. Read notes/prompt-review-standards.md and hold the chosen card against it. If the card fails a standard, do not rewrite it here. Note the failure in the email under CARD CHECK, name the standard it fails, and propose the fix in full so James can make it in the deck and on the shelf together. A deck prompt on the shelf is authored material and is never rewritten by a routine.
+Step 3, check the card, and treat this as a gate rather than a note. The prompt is the product. Everything else on the page exists to get a client to paste it, so an issue built on a weak card is a wasted week however good the writing is. James said it on 16 Sep, reading issue 05: the prompt is the steak and everything else is the food smothering it.
+
+Read notes/prompt-review-standards.md and hold the chosen card against every item. The five that catch a thin card, in the order they usually fail: no role (item 7), no example or output format (item 5), no guard against invention (item 9), a bare rule with no reason attached (item 2), and nothing telling the model which finding matters most, so the important one arrives buried.
+
+Then one of three things.
+
+If the card passes, carry on to Step 4 and say so in the email in one line.
+
+If the card fails and you chose it yourself from the shelf, choose a different card. You had the whole shelf; a failing card is not one you were stuck with. Say in the email which card you rejected and on what item.
+
+If the card fails and the Sunday Brief commissioned it by name, build the issue on it anyway, and put the rewrite at the top of the email rather than at the bottom. Write the corrected prompt out in full, on the six levers in order, ready for James to paste. Name each item it failed and what the new version does about it. He makes the change in the deck and on the shelf together, in one commit, because a deck prompt on the shelf is authored material and a routine never edits it. That rule stands and is not what this step relaxes; what it relaxes is treating a failure as something to mention.
 
 Step 4, the branch. In /home/user/magnum-guides run git fetch origin main, then git checkout -B field-note/YYYY-MM-DD origin/main using the Gold Coast date.
 
@@ -175,7 +193,9 @@ The prompt is never the thing you cut. The words around it hold a budget of 90, 
 
 It opens on a hook, and the hook is the whole job. Two lines, the turn on the second, naming the cost of not doing this in the reader's own terms. An uncomfortable claim about what is happening to them right now, not a description of the technique. Then one line under it with the payoff: the cheap specific fix and what it saves, with a number if there is one.
 
-An instruction is not a hook. "Stop asking whether the plan works" is a task and it lands on someone who does not yet care. "It will tell you the plan is good. It has not checked." is a hook, because it names what is going wrong before it asks for anything. Written into the format on 16 Sep at James's instruction: his reference is the way Steven Bartlett titles a Diary of a CEO episode, where the title carries the stake and the payoff and nothing else.
+An instruction is not a hook. "Stop asking whether the plan works" is a task and it lands on someone who does not yet care. "Your AI just told you the plan is good. It never checked." is a hook, because it names what is going wrong before it asks for anything. Written into the format on 16 Sep at James's instruction: his reference is the way Steven Bartlett titles a Diary of a CEO episode, where the title carries the stake and the payoff and nothing else.
+
+The hook names its subject in the first three words. The first version of that line read "It will tell you the plan is good", and James threw it out on 16 Sep for the right reason: a reader meeting the hook cold has no idea what "it" is, so the sentence asks them to work before it has earned anything. Never open a hook on a bare pronoun. Say "your AI", or the thing itself, and say it first.
 
 The share card carries the same hook, word for word. It is the only thing a client sees in WhatsApp before deciding whether to open the page, so a card that describes the technique has already lost them.
 
@@ -207,6 +227,11 @@ WHAT IS BUILT: one line per finished part.
 THE LEAD: the first-person story you used and which recorded fact in the repository it came from, so James can correct it if the detail is wrong.
 READ IT HERE: the raw GitHub URL of the page on the branch, so he can read it without cloning anything.
 TO PUBLISH: one line saying he replies go in his chat and it goes live.
+SEND THIS: the WhatsApp message, written out ready to paste, nothing for him to fill in. This is how the issue actually reaches a client, so it is part of the job and not an extra.
+
+It goes to a WhatsApp broadcast list of clients, men and women, not to one person. So the opener is "Hi everyone" and never "Hey mate" or anything else one-to-one. James corrected this on 16 Sep and it is not a preference to re-litigate.
+
+Five short lines in his voice through james-writes: the neutral opener, the hook exactly as it appears on the page and the card, one line on what the prompt does and how long it takes, the live URL on its own line, then "Any questions, let me know." Keep the whole thing under eighty words. No selling, no call to book anything; he is not ready for that and will say when he is.
 THE CARD: the title and id of the shelf card the issue carries.
 CARD CHECK: pass, or the standard it fails and the proposed fix in full.
 CHECK: the last line of tools/check-field-note.js, the word count of the block's frame excluding the prompt, and the number of phone screens the block occupies.
