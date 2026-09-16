@@ -132,13 +132,21 @@ button. The hook rule is under Step 5. This is the only copy of the prompt in
 the issue. The block does not print.
 
 Nothing else is visible when the page loads. The three pages sit inside one
-closed dropdown under the block, headed with what is actually in them. James
-asked for this on 16 Sep, reading the three-page version: even at three pages
-the content underneath read as a pile of work, and a client opening a link on
-a Wednesday morning decides in a second whether this is going to cost them
-anything. Closed, the page is 2.2 phone screens and every one of them is the
-hook or the prompt. A dropdown that prints nothing is no use on a print
-document, so the page forces it open on beforeprint.
+closed dropdown under the block. James asked for this on 16 Sep, reading the
+three-page version: even at three pages the content underneath read as a pile
+of work, and a client opening a link on a Wednesday morning decides in a
+second whether this is going to cost them anything. Closed, the page is 2.2
+phone screens and every one of them is the hook or the prompt. A dropdown that
+prints nothing is no use on a print document, so the page forces it open on
+beforeprint.
+
+The dropdown's summary is an invitation, not a heading. It first read "Why it
+agrees with you, and the five rules for arguing back", which described the
+contents accurately and gave nobody a reason to press it. James named the
+fix the same day: ask the reader a question they would answer yes to. It reads
+"Want the why? Here's the deep dive." and it stays that way from issue to
+issue, so a client who has opened one knows what the bar does on the next.
+Do not reword it to match the week's theme.
 
 1. Cover: theme, headline, kicker, a one-sentence dek, the reading slug, the figure plate, and a before-and-after pair.
 2. This week: the story, the analogy, the mechanism, the note, the band. Four paragraphs at most.
