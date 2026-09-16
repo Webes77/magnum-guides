@@ -17,9 +17,9 @@
  * Two kinds of check. The house rules and the page's own consistency apply to
  * every issue: no em dash, no "solid" in the copy, balanced markup, page numbers
  * that run in order, one masthead number, head tags that match the filename, a
- * card image, and a link from both index pages. The template's shape (seven
+ * card image, and a link from both index pages. The template's shape (three
  * pages, five rules, one prompt) applies only under --shape,
- * because issues 01 and 02 were written before that shape settled and are not
+ * because issues 01 to 04 were written before that shape settled and are not
  * being rebuilt to it. Anything drafted from templates/field-note-template.html
  * is checked with --shape.
  *
@@ -128,7 +128,13 @@ function check(file) {
     if (!/<pre>/.test(b)) fail.push(`prompt block ${i + 1} has no prompt text`);
   });
   if (!/id="share-link"/.test(html)) fail.push('the share bar is missing');
-  if (!/href="\.\.\/index\.html"/.test(html)) fail.push('no link back to the members area');
+  // A Field Note is a standalone publication and never links into the members
+  // area. James sends single issues to old clients who are not members, so an
+  // issue that opens a door into the courses is showing them a room they are
+  // not in. Decided 16 Sep. The archive link stays; that is the Field Note's
+  // own home.
+  if (/href="\.\.\/index\.html"/.test(html)) fail.push('links into the members area, which a standalone Field Note never does');
+  if (!/href="\.\.\/newsletter\/"/.test(html)) fail.push('no link to the Field Note archive');
 
   // ---- the template's shape --------------------------------------------
   if (wantShape || isTemplate) {

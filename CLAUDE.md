@@ -1531,6 +1531,35 @@ a printed issue is exactly what it always was. That handler and the `.deep`
 CSS were lifted into `templates/field-note-template.html` verbatim rather than
 retyped, so the two cannot drift.
 
+**A Field Note is a standalone publication now, 16 Sep.** James said it
+plainly: he sends single issues to people who are not members, including old
+clients he is just passing something useful to. The page was a door into the
+whole members area, twice over. The top bar read "Back to Magnum AI Members
+Area" and linked to `index.html`, and the archive under it carried the same
+link, so an old client sent one issue was two taps from the courses.
+
+Both are gone. The top bar is a wordmark, "Magnum AI", not a link. The archive
+lost its back link. The archive stays linked from the issue, because that is
+the Field Note's own home and more of this is exactly what you want an old
+client to find. A member reaches the members area from the front page, which
+is where they came in, so nothing is lost that was being used.
+
+Everything on the members area is public with no login, so this was never
+about keeping anyone out. It is about what the page presents itself as. An
+issue that opens with a door into a members area is showing a non-member a
+room they are not in, which is the wrong first impression for something being
+shared as a favour.
+
+`tools/check-field-note.js` enforces the new rule rather than the old one: it
+now fails an issue that links to `../index.html` and fails one that has lost
+its archive link. The rule was inverted rather than deleted, so this cannot
+quietly regress. Applied to all five issues and the template in one pass.
+
+The archive's own copy was stale with it and moved in the same commit: "read
+it in four minutes" became the thirty seconds the prompt actually takes, and
+the About paragraph now says the prompt is at the top with the reasoning a
+click below, which is what an issue has looked like since this morning.
+
 One thing left as it is, and it will show in the style checker. The Field Note
 share cards draw a stack of pages with a five-layer offset `box-shadow`, and
 all four of 02 to 05 plus the template carry it. Changing 05 alone would put
