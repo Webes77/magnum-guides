@@ -858,14 +858,16 @@ Since 14 Sep a routine drafts the next issue every Wednesday 6am onto a
 branch (see the Field Note routine above). The four live issues were all
 written by hand.
 
-Four Weekly Field Notes are in `newsletter/`: 01 Clarity, 02 Context,
+Five Weekly Field Notes are in `newsletter/`: 01 Clarity, 02 Context,
 03 Talking (added 4 Sep, written from a note James was sent, in his voice),
 04 Cutting (drafted 4 Sep evening from the 20 per cent rule in James's own
-library, carrying the shelf card "Cut it to the 20 per cent"). All four are
+library, carrying the shelf card "Cut it to the 20 per cent"), 05 Arguing
+(the routine's first draft, 16 Sep, carrying the shelf card
+"Redline your own plan"). All five are
 on `main` and linked from the front page and the archive; the note that 04
 was still on a branch was stale and was corrected on 14 Sep.
 Each issue is one self-contained HTML file with its card source beside it.
-The front page shows the newest two or three; the archive shows all.
+The front page shows the newest four; the archive shows all.
 
 Make Claude Yours has been delivered to one client, on 3 Sep. Two problems
 came out of that run and both are fixed: prompts were mostly off-screen, and
@@ -1389,6 +1391,66 @@ behaving exactly as designed on the one week it was always going to be needed.
 The branch carries the page, the card source, the rendered card, both index
 links and its own log entry. James reads the diff; nothing is merged.
 
+Issue 05 went to `main` on 16 Sep after three rounds of James reading it, and
+each round changed the routine rather than only the issue.
+
+Round one: the routine was writing a scaffold and leaving 23 blank brackets
+for James. He overturned the 14 Sep decision that produced that. "It's never
+the rule that I'm going to write the piece. The whole point is to automate
+this." The routine now writes the whole issue in his voice through the
+`james-writes` skill, and the one thing it must never invent is a fact about
+James. If it needs a story, it builds it from something already recorded in
+this repository. Never attribute an event to him that was made up.
+
+Round two: too long and too busy. Measured rather than guessed: 1,618 words,
+9.5 phone screens, eight minutes, on a cover claiming three. He asked for a
+bottom line up front, so the issue now opens with a BLUF block carrying the
+hook, the prompt itself, and nothing else. The rest of the issue is still
+there, below it, for anyone who wants it. A reader on a phone on a Wednesday
+morning gets the usable thing in the first screen and can stop.
+
+Round three, and this is the rule worth keeping: an instruction is not a hook.
+"Stop asking whether the plan works" is a task. "It will tell you the plan is
+good. It has not checked." is a hook. James named the register, Stephen
+Bartlett on Diary of a CEO, and the psychology is the point: a reader who sees
+a wall of text does not start. The share card carries the same words, so what
+gets shared and what gets opened are the same sentence. The BLUF now ends at
+987px, 1.17 phone screens, 169 words.
+
+All three rules are in `templates/field-note-template.html` as `EDIT · VOICE`
+guidance and in `notes/field-note-prompt.md`, which was pushed to the live
+trigger and read back byte-identical. The prompt file had drifted from the
+trigger in seven places and was reconciled in the same pass; check them
+against each other before editing either.
+
+Round four, 16 Sep, and it is the one that actually fixed the length. The
+BLUF had been put on top of the seven pages, so the issue got longer: 1,923
+words, 4.7 phone screens even after it. James read it again and said so. The
+seven pages are three now, and what came out is the argument for the shape.
+Page 03 argued the same point page 02 had already made. Page 05 reprinted the
+prompt that now sits up top. Page 06 was three habits. Page 07 was five
+exercises, which is the homework James took out of all three courses on 7 Sep
+because he does not want anyone leaving with tasks; it had been sitting in
+every Field Note since. Nothing was cut that the issue needed.
+
+Now: 851 words, three pages, 4.7 phone screens to 1.6, cover reading time
+three minutes rather than eight. The BLUF also gained the copy button, because
+the prompt now lives there and nowhere else, and a phone reader is not
+selecting five lines by hand.
+
+The template, `tools/check-field-note.js` and the live routine all moved with
+it, which is the part that matters: `--shape` is three pages, five rules and
+one prompt now, the check accepts a prompt in the BLUF as well as on a page,
+and the routine prompt carries the reasoning so the next issue arrives short
+rather than being cut by hand every week. If an issue feels thin at three
+pages, the idea is thin, and the answer is a different shelf card, not padding.
+
+One thing left as it is, and it will show in the style checker. The Field Note
+share cards draw a stack of pages with a five-layer offset `box-shadow`, and
+all four of 02 to 05 plus the template carry it. Changing 05 alone would put
+it out of step with the three beside it on the front page. It goes when the
+card set is re-rendered, with the twelve sources already listed above.
+
 Where this session stopped (15 Sep): the outside read of the front page is
 above, all three findings built. The section heading is an index entry across
 all eight pages. The Field Note routine is set up. James confirmed the
@@ -1429,25 +1491,30 @@ set on the main slides. Swap `const EG = EGS.ot` back to `EGS.trades`
 after that session, or add a set for the next room. The open work, in
 order of value:
 
-0. After 8 Sep: swap the lever example set for the next room (see
-   above). James to move four corrected skills into Claude from Drive,
-   folder Magnum AI Skills / Skill updates 2026-09-07, one zip each:
-   magnum-house-style, gamma-architect, magnum-client-rollout-doc,
-   design-director (sources in `brand/skill-updates/`). The one-paste
-   skill-creator prompt was given in chat on 9 Sep. The brand page now
-   carries a PDF download (`brand/Magnum-AI-House-Style.pdf`, regenerate
-   from the page when the style changes) and a Drive folder "Magnum AI
-   House Style" holds the paste-ready block. James also asked for his
-   Mac desktop to be cleared of old-style (beige and rust, black and
-   gold) files; that needs Cowork with desktop access, a prompt was
-   given in chat, and nothing should be deleted, only moved to a dated
-   review folder.
+0. Two of the three parts are closed. James confirmed on 16 Sep that the four
+   corrected skills are in Claude (magnum-house-style, gamma-architect,
+   magnum-client-rollout-doc, design-director; sources stay in
+   `brand/skill-updates/`). The brand page carries its PDF
+   (`brand/Magnum-AI-House-Style.pdf`, regenerate when the style changes) and
+   the Drive folder "Magnum AI House Style" holds the paste-ready block.
 
-1. James has not yet looked at the Manus Bridge walkthrough live, nor the
-   team seats guide, which went to `main` on 15 Sep. On team seats the tool
-   is the part to check on a phone: four taps to a verdict, the recap line,
-   and the reset in the head bar. Verified locally at 1440, 1280, 820 and 390
-   only. Nothing else waits on him there.
+   Still open, and it is the one live defect on the members area: the AI
+   Foundations lever slides are still on `const EG = EGS.ot`, the occupational
+   therapy set built for the 8 Sep room. Every lever slide has taught through
+   "You are the practice manager of an occupational therapy clinic" for the
+   eight days since, to whoever opens a public course deck. `EGS.trades` is
+   the general set and the right default for a page anyone can reach. It is a
+   one-line swap either way and it was put to James on 16 Sep, because which
+   set is right depends on his room schedule and a session cannot see that.
+
+   Also still open and his alone: clearing the Mac desktop of old-style
+   (beige and rust, black and gold) files. Needs Cowork with desktop access,
+   the prompt was given in chat on 9 Sep, and nothing is deleted, only moved
+   to a dated review folder.
+
+1. Done, 16 Sep. James checked the team seats guide and the Manus Bridge
+   walkthrough live and both read correctly. Nothing waits on him on either,
+   and neither is to be raised again.
 
    Band logging was asked for on 15 Sep and decided against the same day.
    James wanted a count of which band each completed run lands on, as a
