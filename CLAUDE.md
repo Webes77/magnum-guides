@@ -972,6 +972,46 @@ single one can be undone by hand. `writing-style-skill` stops before saving so
 James saves the skill himself, which is the draft-for-approval rule from the
 standards.
 
+**The page folds its prompts, from 16 Sep.** James said it read heavy for a
+live training session and asked for the argument both ways. The measurement is
+the useful part, because the obvious answer was wrong.
+
+It was 2,330 prose words, 18.5 phone screens, twelve minutes, the longest page
+on the members area. But the language was never the problem: the prose averages
+16 words a sentence and 7 of 123 sentences run over 30. Sections 01 to 04 are
+1,169 words and six screens together. Section 05 was eleven screens on its own,
+sixty per cent of the page.
+
+Condensing was tried and failed, which is worth recording because it will be
+proposed again. Cutting the prompt commentary from 791 words to about 530 and
+adding a short version block saved 262 words, took 18.5 screens to 17.3, and
+pushed the first prompt further down. The estimate given to James beforehand
+was 1,400 words and twelve screens, and it was wrong. The floor is the prompts
+themselves: 1,189 words that exist to be copied, so no amount of prose trimming
+takes the page under about nine minutes. It was a structural problem being
+treated as a word-count problem.
+
+What shipped folds each prompt behind a "Read it first" toggle, which is the
+pattern the shelf already uses on the Research cards. 18.5 screens to 12.4, a
+third off, with every word of every prompt still there. The Copy button sits
+outside the fold, so a client takes the prompt without opening it. The short
+version block stays at the top: the six setup steps and five prompt links on
+one screen, which is the thing James points at in a session.
+
+One bug made and caught, and it is the shelf's own lesson repeated. `innerText`
+returns nothing from inside a closed `<details>`, because it reports what is
+rendered, so Copy handed over one line instead of twenty-six. It reads
+`textContent` now and the selection fallback opens the fold first, since a
+range needs a rendered node. All five prompts are verified byte-identical to
+the authored text with every fold shut. Never let the clipboard depend on what
+happens to be on screen.
+
+Three versions went up as `ab-A`, `ab-B` and `ab-C` under `cowork/` so James
+could read them on his phone, with `index.html` untouched meanwhile. All three
+are deleted. If a comparison is ever needed again, that is the way to do it:
+the whole-page screenshots would not upload, because a full-page shot of the
+long version is about 15,000 pixels tall and the uploader rejects it on height.
+
 The shelf is 52 cards and gained its first new type since the 14 Sep pruning:
 `does`, labelled "Does a job for you". None of the seven existing types
 described a card that goes and works on your files, which is what every Cowork
