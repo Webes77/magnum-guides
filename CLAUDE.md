@@ -1328,13 +1328,21 @@ the routine. Slide 31 came off his list for the same reason. Along the way a
 live deck prompt was found asserting a product fact that stopped being true on
 25 August, and two contrast faults were found and fixed, one of them inherited
 by copying the privacy shell and live on two older pages. The contrast audit is
-now `tools/check-contrast.js` rather than something each session rebuilds. Two prompts went with it onto the shelf (49 cards). Along the way
-a live deck prompt was found asserting a product fact that stopped being true
-on 25 August, and two contrast faults were found and fixed, one of them
-inherited by copying the privacy shell and live on two older pages. The
-contrast audit is now `tools/check-contrast.js` rather than something each
-session rebuilds. Deck check, field note check, style checker and contrast
-audit all pass.
+now `tools/check-contrast.js` rather than something each session rebuilds.
+
+Last thing that day, and the one worth carrying. James asked to see the page
+rather than the checks, so it was rendered and looked at. That found four
+faults nothing else had: the page still called itself two prompts in its meta
+description, both social descriptions, the masthead standfirst and two body
+cross-references; links in body copy rendered in the browser's default blue on
+this page and on `privacy/`, because no page on the members area had ever set
+a colour for a link inside a paragraph; and the `.path` chip, a block
+component, was used mid-sentence where its vertical padding shoved the line
+apart. All fixed. Every gate passed before and after, because none of the four
+is a palette or contrast question. Render the page and read it before calling
+anything done.
+
+Deck check, field note check, style checker and contrast audit all pass.
 
 A fifth routine was proposed on 15 Sep and decided against the same day, after
 James asked for it to be stress tested. Do not propose it again before
