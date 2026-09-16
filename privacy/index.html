@@ -203,6 +203,9 @@ section:hover > .label::before,section:focus-within > .label::before,
   .sources ul{margin:0;padding:0 0 0 20px;}
   .sources li{font-size:14px;color:var(--char);margin-bottom:7px;line-height:1.5;}
   .sources a{color:var(--coral-text);}
+  /* A link in body copy. Without this it renders in the browser's default
+     blue, which is off-palette. */
+  .wrap p a{color:var(--coral-text);}
   @media (max-width:560px){
     .steps>li{padding-left:40px;}
     .three{padding:20px 18px 22px;}
