@@ -1491,25 +1491,30 @@ set on the main slides. Swap `const EG = EGS.ot` back to `EGS.trades`
 after that session, or add a set for the next room. The open work, in
 order of value:
 
-0. After 8 Sep: swap the lever example set for the next room (see
-   above). James to move four corrected skills into Claude from Drive,
-   folder Magnum AI Skills / Skill updates 2026-09-07, one zip each:
-   magnum-house-style, gamma-architect, magnum-client-rollout-doc,
-   design-director (sources in `brand/skill-updates/`). The one-paste
-   skill-creator prompt was given in chat on 9 Sep. The brand page now
-   carries a PDF download (`brand/Magnum-AI-House-Style.pdf`, regenerate
-   from the page when the style changes) and a Drive folder "Magnum AI
-   House Style" holds the paste-ready block. James also asked for his
-   Mac desktop to be cleared of old-style (beige and rust, black and
-   gold) files; that needs Cowork with desktop access, a prompt was
-   given in chat, and nothing should be deleted, only moved to a dated
-   review folder.
+0. Two of the three parts are closed. James confirmed on 16 Sep that the four
+   corrected skills are in Claude (magnum-house-style, gamma-architect,
+   magnum-client-rollout-doc, design-director; sources stay in
+   `brand/skill-updates/`). The brand page carries its PDF
+   (`brand/Magnum-AI-House-Style.pdf`, regenerate when the style changes) and
+   the Drive folder "Magnum AI House Style" holds the paste-ready block.
 
-1. James has not yet looked at the Manus Bridge walkthrough live, nor the
-   team seats guide, which went to `main` on 15 Sep. On team seats the tool
-   is the part to check on a phone: four taps to a verdict, the recap line,
-   and the reset in the head bar. Verified locally at 1440, 1280, 820 and 390
-   only. Nothing else waits on him there.
+   Still open, and it is the one live defect on the members area: the AI
+   Foundations lever slides are still on `const EG = EGS.ot`, the occupational
+   therapy set built for the 8 Sep room. Every lever slide has taught through
+   "You are the practice manager of an occupational therapy clinic" for the
+   eight days since, to whoever opens a public course deck. `EGS.trades` is
+   the general set and the right default for a page anyone can reach. It is a
+   one-line swap either way and it was put to James on 16 Sep, because which
+   set is right depends on his room schedule and a session cannot see that.
+
+   Also still open and his alone: clearing the Mac desktop of old-style
+   (beige and rust, black and gold) files. Needs Cowork with desktop access,
+   the prompt was given in chat on 9 Sep, and nothing is deleted, only moved
+   to a dated review folder.
+
+1. Done, 16 Sep. James checked the team seats guide and the Manus Bridge
+   walkthrough live and both read correctly. Nothing waits on him on either,
+   and neither is to be raised again.
 
    Band logging was asked for on 15 Sep and decided against the same day.
    James wanted a count of which band each completed run lands on, as a
