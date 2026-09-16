@@ -1056,6 +1056,49 @@ arriving with a fresh bug. Run it against a local server with one or more
 paths; it exits 1 on any failure or any sideways scroll. The bug it arrived
 with this time is recorded in its header and below.
 
+**Tiles can carry an icon, from 16 Sep, and Foundations gained a card slide.**
+James sent a Westpac email using tarot cards ("The Toothache", "The Vet
+Visit", "The Fried Fridge") and asked for the idea on the members area, with
+icons, colourful.
+
+What makes that piece work is the naming, not the tarot. "The Toothache"
+beats "unexpected expenses" because it is a specific thing that has happened
+to you, and the tarot frame is the joke that licenses it. Three things
+transfer: name the problem rather than categorise it, do three because three
+reads as a pattern and four reads as a list, and close by turning the setup
+into the product, which is what Westpac's "a Flexi Loan" line does.
+
+What does not transfer is the illustration. Those are commissioned drawings
+and this house style is flat geometric figures. Adopting an illustration set
+would mean every future figure either matches it or looks like an orphan.
+Said so, and built it without.
+
+"Colourful" was the one part of the brief that fights hard rule house style,
+which is one accent. It was resolved inside the existing palette rather than
+by adding a hex: coral, slate and bright coral, all already tokens, all
+already tile variants. Nothing new was introduced and the style checker
+confirms it. If genuinely new colours are ever wanted, that is a brand
+decision touching all 34 pages and James has to say it outright.
+
+The engine change is small and shared, so it went into all four decks. A
+tile takes an optional fourth element, an icon key, and an `ICONS` object
+above `F` holds the SVGs. An icon paints in `currentColor` plus `--accent`,
+so one icon works on any tile ground. A tile carrying an icon stands portrait
+at 300px through `:has(.ticon)`, which leaves the plain tile grids untouched
+and degrades to the old height if `:has` is ever unsupported. New variant
+`.tile.b` is bright coral with ink text, the front page's 6.28:1 pattern.
+
+The slide sits immediately before the levers section in AI Foundations, which
+is the point: a room now feels the problem before it meets the framework.
+Three cards, The blank page, The confident wrong answer, The fourth rewrite,
+then two lines saying all three are the same fault and the levers are the fix.
+Foundations is 31 slides. Deck check passes at all four sizes across all four
+decks.
+
+Two things James should know, both said to him. The names are a first pass and
+his will be better, because he has heard how clients describe these. And three
+is the discipline: a fourth card turns a device into a grid.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
