@@ -241,12 +241,33 @@ Act in my best interest, even when that means telling me I am wrong.
 If you are not sure about something, say so. Do not fill the gap with a guess
 that sounds confident.`;
 
-const P3 = `Before I act on this, take the other side.
+const P3 = `You are the most experienced operator in my trade, brought in to
+find the reason this fails. Nobody is paying you to be encouraging.
 
-Argue against it. Tell me where the logic is weakest, what I have assumed
-without checking, and what could go wrong that I have not accounted for.
+The plan above is mine and I am about to spend my own time and money
+on it, so a miss here costs me a week of work, not a mark out of ten.
 
-Then tell me the things I need to know about this that I have not asked you.`;
+Work only from what is written. Where the plan leans on something I
+have not told you, say so rather than filling the gap, because an
+invented risk sends me chasing a problem I do not have.
+
+Be blunt and specific. Name the thing, not the category.
+
+Give it back under three headings.
+
+THE ONE THAT MATTERS
+The single objection that would actually stop this working, and what
+it costs me if I act before fixing it.
+
+WHAT I HAVE ASSUMED
+Each assumption the plan rests on, with the question I should have
+asked to test it.
+
+WHAT YOU WOULD WANT TO KNOW
+The things you would ask before you put your own name on this.
+
+If the plan holds up, say so in one line. Do not invent a fourth
+problem to look useful.`;
 
 const P4 = `You are writing on behalf of a small business owner chasing an
 overdue invoice.
@@ -527,9 +548,8 @@ const S = [
 
 {sec:"Make it honest", h:"<em>Redline</em> your own plan", pts:[
  "The most valuable thing it does is argue with you.",
- "Ask it to take the other side, before you commit.",
- "The last line of this prompt is the one that earns its keep.",
- "Use it on a quote, a hire, a price rise, a plan you are already sure about."],
+ "It has a role, a reason, and a shape for the answer.",
+ "The last line stops it inventing a problem to look useful."],
  prompt:P3, where:"After it has given you a plan or a draft", after:[
  "Read what comes back without defending yourself.",
  "Most of it you will dismiss. One line usually lands.",

@@ -123,12 +123,12 @@ The issue is written in James's voice through the james-writes skill: plain, Aus
 
 FORMAT
 The issue opens with a bottom line up front block, then three pages. Three,
-never more. The whole issue is under 900 words.
+never more. Everything in the issue that is not the prompt is under 900 words.
 
 0. Bottom line up front. The first phone screen and, for most readers, the
-only one. Under 170 words. The hook, then the payoff line, then three answers
-headed What it is for, Why you would use it, How it works, then the prompt
-itself with its copy button, then one link down to the rest. The hook rule is
+only one. The hook, then the payoff line, then three answers headed What it is
+for, Why you would use it, How it works, then the prompt itself with its copy
+button, then one link down to the rest. The hook rule is
 under Step 5. This is the only copy of the prompt in the issue. The block does
 not print.
 
@@ -169,7 +169,9 @@ Step 5, build the page. Copy templates/field-note-template.html to newsletter/fi
 
 Fill completely: the head tags (title, description, canonical, all og and twitter tags, theme-color), the issue number in the top bar and in all three mastheads, the theme, the five rules, the prompt in the bottom line up front block byte for byte from the shelf apart from the reflow below, the footer strapline and the five-word run on all three pages, the page numbers, and the mailto link with this issue's URL percent-encoded.
 
-The bottom line up front block is the part that has to earn the open. Keep it under 170 words, measured. Its prompt is the chosen shelf card, reflowed so it wraps on a phone instead of breaking mid-clause: paragraph breaks kept, the authored 72-character line breaks removed, no word changed. It is the only copy of the prompt in the issue and it carries the copy button. Nothing else goes in it.
+The bottom line up front block is the part that has to earn the open. Its prompt is the chosen shelf card, reflowed so it wraps on a phone instead of breaking mid-clause: paragraph breaks kept, the authored 72-character line breaks removed, an ALL-CAPS heading line kept on its own line, no word changed. It is the only copy of the prompt in the issue and it carries the copy button. Nothing else goes in it.
+
+The prompt is never the thing you cut. The words around it hold a budget of 90, one line each for the three answers, and the prompt is as long as it needs to be. James put it plainly on 16 Sep: the prompt is the steak and everything else is the food smothering it. A thin prompt with a tidy frame around it is the wrong trade every time. If the block runs long, cut the frame.
 
 It opens on a hook, and the hook is the whole job. Two lines, the turn on the second, naming the cost of not doing this in the reader's own terms. An uncomfortable claim about what is happening to them right now, not a description of the technique. Then one line under it with the payoff: the cheap specific fix and what it saves, with a number if there is one.
 
@@ -189,7 +191,9 @@ Render with Playwright at a true viewport and a clip, never with chromium --head
 
 Step 7, the links. Copy the newest card in index.html and the newest in newsletter/index.html, point both at the new issue and its image, and move the issue that was newest into the list of earlier Field Notes on the front page. The front page carries the newest four; older issues drop off it by design and live in the archive, which carries them all. Change no other card and no other URL.
 
-Step 8, check. Run node tools/check-field-note.js --shape newsletter/field-note-NN-slug.html. It must print PASS. Then measure the page at 390 wide and confirm the bottom line up front block ends inside about 1.2 screens; if it runs past that, cut words from it, never from the pages below. If it fails, fix what it names and run it again. The only failure you may leave standing is a missing card image from Step 6, and only after two render attempts. Then measure the page at 390 wide and confirm the bottom line up front block ends inside about 1.2 screens; if it runs past that, cut words from it, never from the pages below. Then load the page in headless Chromium at 1440, 820 and 390 wide against a local python3 -m http.server, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live.
+Step 8, check. Run node tools/check-field-note.js --shape newsletter/field-note-NN-slug.html. It must print PASS. If it fails, fix what it names and run it again. The only failure you may leave standing is a missing card image from Step 6, and only after two render attempts.
+
+Then measure the page at 390 wide. Count the words in the bottom line up front block that are not the prompt; if that is over 90, cut the frame. Never cut the prompt, and never cut the pages below to make room for it. Then load the page in headless Chromium at 1440, 820 and 390 wide against a local python3 -m http.server, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live.
 
 Step 9, the log. Add an entry at the top of notes/field-note-log.md under a heading with the branch date: the issue number and theme, whether the idea came from the commission or the fallback, the shelf card it teaches and its id, the result of the card check, and anything you could not finish. One short paragraph, no table.
 
@@ -205,7 +209,7 @@ READ IT HERE: the raw GitHub URL of the page on the branch, so he can read it wi
 TO PUBLISH: one line saying he replies go in his chat and it goes live.
 THE CARD: the title and id of the shelf card the issue carries.
 CARD CHECK: pass, or the standard it fails and the proposed fix in full.
-CHECK: the last line of tools/check-field-note.js, the word count, and the number of phone screens the block occupies.
+CHECK: the last line of tools/check-field-note.js, the word count of the block's frame excluding the prompt, and the number of phone screens the block occupies.
 BRANCH: the branch name, or what failed.
 ASSUMPTIONS: every choice you made because nobody could be asked, one line each, or "none".
 

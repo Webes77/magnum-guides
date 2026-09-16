@@ -1453,6 +1453,57 @@ and the routine prompt carries the reasoning so the next issue arrives short
 rather than being cut by hand every week. If an issue feels thin at three
 pages, the idea is thin, and the answer is a different shelf card, not padding.
 
+Round five, 16 Sep, and it is the one that changes what a Field Note is for.
+James read the short version and said the prompt itself was basic: "like
+having a steak dinner and smothering it in so much other food you lose the
+basics of it. The purpose is the prompt, really." He is right and the whole
+programme had the priority upside down. Four rounds went into the frame around
+a prompt nobody had looked at.
+
+`redline-your-plan` was 268 characters and failed five items of
+`notes/prompt-review-standards.md`: no role (item 7), no output format (item
+5), no guard against invention (item 9), no severity ranking, and no reason
+given for why the answer matters (item 2). It asked three things in prose and
+got three paragraphs back, with the fatal objection buried wherever the model
+felt like putting it.
+
+It is 976 characters now and built on the six levers in order. Role, the most
+experienced operator in the trade with nobody paying them to be encouraging.
+Context, my own time and money, so a miss costs a week rather than a mark out
+of ten. Constraints, work only from what is written and say what is missing
+rather than filling it, because an invented risk sends me chasing a problem I
+do not have. Tone, blunt and specific, name the thing not the category.
+Format, three headings. Output, THE ONE THAT MATTERS with what it costs, WHAT
+I HAVE ASSUMED with the question I should have asked, WHAT YOU WOULD WANT TO
+KNOW. The last line is the one that earns it: if the plan holds up, say so in
+one line, do not invent a fourth problem to look useful. That closes both
+failure modes at once, the flattery and the manufactured objection.
+
+Fixed in the deck and on the shelf together, per the standing rule, because it
+is P3 in AI Foundations as well as a shelf card. The deck slide dropped from
+four points to three, since the prompt is longer and hard rule 11 says the
+points go, never the prompt. `tools/check-decks.js` passes at all four sizes.
+The card's `levers` went from three to all six, which is now true of it.
+
+Two knock-on fixes. `flow()` on the shelf only recognised an ALL-CAPS label
+ending in a colon, so a bare caps heading on its own line was being joined into
+the paragraph below it, which is the research-card fault from 13 Sep in a new
+place. The pattern now also matches a full caps line. Proven by running both
+the old and the new function over all 49 stored prompt bodies: exactly one
+changed, the intended one. And the routine's word budget moved off the prompt
+entirely. It was "under 170 words" for the whole block, which a real prompt
+cannot fit inside. The frame around the prompt holds 90 words, one line each
+for the three answers, and the prompt is as long as it needs to be. If the
+block runs long, the frame is what gets cut.
+
+A drift worth recording, because it was mine and it is easy to repeat. The
+15 Sep push to the trigger was typed out by hand rather than pasted from
+`notes/field-note-prompt.md`, so it overwrote the live prompt with a thinner
+version missing Steps 5 to 11's detail. The file is the source; extract its
+body after the `---` under `## The prompt` and push those exact bytes, never a
+retyped version. Reconciled and pushed on 16 Sep, 16,252 characters, read back
+identical.
+
 One thing left as it is, and it will show in the style checker. The Field Note
 share cards draw a stack of pages with a five-layer offset `box-shadow`, and
 all four of 02 to 05 plus the template carry it. Changing 05 alone would put
