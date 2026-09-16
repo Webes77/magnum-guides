@@ -1099,6 +1099,24 @@ Two things James should know, both said to him. The names are a first pass and
 his will be better, because he has heard how clients describe these. And three
 is the discipline: a fourth card turns a device into a grid.
 
+**Two known faults, deliberately not fixed, and they wait for a room.** Both
+were put to James on 16 Sep with the recommendation to run the slide in a
+session first, and he took it. Do not fix these before that happens.
+
+The cards read landscape rather than portrait. The 300px floor does not get
+there, because the deck scales everything into its 1340 by 770 box, so three
+across full width comes out wider than tall at any real window. The fix is
+constraining the grid width so they sit as three narrower columns with paper
+either side, not raising the height again.
+
+And card III's icon is mixed, ink pages with a cream arrow, where the other
+two share a tone across both elements. It is the one card where the eye has
+to work.
+
+The reason to wait is that the names are what James will want to change after
+hearing himself say them out loud, and shape and copy are cheaper to fix in
+one pass than two. When he comes back from a session, do both together.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
