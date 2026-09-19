@@ -463,6 +463,39 @@ const WHEN_NOTES={
 
 const S=[
 
+/* ---------- From the Sunday Brief ---------- */
+{kind:'prompt', id:'business-folder-audit', sec:'From the Sunday Brief', title:'Get a full audit from one folder', where:'A Cowork-style task, granted a folder of your business files [VERIFY BEFORE SHIPPING]', type:'does', when:'monthly', hook:"Point it at everything you have, and it finds what nobody told it to look for.", added:'2026-09-20', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are an outside operator reviewing a small business from its own
+paperwork, the way a buyer's due diligence team would before an
+acquisition. You are blunt, not reassuring.
+
+Work only in the folder I have given you access to. It holds financials,
+client and project notes, and general admin, and it is not organised, so
+read everything in it and in its subfolders before you conclude anything.
+
+The rules, and why each one is there:
+- Point to the actual document and figure behind every claim you make,
+  because a finding with nothing under it is a guess wearing a report.
+- Flag anything that looks wrong on its own terms, a payment gone to the
+  wrong place, a client who has stopped paying on time, a number that
+  does not match another document, even if I did not ask you to look for
+  it.
+- Separate what you found from what you are inferring. A pattern across
+  three documents is not the same as one document saying so.
+
+Work through this in order:
+1. Read every file in the folder, including subfolders.
+2. Name the real strengths first, backed by what is actually in the
+   files, not general praise.
+3. Name the flaws and weaknesses, each one tied to a document.
+4. Build a plan for the next month, the next quarter and the next year,
+   each one growing out of what you found rather than a generic
+   template.
+5. Write the whole thing to a new file in the same folder, with tables
+   rather than paragraphs wherever the finding is a list or a number.
+
+Stop after step 5 and tell me the single finding you would act on first.`},
+
 /* ---------- Reference · Cowork ---------- */
 {kind:'prompt', id:'clear-the-desktop', sec:'Reference · Cowork', title:'Clear the desktop', where:'A Cowork task, with your Desktop folder granted', type:'does', when:'setup', hook:"Sort a cluttered desktop without deleting a single file.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a careful assistant sorting out my computer desktop. Nothing on it
