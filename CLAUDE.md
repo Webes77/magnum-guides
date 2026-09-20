@@ -1184,6 +1184,51 @@ byte-identical after. Two claims beside it that were flatly false also went:
 the slide point "It has its own instructions box. It needs its own setup", and
 Fig. 05's caption "Each needs its own instructions".
 
+**The Sunday Brief routine was writing a verify marker onto client cards, and
+that is fixed at the source, 20 Sep.** Its prompt told it, in two places, to
+mark a card `[VERIFY BEFORE SHIPPING]` in its where line whenever the card
+touched a Claude or Cowork interface. The where line is the first thing a
+client reads, so the caveat landed on the card face and handed the checking to
+the client. That is the 15 Sep inversion hard rule 10 was softened to stop,
+one step further out: not James checking his own training, but a paying client
+being asked to.
+
+The 2026-09-20 run did exactly what it was told, so the prompt was the defect
+and the run was not. Both places now say the opposite: a card never carries a
+verification marker of any kind, the where line is written so it names no menu,
+setting or button and therefore survives being slightly wrong, and the
+unsettled claim goes in the email and into `notes/fact-register.md` where the
+monthly check works it.
+
+`notes/sunday-brief-prompt.md` and the live trigger
+(`trig_014BpCSeSMonkfgePpN5tBfN`) were diffed before the change and differed on
+nothing but those two lines, so there was no drift to reconcile. After the
+push the live prompt reads back byte-identical to the file at 16,595
+characters.
+
+**A live routine was broken and repaired inside this session, and the gotcha
+below is the real output of it.** The first `update_trigger` call sent a
+retyped ~6,300 character reconstruction over the real 16,103 character prompt.
+It opened with the wrong line and had lost Steps 1 to 8 entirely. It was caught
+by asserting `live == file` on the read-back rather than trusting the echoed
+response, and repaired by reading the file in full and emitting those bytes.
+The broken version existed for about ninety seconds and never fired: the last
+fire was 19 Sep, the next is 26 Sep. No run was affected. This is the second
+time this exact mistake has been made here, which is why it is now written as
+a procedure rather than a caution.
+
+**The branch card is on the shelf, 53 cards.** `business-folder-audit`, "Get a
+full audit from one folder", from `sunday-brief/2026-09-20`. It is the
+strongest card the routine has produced: role, a why behind every rule, two
+separate guards against invention, and a named output format. It passes the
+duplicate test against `folder-to-spreadsheet` and `monthly-review` narrowly
+enough to be worth recording, which the review in
+`notes/sunday-brief-reviews.md` does. Its where line was the one carrying the
+marker and now reads "A task with a folder of your business files granted",
+matching the convention the other task cards took the same day. The card body
+was extracted from the branch programmatically and not retyped, for the reason
+directly above. The branch itself can be deleted on GitHub.
+
 **The two things left for James were done on 20 Sep, on his word.** He said
 he would rather get on the front foot than wait for the rollout. The argument
 against was put to him once, with the cost named, and he was told his own
@@ -2140,6 +2185,18 @@ order of value:
   regression and was not painted at all. Test the rendered box
   (`getBoundingClientRect`), not the computed display. Found 15 Sep.
   `tools/check-contrast.js` carries the guard.
+- `update_trigger` takes the prompt as a tool argument, so there is no way to
+  pipe a file into it: the bytes have to be emitted. That makes retyping the
+  default failure and it has now happened twice, 15 Sep on the Field Note
+  prompt and 20 Sep on the Sunday Brief, where a 16,103 character prompt was
+  overwritten with a ~6,300 character reconstruction that opened with the
+  wrong line. Both times the writer believed they were pasting. The procedure
+  that works: extract the file's body to a scratch file, extract the live
+  prompt out of `list_triggers` to another, diff the two so you know exactly
+  what you are changing, then Read the scratch file in full immediately before
+  the call and emit what you just read. Then re-list and assert
+  `live == file` on length and equality, not by eye. A prompt that is
+  shorter than the one it replaced is the tell.
 - A Word lock file (`~$name.docx`) is not a document.
 - `outlook-send` cannot send from a Claude Code session. The sandbox
   refuses the call to the Make webhook before it runs, so nothing reaches

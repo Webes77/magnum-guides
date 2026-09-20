@@ -101,7 +101,7 @@ Prices, model names, version numbers and figures quoted exactly when they do app
 No em dashes anywhere. Never use the word "solid". Plain sentences. Australian register. No hedging, no filler, no newsletter cliches.
 Length is set by the week, not a word count. A quiet week produces a short brief. A section with nothing in it prints as one line saying so. Never pad, never invent.
 Verbatim prompts and templates are quoted in full only when James would realistically paste them into his own work.
-Shelf cards are generic. No client names, no company names, no source names, no dates. If a card describes a Claude or Cowork interface (a menu, a setting, a button), mark the card [VERIFY BEFORE SHIPPING] in its where line, because newsletters run weeks behind the product.
+Shelf cards are generic. No client names, no company names, no source names, no dates. A card never carries a verification marker of any kind. The where line is the first thing a client reads, and a caveat sitting there hands the checking to them, which is the opposite of what the fact check exists for. Newsletters do run weeks behind the product, so handle that a different way: write the where line so it names no menu, setting or button and therefore survives being slightly wrong, then say in the email that the card rests on an interface claim you could not settle, and add a row for it to notes/fact-register.md so the monthly fact check works it. Never [VERIFY BEFORE SHIPPING], or any wording like it, on a card.
 Never put a model name or model identifier in a commit message or in the repo.
 
 TONE
@@ -139,7 +139,7 @@ The bar. All four must pass, or the card does not go on the page.
 1. A client can paste it and get value with James not in the room.
 2. It is not a near-duplicate of a card already on the page. Before writing anything, read the whole S array and note what every existing card does, not just what it is called. If a new card does substantially the same job as one already there, you have two options and no third: replace the existing card when the new one is plainly better, naming the replacement in the commit message, or drop the new one. Never add a variation. Apply a mechanical test before you judge: if the new card would carry the same type and the same when as an existing card and the client would end up with the same kind of thing in hand (a skill, a settings box, a quote, a second opinion), treat it as a duplicate. Cards from the three session decks are authored material and are never replaced, so a new card that overlaps a deck prompt is always the one that gets dropped.
 3. It still makes sense in six months. Cut anything tied to this week's model, this week's release, or a news story.
-4. It does not depend on a menu, a setting or a button, or if it does, its where line carries [VERIFY BEFORE SHIPPING].
+4. It does not depend on a menu, a setting or a button, or if it does, the where line is written without naming one and the email flags the claim for the register.
 
 All of the week's cards go on one branch, so James reviews one diff however many cards it holds. In /home/user/magnum-guides run git fetch origin main, then git checkout -B sunday-brief/YYYY-MM-DD origin/main using the Sunday's date. Insert the card object at the very top of the S array in prompts/index.html (the first element, directly after "const S=[" and its comment line), with sec:'From the Sunday Brief'. Use this shape exactly:
 

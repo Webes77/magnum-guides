@@ -145,3 +145,37 @@ Nothing else about the card moved.
 The lesson for the routine: a card made only of placeholders passes every
 mechanical check and still teaches nothing. Ask of every prompt card
 whether a reader could write a good one straight after reading it.
+
+## sunday-brief/2026-09-20
+
+One card, `business-folder-audit`, "Get a full audit from one folder". Kept,
+with one correction.
+
+Against `notes/prompt-review-standards.md` it is the strongest card the routine
+has produced. Role in one sentence and a sharp one, an outside operator doing
+buyer's due diligence, blunt rather than reassuring (item 7). Every rule states
+why it is there (item 2). It guards against invention twice, once by demanding
+the document and figure behind each claim and once by making it separate what
+it found from what it is inferring (item 9). Output format named, numbered
+steps in order, tables where the finding is a list or a number (item 5). No
+shouting (item 4).
+
+Duplicate test: it shares `type:'does'` and `when:'monthly'` with
+`folder-to-spreadsheet`, so the mechanical test fires and the judgement is
+whether the client ends up with the same thing in hand. They do not.
+`folder-to-spreadsheet` turns receipts into a spreadsheet with a total. This
+turns mixed business paperwork into a written audit and a plan. The routine
+also checked it against `monthly-review` and was right: that one audits
+scheduled automations, this one audits the business. Passes, but narrowly
+enough to record.
+
+The correction. Its `where` line arrived as "A Cowork-style task, granted a
+folder of your business files [VERIFY BEFORE SHIPPING]". That marker was on the
+card face, which is the first thing a client reads, so it handed the checking to
+the client, one step further out than the 15 Sep inversion hard rule 10 was
+softened to stop. The routine was doing exactly what its own prompt told it to,
+so the prompt was the defect, not the run. Fixed at the source, and the where
+line now reads "A task with a folder of your business files granted", matching
+the convention the other task cards took the same day.
+
+Shelf is 53 cards.
