@@ -380,7 +380,7 @@ Five questions. Ask one or two more only if an answer needs it. Then stop
 asking.
 
 Rules:
-- Use only what I tell you, because Cowork acts on these instructions
+- Use only what I tell you, because Claude acts on these instructions
   without me in the room, and an invented detail becomes an action. If
   something is missing, ask. If I skip it, leave it out.
 - Keep to what stays true for months, because client names and prices
@@ -681,7 +681,7 @@ const S = [
  "Claude asks what you will use Cowork for and how you want work delivered.",
  "It drafts under 500 words. You read them.",
  "Paste into Settings, General, Instructions for Claude, or Settings, Cowork, Global instructions if your account still has a Cowork section."],
- prompt:P4, where:"Runs in a Cowork session", after:[
+ prompt:P4, where:"Runs as a task, Cowork if your box still offers it", after:[
  "Read the draft. Fix anything wrong by telling Claude what to change.",
  "Copy the final draft.",
  "Click your initials, bottom left. Click Settings.",
@@ -698,7 +698,7 @@ const S = [
  "Claude asks for one job you do the same way every time.",
  "It drafts the skill: what it does, when it fires, when it stays out of the way.",
  "Read it. Fix it. Save it."],
- prompt:P5, where:"Runs in a Cowork session", after:[
+ prompt:P5, where:"Runs as a task, Cowork if your box still offers it", after:[
  "Read the draft. Fix anything marked [NEEDS CONFIRMING].",
  "In the same Cowork session, say: \u201cSave this as a skill.\u201d Cowork writes the skill file and stores it.",
  "Test it once. Start a new Cowork session and ask for the job using one of the trigger phrases in the description."]},

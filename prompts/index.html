@@ -464,7 +464,7 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- Reference · Cowork ---------- */
-{kind:'prompt', id:'clear-the-desktop', sec:'Reference · Cowork', title:'Clear the desktop', where:'A Cowork task, with your Desktop folder granted', type:'does', when:'setup', hook:"Sort a cluttered desktop without deleting a single file.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+{kind:'prompt', id:'clear-the-desktop', sec:'Reference · Cowork', title:'Clear the desktop', where:'A task with your Desktop folder granted', type:'does', when:'setup', hook:"Sort a cluttered desktop without deleting a single file.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a careful assistant sorting out my computer desktop. Nothing on it
 is yours to throw away, so this job is to sort and move, never to delete.
 
@@ -492,7 +492,7 @@ Work through this in order:
 
 Stop after step 4. Tell me what you left behind and why.`},
 
-{kind:'prompt', id:'sort-by-contents', sec:'Reference · Cowork', title:'Sort a folder by what is inside the files', where:'A Cowork task, with the messy folder granted', type:'does', when:'setup', hook:"File a folder on what the documents say, not what they are named.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+{kind:'prompt', id:'sort-by-contents', sec:'Reference · Cowork', title:'Sort a folder by what is inside the files', where:'A task with the messy folder granted', type:'does', when:'setup', hook:"File a folder on what the documents say, not what they are named.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a careful assistant filing documents by what is actually inside
 them, not by what they are called. The names in a folder like this are
 usually wrong, which is the reason the filing never got done.
@@ -519,7 +519,7 @@ Work through this in order:
 
 Stop after step 6. Tell me how many files you could not identify.`},
 
-{kind:'prompt', id:'folder-to-spreadsheet', sec:'Reference · Cowork', title:'Turn a folder of documents into one spreadsheet', where:'A Cowork task, with the folder of documents granted', type:'does', when:'monthly', hook:"Point at a year of receipts, get back a spreadsheet with a total.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+{kind:'prompt', id:'folder-to-spreadsheet', sec:'Reference · Cowork', title:'Turn a folder of documents into one spreadsheet', where:'A task with the folder of documents granted', type:'does', when:'monthly', hook:"Point at a year of receipts, get back a spreadsheet with a total.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a bookkeeper's assistant turning a pile of documents into one
 spreadsheet I can sort and total.
 
@@ -550,7 +550,7 @@ Work through this in order:
 
 Stop after step 5.`},
 
-{kind:'prompt', id:'scheduled-job', sec:'Reference · Cowork', title:'Set a job to run every week without you', where:'A Cowork task, once you have run the job by hand', type:'scheduled', when:'weekly', hook:"A job that runs on Monday whether your computer is on or not.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+{kind:'prompt', id:'scheduled-job', sec:'Reference · Cowork', title:'Set a job to run every week without you', where:'A task, once you have run the job by hand', type:'scheduled', when:'weekly', hook:"A job that runs on Monday whether your computer is on or not.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are setting up a job that will run on a schedule while I am not
 watching, so it has to be written to fail safely rather than to guess.
 
@@ -575,7 +575,7 @@ Once I say go:
 
 Stop after step 6. Tell me where the results will appear.`},
 
-{kind:'prompt', id:'writing-style-skill', sec:'Reference · Cowork', title:'Learn how I write, from my sent mail', where:'A Cowork task, with Gmail connected', type:'instructions', when:'setup', hook:"Turn your own sent mail into a skill that writes like you.", added:'2026-09-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'writing-style-skill', sec:'Reference · Cowork', title:'Learn how I write, from my sent mail', where:'A task with Gmail connected', type:'instructions', when:'setup', hook:"Turn your own sent mail into a skill that writes like you.", added:'2026-09-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a writing analyst working out how I actually write, so that Claude
 can draft in my voice instead of its own.
 
@@ -1798,7 +1798,7 @@ Show me the finished output exactly as it would land on the day.
 Then tell me, in three lines, what you would change in the brief to do it
 better next time.`},
 
-{kind:'prompt', id:'friday-enquiries-bot', sec:'Reference · Chatbots, Agents and Bots', title:'The Friday enquiries bot', where:'A scheduled task in Cowork, inside the bot\'s project', type:'scheduled', when:'weekly', hook:"Every Friday, the week\'s enquiries sorted hot to cold, nothing sent.", added:'2026-09-09', levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'friday-enquiries-bot', sec:'Reference · Chatbots, Agents and Bots', title:'The Friday enquiries bot', where:'A scheduled task, inside the bot\'s project', type:'scheduled', when:'weekly', hook:"Every Friday, the week\'s enquiries sorted hot to cold, nothing sent.", added:'2026-09-09', levers:['Context','Constraints','Format','Output'],
 prompt:`Every Friday at 3pm, review every enquiry that reached this inbox since
 last Friday.
 
@@ -1833,7 +1833,7 @@ The task is: [say it roughly, out loud, in your own words]`},
 {kind:'prompt', id:'state-of-play', sec:'Session one · AI Foundations', title:'Make it keep a status note', where:'The start of any long job, or once in the instructions of a project that runs for months', type:'instructions', when:'start', hook:"One rule, and every long job picks up exactly where you left it.", added:'2026-09-07', levers:['Constraints','Format','Output'],
 prompt:`For the rest of this job, keep a status note and never lose it.
 
-In Cowork, keep it as a file called STATUS.md in the working folder.
+For task work, keep it as a file called STATUS.md in the working folder.
 In a chat, put it at the end of every answer.
 
 Shape, every time:
@@ -2051,7 +2051,7 @@ DO THIS FIRST: (one line. Which file to gather and upload first, and why.)
 
 Plain language, no jargon, no preamble. Stop after the plan.`},
 
-{kind:'prompt', id:'cowork-instructions', sec:'Session two · Make Claude Yours', title:'Cowork instructions', where:'Runs in a Cowork session', type:'instructions', when:'setup', hook:"Tell Cowork once how you want finished work handed back.", levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'cowork-instructions', sec:'Session two · Make Claude Yours', title:'Cowork instructions', where:'Runs as a task, Cowork if your box still offers it', type:'instructions', when:'setup', hook:"Tell Claude once how you want finished work handed back.", levers:['Context','Constraints','Format','Output'],
 prompt:`You are helping me write my standing instructions for Claude, the way a
 careful new assistant would learn a business on day one: by asking, not
 guessing. These go in Settings, under Instructions for Claude, or under
@@ -2078,7 +2078,7 @@ Five questions. Ask one or two more only if an answer needs it. Then stop
 asking.
 
 Rules:
-- Use only what I tell you, because Cowork acts on these instructions
+- Use only what I tell you, because Claude acts on these instructions
   without me in the room, and an invented detail becomes an action. If
   something is missing, ask. If I skip it, leave it out.
 - Keep to what stays true for months, because client names and prices
@@ -2095,7 +2095,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`},
 
-{kind:'prompt', id:'first-skill', sec:'Session two · Make Claude Yours', title:'Your first skill', where:'Runs in a Cowork session', type:'instructions', when:'setup', hook:"One job you do the same way every time, saved so you never explain it twice.", levers:['Context','Constraints','Format','Output'],
+{kind:'prompt', id:'first-skill', sec:'Session two · Make Claude Yours', title:'Your first skill', where:'Runs as a task, Cowork if your box still offers it', type:'instructions', when:'setup', hook:"One job you do the same way every time, saved so you never explain it twice.", levers:['Context','Constraints','Format','Output'],
 prompt:`You are helping me draft one skill, the way you would learn a job from
 the person who does it: by asking. A skill is a saved way of doing one
 job, so I never have to explain that job twice.
@@ -2140,7 +2140,7 @@ STILL NEEDS CONFIRMING: (bullets, or "nothing, this one's done")
 No preamble. Stop after the confirming list.`},
 
 /* ---------- Session three · Work That Runs Without You ---------- */
-{kind:'prompt', id:'build-the-brief', sec:'Session three · Work That Runs Without You', title:'Build the brief', where:'Runs in a Cowork session', type:'interview', when:'setup', hook:"A scheduled task briefed so well it runs with nobody in the room.", levers:['Context','Constraints','Output'],
+{kind:'prompt', id:'build-the-brief', sec:'Session three · Work That Runs Without You', title:'Build the brief', where:'Runs as a task, Cowork if your box still offers it', type:'interview', when:'setup', hook:"A scheduled task briefed so well it runs with nobody in the room.", levers:['Context','Constraints','Output'],
 prompt:`I want to put one recurring job on a schedule so it runs without
 me. Do not write the schedule yet. Interview me first.
 
@@ -2201,7 +2201,7 @@ Rules:
 - If a section is empty, write "Nothing" and move on.
 - Under 400 words.`},
 
-{kind:'prompt', id:'monthly-review', sec:'Session three · Work That Runs Without You', title:'The monthly review', where:'Runs in a Cowork session', type:'review', when:'monthly', hook:"Which scheduled tasks earn their keep, and which to switch off.", levers:['Constraints','Tone','Format'],
+{kind:'prompt', id:'monthly-review', sec:'Session three · Work That Runs Without You', title:'The monthly review', where:'Runs as a task, Cowork if your box still offers it', type:'review', when:'monthly', hook:"Which scheduled tasks earn their keep, and which to switch off.", levers:['Constraints','Tone','Format'],
 prompt:`Review the scheduled tasks I have running.
 
 For each one, tell me:
