@@ -1184,6 +1184,82 @@ byte-identical after. Two claims beside it that were flatly false also went:
 the slide point "It has its own instructions box. It needs its own setup", and
 Fig. 05's caption "Each needs its own instructions".
 
+**Cowork is gone from the teaching copy, 20 Sep, and `cowork/` is retitled.**
+James said go on the whole thing, and gave the fact that moved it: the rollout
+is a fortnight out, too much still framed Cowork as a separate place, and he
+had no rooms in the window he could not explain it in. The argument against
+had been a deck contradicting his screen in a live session, so that objection
+went with his fact.
+
+One line held and should hold again. Menu paths stay both-worlds. Rewriting
+"it is a separate room" describes a concept that is already dead; writing
+click-here steps for the merged version means inventing them from press
+coverage, which is exactly what put a wrong instructions box in front of
+clients last week. The concept went, the navigation stayed.
+
+The tally: 112 occurrences to 44 across ten files. `cowork/` 51 to 16, Make
+Claude Yours 25 to 17, the shelf 14 to 7, session three 10 to 3, the bots
+glossary 9 to 3, `ba-growth` 8 to 3, the share card 9 to 3, the front page 3
+to 1, Foundations 3 to 0.
+
+Every survivor earns its place, and the categories are the rule for next time:
+a URL (hard rule 8, four of them on `cowork/`), a navigation fallback ("if the
+message box still offers Chat and Cowork, pick Cowork"), the dated notice which
+has to name the thing it is about, one deliberate line per page saying the name
+is being folded in, and Anthropic's own article titles in a sources block.
+
+**The page is Task Work now.** Title, all four head tags, breadcrumb, h1,
+standfirst, the notice heading, the contents link and the body. The URL is
+still `/cowork/` and always will be. James waived the client-impact worry
+himself: everyone has it as a beta, nobody paid for it, and if it changes it
+changes.
+
+The title was chosen for consistency rather than cleverness. Fine-Tune Part 03
+is Task work, the Make Claude Yours section is Task work and skills, the shelf
+section is Reference · Task work. One word across the members area beats a
+better title on one page.
+
+On naming the old brand, James asked whether a "(previously Cowork)" was
+needed. Once, near the top, not everywhere: repeated twenty times it makes the
+page about the brand again. The standfirst carries it, the glossary deck
+carries it once, and `ba-growth` carries it once. That is the pattern.
+
+**Two faults the render caught that no check would have.** The share card is
+what a client sees when James sends the link, and it still said COWORK in the
+diagram and "two prompts to run" when the page has five. The prompt count was
+the same stale-two fault found in the page's meta on 15 Sep, surviving on the
+card because the card was never re-rendered. Both fixed and the JPEG
+re-rendered. Render the card and look at it whenever its source moves.
+
+**A false claim went with the sweep.** `ba-growth` said "Cowork needs the
+desktop app. The browser version can't reach your computer." It has run on web
+and phone since 7 July and the work runs on Anthropic's servers, which
+CLAUDE.md has recorded since 4 Sep. The line now separates the two things
+correctly: the desktop app reaches files on your own machine, the rest works
+on your drive, your email and the web either way.
+
+**Fine-Tune's phone bar was broken, not busy.** James sent a screenshot. Four
+controls in 334px: the Read/Present toggle collapsed to 31px and rendered as
+"REA", Members area overlapped Present, Start Here ran past the edge, and all
+six section links sat off-screen and unreachable. Present mode is for driving
+the page on a laptop in a session, so it is hidden under 640px and the links
+then scroll. Nothing overlaps, every link is reachable.
+
+Five pre-existing contrast failures in that file went with it, all one family:
+`--coral` used where the house rule says `--coral-bright` on a dark ground and
+for a fill carrying ink text. The brand mark was 2.80:1, the inactive toggle
+2.35:1, three coral buttons 4.44:1. Same fault fixed on `cowork/`, `privacy/`
+and `manus-bridge/` earlier the same day. The file had no `--coral-bright`
+token at all; it has one now.
+
+**Still open on Fine-Tune, and it is the real one.** The page is a 24-screen
+stepper with pinned bars top and bottom. That shape exists for PRESENT mode.
+On a phone it means tapping Next twenty-four times through a reference guide,
+losing height to chrome at both ends, with paragraphs cut mid-sentence at the
+fold. The recommendation put to James is to keep the stepper on the desktop
+and let a phone read it as one scrolling document, same URL, the section nav
+becoming a jump list. Not built yet.
+
 **Field Note delivery was reworked on 20 Sep, and half of it is not live yet.
 Read this before Wednesday.** James asked for the issue to reach him as a
 WhatsApp message and a link on a Wednesday that he just checks and forwards.
