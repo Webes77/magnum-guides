@@ -1117,6 +1117,55 @@ The reason to wait is that the names are what James will want to change after
 hearing himself say them out loud, and shape and copy are cheaper to fix in
 one pass than two. When he comes back from a session, do both together.
 
+**Cowork is being folded into Claude, announced 16 Sep, patched here 20 Sep.**
+Anthropic is merging Chat and Cowork: three modes become two, Chat and Code,
+the toggle disappears from the message box per account as the rollout lands,
+and Claude routes a request itself. Pro and Max first, then Team and Free,
+over several weeks. Docs and Slides launched with it. Third-party reporting:
+TechCrunch, Fortune, VentureBeat and 9to5Mac, all 16 Sep.
+
+James asked whether this meant rewriting all the training. It did not, and the
+measurement is why. "Cowork" appears 163 times across 16 files, and exactly
+three lines asserted the toggle. Everything else describes what it does, which
+is unchanged or better: folder access, cloud schedules, connectors, and all
+five prompts work identically either way. The training survived a product
+being discontinued because it teaches the method and the prompts rather than
+the menus. That is the argument for never writing a menu path you do not have
+to.
+
+What shipped, and the shape of it is reusable when the next product moves.
+The three lines were rewritten to survive both worlds rather than updated to
+the new one: "if the message box still offers Chat and Cowork, pick Cowork. If
+it does not, describe the job." True today, true after the rollout, and it
+does not strand the clients who have not been migrated yet. Rewriting to the
+new state would have been wrong for most readers on the day it shipped, which
+is the trap to avoid on a staged rollout.
+
+A dated notice sits under the short version on `cowork/`: what is changing,
+that the plan decides when it reaches you, and that nothing else on the page
+moves. New `.notice` component, paper card with a 6px coral top rule, in
+palette. It is dated because the whole job of it is telling a reader how fresh
+it is, same reasoning as the privacy page's footer.
+
+Two more faults came with it, both the same class and both fixed. The Make
+Claude Yours slide point still said "Cowork does not read your chats", which
+is the defect fixed in P4's prompt body on 15 Sep; the slide point survived
+that pass. And section 01 of the guide was headed "A second mode inside the
+Claude you already pay for", directly contradicting the notice sitting above
+it on the same screen. It says what it does instead of what it is now.
+
+Fact register: row 54 marked superseded with the wording that replaced it,
+rows 61 and 62 added for the merge and for Docs and Slides. 62 is recorded
+without being taught anywhere, so the routine can flag when it is worth
+teaching.
+
+Not done and deliberately so. The page is still called "Cowork: What It Is
+and How to Set It Up" at `/cowork/`. Hard rule 8 keeps the URL whatever
+happens. The title will read as dated within a month or two and should be
+retitled around the capability rather than the brand once the rollout
+finishes, not before. And this is not a Field Note: the 4 Sep decision sends
+news to This Week in AI and keeps a Field Note for one idea taught properly.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
