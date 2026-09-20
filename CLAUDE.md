@@ -1184,27 +1184,85 @@ byte-identical after. Two claims beside it that were flatly false also went:
 the slide point "It has its own instructions box. It needs its own setup", and
 Fig. 05's caption "Each needs its own instructions".
 
-**Two things left alone on purpose, and they are James's call, not a
-session's.**
+**The two things left for James were done on 20 Sep, on his word.** He said
+he would rather get on the front foot than wait for the rollout. The argument
+against was put to him once, with the cost named, and he was told his own
+Sunday Brief that morning said the opposite twice ("Do nothing to the guide
+yet. Watch your own Pro or Max account for the toggle to disappear, then
+rewrite the setup steps from what you actually see"). He took the point on
+menu paths and kept the instruction on everything else, which is the right
+split and is what shipped.
 
-Fine-Tune Part 03 is an entire section, steps 3A to 3D, built on the premise
-"Cowork is a different room, it has its own separate instructions, it can't
-see any of your chats, that's why it feels generic". Every clause of that dies
-with the merge. Its subtitle was the one flatly false line and is fixed
-("Task work runs on standing instructions"), but the argument underneath is
-not rewritten. The work the section teaches still has value: writing a proper
-standing brief and granting folder access are worth doing whether there is one
-box or two. So this is a reframe, not a deletion, and it is a teaching
-decision. 42 Cowork mentions remain in that file.
+The line held: no setup step was rewritten to an interface nobody has seen.
+That is the defect class that produced the stale instructions box and the
+15 Sep draft band, and a deck that contradicts the screen in a live room
+costs more than a dated label. What got done instead is the work that was
+already wrong today, independent of the rollout.
 
-And `F.cowork` in Make Claude Yours is a drawn figure: two rooms with a wall
-between them, captioned inside the SVG "THE WALL. COWORK CANNOT SEE YOUR
-CHATS." That wall is what the merge removes. Redrawing a figure is design
-work on his deck, so it is flagged rather than changed.
+**Fine-Tune Part 03 is reframed.** Its whole premise was "Cowork is a
+different room, it has its own separate instructions, it can't see any of your
+chats, that's why it feels generic". Memory has been one shared store since
+25 August, so that premise died three weeks before the merge was announced.
+It was never a rollout question.
 
-Neither is urgent while the rollout is staged, because on an unmigrated
-account both are still true. They become wrong as accounts migrate, so the
-trigger to act is James seeing his own box lose the Cowork section.
+What replaced it keeps every step working: a task runs on your standing
+instructions rather than on your last conversation, it reaches only the
+folders and connectors you have granted, and nobody is in the room to correct
+it halfway through, so a thin brief costs more here than in a chat. Writing a
+proper standing brief, granting folder access, cleaning the files and auditing
+the skills are all worth doing whether there is one box or two, which is why
+this was a reframe rather than a deletion.
+
+The section is titled Task work now, not Cowork, in the heading, the nav and
+the index. The anchor `#part-03` is untouched, so hard rule 8 holds and no
+link moves.
+
+Cowork went from 88 mentions in that file to 18, and the rule for which
+survived is worth keeping: the brand was replaced where it named a place or a
+separate setup, which is the thing disappearing, and kept where it names the
+capability acting on your files, which is what a client still sees on screen
+today. The both-worlds Settings fallbacks stayed.
+
+One line was a real trap and is fixed: "Skip this whole part if you don't use
+Cowork". After the merge everyone has task work, so that sentence sends away
+exactly the readers it now applies to. It reads "Skip it only if you never
+hand the AI a job to go and do on its own."
+
+**The wall figure is redrawn.** `F.cowork` drew two rooms with a wall between
+them, captioned inside the SVG "THE WALL. COWORK CANNOT SEE YOUR CHATS." It
+is one input splitting into two outcomes now, an answer and a job done, with
+one instructions box running under both and the caption "ONE PLACE. IT PICKS
+THE JOB." Palette is coral, slate, bright coral and tint, all existing tokens,
+nothing new introduced. It was rendered and looked at, not just passed through
+the deck check.
+
+Its slide moved with it, from "Cowork is a different room" to "Two kinds of
+job, one place", keeping the both-worlds last line.
+
+Titles followed, so the vocabulary is one thing across the members area. The
+deck section is "Task work and skills" in all five of its slides, P4's slide
+is "Prompt 4. Your standing instructions", and the shelf card is "Your
+standing instructions" with `#cowork-instructions` unchanged.
+
+**The guide's notice gained two facts, nothing else.** Claude Design folds in
+alongside Chat and Cowork, and Enterprise accounts get thirty days' notice.
+Both came from James's own Sunday Brief, which corroborated the merge against
+VentureBeat, TechRepublic and TheNextWeb because `claude.com` is blocked from
+the sandbox. Register row 66. The rest of `cowork/` is untouched, which is
+what the brief asked for.
+
+Verified after: deck check PASS at four sizes across four decks, contrast
+PASS, field note check PASS, the style checker showing the same 33 findings
+before and after so none is new, 52 shelf ids unchanged, all 18 deck prompts
+still byte-identical to their shelf twins, zero em dashes, every "solid" a CSS
+border, and Part 03 rendered and read on a 390 phone with no sideways scroll.
+
+**Still not done, and the trigger is unchanged.** The setup steps on `cowork/`
+and the menu paths in the decks stay both-worlds until James sees the merged
+interface on his own account. When the Cowork section disappears from his
+settings, that is the signal to rewrite from what is on the screen, and the
+page is retitled around the capability in the same pass. The URL never
+changes.
 
 **The label sweep is done, 20 Sep.** James asked whether the shelf prompts
 needed changing. The first answer given, that they were clean, was wrong, and
