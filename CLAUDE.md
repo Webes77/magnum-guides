@@ -1166,6 +1166,46 @@ retitled around the capability rather than the brand once the rollout
 finishes, not before. And this is not a Field Note: the 4 Sep decision sends
 news to This Week in AI and keeps a Field Note for one idea taught properly.
 
+**The full deck audit, 20 Sep, and it found something bigger than the
+toggle.** James asked for every deck to be checked. The toggle was three
+lines. The instructions box is worse: Cowork's Global instructions have moved
+to Settings, General, Instructions for Claude. There is one box now, not two.
+Skills, plugins and connectors carry over, and Cowork tasks appear in Recents
+with the chats. Source: aiagentslibrary and Claude Academy via search, 20 Sep,
+third-party.
+
+Fixed, all as both-worlds wording rather than updated to the new state, same
+trick as the toggle lines: the menu path in Make Claude Yours P4 and its
+after-step, the Record a skill path, "Open Cowork in the desktop app" in
+`runs-without-you`, "Open Cowork. In the sidebar, Scheduled" in `bots`, and
+the P4 prompt body itself, which moved off naming Cowork entirely and now says
+"my standing instructions for Claude". Deck and shelf together, verified
+byte-identical after. Two claims beside it that were flatly false also went:
+the slide point "It has its own instructions box. It needs its own setup", and
+Fig. 05's caption "Each needs its own instructions".
+
+**Two things left alone on purpose, and they are James's call, not a
+session's.**
+
+Fine-Tune Part 03 is an entire section, steps 3A to 3D, built on the premise
+"Cowork is a different room, it has its own separate instructions, it can't
+see any of your chats, that's why it feels generic". Every clause of that dies
+with the merge. Its subtitle was the one flatly false line and is fixed
+("Task work runs on standing instructions"), but the argument underneath is
+not rewritten. The work the section teaches still has value: writing a proper
+standing brief and granting folder access are worth doing whether there is one
+box or two. So this is a reframe, not a deletion, and it is a teaching
+decision. 42 Cowork mentions remain in that file.
+
+And `F.cowork` in Make Claude Yours is a drawn figure: two rooms with a wall
+between them, captioned inside the SVG "THE WALL. COWORK CANNOT SEE YOUR
+CHATS." That wall is what the merge removes. Redrawing a figure is design
+work on his deck, so it is flagged rather than changed.
+
+Neither is urgent while the rollout is staged, because on an unmigrated
+account both are still true. They become wrong as accounts migrate, so the
+trigger to act is James seeing his own box lose the Cowork section.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
