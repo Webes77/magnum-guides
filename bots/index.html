@@ -291,7 +291,7 @@ const S = [
 {sec:"", cover:true, fig:"cover", h:"A chatbot answers you. An agent does work for you.", pts:[], sub:"Reference · Chatbots, Agents and Bots", note:"What the words mean, what is out there, and how to build one bot in Claude that runs on a schedule. Watch it before session one, or any time the words get confusing."},
 
 {sec:"Why", h:"Why this is <em>confusing</em>", pts:[
- "Model. LLM. Chatbot. Agent. Bot. Cowork. Code. Workspace agent. Computer use. MCP.",
+ "Model. LLM. Chatbot. Agent. Bot. Task work. Code. Workspace agent. Computer use. MCP.",
  "They sound like ten different things. Most are different layers of the same thing, or the same thing with a company's name on it.",
  "One idea sorts all of it: AI has moved from answering you to doing work for you.",
  "Four levels. Every word you hear sits on one of them."]},
@@ -318,7 +318,7 @@ const S = [
  "An agent is given an outcome, not a question. It decides the steps and does them.",
  "Tell a new staff member “research our five biggest competitors and have a report ready for Friday.” You did not say open the browser, take notes, make a document.",
  "That is the whole idea. You give the outcome. It works out the steps.",
- "In Claude, that is Cowork. You hand it the folder and the job, and it comes back with the work."]},
+ "In Claude, that is task work. You hand it the folder and the job, and it comes back with the work. You may still see it called Cowork; that name is being folded in."]},
 
 {sec:"The four levels", h:"Chatbot versus <em>agent</em>", split:[
  ["Chatbot","“Who are our competitors?”","You get an answer. You do the rest: look them up, compare, write it up.","It helps you do the task."],
@@ -355,8 +355,8 @@ const S = [
 {sec:"What is out there", h:"In <em>Claude</em>", rows:[
  ["Chat","Helper","You ask, it answers. Session one."],
  ["Projects and skills","Helper, taught","It knows your business and your jobs. Session two."],
- ["Cowork","Agent","Hand it a folder and a job. Desktop, web and phone."],
- ["Scheduled tasks","Standing agent","A Cowork job on a timer. Runs in the cloud, laptop shut. Every paid plan. Session three."],
+ ["Task work","Agent","Hand it a folder and a job. Desktop, web and phone."],
+ ["Scheduled tasks","Standing agent","A job on a timer. Runs in the cloud, laptop shut. Every paid plan. Session three."],
  ["Claude Code","Agent, technical","Works inside files and systems. Builds and changes things. This deck was built with it."]],
  rowhead:["Name","Level","What it is"]},
 
@@ -380,8 +380,8 @@ const S = [
 
 {sec:"What is out there", h:"Which <em>one</em>", rows:[
  ["A job you do alone, at your desk","Claude chat, with your instructions in it","Session one and two. Nothing to buy."],
- ["A job with files and steps","Cowork","Already in your plan."],
- ["A job that repeats on its own","A scheduled task in Cowork","Session three. Already in your plan."],
+ ["A job with files and steps","Hand it over as a task","Already in your plan."],
+ ["A job that repeats on its own","A scheduled task","Session three. Already in your plan."],
  ["A team of five sharing the same bots","ChatGPT workspace agents, or Claude on a Team plan","Both work. Pick the one your team already lives in."],
  ["Full control, own server, own model","OpenClaw","Only with a technical person on call."]],
  rowhead:["The job","Use","Why"]},
@@ -417,7 +417,7 @@ const S = [
  "Before it runs alone, run it with you watching.",
  "Same brief, same inbox, one run now. You see exactly what will land on Friday.",
  "Fix the brief, not the output. Then run it again."],
- prompt:P2, where:"Inside the bot's project, in chat or in Cowork", after:[
+ prompt:P2, where:"Inside the bot's project, as a chat or as a task", after:[
  "Read the ASSUMPTIONS first. Each one is a gap in the brief.",
  "If it invented a name or a detail, the rules need tightening.",
  "Two clean runs in a row and it is ready for the timer."]},

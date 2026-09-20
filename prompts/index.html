@@ -455,7 +455,7 @@ const STATION_HEAD={
 const WHEN_NOTES={
   'start':'The first thing you paste into a new chat.',
   'before-acting':'The check step. Run it before an answer turns into an action.',
-  'setup':'Your account, a project, Cowork, a skill, or a schedule. Done once, then left alone.',
+  'setup':'Your account, a project, a task, a skill, or a schedule. Done once, then left alone.',
   'weekly':'Runs, or gets run, every week.',
   'monthly':'Runs, or gets run, every month.',
   'new':'Fresh cards, not yet filed by moment.'
@@ -496,8 +496,8 @@ Work through this in order:
 
 Stop after step 5 and tell me the single finding you would act on first.`},
 
-/* ---------- Reference · Cowork ---------- */
-{kind:'prompt', id:'clear-the-desktop', sec:'Reference · Cowork', title:'Clear the desktop', where:'A task with your Desktop folder granted', type:'does', when:'setup', hook:"Sort a cluttered desktop without deleting a single file.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+/* ---------- Reference · Task work ---------- */
+{kind:'prompt', id:'clear-the-desktop', sec:'Reference · Task work', title:'Clear the desktop', where:'A task with your Desktop folder granted', type:'does', when:'setup', hook:"Sort a cluttered desktop without deleting a single file.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a careful assistant sorting out my computer desktop. Nothing on it
 is yours to throw away, so this job is to sort and move, never to delete.
 
@@ -525,7 +525,7 @@ Work through this in order:
 
 Stop after step 4. Tell me what you left behind and why.`},
 
-{kind:'prompt', id:'sort-by-contents', sec:'Reference · Cowork', title:'Sort a folder by what is inside the files', where:'A task with the messy folder granted', type:'does', when:'setup', hook:"File a folder on what the documents say, not what they are named.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+{kind:'prompt', id:'sort-by-contents', sec:'Reference · Task work', title:'Sort a folder by what is inside the files', where:'A task with the messy folder granted', type:'does', when:'setup', hook:"File a folder on what the documents say, not what they are named.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a careful assistant filing documents by what is actually inside
 them, not by what they are called. The names in a folder like this are
 usually wrong, which is the reason the filing never got done.
@@ -552,7 +552,7 @@ Work through this in order:
 
 Stop after step 6. Tell me how many files you could not identify.`},
 
-{kind:'prompt', id:'folder-to-spreadsheet', sec:'Reference · Cowork', title:'Turn a folder of documents into one spreadsheet', where:'A task with the folder of documents granted', type:'does', when:'monthly', hook:"Point at a year of receipts, get back a spreadsheet with a total.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+{kind:'prompt', id:'folder-to-spreadsheet', sec:'Reference · Task work', title:'Turn a folder of documents into one spreadsheet', where:'A task with the folder of documents granted', type:'does', when:'monthly', hook:"Point at a year of receipts, get back a spreadsheet with a total.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a bookkeeper's assistant turning a pile of documents into one
 spreadsheet I can sort and total.
 
@@ -583,7 +583,7 @@ Work through this in order:
 
 Stop after step 5.`},
 
-{kind:'prompt', id:'scheduled-job', sec:'Reference · Cowork', title:'Set a job to run every week without you', where:'A task, once you have run the job by hand', type:'scheduled', when:'weekly', hook:"A job that runs on Monday whether your computer is on or not.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
+{kind:'prompt', id:'scheduled-job', sec:'Reference · Task work', title:'Set a job to run every week without you', where:'A task, once you have run the job by hand', type:'scheduled', when:'weekly', hook:"A job that runs on Monday whether your computer is on or not.", added:'2026-09-15', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are setting up a job that will run on a schedule while I am not
 watching, so it has to be written to fail safely rather than to guess.
 
@@ -608,7 +608,7 @@ Once I say go:
 
 Stop after step 6. Tell me where the results will appear.`},
 
-{kind:'prompt', id:'writing-style-skill', sec:'Reference · Cowork', title:'Learn how I write, from my sent mail', where:'A task with Gmail connected', type:'instructions', when:'setup', hook:"Turn your own sent mail into a skill that writes like you.", added:'2026-09-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'writing-style-skill', sec:'Reference · Task work', title:'Learn how I write, from my sent mail', where:'A task with Gmail connected', type:'instructions', when:'setup', hook:"Turn your own sent mail into a skill that writes like you.", added:'2026-09-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a writing analyst working out how I actually write, so that Claude
 can draft in my voice instead of its own.
 
