@@ -108,7 +108,7 @@ No em dashes anywhere, in the page, the commit message or the email. Use a comma
 The 6 Levers are Role, Context, Constraints, Tone, Format, Output. That order, those labels. Never renamed, reordered or added to.
 No client names, no company names, no source names anywhere in the page. Hard rule 5.
 Never change a URL that already exists. Hard rule 8. You add a new issue; you never renumber, rename or move an existing one.
-Never push to main. Never open a pull request. Never edit an existing Field Note, an existing shelf card, a deck, or any file not listed in OUTPUT.
+Main is reached only through Step 10, and only on a passing check. Never open a pull request. Never edit an existing Field Note, an existing shelf card, a deck, or any file not listed in OUTPUT.
 Never put a model name or model identifier in a commit message or in the repo.
 You write the whole issue, in James's voice, using the james-writes skill. Load that skill before you write a word of copy and follow it. Every block the template marks EDIT · VOICE is written out in full as finished prose, not left as guidance. The headline, the lead, the analogy, the pull quote, the verdict: all of them. James edits what you wrote; he does not compose from blanks.
 The james-writes test applies to the finished issue. It must carry at least one comparison drawn from outside computing, at least one concrete number or name, and at least one admission that James got something wrong. A draft with none of those is not in his voice and is not finished.
@@ -171,7 +171,7 @@ Step 1, the window and the number. Gold Coast is Australia/Brisbane, UTC+10, no 
 
 Step 2, the commission. Use the Google Drive connector to list the Vault folder, id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l, and open the most recent file named sunday-brief-YYYY-MM-DD.md. Read its section headed ## field-note-commission.
 
-If that section carries a headline, that is this week's idea. Take the headline, the teaching core under it, and the shelf card id if it names one.
+If that section carries a headline, that is this week's idea. Take the headline, the teaching core under it, and the shelf card id if it names one. The headline is a starting point, not authored copy: hold it against the hook rule in Step 5 and rewrite it if it fails. The commission for 20 Sep read "It read every file and found the problem you didn't know you had", which opens on a bare pronoun and is the exact fault James threw out on issue 05, so it becomes "Your AI read every file and found the problem you didn't know you had". Say in the email when you rewrote a commissioned headline and why, in one line.
 
 If the section says none, or the file is missing, or the folder cannot be read, fall back to the shelf. Read the S array in prompts/index.html in full and read notes/field-note-log.md. Pick the one card that best carries a whole issue and has never been taught by a Field Note. Prefer, in this order: a card James has ranked 1, a card in the moment start or before-acting, a card whose idea a client could get wrong in an expensive way. Never pick a card added in the last fourteen days; it has not been used enough to teach. Say in the email that you fell back and why.
 
@@ -189,7 +189,7 @@ If the card fails and you chose it yourself from the shelf, choose a different c
 
 If the card fails and the Sunday Brief commissioned it by name, build the issue on it anyway, and put the rewrite at the top of the email rather than at the bottom. Write the corrected prompt out in full, on the six levers in order, ready for James to paste. Name each item it failed and what the new version does about it. He makes the change in the deck and on the shelf together, in one commit, because a deck prompt on the shelf is authored material and a routine never edits it. That rule stands and is not what this step relaxes; what it relaxes is treating a failure as something to mention.
 
-Step 4, the branch. In /home/user/magnum-guides run git fetch origin main, then git checkout -B field-note/YYYY-MM-DD origin/main using the Gold Coast date.
+Step 4, the branch. In /home/user/magnum-guides run git fetch origin main, then git checkout -B field-note/YYYY-MM-DD origin/main using the Gold Coast date. You build here either way; Step 10 decides whether it reaches main.
 
 Step 5, build the page. Copy templates/field-note-template.html to newsletter/field-note-NN-slug.html, where slug is one lower-case word naming the theme, matching the style of clarity, context, talking, cutting, arguing. Then work through every EDIT comment in the file.
 
@@ -227,25 +227,30 @@ Then measure the page at 390 wide. Count the words in the bottom line up front b
 
 Step 9, the log. Add an entry at the top of notes/field-note-log.md under a heading with the branch date: the issue number and theme, whether the idea came from the commission or the fallback, the shelf card it teaches and its id, the result of the card check, and anything you could not finish. One short paragraph, no table.
 
-Step 10, commit and push. Commit with a plain message naming the issue and the card, no model name, no em dash. Then git push -u origin field-note/YYYY-MM-DD. If the push is refused, write the full page and the full card source into the Drive Vault folder as field-note-YYYY-MM-DD-NOT-PUSHED.md and say so in the email.
+Step 10, publish. Commit with a plain message naming the issue and the card, no model name, no em dash.
 
-Step 11, email James. Use the Gmail connector's send_message to send a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Field Note NN ready - D Month YYYY. This is a standing scheduled send with pre-approval for this recipient and this recipient only. The email carries, in this order:
+The issue goes live by itself when Step 8 printed PASS. James settled this on 20 Sep: the whole point of the email is a link he can forward to clients that morning, and a link on a branch is a dead link. So when the check passed, merge the branch into main and push main on its own, then push the branch too so the diff survives. The issue is live and the front page and the archive carry it.
 
-THE IDEA: the headline or the card, and whether it came from the Sunday Brief's commission or the shelf fallback.
+When the check did not pass, nothing reaches main. Push the branch only, and open the email with one line saying the issue is built but not live and naming exactly what failed. Never publish around a failing check to keep the schedule; a week with no issue costs less than a broken one under James's name.
+
+github.io is blocked from this sandbox, so you can never confirm the page is live and must never say you did. Pages usually deploys inside a minute, and a push to main does not always queue a build of its own, so tell James in the email that the link goes live a minute or two after the push and to refresh once if it 404s.
+
+If the push is refused, write the full page and the full card source into the Drive Vault folder as field-note-YYYY-MM-DD-NOT-PUSHED.md and say so in the email.
+
+Step 11, email James. Use the Gmail connector's send_message to send a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Field Note NN is live - D Month YYYY, or Field Note NN needs a fix - D Month YYYY when Step 10 could not send it to main. This is a standing scheduled send with pre-approval for this recipient and this recipient only.
+
+SEND THIS goes first, above everything else, because it is the only part he acts on. Everything under it is there for when he wants to check something. The order is:
+
+SEND THIS: the WhatsApp message, written out ready to paste, nothing for him to fill in. This is how the issue actually reaches a client, so it is part of the job and not an extra. It goes to a WhatsApp broadcast list of clients, men and women, not to one person, so the opener is "Hi everyone" and never "Hey mate" or anything else one-to-one. James corrected that on 16 Sep and it is not a preference to re-litigate. Five short lines in his voice through james-writes: the neutral opener, the hook exactly as it appears on the page and the card, one line on what the prompt does and how long it takes, the live URL on its own line, then "Any questions, let me know." Keep the whole thing under eighty words. No selling, no call to book anything; he is not ready for that and will say when he is.
+READ IT HERE: the live URL on its own line, https://webes77.github.io/magnum-guides/newsletter/field-note-NN-slug.html, the same one sitting inside the WhatsApp message. He opens it on his phone, reads it, and forwards. Never a raw GitHub URL: it serves the page as plain text, so he would be reading source code.
+THE IDEA: the headline or the card, whether it came from the Sunday Brief's commission or the shelf fallback, and one line if you rewrote a commissioned headline.
 UP FRONT: the hook, the payoff line and the three answers from the bottom line up front block, in full, so he can judge the whole issue from the email.
 WHAT IS BUILT: one line per finished part.
 THE LEAD: the first-person story you used and which recorded fact in the repository it came from, so James can correct it if the detail is wrong.
-READ IT HERE: the raw GitHub URL of the page on the branch, so he can read it without cloning anything.
-TO PUBLISH: one line saying he replies go in his chat and it goes live.
-SEND THIS: the WhatsApp message, written out ready to paste, nothing for him to fill in. This is how the issue actually reaches a client, so it is part of the job and not an extra.
-
-It goes to a WhatsApp broadcast list of clients, men and women, not to one person. So the opener is "Hi everyone" and never "Hey mate" or anything else one-to-one. James corrected this on 16 Sep and it is not a preference to re-litigate.
-
-Five short lines in his voice through james-writes: the neutral opener, the hook exactly as it appears on the page and the card, one line on what the prompt does and how long it takes, the live URL on its own line, then "Any questions, let me know." Keep the whole thing under eighty words. No selling, no call to book anything; he is not ready for that and will say when he is.
 THE CARD: the title and id of the shelf card the issue carries.
 CARD CHECK: pass, or the standard it fails and the proposed fix in full.
 CHECK: the last line of tools/check-field-note.js, the word count of the block's frame excluding the prompt, and the number of phone screens the block occupies.
-BRANCH: the branch name, or what failed.
+WHERE IT IS: live on main with the branch name beside it, or not live and exactly what failed.
 ASSUMPTIONS: every choice you made because nobody could be asked, one line each, or "none".
 
-Step 12, stop. Nothing else is sent, posted, replied to, merged or changed. If a step fails after two attempts, record it in the email and continue with the remaining steps rather than abandoning the run.
+Step 12, stop. Beyond the merge Step 10 authorises, nothing else is sent, posted, replied to, merged or changed. If a step fails after two attempts, record it in the email and continue with the remaining steps rather than abandoning the run.

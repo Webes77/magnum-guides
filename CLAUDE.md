@@ -1184,6 +1184,66 @@ byte-identical after. Two claims beside it that were flatly false also went:
 the slide point "It has its own instructions box. It needs its own setup", and
 Fig. 05's caption "Each needs its own instructions".
 
+**Field Note delivery was reworked on 20 Sep, and half of it is not live yet.
+Read this before Wednesday.** James asked for the issue to reach him as a
+WhatsApp message and a link on a Wednesday that he just checks and forwards.
+
+Most of it already existed. The email has carried a SEND THIS block since
+16 Sep: five lines, "Hi everyone", under eighty words, ready to paste. The
+defect was the link in it. The routine drafts to a branch and never publishes,
+so on Wednesday morning that URL is not live, and the only other link in the
+email is a raw GitHub URL, which serves the page as plain text and shows him
+source code. So the fix was publishing, not the message.
+
+`notes/field-note-prompt.md` now says: when `tools/check-field-note.js` prints
+PASS the routine merges to main itself and the issue is live; when it fails
+nothing reaches main, the branch is pushed alone and the email opens by saying
+so. The email is reordered so SEND THIS is first and READ IT HERE carries the
+real `webes77.github.io` URL. The subject says live or needs a fix. Three
+knock-on contradictions were fixed in the same pass, all created by the change
+itself: the constraint "Never push to main", Step 12's "nothing else is
+merged", and the WhatsApp paragraph left stranded mid-list once SEND THIS moved
+to the top.
+
+**The file is ahead of the live trigger and that is the thing to know.** The
+`update_trigger` call was refused by the permission classifier, correctly:
+it authorises a routine to publish to a live site unattended, which is exactly
+the kind of change that should carry an explicit human yes. The live prompt
+(`trig_016pPJPsm8D3yUZs81wquraU`) is untouched at 20,560 characters and still
+says "Never push to main". `notes/field-note-prompt.md` is 22,611 characters.
+They differ in six places, all listed in the 20 Sep commit.
+
+So Wednesday 23 Sep behaves the old way: the issue drafts onto
+`field-note/2026-09-23`, James gets the email, and the link in it is not live.
+Until the trigger is updated, do not tell him the new flow is running. Pushing
+it needs James to allow the call, and the procedure in the gotchas applies
+exactly: extract, diff, Read in full, emit, then assert `live == file`.
+
+The Sunday Brief half did go through. `trig_014BpCSeSMonkfgePpN5tBfN` is live
+and byte-identical to its file at 16,905 characters, carrying the hook rule
+below.
+
+**The commission headline was going to break its own rule.** This week's
+commission, already written into the vault on 20 Sep, reads "It read every file
+and found the problem you didn't know you had". That opens on a bare pronoun,
+which is the exact fault James threw out on issue 05 four days earlier. The
+Drive connector's `update_file` only changes metadata, so the vault file cannot
+be rewritten from a session; the fix went into both routines instead, which
+catches every future week rather than this one. The Sunday Brief now writes the
+commission headline to the hook rule, and the Field Note prompt treats a
+commissioned headline as a starting point and rewrites it when it fails, naming
+this week's case so the 23 Sep run cannot miss it. That second half is in the
+file and not yet live, per above.
+
+**One thing worth doing and not done.** Both routines keep a full copy of a
+long prompt inside the trigger, duplicated from a file in the repo the routine
+already clones. That duplication is the direct cause of every drift and
+retyping failure recorded here, three now. A trigger prompt that carried the
+guardrails and then said "read notes/<routine>-prompt.md and follow it" would
+end the whole class of fault. It was not done today because it is an
+architectural change to a routine two days before it fires, on a session's own
+initiative, and it deserves its own pass when nothing is due.
+
 **The Sunday Brief routine was writing a verify marker onto client cards, and
 that is fixed at the source, 20 Sep.** Its prompt told it, in two places, to
 mark a card `[VERIFY BEFORE SHIPPING]` in its where line whenever the card
