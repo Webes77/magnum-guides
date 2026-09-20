@@ -1252,13 +1252,37 @@ for a fill carrying ink text. The brand mark was 2.80:1, the inactive toggle
 and `manus-bridge/` earlier the same day. The file had no `--coral-bright`
 token at all; it has one now.
 
-**Still open on Fine-Tune, and it is the real one.** The page is a 24-screen
-stepper with pinned bars top and bottom. That shape exists for PRESENT mode.
-On a phone it means tapping Next twenty-four times through a reference guide,
-losing height to chrome at both ends, with paragraphs cut mid-sentence at the
-fold. The recommendation put to James is to keep the stepper on the desktop
-and let a phone read it as one scrolling document, same URL, the section nav
-becoming a jump list. Not built yet.
+**Fine-Tune reads as one document on a phone now, 20 Sep.** It was a
+24-screen stepper with pinned bars at both ends, which is right for Present
+mode on a laptop and wrong for a reference guide on a phone: twenty-four taps,
+height lost to chrome top and bottom, paragraphs cut mid-sentence at the fold.
+
+Under 640px every screen shows, the pager and the Begin button go, and the nav
+click handler bails out so the links behave as plain anchors. The stepper is
+CSS-driven (`.screen{display:none}` / `.screen.active{display:block}`), so the
+whole change is four CSS lines and one early return. The desktop is untouched:
+one screen at a time, pager, Present mode, all exactly as before.
+
+James made the change better than it was asked for. He said the tuning itself
+works better at a desk and is not a phone job, which turns the phone version
+from "do it here" into "read it here, do it at your desk". A `.desknote` on the
+cover says so in his register, shown only under 640px, and it is the honest
+thing to tell someone: every step is copy a prompt, read what comes back,
+paste into a settings box, which wants a keyboard and two windows.
+
+**And the change exposed 26 contrast failures that were always there.** The
+stepper renders one screen at a time, so the audit could only ever measure one
+screen; at 390, with all 24 rendering, everything else became visible. All one
+family and the third time today: `--coral` painting text under 18px, where the
+house value is `--coral-text`. `.kicker`, `.chip-coral`, the opener and donext
+labels, 24 step chips. `.picker-label` sat on the coral tint with no
+small-coral value in the token set, so it takes ink, the same call made on the
+`.say` block earlier. `.copybtn` is a coral fill with ink text, so it is
+`--coral-bright` at 6.28:1. Zero failures at all four widths now.
+
+The lesson generalises: a page that hides most of itself hides most of its
+faults from every check that measures what is painted. Any stepper, accordion
+or fold should be audited with everything open at least once.
 
 **Field Note delivery was reworked on 20 Sep, and half of it is not live yet.
 Read this before Wednesday.** James asked for the issue to reach him as a
