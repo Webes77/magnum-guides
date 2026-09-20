@@ -26,8 +26,13 @@ These are absolute. Do not relitigate them.
    be an industry guide. Client names never ship.
 6. Do not delete Fairmont material anywhere. Keep away from the Rebuild Relief
    and Broadbent client work except generic sales training.
-7. The business stays one person. Flag anything that needs hiring, agency
-   scale, or permanent operational complexity.
+7. Magnum is James plus occasional part-time help. Flag anything that needs a
+   second full-timer, a contractor bench, agency scale, or operations that only
+   work while someone is watching them daily. Changed 20 Sep, on James's word,
+   when he brought on a part-time assistant at four to five hours a week and
+   said the rule had to go because the business is going to grow. The rule's
+   content never was headcount of exactly one; it was scale and permanent
+   complexity, and that half stands.
 8. Never change a URL after it has been sent to a client.
 9. Never commit scope or pricing without James signing off.
 10. Anything interface-heavy about Claude, Cowork, or Anthropic products is
