@@ -1206,24 +1206,86 @@ Neither is urgent while the rollout is staged, because on an unmigrated
 account both are still true. They become wrong as accounts migrate, so the
 trigger to act is James seeing his own box lose the Cowork section.
 
-**Found 20 Sep, not yet swept, and it is label work rather than breakage.**
-James asked whether the shelf prompts need changing. They do, a bit, and the
-answer given first ("the prompts are clean") was wrong. Measured after:
+**The label sweep is done, 20 Sep.** James asked whether the shelf prompts
+needed changing. The first answer given, that they were clean, was wrong, and
+the second one undercounted: it said seven stale `where` lines when there were
+ten. Both corrections are worth keeping, because the pattern is a count made
+by memory instead of by grep.
 
-One prompt body still names Cowork, `state-of-play`. `cowork-instructions`
-was the other and is already fixed.
+Twelve lines moved, in lockstep across the shelf and the decks.
 
-Seven `where` lines still read "A Cowork task, with your Desktop folder
-granted" and similar: `clear-the-desktop`, `sort-by-contents`,
-`folder-to-spreadsheet`, `scheduled-job`, `writing-style-skill`, the bots
-scheduled-task card, and "Runs in a Cowork session" on the Make Claude Yours
-prompts. Those sit on the card face, so a client reads them before the prompt.
+Five `Reference · Cowork` cards dropped the brand from the `where` line and
+kept the precondition: "A Cowork task, with your Desktop folder granted"
+became "A task with your Desktop folder granted". The brand is not lost,
+because those cards carry `sec:'Reference · Cowork'`, which renders as a
+source label on the card face, so it was saying Cowork twice.
 
-None of it breaks anything. Every prompt still works exactly as written; only
-the labels go stale. Same both-worlds wording as the rest of the sweep when it
-is done. Paused 20 Sep because James is on usage credits, and it is safe to
-leave: nothing is half-finished and nothing on the members area is wrong
-today.
+Four deck cards kept a pointer, because their label names a session rather
+than Cowork and a reader needs to know where to go today: "Runs in a Cowork
+session" became "Runs as a task, Cowork if your box still offers it". That is
+the same both-worlds shape as the toggle lines, and all four decks carry the
+identical string so the deck and the shelf still match byte for byte.
+
+The bots card now matches its own deck slide, which was already clean.
+
+Two prompt bodies moved, each in the deck and on the shelf together.
+`state-of-play` said "In Cowork, keep it as a file called STATUS.md" and says
+"For task work" now. P4's rule said "because Cowork acts on these
+instructions without me in the room", which is the right reason attached to a
+name that is going away; it says "because Claude acts on these instructions"
+and the reason survives intact. Same fix as 15 Sep, where the instruction was
+right and the reason was wrong.
+
+Verified after: 52 ids unchanged, all 18 deck prompts byte-identical to their
+shelf twins, no new style-checker finding, deck check PASS at all four sizes,
+contrast PASS, and the five changed cards rendered and read on a 390 phone
+rather than read in source.
+
+One title left alone and it is James's call, grouped with the two below
+because it is the same decision. The card and slide are still called "Cowork
+instructions" and the deck section is still "Cowork and skills". Nothing
+there is false for a reader who has Cowork, and retitling around the
+capability is what the Cowork page's own not-done note says to do once the
+rollout finishes, not before. The card now reads "Cowork instructions" over a
+hook saying "Tell Claude once", which is the visible edge of that decision.
+
+**Projects was redesigned too, 17 Sep, and it does not touch the training.**
+James sent Anthropic's Projects docs asking whether this was another Cowork.
+It is not, and the reason is the rollout gate.
+
+The thing that changed is Claude Code Projects, the developer one. A project
+there is now a single coordinator conversation running parallel cloud session
+threads with shared memory. Public beta, Pro and Max only, not Team or
+Enterprise, and the rollout starts with accounts that have used cloud
+sessions and have **no existing projects in claude.ai chat or Cowork**. James
+teaches building projects, so he is explicitly outside the beta and will not
+see it.
+
+What the training teaches is chat Projects: the instructions box, the
+reference files, one project per job. Anthropic's own docs say the earlier
+Projects experience keeps working as it does today until the redesigned one
+reaches it. All 88 Project mentions in `fine-tune` and all 44 in
+`make-claude-yours` were read against the new docs and not one asserts
+something the redesign breaks. Nothing was changed on any page.
+
+The thing to watch is the defect class the Cowork merge actually caused, not
+the announcement. `fine-tune` names two interface labels, "Set project
+instructions" and the instructions panel on the project page. Those are the
+first things to die when the redesign reaches chat, exactly as Cowork's
+Global instructions box did. So they went in the register with a trigger
+rather than being rewritten now against a product state nobody has seen.
+
+Three rows added, 63 to 65: chat Projects still working as taught, the Code
+Projects redesign recorded without being taught, and the two interface labels
+with the trigger to act, which is James opening a project and finding a
+conversation rather than an instructions panel. Sources: Anthropic's own
+Projects docs plus Unite.AI, XenoSpectrum and the Anthropic blog, 17 to
+18 Sep, all read on 20 Sep.
+
+One disorder in the register worth knowing before the first fact-check run:
+rows 61 and 62 were appended above rows 55 to 60 rather than at the end, so
+the table is not in numeric order. 63 to 65 went in the right place. Not
+worth a commit of its own; tidy it when the routine next touches the file.
 
 ## Decisions already made
 
