@@ -1206,6 +1206,25 @@ Neither is urgent while the rollout is staged, because on an unmigrated
 account both are still true. They become wrong as accounts migrate, so the
 trigger to act is James seeing his own box lose the Cowork section.
 
+**Found 20 Sep, not yet swept, and it is label work rather than breakage.**
+James asked whether the shelf prompts need changing. They do, a bit, and the
+answer given first ("the prompts are clean") was wrong. Measured after:
+
+One prompt body still names Cowork, `state-of-play`. `cowork-instructions`
+was the other and is already fixed.
+
+Seven `where` lines still read "A Cowork task, with your Desktop folder
+granted" and similar: `clear-the-desktop`, `sort-by-contents`,
+`folder-to-spreadsheet`, `scheduled-job`, `writing-style-skill`, the bots
+scheduled-task card, and "Runs in a Cowork session" on the Make Claude Yours
+prompts. Those sit on the card face, so a client reads them before the prompt.
+
+None of it breaks anything. Every prompt still works exactly as written; only
+the labels go stale. Same both-worlds wording as the rest of the sweep when it
+is done. Paused 20 Sep because James is on usage credits, and it is safe to
+leave: nothing is half-finished and nothing on the members area is wrong
+today.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
