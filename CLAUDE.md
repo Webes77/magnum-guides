@@ -1206,12 +1206,22 @@ merged", and the WhatsApp paragraph left stranded mid-list once SEND THIS moved
 to the top.
 
 **The file is ahead of the live trigger and that is the thing to know.** The
-`update_trigger` call was refused by the permission classifier, correctly:
-it authorises a routine to publish to a live site unattended, which is exactly
-the kind of change that should carry an explicit human yes. The live prompt
+`update_trigger` call was refused twice by the permission classifier, on two
+different grounds, and correctly both times: it authorises a routine to
+publish to a live site unattended, which is exactly the kind of change that
+should carry an explicit human yes. The second refusal came after James said
+go in chat, which is the point worth recording: that gate is automated inside
+the session and does not read the conversation, so his agreement does not
+clear it and no session should try to route around it. The live prompt
 (`trig_016pPJPsm8D3yUZs81wquraU`) is untouched at 20,560 characters and still
 says "Never push to main". `notes/field-note-prompt.md` is 22,611 characters.
 They differ in six places, all listed in the 20 Sep commit.
+
+The route that works is James pasting it himself, into the Instructions box on
+the routine, from the file. That was recommended over adding a permission rule
+to settings, because the guard has now correctly stopped the same class of
+change twice and an innocuous prompt edit the same day went through untouched,
+so it is discriminating rather than blanket. Do not propose weakening it.
 
 So Wednesday 23 Sep behaves the old way: the issue drafts onto
 `field-note/2026-09-23`, James gets the email, and the link in it is not live.
