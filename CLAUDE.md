@@ -1600,6 +1600,33 @@ worth a commit of its own; tidy it when the routine next touches the file.
   never rewritten; a fix to a deck prompt is made in the deck and the shelf.
 - The audience copies prompts, it does not read them off the screen. Prompt
   slides are built for that.
+- Joelinda joined on 20 Sep, four to five hours a week, growing. Her work is
+  follow-up: invoice emails, after-sales notes, and social drafts later. Hard
+  rule 7 changed for it. Her setup is a **personal Claude Pro on
+  joelinda@magnumai.com.au, paid by James, billed monthly**, not a Team seat.
+  A Team plan was recommended first and withdrawn on his facts: he is on Max
+  20x that flexes to 5x by the month, so a fixed USD $50 is the wrong shape,
+  and one of the two minimum seats would be a login he never opens. Anthropic's
+  own help centre confirms one email can hold both a personal Max account and a
+  Team org account, switched from the account menu, so the Team option stays
+  open with no migration. Do not re-propose it until one of these: a second
+  person joins, she passes about ten hours a week handling client files, or
+  maintaining the project context in two places starts costing retyping.
+  The three Pro gaps are each mitigated in one step: James holds the mailbox so
+  he holds password recovery, he builds her project himself, and he turns the
+  training toggle off before she signs in.
+  Nothing about this ships to the members area. The repo is public and every
+  file in it is fetchable at the Pages URL, `notes/` included, so internal
+  operating material lives in Drive. Three documents are in
+  `Staff Docs / Joelinda Onboarding`: her onboarding document, James's setup
+  checklist, and the project instructions block, which is built on the six
+  levers in order and is the source that the project in her account copies.
+  `james-writes` is deliberately not on her account: she signs her own name, so
+  she gets Magnum's register rather than James's voice. Two prompts were scoped
+  and not built, correctly: after-sales notes runs through Fireflies and Netlify
+  and James has not taught her the pipeline, and social is unsettled. Write them
+  from what he actually does once he has run each one with her, never from a
+  guess about the pipeline.
 
 ## Next
 
