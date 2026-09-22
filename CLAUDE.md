@@ -1565,6 +1565,63 @@ rows 61 and 62 were appended above rows 55 to 60 rather than at the end, so
 the table is not in numeric order. 63 to 65 went in the right place. Not
 worth a commit of its own; tidy it when the routine next touches the file.
 
+**Every routine writes to James in plain English now, 22 Sep, and all six live
+triggers carry it.** He read the Wednesday Field Note email and said the
+writing was too long, too detailed and too pleased with itself, and then said
+the headings were worse: "when you put YOUR CALL I don't even know what you
+mean by that". Both faults were real and both were the prompts, not the model.
+The routine writes beautifully for his clients and like a compliance report for
+him, because nothing in any prompt had ever pointed the voice at him.
+
+The fix is one shared block, `notes/routine-email-style.md`, pasted verbatim
+into all six prompts under the heading WRITING TO JAMES. Short sentences, one
+idea each, plain words, lead with what changed for him rather than what the
+run did, and keep the shop talk (file paths, commit hashes, rule numbers,
+branch names, word counts about its own output) out of the body entirely. All
+of that goes in the run's log or vault file, which the email names in one line
+at the end. The rule that does the most work: cut every sentence that only
+proves you did the work.
+
+Every heading is a plain sentence saying what the block is and what he does
+with it, and every heading carries one line under it before any content saying
+what to do with what follows. The renames, and the shape is the point rather
+than the wording: SEND THIS became SEND THIS TO YOUR CLIENTS, YOUR CALL became
+I NEED YOU TO DECIDE SOMETHING, WHERE IT IS became WHERE TO FIND IT, THE ONE
+THING became THE ONE THING THAT MATTERS THIS WEEK, LEARN THIS became SOMETHING
+WORTH LEARNING, BUILD THIS and WORTH USING became TOOLS AND IDEAS YOU CAN USE,
+WATCH OUT became SOMETHING THAT COULD BITE YOU, SKIPPED became WHAT I IGNORED,
+THE DRAFT became READ THE NEWSLETTER, MAGNUM PROMPTS became PICK ONE OF THESE
+THREE PICTURE IDEAS, WORTH KNOWING became NEW THINGS WORTH KNOWING, and the
+three shelf-card tags became USE IT YOURSELF, USE IT WITH A CLIENT and PUT IT
+IN YOUR MEMBERS AREA.
+
+An empty block says so in its heading rather than in its content. A heading
+reading I NEED YOU TO DECIDE SOMETHING with the word Nothing under it is worse
+than NOTHING NEEDS YOUR ATTENTION and no block at all, so the fact check's
+quiet month is one line reading NOTHING HAS GONE OUT OF DATE.
+
+One near miss worth keeping. The first pass narrowed the Sunday Brief's build
+section to shelf prompts only, which would have quietly dropped the plays he
+actually reads it for. James caught it. It is TOOLS AND IDEAS YOU CAN USE now,
+carrying all three tags and no word ceiling, because that section is the
+product and the email around it is the packaging.
+
+Three build bugs, all the same shape, all caught by diffing rather than by
+eye. A blanket find and replace on a heading name also hits the prose that
+quotes it: the style block's own negative example came out reading that I NEED
+YOU TO DECIDE SOMETHING is both a good heading and a bad one. Another matched
+the first mention of WRITING TO JAMES in a sentence rather than the heading
+itself and ate the heading. And the Field Note scratch file drifted behind the
+live trigger because improvements were typed into the tool call instead of
+into the file. The procedure in the gotchas exists for exactly this and it
+caught all three.
+
+All six triggers were read back and asserted equal to their files: Sunday
+Brief 20,395, Field Note 26,006, This Week in AI draft 14,653, publish and
+publish retry 10,511 each, fact check 7,155. `notes/sunday-brief-prompt.md`,
+`notes/field-note-prompt.md`, `notes/fact-check-prompt.md` and the newsletter
+repo's `ROUTINE.md` carry the same bytes.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from

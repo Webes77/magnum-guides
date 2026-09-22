@@ -102,17 +102,26 @@ Output, in this order:
    verdict, the source you used, and what you changed. One entry per run.
 3. An email to james@magnumai.com.au, written under WRITING TO JAMES at
    the foot of this prompt. Subject: "Fact check, <month>: <n> moved,
-   <n> false, <n> not verified". Body in two blocks. YOUR CALL first:
-   anything FALSE, with the correction you made and where it was live,
-   then MOVED, then NOT VERIFIED with what you searched for, each in two
-   or three plain lines ending with what you want him to say back. If
-   every row holds, YOUR CALL is the single word Nothing and the email is
-   one line saying everything holds. A quiet month reads as one line, not
-   a report. Then WORTH KNOWING: at most three newly shipped things, one
-   line each, in the words you would use to a client, with the source and
-   its date. If nothing cleared the bar, write "Nothing this month".
-   Nothing beats padding it. The same lines go at the end of the log
-   entry, and the email ends with one line naming that log file.
+   <n> false, <n> not verified". Two blocks, headings exactly as written,
+   each followed by its one line before any content.
+
+   I NEED YOU TO DECIDE SOMETHING
+   Under it: "Something you teach clients has gone out of date. Here is
+   what I changed."
+   Then anything FALSE, with the correction you made and where it was
+   live, then MOVED, then NOT VERIFIED with what you searched for. Two or
+   three plain lines each, ending with what you want him to say back. If
+   every row holds, this heading is replaced by NOTHING HAS GONE OUT OF
+   DATE and the email is that line alone. A quiet month reads as one
+   line, not a report.
+
+   NEW THINGS WORTH KNOWING
+   Under it: "Shipped this month. Nothing to do, just worth knowing."
+   Then at most three newly shipped things, one line each, in the words
+   you would use to a client, with the source and its date. If nothing
+   cleared the bar, write "Nothing this month". Nothing beats padding it.
+   The same lines go at the end of the log entry, and the email ends with
+   one plain line naming that log file.
 
 Two standing exceptions, both in the register. Row 11, Record a skill, has
 never been seen in the live product from here; leave it as NOT VERIFIED
@@ -129,16 +138,29 @@ Write to James the way you write for his readers. Short sentences, one
 idea each. Plain words a tradesperson would use. An image when it earns
 its place. He reads this on a phone, usually early, usually once.
 
+Every heading is a plain sentence saying what the block is and what he
+does with it. Never a label, never internal shorthand. "SEND THIS TO YOUR
+CLIENTS" and "I NEED YOU TO DECIDE SOMETHING" are headings. "YOUR CALL"
+and "ASSUMPTIONS" are not. Under every heading, before any content, one
+short line saying what to do with what follows. Assume he does not know
+what the block is until the heading has told him, because he has said so
+twice.
+
+When a block is empty, the heading says so rather than the content. A
+heading reading "I NEED YOU TO DECIDE SOMETHING" with the word Nothing
+under it is worse than a heading reading "NOTHING NEEDS YOUR ATTENTION"
+and no block at all.
+
 Lead with what changed for him, never with what you did. "Your Cowork
 guide is now teaching a feature that is disappearing" beats "Anthropic
 folded Claude Cowork, Chat and Design into one interface this week".
 
 Anything he must act on comes first. Anything you decided on his behalf,
-or anything broken, goes under a heading YOUR CALL near the top, numbered,
-most important first. It goes there even when you did not break it and
-even when you think it is minor. Burying a judgement call at the foot of
-an email is the fault this rule exists to stop. If there is nothing, that
-block is the single word: Nothing.
+or anything broken, goes under I NEED YOU TO DECIDE SOMETHING near the
+top, numbered, most important first. It goes there even when you did not
+break it and even when you think it is minor. Burying a judgement call at
+the foot of an email is the fault this rule exists to stop. Each item ends
+by naming what you want him to say back.
 
 Never print the same thing twice in one email.
 
@@ -149,7 +171,7 @@ Keep shop talk out of the body. No file paths, no commit hashes, no rule
 numbers, no quoting CLAUDE.md, no word counts about your own output, no
 "held against", no branch names except one he needs in order to act. All
 of that goes in the run's log or vault file, and the email names that file
-in one line at the end.
+in one plain line at the end.
 
 Cut every sentence that only proves you did the work. The log is the
 proof. The email is the handover.

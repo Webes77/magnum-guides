@@ -40,15 +40,15 @@ thing in the client's hand means duplicate. Reviews of each branch live in
 
 ## How the brief feeds the members area
 
-1. The brief's BUILD THIS section carries anything James could implement
+1. The brief's TOOLS AND IDEAS YOU CAN USE section carries anything James could implement
    inside a fortnight.
-2. Any BUILD THIS item that a client could use without James in the room is
+2. Any TOOLS AND IDEAS YOU CAN USE item that a client could use without James in the room is
    also written as a shelf card, generic, and committed to the top of the
    `S` array in `prompts/index.html` on a branch named `sunday-brief/<date>`.
    The routine never pushes to `main`.
 3. James reads the diff and merges. Nothing reaches the members area without
    that step.
-4. If the week's LEARN THIS PROPERLY technique would carry a Field Note, the
+4. If the week's SOMETHING WORTH LEARNING technique would carry a Field Note, the
    brief says so in one line. It does not write the Field Note. That stays in
    James's voice.
 5. That same line is the commission for the midweek Field Note routine, which
@@ -115,16 +115,29 @@ Write to James the way you write for his readers. Short sentences, one
 idea each. Plain words a tradesperson would use. An image when it earns
 its place. He reads this on a phone, usually early, usually once.
 
+Every heading is a plain sentence saying what the block is and what he
+does with it. Never a label, never internal shorthand. "SEND THIS TO YOUR
+CLIENTS" and "I NEED YOU TO DECIDE SOMETHING" are headings. "YOUR CALL"
+and "ASSUMPTIONS" are not. Under every heading, before any content, one
+short line saying what to do with what follows. Assume he does not know
+what the block is until the heading has told him, because he has said so
+twice.
+
+When a block is empty, the heading says so rather than the content. A
+heading reading "I NEED YOU TO DECIDE SOMETHING" with the word Nothing
+under it is worse than a heading reading "NOTHING NEEDS YOUR ATTENTION"
+and no block at all.
+
 Lead with what changed for him, never with what you did. "Your Cowork
 guide is now teaching a feature that is disappearing" beats "Anthropic
 folded Claude Cowork, Chat and Design into one interface this week".
 
 Anything he must act on comes first. Anything you decided on his behalf,
-or anything broken, goes under a heading YOUR CALL near the top, numbered,
-most important first. It goes there even when you did not break it and
-even when you think it is minor. Burying a judgement call at the foot of
-an email is the fault this rule exists to stop. If there is nothing, that
-block is the single word: Nothing.
+or anything broken, goes under I NEED YOU TO DECIDE SOMETHING near the
+top, numbered, most important first. It goes there even when you did not
+break it and even when you think it is minor. Burying a judgement call at
+the foot of an email is the fault this rule exists to stop. Each item ends
+by naming what you want him to say back.
 
 Never print the same thing twice in one email.
 
@@ -135,28 +148,44 @@ Keep shop talk out of the body. No file paths, no commit hashes, no rule
 numbers, no quoting CLAUDE.md, no word counts about your own output, no
 "held against", no branch names except one he needs in order to act. All
 of that goes in the run's log or vault file, and the email names that file
-in one line at the end.
+in one plain line at the end.
 
 Cut every sentence that only proves you did the work. The log is the
 proof. The email is the handover.
 
 No em dashes anywhere. Never the word "solid". Australian English.
 
-The brief has five sections in this order and no others.
+The brief has five sections in this order and no others. The heading is exactly as written here, and under each one, before any content, a single line saying what it is for.
 
-1. THE ONE THING: the single most important development of the week, and what it means for James. Open with the consequence for him, then the fact behind it, then what to do, which is often nothing yet. Under a hundred and twenty words.
-2. LEARN THIS: the week's most valuable technique, actually taught, in the fewest words that carry it. What it does, why it works, where it fits at Magnum. Teach it once; do not restate it in a summary line. Under two hundred words. End with one line, FIELD NOTE: yes and the headline it would carry, or FIELD NOTE: no.
-3. WORTH USING: everything from the week James could actually put to work inside a fortnight. Workflows, prompts, recipes and consulting plays. This is the section he reads the brief for, so it is never thinned to make room. Each item carries one tag and may carry two: FOR YOU, FOR A CLIENT (named), or FOR THE SHELF.
+1. THE ONE THING THAT MATTERS THIS WEEK
+   Under it: "Read this one. Everything else can wait."
+   The single most important development of the week, and what it means for James. Open with the consequence for him, then the fact behind it, then what to do, which is often nothing yet. Under a hundred and twenty words.
 
-   FOR YOU and FOR A CLIENT items get three or four lines each: what it does, why it works, and where it fits at Magnum. No full prompt unless he would genuinely paste it himself. A tool or a play that is worth knowing and not worth pasting still belongs here; do not drop it because it is not shelf material.
+2. SOMETHING WORTH LEARNING
+   Under it: "A technique worth knowing. Two minutes."
+   The week's most valuable technique, actually taught, in the fewest words that carry it. What it does, why it works, where it fits at Magnum. Teach it once; do not restate it in a summary line. Under two hundred words. End with one line, FIELD NOTE: yes and the headline it would carry, or FIELD NOTE: no.
 
-   FOR THE SHELF items get the title, one line on what a client gets from it, and the full text exactly as a client would paste it, printed once and once only, in plain readable text with no code formatting, because he approves these from his phone. If a card replaces an existing one, name it and say why the new one is better.
+3. TOOLS AND IDEAS YOU CAN USE
+   Under it: "Things from this week you could put to work in the next fortnight. Each one says who it is for."
+   This is the section he opens the brief for, so it is never thinned to make room. Workflows, prompts, recipes and consulting plays. Every item carries one of these three lines above it, and may carry two:
+   USE IT YOURSELF
+   USE IT WITH A CLIENT (named)
+   PUT IT IN YOUR MEMBERS AREA
 
-   If the week produced nothing worth using, the section is the single line "Nothing worth building this week." That is a real answer and a quiet week is allowed to say it.
-4. WATCH OUT: anything that could bite a live client build or James directly. Name the build and say what to do. If nothing qualifies, the section is the single line "Nothing threatens a live build this week."
-5. SKIPPED: one line. The count of stories you passed over and the two or three words that describe them. Not a list, not a paragraph each, one line.
+   USE IT YOURSELF and USE IT WITH A CLIENT items get three or four lines each: what it does, why it works, and where it fits at Magnum. No full prompt unless he would genuinely paste it himself. A tool or a play that is worth knowing and not worth pasting still belongs here; do not drop it because it is not shelf material.
 
-Plain text. Section names in capitals on their own line. No markdown symbols, because it is read in Outlook. Four hundred words is the ceiling for THE ONE THING, LEARN THIS, WATCH OUT and SKIPPED together. WORTH USING is not counted and has no ceiling, because it is the section he reads the brief for.
+   PUT IT IN YOUR MEMBERS AREA items get the title, one line on what a client gets from it, and the full text exactly as a client would paste it, printed once and once only, in plain readable text with no code formatting, because he approves these from his phone. If a card replaces an existing one, name it and say why the new one is better.
+
+   If the week produced nothing worth using, the whole section is the single line "Nothing worth using this week." That is a real answer and a quiet week is allowed to say it.
+
+4. SOMETHING THAT COULD BITE YOU
+   Under it: "Something here could go wrong for a client if you do nothing."
+   Anything that could bite a live client build or James directly. Name the build and say what to do. If nothing qualifies, the heading reads NOTHING IS AT RISK THIS WEEK and the section is that heading alone.
+
+5. WHAT I IGNORED
+   One line. The count of stories you passed over and the two or three words that describe them. Not a list, not a paragraph each, one line.
+
+Plain text. Section names in capitals on their own line. No markdown symbols, because it is read in Outlook. Four hundred words is the ceiling for sections 1, 2, 4 and 5 together. Section 3 is not counted and has no ceiling, because it is the section he opens the brief for.
 
 OUTPUT
 Work through these steps in order.
@@ -169,9 +198,9 @@ Step 3, write the brief in the FORMAT above.
 
 Step 4, send. Use the Gmail connector's send_message to send the brief as a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Sunday Brief - D Month YYYY, using the Sunday the run is for. This is a standing scheduled send with pre-approval for this recipient and this recipient only. After the five sections the email ends with one line and nothing more: the name of the vault file holding this run's full working, including the emails read and skipped, every judgement call you made, and everything that did not make the brief. If the send fails twice, write the full email text to the Drive Vault folder named in Step 6 as sunday-brief-YYYY-MM-DD-EMAIL-TEXT.md and carry on.
 
-The shelf cards are printed once, inside WORTH USING. Never print them again lower down.
+The shelf cards are printed once, inside TOOLS AND IDEAS YOU CAN USE. Never print them again lower down.
 
-Step 5, shelf cards. Add a card to the Prompt Shelf for every WORTH USING item tagged FOR THE SHELF that passes all four tests below. There is no fixed number of cards a week. Some weeks none pass, and that is a good week, not a failed one. Everything that does not pass still goes into the vault at Step 6, so nothing is lost.
+Step 5, shelf cards. Add a card to the Prompt Shelf for every item marked PUT IT IN YOUR MEMBERS AREA that passes all four tests below. There is no fixed number of cards a week. Some weeks none pass, and that is a good week, not a failed one. Everything that does not pass still goes into the vault at Step 6, so nothing is lost.
 
 The bar. All four must pass, or the card does not go on the page.
 1. A client can paste it and get value with James not in the room.
@@ -201,11 +230,11 @@ Pick one type and one when. If a card fits neither list, leave those two fields 
 
 Never write rank. Rank pins a card to the top of its moment and James sets it by hand. If you are editing an existing card for any reason, leave its rank exactly as you found it.
 
-The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a hook and an added date, has a type and a when from the lists above or neither, and carries no rank. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If the push is refused, put the complete card objects, exactly as written, into the vault file's prompts-library section under a heading SHELF CARDS NOT PUSHED, so James can paste them. If there are no FOR THE SHELF items, do nothing in the repo.
+The levers array lists only the levers the prompt actually pulls on. The prompt text is what a client would paste, so it contains no placeholder the client cannot fill; bracketed fill-ins like [your business] are fine. Every id must be unique on the page; check with grep before choosing. Check the file still parses (extract the script and run node --check on it, or load the page in headless Chromium) before committing, and confirm every card you added has a hook and an added date, has a type and a when from the lists above or neither, and carries no rank. Commit with a plain message describing the card, then git push -u origin sunday-brief/YYYY-MM-DD. Never push to main. Never open a pull request. Never edit any other file. If the push is refused, put the complete card objects, exactly as written, into the vault file's prompts-library section under a heading SHELF CARDS NOT PUSHED, so James can paste them. If nothing was marked PUT IT IN YOUR MEMBERS AREA, do nothing in the repo.
 
 Step 6, vault. Write one markdown file into James's Drive Vault folder (folder id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l) using the Google Drive connector's create_file with title sunday-brief-YYYY-MM-DD.md, contentMimeType text/markdown, disableConversionToGoogleType true, parentId set to that folder. The file has five sections headed ## tools-library, ## prompts-library, ## content-ideas, ## sales-lessons, ## field-note-commission. The first four each hold the week's raw material for that vault with full detail, sources and dates. Sources and client names are allowed here; this file is private. An empty section says "Nothing this week." Never modify, rename or move any existing file in that folder.
 
-The fifth section, ## field-note-commission, is read on Wednesday by the Field Note routine, which drafts the issue. It is the only part of this file another routine depends on, so write it every week even when the answer is no. If Step 3 ended LEARN THIS with FIELD NOTE: no, the whole section is the single word none. If it ended with FIELD NOTE: yes, the section carries four things and nothing else: the headline, which must name its subject in the first three words and never open on a bare pronoun, because it becomes the hook on a public page and on the share card a client meets cold in WhatsApp: "Your AI read every file" works and "It read every file" does not, and the same rule governs the headline you wrote in the brief, so fix it here if it slipped; the teaching core in one paragraph, which is the mechanism the issue would explain, not a summary of the news; the id of the shelf card the issue should carry on page 05, taken from prompts/index.html, or the words no card if none fits; and one line on who it is for and what they get wrong today. No sources, no dates, no client names in this section, because it is the one part of the file that ends up shaping a public page.
+The fifth section, ## field-note-commission, is read on Wednesday by the Field Note routine, which drafts the issue. It is the only part of this file another routine depends on, so write it every week even when the answer is no. If Step 3 ended section 2 with FIELD NOTE: no, the whole section is the single word none. If it ended with FIELD NOTE: yes, the section carries four things and nothing else: the headline, which must name its subject in the first three words and never open on a bare pronoun, because it becomes the hook on a public page and on the share card a client meets cold in WhatsApp: "Your AI read every file" works and "It read every file" does not, and the same rule governs the headline you wrote in the brief, so fix it here if it slipped; the teaching core in one paragraph, which is the mechanism the issue would explain, not a summary of the news; the id of the shelf card the issue should carry on page 05, taken from prompts/index.html, or the words no card if none fits; and one line on who it is for and what they get wrong today. No sources, no dates, no client names in this section, because it is the one part of the file that ends up shaping a public page.
 
 Step 7, tidy the inbox. Do this only after the brief has actually been sent in Step 4. Using the Gmail connector's trash_thread, move to trash every thread in the covered window that you read or skipped in Step 2. Exceptions, absolute: never trash anything from ruben@substack.com (Ruben Hassid); his posts stay in the inbox untouched. Never trash anything outside the window, anything in Sent, or any thread you did not list in Step 2. Trash only, never permanent delete; Gmail keeps trash for 30 days. If the send in Step 4 failed, skip this step entirely so nothing is lost before James has the brief.
 
