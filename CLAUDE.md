@@ -1567,11 +1567,10 @@ worth a commit of its own; tidy it when the routine next touches the file.
 
 **Every routine writes to James in plain English now, 22 Sep, and all six live
 triggers carry it.** He read the Wednesday Field Note email and said the
-writing was too long, too detailed and too pleased with itself, and then said
-the headings were worse: "when you put YOUR CALL I don't even know what you
-mean by that". Both faults were real and both were the prompts, not the model.
-The routine writes beautifully for his clients and like a compliance report for
-him, because nothing in any prompt had ever pointed the voice at him.
+writing was too long, too detailed and too pleased with itself. Then he read
+the fix and said the headings were worse: "when you put YOUR CALL I don't even
+know what you mean by that". Then he read that fix and sharpened it twice
+more, and the second round is the one that matters.
 
 The fix is one shared block, `notes/routine-email-style.md`, pasted verbatim
 into all six prompts under the heading WRITING TO JAMES. Short sentences, one
@@ -1582,23 +1581,31 @@ of that goes in the run's log or vault file, which the email names in one line
 at the end. The rule that does the most work: cut every sentence that only
 proves you did the work.
 
-Every heading is a plain sentence saying what the block is and what he does
-with it, and every heading carries one line under it before any content saying
-what to do with what follows. The renames, and the shape is the point rather
-than the wording: SEND THIS became SEND THIS TO YOUR CLIENTS, YOUR CALL became
-I NEED YOU TO DECIDE SOMETHING, WHERE IT IS became WHERE TO FIND IT, THE ONE
-THING became THE ONE THING THAT MATTERS THIS WEEK, LEARN THIS became SOMETHING
-WORTH LEARNING, BUILD THIS and WORTH USING became TOOLS AND IDEAS YOU CAN USE,
-WATCH OUT became SOMETHING THAT COULD BITE YOU, SKIPPED became WHAT I IGNORED,
-THE DRAFT became READ THE NEWSLETTER, MAGNUM PROMPTS became PICK ONE OF THESE
-THREE PICTURE IDEAS, WORTH KNOWING became NEW THINGS WORTH KNOWING, and the
-three shelf-card tags became USE IT YOURSELF, USE IT WITH A CLIENT and PUT IT
-IN YOUR MEMBERS AREA.
+**A heading is an instruction, not a name.** That is the rule, in his words:
+"This sounds like a slogan. I need clear instruction every time." A plain
+sentence naming the block was the first attempt and it was not enough, because
+a name still leaves him working out what to do with it. Every heading now
+tells him to do something, and carries one line under it before any content
+saying what to do with what follows. The set: SEND THIS TO YOUR CLIENTS, MAKE
+A DECISION ON EACH ITEM BELOW, READ IT HERE BEFORE YOU SEND IT, WHAT I NEED
+YOU TO DO, READ THE NEWSLETTER, PICK ONE OF THESE THREE PICTURE IDEAS, THE ONE
+THING THAT MATTERS THIS WEEK, LEARN THIS ONE THING, TOOLS AND IDEAS YOU CAN
+USE, WATCH THIS ONE IT COULD COST YOU, NEW THINGS WORTH KNOWING, and the three
+card tags USE IT YOURSELF, USE IT WITH A CLIENT, PUT IT IN YOUR MEMBERS AREA.
+If a heading could be read as a title, it gets rewritten as a command.
 
-An empty block says so in its heading rather than in its content. A heading
-reading I NEED YOU TO DECIDE SOMETHING with the word Nothing under it is worse
-than NOTHING NEEDS YOUR ATTENTION and no block at all, so the fact check's
-quiet month is one line reading NOTHING HAS GONE OUT OF DATE.
+An empty block says so in its heading rather than in its content. MAKE A
+DECISION ON EACH ITEM BELOW with the word Nothing under it is worse than
+NOTHING NEEDS A DECISION THIS WEEK and no block at all, which is also why the
+fact check's quiet month is one line reading NOTHING HAS GONE OUT OF DATE.
+
+**Nothing is ever reported as skipped.** "I don't need you to tell me what
+you've skipped. I'm not interested in any of that." So the Sunday Brief's
+fifth section, the Skip List, is deleted rather than renamed, the brief is
+four sections, and the one-line-with-a-count allowance is gone from every
+routine. What a run left out goes in the log or the vault file. This is the
+same principle as the shop talk rule: the log is the proof, the email is the
+handover.
 
 One near miss worth keeping. The first pass narrowed the Sunday Brief's build
 section to shelf prompts only, which would have quietly dropped the plays he
@@ -1606,21 +1613,27 @@ actually reads it for. James caught it. It is TOOLS AND IDEAS YOU CAN USE now,
 carrying all three tags and no word ceiling, because that section is the
 product and the email around it is the packaging.
 
-Three build bugs, all the same shape, all caught by diffing rather than by
-eye. A blanket find and replace on a heading name also hits the prose that
-quotes it: the style block's own negative example came out reading that I NEED
-YOU TO DECIDE SOMETHING is both a good heading and a bad one. Another matched
-the first mention of WRITING TO JAMES in a sentence rather than the heading
-itself and ate the heading. And the Field Note scratch file drifted behind the
-live trigger because improvements were typed into the tool call instead of
-into the file. The procedure in the gotchas exists for exactly this and it
-caught all three.
+Four build bugs, all the same shape, all caught by diffing rather than by eye.
+A blanket find and replace on a heading name also hits the prose that quotes
+it: the style block's own negative example came out reading that the good
+heading is also the bad one. Twice, a match on the first mention of WRITING TO
+JAMES inside a sentence ate the heading itself; the second time it landed in
+the style document. And the Field Note scratch file drifted behind the live
+trigger because improvements were typed into the tool call instead of into the
+file. The procedure in the gotchas exists for exactly this and it caught all
+four. When a section is deleted rather than renamed, grep for what pointed at
+it: the Skip List left two live references behind, one a word ceiling and one
+a routing rule.
 
 All six triggers were read back and asserted equal to their files: Sunday
-Brief 20,395, Field Note 26,006, This Week in AI draft 14,653, publish and
-publish retry 10,511 each, fact check 7,155. `notes/sunday-brief-prompt.md`,
+Brief 20,498, Field Note 26,313, This Week in AI draft 14,907, publish and
+publish retry 10,798 each, fact check 7,409. `notes/sunday-brief-prompt.md`,
 `notes/field-note-prompt.md`, `notes/fact-check-prompt.md` and the newsletter
 repo's `ROUTINE.md` carry the same bytes.
+
+The Wednesday Field Note fired at 6:06am on 23 Sep, about ninety minutes
+before the second round of this went live, so that issue is in the old shape.
+The Sunday Brief on 27 Sep is the first email in the new one.
 
 ## Decisions already made
 

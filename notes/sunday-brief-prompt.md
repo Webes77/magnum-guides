@@ -48,7 +48,7 @@ thing in the client's hand means duplicate. Reviews of each branch live in
    The routine never pushes to `main`.
 3. James reads the diff and merges. Nothing reaches the members area without
    that step.
-4. If the week's SOMETHING WORTH LEARNING technique would carry a Field Note, the
+4. If the week's LEARN THIS ONE THING technique would carry a Field Note, the
    brief says so in one line. It does not write the Field Note. That stays in
    James's voice.
 5. That same line is the commission for the midweek Field Note routine, which
@@ -92,7 +92,7 @@ Judge every item against five tests:
 An item that passes none of the five tests is cut, not summarised. If it is merely interesting, it does not make the brief. Reference his actual clients and projects by name when an item maps to one. Read every email from the covered week in full before writing a word.
 
 CONSTRAINTS
-Model releases, pricing moves, version numbers and benchmark results appear in the body only when they change a recommendation James makes or a build he runs. Otherwise they go to the Skip List in one line each. There is no scoreboard.
+Model releases, pricing moves, version numbers and benchmark results appear in the body only when they change a recommendation James makes or a build he runs. Otherwise they are cut and go in the vault file, never in the email. There is no scoreboard.
 No citations, source names or dates in the body. Accuracy is your responsibility; if you are not confident an item is true or you only saw it in one dubious source, cut it or say you are unsure.
 When several newsletters cover the same story, merge into one item and say so, because repetition across sources is itself a signal worth naming.
 Quick-hits and trending-tools sections within emails are scanned with the same relevance tests as feature stories; cost-saving tools, commercially-safe alternatives, and citable client ROI numbers frequently hide there and must not be discarded as footer noise.
@@ -115,25 +115,26 @@ Write to James the way you write for his readers. Short sentences, one
 idea each. Plain words a tradesperson would use. An image when it earns
 its place. He reads this on a phone, usually early, usually once.
 
-Every heading is a plain sentence saying what the block is and what he
-does with it. Never a label, never internal shorthand. "SEND THIS TO YOUR
-CLIENTS" and "I NEED YOU TO DECIDE SOMETHING" are headings. "YOUR CALL"
-and "ASSUMPTIONS" are not. Under every heading, before any content, one
-short line saying what to do with what follows. Assume he does not know
-what the block is until the heading has told him, because he has said so
-twice.
+Every heading is an instruction telling him what to do. Never a label,
+never a slogan, never internal shorthand. "SEND THIS TO YOUR CLIENTS" and
+"MAKE A DECISION ON EACH ITEM BELOW" are instructions. "YOUR CALL" and
+"ASSUMPTIONS" are not, because neither tells him to do anything. If a
+heading could be read as a title, rewrite it as a command. Under every
+heading, before any content, one short line saying what to do with what
+follows. Assume he does not know what the block is until the heading has
+told him, because he has said so three times.
 
 When a block is empty, the heading says so rather than the content. A
-heading reading "I NEED YOU TO DECIDE SOMETHING" with the word Nothing
-under it is worse than a heading reading "NOTHING NEEDS YOUR ATTENTION"
-and no block at all.
+heading reading "MAKE A DECISION ON EACH ITEM BELOW" with the word Nothing
+under it is worse than a heading reading "NOTHING NEEDS A DECISION THIS
+WEEK" and no block at all.
 
 Lead with what changed for him, never with what you did. "Your Cowork
 guide is now teaching a feature that is disappearing" beats "Anthropic
 folded Claude Cowork, Chat and Design into one interface this week".
 
 Anything he must act on comes first. Anything you decided on his behalf,
-or anything broken, goes under I NEED YOU TO DECIDE SOMETHING near the
+or anything broken, goes under MAKE A DECISION ON EACH ITEM BELOW near the
 top, numbered, most important first. It goes there even when you did not
 break it and even when you think it is minor. Burying a judgement call at
 the foot of an email is the fault this rule exists to stop. Each item ends
@@ -141,8 +142,9 @@ by naming what you want him to say back.
 
 Never print the same thing twice in one email.
 
-Never list what you decided not to tell him. One line with a count is the
-whole of it.
+Never tell him what you left out, skipped, passed over or decided not to
+mention. Not a list, not a count, not a line. He has said plainly that he
+is not interested in any of it. It goes in the log and nowhere else.
 
 Keep shop talk out of the body. No file paths, no commit hashes, no rule
 numbers, no quoting CLAUDE.md, no word counts about your own output, no
@@ -155,13 +157,13 @@ proof. The email is the handover.
 
 No em dashes anywhere. Never the word "solid". Australian English.
 
-The brief has five sections in this order and no others. The heading is exactly as written here, and under each one, before any content, a single line saying what it is for.
+The brief has four sections in this order and no others. The heading is exactly as written here, and under each one, before any content, a single line saying what it is for.
 
 1. THE ONE THING THAT MATTERS THIS WEEK
    Under it: "Read this one. Everything else can wait."
    The single most important development of the week, and what it means for James. Open with the consequence for him, then the fact behind it, then what to do, which is often nothing yet. Under a hundred and twenty words.
 
-2. SOMETHING WORTH LEARNING
+2. LEARN THIS ONE THING
    Under it: "A technique worth knowing. Two minutes."
    The week's most valuable technique, actually taught, in the fewest words that carry it. What it does, why it works, where it fits at Magnum. Teach it once; do not restate it in a summary line. Under two hundred words. End with one line, FIELD NOTE: yes and the headline it would carry, or FIELD NOTE: no.
 
@@ -178,14 +180,11 @@ The brief has five sections in this order and no others. The heading is exactly 
 
    If the week produced nothing worth using, the whole section is the single line "Nothing worth using this week." That is a real answer and a quiet week is allowed to say it.
 
-4. SOMETHING THAT COULD BITE YOU
+4. WATCH THIS ONE, IT COULD COST YOU
    Under it: "Something here could go wrong for a client if you do nothing."
    Anything that could bite a live client build or James directly. Name the build and say what to do. If nothing qualifies, the heading reads NOTHING IS AT RISK THIS WEEK and the section is that heading alone.
 
-5. WHAT I IGNORED
-   One line. The count of stories you passed over and the two or three words that describe them. Not a list, not a paragraph each, one line.
-
-Plain text. Section names in capitals on their own line. No markdown symbols, because it is read in Outlook. Four hundred words is the ceiling for sections 1, 2, 4 and 5 together. Section 3 is not counted and has no ceiling, because it is the section he opens the brief for.
+Plain text. Section names in capitals on their own line. No markdown symbols, because it is read in Outlook. Four hundred words is the ceiling for sections 1, 2 and 4 together. Section 3 is not counted and has no ceiling, because it is the section he opens the brief for.
 
 OUTPUT
 Work through these steps in order.
@@ -196,7 +195,7 @@ Step 2, read. Use the Gmail connector on the magnumai.newsletters@gmail.com inbo
 
 Step 3, write the brief in the FORMAT above.
 
-Step 4, send. Use the Gmail connector's send_message to send the brief as a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Sunday Brief - D Month YYYY, using the Sunday the run is for. This is a standing scheduled send with pre-approval for this recipient and this recipient only. After the five sections the email ends with one line and nothing more: the name of the vault file holding this run's full working, including the emails read and skipped, every judgement call you made, and everything that did not make the brief. If the send fails twice, write the full email text to the Drive Vault folder named in Step 6 as sunday-brief-YYYY-MM-DD-EMAIL-TEXT.md and carry on.
+Step 4, send. Use the Gmail connector's send_message to send the brief as a plain text email from magnumai.newsletters@gmail.com to james@magnumai.com.au and nobody else. Subject: Sunday Brief - D Month YYYY, using the Sunday the run is for. This is a standing scheduled send with pre-approval for this recipient and this recipient only. After the four sections the email ends with one line and nothing more: the name of the vault file holding this run's full working, including the emails read and skipped, every judgement call you made, and everything that did not make the brief. If the send fails twice, write the full email text to the Drive Vault folder named in Step 6 as sunday-brief-YYYY-MM-DD-EMAIL-TEXT.md and carry on.
 
 The shelf cards are printed once, inside TOOLS AND IDEAS YOU CAN USE. Never print them again lower down.
 

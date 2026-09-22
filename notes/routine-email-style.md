@@ -30,6 +30,25 @@ Routines carrying it: Weekly Field Note draft, Sunday Brief, This Week in
 AI draft, This Week in AI publish, This Week in AI publish retry, Members
 area fact check.
 
+He came back again the same day, sharper. "I don't need you to tell me
+what you've skipped. I'm not interested in any of that." And on the
+heading: "I don't even know what you mean by your call. In other words
+you're saying, please make a decision from the below. This sounds like a
+slogan. I need clear instruction every time."
+
+So two more things changed. Every heading is now an instruction telling
+him to do something, not a plain sentence naming the block: I NEED YOU TO
+DECIDE SOMETHING became MAKE A DECISION ON EACH ITEM BELOW, WHERE TO FIND
+IT became READ IT HERE BEFORE YOU SEND IT, SOMETHING WORTH LEARNING became
+LEARN THIS ONE THING, and SOMETHING THAT COULD BITE YOU became WATCH THIS
+ONE, IT COULD COST YOU. If a heading could be read as a title, it is
+rewritten as a command.
+
+And nothing is ever reported as skipped. The Sunday Brief's fifth section,
+WHAT I IGNORED, is deleted rather than renamed, and the one-line-with-a-
+count allowance is gone from every routine. What a run left out goes in
+the log or the vault file and never in the email.
+
 ---
 
 WRITING TO JAMES
@@ -38,25 +57,26 @@ Write to James the way you write for his readers. Short sentences, one
 idea each. Plain words a tradesperson would use. An image when it earns
 its place. He reads this on a phone, usually early, usually once.
 
-Every heading is a plain sentence saying what the block is and what he
-does with it. Never a label, never internal shorthand. "SEND THIS TO YOUR
-CLIENTS" and "I NEED YOU TO DECIDE SOMETHING" are headings. "YOUR CALL"
-and "ASSUMPTIONS" are not. Under every heading, before any content, one
-short line saying what to do with what follows. Assume he does not know
-what the block is until the heading has told him, because he has said so
-twice.
+Every heading is an instruction telling him what to do. Never a label,
+never a slogan, never internal shorthand. "SEND THIS TO YOUR CLIENTS" and
+"MAKE A DECISION ON EACH ITEM BELOW" are instructions. "YOUR CALL" and
+"ASSUMPTIONS" are not, because neither tells him to do anything. If a
+heading could be read as a title, rewrite it as a command. Under every
+heading, before any content, one short line saying what to do with what
+follows. Assume he does not know what the block is until the heading has
+told him, because he has said so three times.
 
 When a block is empty, the heading says so rather than the content. A
-heading reading "I NEED YOU TO DECIDE SOMETHING" with the word Nothing
-under it is worse than a heading reading "NOTHING NEEDS YOUR ATTENTION"
-and no block at all.
+heading reading "MAKE A DECISION ON EACH ITEM BELOW" with the word Nothing
+under it is worse than a heading reading "NOTHING NEEDS A DECISION THIS
+WEEK" and no block at all.
 
 Lead with what changed for him, never with what you did. "Your Cowork
 guide is now teaching a feature that is disappearing" beats "Anthropic
 folded Claude Cowork, Chat and Design into one interface this week".
 
 Anything he must act on comes first. Anything you decided on his behalf,
-or anything broken, goes under I NEED YOU TO DECIDE SOMETHING near the
+or anything broken, goes under MAKE A DECISION ON EACH ITEM BELOW near the
 top, numbered, most important first. It goes there even when you did not
 break it and even when you think it is minor. Burying a judgement call at
 the foot of an email is the fault this rule exists to stop. Each item ends
@@ -64,8 +84,9 @@ by naming what you want him to say back.
 
 Never print the same thing twice in one email.
 
-Never list what you decided not to tell him. One line with a count is the
-whole of it.
+Never tell him what you left out, skipped, passed over or decided not to
+mention. Not a list, not a count, not a line. He has said plainly that he
+is not interested in any of it. It goes in the log and nowhere else.
 
 Keep shop talk out of the body. No file paths, no commit hashes, no rule
 numbers, no quoting CLAUDE.md, no word counts about your own output, no
