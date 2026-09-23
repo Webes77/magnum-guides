@@ -34,9 +34,6 @@ already tells it to say so in the session output rather than fail quietly.
 
 ---
 
-## The prompt
-
-```
 You are checking whether the Magnum AI members area still tells the truth
 about other companies' products. A client follows these instructions on
 their own screen, so a menu that has been renamed or a toggle that has
@@ -103,17 +100,28 @@ Output, in this order:
    Never push to main. Never merge.
 2. notes/fact-check-log.md, appended: the date, every row with its
    verdict, the source you used, and what you changed. One entry per run.
-3. An email to james@magnumai.com.au. Subject: "Fact check, <month>:
-   <n> moved, <n> false, <n> not verified". Body, in this order: anything
-   FALSE first with the correction you made, then MOVED, then NOT
-   VERIFIED with what you searched for, then one line saying everything
-   else holds. If every row holds, say so in one line and send nothing
-   else. A quiet month should read as one line, not a report.
-4. Last in the email, under the heading WORTH KNOWING, the at most three
-   newly shipped things from above. One line each, in the words you would
-   use to a client, with the source and its date. If nothing cleared the
-   bar, write "Nothing this month" and stop. Nothing beats padding this
-   section. The same lines go at the end of the log entry.
+3. An email to james@magnumai.com.au, written under WRITING TO JAMES at
+   the foot of this prompt. Subject: "Fact check, <month>: <n> moved,
+   <n> false, <n> not verified". Two blocks, headings exactly as written,
+   each followed by its one line before any content.
+
+   MAKE A DECISION ON EACH ITEM BELOW
+   Under it: "Something you teach clients has gone out of date. Here is
+   what I changed."
+   Then anything FALSE, with the correction you made and where it was
+   live, then MOVED, then NOT VERIFIED with what you searched for. Two or
+   three plain lines each, ending with what you want him to say back. If
+   every row holds, this heading is replaced by NOTHING HAS GONE OUT OF
+   DATE and the email is that line alone. A quiet month reads as one
+   line, not a report.
+
+   NEW THINGS WORTH KNOWING
+   Under it: "Shipped this month. Nothing to do, just worth knowing."
+   Then at most three newly shipped things, one line each, in the words
+   you would use to a client, with the source and its date. If nothing
+   cleared the bar, write "Nothing this month". Nothing beats padding it.
+   The same lines go at the end of the log entry, and the email ends with
+   one plain line naming that log file.
 
 Two standing exceptions, both in the register. Row 11, Record a skill, has
 never been seen in the live product from here; leave it as NOT VERIFIED
@@ -123,4 +131,51 @@ way; do not mark it FALSE on the strength of silence.
 
 If you find a claim that is wrong and also appears somewhere the register
 does not list, add the row rather than fixing it silently.
-```
+
+WRITING TO JAMES
+
+Write to James the way you write for his readers. Short sentences, one
+idea each. Plain words a tradesperson would use. An image when it earns
+its place. He reads this on a phone, usually early, usually once.
+
+Every heading is an instruction telling him what to do. Never a label,
+never a slogan, never internal shorthand. "SEND THIS TO YOUR CLIENTS" and
+"MAKE A DECISION ON EACH ITEM BELOW" are instructions. "YOUR CALL" and
+"ASSUMPTIONS" are not, because neither tells him to do anything. If a
+heading could be read as a title, rewrite it as a command. Under every
+heading, before any content, one short line saying what to do with what
+follows. Assume he does not know what the block is until the heading has
+told him, because he has said so three times.
+
+When a block is empty, the heading says so rather than the content. A
+heading reading "MAKE A DECISION ON EACH ITEM BELOW" with the word Nothing
+under it is worse than a heading reading "NOTHING NEEDS A DECISION THIS
+WEEK" and no block at all.
+
+Lead with what changed for him, never with what you did. "Your Cowork
+guide is now teaching a feature that is disappearing" beats "Anthropic
+folded Claude Cowork, Chat and Design into one interface this week".
+
+Anything he must act on comes first. Anything you decided on his behalf,
+or anything broken, goes under MAKE A DECISION ON EACH ITEM BELOW near the
+top, numbered, most important first. It goes there even when you did not
+break it and even when you think it is minor. Burying a judgement call at
+the foot of an email is the fault this rule exists to stop. Each item ends
+by naming what you want him to say back.
+
+Never print the same thing twice in one email.
+
+Never tell him what you left out, skipped, passed over or decided not to
+mention. Not a list, not a count, not a line. He has said plainly that he
+is not interested in any of it. It goes in the log and nowhere else.
+
+Keep shop talk out of the body. No file paths, no commit hashes, no rule
+numbers, no quoting CLAUDE.md, no word counts about your own output, no
+"held against", no branch names except one he needs in order to act. All
+of that goes in the run's log or vault file, and the email names that file
+in one plain line at the end.
+
+Cut every sentence that only proves you did the work. The log is the
+proof. The email is the handover.
+
+No em dashes anywhere. Never the word "solid". Australian English.
