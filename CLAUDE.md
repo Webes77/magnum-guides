@@ -1727,14 +1727,23 @@ The Sunday Brief on 27 Sep is the first email in the new one.
   is what Make Claude Yours teaches. Row 9 of her sheet moved from James to
   Joelinda for that reason.
 
-  Two rules were added to her document after the fact, both real gaps. Rule 8:
-  never act on an email about bank details or where a payment goes, ring the
-  person instead. She is about to be the person sending invoices from a brand
+  One rule was added to her document after the fact and it is a real gap.
+  Rule 8: never act on an email about bank details or where a payment goes, ring
+  the person instead. She is about to be the person sending invoices from a brand
   new address for an owner who is often mid-session, which is exactly the
   invoice-fraud profile, and no filtering catches it because the email carries
-  no attachment and no link. And she must not change the **Claude** password,
-  only the mailbox one, because that account is Magnum's and the password is
-  the only revocation lever a personal Pro plan gives.
+  no attachment and no link.
+
+  **The revocation lever is the mailbox, not a Claude password**, corrected
+  23 Sep when James reported from the live product that Claude signs in with an
+  emailed code rather than a password. Three places had said otherwise and all
+  three are fixed: her document's section 1 now walks her through the code, the
+  rule telling her not to change the Claude password is gone because there is no
+  such password, and the reasoning here is corrected. The lever still works and
+  is arguably better: James owns the mailbox at the GoDaddy level, so resetting
+  its password stops the sign-in code arriving and locks the Claude account in
+  one move. The lesson is the ordinary one, that a login flow assumed from
+  training is worth one question to somebody looking at the screen.
 
   One accepted exposure, named to James and his call: on a personal Pro plan
   there is no admin and user split, so she is the account holder and can change
