@@ -1635,6 +1635,31 @@ The Wednesday Field Note fired at 6:06am on 23 Sep, about ninety minutes
 before the second round of this went live, so that issue is in the old shape.
 The Sunday Brief on 27 Sep is the first email in the new one.
 
+**Social Media with AI, researched 23 Sep, not built yet.** James has a room
+with a retail client on 7 Oct and more clients asking for the same thing, so
+this is a generic reference deck outside the course ladder, like `bots/`, not
+course four. Six parallel researchers covered how it is taught, tools and
+cost, platforms and post types, brand voice and prompts, automation, and
+Australian rules. Their files are in `notes/social-research/`, about 24,000
+words, every claim graded. Every page fetch was blocked, so every source is
+snippet-read; the direction is settled, the exact figures are not. The
+synthesis is a Claude Doc sent to James, "Social Media with AI · Research and
+Course Plan".
+
+The proposed shape, awaiting his sign-off: eight build steps done with the
+client in three sittings (set up, make a month, automate four weeks later),
+one chain of thirteen prompts on the six levers, Google Business Profile
+before Instagram, level 2 automation only (Claude drafts into Buffer through
+Buffer's own Claude connector, owner approves on the phone), and a twelve
+point checklist. Buffer holding the Meta connection rather than a Magnum Make
+scenario is the rule 7 point: Instagram tokens die every 60 days. Not titled
+"For Dummies", which is a Wiley trade mark. Proposed URL `social/`. Three
+decisions are his: the shape, the URL, and one reference line on the front
+page. Two shelf clashes to resolve at build: `week-of-posts` fails the
+duplicate test against the new weekly prompt and should take its body under
+the same id; `voice-guide` stays as the quick version of the interview.
+Client names never go in the deck; example sets are builder, retail, sport.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
