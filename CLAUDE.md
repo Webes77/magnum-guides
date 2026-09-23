@@ -1628,6 +1628,68 @@ worth a commit of its own; tidy it when the routine next touches the file.
   from what he actually does once he has run each one with her, never from a
   guess about the pipeline.
 
+  **Where the setup actually got to, 23 Sep.** Done and verified: her mailbox
+  exists, her Claude Pro account exists on monthly billing, the training toggle
+  is confirmed **off**, the Magnum AI project is built with the instructions
+  block pasted in, and the Microsoft 365 connector is on her account. Left for
+  James: share the `Joelinda Onboarding` folder as Commenter, and hand over both
+  passwords by message with the document link by email. Left waiting on her: she
+  creates a Google account on her Magnum address, and only then can James share
+  the calendar and she add the Google Calendar and Drive connectors.
+
+  Four corrections the live setup forced, all recorded because each one was
+  wrong in the documents first. Magnum's mail is Microsoft 365 **bought through
+  GoDaddy**, so user creation happens in the GoDaddy Email and Office Dashboard
+  and not `admin.microsoft.com`; the checklist said the wrong console. GoDaddy
+  bundles Advanced Email Security into every plan it sells, so that is not an
+  add-on to decide about, and the three tiers on the page differ only on price
+  and desktop Office, none of which she needs. The mailbox went **annual** at
+  AUD $104 because it is infrastructure nobody cancels mid-year, while the
+  Claude seat stays **monthly** because it is tied to whether a four-hour-a-week
+  arrangement holds; those are different risks, not an inconsistency. And she
+  keeps her own display name, `Joelinda [surname], Magnum AI`, because the
+  display name rather than the address is what a client reads.
+
+  James's own instinct closed one thing worth keeping: he stopped the setup at
+  the Claude onboarding questions because filling them in takes the learning
+  away from her. Right call. The line is that Magnum's context is his to paste
+  and everything about her own preferences and connectors is hers to do, which
+  is what Make Claude Yours teaches. Row 9 of her sheet moved from James to
+  Joelinda for that reason.
+
+  Two rules were added to her document after the fact, both real gaps. Rule 8:
+  never act on an email about bank details or where a payment goes, ring the
+  person instead. She is about to be the person sending invoices from a brand
+  new address for an owner who is often mid-session, which is exactly the
+  invoice-fraud profile, and no filtering catches it because the email carries
+  no attachment and no link. And she must not change the **Claude** password,
+  only the mailbox one, because that account is Magnum's and the password is
+  the only revocation lever a personal Pro plan gives.
+
+  One accepted exposure, named to James and his call: on a personal Pro plan
+  there is no admin and user split, so she is the account holder and can change
+  the payment method or cancel the plan. Receipts also go to her address. He
+  accepted both on the grounds that he trusts her and will have receipts
+  forwarded. The recommendation he did not take up was putting a separate or
+  virtual card on that account rather than his main Mastercard, since the
+  password travels by message. Do not re-litigate it; the exposure is bounded
+  at one cancelled subscription.
+
+  Two live spreadsheets hold the running state, and they are the reason a new
+  session does not start from nothing. `Staff Docs / Joelinda Onboarding /
+  Joelinda Onboarding · Action List` is the shared one, 29 rows, owner per row,
+  and it is the only thing shared with her. `Staff Docs / Magnum AI · James
+  Action List` is his own backlog, 13 rows, deliberately one folder up so
+  sharing hers does not share his. **Share the subfolder, never `Staff Docs`
+  itself**, which holds his backlog and other staff material. The Drive
+  connector on her account can only reach what has been shared with her address,
+  so the sharing is the boundary and there is no permission to get wrong.
+
+  The Drive connector cannot edit cells, only create files, so a session cannot
+  tick a status on either sheet. James ticks them. A session that needs to change
+  a sheet has to recreate it, which changes the link, so do not do that once he
+  has started ticking.
+
 ## Next
 
 On 9 Sep, later, the whole members area moved to the white, navy and
