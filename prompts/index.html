@@ -1883,13 +1883,13 @@ Tone: Plain. Write it so a new staff member could follow it on day one.
 
 Format: These headings, in this order: WHO WE TALK TO. HOW WE SOUND,
 as three "this, not that" pairs. WORDS WE USE. WORDS WE NEVER USE. WHAT
-WE POST. WHAT WE NEVER POST OR CLAIM. MUST ALWAYS INCLUDE. CUSTOMER
-WORDS.
+WE POST. WHERE WE POST, with each platform we use and who approves.
+WHAT WE NEVER POST OR CLAIM. MUST ALWAYS INCLUDE. CUSTOMER WORDS.
 
 Output: The voice file, under 400 words, in Australian English. Then one
 line listing anything you still need from me.`},
 
-{kind:'prompt', id:'photo-every-platform', sec:'Reference · Social Media with AI', title:"One photo, every platform", where:"A new chat inside your social media project. Attach the photo", type:'writing', when:'start', hook:"A phone photo and one line become four posts in two minutes.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'photo-every-platform', sec:'Reference · Social Media with AI', title:"One photo, every platform", where:"A new chat inside your social media project. Attach the photo", type:'writing', when:'start', hook:"A phone photo and one line become a post for every platform.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`Role: You write social posts for this business, the way the owner would
 if they had the time.
 
@@ -1902,19 +1902,22 @@ file. Never invent a customer, a result, a price, a date or a quote,
 because a made-up detail in a public post is the fastest way to lose
 trust. If a post needs a detail you do not have, write [CHECK] in its
 place. Mention one specific thing you can see in the photo, because a
-real detail is what makes a post sound like a person was there. Write
-each platform its own way rather than one post four times, because each
-one is read differently.
+real detail is what makes a post sound like a person was there. Use
+at most one emoji and never a dash to join two thoughts, because both
+are the quickest signs a machine wrote it. Write each platform its own
+way rather than one post copied across, because each one is read
+differently.
 
 Tone: As the voice file says.
 
-Format: Four labelled versions. LINKEDIN: three to five lines on the
-work and what it shows about how we do things. INSTAGRAM: two to four
+Format: One labelled version for each platform listed in the voice
+file, and none for any we do not use. LINKEDIN: three to five lines on
+the work and what it shows about how we do things. INSTAGRAM: two to four
 short lines, then up to three hashtags. FACEBOOK: three to five lines,
 conversational and local, ending with one next step. GOOGLE: two plain
 lines and a next step, no hashtags.
 
-Output: The four versions, then one line headed NOT CONFIRMED listing
+Output: The versions, then one line headed NOT CONFIRMED listing
 anything marked [CHECK].`},
 
 {kind:'prompt', id:'write-the-offer', sec:'Reference · Social Media with AI', title:"Write the offer", where:"A new chat inside your social media project", type:'writing', when:'before-acting', hook:"A special that sells, with the price exactly right and nothing invented.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
@@ -1930,16 +1933,16 @@ consumer law. Show prices to customers including GST, because that is
 the price they pay. Add no conditions, extras, stock levels or urgency I
 have not given you, such as "last chance", because false urgency is
 misleading. If the voice file has must-always lines for offers, such as a licence
-number or an 18+ note, include them. Never put an alcohol price,
-discount or happy hour in a post, because Queensland law bans
-advertising them outside the venue.
+number or an 18+ note, include them. If we are a licensed venue, never
+put a drink price, drink discount or happy hour in a post, because
+Queensland liquor law restricts advertising them outside the venue.
 
 Tone: As the voice file says. Clear first, friendly second.
 
-Format: Four labelled versions: LINKEDIN, INSTAGRAM, FACEBOOK, GOOGLE.
-Put the dates on their own line in each.
+Format: One labelled version for each platform listed in the voice
+file. Put the dates on their own line in each.
 
-Output: The four versions, then one line repeating the price and dates
+Output: The versions, then one line repeating the price and dates
 exactly as used, so I can check them against my own.`},
 
 {kind:'prompt', id:'reply-in-public', sec:'Reference · Social Media with AI', title:"Reply to a review or comment", where:"A new chat inside your social media project", type:'writing', when:'start', hook:"A shorter and a warmer reply, with complaints taken offline.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
@@ -1955,8 +1958,9 @@ only facts from their words, the voice file or what I tell you, because
 a wrong detail in public is worse than none. If they ask about a price,
 stock or a date you do not have, say we will message them. If it is a
 complaint, thank them, do not argue, and move it to a private message or
-a phone call. Offer no refund, discount or promise unless I tell you to.
-Never share anything private about the customer.
+a phone call. Offer no refund, discount or promise unless I tell you
+to, because a public offer binds us. Never share anything private about
+the customer, because it is their information, not ours.
 
 Tone: As the voice file says. Warm if they are happy. Calm and brief if
 they are not.
@@ -1966,7 +1970,7 @@ Format: Two options, labelled SHORTER and WARMER, each under 60 words.
 Output: The two options, then one line headed BEFORE YOU POST listing
 anything I should check.`},
 
-{kind:'prompt', id:'week-in-the-queue', sec:'Reference · Social Media with AI', title:"A week in the queue", where:"A new chat inside your social media project", type:'writing', when:'weekly', hook:"Tell it the week. Drafts land in Buffer for you to approve.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'week-in-the-queue', sec:'Reference · Social Media with AI', title:"A week in the queue", where:"A new chat inside your social media project", type:'writing', when:'weekly', hook:"Tell it the week. Drafts land in Buffer for you to check.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`Role: You plan and write a week of social posts for a busy owner who
 has fifteen minutes to approve them.
 
@@ -2017,8 +2021,9 @@ Then stop.`},
 {kind:'prompt', id:'voice-tune', sec:'Reference · Social Media with AI', title:"The monthly voice tune", where:"A new chat inside your social media project", type:'review', when:'monthly', hook:"Your edits from last month become rules, so next month needs fewer.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`Role: You are an editor tuning a brand voice file from evidence.
 
-Context: Below is the voice file in this project, and [last month's
-posts, each as you drafted it next to how it finally went out]. I want
+Context: Below is the voice file in this project, and [a few of last
+month's drafts, copied from the chats or task runs, each next to how it
+finally went out]. I want
 the voice file to need fewer edits next month.
 
 Constraints: Change only what my edits show, and quote the edit behind

@@ -1635,30 +1635,58 @@ The Wednesday Field Note fired at 6:06am on 23 Sep, about ninety minutes
 before the second round of this went live, so that issue is in the old shape.
 The Sunday Brief on 27 Sep is the first email in the new one.
 
-**Social Media with AI, researched 23 Sep, not built yet.** James has a room
-with a retail client on 7 Oct and more clients asking for the same thing, so
-this is a generic reference deck outside the course ladder, like `bots/`, not
-course four. Six parallel researchers covered how it is taught, tools and
-cost, platforms and post types, brand voice and prompts, automation, and
-Australian rules. Their files are in `notes/social-research/`, about 24,000
-words, every claim graded. Every page fetch was blocked, so every source is
-snippet-read; the direction is settled, the exact figures are not. The
-synthesis is a Claude Doc sent to James, "Social Media with AI · Research and
-Course Plan".
+**Social Media with AI, built 24 Sep, live at `social/`.** A reference deck
+outside the course ladder, like `bots/`, for clients who already post on
+LinkedIn, Instagram and Facebook and post badly: a builder, a furniture
+retailer, an adventure company, a pub. James's first room with it is 7 Oct.
+Their two problems, in his words: they don't know how to use AI, and they
+don't have time. The goal is automation.
 
-The proposed shape, awaiting his sign-off: eight build steps done with the
-client in three sittings (set up, make a month, automate four weeks later),
-one chain of thirteen prompts on the six levers, Google Business Profile
-before Instagram, level 2 automation only (Claude drafts into Buffer through
-Buffer's own Claude connector, owner approves on the phone), and a twelve
-point checklist. Buffer holding the Meta connection rather than a Magnum Make
-scenario is the rule 7 point: Instagram tokens die every 60 days. Not titled
-"For Dummies", which is a Wiley trade mark. Proposed URL `social/`. Three
-decisions are his: the shape, the URL, and one reference line on the front
-page. Two shelf clashes to resolve at build: `week-of-posts` fails the
-duplicate test against the new weekly prompt and should take its body under
-the same id; `voice-guide` stays as the quick version of the interview.
-Client names never go in the deck; example sets are builder, retail, sport.
+The shape James signed off: research the industry live in front of the owner
+(people cannot describe their own brand cold, but they can react to
+examples), roast their feed, fill a 16-question questionnaire, build a voice
+file in a Claude project, write one post per platform from a phone photo,
+then Buffer as the one queue with Claude drafting into it through Buffer's
+own connector. Two half-days plus a tune-up a month later is the
+recommended delivery. Paid stack by default (Claude Pro, Buffer, Canva Pro,
+about A$80 + GST a month); free tools are mentioned once. James overturned
+the earlier free-tools, beginner framing on 24 Sep with the fact that these
+clients already have a presence.
+
+One line held against him and should hold again: automated means drafted and
+queued, never published unread. The owner checks each post in Buffer. Buffer
+Essentials has no approve button, so the deck says "check it and schedule
+it", not "tap approve". P8, the Monday scheduled task reading a Drive folder
+into Buffer, is unverified unattended (register row 68) and the deck says it
+is tested in the client's account before they rely on it.
+
+Files: `social/index.html` (22 slides, P1 to P9 on the six levers),
+`social/questionnaire.html` (16 questions, answers saved on the device,
+copied out by button, nothing sent anywhere), `social/thumbnail.html`, card
+at `assets/thumbnails/social.jpg`. Nine shelf cards under `Reference · Social
+Media with AI`, byte-identical to the deck, verified in the browser; the
+shelf is 62 cards. `week-of-posts` was left alone: it is `when:start` and the
+new weekly card is `when:weekly`, so it passes the duplicate test, and it
+still serves someone with no voice file. Front page: a sixth `.ref` line
+under the courses. `tools/check-decks.js` now covers five decks.
+
+Research is in `notes/social-research/`, 01 to 07, plus a ChatGPT deep
+research run James supplied in chat. That run caught two things the first
+pass missed and both shipped: a retailer's public prices must include GST
+(James's own + GST rule is for his B2B quotes only), and Google bans review
+incentives even to real customers. File 07 found the one rule that could
+genuinely hurt a client: Queensland's Liquor Act restricts advertising drink
+prices, discounts and happy hours outside the venue, and a social post counts.
+The offer prompt carries it.
+
+An outside review agent read the build before merge, as James asked, and its
+must-fixes all went in: the untested autopilot claim, the missing Drive
+connection step, the custom-connector wording for Buffer, the approve button,
+an overstated liquor rule and an unsourced "why" line. Its engagement note
+replaced a three-table rules stretch with a "spot the problem" quiz. The
+contrast audit reports four failures on the cover figure's labels; they are
+the same false positive the bots deck shows (labels measured against the navy
+plate, not the white boxes they sit in). Eight register rows, 67 to 74.
 
 ## Decisions already made
 

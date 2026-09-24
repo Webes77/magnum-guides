@@ -304,8 +304,8 @@ Tone: Plain. Write it so a new staff member could follow it on day one.
 
 Format: These headings, in this order: WHO WE TALK TO. HOW WE SOUND,
 as three "this, not that" pairs. WORDS WE USE. WORDS WE NEVER USE. WHAT
-WE POST. WHAT WE NEVER POST OR CLAIM. MUST ALWAYS INCLUDE. CUSTOMER
-WORDS.
+WE POST. WHERE WE POST, with each platform we use and who approves.
+WHAT WE NEVER POST OR CLAIM. MUST ALWAYS INCLUDE. CUSTOMER WORDS.
 
 Output: The voice file, under 400 words, in Australian English. Then one
 line listing anything you still need from me.`;
@@ -322,19 +322,22 @@ file. Never invent a customer, a result, a price, a date or a quote,
 because a made-up detail in a public post is the fastest way to lose
 trust. If a post needs a detail you do not have, write [CHECK] in its
 place. Mention one specific thing you can see in the photo, because a
-real detail is what makes a post sound like a person was there. Write
-each platform its own way rather than one post four times, because each
-one is read differently.
+real detail is what makes a post sound like a person was there. Use
+at most one emoji and never a dash to join two thoughts, because both
+are the quickest signs a machine wrote it. Write each platform its own
+way rather than one post copied across, because each one is read
+differently.
 
 Tone: As the voice file says.
 
-Format: Four labelled versions. LINKEDIN: three to five lines on the
-work and what it shows about how we do things. INSTAGRAM: two to four
+Format: One labelled version for each platform listed in the voice
+file, and none for any we do not use. LINKEDIN: three to five lines on
+the work and what it shows about how we do things. INSTAGRAM: two to four
 short lines, then up to three hashtags. FACEBOOK: three to five lines,
 conversational and local, ending with one next step. GOOGLE: two plain
 lines and a next step, no hashtags.
 
-Output: The four versions, then one line headed NOT CONFIRMED listing
+Output: The versions, then one line headed NOT CONFIRMED listing
 anything marked [CHECK].`;
 
 const P5 = `Role: You write offers that people act on without feeling sold to.
@@ -349,16 +352,16 @@ consumer law. Show prices to customers including GST, because that is
 the price they pay. Add no conditions, extras, stock levels or urgency I
 have not given you, such as "last chance", because false urgency is
 misleading. If the voice file has must-always lines for offers, such as a licence
-number or an 18+ note, include them. Never put an alcohol price,
-discount or happy hour in a post, because Queensland law bans
-advertising them outside the venue.
+number or an 18+ note, include them. If we are a licensed venue, never
+put a drink price, drink discount or happy hour in a post, because
+Queensland liquor law restricts advertising them outside the venue.
 
 Tone: As the voice file says. Clear first, friendly second.
 
-Format: Four labelled versions: LINKEDIN, INSTAGRAM, FACEBOOK, GOOGLE.
-Put the dates on their own line in each.
+Format: One labelled version for each platform listed in the voice
+file. Put the dates on their own line in each.
 
-Output: The four versions, then one line repeating the price and dates
+Output: The versions, then one line repeating the price and dates
 exactly as used, so I can check them against my own.`;
 
 const P6 = `Role: You are the owner of this business, answering a customer in
@@ -373,8 +376,9 @@ only facts from their words, the voice file or what I tell you, because
 a wrong detail in public is worse than none. If they ask about a price,
 stock or a date you do not have, say we will message them. If it is a
 complaint, thank them, do not argue, and move it to a private message or
-a phone call. Offer no refund, discount or promise unless I tell you to.
-Never share anything private about the customer.
+a phone call. Offer no refund, discount or promise unless I tell you
+to, because a public offer binds us. Never share anything private about
+the customer, because it is their information, not ours.
 
 Tone: As the voice file says. Warm if they are happy. Calm and brief if
 they are not.
@@ -432,8 +436,9 @@ Then stop.`;
 
 const P9 = `Role: You are an editor tuning a brand voice file from evidence.
 
-Context: Below is the voice file in this project, and [last month's
-posts, each as you drafted it next to how it finally went out]. I want
+Context: Below is the voice file in this project, and [a few of last
+month's drafts, copied from the chats or task runs, each next to how it
+finally went out]. I want
 the voice file to need fewer edits next month.
 
 Constraints: Change only what my edits show, and quote the edit behind
@@ -456,8 +461,8 @@ const ICONS = {
 const F = {};
 F.cover = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><rect x="40" y="290" width="340" height="56"/><rect x="40" y="214" width="340" height="56"/><rect x="40" y="138" width="340" height="56"/><rect x="40" y="62" width="340" height="56"/></g><g fill="#3A3630"><rect x="62" y="311" width="120" height="12"/><rect x="62" y="235" width="150" height="12"/><rect x="62" y="159" width="110" height="12"/></g><rect x="62" y="83" width="160" height="12" fill="#FF6F5E"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17"><text x="276" y="322">RESEARCH</text><text x="252" y="246">YOUR VOICE</text><text x="300" y="170">WRITE</text></g><text x="258" y="94" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#C63A2A">AUTOPILOT</text><circle cx="360" cy="90" r="9" fill="#5B6B7A" stroke="#1E1B17" stroke-width="3"/></svg>',
  'Fig. 01 / four steps, bottom to top<br>Each one leaves something working'];
-F.flow = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><rect x="20" y="40" width="120" height="70"/><rect x="150" y="150" width="120" height="70"/><rect x="280" y="260" width="120" height="70"/></g><rect x="20" y="260" width="120" height="70" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle"><text x="80" y="80">PHOTO</text><text x="210" y="190">CLAUDE</text><text x="340" y="300">BUFFER</text></g><text x="80" y="300" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle">YOU, 1 TAP</text><path d="M140 75 H210 V150" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M270 185 H340 V260" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M280 295 H140" fill="none" stroke="#5B6B7A" stroke-width="4" stroke-dasharray="9 8"/><path d="M200 138l10 12 10-12M330 248l10 12 10-12" fill="none" stroke="#1E1B17" stroke-width="4"/></svg>',
- 'Fig. 02 / photo in, draft out, you approve<br>Nothing goes out without your tap'];
+F.flow = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><rect x="20" y="40" width="120" height="70"/><rect x="150" y="150" width="120" height="70"/><rect x="280" y="260" width="120" height="70"/></g><rect x="20" y="260" width="120" height="70" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle"><text x="80" y="80">PHOTO</text><text x="210" y="190">CLAUDE</text><text x="340" y="300">BUFFER</text></g><text x="80" y="300" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle">YOU CHECK IT</text><path d="M140 75 H210 V150" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M270 185 H340 V260" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M280 295 H140" fill="none" stroke="#5B6B7A" stroke-width="4" stroke-dasharray="9 8"/><path d="M200 138l10 12 10-12M330 248l10 12 10-12" fill="none" stroke="#1E1B17" stroke-width="4"/></svg>',
+ 'Fig. 02 / photo in, draft out, you check it<br>Nothing goes out until you have read it'];
 
 const S = [
 {sec:"", cover:true, fig:"cover", h:"Your posts, in your voice, <em>without the hours</em>", pts:[], sub:"Reference · Social Media with AI", note:"Four steps. Research your industry, capture your voice, write a post for every platform in two minutes, then put it on autopilot. You build each one as you go."},
@@ -466,13 +471,13 @@ const S = [
  "<b>“I don't know how to use AI for this.”</b> So the posts either don't happen, or they sound like every other business.",
  "<b>“I don't have the time.”</b> Four platforms, every week, on top of running the place.",
  "This deck fixes both. You get prompts that do the work, and a queue that fills itself.",
- "You approve. That's the only job left."]},
+ "You check each post. That's the only job left."]},
 
 {sec:"Why", h:"The four <em>steps</em>", rows:[
  ["Research","See what the best in your industry post, live","You react to examples instead of explaining yourself"],
  ["Your voice","A questionnaire, then a voice file","Every post sounds like you, not like AI"],
  ["Write","One photo in, every platform out","Two minutes a post instead of twenty"],
- ["Autopilot","Buffer fills the week, you approve on your phone","Fifteen minutes a week, and it keeps going"]]},
+ ["Autopilot","Buffer fills the week, you check it on your phone","Fifteen minutes a week, and it keeps going"]]},
 
 {sec:"1 · Research", h:"Start with what <em>good</em> looks like", pts:[
  "Most owners can't describe their own brand. Nobody can, cold.",
@@ -490,13 +495,8 @@ const S = [
  prompt:P2, where:"A new chat. Paste your posts below the prompt", after:[
  "Paste the text of each post, newest first. Captions are enough.",
  "Read SOUNDS LIKE EVERYONE twice. That's the list to fix.",
+ "Put the research and the roast side by side. The gap is usually that the posts could be from anyone.",
  "Keep the three changes. They go into the questionnaire next."]},
-
-{sec:"1 · Research", h:"The <em>gap</em>", pts:[
- "Put the two side by side. What the best in your trade do, and what you're doing now.",
- "Usually it's not the photos or the posting schedule. It's that the posts could be from anyone.",
- "Specific beats polished every time: the actual job, the actual product, the actual suburb.",
- "That gap is what your voice file closes."]},
 
 {sec:"2 · Your voice", h:"Tell us about <em>you</em>", pts:[
  "Sixteen questions. About fifteen minutes on your phone. Voice-to-text is fine.",
@@ -542,7 +542,7 @@ const S = [
  prompt:P5, where:"A new chat inside your social media project", after:[
  "Type the price exactly as the customer pays it.",
  "Check the last line against your own price and dates.",
- "Pubs: never a drink price, special or happy hour in a post. Sell the venue, not the drink."]},
+ "Licensed venues: never a drink price, discount or happy hour in a post. Sell the venue, not the drink."]},
 
 {sec:"3 · Write", h:"Reviews and <em>comments</em>", pts:[
  "Every review answered is proof someone's home.",
@@ -555,54 +555,54 @@ const S = [
 
 {sec:"4 · Autopilot", h:"The <em>stack</em>", rows:[
  ["Claude Pro","Your voice file, the prompts, the writing","About A$31 + GST a month"],
- ["Buffer","One queue for LinkedIn, Instagram, Facebook and Google. Approve from your phone.","About A$30 + GST a month for four channels"],
+ ["Buffer","One queue for LinkedIn, Instagram, Facebook and Google. Check and schedule from your phone.","About A$30 + GST a month for four channels"],
  ["Canva Pro","Your brand kit and templates for images","About A$18 + GST a month"]],
  rowhead:["Tool","Its job","Cost"],
  pts:["Prices move. These were checked in September 2026. Free versions of all three exist if you'd rather start there."]},
 
 {sec:"4 · Autopilot", h:"Connect <em>Buffer</em>", pts:[
  "<b>Connect your accounts in Buffer.</b> LinkedIn, Instagram, Facebook, Google. Instagram needs to be a business account linked to your Facebook Page.",
- "<b>Connect Buffer to Claude.</b> Add Buffer as a connector in Claude's settings and sign in when it asks. Claude can now put drafts in your queue.",
- "<b>Put the Buffer app on your phone.</b> That's where you approve.",
+ "<b>Connect Buffer to Claude.</b> Buffer gives you a connector address. Add it to Claude as a custom connector and sign in to Buffer when it asks. Claude can now put drafts in your queue.",
+ "<b>Put the Buffer app on your phone.</b> That's where you check each draft and schedule it.",
  "<b>One rule:</b> Claude drafts, you publish. Never let anything go out unread."]},
 
 {sec:"4 · Autopilot", h:"A week in the <em>queue</em>", pts:[
  "Tell it what's happening this week and attach the photos.",
  "Drafts land in Buffer, one per platform, ready for you.",
- "Your job: read each one on your phone and tap approve."],
+ "Your job: open each draft on your phone, fix a word if needed, and schedule it."],
  prompt:P7, where:"A new chat inside your social media project", after:[
  "Open Buffer and check the drafts landed in the right channels.",
- "Fix anything marked [CHECK], then approve.",
- "Fifteen minutes. That's the whole week."]},
+ "Fix anything marked [CHECK], then schedule each one.",
+ "Keep this chat. Next month's tune reads it."]},
 
 {sec:"4 · Autopilot", h:"Let it run <em>itself</em>", pts:[
- "Make a shared folder. You, or anyone on the team, drop photos in it with a line about each.",
+ "Make a folder in Google Drive and connect Drive to Claude. Anyone on the team adds photos from their phone with a line about each.",
  "A scheduled task reads the folder every Monday and fills the Buffer queue with drafts.",
- "Run it once with you watching before you put it on the timer."],
+ "This is the advanced step. We test it in your account before you rely on it. Until then, the week in the queue does the same job."],
  prompt:P8, where:"A scheduled task inside your social media project", after:[
- "Run it now, once, and read every draft against the photos.",
+ "Run it now, once, and read every draft against the photos. Delete the test drafts from Buffer after.",
  "Two clean runs in a row, then set it to Monday at 7am.",
  "If a Monday brings nothing, it says so. Silence means check it."]},
 
 {sec:"4 · Autopilot", h:"Where <em>you</em> stay in", fig:"flow", pts:[
  "Automated means drafted and queued for you. It doesn't mean published without anyone looking.",
  "A wrong price, a made-up claim or a missing licence number goes out under your name.",
- "Approving takes ten seconds a post. That ten seconds is the whole safety system.",
+ "Checking takes ten seconds a post. That ten seconds is the whole safety system.",
  "Replies stay yours too. AI can draft them. You send them."]},
 
-{sec:"Stay safe", h:"Before <em>anything</em> goes out", rows:[
- ["Is it true?","Every claim, price and picture matches what the customer gets","A wrong price in public is a promise"],
- ["Is it ours?","Our work, our product, our photo. AI concepts say “concept”","Showing work you didn't do is misleading"],
- ["No made-up people","No AI customers, no invented reviews, no trimmed reviews","A business was fined for trimming one in 2026"],
- ["Paid or gifted?","Then it says #ad or Paid Partnership, up front","The ACCC checks influencer posts"],
- ["Did they say yes?","Okay from anyone in the photo. A parent's for anyone under 18","People can sue over a serious privacy breach"],
- ["Reviews","Ask for honest ones. Never offer a discount or gift for one","Google bans it, even for real customers"]],
- rowhead:["Check","What it means","Why"]},
+{sec:"Stay safe", h:"Spot the <em>problem</em>", tiles:[
+ ["o","“Best prices on the Coast, guaranteed!”","Can you prove it? A claim you can't back up is misleading."],
+ ["t","“Our happy customer Sarah loved her new deck!”","Sarah doesn't exist. AI made her up. A fake customer is a fake review."],
+ ["c","“$5 schooners every Friday!”","A drink price in a post. Queensland liquor law restricts that outside the venue."],
+ ["o","“Totally safe, fun for all ages!”","A safety promise nobody can keep. Misleading under consumer law."],
+ ["t","Kitchen reno, house number in the shot","The client didn't say yes. Crop the address, ask first."],
+ ["c","“5-star review = 10% off!”","Google bans rewards for reviews, even from real customers."]],
+ pts:["Two more to know: a paid or gifted post says #ad up front, and a business account uses the platform's business music."]},
 
 {sec:"Stay safe", h:"Your <em>industry's</em> rules", rows:[
- ["Builders and trades","Licence number and licensed name on every post that sells work","The QBCC counts a Facebook page as advertising"],
- ["Pubs and bars","No drink prices, specials or happy hours in any post. Nobody who looks under 25. Accounts set to 18+","Queensland bans advertising drink deals outside the venue"],
- ["Adventure and tours","No “100% safe” or “suitable for everyone”. Safety gear visible in action shots","Safety claims are the first thing a regulator reads"],
+ ["Builders and trades","Licence number and licensed name on every profile, and on every post that sells work","The QBCC counts a Facebook page as advertising"],
+ ["Pubs and bars","No drink prices, discounts, happy hours or “thirsty Thursday” names in any post. Nobody who looks under 25. Accounts set to 18+","Queensland liquor law restricts advertising drink deals outside the venue"],
+ ["Adventure and tours","No “100% safe” or “suitable for everyone”. Safety gear visible in action shots","Misleading safety claims breach Australian Consumer Law"],
  ["Shops","Prices include GST. “Australian made” only when it really is","A customer's price is the full price"]],
  rowhead:["If you're","The rule","Why"],
  pts:["These go into the last question of the questionnaire, and from there into every post. General guidance, not legal advice."]},
@@ -620,11 +620,11 @@ const S = [
  ["Research","What good looks like in your trade, and your gap","Step 1"],
  ["Voice file","How you sound, written down, in your project","Step 2"],
  ["Prompts","Any photo into every platform, offers, replies","Step 3"],
- ["The queue","Drafts every Monday, approved from your phone","Step 4"]],
+ ["The queue","A week of drafts, checked and scheduled from your phone","Step 4"]],
  rowhead:["Piece","What it is","Where"]},
 
 {sec:"Close", h:"One sentence to <em>keep</em>", pts:[
- "AI writes it, you approve it, the queue posts it.",
+ "AI writes it, you check it, the queue posts it.",
  "Specific beats polished. The real job, the real product, the real suburb.",
  "Fifteen minutes a week, and you still sound like you.",
  "Every prompt in this deck is on the Prompt Shelf, ready to copy."]}
