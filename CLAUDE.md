@@ -65,6 +65,8 @@ These are absolute. Do not relitigate them.
 
 ## House style
 
+Since 24 Sep, `brand/index.html` is the Magnum AI brand guidelines v2.0, which replaced the old House Style page.
+
 `brand/index.html` is the visual spec. `brand/magnum-house-style/SKILL.md`
 is the enforcement skill; `brand/house-style-block.md` is the paste-ready
 version for other skills. Since 9 Sep: paper `#FBFBF9` (flat, no
