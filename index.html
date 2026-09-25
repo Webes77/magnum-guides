@@ -56,6 +56,8 @@ body{
 .wrap{max-width:1080px;margin:0 auto;padding:0 40px}
 
 /* MASTHEAD */
+.logobar{background:var(--paper);padding:24px 0 20px}
+.logobar img{display:block;height:90px;width:auto}
 .masthead{background:var(--navy);color:#F4F1EA;padding:44px 0 52px;border-bottom:4px solid var(--coral-bright)}
 .masthead .brand{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--paper);border-bottom:1px solid var(--rust);padding-bottom:4px;display:inline-block}
 .masthead h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(52px,9vw,104px);line-height:.9;letter-spacing:-.01em;margin-top:26px;color:var(--paper)}
@@ -179,6 +181,7 @@ footer b{color:var(--paper);font-weight:500}
   .duo{gap:54px}
   section{scroll-margin-top:16px}
   .wrap{padding:0 22px}
+  .logobar{padding:16px 0 14px}
   .masthead{padding:34px 0 40px}
   footer .wrap{flex-direction:column;gap:10px}
 }
@@ -257,6 +260,10 @@ main.wrap::before{
 </style>
 </head>
 <body>
+
+<div class="logobar">
+  <div class="wrap"><img src="assets/magnum-badge.png" alt="Magnum AI" width="90" height="89"></div>
+</div>
 
 <header class="masthead">
   <div class="wrap">
