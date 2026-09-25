@@ -1740,22 +1740,40 @@ masthead to make room.** James sent the badge artwork and asked for it beside
 MEMBERS AREA, larger, on the navy with no white ground.
 
 The artwork he supplied is a single navy colour on transparent, no coral in it
-at all, so the paper colourway is a mechanical recolour rather than a redraw:
-every opaque pixel repainted `#F4F1EA` with its own alpha kept, which holds the
-antialiased edges exactly. That is `assets/magnum-badge-paper.png`. The navy
-original stays at `assets/magnum-badge.png` for paper grounds. Nothing was
-drawn, traced or approximated, which the house style skill forbids outright.
-If the delivered SVG set ever turns up (`magnum-badge-ring.svg`,
-`magnum-badge.svg`, `magnum-mark.svg`, the skill says they live in
-`03 IP/Brand/Logos/2026 Logo - FINAL`), swap the raster for the real file.
+at all, so every colourway here is a mechanical recolour rather than a redraw:
+pixels repainted with their own alpha kept, which holds the antialiased edges
+exactly. Nothing was drawn, traced or approximated, which the house style skill
+forbids outright. If the delivered SVG set ever turns up
+(`magnum-badge-ring.svg`, `magnum-badge.svg`, `magnum-mark.svg`, the skill says
+they live in `03 IP/Brand/Logos/2026 Logo - FINAL`), swap the raster for the
+real file.
+
+What ships is `assets/magnum-badge-reverse.png`, the two colour reverse the
+skill already documents: off-white M with a `coral-bright` AI. James asked for
+it in those words without having read the skill, which is worth knowing,
+because it means the artwork and the written system agree about what the badge
+does on a dark ground. The A and the I are separate connected shapes in the
+raster, sitting in the M's valley at x136 to x211, y191 to y268, so they were
+isolated by a connected-component pass and repainted `#FF6F5E` while everything
+else took `#F4F1EA`. Soft edge pixels belonging to no component follow their
+neighbours, so there is no coral fringe on the M. `#FF6F5E` on navy is 5.32:1,
+the house value for coral on a dark ground.
+
+Two other colourways sit in `assets/` and are both live options: the navy
+original at `magnum-badge.png` for paper grounds, and the one colour paper
+reverse at `magnum-badge-paper.png`, which is what to use anywhere the coral
+would fight something, a share card or a footer. Both were produced the same
+way and neither is referenced by a page today.
 
 The masthead could not hold the headline, a badge worth looking at and the six
 levers figure at once. Measured rather than argued: at 1440 the text column
 left exactly 159px beside the headline, so the badge was already at its
 ceiling and still touching the S of MEMBERS. Bottom-aligning it made the
 collision worse. The levers figure went, the badge took the room, and it is
-230px at 1440, 180px at 980, 104px on a phone, beside the headline at every
-width so the paragraph never gets squeezed into a column. The levers motif is
+282px at 1440, 206px at 980, 118px on a phone, beside the headline at every
+width so the paragraph never gets squeezed into a column. The phone size sits
+above the skill's 90px badge minimum, below which the arced type closes up and
+the mark alone is the right file. The levers motif is
 not lost from the page: the oversized watermark in the lower right still
 carries it, and the primer on the shelf and course one are where they are
 actually taught. The figure's markup is saved in the session scratchpad if it
