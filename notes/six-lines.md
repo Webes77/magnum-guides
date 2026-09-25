@@ -13,7 +13,7 @@ under each one is teaching copy.
 | Role | You are a ___ who works with ___. | A real job and its field. Nothing more. |
 | Context | Here is the situation: ___. | What it cannot see. What it does not know, it invents. |
 | Constraints | Stick to these rules: ___, because ___. | A rule with its reason gets kept. |
-| Tone | Sound like ___. | A person you can picture, not an adjective. |
+| Tone | Sound like ___ (a person, not a word). | Someone you can picture. "Friendly" gets you exclamation marks. |
 | Format | Lay it out as ___. | The shape you want back. One example beats a description. |
 | Output | Give me ___. Then stop. | The finished thing, and where it ends. |
 
@@ -41,7 +41,7 @@ Teach and build every prompt as six fill-in lines:
 Role: You are a ___ who works with ___.
 Context: Here is the situation: ___.
 Constraints: Stick to these rules: ___, because ___.
-Tone: Sound like ___.
+Tone: Sound like ___ (a person, not a word).
 Format: Lay it out as ___.
 Output: Give me ___. Then stop.
 A line with nothing to say is left out. A weak answer means one line was
