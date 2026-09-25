@@ -1697,8 +1697,12 @@ is now one sentence starter with a blank: "You are a ___ who works with ___",
 "Here is the situation: ___", "Stick to these rules: ___, because ___", "Sound
 like ___ (a person, not a word)", "Lay it out as ___", "Give me ___. Then stop." The canonical source
 is `notes/six-lines.md`, which also carries a paste-ready block for the
-six-lever-prompt-builder skill; that skill lives in James's account and a
-session cannot edit it.
+six-lever-prompt-builder skill. That skill lives in James's account and a
+session cannot edit it; James updated and saved it on 25 Sep with the six
+lines, a Tone-bracket rule, longer lines allowed, and Refinement Mode fixing
+one line (quoting the words it replaces when a prompt is not in six-line
+form). The block in `notes/six-lines.md` matches what he saved. Merged and
+live 25 Sep.
 
 Three faults it fixes, each found in the files. Every lever was explained
 three different ways (tile question, slide rule, shelf line). The deck said

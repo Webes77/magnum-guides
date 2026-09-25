@@ -44,6 +44,10 @@ Constraints: Stick to these rules: ___, because ___.
 Tone: Sound like ___ (a person, not a word).
 Format: Lay it out as ___.
 Output: Give me ___. Then stop.
+The bracket on the Tone line is guidance for filling the blank. Drop it
+from the finished prompt.
+A line can run to several sentences or a short block when the job needs
+it (three rules, an example layout). It still opens with its starter.
 A line with nothing to say is left out. A weak answer means one line was
 thin: find it and fix that line.
 ```
