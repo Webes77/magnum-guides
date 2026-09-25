@@ -1735,6 +1735,44 @@ this card uses it. The other fill-in cards keep the generic form, which
 James is happy with. Deck check PASS,
 contrast PASS on the shelf, style checker 13 findings before and after.
 
+**The logo is on the front page, 25 Sep, and the levers figure came out of the
+masthead to make room.** James sent the badge artwork and asked for it beside
+MEMBERS AREA, larger, on the navy with no white ground.
+
+The artwork he supplied is a single navy colour on transparent, no coral in it
+at all, so the paper colourway is a mechanical recolour rather than a redraw:
+every opaque pixel repainted `#F4F1EA` with its own alpha kept, which holds the
+antialiased edges exactly. That is `assets/magnum-badge-paper.png`. The navy
+original stays at `assets/magnum-badge.png` for paper grounds. Nothing was
+drawn, traced or approximated, which the house style skill forbids outright.
+If the delivered SVG set ever turns up (`magnum-badge-ring.svg`,
+`magnum-badge.svg`, `magnum-mark.svg`, the skill says they live in
+`03 IP/Brand/Logos/2026 Logo - FINAL`), swap the raster for the real file.
+
+The masthead could not hold the headline, a badge worth looking at and the six
+levers figure at once. Measured rather than argued: at 1440 the text column
+left exactly 159px beside the headline, so the badge was already at its
+ceiling and still touching the S of MEMBERS. Bottom-aligning it made the
+collision worse. The levers figure went, the badge took the room, and it is
+230px at 1440, 180px at 980, 104px on a phone, beside the headline at every
+width so the paragraph never gets squeezed into a column. The levers motif is
+not lost from the page: the oversized watermark in the lower right still
+carries it, and the primer on the shelf and course one are where they are
+actually taught. The figure's markup is saved in the session scratchpad if it
+is ever wanted back.
+
+Two things went with it, both said to James. The paper band above the masthead
+that held the badge for about an hour is gone, because the badge is in the
+masthead now. And the `MAGNUM AI` mono wordmark above the headline went, because
+the badge carries the name and two of them in one navy band is the name twice
+on one screen. Both are a one-line revert.
+
+One thing still open and it is worth knowing. The house style skill says of the
+badge "No other text in the badge, ever", and this artwork carries MMXXV under
+the mark. Raised once on 24 Sep, James reaffirmed by sending it again, so it
+ships. Either the skill's badge description is out of date or the artwork is,
+and only James knows which.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
