@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Business in Your Words · Magnum AI</title>
+<meta name="description" content="Sixteen questions, about fifteen minutes. Your answers become the voice file every social post is written from.">
+<meta name="author" content="Magnum AI">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2A37">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+    --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --mute:#63615C;
+    --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3;
+    --display:'Oswald','Arial Narrow',sans-serif;
+    --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:44px 20px 28px;margin:0 -20px 36px}
+  .crumb{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-bright);margin:0 0 14px}
+  .crumb a{color:var(--coral-bright)}
+  h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(38px,8vw,64px);line-height:.95;margin:0 0 14px;color:var(--on-navy)}
+  h1 em{font-style:normal;color:var(--coral-bright)}
+  .sub{font-size:18px;margin:0;color:var(--on-navy-mute);max-width:60ch}
+  h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:28px;color:var(--ink);margin:40px 0 6px;padding-top:14px;border-top:3px solid var(--ink)}
+  .how{background:var(--paper-2);border:2px solid var(--ink);padding:18px 20px;margin:0 0 8px}
+  .how p{margin:0 0 8px}.how p:last-child{margin:0}
+  .q{margin:22px 0 0}
+  .q label{display:block;font-weight:500;color:var(--ink);margin:0 0 4px}
+  .q .n{font-family:var(--mono);font-size:13px;color:var(--coral-text);margin-right:8px}
+  .q .hint{display:block;font-size:14px;color:var(--mute);margin:0 0 6px}
+  textarea{width:100%;min-height:84px;padding:10px 12px;font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);border:2px solid var(--ink);border-radius:0;resize:vertical}
+  textarea:focus{outline:3px solid var(--coral-bright);outline-offset:1px}
+  .done{background:var(--navy);color:var(--on-navy);padding:24px 20px;margin:44px 0 0}
+  .done h2{color:var(--on-navy);border-top-color:var(--coral-bright);margin-top:0}
+  .done p{margin:0 0 14px;color:var(--on-navy-mute)}
+  button{font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);padding:12px 18px;cursor:pointer;margin:0 10px 10px 0}
+  button.plain{background:transparent;color:var(--on-navy);border-color:var(--on-navy-mute)}
+  button:focus-visible{outline:3px solid var(--on-navy);outline-offset:2px}
+  #status{font-family:var(--mono);font-size:13px;color:var(--coral-bright);min-height:1.4em;margin:6px 0 0}
+  footer{font-size:14px;color:var(--mute);margin-top:32px}
+  @media print{.masthead{background:none;color:var(--ink)}h1,.sub{color:var(--ink)}.done{display:none}textarea{border:1px solid var(--olive);min-height:120px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <p class="crumb"><a href="./">Social Media with AI</a> · Step 2</p>
+    <h1>Your business <em>in your words</em></h1>
+    <p class="sub">Sixteen questions, about fifteen minutes. Your answers become the voice file every post is written from.</p>
+  </header>
+
+  <div class="how">
+    <p><b>Short answers are fine.</b> There are no wrong ones. We'd rather have how you'd say it to a mate than something polished.</p>
+    <p>On a phone, tap the microphone on your keyboard and just talk. Your answers save on this device as you go, so you can stop and come back.</p>
+  </div>
+
+  <form id="qs" autocomplete="off"></form>
+
+  <section class="done">
+    <h2>Finished?</h2>
+    <p>Copy your answers and send them to whoever is setting this up with you, or paste them straight under the voice file prompt yourself.</p>
+    <button type="button" id="copy">Copy my answers</button>
+    <button type="button" class="plain" id="clear">Clear and start again</button>
+    <p id="status" aria-live="polite"></p>
+  </section>
+
+  <footer>Magnum AI · Social Media with AI. Nothing you type here is sent anywhere until you copy it.</footer>
+</div>
+<script>
+const Q=[
+ ['The business',[
+  ['What do you do, in one or two sentences, as you would say it to someone at a barbecue?',''],
+  ['Who are your best customers? Describe one you would love ten more of.',''],
+  ['Why do people pick you over the place down the road?',''],
+  ['Which suburbs, towns or areas do you serve?','Real place names make posts sound local.']]],
+ ['How you sound',[
+  ['Three words that describe how you talk to customers.',''],
+  ['Now the opposite: three words you never want to sound like.','For example: salesy, stiff, try-hard.'],
+  ['Do you use humour?','Always, sometimes, or never.'],
+  ['Any words or phrases you always use, or cannot stand?',''],
+  ['Paste a message, email or post you wrote that you are proud of.','']]],
+ ['What to post',[
+  ['What happens in your week that customers would find interesting?','Jobs finished, new stock, events, behind the scenes.'],
+  ['What are customers always asking you? List three questions.',''],
+  ['Anything you never want posted?','Topics, prices, people, competitors.']]],
+ ['The practical bits',[
+  ['Your business name, and any licence number, written exactly as they must appear.','For example your QBCC licence, or your liquor licence name.'],
+  ['Where do your photos come from now?','Your phone, staff, a photographer, nowhere yet.'],
+  ['Who approves posts before they go out, and how would they like to do it?','Phone, email, or a quick weekly look.'],
+  ['Anything we must always include or check?','For example a licence number, an 18+ setting for a bar, safety wording, or opening hours.']]]
+];
+const KEY='magnum-social-questionnaire';
+const form=document.getElementById('qs');
+let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+let n=0;
+Q.forEach(([sec,qs])=>{
+  const h=document.createElement('h2');h.textContent=sec;form.appendChild(h);
+  qs.forEach(([q,hint])=>{n++;const id='q'+n;
+    const d=document.createElement('div');d.className='q';
+    d.innerHTML=`<label for="${id}"><span class="n">${String(n).padStart(2,'0')}</span>${q}${hint?`<span class="hint">${hint}</span>`:''}</label><textarea id="${id}" data-q="${q.replace(/"/g,'&quot;')}"></textarea>`;
+    form.appendChild(d);
+    const t=d.querySelector('textarea');t.value=saved[id]||'';
+    t.addEventListener('input',()=>{saved[id]=t.value;try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}});
+  });
+});
+const status=document.getElementById('status');
+function answers(){
+  let out='MY BRAND QUESTIONNAIRE\n';
+  let i=0;
+  Q.forEach(([sec,qs])=>{out+='\n'+sec.toUpperCase()+'\n';qs.forEach(([q])=>{i++;const v=document.getElementById('q'+i).value.trim();out+=`${i}. ${q}\n${v||'(no answer)'}\n\n`;});});
+  return out.trim();
+}
+document.getElementById('copy').addEventListener('click',async()=>{
+  const text=answers();
+  try{await navigator.clipboard.writeText(text);status.textContent='Copied. Paste it into an email or under the voice file prompt.';}
+  catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');status.textContent='Copied.';}catch(_){status.textContent='Copy did not work here. Select the answers and copy them by hand.';}ta.remove();}
+});
+document.getElementById('clear').addEventListener('click',()=>{
+  if(!confirm('Clear every answer on this device?'))return;
+  saved={};try{localStorage.removeItem(KEY)}catch(e){}
+  form.querySelectorAll('textarea').forEach(t=>t.value='');status.textContent='Cleared.';
+});
+</script>
+</body>
+</html>

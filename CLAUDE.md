@@ -65,6 +65,8 @@ These are absolute. Do not relitigate them.
 
 ## House style
 
+Since 24 Sep, `brand/index.html` is the Magnum AI brand guidelines v2.0, which replaced the old House Style page.
+
 `brand/index.html` is the visual spec. `brand/magnum-house-style/SKILL.md`
 is the enforcement skill; `brand/house-style-block.md` is the paste-ready
 version for other skills. Since 9 Sep: paper `#FBFBF9` (flat, no
@@ -1634,6 +1636,104 @@ repo's `ROUTINE.md` carry the same bytes.
 The Wednesday Field Note fired at 6:06am on 23 Sep, about ninety minutes
 before the second round of this went live, so that issue is in the old shape.
 The Sunday Brief on 27 Sep is the first email in the new one.
+
+**Social Media with AI, built 24 Sep, live at `social/`.** A reference deck
+outside the course ladder, like `bots/`, for clients who already post on
+LinkedIn, Instagram and Facebook and post badly: a builder, a furniture
+retailer, an adventure company, a pub. James's first room with it is 7 Oct.
+Their two problems, in his words: they don't know how to use AI, and they
+don't have time. The goal is automation.
+
+The shape James signed off: research the industry live in front of the owner
+(people cannot describe their own brand cold, but they can react to
+examples), roast their feed, fill a 16-question questionnaire, build a voice
+file in a Claude project, write one post per platform from a phone photo,
+then Buffer as the one queue with Claude drafting into it through Buffer's
+own connector. Two half-days plus a tune-up a month later is the
+recommended delivery. Paid stack by default (Claude Pro, Buffer, Canva Pro,
+about A$80 + GST a month); free tools are mentioned once. James overturned
+the earlier free-tools, beginner framing on 24 Sep with the fact that these
+clients already have a presence.
+
+One line held against him and should hold again: automated means drafted and
+queued, never published unread. The owner checks each post in Buffer. Buffer
+Essentials has no approve button, so the deck says "check it and schedule
+it", not "tap approve". P8, the Monday scheduled task reading a Drive folder
+into Buffer, is unverified unattended (register row 68) and the deck says it
+is tested in the client's account before they rely on it.
+
+Files: `social/index.html` (22 slides, P1 to P9 on the six levers),
+`social/questionnaire.html` (16 questions, answers saved on the device,
+copied out by button, nothing sent anywhere), `social/thumbnail.html`, card
+at `assets/thumbnails/social.jpg`. Nine shelf cards under `Reference · Social
+Media with AI`, byte-identical to the deck, verified in the browser; the
+shelf is 62 cards. `week-of-posts` was left alone: it is `when:start` and the
+new weekly card is `when:weekly`, so it passes the duplicate test, and it
+still serves someone with no voice file. Front page: a sixth `.ref` line
+under the courses. `tools/check-decks.js` now covers five decks.
+
+Research is in `notes/social-research/`, 01 to 07, plus a ChatGPT deep
+research run James supplied in chat. That run caught two things the first
+pass missed and both shipped: a retailer's public prices must include GST
+(James's own + GST rule is for his B2B quotes only), and Google bans review
+incentives even to real customers. File 07 found the one rule that could
+genuinely hurt a client: Queensland's Liquor Act restricts advertising drink
+prices, discounts and happy hours outside the venue, and a social post counts.
+The offer prompt carries it.
+
+An outside review agent read the build before merge, as James asked, and its
+must-fixes all went in: the untested autopilot claim, the missing Drive
+connection step, the custom-connector wording for Buffer, the approve button,
+an overstated liquor rule and an unsourced "why" line. Its engagement note
+replaced a three-table rules stretch with a "spot the problem" quiz. The
+contrast audit reports four failures on the cover figure's labels; they are
+the same false positive the bots deck shows (labels measured against the navy
+plate, not the white boxes they sit in). Eight register rows, 67 to 74.
+
+**The 6 Levers are taught as six lines, 25 Sep, on a branch for James to read.**
+James said the framework had gone convoluted and asked for paint-by-numbers.
+The labels and order did not move (hard rule 3); the teaching did. Each lever
+is now one sentence starter with a blank: "You are a ___ who works with ___",
+"Here is the situation: ___", "Stick to these rules: ___, because ___", "Sound
+like ___ (a person, not a word)", "Lay it out as ___", "Give me ___. Then stop." The canonical source
+is `notes/six-lines.md`, which also carries a paste-ready block for the
+six-lever-prompt-builder skill. That skill lives in James's account and a
+session cannot edit it; James updated and saved it on 25 Sep with the six
+lines, a Tone-bracket rule, longer lines allowed, and Refinement Mode fixing
+one line (quoting the words it replaces when a prompt is not in six-line
+form). The block in `notes/six-lines.md` matches what he saved. Merged and
+live 25 Sep.
+
+Three faults it fixes, each found in the files. Every lever was explained
+three different ways (tile question, slide rule, shelf line). The deck said
+"a diagnostic, not a formula" two slides before "that order, every time".
+And Format and Output read as the same question; "Then stop" is what keeps
+them apart now. The six lines are the formula, and a weak answer means one
+thin line, so the diagnostic is the same card read backwards.
+
+What moved: the Foundations overview tiles, the six lever slides (each opens
+on its line), the worked examples in both `EGS` sets (each specific ask now
+opens with its starter), the agenda, the close, and P4. P4 was rewritten as
+the six lines filled in, deck and shelf together, byte-identical. The shelf
+primer carries the six lines, and a new card `six-lines` (Fill in six lines,
+eight blanks, so it gets the fill-in form) sits first under Session one. The
+shelf is 63 cards. On James's word it is ranked 1 under Starting a task;
+Talk-It-Out moved to 2, Fix the yes-man to 3, and Write the quote came off
+the pins to keep three per moment. The Tone line carries "(a person, not a
+word)" on the line itself, so the lesson survives without the slide.
+
+The card has its own layout since 25 Sep (later), because James said the
+generic fill-in form made it busy and confusing: eight labelled boxes, then
+the same prompt printed again underneath. It is a sentence builder now
+(`builder:true` on the card, examples in `eg`). One row per lever, the lever
+name on the left, the sentence with its blanks inside it, a grey worked
+example in each blank, a Copy button at the foot, and no separate prompt
+panel because the rows are the prompt. A line left completely blank drops
+out of what is copied, which is the method's own rule; nothing typed still
+copies the template byte for byte, and every other card is untouched. Only
+this card uses it. The other fill-in cards keep the generic form, which
+James is happy with. Deck check PASS,
+contrast PASS on the shelf, style checker 13 findings before and after.
 
 ## Decisions already made
 

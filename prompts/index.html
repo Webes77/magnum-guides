@@ -324,6 +324,24 @@ footer b{color:var(--paper);font-weight:500}
 .fgrid input::placeholder{color:#9AA0A6}
 .pane.isfilled .plabel span::after{content:" \00b7 your details are in";color:var(--coral-text)}
 @media print{.filler{display:none}}
+
+/* ---- the six-lines builder --------------------------------------------- */
+.builder{background:#FFFFFF;padding:16px 18px 18px}
+.bhint{margin:0 0 12px;font-size:14px;line-height:1.45;color:var(--char)}
+.brow6{display:grid;grid-template-columns:118px 1fr;gap:4px 16px;align-items:baseline;
+  padding:12px 0;border-top:1px solid rgba(30,27,23,.14)}
+.blever{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+  font-size:15px;color:var(--coral-text)}
+.brow6 p{margin:0;font-family:var(--mono);font-size:15px;line-height:2;color:var(--ink)}
+.brow6 input,.brow6 textarea{font:inherit;color:var(--ink);background:transparent;border:0;
+  border-bottom:2px solid var(--ink);padding:0 2px;margin:0 2px;max-width:100%}
+.brow6 textarea.wide{display:block;width:100%;margin:2px 0;resize:none;overflow:hidden;line-height:1.6}
+.brow6 input::placeholder,.brow6 textarea::placeholder{color:#8E97A3}
+.brow6 input:focus,.brow6 textarea:focus{outline:none;border-bottom-color:var(--rust);background:var(--prompt-bg)}
+.bfoot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:14px;
+  border-top:2px solid var(--ink);font-size:14px;color:var(--char)}
+@media (max-width:600px){.brow6{grid-template-columns:1fr}.brow6 p{font-size:15px}}
+@media print{.builder input{border-bottom:1px solid #000}}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -342,16 +360,16 @@ footer b{color:var(--paper);font-weight:500}
 
   <div class="about primer">
     <h2>The method in <em>six lines</em></h2>
-    <p class="pintro">One line per lever, in the order you use them. Every card below is built on these six.</p>
+    <p class="pintro">Six lines, one per lever, top to bottom. Fill in the blanks and send. Nothing to say on a line? Leave it out. When an answer comes back weak, look for the thin line.</p>
     <ol class="levers-list">
-      <li><i>Role</i><span>Tell it who it is, in one sentence. That line sharpens everything after it.</span></li>
-      <li><i>Context</i><span>Tell it the situation. It cannot see your business, and what it does not know, it invents.</span></li>
-      <li><i>Constraints</i><span>Say what to do and what not to. A rule with its reason beats a list of don&rsquo;ts.</span></li>
-      <li><i>Tone</i><span>Say how it should sound. Plain, warm, blunt, formal. Left unsaid, it defaults to corporate.</span></li>
-      <li><i>Format</i><span>Show the shape you want back. A list, a table, an email. One example beats a paragraph describing it.</span></li>
-      <li><i>Output</i><span>Say what finished looks like. Give it a stopping point, or it pads.</span></li>
+      <li><i>Role</i><span><b>You are a ___ who works with ___.</b> A real job and its field. Nothing more.</span></li>
+      <li><i>Context</i><span><b>Here is the situation: ___.</b> What it cannot see. What it does not know, it invents.</span></li>
+      <li><i>Constraints</i><span><b>Stick to these rules: ___, because ___.</b> A rule with its reason gets kept.</span></li>
+      <li><i>Tone</i><span><b>Sound like ___ (a person, not a word).</b> Someone you can picture. Left unsaid, it defaults to corporate.</span></li>
+      <li><i>Format</i><span><b>Lay it out as ___.</b> The shape you want back. One example beats a paragraph describing it.</span></li>
+      <li><i>Output</i><span><b>Give me ___. Then stop.</b> The finished thing, and where it ends. Without a stopping point, it pads.</span></li>
     </ol>
-    <p><a href="../ai-foundations/">Session one</a> teaches all six properly.</p>
+    <p><a href="#six-lines">Fill in six lines</a> is the blank version to copy. <a href="../ai-foundations/">Session one</a> teaches all six properly.</p>
   </div>
 
   <div class="about" id="howto" hidden>
@@ -1511,7 +1529,7 @@ THE CUT VERSION: the full text, a fifth shorter, in my words.
 WHAT WENT: each line you removed, with a phrase on why.
 
 Stop after that list.`},
-{kind:'prompt', id:'write-the-quote', sec:'Magnum AI library', title:'Write the quote', where:'New chat, rough job notes in hand', type:'writing', when:'start', hook:"Rough notes in, a signable quote out, in under a minute.", rank:3, added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'write-the-quote', sec:'Magnum AI library', title:'Write the quote', where:'New chat, rough job notes in hand', type:'writing', when:'start', hook:"Rough notes in, a signable quote out, in under a minute.", added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a senior proposal writer who turns rough job notes into quotes
 that get signed. A quote is a trust document before it is a price.
 
@@ -1805,6 +1823,239 @@ One line each, with why it is a problem.
 SAFE TO KEEP: the rest, in one line.
 
 Stop after that list.`},
+{kind:'prompt', id:'industry-research', sec:'Reference · Social Media with AI', title:"Research your industry first", where:"A new chat with Research turned on", type:'does', when:'setup', hook:"See what the best in your trade post, before you write a word.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You are a social media researcher who studies what the best small
+businesses in one industry actually post, and why it works for them.
+
+Context: I run [type of business] in [town or region], Australia, and I
+post on [which platforms]. I want to see what good looks like in my
+industry before I decide how my own posts should sound. This is research
+to learn from, not to copy.
+
+Constraints: Look at real accounts and published guidance from the last
+12 months, and name your sources, because I will check the examples
+myself. Focus on small and medium businesses like mine, not national
+brands with marketing teams, because their budgets set a bar I cannot
+use. Say what the good ones do in plain words, not marketing jargon.
+Include any rules or common mistakes specific to my industry, such as
+licence numbers, alcohol or safety wording, because getting those wrong
+costs more than a weak post. If something is a guess rather than
+something you found, say so.
+
+Tone: Plain and practical, like a mate in the same trade telling me what
+works.
+
+Format: Five short sections. 1. What the best ones post: the five post
+types that work, with an example of each. 2. How they sound: three words
+for the typical voice, and what the standouts do differently. 3. How
+often they post, and on which platforms. 4. Mistakes to avoid in this
+industry. 5. Three accounts worth looking at, with one line on why.
+
+Output: The five sections, then one line headed THE GAP TO CLOSE FIRST:
+the single biggest difference between what the best do and what a
+typical business in my industry does.`},
+
+{kind:'prompt', id:'roast-the-feed', sec:'Reference · Social Media with AI', title:"Roast your feed", where:"A new chat. Paste your posts below the prompt", type:'review', when:'setup', hook:"Your last twenty posts, sorted: sounds like you, sounds like everyone.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You are a blunt social media editor who has reviewed thousands of
+small business accounts and knows what makes a customer scroll past.
+
+Context: Below are my last posts, copied from [which platforms], newest
+first. I run [type of business]. I want to know what is working, what
+sounds like everyone else, and what is missing, before I change anything.
+
+Constraints: Judge only what I have pasted, because I will act on this.
+Quote the actual line when you praise or criticise it, so I can see what
+you mean. Say when a post could belong to any business in my industry,
+because that is the most common problem and the easiest to fix. Do not
+tell me to post more often; that is not the question today.
+
+Tone: Honest and specific. Friendly, but do not soften the findings.
+
+Format: A scorecard under three headings: SOUNDS LIKE US, SOUNDS LIKE
+EVERYONE, MISSING. Up to four points under each.
+
+Output: The scorecard, then the three changes that would make the
+biggest difference, in order. Stop there.`},
+
+{kind:'prompt', id:'build-voice-file', sec:'Reference · Social Media with AI', title:"Build your voice file", where:"A new chat inside your social media project", type:'instructions', when:'setup', hook:"Questionnaire, best posts and reviews in. How you sound, written down.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You are a copywriter who can hear how an owner really talks and
+write it down so anyone could copy it.
+
+Context: Below are three things: my answers to the brand questionnaire,
+[three to five posts, emails or messages I am proud of], and [ten to
+twenty of my Google reviews, copied word for word]. Turn them into a
+voice file that will guide every post written for my business from now
+on.
+
+Constraints: Base everything on what I have pasted, and quote the words
+that support each point, because a voice file built on guesses writes
+posts that sound like someone else. Describe what I do rather than
+adjectives: "short sentences, first names, one joke at most" beats
+"friendly". Pull out the phrases customers use about us, because those
+are the words new customers trust. Never turn a review into a new quote
+or change its wording, because that is misleading under Australian
+Consumer Law. Copy every must-always line from the questionnaire exactly
+as written.
+
+Tone: Plain. Write it so a new staff member could follow it on day one.
+
+Format: These headings, in this order: WHO WE TALK TO. HOW WE SOUND,
+as three "this, not that" pairs. WORDS WE USE. WORDS WE NEVER USE. WHAT
+WE POST. WHERE WE POST, with each platform we use and who approves.
+WHAT WE NEVER POST OR CLAIM. MUST ALWAYS INCLUDE. CUSTOMER WORDS.
+
+Output: The voice file, under 400 words, in Australian English. Then one
+line listing anything you still need from me.`},
+
+{kind:'prompt', id:'photo-every-platform', sec:'Reference · Social Media with AI', title:"One photo, every platform", where:"A new chat inside your social media project. Attach the photo", type:'writing', when:'start', hook:"A phone photo and one line become a post for every platform.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You write social posts for this business, the way the owner would
+if they had the time.
+
+Context: I have attached a photo. It shows [what it is, and anything
+worth knowing, in one line]. Use the voice file in this project for how
+we sound and what we must always include.
+
+Constraints: Use only what is in the photo, my line above and the voice
+file. Never invent a customer, a result, a price, a date or a quote,
+because a made-up detail in a public post is the fastest way to lose
+trust. If a post needs a detail you do not have, write [CHECK] in its
+place. Mention one specific thing you can see in the photo, because a
+real detail is what makes a post sound like a person was there. Use
+at most one emoji and never a dash to join two thoughts, because both
+are the quickest signs a machine wrote it. Write each platform its own
+way rather than one post copied across, because each one is read
+differently.
+
+Tone: As the voice file says.
+
+Format: One labelled version for each platform listed in the voice
+file, and none for any we do not use. LINKEDIN: three to five lines on
+the work and what it shows about how we do things. INSTAGRAM: two to four
+short lines, then up to three hashtags. FACEBOOK: three to five lines,
+conversational and local, ending with one next step. GOOGLE: two plain
+lines and a next step, no hashtags.
+
+Output: The versions, then one line headed NOT CONFIRMED listing
+anything marked [CHECK].`},
+
+{kind:'prompt', id:'write-the-offer', sec:'Reference · Social Media with AI', title:"Write the offer", where:"A new chat inside your social media project", type:'writing', when:'before-acting', hook:"A special that sells, with the price exactly right and nothing invented.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You write offers that people act on without feeling sold to.
+
+Context: The offer is [what it is, and who it is for]. The price is [the
+exact figure the customer pays, including GST]. It runs [start and end
+dates]. Use the voice file in this project.
+
+Constraints: Use the offer, the price and the dates exactly as written,
+because a wrong price in a public post is a promise and can breach
+consumer law. Show prices to customers including GST, because that is
+the price they pay. Add no conditions, extras, stock levels or urgency I
+have not given you, such as "last chance", because false urgency is
+misleading. If the voice file has must-always lines for offers, such as a licence
+number or an 18+ note, include them. If we are a licensed venue, never
+put a drink price, drink discount or happy hour in a post, because
+Queensland liquor law restricts advertising them outside the venue.
+
+Tone: As the voice file says. Clear first, friendly second.
+
+Format: One labelled version for each platform listed in the voice
+file. Put the dates on their own line in each.
+
+Output: The versions, then one line repeating the price and dates
+exactly as used, so I can check them against my own.`},
+
+{kind:'prompt', id:'reply-in-public', sec:'Reference · Social Media with AI', title:"Reply to a review or comment", where:"A new chat inside your social media project", type:'writing', when:'start', hook:"A shorter and a warmer reply, with complaints taken offline.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You are the owner of this business, answering a customer in
+public.
+
+Context: Here is the review or comment, word for word, and where it was
+posted: [paste it]. Use the voice file in this project.
+
+Constraints: Answer what they actually said, in as few words as it
+needs, because a long reply to a short comment reads like a script. Use
+only facts from their words, the voice file or what I tell you, because
+a wrong detail in public is worse than none. If they ask about a price,
+stock or a date you do not have, say we will message them. If it is a
+complaint, thank them, do not argue, and move it to a private message or
+a phone call. Offer no refund, discount or promise unless I tell you
+to, because a public offer binds us. Never share anything private about
+the customer, because it is their information, not ours.
+
+Tone: As the voice file says. Warm if they are happy. Calm and brief if
+they are not.
+
+Format: Two options, labelled SHORTER and WARMER, each under 60 words.
+
+Output: The two options, then one line headed BEFORE YOU POST listing
+anything I should check.`},
+
+{kind:'prompt', id:'week-in-the-queue', sec:'Reference · Social Media with AI', title:"A week in the queue", where:"A new chat inside your social media project", type:'writing', when:'weekly', hook:"Tell it the week. Drafts land in Buffer for you to check.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You plan and write a week of social posts for a busy owner who
+has fifteen minutes to approve them.
+
+Context: This week: [what is happening: jobs, stock, events, anything
+real]. The photos are attached. Use the voice file in this project for
+how we sound, what we post and what we must always include.
+
+Constraints: Build every post from something real I have given you,
+because a filler post about nothing does more harm than a quiet week.
+Never invent a customer, a result, a price, a date or an event. Write
+each post for each platform we use, in that platform's style. If Buffer
+is connected, save every post as a draft in the right channel and never
+publish or schedule it, because I approve everything before it goes out.
+If Buffer is not connected, give me the posts in a table instead.
+
+Tone: As the voice file says.
+
+Format: Three to five posts across the week. For each one: the day, the
+platforms, the photo it uses, and the text.
+
+Output: Confirm what went into Buffer as drafts, channel by channel,
+then list anything marked [CHECK]. Stop there.`},
+
+{kind:'prompt', id:'social-autopilot', sec:'Reference · Social Media with AI', title:"Social media on autopilot", where:"A scheduled task inside your social media project", type:'scheduled', when:'weekly', hook:"Every Monday, the photo folder becomes a week of drafts in Buffer.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You are this business's social media writer, working on your own
+once a week.
+
+Context: Every Monday at 7am, read the photos and notes added to [the
+folder name] since last Monday. Use the voice file in this project for
+how we sound and what we must always include.
+
+Constraints: You cannot ask me anything, so where a detail is missing,
+write [CHECK] and carry on. Never invent a customer, a result, a price,
+a date or a quote. Save every post as a draft in Buffer, in the right
+channel, and never publish or schedule anything, because I approve every
+post from my phone. Never delete or move anything in the folder. If
+nothing new was added, say so in one line and stop, because a quiet week
+and a broken job should never look the same.
+
+Tone: As the voice file says.
+
+Format: Up to five posts, each written for every platform we use.
+
+Output: A short note at the top with the date and time you ran, how
+many drafts went into Buffer by channel, and anything marked [CHECK].
+Then stop.`},
+
+{kind:'prompt', id:'voice-tune', sec:'Reference · Social Media with AI', title:"The monthly voice tune", where:"A new chat inside your social media project", type:'review', when:'monthly', hook:"Your edits from last month become rules, so next month needs fewer.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`Role: You are an editor tuning a brand voice file from evidence.
+
+Context: Below is the voice file in this project, and [a few of last
+month's drafts, copied from the chats or task runs, each next to how it
+finally went out]. I want
+the voice file to need fewer edits next month.
+
+Constraints: Change only what my edits show, and quote the edit behind
+each change, because the file should follow how I actually write. Look
+for patterns: words I always cut, lines I always add, a tone I keep
+softening. Keep every must-always line unless I say otherwise.
+
+Tone: Straight and short.
+
+Format: A list of changes, each with the edit that caused it, then the
+full updated voice file.
+
+Output: Both, ready to save over the old file.`},
+
 {kind:'prompt', id:'design-the-bot', sec:'Reference · Chatbots, Agents and Bots', title:'Design the bot', where:'A new chat, in the project the bot will live in', type:'interview', when:'setup', hook:"Say a repeated job out loud and get back the brief for a bot.", added:'2026-09-09', levers:['Context','Constraints','Format','Output'],
 prompt:`I want to hand one repeated job to a bot. Interview me before you build
 anything.
@@ -1850,7 +2101,21 @@ say so in one line and stop.
 Put the date and time you ran at the top. Then stop.`},
 
 /* ---------- Session one · AI Foundations ---------- */
-{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', hook:"Say the job out loud and get a brief you could not have typed.", rank:1, levers:['Context','Constraints','Output'],
+{kind:'prompt', id:'six-lines', sec:'Session one · AI Foundations', title:'Fill in six lines', where:'Any new chat, any job', type:'writing', when:'start', rank:1, hook:"Type over the grey words. Copy it. That is your prompt.", added:'2026-09-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
+builder:true, eg:{'job':'bookkeeper','field':'small trades businesses','what has happened, who it is for, what you tried':'a good client is 30 days late on an invoice. One reminder, no reply','a rule':'under 120 words','the reason':'they read it on their phone','a person you can picture':'an owner who is good at the job and does not need to chase','the shape you want back':'a subject line, then the email as plain text','the finished thing':'the email'},
+prompt:`You are a [job] who works with [field].
+
+Here is the situation: [what has happened, who it is for, what you tried].
+
+Stick to these rules: [a rule], because [the reason].
+
+Sound like [a person you can picture].
+
+Lay it out as [the shape you want back].
+
+Give me [the finished thing]. Then stop.`},
+
+{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', hook:"Say the job out loud and get a brief you could not have typed.", rank:2, levers:['Context','Constraints','Output'],
 prompt:`I want your help with a real task, and I would rather talk it
 through than write you a brief.
 
@@ -1901,7 +2166,7 @@ the work.
 
 The chat:`},
 
-{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', hook:"Four lines that stop it agreeing with you.", rank:2, levers:['Constraints','Tone'],
+{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', hook:"Four lines that stop it agreeing with you.", rank:3, levers:['Constraints','Tone'],
 prompt:`From now on, in everything you do for me:
 
 Do not tell me what I want to hear. Tell me what I need to hear.
@@ -1940,20 +2205,24 @@ The things you would ask before you put your own name on this.
 If the plan holds up, say so in one line. Do not invent a fourth
 problem to look useful.`},
 
-{kind:'prompt', id:'overdue-invoice', sec:'Session one · AI Foundations', title:'Chase an overdue invoice', where:'Any chat. All six levers in one working prompt', type:'writing', when:'start', hook:"All six levers in one working prompt. The session one demo, kept here to copy.", levers:['Role','Context','Constraints','Tone','Format','Output'],
-prompt:`You are writing on behalf of a small business owner chasing an
-overdue invoice.
+{kind:'prompt', id:'overdue-invoice', sec:'Session one · AI Foundations', title:'Chase an overdue invoice', where:'Any chat. Six lines, one per lever', type:'writing', when:'start', hook:"Six lines, one per lever. The session one demo, kept here to copy.", levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a bookkeeper who works with small businesses.
 
-The situation: the invoice is 30 days past due. The client is a good one, we
-want to keep them, and this has never happened before. I have already sent one
-polite reminder and had no reply.
+Here is the situation: a client we want to keep is 30 days late paying an
+invoice. This has never happened before. I sent one polite reminder two
+weeks ago and had no reply.
 
-Write the follow-up email. Under 120 words. Warm but not apologetic. Make it
-easy for them to pay and easy for them to tell me if something is wrong. Keep
-it level, no threat and no apology, because either one makes it harder for
-them to pay.
+Stick to these rules: under 120 words, because it has to be read in one
+go. No threat and no apology, because either one makes it harder for them
+to pay. Make it easy for them to pay, and easy to tell me if something is
+wrong.
 
-Give me the email only. No preamble.`},
+Sound like an owner who is good at the job and does not need to chase.
+Warm, level, straight.
+
+Lay it out as a subject line, then the email as plain text I can paste.
+
+Give me the email. Then stop.`},
 
 /* ---------- Session two · Make Claude Yours ---------- */
 {kind:'prompt', id:'account-instructions', sec:'Session two · Make Claude Yours', title:'Your account instructions', where:'Runs in a brand-new chat', type:'instructions', when:'setup', hook:"Never introduce yourself to it again.", rank:2, levers:['Context','Constraints','Format','Output'],
@@ -2371,7 +2640,27 @@ whenKeys.forEach(w=>{
     const levers='';
     // The prompt is the thing they came for, so it carries its own label and
     // its own colour, and nothing that is merely explanation sits on top of it.
-    const body=s.kind==='recipe'
+    // The six-lines card is the method itself, so it gets its own layout: one
+    // row per lever, the blanks sitting inside the sentence with a grey worked
+    // example in each. The prompt panel is left off because the rows are the
+    // prompt; Copy and Expand still read the stored text. James, 25 Sep, after
+    // the generic form read as eight boxes and a second copy of the prompt.
+    const builder=s.builder?`<div class="builder">
+        <p class="bhint">Each grey line is an example. Type your own over it. Nothing to say on a line? Leave it blank and it drops out.</p>
+        ${s.prompt.split('\n\n').map((para,n)=>`<div class="brow6"><span class="blever">${esc(LEVERS[n]||'')}</span><p>${
+          para.split(/(\[[^\]\n]{2,120}\])/).map((bit,j,all)=>{
+            const m=bit.match(/^\[([^\]\n]{2,120})\]$/);
+            // A full stop left alone after a long blank would sit on its own
+            // line; it stays in the stored prompt, it just is not drawn here.
+            if(!m){const pk=j?(all[j-1].match(/^\[(.+)\]$/)||[])[1]:null,pe=pk&&((s.eg&&s.eg[pk])||pk);
+              return (bit==='.'&&pe&&pe.length>30)?'':esc(bit);}
+            const k=m[1],eg=(s.eg&&s.eg[k])||k,a=`data-fid="${esc(s.id)}" data-ft="${esc(k)}" placeholder="${esc(eg)}" aria-label="${esc(k)}"`;
+            return eg.length>30?`<textarea rows="${Math.ceil(eg.length/32)}" class="wide" ${a}></textarea>`
+              :`<input type="text" size="${Math.min(Math.max(eg.length,6),30)}" ${a}>`;
+          }).join('')}</p></div>`).join('')}
+        <div class="bfoot"><button class="copy" data-i="${i}">${copyLabel(s)}</button><span>Then paste it into a new chat.</span></div>
+      </div>`:'';
+    const body=builder?builder:s.kind==='recipe'
       ?`<div class="plabel steps-label">The steps</div><ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
       :(()=>{
           const f=fillsOf(s.prompt);
@@ -2507,17 +2796,26 @@ function refill(id){
   const s=S.find(c=>c.id===id); if(!s)return;
   const pane=document.getElementById(id); if(!pane)return;
   let out=s.prompt;
+  const vals={};
   pane.querySelectorAll('[data-fid]').forEach(el=>{
-    const v=el.value.trim();
+    const v=el.value.trim();vals[el.dataset.ft]=v;
     if(v)out=out.split('['+el.dataset.ft+']').join(v);
   });
+  // Six lines: a line with nothing typed in it is left out of the copy, which
+  // is the method's own rule. Nothing typed at all still copies the template.
+  if(s.builder&&Object.values(vals).some(Boolean)){
+    out=s.prompt.split('\n\n').filter(p=>fillsOf(p).some(k=>vals[k]))
+      .map(p=>fillsOf(p).reduce((a,k)=>vals[k]?a.split('['+k+']').join(vals[k]):a,p)).join('\n\n');
+  }
   FILLED[id]=out===s.prompt?null:out;
   const pre=pane.querySelector('.prewrap pre');
   if(pre)pre.innerHTML=dim(esc(flow(out)));
   pane.classList.toggle('isfilled',!!FILLED[id]);
   checkMore();
 }
-document.addEventListener('input',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);});
+document.addEventListener('input',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);
+  if(e.target.matches&&e.target.matches('.builder input')){e.target.size=Math.min(Math.max(e.target.value.length+1,e.target.placeholder.length,6),30);}
+  if(e.target.matches&&e.target.matches('.builder textarea')){e.target.style.height='auto';e.target.style.height=e.target.scrollHeight+'px';}});
 document.addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&reader.classList.contains('on'))closeReader();});
 
