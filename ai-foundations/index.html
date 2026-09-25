@@ -278,19 +278,23 @@ The things you would ask before you put your own name on this.
 If the plan holds up, say so in one line. Do not invent a fourth
 problem to look useful.`;
 
-const P4 = `You are writing on behalf of a small business owner chasing an
-overdue invoice.
+const P4 = `You are a bookkeeper who works with small businesses.
 
-The situation: the invoice is 30 days past due. The client is a good one, we
-want to keep them, and this has never happened before. I have already sent one
-polite reminder and had no reply.
+Here is the situation: a client we want to keep is 30 days late paying an
+invoice. This has never happened before. I sent one polite reminder two
+weeks ago and had no reply.
 
-Write the follow-up email. Under 120 words. Warm but not apologetic. Make it
-easy for them to pay and easy for them to tell me if something is wrong. Keep
-it level, no threat and no apology, because either one makes it harder for
-them to pay.
+Stick to these rules: under 120 words, because it has to be read in one
+go. No threat and no apology, because either one makes it harder for them
+to pay. Make it easy for them to pay, and easy to tell me if something is
+wrong.
 
-Give me the email only. No preamble.`;
+Sound like an owner who is good at the job and does not need to chase.
+Warm, level, straight.
+
+Lay it out as a subject line, then the email as plain text I can paste.
+
+Give me the email. Then stop.`;
 
 
 const P5 = `For the rest of this job, keep a status note and never lose it.
@@ -342,7 +346,7 @@ const F = {};
 F.cover = ['<svg viewBox="0 0 420 380"><rect x="34" y="40" width="300" height="180" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><rect x="58" y="72" width="150" height="14" fill="#1E1B17"/><rect x="58" y="104" width="230" height="8" fill="#3A3630"/><rect x="58" y="122" width="196" height="8" fill="#3A3630"/><rect x="58" y="140" width="214" height="8" fill="#3A3630"/><rect x="58" y="170" width="96" height="10" fill="#FF6F5E"/><path d="M126 220 L146 250 L106 250 Z" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4" stroke-linejoin="round"/><circle cx="300" cy="292" r="60" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><rect x="272" y="272" width="56" height="8" fill="#FFFFFF"/><rect x="272" y="290" width="40" height="8" fill="#FFFFFF"/><rect x="272" y="308" width="48" height="8" fill="#FFFFFF"/><circle cx="86" cy="300" r="38" fill="#5B6B7A" stroke="#1E1B17" stroke-width="4"/><path d="M70 300h32M86 284v32" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/></svg>',
  'Fig. 01 / you talk, it asks, it builds<br>The method, before the setup'];
 F.levers = ['<svg viewBox="0 0 420 380"><g stroke="#1E1B17" stroke-width="5" stroke-linecap="square"><line x1="40" y1="70" x2="380" y2="70"/><line x1="40" y1="122" x2="380" y2="122"/><line x1="40" y1="174" x2="380" y2="174"/><line x1="40" y1="226" x2="380" y2="226"/><line x1="40" y1="278" x2="380" y2="278"/><line x1="40" y1="330" x2="380" y2="330"/></g><g fill="#3A3630"><rect x="40" y="64" width="230" height="12"/><rect x="40" y="116" width="300" height="12"/><rect x="40" y="168" width="150" height="12"/><rect x="40" y="220" width="196" height="12"/><rect x="40" y="272" width="118" height="12"/></g><rect x="40" y="324" width="264" height="12" fill="#FF6F5E"/><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><circle cx="270" cy="70" r="17"/><circle cx="340" cy="122" r="17"/><circle cx="190" cy="174" r="17"/><circle cx="236" cy="226" r="17"/><circle cx="158" cy="278" r="17"/></g><circle cx="304" cy="330" r="21" fill="#5B6B7A" stroke="#1E1B17" stroke-width="4"/><path d="M294 330l7 8 13-15" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
- 'Fig. 02 / six levers, one diagnostic<br>Weak answer? One of them was missing'];
+ 'Fig. 02 / six levers, six lines<br>Weak answer? Find the thin line'];
 F.honest = ['<svg viewBox="0 0 420 380"><rect x="30" y="46" width="180" height="130" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><rect x="52" y="72" width="90" height="10" fill="#1E1B17"/><rect x="52" y="96" width="132" height="8" fill="#3A3630"/><rect x="52" y="114" width="108" height="8" fill="#3A3630"/><rect x="52" y="140" width="60" height="8" fill="#5B6B7A"/><rect x="210" y="204" width="180" height="130" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><rect x="232" y="230" width="90" height="10" fill="#1E1B17"/><rect x="232" y="254" width="132" height="8" fill="#3A3630"/><rect x="232" y="272" width="108" height="8" fill="#3A3630"/><rect x="232" y="298" width="76" height="8" fill="#FF6F5E"/><path d="M210 176 L210 204" stroke="#1E1B17" stroke-width="4"/><path d="M120 176 L120 250 L210 250" fill="none" stroke="#1E1B17" stroke-width="4" stroke-dasharray="10 8"/><text x="248" y="196" font-family="IBM Plex Mono" font-size="15" letter-spacing="2" fill="#1E1B17">REDLINE</text></svg>',
  'Fig. 03 / ask it to take the other side<br>Agreement is not the same as useful'];
 F.next = ['<svg viewBox="0 0 420 380"><rect x="34" y="60" width="150" height="106" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><text x="109" y="120" text-anchor="middle" font-family="Oswald" font-size="22" fill="#1E1B17">TODAY</text><rect x="236" y="60" width="150" height="106" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><text x="311" y="112" text-anchor="middle" font-family="Oswald" font-size="20" fill="#FFFFFF">NEXT</text><text x="311" y="138" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="1" fill="#FFFFFF">SET IT UP</text><path d="M184 113 H236" stroke="#1E1B17" stroke-width="5"/><path d="M222 103l14 10-14 10" fill="none" stroke="#1E1B17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="212" width="352" height="128" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><rect x="58" y="240" width="140" height="12" fill="#1E1B17"/><rect x="58" y="268" width="280" height="8" fill="#3A3630"/><rect x="58" y="286" width="236" height="8" fill="#3A3630"/><rect x="58" y="310" width="104" height="10" fill="#FF6F5E"/><circle cx="344" cy="304" r="26" fill="#5B6B7A" stroke="#1E1B17" stroke-width="4"/><path d="M332 304l8 9 15-18" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -359,30 +363,30 @@ const EGS = {
   role: ["“You are a marketing expert.”","Too wide. Marketing for whom? It picks the middle and writes for nobody.",
          "“You are a copywriter who works with small trades businesses.”","It writes like a copywriter and it knows the field. The rest you tell it in the next five levers."],
   context: ["“Write a follow-up to a customer.”","It invents the customer, the job and the history, then writes to a stranger.",
-            "“Sarah had a kitchen quote from us in July, said she would decide by August, and went quiet. Friendly, but price-focused.”","A follow-up to Sarah. Same tool. It just knew something."],
+            "“Here is the situation: Sarah had a kitchen quote from us in July, said she would decide by August, and went quiet. Friendly, but price-focused.”","A follow-up to Sarah. Same tool. It just knew something."],
   constraints: ["“Keep it short.”","Its idea of short. Usually three paragraphs.",
-                "“Under 80 words, because she reads on her phone between jobs. If you do not know the price, say so instead of guessing.”","80 words and no invented numbers. A rule with a reason gets kept."],
+                "“Stick to these rules: under 80 words, because she reads on her phone between jobs. If you do not know the price, say so instead of guessing.”","80 words and no invented numbers. A rule with a reason gets kept."],
   tone: ["“Make it friendly.”","Exclamation marks and “Hope you are well!”",
-         "“Like a tradie who is good at the job and does not need the work. Warm, level, no apology.”","Reads like you on a good day. It could picture the person."],
+         "“Sound like a tradie who is good at the job and does not need the work. Warm, level, no apology.”","Reads like you on a good day. It could picture the person."],
   format: ["“Give me some options.”","A wall of text with headings, and a summary you did not ask for.",
-           "“Three subject lines, then the email as plain text I can paste. Nothing else.”","Exactly that. Copy, paste, send."],
+           "“Lay it out as three subject lines, then the email as plain text I can paste. Nothing else.”","Exactly that. Copy, paste, send."],
   output: ["“Help me with the quote.”","Questions, tips and a plan for a quote. Not a quote.",
-           "“The quote itself: line items with prices, then a two-line cover note, ready to paste into an email. Then stop.”","A quote. It knew what done looked like."]
+           "“Give me the quote itself: line items with prices, then a two-line cover note, ready to paste into an email. Then stop.”","A quote. It knew what done looked like."]
  },
  ot: {
   cv: "occupational therapist",
   role: ["“You are a healthcare expert.”","Too wide. Health for whom? It picks the middle and writes for nobody.",
-         "“You are the practice manager of an occupational therapy clinic.”","It writes like a practice manager and it knows the field. The rest you tell it in the next five levers."],
+         "“You are a practice manager who works in occupational therapy.”","It writes like a practice manager and it knows the field. The rest you tell it in the next five levers."],
   context: ["“Write a follow-up to a family.”","It invents the child, the referral and the history, then writes to a stranger.",
-            "“A family was referred to us by their GP in July for an assessment. They booked, cancelled, and have not rebooked. Friendly, worried about cost, plan review due in November.”","A follow-up to that family. Same tool. It just knew something."],
+            "“Here is the situation: a family was referred to us by their GP in July for an assessment. They booked, cancelled, and have not rebooked. Friendly, worried about cost, plan review due in November.”","A follow-up to that family. Same tool. It just knew something."],
   constraints: ["“Keep it short.”","Its idea of short. Usually three paragraphs.",
-                "“Under 80 words, because she reads it on her phone between school runs. If you do not know what the plan covers, say so instead of guessing.”","80 words and no invented funding. A rule with a reason gets kept."],
+                "“Stick to these rules: under 80 words, because she reads it on her phone between school runs. If you do not know what the plan covers, say so instead of guessing.”","80 words and no invented funding. A rule with a reason gets kept."],
   tone: ["“Make it friendly.”","Exclamation marks and “Hope you are well!”",
-         "“Like a therapist who is good at the job and has a full book. Warm, level, no pressure.”","Reads like you on a good day. It could picture the person."],
+         "“Sound like a therapist who is good at the job and has a full book. Warm, level, no pressure.”","Reads like you on a good day. It could picture the person."],
   format: ["“Give me some options.”","A wall of text with headings, and a summary you did not ask for.",
-           "“Two subject lines, then the message as plain text I can paste. Nothing else.”","Exactly that. Copy, paste, send."],
+           "“Lay it out as two subject lines, then the message as plain text I can paste. Nothing else.”","Exactly that. Copy, paste, send."],
   output: ["“Help me with the report.”","Questions, tips and a plan for a report. Not a report.",
-           "“The assessment summary itself: findings in plain language, three recommendations, then a two-line note to the GP, ready to paste. Then stop.”","A summary the GP can read. It knew what done looked like."]
+           "“Give me the assessment summary itself: findings in plain language, three recommendations, then a two-line note to the GP, ready to paste. Then stop.”","A summary the GP can read. It knew what done looked like."]
  }
 };
 const EG = EGS.ot; // the set on the slides right now. Swap by hand for the room.
@@ -393,14 +397,14 @@ const S = [
 {sec:"Open", h:"What you get from <em>today</em>", pts:[
  "Why most people get weak answers, and the fix.",
  "Two ways to talk to it that cover almost everything.",
- "The 6 Levers, so you can diagnose a bad answer instead of guessing.",
+ "The 6 Levers: six lines that write a good prompt and find what is missing from a bad one.",
  "How to stop it agreeing with you.",
  "One real task, done live."]},
 
 {sec:"Open", h:"<em>Today</em>", rows:[
  ["What it is","Two minutes on how it actually works.","Once you know it is a pattern engine, you stop treating it like Google."],
  ["How to talk","Two ways in, one of them by voice.","Talk-It-Out gets a better brief out of you than you could type."],
- ["The 6 Levers","Role, Context, Constraints, Tone, Format, Output.","When an answer is weak, you find what you left out instead of guessing."],
+ ["The 6 Levers","Six lines, one per lever, fill in the blanks.","You write a good prompt first time, and fix a weak answer by finding the thin line."],
  ["Make it honest","Two prompts.","It is built to agree with you. You tell it not to."],
  ["Live","One real job, the overdue invoice.","You see the method work before you leave."]],
  pts:[
@@ -505,61 +509,61 @@ const S = [
  pts:["Every one of these is the same fault: something was missing from what you handed it.",
  "Name which one you are in, and you know what to add."]},
 
-{sec:"The 6 Levers", h:"When the answer is <em>weak</em>", fig:"levers", pts:[
+{sec:"The 6 Levers", h:"The fix is <em>six lines</em>", fig:"levers", pts:[
  "Something was missing from your input. It is nearly always one of six things.",
- "The 6 Levers is a diagnostic, not a formula.",
- "You do not pull all six every time.",
- "You use it when the answer is not good enough, to find what you left out."]},
+ "So write six lines, one per lever, top to bottom. Fill in the blanks.",
+ "Nothing to say on a line? Leave it out.",
+ "When an answer comes back weak, look for the thin line. That is the one to fix."]},
 
 {sec:"The 6 Levers", h:"The <em>six</em>", tiles:[
- ["o","01 Role","Who is it being right now?"],
- ["o","02 Context","What is the situation?"],
- ["o","03 Constraints","What are the rules?"],
- ["t","04 Tone","How should it sound?"],
- ["t","05 Format","How should it be laid out?"],
- ["c","06 Output","What exactly do you need?"]],
- pts:["Role, Context, Constraints, Tone, Format, Output. That order, every time."]},
+ ["o","01 Role","You are a ___ who works with ___."],
+ ["o","02 Context","Here is the situation: ___."],
+ ["o","03 Constraints","Stick to these rules: ___, because ___."],
+ ["t","04 Tone","Sound like ___ (a person, not a word)."],
+ ["t","05 Format","Lay it out as ___."],
+ ["c","06 Output","Give me ___. Then stop."]],
+ pts:["Six lines. Role, Context, Constraints, Tone, Format, Output, in that order."]},
 
 {sec:"The 6 Levers", h:"01 <em>Role</em>", pts:[
- "One short line: a real job and its field. That is all the role does. The reader, the situation and the rules each have their own lever, coming up.",
+ "The line: “You are a ___ who works with ___.” A real job and its field. That is all the role does. The reader, the situation and the rules each have their own lever.",
  "Not “a world-class "+EG.cv+" with 25 years of experience who…” The CV changes nothing, and it drags the useful detail into the wrong lever."],
  split:[
  ["Vague",EG.role[0],EG.role[1]],
  ["Specific",EG.role[2],EG.role[3]]]},
 
 {sec:"The 6 Levers", h:"02 <em>Context</em>", pts:[
- "What it cannot see: who you are, what has happened, what you already tried, and why this matters now. Without it, it fills the gaps with guesses."],
+ "The line: “Here is the situation: ___.” What it cannot see: who you are, what has happened, what you already tried, and why this matters now. Without it, it guesses."],
  split:[
  ["Vague",EG.context[0],EG.context[1]],
  ["Specific",EG.context[2],EG.context[3]]]},
 
 {sec:"The 6 Levers", h:"03 <em>Constraints</em>", pts:[
- "The rules that aim it. Give the rule and the reason. It follows a reason better than a ban."],
+ "The line: “Stick to these rules: ___, because ___.” The because is the part that matters. It follows a reason better than a ban."],
  split:[
  ["Vague",EG.constraints[0],EG.constraints[1]],
  ["Specific",EG.constraints[2],EG.constraints[3]]]},
 
 {sec:"The 6 Levers", h:"04 <em>Tone</em>", pts:[
- "How it sounds. Describe a person, not an adjective."],
+ "The line: “Sound like ___ (a person, not a word).” Picture someone real. “Friendly” gets you exclamation marks."],
  split:[
  ["Vague",EG.tone[0],EG.tone[1]],
  ["Specific",EG.tone[2],EG.tone[3]]]},
 
 {sec:"The 6 Levers", h:"05 <em>Format</em>", pts:[
- "How it is laid out. Say what you will do with it next. If you have one you liked, paste it in: one example beats a paragraph of description."],
+ "The line: “Lay it out as ___.” The shape, and what you will do with it next. If you have one you liked, paste it in: one example beats a paragraph of description."],
  split:[
  ["Vague",EG.format[0],EG.format[1]],
  ["Specific",EG.format[2],EG.format[3]]]},
 
 {sec:"The 6 Levers", h:"06 <em>Output</em>", pts:[
- "The finish line. What lands on your desk, and where it stops."],
+ "The line: “Give me ___. Then stop.” The finished thing in your hand, and where it ends."],
  split:[
  ["Vague",EG.output[0],EG.output[1]],
  ["Specific",EG.output[2],EG.output[3]]]},
 
 {sec:"The 6 Levers", h:"Same job, two <em>results</em>", split:[
  ["Thin","“Write me an email chasing an invoice.”","Formal, generic, slightly cold. You will rewrite it, so you have saved nothing."],
- ["Levered","Role, situation, word count, tone, and what it must not do.","Sendable. The whole point is to stop editing and start sending."]]},
+ ["Six lines","Who it is, the situation, the rules and why, how it sounds, the layout, and where it stops.","Sendable. The whole point is to stop editing and start sending."]]},
 
 {sec:"Make it honest", h:"The <em>yes-man</em> problem", fig:"honest", pts:[
  "It is built to be agreeable. Left alone, it tells you what you want to hear.",
@@ -584,17 +588,17 @@ const S = [
  "The invoice that is thirty days late, from a client you want to keep.",
  "You have sent one polite reminder. Nothing came back.",
  "Everyone in this room has this email sitting unwritten.",
- "Watch which levers get pulled, and when."],
+ "Six lines, one per lever. Watch what each one changes."],
  prompt:P4, where:"Live, on screen", after:[
  "Run it. Read what comes back.",
- "Now change one lever. Make the tone firmer, or drop the word count to 60.",
+ "Now change one line. Make the tone firmer, or drop the word count to 60.",
  "Run it again. That is the whole method.",
  "Then do it with your own overdue invoice."]},
 
 {sec:"Close", h:"Four things to <em>keep</em>", pts:[
  "Open it first, not last.",
  "Talk-It-Out when you do not know where to start.",
- "The 6 Levers when the answer is not good enough: Role, Context, Constraints, Tone, Format, Output.",
+ "The 6 Levers as six lines: Role, Context, Constraints, Tone, Format, Output. Weak answer? Fix the thin line.",
  "Tell it to be honest, or it will be pleasant instead."]},
 
 {sec:"Close", h:"It still does not <em>know</em> you", fig:"next", pts:[

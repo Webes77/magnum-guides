@@ -1690,6 +1690,35 @@ contrast audit reports four failures on the cover figure's labels; they are
 the same false positive the bots deck shows (labels measured against the navy
 plate, not the white boxes they sit in). Eight register rows, 67 to 74.
 
+**The 6 Levers are taught as six lines, 25 Sep, on a branch for James to read.**
+James said the framework had gone convoluted and asked for paint-by-numbers.
+The labels and order did not move (hard rule 3); the teaching did. Each lever
+is now one sentence starter with a blank: "You are a ___ who works with ___",
+"Here is the situation: ___", "Stick to these rules: ___, because ___", "Sound
+like ___ (a person, not a word)", "Lay it out as ___", "Give me ___. Then stop." The canonical source
+is `notes/six-lines.md`, which also carries a paste-ready block for the
+six-lever-prompt-builder skill; that skill lives in James's account and a
+session cannot edit it.
+
+Three faults it fixes, each found in the files. Every lever was explained
+three different ways (tile question, slide rule, shelf line). The deck said
+"a diagnostic, not a formula" two slides before "that order, every time".
+And Format and Output read as the same question; "Then stop" is what keeps
+them apart now. The six lines are the formula, and a weak answer means one
+thin line, so the diagnostic is the same card read backwards.
+
+What moved: the Foundations overview tiles, the six lever slides (each opens
+on its line), the worked examples in both `EGS` sets (each specific ask now
+opens with its starter), the agenda, the close, and P4. P4 was rewritten as
+the six lines filled in, deck and shelf together, byte-identical. The shelf
+primer carries the six lines, and a new card `six-lines` (Fill in six lines,
+eight blanks, so it gets the fill-in form) sits first under Session one. The
+shelf is 63 cards. On James's word it is ranked 1 under Starting a task;
+Talk-It-Out moved to 2, Fix the yes-man to 3, and Write the quote came off
+the pins to keep three per moment. The Tone line carries "(a person, not a
+word)" on the line itself, so the lesson survives without the slide. Deck check PASS,
+contrast PASS on the shelf, style checker 13 findings before and after.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
