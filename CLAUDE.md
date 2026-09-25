@@ -1791,6 +1791,36 @@ the mark. Raised once on 24 Sep, James reaffirmed by sending it again, so it
 ships. Either the skill's badge description is out of date or the artwork is,
 and only James knows which.
 
+**The sticky bar is a dropdown index of the whole site now, 25 Sep.** James read
+the front page on his phone and asked for a dropdown rather than a scroll, so
+that a reader can go straight to the Prompt Shelf or the Field Notes. The old
+bar was five page anchors in a row at desktop and the same five stacked in a
+`<details>` under 820px, which meant the only navigation on the site pointed at
+six places on one page and at none of the fourteen pages behind it.
+
+It is one `<details>` at every width now. Four groups, fifteen destinations:
+Courses, Prompts and reading, Guides, Tools and industry. Four columns on
+desktop, one column on a phone, `max-height:72vh` with scroll so it can never
+grow taller than the screen it hangs off. It closes on a link and on Escape.
+The page anchors went with the row, but every `id` on the page is untouched,
+so `#sessions` and the rest still work for any link already sent (hard rule 8).
+The IntersectionObserver scroll spy went too, because nothing marks a current
+section any more.
+
+Two things worth keeping from building it. The panel sits inside a closed
+`<details>`, so `tools/check-contrast.js` cannot see it, which is the 20 Sep
+lesson exactly; it was audited separately with the panel forced open, and
+passes at 1440, 820 and 390 (summary 14.03:1, the coral group headings 5.32:1,
+the links 9.09:1). And `--body` is a colour token, not a font: the first draft
+wrote `font-family:var(--body)`, which is invalid and silently inherited the
+right face anyway. The font tokens are `--display`, `--sans` and `--mono`.
+
+The badge's phone spacing went with it, because James said it sat too close to
+MEMBERS AREA. It is 96px with a 30px gap under 820px, down from 118px with 18px.
+At 118 the badge's right edge landed 14px past the wrap's own padding, sitting
+in the gutter without triggering a scrollbar, which is why it read as cramped
+rather than broken. 96px is still above the skill's 90px badge minimum.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
