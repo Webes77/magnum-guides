@@ -1720,7 +1720,19 @@ eight blanks, so it gets the fill-in form) sits first under Session one. The
 shelf is 63 cards. On James's word it is ranked 1 under Starting a task;
 Talk-It-Out moved to 2, Fix the yes-man to 3, and Write the quote came off
 the pins to keep three per moment. The Tone line carries "(a person, not a
-word)" on the line itself, so the lesson survives without the slide. Deck check PASS,
+word)" on the line itself, so the lesson survives without the slide.
+
+The card has its own layout since 25 Sep (later), because James said the
+generic fill-in form made it busy and confusing: eight labelled boxes, then
+the same prompt printed again underneath. It is a sentence builder now
+(`builder:true` on the card, examples in `eg`). One row per lever, the lever
+name on the left, the sentence with its blanks inside it, a grey worked
+example in each blank, a Copy button at the foot, and no separate prompt
+panel because the rows are the prompt. A line left completely blank drops
+out of what is copied, which is the method's own rule; nothing typed still
+copies the template byte for byte, and every other card is untouched. Only
+this card uses it. The other fill-in cards keep the generic form, which
+James is happy with. Deck check PASS,
 contrast PASS on the shelf, style checker 13 findings before and after.
 
 ## Decisions already made

@@ -324,6 +324,24 @@ footer b{color:var(--paper);font-weight:500}
 .fgrid input::placeholder{color:#9AA0A6}
 .pane.isfilled .plabel span::after{content:" \00b7 your details are in";color:var(--coral-text)}
 @media print{.filler{display:none}}
+
+/* ---- the six-lines builder --------------------------------------------- */
+.builder{background:#FFFFFF;padding:16px 18px 18px}
+.bhint{margin:0 0 12px;font-size:14px;line-height:1.45;color:var(--char)}
+.brow6{display:grid;grid-template-columns:118px 1fr;gap:4px 16px;align-items:baseline;
+  padding:12px 0;border-top:1px solid rgba(30,27,23,.14)}
+.blever{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+  font-size:15px;color:var(--coral-text)}
+.brow6 p{margin:0;font-family:var(--mono);font-size:15px;line-height:2;color:var(--ink)}
+.brow6 input,.brow6 textarea{font:inherit;color:var(--ink);background:transparent;border:0;
+  border-bottom:2px solid var(--ink);padding:0 2px;margin:0 2px;max-width:100%}
+.brow6 textarea.wide{display:block;width:100%;margin:2px 0;resize:none;overflow:hidden;line-height:1.6}
+.brow6 input::placeholder,.brow6 textarea::placeholder{color:#8E97A3}
+.brow6 input:focus,.brow6 textarea:focus{outline:none;border-bottom-color:var(--rust);background:var(--prompt-bg)}
+.bfoot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:14px;
+  border-top:2px solid var(--ink);font-size:14px;color:var(--char)}
+@media (max-width:600px){.brow6{grid-template-columns:1fr}.brow6 p{font-size:15px}}
+@media print{.builder input{border-bottom:1px solid #000}}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -2083,7 +2101,8 @@ say so in one line and stop.
 Put the date and time you ran at the top. Then stop.`},
 
 /* ---------- Session one · AI Foundations ---------- */
-{kind:'prompt', id:'six-lines', sec:'Session one · AI Foundations', title:'Fill in six lines', where:'Any new chat, any job', type:'writing', when:'start', rank:1, hook:"Six blanks, one per lever. Fill them in and you have a prompt.", added:'2026-09-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'six-lines', sec:'Session one · AI Foundations', title:'Fill in six lines', where:'Any new chat, any job', type:'writing', when:'start', rank:1, hook:"Type over the grey words. Copy it. That is your prompt.", added:'2026-09-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
+builder:true, eg:{'job':'bookkeeper','field':'small trades businesses','what has happened, who it is for, what you tried':'a good client is 30 days late on an invoice. One reminder, no reply','a rule':'under 120 words','the reason':'they read it on their phone','a person you can picture':'an owner who is good at the job and does not need to chase','the shape you want back':'a subject line, then the email as plain text','the finished thing':'the email'},
 prompt:`You are a [job] who works with [field].
 
 Here is the situation: [what has happened, who it is for, what you tried].
@@ -2621,7 +2640,27 @@ whenKeys.forEach(w=>{
     const levers='';
     // The prompt is the thing they came for, so it carries its own label and
     // its own colour, and nothing that is merely explanation sits on top of it.
-    const body=s.kind==='recipe'
+    // The six-lines card is the method itself, so it gets its own layout: one
+    // row per lever, the blanks sitting inside the sentence with a grey worked
+    // example in each. The prompt panel is left off because the rows are the
+    // prompt; Copy and Expand still read the stored text. James, 25 Sep, after
+    // the generic form read as eight boxes and a second copy of the prompt.
+    const builder=s.builder?`<div class="builder">
+        <p class="bhint">Each grey line is an example. Type your own over it. Nothing to say on a line? Leave it blank and it drops out.</p>
+        ${s.prompt.split('\n\n').map((para,n)=>`<div class="brow6"><span class="blever">${esc(LEVERS[n]||'')}</span><p>${
+          para.split(/(\[[^\]\n]{2,120}\])/).map((bit,j,all)=>{
+            const m=bit.match(/^\[([^\]\n]{2,120})\]$/);
+            // A full stop left alone after a long blank would sit on its own
+            // line; it stays in the stored prompt, it just is not drawn here.
+            if(!m){const pk=j?(all[j-1].match(/^\[(.+)\]$/)||[])[1]:null,pe=pk&&((s.eg&&s.eg[pk])||pk);
+              return (bit==='.'&&pe&&pe.length>30)?'':esc(bit);}
+            const k=m[1],eg=(s.eg&&s.eg[k])||k,a=`data-fid="${esc(s.id)}" data-ft="${esc(k)}" placeholder="${esc(eg)}" aria-label="${esc(k)}"`;
+            return eg.length>30?`<textarea rows="${Math.ceil(eg.length/32)}" class="wide" ${a}></textarea>`
+              :`<input type="text" size="${Math.min(Math.max(eg.length,6),30)}" ${a}>`;
+          }).join('')}</p></div>`).join('')}
+        <div class="bfoot"><button class="copy" data-i="${i}">${copyLabel(s)}</button><span>Then paste it into a new chat.</span></div>
+      </div>`:'';
+    const body=builder?builder:s.kind==='recipe'
       ?`<div class="plabel steps-label">The steps</div><ol class="steps">${s.steps.map(t=>`<li><span>${t}</span></li>`).join('')}</ol>`
       :(()=>{
           const f=fillsOf(s.prompt);
@@ -2757,17 +2796,26 @@ function refill(id){
   const s=S.find(c=>c.id===id); if(!s)return;
   const pane=document.getElementById(id); if(!pane)return;
   let out=s.prompt;
+  const vals={};
   pane.querySelectorAll('[data-fid]').forEach(el=>{
-    const v=el.value.trim();
+    const v=el.value.trim();vals[el.dataset.ft]=v;
     if(v)out=out.split('['+el.dataset.ft+']').join(v);
   });
+  // Six lines: a line with nothing typed in it is left out of the copy, which
+  // is the method's own rule. Nothing typed at all still copies the template.
+  if(s.builder&&Object.values(vals).some(Boolean)){
+    out=s.prompt.split('\n\n').filter(p=>fillsOf(p).some(k=>vals[k]))
+      .map(p=>fillsOf(p).reduce((a,k)=>vals[k]?a.split('['+k+']').join(vals[k]):a,p)).join('\n\n');
+  }
   FILLED[id]=out===s.prompt?null:out;
   const pre=pane.querySelector('.prewrap pre');
   if(pre)pre.innerHTML=dim(esc(flow(out)));
   pane.classList.toggle('isfilled',!!FILLED[id]);
   checkMore();
 }
-document.addEventListener('input',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);});
+document.addEventListener('input',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);
+  if(e.target.matches&&e.target.matches('.builder input')){e.target.size=Math.min(Math.max(e.target.value.length+1,e.target.placeholder.length,6),30);}
+  if(e.target.matches&&e.target.matches('.builder textarea')){e.target.style.height='auto';e.target.style.height=e.target.scrollHeight+'px';}});
 document.addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.fid)refill(e.target.dataset.fid);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&reader.classList.contains('on'))closeReader();});
 
