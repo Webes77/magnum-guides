@@ -1798,10 +1798,15 @@ bar was five page anchors in a row at desktop and the same five stacked in a
 `<details>` under 820px, which meant the only navigation on the site pointed at
 six places on one page and at none of the fourteen pages behind it.
 
-It is one `<details>` at every width now. Four groups, fifteen destinations:
-Courses, Prompts and reading, Guides, Tools and industry. Four columns on
-desktop, one column on a phone, `max-height:72vh` with scroll so it can never
-grow taller than the screen it hangs off. It closes on a link and on Escape.
+It is one `<details>` at every width now, labelled `Index` and behaving like an
+ordinary menu: the panel is `position:absolute` off the sticky bar, full bleed
+navy, so it covers the page rather than pushing it down (verified by asserting
+`main`'s top is the same pixel open and shut). Four groups, fifteen
+destinations: Courses, Prompts and reading, Guides, Tools and industry. Four
+columns on desktop, one column on a phone, `max-height:78vh` with scroll so it
+can never grow taller than the screen it hangs off. It closes on a link, on a
+click anywhere outside it, and on Escape, all three driven in a real browser
+rather than assumed.
 The page anchors went with the row, but every `id` on the page is untouched,
 so `#sessions` and the rest still work for any link already sent (hard rule 8).
 The IntersectionObserver scroll spy went too, because nothing marks a current
@@ -1814,6 +1819,14 @@ passes at 1440, 820 and 390 (summary 14.03:1, the coral group headings 5.32:1,
 the links 9.09:1). And `--body` is a colour token, not a font: the first draft
 wrote `font-family:var(--body)`, which is invalid and silently inherited the
 right face anyway. The font tokens are `--display`, `--sans` and `--mono`.
+
+One more ghost failure, the 15 Sep class in a new place. The label sits in a
+`<span class="wrap">` inside the `<summary>`, so putting the colour only on the
+span left the summary itself inheriting body ink, and the audit read it as
+`#2B2823` on navy at 1.01:1 although the summary paints no text of its own.
+The colour is on the summary now, which is the right place anyway and removes
+the false positive. An element whose text lives entirely in a child still
+reports a colour: check whether it paints before believing the number.
 
 The badge's phone spacing went with it, because James said it sat too close to
 MEMBERS AREA. It is 96px with a 30px gap under 820px, down from 118px with 18px.
