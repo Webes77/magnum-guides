@@ -1834,6 +1834,37 @@ At 118 the badge's right edge landed 14px past the wrap's own padding, sitting
 in the gutter without triggering a scrollbar, which is why it read as cramped
 rather than broken. 96px is still above the skill's 90px badge minimum.
 
+**The 27 Sep edition is a video Magnum, published by hand from a session on
+26 Sep, and the whole Drive drop was skipped.** James made this week's Magnum
+as a video: the patrol tower still (prompt 3 of the three the draft routine
+offered, not the one it had put in the draft) through ChatGPT, then Kling
+animating it from a motion prompt. He dropped the mp4 into the chat and asked
+for the making-of to be the story. Everything ran from the session: the draft
+`edition.json` was pulled from Drive byte-exact, The Magnum section rewritten
+(headline "The patrol tower", setup telling the two-step recipe, both prompts
+verbatim, take on image prompt versus video prompt), built, checked, pushed to
+`main` in `magnum-newsletter`. The video is self-hosted at
+`assets/2026-09-27/the-magnum-2026-09-27.mp4`, H.264, 8 seconds, 25MB,
+`preload="metadata"` so it only downloads on tap.
+
+`tools/build_edition.py` gained an optional `video_prompt` field on The
+Magnum: when present the page renders two labelled boxes, "The image prompt"
+and "The video prompt"; absent, it renders exactly as before, so neither
+routine is touched. `tools/EDITION-SCHEMA.md` documents it. ROUTINE.md is
+deliberately unchanged: it must stay byte-identical to the live triggers, and
+the routines do not need the field. Rendered prompt boxes were verified
+byte-identical to the authored text, and the Magnum section was rendered and
+read at phone width before pushing.
+
+Publishing a day early is safe by construction: the Sunday 4pm publish
+routine's Step 1 stops quietly when the date is already in `issues.json`, so
+there is no collision and no failure email. That makes hand-publish from a
+chat session the standing route whenever James wants a video edition sorted
+on the Saturday: the mp4 into the chat beats a Kling URL (those expire and
+the sandbox cannot fetch them) and beats the Drive `notes.txt` route (the
+routine would rebuild from the Drive `edition.json`, which cannot be edited
+through the connector, so the story rewrite would be lost).
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
