@@ -482,6 +482,15 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- From the Sunday Brief ---------- */
+{kind:'recipe', id:'read-your-account', sec:'From the Sunday Brief', title:'Make it read your account first', where:'A subscription, contract or plan you are about to renew or change', type:'review', when:'before-acting', hook:"A recommendation built on your real numbers, not generic advice.", added:'2026-09-27',
+steps:[
+ 'Turn on your AI\'s browser or account connector before you ask anything.',
+ 'Open the real account, plan or contract you are deciding on.',
+ 'Tell it to answer only from what it can see, not from habit.',
+ 'List every real option side by side, with the actual numbers against each one.',
+ 'Ask what it would do in your position, and why, before you decide.'
+]},
+
 {kind:'prompt', id:'business-folder-audit', sec:'From the Sunday Brief', title:'Get a full audit from one folder', where:'A task with a folder of your business files granted', type:'does', when:'monthly', hook:"Point it at everything you have, and it finds what nobody told it to look for.", added:'2026-09-20', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are an outside operator reviewing a small business from its own
 paperwork, the way a buyer's due diligence team would before an
