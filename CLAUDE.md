@@ -1865,6 +1865,45 @@ the sandbox cannot fetch them) and beats the Drive `notes.txt` route (the
 routine would rebuild from the Drive `edition.json`, which cannot be edited
 through the connector, so the story rewrite would be lost).
 
+**The Sunday Brief was rebuilt on 27 Sep, and the live routine carries it.**
+James called that morning's brief very disappointing. The measurement shows
+why. It read all 35 newsletters and sent him five items. The five tests
+worked as a gate ("an item that passes none is cut, not summarised"), and
+model releases were barred unless they changed a recommendation. So GPT-6,
+Grok 4.7, Meta's Muse, Acrobat inside Claude, a claimed turn-a-task-into-a-skill
+feature and Ruben Hassid launching a competing consultancy all went into the
+vault and never reached him.
+
+What he asked for, in his words: read every newsletter thoroughly, then give
+me the news I need to know, the tools I might use, and the skills or updates
+that keep me ahead of the pack, written really simply and engagingly. The
+brief now has three sections in that order: NEWS YOU NEED TO KNOW, TOOLS WORTH
+TRYING, SKILLS AND UPDATES TO KEEP YOU AHEAD. An approval block for shelf cards
+appears only in weeks that have cards. The gate is one question: would he
+want to know this before a client or a peer tells him? The five tests now
+rank items and explain why each matters. They no longer exclude anything.
+The old risk section folded into the news as a WATCH OUT item that goes first.
+Every item has a hook line, a plain explanation and a "What to do" line, with
+a word ceiling per item and a target count per section. The whole brief has a
+ten-minute ceiling on a phone.
+
+His "maybe a questionnaire" became five questions the routine answers for
+every email as it reads, before it opens the next one. The answers go into
+a new first vault section, `## reading-notes`, so a story buried in a footer
+cannot slip past. The Field Note commission is unchanged, closes section 3,
+and the Wednesday routine reads the same `## field-note-commission` section
+as before. Nothing in the Field Note prompt needed to move.
+
+`notes/sunday-brief-prompt.md` is 23,941 characters in its prompt body. The
+live trigger `trig_014BpCSeSMonkfgePpN5tBfN` was updated and asserted equal
+to it, byte for byte, by parsing the saved tool result rather than retyping
+it. That is a better check than the one in the gotchas: when a tool result
+is too large to show, it lands in a JSON file on disk, and a script can
+compare that file with the source directly. The first run in the new shape
+is Sunday 4 Oct. A sample of the 27 Sep brief rebuilt in the new format went
+to James in chat: fourteen items where the real run sent five, all taken
+from the run's own working file.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
