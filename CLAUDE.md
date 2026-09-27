@@ -1834,7 +1834,7 @@ At 118 the badge's right edge landed 14px past the wrap's own padding, sitting
 in the gutter without triggering a scrollbar, which is why it read as cramped
 rather than broken. 96px is still above the skill's 90px badge minimum.
 
-**Prompts for learning faster, built 27 Sep, on a branch awaiting James's
+**Prompts for learning faster, built 27 Sep, live the same day on James's
 sign-off.** Six prompts and an introduction, all James's own words, supplied as
 a finished brief with the instruction to build and stop. He chose the Prompt
 Shelf over a page of its own, so it is a second area beside Research:
