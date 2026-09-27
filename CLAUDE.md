@@ -1834,6 +1834,40 @@ At 118 the badge's right edge landed 14px past the wrap's own padding, sitting
 in the gutter without triggering a scrollbar, which is why it read as cramped
 rather than broken. 96px is still above the skill's 90px badge minimum.
 
+**Prompts for learning faster, built 27 Sep, on a branch awaiting James's
+sign-off.** Six prompts and an introduction, all James's own words, supplied as
+a finished brief with the instruction to build and stop. He chose the Prompt
+Shelf over a page of its own, so it is a second area beside Research:
+`station:'learning'`, six cards `learn-get-functional`, `learn-by-mistakes`,
+`learn-confusing-content`, `learn-seven-day-path`, `learn-find-gaps`,
+`learn-explain-it`, in that order. The shelf is 69 cards.
+
+Four shelf behaviours had to bend to his layout, each scoped so no other card
+or area changed, proven by diffing all 63 existing cards' rendered HTML against
+the previous commit (zero differences once the shifted index attribute is
+ignored). A card flag `asWritten` shows the prompt exactly as authored, because
+`flow()` would have joined prompt 1's two short lines, and marks its square
+brackets with the coral tint on screen only; Copy still reads the stored text.
+The area header takes an optional `howto` block, so the introduction's six
+numbered steps render as a list under his own heading. A `flat` area hides the
+moment heading and the Prompts to copy line in its own view, so the six read
+straight down under the introduction in his order; all six carry
+`when:'start'` so they sit in one block. And the fill-in form does not appear,
+because every one of his placeholders is in capitals, which the shelf reads as
+an AI marker rather than a blank.
+
+Five carry `type:'interview'`, the Asks you questions tag, on the strength of
+his own line that most of them ask questions and wait. Prompt 4 builds a plan
+and waits for nothing, so it carries no type and does not appear under the What
+it does filter. No hook and no levers: both would have been text of a session's
+own, which the brief ruled out.
+
+Two contrast failures turned up and are not this change's. The Copy button
+(3.73:1) and the The prompt label (4.50:1, a hair under) fail on every card on
+the shelf; the audit only sees them with a card open, which is the 20 Sep
+lesson again. Reported to James, not fixed, because the brief said to touch
+nothing else.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
