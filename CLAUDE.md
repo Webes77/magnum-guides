@@ -1964,9 +1964,29 @@ invisible to every cloud shift. The page tells the reader to keep Team HQ in
 Google Drive if shifts run in the cloud, and prompt 2.2 carries that as a
 bracketed choice. Register rows 75 to 77.
 
-Not done, for James to decide: the nineteen prompts are not on the Prompt
-Shelf, and the front page carries only an Index link and a `.ref` line.
-Contrast audit zero failures at 1440, 820 and 375, style checker clean.
+The front page carries only an Index link and a `.ref` line. Contrast audit
+zero failures at 1440, 820 and 375, style checker clean.
+
+**On the shelf, 29 Sep, at James's word.** All nineteen are a third area,
+`station:'workforce'`, "Build your agent workforce", ids `workforce-<guide
+anchor>`, `sec:'Reference · Agent workforce'`, byte-identical to the guide
+(generated from the page's `<pre>` text, then checked in the browser). The
+shelf is 88 cards. James asked that the cards have titles people understand,
+so each title carries its stage number and says what the card does ("3.2
+Hire an auditor for every change to your team", not "The auditor"), and the
+`where` line names the stage. That matters because these also sit under
+Setting up, Every week and Every month, where a card is met with nothing
+around it. The area is `flat` with a howto listing the six stages, and every
+card is `when:'setup'` except 6.1 and 6.2 (weekly) and 6.3 (monthly), which
+is what keeps the flat view in stage order. `asWritten` on all nineteen.
+
+The same request exposed a shelf-wide fault, fixed in the same pass: in the
+two-column grid, 820 to about 1500 wide, the Expand and Copy buttons took
+nearly half the card and set every title one or two words to a line (86px
+of a 358px card at 821). `.pane-head` now wraps and the title keeps 300px,
+so the buttons drop beneath it when both do not fit. Every card changes
+shape; only CSS moved. The shelf's two recorded contrast failures (Copy
+3.73:1, The prompt label 4.50:1) are still there and still not this change's.
 
 ## Decisions already made
 
