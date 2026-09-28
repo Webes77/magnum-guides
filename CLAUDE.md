@@ -1937,6 +1937,37 @@ is Sunday 4 Oct. A sample of the 27 Sep brief rebuilt in the new format went
 to James in chat: fourteen items where the real run sent five, all taken
 from the run's own working file.
 
+**Build Your Own Agent Workforce, built 28 Sep on `tutorial/agent-workforce`,
+not merged.** James asked for it local only, committed on a branch for him to
+review, with no push. It lives at `agent-workforce/`, a reference page in the
+Task Work guide's shell, and it is the generic version of a deck and a prompt
+kit he ran with a client on 28 Sep. Every client name, the client's shared
+memory file name and their time zone came out; the file is Team HQ and every
+name is a bracket: `[CHIEF OF STAFF NAME]`, `[CHECKER NAME]`,
+`[AUDITOR NAME]`, `[AGENT NAME]`, `[your time zone]`.
+
+Shape: what an agent is (recipe, desk, shift), James's own team as the worked
+example in first person (Percy, Penny, Rhett, Remy, Max, Quinn, and nothing
+said about them beyond what James supplied), an org chart figure with blanks,
+the house rules and the two checkers, then six stages each ending in a Done
+when tick box: set up the office, hire the chief of staff, hire the two
+checkers, move old schedules onto the team (auditor PASS before anything is
+paused, never deleted), first specialist by interview, then roll call and the
+monthly review. Nineteen prompts, all with a copy button, prompts in first
+person singular. The tick boxes are the page's one interactive element and
+remember state in `localStorage` only, wrapped in try/catch, the same as the
+social questionnaire.
+
+One thing the source did not say and the page does: a cloud routine cannot
+read a file on the computer, so a Team HQ sitting in a local folder is
+invisible to every cloud shift. The page tells the reader to keep Team HQ in
+Google Drive if shifts run in the cloud, and prompt 2.2 carries that as a
+bracketed choice. Register rows 75 to 77.
+
+Not done, for James to decide: the nineteen prompts are not on the Prompt
+Shelf, and the front page carries only an Index link and a `.ref` line.
+Contrast audit zero failures at 1440, 820 and 375, style checker clean.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
