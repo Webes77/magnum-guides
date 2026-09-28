@@ -1956,6 +1956,15 @@ else checked out against the source (the `/effort` command, 1 minute versus
 rows 75 to 78. On a phone the levels table stacks one level per block rather
 than scrolling sideways.
 
+Same day James said it read well but sterile, and asked for it basic enough to
+grab a reader. Version 1.1 is his advice rewritten through `james-writes`:
+the headline is the hook ("Effort doesn't make Claude smarter"), short
+sentences, and three comparisons doing the teaching (the tradie's napkin
+price against a measure-up, the satnav with the wrong address, the new staff
+member with a proper handover). No fact, level or step changed, and no event
+was attributed to him. The log carries a 1.1 row saying so. The page title
+and card keep the guide's name.
+
 When James sends version 2, add a row to the update log, change the date in
 three places (masthead, footer, card), and re-render the card.
 

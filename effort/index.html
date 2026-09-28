@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claude Effort Levels: Current Guidance · Magnum AI</title>
-<meta name="description" content="How much work to ask Claude for, when to turn it up, and why your brief matters more than the setting. A living guide, updated when the advice changes.">
+<meta name="description" content="Turning effort up doesn't make Claude smarter. It decides how hard Claude checks its own work. Which level to use, when, and why your brief matters more.">
 <meta name="author" content="Magnum AI">
 <link rel="canonical" href="https://webes77.github.io/magnum-guides/effort/">
 
@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Magnum AI">
 <meta property="og:title" content="Claude Effort Levels: Current Guidance">
-<meta property="og:description" content="The effort levels, when to use each, and the working loop. Fix the brief before you raise the effort.">
+<meta property="og:description" content="Effort doesn't make Claude smarter. It makes it check its own work. Fix the brief before you touch the setting.">
 <meta property="og:url" content="https://webes77.github.io/magnum-guides/effort/">
 <meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/effort.jpg">
 <meta property="og:image:width" content="1200">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="Claude Effort Levels: Current Guidance, a Magnum AI reference page">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Claude Effort Levels: Current Guidance">
-<meta name="twitter:description" content="The effort levels, when to use each, and the working loop. Fix the brief before you raise the effort.">
+<meta name="twitter:description" content="Effort doesn't make Claude smarter. It makes it check its own work. Fix the brief before you touch the setting.">
 <meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/effort.jpg">
 <meta name="theme-color" content="#1F2A37">
 <meta name="color-scheme" content="light">
@@ -52,7 +52,7 @@
   .masthead h1 em{color:var(--coral-bright);}
   .masthead .label{color:var(--coral-bright);}
   .masthead .label::after{background:var(--on-navy-mute);}
-  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0 0 20px;color:var(--on-navy-mute);}
   h1{
     font-family:var(--display);font-weight:700;text-transform:uppercase;
     font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
@@ -210,93 +210,97 @@ section:hover > .label::before,section:focus-within > .label::before,
 <body>
 <header class="masthead"><div class="wrap">
     <p class="crumb"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;·&nbsp; Reference &nbsp;·&nbsp; Effort levels</p>
-    <h1>Claude effort levels: <em>current guidance</em></h1>
+    <h1>Effort doesn't make Claude <em>smarter</em></h1>
+    <p class="sub">It decides how hard Claude checks its own work, and how often it stops to ask you. Here's which level to use, and when.</p>
     <p class="meta">Last updated <b>29 Sep 2026</b> &nbsp;·&nbsp; James</p>
   </div></header>
   <div class="wrap">
 
   <ul class="contents">
-    <li><a href="#about">About this guide</a></li>
+    <li><a href="#about">Before you read</a></li>
     <li><a href="#what">What effort is</a></li>
     <li><a href="#up">Turning it up</a></li>
-    <li><a href="#levels">The levels</a></li>
-    <li><a href="#brief">Your brief</a></li>
+    <li><a href="#levels">Which level</a></li>
+    <li><a href="#brief">The brief</a></li>
     <li><a href="#loop">The working loop</a></li>
     <li><a href="#check">Quick check</a></li>
     <li><a href="#log">Update log</a></li>
   </ul>
 
   <section id="about">
-    <p class="label" data-n="01">About this guide</p>
-    <p>This is a living guide. AI tools change often, so I update this page when the advice changes. Check the date at the top and the update log at the bottom to see what is current.</p>
-    <p>Version 1 is based on guidance from Anthropic's Claude Code team, published September 2026, covering Opus 5.5 and Fable 5.1. In Claude Code you change effort with the <code>/effort</code> command. Other Claude apps may show it differently or not at all.</p>
+    <p class="label" data-n="01">Before you read</p>
+    <p>AI tools change every few weeks, so this page changes with them. Check the date at the top and the log at the bottom. That tells you you're reading the current advice.</p>
+    <p>Version 1 comes from Anthropic's own Claude Code team, September 2026, testing Opus 5.5 and Fable 5.1. In Claude Code you set effort by typing <code>/effort</code>. Other Claude apps may show it differently, or not at all.</p>
   </section>
 
   <section id="what">
     <p class="label" data-n="02">What effort is</p>
-    <p class="lead">Effort tells Claude how much work to put into a task before it hands back an answer. Low effort means work fast and give me a starting point. High effort means take your time and get it right on your own.</p>
-    <p>Effort does not make Claude smarter. It changes how much Claude checks its own work.</p>
+    <p class="lead">Effort is how much work you ask Claude to do before it hands something back.</p>
+    <p>Think of briefing a tradie. Low effort is "give me a rough price on the back of a napkin". High effort is "come out, measure up, and don't call me until it's right".</p>
+    <p>Same tradie. Same skills. What changes is how much checking happens before you see anything.</p>
+    <p>That's the bit people miss. <strong>Effort doesn't make Claude smarter. It makes Claude check its own work.</strong></p>
   </section>
 
   <section id="up">
-    <p class="label" data-n="03">What changes when you turn it up</p>
-    <p>Higher effort buys you three things:</p>
+    <p class="label" data-n="03">What turning it up buys you</p>
+    <p>Turn it up and you get three things.</p>
     <ul class="buys">
-      <li><strong>More checking.</strong> Claude tests its work, looks for problems and fixes them before it answers.</li>
-      <li><strong>More edge cases caught.</strong> Claude finds the unusual situations that break a first draft.</li>
-      <li><strong>More decisions made for you.</strong> Claude fills gaps in your brief with its own judgement.</li>
+      <li><strong>More checking.</strong> Claude tests its own work, finds the problems and fixes them before you see them.</li>
+      <li><strong>More odd cases caught.</strong> The strange situation that breaks a first draft gets found first.</li>
+      <li><strong>More decisions made for you.</strong> Wherever your brief has a gap, Claude fills it with its own judgement.</li>
     </ul>
-    <p>The trade-off is time and usage. In Anthropic's tests, one task took 1 minute on low and 28 minutes on max.</p>
-    <p>One limit matters most. Higher effort fixes missed details. It does not fix a wrong approach. If your brief points Claude the wrong way, more effort takes it further the wrong way.</p>
+    <p>The catch is time, and usage. In Anthropic's tests the same job took 1 minute on low and 28 minutes on max. That's a coffee against a long lunch.</p>
+    <p>And one limit matters more than the rest. More effort fixes missed details. It doesn't fix the wrong direction. Put the wrong address in the satnav and driving more carefully won't get you home. If your brief points Claude the wrong way, max effort just takes it further down the wrong road.</p>
   </section>
 
   <section id="levels">
-    <p class="label" data-n="04">The levels and when to use each</p>
-    <p>Match the level to how much you want to stay involved and how costly a mistake would be.</p>
+    <p class="label" data-n="04">Which level, when</p>
+    <p>Two things decide it. How involved you want to stay, and what a mistake would cost you.</p>
     <div class="tablewrap stack">
       <table>
         <thead><tr><th>Level</th><th>Use it when</th><th>Business example</th></tr></thead>
         <tbody>
-          <tr><td class="lvl">Low</td><td data-h="Use it when">You want a fast first draft to react to</td><td data-h="Business example">Brainstorming offer names, sketching a page layout</td></tr>
-          <tr><td class="lvl">Medium</td><td data-h="Use it when">You are doing everyday work with a clear brief</td><td data-h="Business example">Building a new template, drafting a process</td></tr>
-          <tr><td class="lvl">High</td><td data-h="Use it when">Mistakes are costly or there are lots of exceptions</td><td data-h="Business example">Checking a pricing calculator, reviewing a contract summary, fixing something that already exists</td></tr>
-          <tr><td class="lvl">Max</td><td data-h="Use it when">You want Claude to work alone on something hard</td><td data-h="Business example">Building and testing a full tool from start to finish</td></tr>
+          <tr><td class="lvl">Low</td><td data-h="Use it when">You want a quick rough draft to react to</td><td data-h="Business example">Brainstorming names for an offer, sketching a page layout</td></tr>
+          <tr><td class="lvl">Medium</td><td data-h="Use it when">Everyday work, and you've given a clear brief</td><td data-h="Business example">Building a new template, writing up a process</td></tr>
+          <tr><td class="lvl">High</td><td data-h="Use it when">A mistake would cost you, or there are lots of exceptions</td><td data-h="Business example">Checking a pricing calculator, reviewing a contract summary, fixing something that already exists</td></tr>
+          <tr><td class="lvl">Max</td><td data-h="Use it when">You want Claude to go away and do the hard thing alone</td><td data-h="Business example">Building and testing a whole tool, start to finish</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-top:20px">Medium is the right default for most people most of the time.</p>
+    <p style="margin-top:20px">Medium is the right place to sit for most people, most of the time. Leave it there unless you've got a reason not to.</p>
     <div class="flag">
       <strong>A fifth setting</strong>
-      <p>Claude Code also offers xhigh, which sits between High and Max. This guide works with the four above.</p>
+      <p>Claude Code also has xhigh, which sits between High and Max. This guide sticks to the four above.</p>
     </div>
   </section>
 
   <section id="brief">
-    <p class="label" data-n="05">Your brief matters more than the setting</p>
-    <p>When Anthropic gave Claude a detailed brief, every effort level produced similar results. The vague brief was where the levels split apart.</p>
-    <p>This is why the 6 Lever Framework comes first. A brief with clear Role, Context, Constraints, Tone, Format and Output leaves Claude less to guess. Less guessing means a lower effort level gets you a good result, faster.</p>
-    <p><strong>If your results are poor, fix the brief before you raise the effort.</strong></p>
+    <p class="label" data-n="05">The brief beats the setting</p>
+    <p class="lead">This was the finding that stood out. When Anthropic gave Claude a detailed brief, every effort level came back with much the same result. The vague brief was where the levels split apart.</p>
+    <p>Which makes sense. Give a new staff member a proper handover and they'll do a good job whether they rush it or not. Give them two lines and "you'll work it out", and suddenly how hard they try matters a lot.</p>
+    <p>That's why the <a href="../prompts/#six-lines">6 Lever Framework</a> comes first. Role, Context, Constraints, Tone, Format, Output. Get those six clear and Claude has less to guess. Less guessing means a lower setting does the job, and does it faster.</p>
+    <p><strong>So if the results are poor, fix the brief before you touch the effort.</strong></p>
   </section>
 
   <section id="loop">
     <p class="label" data-n="06">The working loop</p>
-    <p>Use this loop for anything you are building with Claude.</p>
+    <p>Use this for anything you're building with Claude.</p>
     <ol class="loop">
       <li>Give Claude your brief and ask it to interview you about anything missing.</li>
       <li>Answer its questions.</li>
-      <li>Build on low effort.</li>
-      <li>Check that it got the main idea right.</li>
-      <li>Adjust on low effort until the direction is right.</li>
-      <li>Switch to high effort and ask Claude to test and check the finished work.</li>
+      <li>Build it on low.</li>
+      <li>Check it got the main idea right.</li>
+      <li>Keep adjusting on low until the direction is right.</li>
+      <li>Switch to high and ask Claude to test and check the finished work.</li>
     </ol>
-    <p>You stay in control while the direction is being set. Claude does the heavy checking once the direction is locked.</p>
+    <p>Cheap while you're still changing your mind. Thorough once you're not. You stay in charge of where it's going, and Claude does the heavy checking at the end.</p>
   </section>
 
   <section id="check">
     <p class="label" data-n="07">Quick check before you start</p>
-    <p>Ask yourself two questions.</p>
+    <p>Two questions.</p>
     <ul class="buys">
-      <li><strong>Do I want to stay involved?</strong> Yes: go low or medium. No: go high or max.</li>
+      <li><strong>Do I want to stay in the loop?</strong> Yes: low or medium. No: high or max.</li>
       <li><strong>Would a mistake cost me money, time or trust?</strong> Yes: go high, at least for the final check.</li>
     </ul>
   </section>
@@ -307,6 +311,7 @@ section:hover > .label::before,section:focus-within > .label::before,
       <table>
         <thead><tr><th>Date</th><th>Version</th><th>What changed</th></tr></thead>
         <tbody>
+          <tr><td style="white-space:nowrap">29 Sep 2026</td><td>1.1</td><td>Rewritten in plainer language. Same advice.</td></tr>
           <tr><td style="white-space:nowrap">29 Sep 2026</td><td>1</td><td>First version, based on <a href="https://x.com/trq212/status/2103576349499855160">Anthropic's guidance on effort in Claude Code</a> (Opus 5.5, Fable 5.1)</td></tr>
         </tbody>
       </table>
