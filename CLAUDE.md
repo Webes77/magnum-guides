@@ -1965,6 +1965,16 @@ member with a proper handover). No fact, level or step changed, and no event
 was attributed to him. The log carries a 1.1 row saying so. The page title
 and card keep the guide's name.
 
+Later the same day James read it on his phone and said the opening was far
+too busy: black, white, small writing, underlines. Four kinds of small print
+sat above the first idea. The breadcrumb went, the eight-link contents strip
+went, the date became one plain muted line ("Updated 29 Sep 2026"), and the
+housekeeping section "Before you read" moved down into the update log, so the
+page now opens hook, one sentence, then section 01 What effort is. The
+`/effort` line moved into section 01 where a reader needs it. The same strip
+and breadcrumb sit on `privacy/`, `cowork/` and `manus-bridge/`, and the
+breadcrumb on `team-seats/`; those were put to James, not changed.
+
 When James sends version 2, add a row to the update log, change the date in
 three places (masthead, footer, card), and re-render the card.
 

@@ -52,7 +52,7 @@
   .masthead h1 em{color:var(--coral-bright);}
   .masthead .label{color:var(--coral-bright);}
   .masthead .label::after{background:var(--on-navy-mute);}
-  .sub{font-size:19px;max-width:62ch;margin:0 0 20px;color:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0 0 14px;color:var(--on-navy-mute);}
   h1{
     font-family:var(--display);font-weight:700;text-transform:uppercase;
     font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
@@ -169,8 +169,7 @@ section:hover > .label::before,section:focus-within > .label::before,
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
 
   /* ---- this page only ------------------------------------------------ */
-  .meta{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--on-navy-mute);margin:0;}
-  .masthead .meta b{color:var(--coral-bright);font-weight:500;}
+  .meta{font-family:var(--sans);font-size:14px;color:var(--on-navy-mute);margin:0;}
   .buys{margin:0 0 20px;padding:0;list-style:none;max-width:64ch;}
   .buys li{padding:10px 0 10px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12);}
   .buys li:last-child{border-bottom:none;}
@@ -209,40 +208,23 @@ section:hover > .label::before,section:focus-within > .label::before,
 </head>
 <body>
 <header class="masthead"><div class="wrap">
-    <p class="crumb"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;·&nbsp; Reference &nbsp;·&nbsp; Effort levels</p>
     <h1>Effort doesn't make Claude <em>smarter</em></h1>
     <p class="sub">It decides how hard Claude checks its own work, and how often it stops to ask you. Here's which level to use, and when.</p>
-    <p class="meta">Last updated <b>29 Sep 2026</b> &nbsp;·&nbsp; James</p>
+    <p class="meta">Updated 29 Sep 2026</p>
   </div></header>
   <div class="wrap">
 
-  <ul class="contents">
-    <li><a href="#about">Before you read</a></li>
-    <li><a href="#what">What effort is</a></li>
-    <li><a href="#up">Turning it up</a></li>
-    <li><a href="#levels">Which level</a></li>
-    <li><a href="#brief">The brief</a></li>
-    <li><a href="#loop">The working loop</a></li>
-    <li><a href="#check">Quick check</a></li>
-    <li><a href="#log">Update log</a></li>
-  </ul>
-
-  <section id="about">
-    <p class="label" data-n="01">Before you read</p>
-    <p>AI tools change every few weeks, so this page changes with them. Check the date at the top and the log at the bottom. That tells you you're reading the current advice.</p>
-    <p>Version 1 comes from Anthropic's own Claude Code team, September 2026, testing Opus 5.5 and Fable 5.1. In Claude Code you set effort by typing <code>/effort</code>. Other Claude apps may show it differently, or not at all.</p>
-  </section>
-
   <section id="what">
-    <p class="label" data-n="02">What effort is</p>
+    <p class="label" data-n="01">What effort is</p>
     <p class="lead">Effort is how much work you ask Claude to do before it hands something back.</p>
     <p>Think of briefing a tradie. Low effort is "give me a rough price on the back of a napkin". High effort is "come out, measure up, and don't call me until it's right".</p>
     <p>Same tradie. Same skills. What changes is how much checking happens before you see anything.</p>
     <p>That's the bit people miss. <strong>Effort doesn't make Claude smarter. It makes Claude check its own work.</strong></p>
+    <p>In Claude Code you set it by typing <code>/effort</code>. Other Claude apps may show it differently, or not at all.</p>
   </section>
 
   <section id="up">
-    <p class="label" data-n="03">What turning it up buys you</p>
+    <p class="label" data-n="02">What turning it up buys you</p>
     <p>Turn it up and you get three things.</p>
     <ul class="buys">
       <li><strong>More checking.</strong> Claude tests its own work, finds the problems and fixes them before you see them.</li>
@@ -254,7 +236,7 @@ section:hover > .label::before,section:focus-within > .label::before,
   </section>
 
   <section id="levels">
-    <p class="label" data-n="04">Which level, when</p>
+    <p class="label" data-n="03">Which level, when</p>
     <p>Two things decide it. How involved you want to stay, and what a mistake would cost you.</p>
     <div class="tablewrap stack">
       <table>
@@ -275,7 +257,7 @@ section:hover > .label::before,section:focus-within > .label::before,
   </section>
 
   <section id="brief">
-    <p class="label" data-n="05">The brief beats the setting</p>
+    <p class="label" data-n="04">The brief beats the setting</p>
     <p class="lead">This was the finding that stood out. When Anthropic gave Claude a detailed brief, every effort level came back with much the same result. The vague brief was where the levels split apart.</p>
     <p>Which makes sense. Give a new staff member a proper handover and they'll do a good job whether they rush it or not. Give them two lines and "you'll work it out", and suddenly how hard they try matters a lot.</p>
     <p>That's why the <a href="../prompts/#six-lines">6 Lever Framework</a> comes first. Role, Context, Constraints, Tone, Format, Output. Get those six clear and Claude has less to guess. Less guessing means a lower setting does the job, and does it faster.</p>
@@ -283,7 +265,7 @@ section:hover > .label::before,section:focus-within > .label::before,
   </section>
 
   <section id="loop">
-    <p class="label" data-n="06">The working loop</p>
+    <p class="label" data-n="05">The working loop</p>
     <p>Use this for anything you're building with Claude.</p>
     <ol class="loop">
       <li>Give Claude your brief and ask it to interview you about anything missing.</li>
@@ -297,7 +279,7 @@ section:hover > .label::before,section:focus-within > .label::before,
   </section>
 
   <section id="check">
-    <p class="label" data-n="07">Quick check before you start</p>
+    <p class="label" data-n="06">Quick check before you start</p>
     <p>Two questions.</p>
     <ul class="buys">
       <li><strong>Do I want to stay in the loop?</strong> Yes: low or medium. No: high or max.</li>
@@ -307,6 +289,7 @@ section:hover > .label::before,section:focus-within > .label::before,
 
   <section id="log">
     <p class="label">Update log</p>
+    <p>AI tools change every few weeks, so this page changes with them. Check the date at the top and this log, and you'll know you're reading the current advice. Version 1 comes from Anthropic's own Claude Code team, September 2026, testing Opus 5.5 and Fable 5.1.</p>
     <div class="tablewrap">
       <table>
         <thead><tr><th>Date</th><th>Version</th><th>What changed</th></tr></thead>
