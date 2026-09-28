@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Effort Levels: Current Guidance · Magnum AI</title>
+<meta name="description" content="How much work to ask Claude for, when to turn it up, and why your brief matters more than the setting. A living guide, updated when the advice changes.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/effort/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Claude Effort Levels: Current Guidance">
+<meta property="og:description" content="The effort levels, when to use each, and the working loop. Fix the brief before you raise the effort.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/effort/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/effort.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Claude Effort Levels: Current Guidance, a Magnum AI reference page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Effort Levels: Current Guidance">
+<meta name="twitter:description" content="The effort levels, when to use each, and the working loop. Fix the brief before you raise the effort.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/effort.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
+    --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A;--coral-ghost:#F7BAB0; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+    --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
+    --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3; --hair:#DADAD5;
+    --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+    --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  :root{color-scheme:light}
+  html,body{background:#FBFBF9 !important;color:#2B2823;}
+  body{
+    color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55;
+    margin:0;padding:0 20px 90px;
+  }
+  .wrap{max-width:900px;margin:0 auto;}
+
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:48px 0 26px;margin:0 -20px 40px;}
+  .masthead .wrap{padding:0 20px;}
+  .masthead h1{color:var(--on-navy);}
+  .masthead h1 em{color:var(--coral-bright);}
+  .masthead .label{color:var(--coral-bright);}
+  .masthead .label::after{background:var(--on-navy-mute);}
+  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  h1{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;
+    font-size:clamp(42px,8vw,76px);line-height:.92;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  h1 em,h2 em,h3 em{font-style:normal;color:var(--rust);}
+
+  /* contents strip */
+  .contents{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 48px;padding:0;list-style:none;
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;
+  }
+  .contents a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:2px;}
+  .contents a:hover,.contents a:focus-visible{color:var(--rust);outline:none;}
+
+  section{margin:0 0 56px;scroll-margin-top:24px;}
+  .crumb{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;
+  letter-spacing:.20em;color:var(--coral-text);margin:0 0 16px;
+  display:flex;align-items:center;gap:14px}
+.crumb::after{content:"";flex:1;height:1px;background:var(--ink)}
+.masthead .crumb{color:var(--coral-bright)}
+.label{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;
+  text-transform:uppercase;letter-spacing:-.005em;color:var(--ink);
+  display:flex;align-items:center;gap:0 20px;margin:0 0 18px;
+  border-top:3px solid var(--ink);padding-top:16px}
+.label::before{content:attr(data-n);font-family:var(--display);font-weight:700;
+  font-size:56px;line-height:.82;letter-spacing:-.02em;color:var(--coral-ghost);
+  transition:color .18s ease}
+.label:not([data-n])::before{display:none}
+.label::after{content:none}
+section:hover > .label::before,section:focus-within > .label::before,
+.start:hover > .label::before,article:hover > .label::before{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){.label::before{transition:none}}
+@media(max-width:820px){
+  .label{font-size:27px;gap:0 14px;padding-top:13px;margin-bottom:14px}
+  .label::before{font-size:38px}
+}
+    h2{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:clamp(26px,4vw,36px);line-height:1.05;color:var(--ink);margin:0 0 16px;text-wrap:balance;
+  }
+  /* The index entry is the section heading. An h2 right under it is the
+     section's point, so it steps down to a deck line instead of competing. */
+  .label + h2{font-size:clamp(17px,2.1vw,20px);font-weight:500;letter-spacing:.01em;
+    text-transform:none;color:var(--body);margin:0 0 18px;max-width:52ch}
+  h3{
+    font-family:var(--display);font-weight:600;text-transform:uppercase;
+    font-size:22px;line-height:1.1;color:var(--ink);margin:0 0 10px;
+  }
+  p{max-width:64ch;}
+  p.lead{font-size:18px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;}
+  .card{background:var(--paper-2);border:2px solid var(--ink);padding:22px 22px 24px;}
+  .card h3{font-size:20px;margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--char);margin:0;max-width:none;}
+  .card ul{margin:0;padding:0;list-style:none;}
+  .card li{font-size:15.5px;color:var(--char);padding:7px 0 7px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12);}
+  .card li:last-child{border-bottom:none;}
+  .card li::before{position:absolute;left:0;top:7px;font-family:var(--mono);font-size:13px;font-weight:500;}
+  .yes li::before{content:"\2713";color:var(--olive);}
+  .stop li::before{content:"\2715";color:var(--rust);}
+
+  .figure{margin:0 0 20px;overflow-x:auto;}
+  .figure svg{display:block;min-width:640px;width:100%;height:auto;}
+  figcaption{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-top:12px;}
+
+  /* stages */
+  .stage{border-top:2px solid var(--ink);padding-top:22px;margin-top:34px;}
+  .stage-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;}
+  .stage-num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--coral-text);}
+  .stage-time{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-left:auto;white-space:nowrap;}
+
+  .prompt{position:relative;margin:16px 0 18px;}
+  .prompt pre{
+    font-family:var(--mono);font-size:13px;line-height:1.55;background:var(--paper-2);
+    border:2px solid var(--ink);padding:18px 20px 18px;
+    margin:0;white-space:pre-wrap;word-break:break-word;color:var(--ink);
+  }
+  .copy{
+    position:absolute;top:-14px;right:14px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    background:var(--navy);color:#FFFFFF;border:0;padding:7px 12px;cursor:pointer;
+    transition:transform .12s ease,background .12s ease;
+  }
+  .copy:hover,.copy:focus-visible{background:var(--rust);outline:none;transform:translateY(-2px);}
+  .copy.done{background:var(--tint);color:var(--ink);}
+
+  .say{
+    border-left:5px solid var(--rust);background:var(--tint);
+    padding:12px 16px;margin:0 0 6px;max-width:64ch;
+  }
+  .say p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
+  .say strong{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+
+  .tablewrap{overflow-x:auto;border:2px solid var(--ink);background:var(--paper-2);}
+  table{border-collapse:collapse;width:100%;min-width:520px;}
+  th,td{text-align:left;padding:12px 18px;border-bottom:1px solid rgba(30,27,23,.16);vertical-align:top;font-size:15.5px;color:var(--char);}
+  th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--mute);font-weight:500;border-bottom:2px solid var(--ink);}
+  tbody tr:last-child td{border-bottom:none;}
+  td.gone{color:var(--mute);text-decoration:line-through;}
+  td.mono{font-family:var(--mono);font-size:13.5px;color:var(--ink);white-space:nowrap;}
+
+  code{font-family:var(--mono);font-size:13.5px;background:var(--paper-2);border:1px solid rgba(30,27,23,.28);padding:1px 6px;color:var(--ink);}
+
+  footer{background:var(--navy);color:var(--on-navy-mute);margin-top:60px;padding:22px 20px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;
+    display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;
+  }
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .card{break-inside:avoid}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ---- this page only ------------------------------------------------ */
+  .meta{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--on-navy-mute);margin:0;}
+  .masthead .meta b{color:var(--coral-bright);font-weight:500;}
+  .buys{margin:0 0 20px;padding:0;list-style:none;max-width:64ch;}
+  .buys li{padding:10px 0 10px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12);}
+  .buys li:last-child{border-bottom:none;}
+  .buys li::before{content:"\2713";position:absolute;left:0;top:10px;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--olive);}
+  .buys strong{color:var(--ink);font-weight:600;}
+  td.lvl{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink);font-weight:500;white-space:nowrap;}
+  .loop{counter-reset:s;list-style:none;margin:0 0 20px;padding:0;max-width:64ch;}
+  .loop>li{counter-increment:s;position:relative;padding:10px 0 10px 52px;border-bottom:1px solid rgba(30,27,23,.14);}
+  .loop>li:last-child{border-bottom:none;}
+  .loop>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:12px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--coral-text);}
+  .flag{border-left:5px solid var(--olive);background:#FFFFFF;border-top:1px solid var(--hair);
+    border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);
+    padding:12px 16px;margin:18px 0 0;max-width:64ch;}
+  .flag p{margin:0;font-size:14.5px;color:var(--char);max-width:none;}
+  .flag strong{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:11px;
+    text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px;}
+  .sources{border-top:2px solid var(--ink);padding-top:18px;margin-top:8px;}
+  .sources p{font-size:14.5px;color:var(--char);}
+  .sources ul{margin:0;padding:0 0 0 20px;}
+  .sources li{font-size:14px;color:var(--char);margin-bottom:7px;line-height:1.5;}
+  .sources a,.wrap p a,.wrap td a{color:var(--coral-text);}
+  @media (max-width:560px){ .loop>li{padding-left:40px;} }
+  /* On a phone the levels table stacks, one level per block, so nothing scrolls sideways. */
+  @media (max-width:560px){
+    .stack table{min-width:0}
+    .stack thead{display:none}
+    .stack tr{display:block;padding:14px 16px;border-bottom:1px solid rgba(30,27,23,.16)}
+    .stack tbody tr:last-child{border-bottom:none}
+    .stack td{display:block;padding:3px 0;border:0}
+    .stack td.lvl{font-size:14px;padding-bottom:6px}
+    .stack td[data-h]::before{content:attr(data-h);display:block;font-family:var(--mono);font-size:11px;
+      text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-top:6px}
+  }
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+    <p class="crumb"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;·&nbsp; Reference &nbsp;·&nbsp; Effort levels</p>
+    <h1>Claude effort levels: <em>current guidance</em></h1>
+    <p class="meta">Last updated <b>29 Sep 2026</b> &nbsp;·&nbsp; James</p>
+  </div></header>
+  <div class="wrap">
+
+  <ul class="contents">
+    <li><a href="#about">About this guide</a></li>
+    <li><a href="#what">What effort is</a></li>
+    <li><a href="#up">Turning it up</a></li>
+    <li><a href="#levels">The levels</a></li>
+    <li><a href="#brief">Your brief</a></li>
+    <li><a href="#loop">The working loop</a></li>
+    <li><a href="#check">Quick check</a></li>
+    <li><a href="#log">Update log</a></li>
+  </ul>
+
+  <section id="about">
+    <p class="label" data-n="01">About this guide</p>
+    <p>This is a living guide. AI tools change often, so I update this page when the advice changes. Check the date at the top and the update log at the bottom to see what is current.</p>
+    <p>Version 1 is based on guidance from Anthropic's Claude Code team, published September 2026, covering Opus 5.5 and Fable 5.1. In Claude Code you change effort with the <code>/effort</code> command. Other Claude apps may show it differently or not at all.</p>
+  </section>
+
+  <section id="what">
+    <p class="label" data-n="02">What effort is</p>
+    <p class="lead">Effort tells Claude how much work to put into a task before it hands back an answer. Low effort means work fast and give me a starting point. High effort means take your time and get it right on your own.</p>
+    <p>Effort does not make Claude smarter. It changes how much Claude checks its own work.</p>
+  </section>
+
+  <section id="up">
+    <p class="label" data-n="03">What changes when you turn it up</p>
+    <p>Higher effort buys you three things:</p>
+    <ul class="buys">
+      <li><strong>More checking.</strong> Claude tests its work, looks for problems and fixes them before it answers.</li>
+      <li><strong>More edge cases caught.</strong> Claude finds the unusual situations that break a first draft.</li>
+      <li><strong>More decisions made for you.</strong> Claude fills gaps in your brief with its own judgement.</li>
+    </ul>
+    <p>The trade-off is time and usage. In Anthropic's tests, one task took 1 minute on low and 28 minutes on max.</p>
+    <p>One limit matters most. Higher effort fixes missed details. It does not fix a wrong approach. If your brief points Claude the wrong way, more effort takes it further the wrong way.</p>
+  </section>
+
+  <section id="levels">
+    <p class="label" data-n="04">The levels and when to use each</p>
+    <p>Match the level to how much you want to stay involved and how costly a mistake would be.</p>
+    <div class="tablewrap stack">
+      <table>
+        <thead><tr><th>Level</th><th>Use it when</th><th>Business example</th></tr></thead>
+        <tbody>
+          <tr><td class="lvl">Low</td><td data-h="Use it when">You want a fast first draft to react to</td><td data-h="Business example">Brainstorming offer names, sketching a page layout</td></tr>
+          <tr><td class="lvl">Medium</td><td data-h="Use it when">You are doing everyday work with a clear brief</td><td data-h="Business example">Building a new template, drafting a process</td></tr>
+          <tr><td class="lvl">High</td><td data-h="Use it when">Mistakes are costly or there are lots of exceptions</td><td data-h="Business example">Checking a pricing calculator, reviewing a contract summary, fixing something that already exists</td></tr>
+          <tr><td class="lvl">Max</td><td data-h="Use it when">You want Claude to work alone on something hard</td><td data-h="Business example">Building and testing a full tool from start to finish</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:20px">Medium is the right default for most people most of the time.</p>
+    <div class="flag">
+      <strong>A fifth setting</strong>
+      <p>Claude Code also offers xhigh, which sits between High and Max. This guide works with the four above.</p>
+    </div>
+  </section>
+
+  <section id="brief">
+    <p class="label" data-n="05">Your brief matters more than the setting</p>
+    <p>When Anthropic gave Claude a detailed brief, every effort level produced similar results. The vague brief was where the levels split apart.</p>
+    <p>This is why the 6 Lever Framework comes first. A brief with clear Role, Context, Constraints, Tone, Format and Output leaves Claude less to guess. Less guessing means a lower effort level gets you a good result, faster.</p>
+    <p><strong>If your results are poor, fix the brief before you raise the effort.</strong></p>
+  </section>
+
+  <section id="loop">
+    <p class="label" data-n="06">The working loop</p>
+    <p>Use this loop for anything you are building with Claude.</p>
+    <ol class="loop">
+      <li>Give Claude your brief and ask it to interview you about anything missing.</li>
+      <li>Answer its questions.</li>
+      <li>Build on low effort.</li>
+      <li>Check that it got the main idea right.</li>
+      <li>Adjust on low effort until the direction is right.</li>
+      <li>Switch to high effort and ask Claude to test and check the finished work.</li>
+    </ol>
+    <p>You stay in control while the direction is being set. Claude does the heavy checking once the direction is locked.</p>
+  </section>
+
+  <section id="check">
+    <p class="label" data-n="07">Quick check before you start</p>
+    <p>Ask yourself two questions.</p>
+    <ul class="buys">
+      <li><strong>Do I want to stay involved?</strong> Yes: go low or medium. No: go high or max.</li>
+      <li><strong>Would a mistake cost me money, time or trust?</strong> Yes: go high, at least for the final check.</li>
+    </ul>
+  </section>
+
+  <section id="log">
+    <p class="label">Update log</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Date</th><th>Version</th><th>What changed</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:nowrap">29 Sep 2026</td><td>1</td><td>First version, based on <a href="https://x.com/trq212/status/2103576349499855160">Anthropic's guidance on effort in Claude Code</a> (Opus 5.5, Fable 5.1)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sources">
+      <p>Sources: Thariq Shihipar of Anthropic's Claude Code team, <a href="https://claude.dev/blog/spending-your-effort/">Using Claude Code: Spending your effort</a>, 25 Sep 2026, and Anthropic's <a href="https://platform.claude.com/docs/en/build-with-claude/effort">Effort</a> documentation.</p>
+    </div>
+  </section>
+
+  </div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Last updated · 29 September 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+</body>
+</html>

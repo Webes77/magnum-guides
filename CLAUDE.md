@@ -1937,6 +1937,28 @@ is Sunday 4 Oct. A sample of the 27 Sep brief rebuilt in the new format went
 to James in chat: fourteen items where the real run sent five, all taken
 from the run's own working file.
 
+**Claude Effort Levels, a living guide, live 28 Sep at `effort/`.** James
+supplied the article finished and asked for it to be placed and published. It
+went in as a Guides entry beside Privacy, not on the shelf and not as a Field
+Note, because it is maintained in place with its own date and update log,
+which is the privacy page's shape. Index dropdown (Guides) and a seventh
+`.ref` line under the courses. Card at `assets/thumbnails/effort.jpg`, source
+`effort/thumbnail.html`.
+
+His prose is on the page verbatim, verified by matching every line of his
+file against the rendered text. Three changes, all told to him. "Sep 29,
+2026 · @James" reads "29 Sep 2026 · James". The heading "The four levels"
+became "The levels", because Claude Code has five: xhigh sits between High
+and Max, and Thariq's own source article tested all five. A one-line note
+under the table says so and that the guide works with four. Everything
+else checked out against the source (the `/effort` command, 1 minute versus
+28 minutes, the detailed-brief finding, Opus 5.5 and Fable 5.1). Register
+rows 75 to 78. On a phone the levels table stacks one level per block rather
+than scrolling sideways.
+
+When James sends version 2, add a row to the update log, change the date in
+three places (masthead, footer, card), and re-render the card.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
