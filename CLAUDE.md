@@ -1973,7 +1973,7 @@ housekeeping section "Before you read" moved down into the update log, so the
 page now opens hook, one sentence, then section 01 What effort is. The
 `/effort` line moved into section 01 where a reader needs it. The same strip
 and breadcrumb sit on `privacy/`, `cowork/` and `manus-bridge/`, and the
-breadcrumb on `team-seats/`; those were put to James, not changed.
+breadcrumb on `team-seats/`. James said all four on 29 Sep and all four now open on the headline: breadcrumb and strip gone, Manus Bridge's "45 minutes" moved into its standfirst as "Allow about 45 minutes." Team Seats also had a pre-existing `.say strong` label in `--coral-text` on tint at 4.17:1, the same fault fixed elsewhere on 20 Sep; it takes ink now. Contrast PASS on all four.
 
 When James sends version 2, add a row to the update log, change the date in
 three places (masthead, footer, card), and re-render the card.
