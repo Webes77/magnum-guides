@@ -154,6 +154,13 @@ section:hover > .label::before,section:focus-within > .label::before,
    quiet second line, and a long one set in tracked capitals is unreadable. */
 .pane-head .where{display:block;font-family:var(--sans);font-weight:400;font-size:13px;line-height:1.45;letter-spacing:0;text-transform:none;color:#C3CAD2;margin-top:5px;max-width:52ch}
 .btns{display:flex;gap:8px;flex-shrink:0}
+/* The title is how a reader knows what the card is, so it gets the width.
+   In the two-column grid the buttons took nearly half the card and set a
+   title one or two words to a line at 820 to 1440 wide. Now the title keeps
+   at least 300px and the buttons drop underneath it when both do not fit.
+   James, 29 Sep: "make sure people know what they're actually accessing". */
+.pane-head{flex-wrap:wrap}
+.pane-head h3{flex:1 1 300px;min-width:0}
 .copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .15s}
 .copy:hover{background:#d2553a}
 .copy.done{background:var(--olive)}
@@ -451,12 +458,17 @@ const WHENS=[['start','Starting a task'],['before-acting','Before you act'],['se
 /* Stations are the areas of work a reader picks, as opposed to WHENS, which is
    the moment they are in. A card with no station simply never appears in a
    station view. Add the next one here, and give it a header block below. */
-const STATIONS=[['research','Research'],['learning',"Prompts for learning faster"]];
+const STATIONS=[['research','Research'],['learning',"Prompts for learning faster"],['workforce','Build your agent workforce']];
 const STATION_NOTES={
+  'workforce':"Nineteen prompts that hire a team of AI agents in Claude Code: a chief of staff first, two checkers, then one specialist at a time. They work the shift and leave drafts for you to approve.",
   'learning':"These six prompts turn Claude, ChatGPT or any other AI chat tool into a tutor. Each one does a different job, from getting started on a new skill to testing what you already know.",
   'research':'Seven prompts for the research you do before you commit money, time or your reputation. Each one answers a single question, so pick by the question you are asking.'
 };
 const STATION_HEAD={
+  'workforce':{
+    flat:true,
+    howto:{title:"Work through them in order",steps:["Stage 1. Set up the office: the Code tab open in one folder for your team, and your email, calendar and files connected on your Claude account.", "Stage 2. Hire your chief of staff: prompts 2.1 to 2.3.", "Stage 3. Hire your two checkers: prompts 3.1 and 3.2.", "Stage 4. Move any scheduled tasks you already have onto the team: prompts 4.1 to 4.6. Skip it if you have none.", "Stage 5. Hire your first specialist: prompts 5.1 to 5.5, and again for every hire after it.", "Stage 6. Keep the team healthy: 6.1 every Monday, 6.2 whenever an agent gets something wrong, 6.3 once a month."],after:["Paste one prompt at a time into the Code tab of the Claude desktop app, and let it finish before the next.", "Swap every [SQUARE BRACKET] for your own names, days and times, and use the same agent names every time.", "Every agent saves drafts. Nothing is posted, sent or published until you approve it. The full guide, with the reasons behind each step, is Build Your Own Agent Workforce in the members area."]}
+  },
   // flat: the moment headings are hidden in this area's view, so the six read
   // straight down in order under the introduction, as James laid them out.
   'learning':{
@@ -731,6 +743,94 @@ prompt:`I just studied [TOPIC]. I'm going to explain it in my own words, as if t
 After each chunk, ask the questions a curious 10-year-old would ask, but judge accuracy as an expert. Flag each of these at the exact point it happens: jargon I haven't defined, a step I've skipped, or a simplification that has become wrong. Then wait for my next chunk.
 
 When I say I'm finished, tell me what those mistakes reveal about where my understanding is still weak.`},
+
+/* ---------- Build your agent workforce ----------
+   The nineteen prompts from agent-workforce/, 29 Sep, byte-identical to the
+   guide. Titles carry the stage number and say what the card does, because a
+   card met on its own under Setting up has only its title to explain itself.
+   asWritten keeps the one-line-per-step layout and marks the brackets. */
+{kind:'prompt', id:'workforce-chief-demo', sec:'Reference · Agent workforce', station:'workforce', title:"2.1 Try out a chief of staff for ten minutes", where:"Stage 2 of 6, hire your chief of staff. Paste it into the Code tab, in your team folder.", type:'does', when:'setup', hook:"Reads your week and tells you what matters, without touching anything.", added:'2026-09-29', asWritten:true,
+prompt:`Act as my chief of staff for ten minutes. My business is [BUSINESS NAME]. Read only: don't send, change or delete anything, and leave anything private or personal out of the brief.
+Look at my email from the last 7 days (skip newsletters and promotions), my calendar for the next 7 days, and my files changed in the last 7 days.
+Then give me one short brief:
+1. Top 3 things that need me this week, and why now
+2. Who's waiting on a reply from me, and for how long
+3. Money owed to me or due from me
+4. Anything slipping or forgotten
+5. One job I could hand to an agent every week
+If I sent the last email in a thread, it's waiting on them, not me. Keep it under 250 words, in plain English.`},
+{kind:'prompt', id:'workforce-team-hq', sec:'Reference · Agent workforce', station:'workforce', title:"2.2 Name your chief of staff and build Team HQ", where:"Stage 2 of 6, hire your chief of staff. Paste it into the Code tab, in your team folder.", type:'instructions', when:'setup', hook:"One shared memory file every agent reads before it starts.", added:'2026-09-29', asWritten:true,
+prompt:`I'm naming my chief of staff [CHIEF OF STAFF NAME]. Now give my team a shared memory.
+Create a file called "Team HQ" in [this folder, or my Google Drive if my shifts will run in the cloud], with these sections:
+1. Who we are: one paragraph from my files
+2. Voice: how I write, with a few real examples
+3. The team: each agent's name and job
+4. Hard rules: nothing is posted, sent or published without me approving it
+5. Work done: a dated list of what each agent produced, newest first
+6. Handled: things I've dealt with, so no agent raises them again
+From now on every agent on my team reads Team HQ before it starts, and adds to "Work done" and "Handled" when it finishes.`},
+{kind:'prompt', id:'workforce-monday-shift', sec:'Reference · Agent workforce', station:'workforce', title:"2.3 Put your chief of staff on a Monday shift", where:"Stage 2 of 6, hire your chief of staff. Paste it into the Code tab, in your team folder.", type:'scheduled', when:'setup', hook:"A brief every Monday at 8am, even with your computer off.", added:'2026-09-29', asWritten:true,
+prompt:`Turn the brief you just gave me into a skill called monday-brief, run by [CHIEF OF STAFF NAME]. Every run it must:
+1. Read Team HQ first and skip anything under "Handled"
+2. Check my last 7 days of email, the next 7 days of my calendar, and anything new in my Drafts folder
+3. Tell me my top 3 for the week, who's waiting on me, money owed or due, anything my agents left in Drafts, and anything slipping
+4. Treat a thread as waiting on them, not me, if I sent the last email
+5. Never send, reply, delete or change anything
+Then schedule it every Monday at 8am [your time zone] as a cloud routine, so it runs with my computer off. If a cloud routine can't reach something it needs, tell me what, and we'll decide whether to set it up as a local scheduled task instead. Let me know when it's ready.`},
+{kind:'prompt', id:'workforce-quality-checker', sec:'Reference · Agent workforce', station:'workforce', title:"3.1 Hire a quality checker for every piece of work", where:"Stage 3 of 6, hire your checkers. Paste it into the Code tab, in your team folder.", type:'review', when:'setup', hook:"A second agent whose only job is to find the mistake first.", added:'2026-09-29', asWritten:true,
+prompt:`Build a skill called team-quality-check and name the checker [CHECKER NAME]. Every agent on my team runs it on its work before saving anything. Assume there is at least one mistake and find it:
+1. Voice: does it sound like me, or like a generic AI?
+2. Repeats: has any of this been done before? Check "Work done" in Team HQ
+3. Facts: dates, names, places and prices match my files and calendar
+4. Safety: nothing has been posted, sent or published
+Return PASS or a numbered list of fixes, apply them, then check once more.
+Add this check as the last step of monday-brief, and add [CHECKER NAME] to "The team" in Team HQ.`},
+{kind:'prompt', id:'workforce-auditor', sec:'Reference · Agent workforce', station:'workforce', title:"3.2 Hire an auditor for every change to your team", where:"Stage 3 of 6, hire your checkers. Paste it into the Code tab, in your team folder.", type:'review', when:'setup', hook:"Nothing old gets switched off until it says PASS.", added:'2026-09-29', asWritten:true,
+prompt:`Build a second checker called [AUDITOR NAME], saved as a skill called team-audit. Its only job is to check changes to my team. Whenever I review, build, move or retire an agent, [AUDITOR NAME] checks:
+1. Nothing missed: every existing scheduled task is accounted for
+2. Nothing lost: the new agent does everything the old task did
+3. Schedule right: correct day, time and time zone, and in the cloud if I asked for that
+4. Safety: the agent saves drafts only and can't post, send, publish or delete
+5. Team HQ is up to date
+Return PASS or a numbered list of problems. I don't switch or retire anything until [AUDITOR NAME] says PASS. Add [AUDITOR NAME] to "The team" in Team HQ.`},
+{kind:'prompt', id:'workforce-schedule-review', sec:'Reference · Agent workforce', station:'workforce', title:"4.1 Review every scheduled task you already have", where:"Stage 4 of 6, move your old schedules onto the team. Paste it into the Code tab, in your team folder.", type:'does', when:'setup', hook:"Turns scattered, half-forgotten schedules into a proposed team.", added:'2026-09-29', asWritten:true,
+prompt:`[CHIEF OF STAFF NAME], review every scheduled task I currently have. For each one, tell me in a table: what it does, when it runs, what it reads, what it produces, and whether it's still useful.
+Then turn the useful ones into team members who report to you. For each one, give me: its job, its day and time, where it reads from, what it produces, and the one thing it must never do. Suggest a name for each, and flag any that overlap so I can merge them.
+Don't change, pause or delete any existing schedule. Wait for me to approve the team first.`},
+{kind:'prompt', id:'workforce-audit-review', sec:'Reference · Agent workforce', station:'workforce', title:"4.2 Audit the schedule review", where:"Stage 4 of 6, move your old schedules onto the team. Paste it into the Code tab, in your team folder.", type:'review', when:'setup', hook:"Catches any schedule the review missed or described wrongly.", added:'2026-09-29', asWritten:true,
+prompt:`[AUDITOR NAME], check [CHIEF OF STAFF NAME]'s review against the scheduled tasks that actually exist. Were any missed? Were any described wrongly? Is every "still useful" call backed by what the task has actually produced? Return PASS or the problems, and show me the corrected table.`},
+{kind:'prompt', id:'workforce-approve-team', sec:'Reference · Agent workforce', station:'workforce', title:"4.3 Approve your new team", where:"Stage 4 of 6, move your old schedules onto the team. Paste it into the Code tab, in your team folder.", type:'instructions', when:'setup', hook:"Signs off the team and writes it into Team HQ.", added:'2026-09-29', asWritten:true,
+prompt:`I approve this team, with these changes: [any names or jobs you want changed, or "none"]. Add every member to "The team" in Team HQ with their job, schedule and the old task they replace.`},
+{kind:'prompt', id:'workforce-rebuild', sec:'Reference · Agent workforce', station:'workforce', title:"4.4 Rebuild an old scheduled task as a team member", where:"Stage 4 of 6, move your old schedules onto the team. Paste it into the Code tab, in your team folder.", type:'scheduled', when:'setup', hook:"Runs the new version beside the old one before anything changes.", added:'2026-09-29', asWritten:true,
+prompt:`Rebuild [OLD TASK NAME] as [AGENT NAME]: a skill that reads Team HQ first, runs team-quality-check, and saves its work as a draft for me to approve. Set it up as a cloud routine on the same schedule, in [your time zone], so it runs when my computer is off. If it needs files on my computer, which the cloud can't reach, tell me, and we'll decide whether to move them to Google Drive or keep it as a local scheduled task.
+Run it once now and show me its result next to what the old task last produced. Don't pause the old task yet.`},
+{kind:'prompt', id:'workforce-audit-rebuild', sec:'Reference · Agent workforce', station:'workforce', title:"4.5 Audit the rebuild against the old task", where:"Stage 4 of 6, move your old schedules onto the team. Paste it into the Code tab, in your team folder.", type:'review', when:'setup', hook:"Old and new side by side, and it has to say PASS.", added:'2026-09-29', asWritten:true,
+prompt:`[AUDITOR NAME], compare [AGENT NAME] with [OLD TASK NAME]. Tell me: does the new one do everything the old one did, is its schedule right, is it in the cloud, and is it drafts only? Return PASS or the problems.`},
+{kind:'prompt', id:'workforce-retire', sec:'Reference · Agent workforce', station:'workforce', title:"4.6 Retire the old task by pausing it", where:"Stage 4 of 6, move your old schedules onto the team. Paste it into the Code tab, in your team folder.", type:'does', when:'setup', hook:"Pause it, never delete it, and keep a copy in Team HQ.", added:'2026-09-29', asWritten:true,
+prompt:`[AUDITOR NAME] has passed [AGENT NAME]. Pause [OLD TASK NAME]. Don't delete it. Save a copy of its instructions in Team HQ under "Retired tasks", then confirm only one version of this job is scheduled.`},
+{kind:'prompt', id:'workforce-plan-team', sec:'Reference · Agent workforce', station:'workforce', title:"5.1 Plan which specialists to hire", where:"Stage 5 of 6, hire your first specialist. Paste it into the Code tab, in your team folder.", type:'interview', when:'setup', hook:"Up to four jobs worth handing over, drawn from your own week.", added:'2026-09-29', asWritten:true,
+prompt:`Ask me which jobs eat my time each week. Then, using my answers and what you've seen in my email, calendar and files, suggest up to four specialists to report to [CHIEF OF STAFF NAME], each owning one job I repeat every week.
+For each one, give me one line each: its job, its day and time, where it reads from, what it produces, and the one thing it must never do. Put it in a table, then ask me to name each one.`},
+{kind:'prompt', id:'workforce-interview', sec:'Reference · Agent workforce', station:'workforce', title:"5.2 Build a specialist by interview", where:"Stage 5 of 6, hire your first specialist. Paste it into the Code tab, in your team folder.", type:'interview', when:'setup', hook:"It asks you five questions and writes the job from your answers.", added:'2026-09-29', asWritten:true,
+prompt:`[CHIEF OF STAFF NAME], let's hire a new team member for [THE JOB]. Interview me one question at a time:
+1. What's the job, step by step?
+2. Which day and time should it run?
+3. Where does it read from, and where should it leave its work?
+4. What does a great result look like? I'll show you an example
+5. What must it never do?
+Then write it as a skill called [AGENT NAME]. It must read Team HQ first, run team-quality-check, save its work as a draft for me to approve, and never post, send or publish anything.`},
+{kind:'prompt', id:'workforce-voice', sec:'Reference · Agent workforce', station:'workforce', title:"5.3 Teach a specialist your voice", where:"Stage 5 of 6, hire your first specialist. Paste it into the Code tab, in your team folder.", type:'instructions', when:'setup', hook:"Real examples of your writing, shared with the whole team.", added:'2026-09-29', asWritten:true,
+prompt:`Here are examples of how I write: [paste 5 to 10 real captions, emails or posts]. Use this voice in everything [AGENT NAME] writes, and add them to "Voice" in Team HQ so the whole team uses it.`},
+{kind:'prompt', id:'workforce-test-run', sec:'Reference · Agent workforce', station:'workforce', title:"5.4 Give a new specialist a trial shift", where:"Stage 5 of 6, hire your first specialist. Paste it into the Code tab, in your team folder.", type:'does', when:'setup', hook:"Runs on real material and shows you before anything is saved.", added:'2026-09-29', asWritten:true,
+prompt:`Run [AGENT NAME] now on real material, including team-quality-check. Show me the result in chat. Don't save anything yet.`},
+{kind:'prompt', id:'workforce-audit-schedule', sec:'Reference · Agent workforce', station:'workforce', title:"5.5 Audit a new specialist and put it on a shift", where:"Stage 5 of 6, hire your first specialist. Paste it into the Code tab, in your team folder.", type:'scheduled', when:'setup', hook:"Checked by the auditor, then scheduled to run in the cloud.", added:'2026-09-29', asWritten:true,
+prompt:`That's right. Save this as the process for [AGENT NAME]. [AUDITOR NAME], check it: drafts only, reads Team HQ, runs the quality check. If it passes, set it up as a cloud routine every [DAY] at [TIME] [your time zone], add it to "The team" in Team HQ, and let me know when its first draft is ready.`},
+{kind:'prompt', id:'workforce-roll-call', sec:'Reference · Agent workforce', station:'workforce', title:"6.1 Run the Monday roll call on your team", where:"Stage 6 of 6, keep the team healthy. Paste it into the Code tab, in your team folder.", type:'review', when:'weekly', hook:"Which agents ran, which failed, and what is waiting in Drafts.", added:'2026-09-29', asWritten:true,
+prompt:`[CHIEF OF STAFF NAME], roll call. For every team member, tell me when it last ran, whether it worked, and what it left in Drafts. Flag anything that failed, didn't run, or ran twice.`},
+{kind:'prompt', id:'workforce-fix-one-thing', sec:'Reference · Agent workforce', station:'workforce', title:"6.2 Fix one thing an agent got wrong", where:"Stage 6 of 6, keep the team healthy. Paste it into the Code tab, in your team folder.", type:'rules', when:'weekly', hook:"Correct one part, save it, and the whole team learns it.", added:'2026-09-29', asWritten:true,
+prompt:`[AGENT NAME] got this wrong: [WHAT WAS WRONG]. Fix just that part, save it as the process, and add the lesson to Team HQ so the whole team learns it.`},
+{kind:'prompt', id:'workforce-monthly-review', sec:'Reference · Agent workforce', station:'workforce', title:"6.3 Run the monthly performance review on your team", where:"Stage 6 of 6, keep the team healthy. Paste it into the Code tab, in your team folder.", type:'review', when:'monthly', hook:"Keep, change, merge or retire, and nothing changes until you approve.", added:'2026-09-29', asWritten:true,
+prompt:`[AUDITOR NAME], review the whole team. For each member: is it still useful, is it drifting or repeating itself, does it overlap with another, and is it still drafts only? Recommend what to keep, change, merge or retire. Don't change anything until I approve.`},
 
 /* ---------- Research ---------- */
 {kind:'prompt', id:'trust-test', sec:'Research', station:'research', title:'Trust Test', where:'Before you act on a claim', type:'review', when:'before-acting', hook:"Test a claim before you put money behind it.", added:'2026-09-13', levers:['Role','Context','Constraints','Tone','Format','Output'], brief:{q:'Is this claim true?', bring:'the claim or the full transcript, the decision it feeds, one line about your business, and what it costs you if the claim is wrong.', back:'a claim map first. Then a Trust Report with a verdict, the evidence for and against each claim, and the cheapest way to test the idea in your own business.', steps:['If the decision is costly or hard to reverse, switch on deep research. For everything else, switch on web search.','Copy the prompt and paste it into a new chat.','Replace the text in square brackets with your input.','Send the message. The AI returns a claim map and stops.','If the claim map is wrong, type your corrections.','Type "go" and send the message.','Before you act, open the sources behind the verdict.']},
