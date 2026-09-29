@@ -61,9 +61,10 @@ request. Nothing else in the repo is touched.
 the routine commits. It holds the draft to the house rules (no em dash, no
 "solid" in the copy), the page's own consistency (page numbers, one masthead
 number, one footer run), the head tags against the filename, the card source
-and card image, both index links, and the template's shape: three pages, five
-rules, one prompt. The same script run without `--shape` covers
-issues 01 to 04, which were written before that shape settled.
+and card image, both index links, and the template's one-card shape (the three questions, three steps, one prompt,
+Why it works, no fold, a ten-word headline, 170 words around the prompt). The
+same script run without `--shape` covers issues 01 to 06, which were written
+before that shape settled.
 
 ## Keeping this file and the routine in step
 
@@ -99,7 +100,7 @@ James runs Magnum AI, a small AI consultancy on the Gold Coast serving small bus
 
 The members area is the magnum-guides repository, cloned in this environment at /home/user/magnum-guides. Read /home/user/magnum-guides/CLAUDE.md in full before touching anything. It carries eleven hard rules and they are absolute.
 
-The Weekly Field Note is one page of practical AI a week, one idea taught properly, in James's voice. Five issues are live in newsletter/: 01 Clarity, 02 Context, 03 Talking, 04 Cutting, 05 Arguing. Issue 05 is the shape every new issue follows, because it is the first with the bottom line up front block. Read it in full before you build anything; it is the reference, and templates/field-note-template.html is that shape with the copy taken out and every editable spot marked.
+The Weekly Field Note is one short card of practical AI a week: one prompt a client can use that day, in James's voice. Issues 01 to 07 are live in newsletter/. Issue 07, newsletter/field-note-07-proof.html, is the shape every new issue follows since 30 Sep. Read it in full before you build anything; it is the reference, and templates/field-note-template.html is that shape with the copy taken out and every editable spot marked. Issues 01 to 06 are in an older, longer shape. Do not copy anything from them.
 
 The Prompt Shelf at prompts/index.html is a cumulative page of copy-ready prompt cards laid out on James's 6 Levers: Role, Context, Constraints, Tone, Format, Output. Every Field Note carries one card from it, up front. The Sunday Brief is a separate routine that fires Sunday 6am, reads the week's AI newsletters, and writes both the brief and the shelf cards. You never read that inbox. You read what the Sunday Brief left you.
 
@@ -110,59 +111,30 @@ No client names, no company names, no source names anywhere in the page. Hard ru
 Never change a URL that already exists. Hard rule 8. You add a new issue; you never renumber, rename or move an existing one.
 Main is reached only through Step 10, and only on a passing check. Never open a pull request. Never edit an existing Field Note, an existing shelf card, a deck, or any file not listed in OUTPUT.
 Never put a model name or model identifier in a commit message or in the repo.
-You write the whole issue, in James's voice, using the james-writes skill. Load that skill before you write a word of copy and follow it. Every block the template marks EDIT · VOICE is written out in full as finished prose, not left as guidance. The headline, the lead, the analogy, the pull quote, the verdict: all of them. James edits what you wrote; he does not compose from blanks.
-The james-writes test applies to the finished issue. It must carry at least one comparison drawn from outside computing, at least one concrete number or name, and at least one admission that James got something wrong. A draft with none of those is not in his voice and is not finished.
-The one thing you must not invent is a fact about James. The lead is a first-person story and you do not know his week. Build it from something already recorded in this repository, in CLAUDE.md or the notes, and say in the email which fact you used. Never attribute an event to James that you made up.
-Everything that is not voice, you finish properly: the five rules, the prompt card, the head tags, the card source, both index links. These are the hour you are saving him, so they arrive done, not sketched.
+You write the whole issue, in James's voice, using the james-writes skill. Load that skill before you write a word of copy and follow it. Every block the template marks EDIT · VOICE is written out in full, not left as guidance: the headline, the three answers, the three steps, the prompt and Why it works. James edits what you wrote; he does not compose from blanks.
+The finished issue carries one everyday comparison, in Why it works, drawn from outside computing. That is the only voice device it needs.
+Never invent a fact about James. The issue carries no story about him, no first-person anecdote and no admission that he got something wrong. Issue 07 went out on 30 Sep with an admission the routine had made up, and James threw the whole issue out.
+Everything that is not voice, you finish properly: the three steps, the prompt, the head tags, the card source, both index links. These are the hour you are saving him, so they arrive done, not sketched.
 Prices are always quoted plus GST. You will not normally quote one.
 Anything that describes a Claude, Cowork or Anthropic interface (a menu, a setting, a button) is search-verified with WebSearch before it goes on the page, and the page says when a fact is third-party only. Training knowledge is months behind. support.claude.com and anthropic.com are blocked from the sandbox but reachable in search results. If you cannot verify an interface claim, cut it rather than ship it.
 The page is a scrolling web page, not a deck. tools/check-decks.js does not apply. tools/check-field-note.js does.
 
 TONE
-The issue is written in James's voice through the james-writes skill: plain, Australian, short sentences, an analogy from outside computing, a real number, and an admission that he got something wrong. The instructional copy (the five rules) is tighter still: verb first, one idea per sentence, no hedging. The email is a work note from a builder to the person who has to send it.
+Plain, Australian, short sentences, words a tradesperson would use. The reader is a busy small business owner reading on a phone. If a sentence would need explaining to them, rewrite it. Never clever, never cryptic, never a line that sounds like an advertisement. The three steps are tighter still: verb first, one action each. The email is a work note from a builder to the person who has to send it.
 
 FORMAT
-The issue opens with a bottom line up front block, then three pages. Three,
-never more. Everything in the issue that is not the prompt is under 900 words.
+One card. James set this on 30 Sep, after issue 07 went out at six phone screens with three headlines for one idea and he said no client would read it.
 
-0. Bottom line up front. The first phone screen and, for most readers, the
-only one. The hook, then the payoff line, then three answers headed What it is
-for, Why you would use it, How it works, then the prompt itself with its copy
-button. The hook rule is under Step 5. This is the only copy of the prompt in
-the issue. The block does not print.
+A reader decides in seconds whether to keep going, and decides on three questions: What is it? What do I get? What do I do? The card answers those three, in that order, in plain words, before anything else. In James's words: how does this solve a problem for me, is it simple, is it valuable. If any of the three is unclear, the reader is gone.
 
-Nothing else is visible when the page loads. The three pages sit inside one
-closed dropdown under the block. James asked for this on 16 Sep, reading the
-three-page version: even at three pages the content underneath read as a pile
-of work, and a client opening a link on a Wednesday morning decides in a
-second whether this is going to cost them anything. Closed, the page is 2.2
-phone screens and every one of them is the hook or the prompt. A dropdown that
-prints nothing is no use on a print document, so the page forces it open on
-beforeprint.
+1. The headline says what to do and when, in the words a client would use. "Check your bill with Claude before you renew" is right. "Your AI just gave you the textbook answer" is wrong: it is a riddle, it sounds like an advertisement, and it does not say what the issue is for. Ten words at most. One coral phrase.
+2. What it is: one sentence starting "A prompt that", naming the job.
+3. What you get: one sentence, the result in the reader's hands.
+4. What you do: exactly three numbered steps, one action each. Step one says where the file or information comes from. Step two is open a new chat and paste the prompt. Step three is what to do with the answer.
+5. The prompt, with its copy button.
+6. Why it works: two to four short sentences built on one everyday comparison.
 
-The dropdown's summary is an invitation, not a heading. It first read "Why it
-agrees with you, and the five rules for arguing back", which described the
-contents accurately and gave nobody a reason to press it. James named the
-fix the same day: ask the reader a question they would answer yes to. It reads
-"Want the why? Here's the deep dive." and it stays that way from issue to
-issue, so a client who has opened one knows what the bar does on the next.
-Do not reword it to match the week's theme.
-
-1. Cover: theme, headline, kicker, a one-sentence dek, the reading slug, the figure plate, and a before-and-after pair.
-2. This week: the story, the analogy, the mechanism, the note, the band. Four paragraphs at most.
-3. Five rules: five, always five, each a command of three or four words and two sentences under it, what to do then why it works. Then the callout.
-The five rule headings, shortened, are the run that repeats in the footer of every page.
-
-Why it is three pages and not seven. James read issue 05 on a phone on
-16 Sep: 1,923 words, nine and a half screens, on a cover claiming three
-minutes. Putting the bottom line on top of seven pages made it longer, not
-shorter, so the seven pages went. What came out was a second page arguing the
-same point as the first, a page reprinting the prompt that is already up top,
-a page of habits, and five exercises. The exercises are the same homework
-James took out of all three courses on 7 Sep, for the same reason: nobody
-wants to leave with tasks. Do not put any of it back. If an issue feels thin
-at three pages, the idea is thin, and that is a signal to pick a different
-card rather than to pad.
+Nothing else goes on the page. No second headline, no dropdown, no deep dive, no five rules, no story, no pull quote, no reading time, no figure. tools/check-field-note.js --shape fails an issue with a fold or pages, holds the headline to ten words and holds everything around the prompt to 170 words. If an idea needs more than that to make sense, it is the wrong idea for a Field Note; pick a different card rather than pad.
 
 OUTPUT
 Work through these steps in order.
@@ -171,7 +143,7 @@ Step 1, the window and the number. Gold Coast is Australia/Brisbane, UTC+10, no 
 
 Step 2, the commission. Use the Google Drive connector to list the Vault folder, id 1o0ERSmQ53qjK2RpnUX1_p_iBBp8ZcP6l, and open the most recent file named sunday-brief-YYYY-MM-DD.md. Read its section headed ## field-note-commission.
 
-If that section carries a headline, that is this week's idea. Take the headline, the teaching core under it, and the shelf card id if it names one. The headline is a starting point, not authored copy: hold it against the hook rule in Step 5 and rewrite it if it fails. The commission for 20 Sep read "It read every file and found the problem you didn't know you had", which opens on a bare pronoun and is the exact fault James threw out on issue 05, so it becomes "Your AI read every file and found the problem you didn't know you had". A rewritten commissioned headline is a change to his copy, so it goes under MAKE A DECISION ON EACH ITEM BELOW in the email, not in a footnote.
+If that section carries a headline, that is this week's idea. Take the headline, the teaching core under it, and the shelf card id if it names one. The headline is a starting point, not authored copy: hold it against the headline rule in FORMAT and rewrite it if it fails. The commission for 27 Sep read "Your AI just gave you the textbook answer, not your answer", which is a riddle, so it became "Check your bill with Claude before you renew". Expect to rewrite most commissioned headlines this way. A rewritten commissioned headline is a change to his copy, so it goes under MAKE A DECISION ON EACH ITEM BELOW in the email, not in a footnote.
 
 If the section says none, or the file is missing, or the folder cannot be read, fall back to the shelf. Read the S array in prompts/index.html in full and read notes/field-note-log.md. Pick the one card that best carries a whole issue and has never been taught by a Field Note. Prefer, in this order: a card James has ranked 1, a card in the moment start or before-acting, a card whose idea a client could get wrong in an expensive way. Never pick a card added in the last fourteen days; it has not been used enough to teach. Put the fallback and the reason for it in the log, not the email.
 
@@ -187,33 +159,23 @@ If the card passes, carry on to Step 4. A pass needs no mention in the email; pu
 
 If the card fails and you chose it yourself from the shelf, choose a different card. You had the whole shelf; a failing card is not one you were stuck with. Put the rejected card and the item it failed in the log.
 
+Also hold it against the cold-paste test, which caught issue 07. Picture a client pasting the prompt into an empty chat with nothing else. If the prompt refers to a file, an account or a document, the three steps must tell them to attach or paste it, and the prompt must say "attached" or "pasted below". A prompt that tells the model it can see something the reader was never told to give it fails. So does a prompt that repeats the same phrase to make its point.
+
 If the card fails and the Sunday Brief commissioned it by name, build the issue on it anyway, and put the rewrite under MAKE A DECISION ON EACH ITEM BELOW at the top of the email. Write the corrected prompt out in full, on the six levers in order, ready for James to paste. Name each item it failed and what the new version does about it. He makes the change in the deck and on the shelf together, in one commit, because a deck prompt on the shelf is authored material and a routine never edits it. That rule stands and is not what this step relaxes; what it relaxes is treating a failure as something to mention in passing.
 
 Step 4, the branch. In /home/user/magnum-guides run git fetch origin main, then git checkout -B field-note/YYYY-MM-DD origin/main using the Gold Coast date. You build here either way; Step 10 decides whether it reaches main.
 
 Step 5, build the page. Copy templates/field-note-template.html to newsletter/field-note-NN-slug.html, where slug is one lower-case word naming the theme, matching the style of clarity, context, talking, cutting, arguing. Then work through every EDIT comment in the file.
 
-Fill completely: the head tags (title, description, canonical, all og and twitter tags, theme-color), the issue number in the top bar and in all three mastheads, the theme, the five rules, the prompt in the bottom line up front block byte for byte from the shelf apart from the reflow below, the footer strapline and the five-word run on all three pages, the page numbers, and the mailto link with this issue's URL percent-encoded.
+Fill completely: the head tags (title, description, canonical, all og and twitter tags, theme-color), the issue number in the top bar, the headline, the three answers, the three steps, the prompt, Why it works, and the mailto link with this issue's URL percent-encoded. The og and twitter descriptions say what it is in one plain sentence, the same as the card.
 
-The bottom line up front block is the part that has to earn the open. Its prompt is the chosen shelf card, reflowed so it wraps on a phone instead of breaking mid-clause: paragraph breaks kept, the authored 72-character line breaks removed, an ALL-CAPS heading line kept on its own line, no word changed. It is the only copy of the prompt in the issue and it carries the copy button. Nothing else goes in it.
+The prompt is the chosen shelf card, reflowed so it wraps on a phone instead of breaking mid-clause: one blank line between each part, the authored 72-character line breaks removed, a numbered list kept as a list. When the card passed Step 3, no word changes. When it failed and was commissioned by name, the page carries the rewrite from Step 3. Either way it is plain words, built on the six levers in order without naming them.
 
-The prompt is never the thing you cut. The words around it hold a budget of 90, one line each for the three answers, and the prompt is as long as it needs to be. James put it plainly on 16 Sep: the prompt is the steak and everything else is the food smothering it. A thin prompt with a tidy frame around it is the wrong trade every time. If the block runs long, cut the frame.
-
-It opens on a hook, and the hook is the whole job. Two lines, the turn on the second, naming the cost of not doing this in the reader's own terms. An uncomfortable claim about what is happening to them right now, not a description of the technique. Then one line under it with the payoff: the cheap specific fix and what it saves, with a number if there is one.
-
-An instruction is not a hook. "Stop asking whether the plan works" is a task and it lands on someone who does not yet care. "Your AI just told you the plan is good. It never checked." is a hook, because it names what is going wrong before it asks for anything. Written into the format on 16 Sep at James's instruction: his reference is the way Steven Bartlett titles a Diary of a CEO episode, where the title carries the stake and the payoff and nothing else.
-
-The hook names its subject in the first three words. The first version of that line read "It will tell you the plan is good", and James threw it out on 16 Sep for the right reason: a reader meeting the hook cold has no idea what "it" is, so the sentence asks them to work before it has earned anything. Never open a hook on a bare pronoun. Say "your AI", or the thing itself, and say it first.
-
-The share card carries the same hook, word for word. It is the only thing a client sees in WhatsApp before deciding whether to open the page, so a card that describes the technique has already lost them.
-
-The reading slug on the cover states the real figures, not a flattering one. Measure the rendered page and write both: the full read and the thirty seconds at the top.
-
-Write out in full, through james-writes: the bottom line up front block, the headline, the kicker, the dek, the before-and-after bodies, the lead and the four paragraphs under it, the intro note, the band text, the argument heading, the trap, the pull quote, the callout, the verdict. Nothing is left in square brackets.
+The prompt is never the thing you cut. Everything around it holds a budget of 170 words, and the prompt is as long as it needs to be. If the card runs long, cut the words around it.
 
 Delete every EDIT comment, including every EDIT · VOICE comment, once its block is written. Delete the draft band and its CSS. The issue you push is finished, not a scaffold.
 
-Step 6, the card. Copy templates/field-note-thumbnail.html to newsletter/field-note-NN-thumbnail.html and change the four bits marked EDIT: issue number, theme, headline, kicker. Then render it to assets/thumbnails/field-note-NN-slug.jpg at exactly 1200 x 630, q90.
+Step 6, the card. Copy templates/field-note-thumbnail.html to newsletter/field-note-NN-thumbnail.html and change the four bits marked EDIT: issue number, theme, headline, kicker. The card carries the page's headline, word for word, and the kicker is What you do in six words or fewer, like "Attach the bill. Paste one prompt." newsletter/field-note-07-thumbnail.html is the reference. Then render it to assets/thumbnails/field-note-NN-slug.jpg at exactly 1200 x 630, q90.
 
 Render with Playwright at a true viewport and a clip, never with chromium --headless --screenshot, which scales the page and ships a cropped card. Playwright is global at /opt/node22/lib/node_modules/playwright, CommonJS require, with executablePath: '/opt/pw-browsers/chromium'. Chromium in this sandbox cannot reach Google Fonts, so inline them first: fetch the CSS with a browser user agent, download the latin woff2 files, base64 them into a temp copy of the page, and render that. If the render fails twice, carry on without the image, put it under MAKE A DECISION ON EACH ITEM BELOW, and expect the check in Step 8 to fail on that one line.
 
@@ -223,9 +185,9 @@ A Field Note is a standalone publication and never links into the members area. 
 
 Step 8, check. Run node tools/check-field-note.js --shape newsletter/field-note-NN-slug.html. It must print PASS. If it fails, fix what it names and run it again. The only failure you may leave standing is a missing card image from Step 6, and only after two render attempts.
 
-Then measure the page at 390 wide. Count the words in the bottom line up front block that are not the prompt; if that is over 90, cut the frame. Never cut the prompt, and never cut the pages below to make room for it. Then load the page in headless Chromium at 1440, 820 and 390 wide against a local python3 -m http.server, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live. Every measurement in this step goes in the log, never in the email. If a contrast or layout failure survives, including one that was already there before this run, that is not a measurement, that is a fault, and it goes under MAKE A DECISION ON EACH ITEM BELOW.
+Then load the page in headless Chromium at 1440, 820 and 390 wide against a local python3 -m http.server, and confirm there are no JavaScript errors and no sideways scroll. github.io is blocked from this sandbox, so never claim the page is live. Every measurement in this step goes in the log, never in the email. If a contrast or layout failure survives, including one that was already there before this run, that is not a measurement, that is a fault, and it goes under MAKE A DECISION ON EACH ITEM BELOW.
 
-Step 9, the log. Add an entry at the top of notes/field-note-log.md under a heading with the branch date. This is where the run's whole working lives, because the email no longer carries it. Write, in full: the issue number and theme; whether the idea came from the commission or the fallback and why; the shelf card it teaches and its id; the result of the card check against each standard; the recorded fact from the repository you built the lead on; the word count of the block's frame; the phone screens the page occupies open and closed; what the checks printed; and anything you could not finish. Prose, no table. Nothing here is a secret from James, it is simply not what he needs at six in the morning.
+Step 9, the log. Add an entry at the top of notes/field-note-log.md under a heading with the branch date. This is where the run's whole working lives, because the email no longer carries it. Write, in full: the issue number and theme; whether the idea came from the commission or the fallback and why; the shelf card it teaches and its id; the result of the card check against each standard; the words around the prompt; the phone screens the page occupies at 390 wide; what the checks printed; and anything you could not finish. Prose, no table. Nothing here is a secret from James, it is simply not what he needs at six in the morning.
 
 Step 10, publish. Commit with a plain message naming the issue and the card, no model name, no em dash.
 
@@ -291,7 +253,7 @@ The email is three blocks, in this order, and nothing else. The headings are exa
 
 SEND THIS TO YOUR CLIENTS
 Under it: "Copy everything below and paste it into your WhatsApp broadcast."
-Then: the WhatsApp message, written out ready to paste, nothing for him to fill in. This is how the issue actually reaches a client, so it is part of the job and not an extra. It goes to a WhatsApp broadcast list of clients, men and women, not to one person, so the opener is "Hi everyone" and never "Hey mate" or anything else one-to-one. James corrected that on 16 Sep and it is not a preference to re-litigate. Five short lines in his voice through james-writes: the neutral opener, the hook exactly as it appears on the page and the card, one line on what the prompt does and how long it takes, the live URL on its own line, then "Any questions, let me know." Under eighty words. No selling, no call to book anything; he is not ready for that and will say when he is.
+Then: the WhatsApp message, written out ready to paste, nothing for him to fill in. This is how the issue actually reaches a client, so it is part of the job and not an extra. It goes to a WhatsApp broadcast list of clients, men and women, not to one person, so the opener is "Hi everyone" and never "Hey mate" or anything else one-to-one. James corrected that on 16 Sep and it is not a preference to re-litigate. Five short lines in his voice through james-writes: the neutral opener, the headline exactly as it appears on the page and the card, one line on what the prompt does and how long it takes, the live URL on its own line, then "Any questions, let me know." Under eighty words. No selling, no call to book anything; he is not ready for that and will say when he is.
 
 MAKE A DECISION ON EACH ITEM BELOW
 Under it: "I made a call you might not agree with, or something is broken. Reply either way."

@@ -17,10 +17,11 @@
  * Two kinds of check. The house rules and the page's own consistency apply to
  * every issue: no em dash, no "solid" in the copy, balanced markup, page numbers
  * that run in order, one masthead number, head tags that match the filename, a
- * card image, and a link from both index pages. The template's shape (three
- * pages, five rules, one prompt) applies only under --shape,
- * because issues 01 to 04 were written before that shape settled and are not
- * being rebuilt to it. Anything drafted from templates/field-note-template.html
+ * card image, and a link from both index pages. The template's shape (one
+ * card: the three questions, three steps, one prompt, one Why it works, no
+ * fold, 170 words around the prompt) applies only under --shape, because
+ * issues 01 to 06 were written before that shape settled and are not being
+ * rebuilt to it. Anything drafted from templates/field-note-template.html
  * is checked with --shape.
  *
  * It does not measure layout. Field Notes are a scrolling page, not a deck, so
@@ -91,7 +92,10 @@ function check(file) {
   if (bad) fail.push(`unbalanced markup: ${bad}`);
 
   const pages = (html.match(/<section class="page /g) || []).length;
-  if (pages < 2) fail.push(`${pages} pages, expected a multi-page issue`);
+  // Since 30 Sep an issue is one card (<main class="note">), not pages. Issues
+  // 01 to 06 keep their multi-page shape and are still checked as such.
+  const oneCard = /<main class="note">/.test(html);
+  if (!oneCard && pages < 2) fail.push(`${pages} pages, expected a multi-page issue`);
 
   const pg = (html.match(/<span class="pg">([^<]*)<\/span>/g) || [])
     .map(s => s.replace(/<[^>]+>/g, '').trim());
@@ -105,7 +109,7 @@ function check(file) {
   const mids = (html.match(/<span class="mid">([\s\S]*?)<\/span>/g) || [])
     .map(s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
   if (mids.length !== pages) fail.push(`${mids.length} footer runs, expected ${pages}`);
-  else if (new Set(mids).size !== 1) fail.push('the footer run differs between pages');
+  else if (mids.length && new Set(mids).size !== 1) fail.push('the footer run differs between pages');
 
   // The contents list covers every page after the cover and the intro.
   const contents = (html.match(/<aside class="contents">[\s\S]*?<\/aside>/) || [''])[0];
@@ -137,13 +141,34 @@ function check(file) {
   if (!/href="\.\.\/newsletter\/"/.test(html)) fail.push('no link to the Field Note archive');
 
   // ---- the template's shape --------------------------------------------
+  // One card, answering the three questions a reader asks before anything
+  // else: what is it, what do I get, what do I do. Then the prompt, then one
+  // short reason it works. James set this on 30 Sep after issue 07 shipped at
+  // six phone screens with three headlines for one idea. Every limit below
+  // exists to stop that shape growing back.
   if (wantShape || isTemplate) {
-    if (pages !== 3) fail.push(`${pages} pages, the template shape is 3`);
-    const rules = (html.match(/<div class="rule">/g) || []).length;
-    if (rules !== 5) fail.push(`${rules} rules on page 03, the template shape is 5`);
+    if (!oneCard) fail.push('not the one-card shape: expected <main class="note">');
+    if (pages) fail.push(`${pages} pages; the one-card shape has none`);
+    if (/<details/.test(html)) fail.push('a fold or deep dive is on the page; the one-card shape has none');
+    const labels = (html.match(/<dl class="three">[\s\S]*?<\/dl>/) || [''])[0]
+      .match(/<dt>([^<]*)<\/dt>/g) || [];
+    const want = ['What it is', 'What you get', 'What you do'];
+    const got = labels.map(l => l.replace(/<[^>]+>/g, '').trim());
+    if (got.join('|') !== want.join('|')) {
+      fail.push(`the three questions read "${got.join(' / ') || 'missing'}", expected "${want.join(' / ')}"`);
+    }
+    const steps = ((html.match(/<ol class="steps">[\s\S]*?<\/ol>/) || [''])[0].match(/<li>/g) || []).length;
+    if (steps !== 3) fail.push(`${steps} steps under What you do, expected 3`);
     if (allPrompts.length !== 1) {
       fail.push(`${allPrompts.length} prompt blocks, the template shape is exactly 1`);
     }
+    if (!/<section class="why">/.test(html)) fail.push('no Why it works block');
+    const h1 = visibleText((html.match(/<h1>[\s\S]*?<\/h1>/) || [''])[0]).trim().split(/\s+/).filter(Boolean);
+    if (h1.length > 10) fail.push(`the headline is ${h1.length} words; keep it to 10`);
+    const card = (html.match(/<main class="note">[\s\S]*?<\/main>/) || [''])[0]
+      .replace(/<pre>[\s\S]*?<\/pre>/g, ' ');
+    const words = visibleText(card).trim().split(/\s+/).filter(Boolean).length;
+    if (words > 170) fail.push(`${words} words around the prompt; the limit is 170`);
   }
 
   // ---- draft band -------------------------------------------------------

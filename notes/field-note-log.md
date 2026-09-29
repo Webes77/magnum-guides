@@ -29,9 +29,13 @@ reading four pages of HTML. Add to it when an issue merges.
 | 04 | Cutting | Cut it to the 20 per cent | `cut-to-twenty` |
 | 05 | Arguing | Redline your own plan | `redline-your-plan` |
 | 06 | Auditing | Get a full audit from one folder | `business-folder-audit` |
-| 07 | Proof | Make it read your account first (rebuilt as a prompt) | `read-your-account` |
+| 07 | Proof | Check your bill before you renew (rebuilt as a prompt, one-card shape) | `read-your-account` |
 
 ## Entries
+
+### 2026-09-30, rebuilt by hand
+
+Issue 07 rebuilt at James's request after he read it live and said no client would get through it. It was six phone screens with three headlines for one idea, the prompt told the model it could see an account the reader was never told to attach, and the lead carried an admission about James the routine had made up. Rebuilt at the same URL as one card: headline "Check your bill with Claude before you renew", the three questions (What it is, What you get, What you do), three steps, a rewritten prompt that says "attached", and one short Why it works. 1.8 phone screens at 390, was 5.9 open. The template, the card template, tools/check-field-note.js --shape and the routine prompt all moved to the one-card shape the same day, and the live trigger was updated from the file.
 
 ### 2026-09-30
 

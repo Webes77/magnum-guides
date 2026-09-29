@@ -2028,6 +2028,38 @@ so the buttons drop beneath it when both do not fit. Every card changes
 shape; only CSS moved. The shelf's two recorded contrast failures (Copy
 3.73:1, The prompt label 4.50:1) are still there and still not this change's.
 
+**The Field Note is one card now, 30 Sep, and the live routine carries it.**
+James read issue 07 live and said no client would read it: confusing, too
+dense, a prompt he did not like, and headlines that read like advertising
+hooks without saying what the thing does. The cause was the six rounds of
+16 Sep: every fix was added on top and nothing came off, so 07 carried three
+headlines for one idea, three labelled answers, and a folded deep dive with a
+second masthead, a story, a pull quote and five rules. Six phone screens. The
+16 Sep rule "an instruction is not a hook" is what pushed headlines towards
+riddles; it is reversed.
+
+His rule, the one to build every issue on: a reader decides on three
+questions, what is it, what do I get, what do I do, so the card answers those
+three first in plain words. Shape: a headline that says what to do and when
+(ten words at most), What it is, What you get, What you do as three steps, the
+prompt, and a short Why it works with one everyday comparison. Nothing else:
+no fold, no rules, no story about James. `tools/check-field-note.js --shape`
+enforces it (170 words around the prompt, ten in the headline). Issue 07 was
+rebuilt to it at the same URL, 1.8 screens, and is the reference.
+`templates/field-note-template.html` and the card template moved with it.
+
+Two faults in 07 worth keeping. The prompt told the model "I have the real
+account open in front of you" while nothing told the reader to attach it, so
+it failed from a cold paste; the routine now runs a cold-paste test on every
+card. And the lead carried an admission about James the routine made up; the
+routine now carries no story or admission about him at all.
+
+James kept auto-publish on purpose: he reads each issue live every week and
+fixes what he needs to. `notes/field-note-prompt.md` was pushed to
+`trig_016pPJPsm8D3yUZs81wquraU` the same day, from the file, and read back.
+The Sunday Brief still writes commission headlines to the old hook rule; the
+Field Note routine rewrites them, so it does not need changing now.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
