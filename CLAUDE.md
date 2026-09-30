@@ -2062,11 +2062,17 @@ routine: "Hi everyone, here's this week's Field Note and prompt." then a line
 opening "Only open this if" naming who it is for, then what they do and get,
 the link, and "Any questions, let me know."
 
-Rebuilding issues 01 to 06 into the one-card shape was asked for the same day
-and refused by the session's permission check, which read it as rewriting
-pages already sent to clients. Not done. The URLs would not have changed; the
-content would. It needs James to allow it, and a generator for it sits in the
-session scratchpad, not the repo.
+Issues 01 to 06 were rebuilt into the one-card shape the same day, at the same
+URLs, on James's explicit go (the permission check had refused it first,
+correctly, as a rewrite of pages already sent; James allowed it once, saying
+clients are not reading the back issues yet). Each keeps its own prompt. 05 and
+06 are word for word, lifted from the old files programmatically. 01 lost its
+"ASD-STE100" jargon, 04 moved the paste slot to the end, and 01 to 04 gained a
+role line, all so they pass the cold-paste test. All six share cards were
+re-rendered from 07's card, and 01 has a card source for the first time. The
+em dash hidden as %E2%80%94 in the 01 and 02 mailto subjects went with it. The
+archive and front-page listings carry the new headlines. The rules, stories and
+exercises in the old issues are gone and are not coming back.
 
 The Sunday Brief still writes commission headlines to the old hook rule; the
 Field Note routine rewrites them, so it does not need changing now.
