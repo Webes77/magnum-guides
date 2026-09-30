@@ -2057,6 +2057,17 @@ routine now carries no story or admission about him at all.
 James kept auto-publish on purpose: he reads each issue live every week and
 fixes what he needs to. `notes/field-note-prompt.md` was pushed to
 `trig_016pPJPsm8D3yUZs81wquraU` the same day, from the file, and read back.
+The WhatsApp message has a fixed shape since 30 Sep, on James's word, in the
+routine: "Hi everyone, here's this week's Field Note and prompt." then a line
+opening "Only open this if" naming who it is for, then what they do and get,
+the link, and "Any questions, let me know."
+
+Rebuilding issues 01 to 06 into the one-card shape was asked for the same day
+and refused by the session's permission check, which read it as rewriting
+pages already sent to clients. Not done. The URLs would not have changed; the
+content would. It needs James to allow it, and a generator for it sits in the
+session scratchpad, not the repo.
+
 The Sunday Brief still writes commission headlines to the old hook rule; the
 Field Note routine rewrites them, so it does not need changing now.
 
