@@ -25,8 +25,8 @@ a source, not the date the slide was written.
 | 2 | Help improve Claude sits under Privacy and can be switched off | same, Your chats stay yours | 2026-09-13 | A |
 | 3 | Training on keeps consumer chats up to five years; off keeps 30 days | same | 2026-09-13 | A |
 | 4 | Location metadata sits on the same page and can be switched off | same | 2026-09-04 | A |
-| 5 | Memory lives under Capabilities; Generate memory from chat history and Search and reference chats are both on by default | same, Let it remember | 2026-09-04 | A |
-| 6 | View and manage memory lets you read, edit and delete lines | same | 2026-09-04 | A |
+| 5 | Memory lives under Capabilities; Generate memory from chat history and Search and reference chats are both on by default | same, Let it remember | 2026-10-01 | A |
+| 6 | View and manage memory lets you read, edit and delete lines | same | 2026-10-01 | A |
 | 7 | The incognito chat is the ghost icon, top right | same, The private chat | 2026-09-04 | A |
 | 8 | An incognito chat is kept 30 days, longer under an Enterprise custom retention setting | same | 2026-09-13 | A |
 | 9 | An incognito chat appears in the organisation data export a Team or Enterprise Primary Owner can run | same | 2026-09-13 | A |
@@ -57,9 +57,9 @@ routine can often lift these to grade A. Row 15 is James's own Mac on 3 and
 
 | # | Claim | Where | Last checked | Grade |
 |---|---|---|---|---|
-| 16 | What ChatGPT agents and workspace agents are, and who they are for | `bots` In ChatGPT | 2026-09-09 | C |
-| 17 | What Grok Bot is, and who it is for | `bots` Grok Bot | 2026-09-09 | C |
-| 18 | What OpenClaw is, and who it is for | `bots` OpenClaw | 2026-09-09 | C |
+| 16 | What ChatGPT agents and workspace agents are, and who they are for | `bots` In ChatGPT | 2026-10-01 | C |
+| 17 | What Grok Bot is, and who it is for | `bots` Grok Bot | 2026-10-01 | C |
+| 18 | What OpenClaw is, and who it is for | `bots` OpenClaw | 2026-10-01 | C |
 
 CLAUDE.md already flags these three: dated facts, re-check before any room
 sees them after October 2026.
@@ -89,8 +89,8 @@ updated in the same commit.
 | 26 | Claude Enterprise can set custom retention, floor 30 days; indefinite if none is set | `privacy` section 02 | 2026-09-14 | A |
 | 27 | A deleted chat goes from the back end within 30 days, both tools | `privacy` section 02 | 2026-09-14 | A |
 | 28 | Claude memory paths: Settings, Memory, Generate memory from chats, and Topics | `privacy` section 04 | 2026-09-14 | C, flagged on the page |
-| 29 | ChatGPT training toggle is Settings, Data Controls, Improve the model for everyone | `privacy` section 04 | 2026-09-14 | A |
-| 30 | ChatGPT Temporary Chat: not in history, no memories, not trained on, kept 30 days | `privacy` sections 02 and 04 | 2026-09-14 | A |
+| 29 | ChatGPT training toggle is Settings, Data Controls, Improve the model for everyone | `privacy` section 04 | 2026-10-01 | A |
+| 30 | ChatGPT Temporary Chat: not in history, no memories, not trained on, kept 30 days | `privacy` sections 02 and 04 | 2026-10-01 | A |
 | 31 | ChatGPT memory paths: Settings, Personalization, Memory and Manage memory | `privacy` section 04 | 2026-09-14 | A |
 | 32 | Business and enterprise data is not used for training by default, both vendors | `privacy` sections 02 and 03 | 2026-09-14 | A |
 | 33 | ChatGPT Enterprise and Edu compliance tools cover conversations, files and memories | `privacy` section 03 | 2026-09-14 | A |
@@ -111,10 +111,10 @@ and carries no prices, so it never needs touching for a price change.
 
 | # | Claim | Where | Last checked | Grade |
 |---|---|---|---|---|
-| 34 | Claude Team standard seat: USD $20 per seat per month billed annually, $25 monthly | `team-seats` the short version, and the Cost accordion | 2026-09-14 | A |
-| 35 | ChatGPT Business standard seat: USD $20 per seat per month billed annually, $25 monthly | same | 2026-09-14 | A |
-| 36 | Premium seat: USD $100 annual, $125 monthly, both vendors | `team-seats` Cost accordion | 2026-09-14 | A |
-| 37 | Minimum 2 seats on both platforms | `team-seats` the short version, and the Cost accordion | 2026-09-14 | A |
+| 34 | Claude Team standard seat: USD $20 per seat per month billed annually, $25 monthly | `team-seats` the short version, and the Cost accordion | 2026-10-01 | C, aggregator pages quoting the vendors; vendor pages blocked |
+| 35 | ChatGPT Business standard seat: USD $20 per seat per month billed annually, $25 monthly | same | 2026-10-01 | C, aggregator pages quoting the vendors; vendor pages blocked |
+| 36 | Premium seat: USD $100 annual, $125 monthly, both vendors | `team-seats` Cost accordion | 2026-10-01 | C, aggregator pages quoting the vendors; vendor pages blocked |
+| 37 | Minimum 2 seats on both platforms | `team-seats` the short version, and the Cost accordion | 2026-10-01 | C, aggregator pages quoting the vendors; vendor pages blocked |
 | 38 | Premium gives roughly 5x standard usage headroom | `team-seats` Cost accordion | 2026-09-14 | A |
 | 39 | Adding a seat mid-term charges immediately for the rest of the term; removing one frees the seat but does not drop the bill until renewal, both vendors | `team-seats` Cost accordion | 2026-09-14 | A |
 | 40 | Claude Team setup path: Organization settings, Members, Add member; business email required to create the org; invite valid about 21 days | `team-seats` Setup accordion | 2026-09-14 | A |
@@ -160,13 +160,13 @@ which version of that article you are reading before changing anything.
 | 49 | Cowork is included on Pro, Max, Team and Enterprise, and is not on Free | `cowork` section 01 | 2026-09-15 | A |
 | 50 | Memory is one store shared by chat and Cowork since 25 August 2026, readable and deletable under Settings, Memory, listed by topic | `cowork` section 02 | 2026-09-15 | A |
 | 51 | A Cowork task does not read the content of your previous chat threads | `cowork` section 02, and prompt P4 in Make Claude Yours and on the shelf | 2026-09-15 | A |
-| 52 | Cowork runs on desktop for Mac and Windows, on web and on the phone app; web and mobile have been in beta since 7 July 2026, Max plans first | `cowork` section 03 | 2026-09-15 | A |
-| 53 | The work itself runs on Anthropic's servers rather than the user's machine, so a task survives closing the app | `cowork` section 03 | 2026-09-15 | A |
+| 52 | Cowork runs on desktop for Mac and Windows, on web and on the phone app; web and mobile have been in beta since 7 July 2026, Max plans first | `cowork` section 03 | 2026-10-01 | A |
+| 53 | The work itself runs on Anthropic's servers rather than the user's machine, so a task survives closing the app | `cowork` section 03 | 2026-10-01 | A |
 | 54 | The message box carries a control switching between Chat and Cowork. Superseded 16 Sep 2026: Anthropic is merging Cowork into Claude and the control disappears per account as the rollout lands. Both pages now read "if it still offers the two", which survives either state | `cowork` setup step 01 and short version, Make Claude Yours P4 slide | 2026-09-20 | A |
-| 61 | Cowork is being folded into Claude: three modes become two, Chat and Code, and Claude routes a request itself rather than asking which mode you are in. Announced 16 Sep 2026, rolling out over several weeks, Pro and Max first, then Team and Free | `cowork` the dated notice under the short version | 2026-09-20 | B, third-party reporting; the announcement itself is Anthropic's, the rollout detail is press |
+| 61 | Cowork is being folded into Claude: three modes become two, Chat and Code, and Claude routes a request itself rather than asking which mode you are in. Announced 16 Sep 2026, rolling out over several weeks, Pro and Max first, then Team and Free | `cowork` the dated notice under the short version | 2026-10-01 | B, third-party reporting; the announcement itself is Anthropic's, the rollout detail is press |
 | 62 | Claude Docs and Claude Slides launched alongside the merge, and Claude Design now works inside a conversation | not taught anywhere yet, recorded so the routine can flag when it is worth teaching | 2026-09-20 | B, third-party |
 | 66 | Claude Design folds into the merged interface alongside Chat and Cowork, and Enterprise accounts are given thirty days' notice before it reaches them | `cowork` the dated notice under the short version | 2026-09-20 | B, James's own Sunday Brief run, which corroborated the merge against VentureBeat, TechRepublic and TheNextWeb |
-| 67 | Buffer has an official Claude connector that can create drafts in LinkedIn, Instagram, Facebook and Google Business Profile channels, on every Buffer plan | `social` Connect Buffer; prompts P7 and P8 | 2026-09-24 | A via snippet (buffer.com/mcp), not fetched |
+| 67 | Buffer has an official Claude connector that can create drafts in LinkedIn, Instagram, Facebook and Google Business Profile channels, on every Buffer plan | `social` Connect Buffer; prompts P7 and P8 | 2026-10-01 | A via snippet (buffer.com/mcp), not fetched |
 | 68 | A Claude scheduled task can use the Buffer connector unattended | `social` Let it run itself, P8 | 2026-09-24 | Unconfirmed. The slide makes the owner run it once while watching before it goes on the timer |
 | 69 | Monthly costs: Claude Pro about A$31 + GST, Buffer about A$30 + GST for four channels, Canva Pro about A$18 + GST | `social` The stack | 2026-09-24 | C, converted from search snippets |
 | 70 | Instagram limits hashtags per post | `social` What gives AI away | 2026-09-24 | B, Social Media Today via snippet |
@@ -184,8 +184,8 @@ which version of that article you are reading before changing anything.
 | 55 | Cowork creates no folder and has no default location; the user grants an existing folder, and Desktop is grantable. The access button's exact wording is community-sourced, so the page names no button and says on the page that the wording may differ | `cowork` setup step 02 | 2026-09-15 | C, and flagged in the page's own text |
 | 56 | A session started in the desktop app reaches the granted local folder although the work runs on Anthropic's servers | `cowork` setup step 02 | 2026-09-15 | B, confirmed by James from his 9 Sep desktop clear |
 | 57 | Cowork can move and rename files in a granted folder, not only read and write them | `cowork` section 02 table, and the clear-the-desktop prompt depends on it | 2026-09-15 | B, James watched it move the files on 9 Sep and confirmed it on 15 Sep |
-| 58 | Skill creation is switched on at Settings, Capabilities, Skills, after which a skill can be written through conversation | `cowork` setup step 05 | 2026-09-15 | A |
-| 59 | A recurring task is set with /schedule inside a task or from Scheduled in the left sidebar, and runs with the computer off | `cowork` setup step 06 | 2026-09-15 | A |
+| 58 | Skill creation is switched on at Settings, Capabilities, Skills, after which a skill can be written through conversation | `cowork` setup step 05 | 2026-10-01 | A |
+| 59 | A recurring task is set with /schedule inside a task or from Scheduled in the left sidebar, and runs with the computer off | `cowork` setup step 06 | 2026-10-01 | A |
 | 60 | Connectors are authorised once at Settings, Connectors, and are then available in both chat and Cowork rather than needing a separate Cowork attachment | `cowork` setup step 04 | 2026-09-15 | A |
 | 63 | Projects in claude.ai chat still work as taught: a container with an instructions box and reference files, one project per job. Anthropic's own docs say the earlier Projects experience keeps working until the redesigned one reaches it | `make-claude-yours` Prompts 2 and 3 and the project slides, `fine-tune` Part 02, the shelf cards that name a project | 2026-09-20 | A, Anthropic's own docs |
 | 64 | Claude Code Projects was redesigned on 17 Sep 2026 into one coordinator conversation running parallel cloud session threads. Public beta, Pro and Max only, not Team or Enterprise, and the rollout starts with accounts that have used cloud sessions and have no existing projects in chat or Cowork. Reported to reach the rest of Claude afterwards | not taught anywhere, and deliberately so: it is the developer Projects, not the one clients use. Recorded because the chat redesign that follows it is what makes row 63 and the labels in row 65 go stale | 2026-09-20 | A for the docs, B for the reporting that it reaches the rest of Claude later |
