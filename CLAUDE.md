@@ -2126,6 +2126,30 @@ name, quotes the "solid" rule and shows a misuse example, and the delivered
 SVGs carry their own `#1F2B37` and `#F3F2ED`, which are never edited. Deck
 check, contrast audit, field note check and coral scan all PASS.
 
+**Icons, 4 Oct.** James asked for icons wherever a number, a label or a step
+needs one, drawn only from the design system's fifteen subjects and copied
+from its Icon preview. Only six are drawn there: Clock, Tick, Percent, Globe,
+Envelope and Spanner. The other nine (cart, coins, building, price tag,
+carton, truck, database, chat bubble, megaphone) exist only as table rows with
+a description, so they were not used and must not be drawn here. When they
+are added to the Icon preview, they become available.
+
+The component is `.icorow`: one 44px icon and one mono label at opposite ends
+of a row. Stroke `#EF4029` on paper, `#FF6F5E` on navy, 2.4 wide, round caps
+and joins, `aria-label` naming the object. Geometry is copied verbatim; round
+caps and joins are set on every element, which the preview omits on a few.
+Placed on seven spots: Clock on `manus-bridge/` (5 stages, about 16 min, the
+sum of the stage times), `privacy/` 02 (5 years against 30 days) and
+`effort/` 02 (1 min against 28 min); Spanner on `privacy/` 04 and on the short
+version of `cowork/` and `agent-workforce/`; Tick on the questionnaire's
+Finished section. `brand/` gained the Spanner tile and now says fifteen
+subjects. Everywhere else was left without icons because none of the six fits
+there. `ba-growth/` and the rollout exemplar were left alone as documents
+clients already hold. The deck engine's three tile icons on the Foundations
+card slide are off-spec (two colours, fills, a 120 by 96 box) and wait with
+that slide for a room. Contrast PASS on all seven pages at four widths;
+style checker shows no new finding.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from

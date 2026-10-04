@@ -213,6 +213,11 @@ section:hover > .label::before,section:focus-within > .label::before,
     .steps>li{padding-left:40px;}
     .three{padding:20px 18px 22px;}
   }
+  /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
+  .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
+  .icorow svg{width:44px;height:44px;flex:none;display:block;}
+  .icorow span{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);text-align:right;}
+  .icorow.on-navy span{color:var(--on-navy-mute);}
 </style>
 </head>
 <body>
@@ -250,6 +255,7 @@ section:hover > .label::before,section:focus-within > .label::before,
     <p class="label" data-n="02">What is kept, and for how long</p>
     <h2>The numbers, per plan</h2>
     <p>The single biggest number on this page is the first row. Leaving the training setting on does not only mean your chats train the model. It extends how long they are kept from thirty days to five years.</p>
+    <div class="icorow"><svg role="img" aria-label="Clock" viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="18" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M24 12 L24 24 L33 29" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Up to 5 years with training on &middot; 30 days off</span></div>
 
     <h3 style="margin-top:28px">Claude</h3>
     <div class="tablewrap">
@@ -317,6 +323,7 @@ section:hover > .label::before,section:focus-within > .label::before,
     <p class="label" data-n="04">What to switch off</p>
     <h2>Ten minutes, once</h2>
     <p class="lead">Do these in order. The first one in each list is the one that matters most, and none of them costs you anything you will notice in daily use.</p>
+    <div class="icorow"><svg role="img" aria-label="Spanner" viewBox="0 0 48 48" width="44" height="44"><path d="M40.12 12.12 L36.95 15.29 L32.71 11.05 L35.87 7.88 A9 9 0 1 0 40.12 12.12 Z" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M28.61 24.33 L18.71 34.23 A3.5 3.5 0 0 1 13.77 29.29 L23.67 19.39" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Claude and ChatGPT &middot; about 10 min</span></div>
 
     <h3 style="margin-top:30px">In Claude</h3>
     <ol class="steps">

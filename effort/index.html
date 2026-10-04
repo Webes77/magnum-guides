@@ -207,6 +207,11 @@ section:hover > .label::before,section:focus-within > .label::before,
     .stack td[data-h]::before{content:attr(data-h);display:block;font-family:var(--mono);font-size:11px;
       text-transform:uppercase;letter-spacing:.16em;color:var(--mute);margin-top:6px}
   }
+  /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
+  .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
+  .icorow svg{width:44px;height:44px;flex:none;display:block;}
+  .icorow span{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);text-align:right;}
+  .icorow.on-navy span{color:var(--on-navy-mute);}
 </style>
 </head>
 <body>
@@ -235,6 +240,7 @@ section:hover > .label::before,section:focus-within > .label::before,
       <li><strong>More decisions made for you.</strong> Wherever your brief has a gap, Claude fills it with its own judgement.</li>
     </ul>
     <p>The catch is time, and usage. In Anthropic's tests the same job took 1 minute on low and 28 minutes on max. That's a coffee against a long lunch.</p>
+    <div class="icorow"><svg role="img" aria-label="Clock" viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="18" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M24 12 L24 24 L33 29" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>1 min on low &middot; 28 min on max</span></div>
     <p>And one limit matters more than the rest. More effort fixes missed details. It doesn't fix the wrong direction. Put the wrong address in the satnav and driving more carefully won't get you home. If your brief points Claude the wrong way, max effort just takes it further down the wrong road.</p>
   </section>
 
