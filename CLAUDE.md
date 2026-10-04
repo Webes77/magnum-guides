@@ -2201,15 +2201,20 @@ share cards (Course one and the shelf) lost "the 6 levers" and the lever
 names in their footer, and were re-rendered. `notes/six-lines.md` carries a
 framing line; `brand/logo-brief.md` is marked superseded.
 
-Not changed, and the next session must know why. The Field Note and Sunday
-Brief routines were rewritten live on 4 Oct by another session (the
-RUNNING UNATTENDED block, the three piles, magnum-staff), and
-`notes/field-note-prompt.md` and `notes/sunday-brief-prompt.md` were not
-updated to match. They are stale copies now. Never push either file to its
-trigger without first reconciling it with the live prompt, or this morning's
-work is lost. Both live prompts still describe the shelf as "laid out on his
-6 Levers"; it should read "grouped by the moment you would use a card and by
-area of work", made wherever those routines are now maintained.
+The routines followed the same day, on James's word. Both live prompts had
+been rewritten that morning by another session (the RUNNING UNATTENDED block,
+the three piles, magnum-staff) without the files here being updated. So the
+edit started from the live prompts, extracted byte-exact from the session
+record rather than retyped, with two changes each: the shelf is described as
+"grouped by the moment you would use a card and by area of work", and a
+constraint says the levers are a supporting checklist, never the headline,
+hook or organising idea (the Field Note's also says an issue never names
+them). Both were pushed with `update_trigger` and asserted equal to the
+edited text from the saved tool results: Field Note 26,038 characters, Sunday
+Brief 32,478. `notes/field-note-prompt.md` and `notes/sunday-brief-prompt.md`
+now carry those exact bodies, so files and triggers match again. Before
+editing either, compare it with the live prompt first; another session may
+have moved it.
 `brand/Magnum-AI-House-Style.pdf` is the old 15 Sep House Style page, linked
 from nowhere, and still names the levers as the method.
 
