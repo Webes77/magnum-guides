@@ -344,15 +344,16 @@ section:hover > .label::before,section:focus-within > .label::before{color:var(-
   <!-- ============ 02 MEET MY TEAM ============ -->
   <section id="my-team">
     <p class="label" data-n="02">Meet my team</p>
-    <h2>Six agents, one of me</h2>
+    <h2>Seven agents, one of me</h2>
     <p>This is the team I run Magnum AI with. My first hire was a chief of staff. Every morning it reads my inbox, calendar and meeting notes and tells me the three things that matter. Everything else came later, one job at a time.</p>
     <ul class="roster">
-      <li><div class="who">Percy<span>Chief of staff</span></div><p>A 6am brief and a 4pm sweep of my email, calendar and meetings. Reads everything, touches nothing.</p></li>
+      <li><div class="who">Percy<span>Chief of staff</span></div><p>A 6am brief and a 4pm sweep of my email, calendar and meetings, plus a Sunday brief on the week in AI. Where a job can be done safely as a draft, it does it and tells me, so the brief is not a to-do list. Never sends anything.</p></li>
       <li><div class="who">Penny<span>Operations</span></div><p>Invoices, reminders and holiday checks.</p></li>
       <li><div class="who">Rhett<span>Clients</span></div><p>Client health and the weekly numbers.</p></li>
       <li><div class="who">Remy<span>Marketing</span></div><p>The weekly newsletter.</p></li>
       <li><div class="who">Max<span>Guides</span></div><p>The guides and training material.</p></li>
-      <li><div class="who">Quinn<span>Quality</span></div><p>Checks everything before I see it. Its only job is to find the mistake first.</p></li>
+      <li><div class="who">Quinn<span>Quality</span></div><p>Checks everything before I see it, against twelve of my real emails and a list of lines that sound like AI to me. Its only job is to find the mistake first.</p></li>
+      <li><div class="who">Archie<span>Filing</span></div><p>Tidies my desktop every Friday at 4pm. The one agent that runs on my computer rather than in the cloud, because that is where the files are.</p></li>
     </ul>
     <p style="margin-top:18px">Giving them names is not a gimmick. &ldquo;Ask Penny&rdquo; is quicker to say than &ldquo;run the invoice reminder skill&rdquo;, and a name makes it obvious when two agents are doing the same job.</p>
   </section>
@@ -422,12 +423,13 @@ section:hover > .label::before,section:focus-within > .label::before{color:var(-
   <!-- ============ 04 HOUSE RULES ============ -->
   <section id="rules">
     <p class="label" data-n="04">House rules</p>
-    <h2>Four rules every agent follows, and two checkers who enforce them</h2>
+    <h2>Five rules every agent follows, and two checkers who enforce them</h2>
     <div class="cards">
       <div class="card"><h3>Drafts, never posts</h3><p>Nothing is posted, sent or published without you. An agent that can send on its own is an agent that can embarrass you on its own.</p></div>
       <div class="card"><h3>Read HQ first</h3><p>Every agent opens Team HQ before it starts, so nobody repeats last week or raises something you already dealt with.</p></div>
       <div class="card"><h3>Checked before seen</h3><p>The quality checker reads every draft before it lands in front of you. You should be the second pair of eyes, not the first.</p></div>
       <div class="card"><h3>One job each</h3><p>New repeat job, new agent. Same recipe, desk and shift pattern. An agent with three jobs does all three badly.</p></div>
+      <div class="card"><h3>Done, not to-do</h3><p>A report opens with what the agent already did, then the few things only you can do. If it can do a job safely as a draft, it does it rather than adding it to your list. A brief that is all homework just leaves you feeling behind.</p></div>
     </div>
 
     <h3 style="margin-top:38px">Why two checkers, not one</h3>
@@ -545,7 +547,8 @@ From now on every agent on my team reads Team HQ before it starts, and adds to "
 2. Check my last 7 days of email, the next 7 days of my calendar, and anything new in my Drafts folder
 3. Tell me my top 3 for the week, who's waiting on me, money owed or due, anything my agents left in Drafts, and anything slipping
 4. Treat a thread as waiting on them, not me, if I sent the last email
-5. Never send, reply, delete or change anything
+5. Before telling me something hasn't been done, check my Sent Items and my replies, not just my calendar
+6. Never send, reply, delete or change anything
 Then schedule it every Monday at 8am [your time zone] as a cloud routine, so it runs with my computer off. If a cloud routine can't reach something it needs, tell me what, and we'll decide whether to set it up as a local scheduled task instead. Let me know when it's ready.</pre>
       </div>
       <p class="note"><b>If it has to run locally.</b> Leave your computer on and the Claude app open at 8am on Monday, or it will skip the shift.</p>
@@ -700,9 +703,9 @@ Then write it as a skill called [AGENT NAME]. It must read Team HQ first, run te
       <h3>Teach it your voice</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Here are examples of how I write: [paste 5 to 10 real captions, emails or posts]. Use this voice in everything [AGENT NAME] writes, and add them to "Voice" in Team HQ so the whole team uses it.</pre>
+<pre>Here are examples of how I write: [paste 5 to 10 real captions, emails or posts]. And here are lines that sound wrong for me, so never write like this: [paste 3 to 5 lines that sound like AI, or things I would never say]. Use this voice in everything [AGENT NAME] writes, and add both lists to "Voice" in Team HQ so the whole team uses them.</pre>
       </div>
-      <p class="note"><b>Paste what worked,</b> not what you think you should write. The agent copies what you give it.</p>
+      <p class="note"><b>Paste what worked,</b> not what you think you should write. The agent copies what you give it. The second list matters as much as the first: left alone, an agent drifts towards tidy, polished lines that nobody would mistake for you.</p>
     </div>
 
     <div class="promptcard" id="test-run">
@@ -726,8 +729,9 @@ Then write it as a skill called [AGENT NAME]. It must read Team HQ first, run te
       <h3>Audit it, then give it a shift</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>That's right. Save this as the process for [AGENT NAME]. [AUDITOR NAME], check it: drafts only, reads Team HQ, runs the quality check. If it passes, set it up as a cloud routine every [DAY] at [TIME] [your time zone], add it to "The team" in Team HQ, and let me know when its first draft is ready.</pre>
+<pre>That's right. Save this as the process for [AGENT NAME]. [AUDITOR NAME], check it: drafts only, reads Team HQ, runs the quality check. If it passes, set it up as a cloud routine every [DAY] at [TIME] [your time zone], named "[AGENT NAME] · [THE JOB] · [DAY]", with only the connectors it needs. Add it to "The team" in Team HQ, and let me know when its first draft is ready.</pre>
       </div>
+      <p class="note"><b>Why the name and the connectors.</b> Named the same way every time, your list of routines reads like a roster, and you can see at a glance who does what and when. And an agent that only needs your calendar should not be able to reach your email, so check which connectors each routine has and take off the ones it does not use.</p>
     </div>
 
     <label class="donewhen"><input type="checkbox" data-stage="5"><span><b>Done when</b>The auditor has passed your specialist, it is on a shift, and its first draft has turned up for you to approve.</span></label>
@@ -783,7 +787,7 @@ Then write it as a skill called [AGENT NAME]. It must read Team HQ first, run te
     <label class="donewhen"><input type="checkbox" data-stage="6"><span><b>Done when</b>You have run one roll call, fixed one thing and saved it as the process, and booked the monthly review in your calendar.</span></label>
 
     <div class="sources" style="margin-top:44px">
-      <p><b>Where this came from.</b> The method is how I run my own team. The two facts about where a shift runs, and what each kind can reach, were checked against Anthropic's Claude Code documentation on 28 September 2026. How scheduling looks inside the app has changed more than once this year, so if a step reads differently on your screen, describe what you want in plain English and Claude will set it up.</p>
+      <p><b>Where this came from.</b> The method is how I run my own team, and the page was updated on 4 October 2026 with what that team taught me in its first week. The two facts about where a shift runs, and what each kind can reach, were checked against Anthropic's Claude Code documentation on 28 September 2026. How scheduling looks inside the app has changed more than once this year, so if a step reads differently on your screen, describe what you want in plain English and Claude will set it up.</p>
       <ul>
         <li>Claude Code docs &middot; <a href="https://code.claude.com/docs/en/routines">Automate work with routines</a>, for cloud routines, <code>/schedule</code> and connectors.</li>
         <li>Claude Code docs &middot; <a href="https://code.claude.com/docs/en/desktop-scheduled-tasks">Schedule recurring tasks in Claude Code Desktop</a>, for local scheduled tasks and when they skip.</li>

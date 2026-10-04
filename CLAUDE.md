@@ -2028,6 +2028,8 @@ so the buttons drop beneath it when both do not fit. Every card changes
 shape; only CSS moved. The shelf's two recorded contrast failures (Copy
 3.73:1, The prompt label 4.50:1) are still there and still not this change's.
 
+**Agent workforce refreshed, 4 Oct, at James's word ("make sure it's up to date and relevant").** Lessons from his own team's first week, made generic: roster now seven (Archie added, the one local agent; Percy's Sunday brief does safe jobs itself; Quinn trained on real emails plus a never-write list); a fifth house rule, Done, not to-do; prompt 2.3 checks Sent Items and replies before calling anything undone; prompt 5.3 adds a list of lines that sound wrong; prompt 5.5 names each routine "[AGENT NAME] · [THE JOB] · [DAY]" and gives it only the connectors it needs, with a note. The three shelf cards were re-synced byte-identical from the page. Still nineteen prompts. Register row for the connectors claim.
+
 **The Field Note is one card now, 30 Sep, and the live routine carries it.**
 James read issue 07 live and said no client would read it: confusing, too
 dense, a prompt he did not like, and headlines that read like advertising
