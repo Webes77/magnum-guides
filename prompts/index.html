@@ -358,6 +358,11 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
   border-top:2px solid var(--ink);font-size:14px;color:var(--char)}
 @media (max-width:600px){.brow6{grid-template-columns:1fr}.brow6 p{font-size:15px}}
 @media print{.builder input{border-bottom:1px solid #000}}
+  /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
+  .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
+  .icorow svg{width:44px;height:44px;flex:none;display:block;}
+  .icorow span{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text,#C63A2A);text-align:right;}
+  .icorow.on-navy span{color:var(--on-navy-mute,#C8CDD3);}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -400,6 +405,7 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
   <div class="vault" id="vault" aria-label="Choose a moment or an area">
     <div class="label">Where are you?</div>
     <p class="note">Pick the moment you are in, or the area you are working on. The cards open below, and you can narrow further by what a card does for you.</p>
+    <div class="icorow"><svg aria-label="Chat bubble" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10 H40 A2 2 0 0 1 42 12 V30 A2 2 0 0 1 40 32 H22 L14 40 V32 H8 A2 2 0 0 1 6 30 V12 A2 2 0 0 1 8 10 Z"/><path d="M14 19 H34 M14 25 H26"/></svg><span><b id="cardcount" style="font-weight:500">88 cards</b> &middot; ready to copy</span></div>
     <div class="vgrid" id="vgrid"></div>
   </div>
 
@@ -3024,6 +3030,7 @@ function openHash(){
   return true;
 }
 window.addEventListener('hashchange',openHash);
+{const cc=document.getElementById('cardcount'); if(cc) cc.textContent=S.length+' cards';}
 window.addEventListener('load',()=>{checkMore();openHash();});
 openHash();
 checkMore();

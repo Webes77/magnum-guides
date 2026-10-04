@@ -258,6 +258,11 @@ main.wrap::before{
 .step .n{color:var(--rust)}
 .masthead h1 em{color:var(--rust)}
 .card.dark .date,.card.dark .go{color:var(--coral-bright)}
+  /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
+  .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
+  .icorow svg{width:44px;height:44px;flex:none;display:block;}
+  .icorow span{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text,#C63A2A);text-align:right;}
+  .icorow.on-navy span{color:var(--on-navy-mute,#C8CDD3);}
 </style>
 </head>
 <body>
@@ -399,13 +404,14 @@ main.wrap::before{
   <section id="prompts">
     <div class="label" data-n="03">Prompt Shelf</div>
     <p class="note">Every prompt from every course, ready to copy. Pick the moment you are in and the shelf hands you the prompt for it.</p>
+    <div class="icorow"><svg aria-label="Chat bubble" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10 H40 A2 2 0 0 1 42 12 V30 A2 2 0 0 1 40 32 H22 L14 40 V32 H8 A2 2 0 0 1 6 30 V12 A2 2 0 0 1 8 10 Z"/><path d="M14 19 H34 M14 25 H26"/></svg><span>Ready to copy &middot; new cards weekly</span></div>
     <div class="grid" style="grid-template-columns:1fr">
 
       <a class="card thumb wide" href="prompts/">
         <img src="assets/thumbnails/prompt-shelf.jpg" alt="The Magnum AI Prompt Shelf, every prompt from the courses ready to copy" width="1200" height="630" loading="lazy">
         <div class="inner">
           <h3>Prompt Shelf</h3>
-          <div class="meta">Living page &middot; 47 cards</div>
+          <div class="meta">Living page &middot; new cards every week</div>
           <p>Every prompt. One shelf. Copy the card, change the bits in brackets, use it today. New cards land every week and nothing is dated, so it never goes out of print.</p>
           <span class="go">Open the shelf &rarr;</span>
         </div>
@@ -418,6 +424,7 @@ main.wrap::before{
   <section id="week">
     <div class="label" data-n="04">This week</div>
     <p class="note">Two weekly reads. The Field Note is one idea worked through properly, with the prompts and exercises to use it the same day. This Week in AI is the four-minute briefing on what moved.</p>
+    <div class="icorow"><svg aria-label="Envelope" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="13" width="34" height="22" rx="2"/><path d="M7 15 L24 27 L41 15"/></svg><span>2 weekly reads</span></div>
     <div class="grid">
 
       <a class="card thumb" href="newsletter/field-note-07-proof.html">
@@ -468,6 +475,7 @@ main.wrap::before{
     <section id="manuals">
       <div class="label" data-n="05">Tool manuals</div>
       <p class="note">Manuals for tools that do a job Claude does not. One tool, one manual, and only once it has done real work.</p>
+    <div class="icorow"><svg aria-label="Spanner" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M40.12 12.12 L36.95 15.29 L32.71 11.05 L35.87 7.88 A9 9 0 1 0 40.12 12.12 Z"/><path d="M28.61 24.33 L18.71 34.23 A3.5 3.5 0 0 1 13.77 29.29 L23.67 19.39"/></svg><span>2 manuals</span></div>
       <div class="grid">
 
         <a class="card thumb" href="manus-website-manual.html">
@@ -497,6 +505,7 @@ main.wrap::before{
     <section id="industry">
       <div class="label" data-n="06">By industry</div>
       <p class="note">Where AI actually earns its place in a particular trade, written for how that business already runs.</p>
+    <div class="icorow"><svg aria-label="Building" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="8" width="26" height="32" rx="2"/><path d="M21 40 V33 H27 V40"/><path d="M18 15 H20 M28 15 H30 M18 22 H20 M28 22 H30"/><path d="M6 40 H42"/></svg><span>1 guide</span></div>
       <div class="grid">
 
         <a class="card thumb" href="ba-growth/index.html">

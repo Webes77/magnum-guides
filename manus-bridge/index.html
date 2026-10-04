@@ -172,8 +172,8 @@ section:hover > .label::before,section:focus-within > .label::before,
   /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
   .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
   .icorow svg{width:44px;height:44px;flex:none;display:block;}
-  .icorow span{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);text-align:right;}
-  .icorow.on-navy span{color:var(--on-navy-mute);}
+  .icorow span{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text,#C63A2A);text-align:right;}
+  .icorow.on-navy span{color:var(--on-navy-mute,#C8CDD3);}
 </style>
 </head>
 <body>
@@ -295,7 +295,7 @@ section:hover > .label::before,section:focus-within > .label::before,
     <p class="label" data-n="05">The run-through</p>
     <h2>Five prompts, in order</h2>
     <p class="lead">Start a task, not a project and not a quick chat. If your message box still offers Chat and Cowork, pick Cowork. Copy each prompt with the button and paste it in. The example uses five real office chairs from a furniture catalogue. Swap in your own products and keep everything else.</p>
-    <div class="icorow"><svg role="img" aria-label="Clock" viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="18" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M24 12 L24 24 L33 29" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>5 stages &middot; about 16 min</span></div>
+    <div class="icorow"><svg aria-label="Clock" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 12 L24 24 L33 29"/></svg><span>5 stages &middot; about 16 min</span></div>
 
     <!-- STAGE 1 -->
     <div class="stage">

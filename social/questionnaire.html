@@ -54,8 +54,8 @@
   /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
   .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
   .icorow svg{width:44px;height:44px;flex:none;display:block;}
-  .icorow span{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);text-align:right;}
-  .icorow.on-navy span{color:var(--on-navy-mute);}
+  .icorow span{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text,#C63A2A);text-align:right;}
+  .icorow.on-navy span{color:var(--on-navy-mute,#C8CDD3);}
 </style>
 </head>
 <body>
@@ -75,7 +75,7 @@
 
   <section class="done">
     <h2>Finished?</h2>
-    <div class="icorow on-navy"><svg role="img" aria-label="Tick" viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="18" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M15 24 L21 31 L33 17" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Last step</span></div>
+    <div class="icorow on-navy"><svg aria-label="Tick" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M15 24 L21 31 L33 17"/></svg><span>Last step</span></div>
     <p>Copy your answers and send them to whoever is setting this up with you, or paste them straight under the voice file prompt yourself.</p>
     <button type="button" id="copy">Copy my answers</button>
     <button type="button" class="plain" id="clear">Clear and start again</button>

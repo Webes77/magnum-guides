@@ -132,6 +132,12 @@ details .a p:last-child{margin-bottom:0}
   .navtoggle{display:block;position:fixed;top:9px;right:16px;z-index:110;background:var(--navy);color:#F4F1EA;border:none;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:2px;padding:8px 14px;cursor:pointer}
 }
 @media print{.runhead,nav,.navtoggle{display:none}.wrap{padding:0}main{padding:0}.phase,.dark{margin:40px 0 0}}
+  /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
+  .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
+  .icorow svg{width:44px;height:44px;flex:none;display:block;}
+  .icorow span{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text,#C63A2A);text-align:right;}
+  .icorow.on-navy span{color:var(--on-navy-mute,#C8CDD3);}
+.phase .icorow{margin:0 0 18px}
 </style>
 </head>
 <body>
@@ -197,7 +203,7 @@ details .a p:last-child{margin-bottom:0}
 <div class="panel"><p>The objective is not to build the world's cleverest website. The objective is to build a good website, get it live, make sure it works, and avoid creating a bloody nightmare six months later.</p></div>
 </section>
 
-<div class="phase"><div class="pnum">Phase One</div><h2>Foundations</h2><p>What you are building, what to collect, and who owns what. Get this wrong and everything after it is built on sand.</p></div>
+<div class="phase"><div class="icorow on-navy"><svg aria-label="Building" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="8" width="26" height="32" rx="2"/><path d="M21 40 V33 H27 V40"/><path d="M18 15 H20 M28 15 H30 M18 22 H20 M28 22 H30"/><path d="M6 40 H42"/></svg><span>Parts 1 to 4</span></div><div class="pnum">Phase One</div><h2>Foundations</h2><p>What you are building, what to collect, and who owns what. Get this wrong and everything after it is built on sand.</p></div>
 <section id="p1">
 <div class="secnum">01</div><p class="seclabel">Part 1</p>
 <h2>The Golden Rule</h2>
@@ -264,7 +270,7 @@ details .a p:last-child{margin-bottom:0}
 <div class="panel"><p>If you don't know what a DNS record does: <strong>leave it alone.</strong> Take screenshots of the existing DNS setup before changing anything.</p></div>
 </section>
 
-<div class="phase"><div class="pnum">Phase Two</div><h2>The Build</h2><p>Brief it properly, review it before the client sees it, and put anything that changes weekly into a database, not a page.</p></div>
+<div class="phase"><div class="icorow on-navy"><svg aria-label="Spanner" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M40.12 12.12 L36.95 15.29 L32.71 11.05 L35.87 7.88 A9 9 0 1 0 40.12 12.12 Z"/><path d="M28.61 24.33 L18.71 34.23 A3.5 3.5 0 0 1 13.77 29.29 L23.67 19.39"/></svg><span>Parts 5 to 13</span></div><div class="pnum">Phase Two</div><h2>The Build</h2><p>Brief it properly, review it before the client sees it, and put anything that changes weekly into a database, not a page.</p></div>
 <section id="p5">
 <div class="secnum">05</div><p class="seclabel">Part 5</p>
 <h2>Building the First Version</h2>
@@ -407,7 +413,7 @@ Build the complete first version and then give me a list of anything still requi
 <p>Choose the simplest method that provides a good customer experience. Do not rebuild mature third-party software merely because Manus technically can.</p>
 </section>
 
-<div class="phase"><div class="pnum">Phase Three</div><h2>Going Live</h2><p>Domains, hosting, billing, SEO and the escape hatch. The boring parts that prevent the 2am phone calls.</p></div>
+<div class="phase"><div class="icorow on-navy"><svg aria-label="Globe" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M6 24 H42"/><path d="M24 6 C16 13 16 35 24 42 C32 35 32 13 24 6 Z"/></svg><span>Parts 14 to 24</span></div><div class="pnum">Phase Three</div><h2>Going Live</h2><p>Domains, hosting, billing, SEO and the escape hatch. The boring parts that prevent the 2am phone calls.</p></div>
 <section id="p14">
 <div class="secnum">14</div><p class="seclabel">Part 14</p>
 <h2>Connecting the Domain</h2>
@@ -544,7 +550,7 @@ Build the complete first version and then give me a list of anything still requi
 </ol>
 </section>
 
-<div class="phase"><div class="pnum">Phase Four</div><h2>After Launch</h2><p>Handover, maintenance, safe changes, and what to do when something breaks.</p></div>
+<div class="phase"><div class="icorow on-navy"><svg aria-label="Chat bubble" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10 H40 A2 2 0 0 1 42 12 V30 A2 2 0 0 1 40 32 H22 L14 40 V32 H8 A2 2 0 0 1 6 30 V12 A2 2 0 0 1 8 10 Z"/><path d="M14 19 H34 M14 25 H26"/></svg><span>Parts 25 to 31</span></div><div class="pnum">Phase Four</div><h2>After Launch</h2><p>Handover, maintenance, safe changes, and what to do when something breaks.</p></div>
 <section id="p25">
 <div class="secnum">25</div><p class="seclabel">Part 25</p>
 <h2>Handover</h2>
@@ -673,7 +679,7 @@ After making the changes, check desktop and mobile layouts and confirm that no e
 <details><summary>40. What happens if Manus disappeared tomorrow?</summary><div class="a"><p>Your protection is: <strong>independently owned domain + GitHub copy + downloadable code + independently owned external systems.</strong> That is why we set the architecture up properly from day one.</p></div></details>
 </section>
 
-<div class="phase"><div class="pnum">Quick Reference</div><h2>The Short Version</h2><p>The decision tree, the process, and the cheat sheet. If you only ever read one part, read this one.</p></div>
+<div class="phase"><div class="icorow on-navy"><svg aria-label="Clock" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 12 L24 24 L33 29"/></svg><span>Parts 32 and 33</span></div><div class="pnum">Quick Reference</div><h2>The Short Version</h2><p>The decision tree, the process, and the cheat sheet. If you only ever read one part, read this one.</p></div>
 <section id="p32">
 <div class="secnum">32</div><p class="seclabel">Part 32</p>
 <h2>The 60-Second Decision Tree</h2>
