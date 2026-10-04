@@ -78,6 +78,10 @@ h1 em{font-style:normal;color:var(--rust)}
 .meta{margin-top:18px;padding-top:14px;border-top:2px solid var(--ink);font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);line-height:2}
 .meta b{color:var(--coral-text);font-weight:500;margin-right:10px}
 
+/* Icon row, 4 Oct. One design-system icon and one mono label, opposite ends. The icon holds 40 to 46 real pixels at any zoom. */
+.icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:84ch}
+.icorow svg{flex:none;display:block;width:clamp(calc(40px / var(--z,1)),44px,calc(46px / var(--z,1)));height:auto}
+.icorow span{font-family:"IBM Plex Mono",monospace;font-size:max(13px,calc(12px / var(--z,1)));font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);text-align:right}
 ul.points{list-style:none;margin-top:6px;max-width:84ch}
 .has-fig ul.points{max-width:56ch}
 ul.points li{font-size:27px;line-height:1.32;padding:9px 0 9px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
@@ -447,6 +451,23 @@ No preamble. Stop after the confirming list.`;
    gradients and no shadows. A tile passes its key as a fourth element and
    the icon paints in currentColor plus one accent, so one icon works on any
    tile ground. Added 16 Sep for the "three ways it goes wrong" slide. */
+const DSI = {
+ "Cart":"<svg aria-label=\"Cart\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 9 H11 L16 32 H38 L42 15 H12.5\"/><circle cx=\"19\" cy=\"39\" r=\"2.6\"/><circle cx=\"35\" cy=\"39\" r=\"2.6\"/></svg>",
+ "Coins":"<svg aria-label=\"Coins\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"29\" r=\"12\"/><circle cx=\"18\" cy=\"29\" r=\"6.5\"/><path d=\"M18.17 17.00 A12 12 0 1 1 29.83 31.00\"/></svg>",
+ "Building":"<svg aria-label=\"Building\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"11\" y=\"8\" width=\"26\" height=\"32\" rx=\"2\"/><path d=\"M21 40 V33 H27 V40\"/><path d=\"M18 15 H20 M28 15 H30 M18 22 H20 M28 22 H30\"/><path d=\"M6 40 H42\"/></svg>",
+ "Price tag":"<svg aria-label=\"Price tag\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 24 V10 A2 2 0 0 1 10 8 H24 L41 25 L25 41 Z\"/><circle cx=\"16\" cy=\"16\" r=\"2.6\"/></svg>",
+ "Envelope":"<svg aria-label=\"Envelope\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"7\" y=\"13\" width=\"34\" height=\"22\" rx=\"2\"/><path d=\"M7 15 L24 27 L41 15\"/></svg>",
+ "Globe":"<svg aria-label=\"Globe\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"24\" cy=\"24\" r=\"18\"/><path d=\"M6 24 H42\"/><path d=\"M24 6 C16 13 16 35 24 42 C32 35 32 13 24 6 Z\"/></svg>",
+ "Carton":"<svg aria-label=\"Carton\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"8\" y=\"14\" width=\"32\" height=\"26\" rx=\"2\"/><path d=\"M8 22 H40\"/><path d=\"M24 14 V22\"/><path d=\"M19 30 H29\"/></svg>",
+ "Clock":"<svg aria-label=\"Clock\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"24\" cy=\"24\" r=\"18\"/><path d=\"M24 12 L24 24 L33 29\"/></svg>",
+ "Truck":"<svg aria-label=\"Truck\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12 H28 V31 H5 Z\"/><path d=\"M28 19 H36 L43 26 V31 H28\"/><circle cx=\"14\" cy=\"34\" r=\"4\"/><circle cx=\"35\" cy=\"34\" r=\"4\"/></svg>",
+ "Percent":"<svg aria-label=\"Percent\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"17\" cy=\"17\" r=\"4.5\"/><circle cx=\"31\" cy=\"31\" r=\"4.5\"/><path d=\"M34 13 L14 35\"/></svg>",
+ "Database":"<svg aria-label=\"Database\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"24\" cy=\"12\" rx=\"14\" ry=\"5\"/><path d=\"M10 12 V36 C10 38.8 16.3 41 24 41 C31.7 41 38 38.8 38 36 V12\"/><path d=\"M10 20 C10 22.8 16.3 25 24 25 C31.7 25 38 22.8 38 20\"/><path d=\"M10 28 C10 30.8 16.3 33 24 33 C31.7 33 38 30.8 38 28\"/></svg>",
+ "Tick":"<svg aria-label=\"Tick\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"24\" cy=\"24\" r=\"18\"/><path d=\"M15 24 L21 31 L33 17\"/></svg>",
+ "Chat bubble":"<svg aria-label=\"Chat bubble\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 10 H40 A2 2 0 0 1 42 12 V30 A2 2 0 0 1 40 32 H22 L14 40 V32 H8 A2 2 0 0 1 6 30 V12 A2 2 0 0 1 8 10 Z\"/><path d=\"M14 19 H34 M14 25 H26\"/></svg>",
+ "Megaphone":"<svg aria-label=\"Megaphone\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 20 H16 L36 9 V37 L16 28 H8 Z\"/><path d=\"M14 28 L17 39 H22 L20 29.5\"/><path d=\"M40 18 Q43 23 40 28\"/></svg>",
+ "Spanner":"<svg aria-label=\"Spanner\" viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"#EF4029\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M40.12 12.12 L36.95 15.29 L32.71 11.05 L35.87 7.88 A9 9 0 1 0 40.12 12.12 Z\"/><path d=\"M28.61 24.33 L18.71 34.23 A3.5 3.5 0 0 1 13.77 29.29 L23.67 19.39\"/></svg>",
+};
 const ICONS = {
  blank:`<svg viewBox="0 0 120 96" aria-hidden="true"><rect x="28" y="6" width="64" height="84" fill="none" stroke="currentColor" stroke-width="5"/><line x1="44" y1="28" x2="44" y2="52" stroke="var(--accent)" stroke-width="7"/><circle cx="52" cy="72" r="4.5" fill="var(--accent)"/><circle cx="68" cy="72" r="4.5" fill="var(--accent)"/><circle cx="84" cy="72" r="4.5" fill="var(--accent)"/></svg>`,
  sure:`<svg viewBox="0 0 120 96" aria-hidden="true"><path d="M10 10 h100 v58 h-58 l-22 20 v-20 h-20 z" fill="none" stroke="currentColor" stroke-width="5"/><path d="M34 40 l14 14 l26 -30" fill="none" stroke="var(--accent)" stroke-width="8" stroke-linecap="square"/></svg>`,
@@ -509,7 +530,7 @@ const S = [
  "<b>Generate memory from chat history</b>: on. <b>Search and reference chats</b>: on. Both are on by default. Check.",
  "Click <b>View and manage memory</b>. Read what it holds. Edit or delete any line."]},
 
-{sec:"Settings, privacy", h:"The <em>private</em> chat", tag:"do", pts:[
+{sec:"Settings, privacy", ic:["Clock","Kept for 30 days"], h:"The <em>private</em> chat", tag:"do", pts:[
  "Some things should not be remembered. A staff issue. A medical thing. A deal that is not yours to share.",
  "Start a new chat outside a project. Click the <b>ghost icon</b>, top right.",
  "That chat is not saved to your history, not remembered, and not used for training.",
@@ -566,7 +587,7 @@ const S = [
  "It sees only what you can see. It gets no more access than you have.",
  "Connector content is not used to train the model."]},
 
-{sec:"Connectors", h:"Connect one <em>now</em>", tag:"do", pts:[
+{sec:"Connectors", ic:["Envelope","1 connector &middot; Gmail or Calendar"], h:"Connect one <em>now</em>", tag:"do", pts:[
  "In <b>Connectors</b>, pick Gmail or Google Calendar, whichever you use more.",
  "Click <b>Connect</b>. Sign in. Allow.",
  "Open a new chat. Check the connector is switched on in the tools menu at the bottom of the message box.",
@@ -658,7 +679,7 @@ const S = [
  "After the session, find each file. Save it as a PDF or Word document if it is not already.",
  "Upload one file at a time, starting with the DO THIS FIRST file. The next slide shows how."]},
 
-{sec:"Your project", h:"Upload a file", tag:"do", pts:[
+{sec:"Your project", ic:["Database","1 file at a time"], h:"Upload a file", tag:"do", pts:[
  "In the project, find <b>Files</b> on the right-hand side. Click the plus sign, or <b>Add files</b>.",
  "Pick the file from your computer. PDF or Word is best.",
  "Name it so you would know what it is in a year. <code>Price list 2026.pdf</code>, not <code>Document3.pdf</code>.",
@@ -712,13 +733,13 @@ const S = [
  "Stop the recording. Claude turns it into a skill you can run again.",
  "Pro, Max and Team plans. Desktop app only."]},
 
-{sec:"Close", h:"What you <em>built</em>", pts:[
+{sec:"Close", ic:["Tick","4 things built"], h:"What you <em>built</em>", pts:[
  "Your privacy settings, set by you.",
  "One connector live.",
  "Account instructions that know your business.",
  "A project that did a real job."]},
 
-{sec:"Close", h:"<em>Next</em> time", fig:"next", pts:[
+{sec:"Close", ic:["Clock","Monday &middot; 6am"], h:"<em>Next</em> time", fig:"next", pts:[
  "Right now you brief Claude when you need something.",
  "Next: Claude does the job on a timer, without you opening it.",
  "Schedules and repeats. The job runs Monday at 6am, the result is waiting.",
@@ -737,6 +758,7 @@ S.forEach((s,i)=>{
   if(s.sec) left += `<div class="kicker">${s.sec}</div>`;
   left += `<h1>${s.h}</h1>`;
   if(s.sub) left += `<div class="sub">${s.sub}</div>`;
+  if(s.ic && DSI[s.ic[0]]) left += `<div class="icorow">${DSI[s.ic[0]]}<span>${s.ic[1]}</span></div>`;
   if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
   if(s.rows){ const hd=s.rowhead||["Step","What we do","Why it matters"]; const num=!s.rowhead; left += `<div class="rows"><div>${hd[0]}</div><div>${hd[1]}</div><div>${hd[2]}</div>${s.rows.map((r,i)=>`<div class="step">${num?`<b>${i+1}</b>`:''}${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div>`).join('')}</div>`; }
   if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}">${t[3]?`<span class="ticon">${ICONS[t[3]]||''}</span>`:''}<h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;

@@ -2147,8 +2147,19 @@ beside a figure. Task Work and Agent Workforce: Spanner in the short version.
 Social questionnaire: Tick on Finished. Brand page: all fifteen in the
 gallery. The front page's stale "47 cards" now reads "new cards every week".
 
-Left alone on purpose: the decks (an icon row would be an engine change
-across five decks and a deck check), the Field Notes (the one-card shape is
+Decks, from 4 Oct (later): the shared engine takes an optional `ic` on a
+slide, `ic:["Clock","Hourly to weekly"]`, rendered as the same icon row under
+the heading. The fifteen drawings sit in a `DSI` object beside `ICONS` in all
+five decks, byte-identical to the design system. The icon's size divides by
+`--z`, so it holds 40 to 46 real pixels at every window size. Nineteen slides
+carry one: Foundations 29 and 30; Make Claude Yours 7, 16, 28, 35 and 36;
+session three 6, 11, 14 and 15; Chatbots 17, 19 and 22; Social 1, 5, 12, 13
+and 20. Three more were tried and taken off because the deck check failed on
+them (Foundations 13, Make Claude Yours 5, Social 18): those slides are full,
+and the rule is fewer things on a slide, never smaller ones. Run
+`tools/check-decks.js` after adding an `ic` to any slide.
+
+Left alone on purpose: the Field Notes (the one-card shape is
 fixed and none of the three answers maps to a subject), Fine-Tune,
 `ba-growth/` and the rollout exemplar (clients already hold them), and the
 deck engine's three off-spec tile icons on the Foundations card slide, which
