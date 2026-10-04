@@ -2079,6 +2079,53 @@ exercises in the old issues are gone and are not coming back.
 The Sunday Brief still writes commission headlines to the old hook rule; the
 Field Note routine rewrites them, so it does not need changing now.
 
+**The brand audit, merged 4 Oct, and the real logo files are in.** James asked
+for the members area to be audited against the Magnum AI design system
+(`https://claude.ai/artifact/2akdAwifvokfTEYpmeWdWb`), which wins over the
+house style skill wherever they differ, and for the old logos to be replaced
+with the delivered files. Draft PR #8, merged on his word.
+
+The logo set lives in `assets/logos/`: all nine delivered SVGs and
+`favicon-512.png`, byte-identical to the design system (checked by checksum),
+plus `favicon-32.png`, `apple-touch-icon.png` and `/favicon.ico`, which are
+straight resizes of the 512. `assets/logos/README.md` says which file goes
+where. Never redraw or recolour any of them. The three recoloured rasters from
+25 Sep (`assets/magnum-badge*.png`) are deleted; nothing references them.
+
+One deviation from the brief, told to James. It asked for
+`magnum-badge-ring.svg` at 90px and up, but that file is navy ink and
+disappears on the navy masthead. The front page and brand page mastheads carry
+`magnum-badge-ring-navy.svg`, the delivered navy-ground colourway. The badge
+now reads MAGNUM over the top, MMXXV under, coral diamonds at three and nine,
+which is the design system's own description; the skill's "no other text in
+the badge" line is the stale one. One gap in the set: there is no small
+reverse mark for a dark ground under 90px. That is a designer's job, not a
+session's.
+
+`brand/rollout-exemplar.html` carried `LOGO_DATA_URI` placeholders and never
+had a real logo. It sets the name in Oswald 700 now, the fallback the skill
+names, because the navy nav bar is under the badge minimum and there is no
+small reverse mark.
+
+What the sweep changed. `#8E97A3` became `#C8CDD3` (on-navy-mute) everywhere
+it painted on navy, and `#63615C` where it sat on white. The deck engine lost
+`--olive-2`, its one box-shadow (an outline now) and the "More below"
+gradient, which is a flat paper bar with a hairline: hard rule 11 needs the
+words, not the fade. The same bar replaced the shelf's gradient. `--prompt-bg`
+on the shelf is paper `#FBFBF9`. The shelf's Copy button is `--coral-text`
+with white text, which closes the 3.73:1 failure recorded on 27 Sep. Coral
+display type between 18 and 22px fails at regular weight, so where a heading
+sits in that band it is Oswald 700 (the large-text rule at 18.66px bold),
+bumped to 19px where needed. Favicon tags are on 28 pages. Every thumbnail
+source lost `#7A7A7A`, `#F6ECDC` and the stacked offset shadow, which closes
+the twelve-sources item under Next, and all 18 cards were re-rendered.
+
+Left alone, as briefed: Fine-Tune. The style checker's remaining findings are
+deliberate: the brand page documents the retired values and banned fonts by
+name, quotes the "solid" rule and shows a misuse example, and the delivered
+SVGs carry their own `#1F2B37` and `#F3F2ED`, which are never edited. Deck
+check, contrast audit, field note check and coral scan all PASS.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
