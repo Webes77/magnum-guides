@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/logos/apple-touch-icon.png">
 <title>Members Area · Magnum AI</title>
 <meta name="description" content="Practical AI for a small business. Four short courses, every prompt that goes with them, tool manuals and two weekly reads.">
 <meta name="author" content="Magnum AI">
@@ -121,11 +124,11 @@ section:hover > .label::before,section:focus-within > .label::before,
 .step p{font-size:14.5px;color:var(--char);line-height:1.45;margin-top:6px}
 .step .meta{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--char);margin-top:auto;padding-top:12px}
 .step.shelf{background:var(--navy);color:#F4F1EA}
-.step.shelf h3{color:var(--paper)}.step.shelf p{color:#C8CDD3}.step.shelf .meta{color:#8E97A3}
+.step.shelf h3{color:var(--paper)}.step.shelf p{color:#C8CDD3}.step.shelf .meta{color:#C8CDD3}
 
 /* DARK CARD · the live one */
 .card.dark{background:var(--navy);color:#F4F1EA}
-.card.dark h3{color:var(--paper)}.card.dark p{color:#C8CDD3}.card.dark .meta{color:#8E97A3}.card.dark .go{color:#FF6F5E}
+.card.dark h3{color:var(--paper)}.card.dark p{color:#C8CDD3}.card.dark .meta{color:#C8CDD3}.card.dark .go{color:#FF6F5E}
 
 /* WIDE CARD · one thing, full width */
 .card.wide{flex-direction:row}
@@ -157,7 +160,7 @@ section:hover > .label::before,section:focus-within > .label::before,
 .seeall:hover{color:var(--rust)}
 
 /* FOOTER */
-footer{background:var(--navy);color:#8E97A3;margin-top:40px;padding:34px 0}
+footer{background:var(--navy);color:#C8CDD3;margin-top:40px;padding:34px 0}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 footer b{color:var(--paper);font-weight:500}
 
@@ -251,7 +254,7 @@ main.wrap::before{
 @media print{ main.wrap::before{display:none} }
 
 /* the hot coral is for display type; small text keeps the readable one */
-.card .go,.card .date,.label,.recent-label{color:var(--coral-text)}
+.card .go,.card .date,.recent-label{color:var(--coral-text)}
 .step .n{color:var(--rust)}
 .masthead h1 em{color:var(--rust)}
 .card.dark .date,.card.dark .go{color:var(--coral-bright)}
@@ -265,8 +268,7 @@ main.wrap::before{
       <div class="mast-text">
         <div class="mast-head">
           <h1>Members<br><em>Area</em></h1>
-          <img class="mast-badge" src="assets/magnum-badge-reverse.png" alt="Magnum AI"
-               width="360" height="357">
+          <img class="mast-badge" src="assets/logos/magnum-badge-ring-navy.svg" alt="Magnum AI" width="242" height="242">
         </div>
         <p>Start with the courses, in order. Take your prompts from the shelf. Read the Field Note when it lands.</p>
         <a class="mast-cta" href="ai-foundations/">Start course one &rarr;</a>

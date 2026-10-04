@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
 <meta name="color-scheme" content="light">
 <title>Prompt Shelf · Magnum AI</title>
 <meta name="description" content="Every prompt from the Magnum AI courses in one place, ready to copy, grouped by the moment you would use one.">
@@ -38,7 +41,7 @@
   /* A wash of the house navy, for the prompt panel only. The prompt has to be
      tellable from the writing around it at a glance, and paper on white was
      too close to see. Same family as the navy, nothing new introduced. */
-  --prompt-bg:#EBEFF3;
+  --prompt-bg:#FBFBF9;
   --body:#2B2823;
   --rust:#EF4029; --coral-text:#C63A2A;--coral-ghost:#F7BAB0;
   --olive:#5B6B7A;
@@ -106,7 +109,7 @@ main{padding:34px 0 20px}
 .pane-head .meta i.new{background:var(--olive);color:var(--paper);border-color:var(--olive)}
 .pane-head .meta i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;border:1px solid #C8CDD3;color:#C8CDD3;line-height:1.5}
 .pane-head .meta i.type{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.pane-head .meta i.src{border:0;padding:1px 0;color:#8E97A3}
+.pane-head .meta i.src{border:0;padding:1px 0;color:#C8CDD3}
 [hidden]{display:none!important}
 
 /* VAULT · the landing chooser */
@@ -120,7 +123,7 @@ main{padding:34px 0 20px}
 .vtile p{font-size:14.5px;color:var(--char);line-height:1.45;margin-top:6px}
 .vtile .vc{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:auto;padding-top:14px}
 .vtile.all{background:var(--navy);color:#F4F1EA}
-.vtile.all h3{color:var(--paper)}.vtile.all p{color:#C8CDD3}.vtile.all .vc{color:#8E97A3}
+.vtile.all h3{color:var(--paper)}.vtile.all p{color:#C8CDD3}.vtile.all .vc{color:#C8CDD3}
 .fmeta .back{margin-left:auto}
 
 /* SECTIONS */
@@ -152,7 +155,7 @@ section:hover > .label::before,section:focus-within > .label::before,
 .pane-head h3 a:hover{color:#FF6F5E}
 /* When to use it. Sentence case, not mono caps: it sits under the hook as a
    quiet second line, and a long one set in tracked capitals is unreadable. */
-.pane-head .where{display:block;font-family:var(--sans);font-weight:400;font-size:13px;line-height:1.45;letter-spacing:0;text-transform:none;color:#C3CAD2;margin-top:5px;max-width:52ch}
+.pane-head .where{display:block;font-family:var(--sans);font-weight:400;font-size:13px;line-height:1.45;letter-spacing:0;text-transform:none;color:#C8CDD3;margin-top:5px;max-width:52ch}
 .btns{display:flex;gap:8px;flex-shrink:0}
 /* The title is how a reader knows what the card is, so it gets the width.
    In the two-column grid the buttons took nearly half the card and set a
@@ -161,8 +164,8 @@ section:hover > .label::before,section:focus-within > .label::before,
    James, 29 Sep: "make sure people know what they're actually accessing". */
 .pane-head{flex-wrap:wrap}
 .pane-head h3{flex:1 1 300px;min-width:0}
-.copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .15s}
-.copy:hover{background:#d2553a}
+.copy{background:var(--coral-text);color:#FFFFFF;border:2px solid var(--ink);padding:7px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:background .15s}
+.copy:hover{background:var(--ink)}
 .copy.done{background:var(--olive)}
 .expand{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .expand:hover{border-color:#FF6F5E;color:#FF6F5E}
@@ -170,7 +173,7 @@ section:hover > .label::before,section:focus-within > .label::before,
 
 .prewrap{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
 .prewrap pre{font-family:var(--mono);font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word;padding:16px 18px 22px;max-height:340px;overflow:auto;color:var(--navy);background:var(--prompt-bg)}
-.prewrap::after{content:"More below";position:absolute;left:0;right:0;bottom:0;padding:26px 18px 8px;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);background:linear-gradient(rgba(228,218,196,0),var(--paper-2) 70%);pointer-events:none;opacity:0;transition:opacity .15s}
+.prewrap::after{content:"More below";position:absolute;left:0;right:0;bottom:0;padding:8px 18px;text-align:right;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);background:var(--paper-2);border-top:1px solid #DADAD5;pointer-events:none;opacity:0;transition:opacity .15s}
 .pane.more .prewrap::after{opacity:1}
 
 /* recipe steps */
@@ -189,7 +192,7 @@ section:hover > .label::before,section:focus-within > .label::before,
 #reader .rclose:hover{border-color:#FF6F5E;color:#FF6F5E}
 
 /* FOOTER */
-footer{background:var(--navy);color:#8E97A3;margin-top:40px;padding:34px 0}
+footer{background:var(--navy);color:#C8CDD3;margin-top:40px;padding:34px 0}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
 footer b{color:var(--paper);font-weight:500}
 
@@ -316,7 +319,7 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 }
 
 /* the machine-facing parts of a prompt, quietened */
-.prewrap pre .mach{color:#9AA7B4}
+.prewrap pre .mach{color:#63615C}
 .prewrap pre .mhead{color:var(--olive);font-weight:500}
 .pnote{margin:0;padding:8px 18px 0;background:var(--prompt-bg);
   font-size:13px;line-height:1.45;color:var(--char)}
@@ -334,7 +337,7 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 .fgrid input,.fgrid select{font-family:var(--mono);font-size:13px;color:var(--ink);
   background:var(--paper);border:2px solid rgba(30,27,23,.3);padding:7px 9px;width:100%}
 .fgrid input:focus,.fgrid select:focus{outline:none;border-color:var(--rust)}
-.fgrid input::placeholder{color:#9AA0A6}
+.fgrid input::placeholder{color:#63615C}
 .pane.isfilled .plabel span::after{content:" \00b7 your details are in";color:var(--coral-text)}
 @media print{.filler{display:none}}
 
@@ -349,7 +352,7 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 .brow6 input,.brow6 textarea{font:inherit;color:var(--ink);background:transparent;border:0;
   border-bottom:2px solid var(--ink);padding:0 2px;margin:0 2px;max-width:100%}
 .brow6 textarea.wide{display:block;width:100%;margin:2px 0;resize:none;overflow:hidden;line-height:1.6}
-.brow6 input::placeholder,.brow6 textarea::placeholder{color:#8E97A3}
+.brow6 input::placeholder,.brow6 textarea::placeholder{color:#63615C}
 .brow6 input:focus,.brow6 textarea:focus{outline:none;border-bottom-color:var(--rust);background:var(--prompt-bg)}
 .bfoot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:14px;
   border-top:2px solid var(--ink);font-size:14px;color:var(--char)}

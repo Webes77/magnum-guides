@@ -1,4 +1,8 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#FBFBF9;color:#2B2823}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Magnum AI Brand Guidelines</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +26,8 @@ h1{font-size:clamp(38px,7vw,68px);line-height:.95;letter-spacing:.005em}
 h2{font-size:clamp(26px,4.2vw,38px);line-height:1.02;margin:0 0 6px}
 h3{font-size:20px;line-height:1.1;margin:30px 0 10px}
 h4{font-size:15px;line-height:1.2;margin:22px 0 8px;letter-spacing:.04em}
-em{font-style:normal;color:var(--rust)}
-h2 em,h3 em,h4 em{color:var(--rust)}
+em{font-style:normal;color:var(--coral-text)}
+h2 em,h3 em,.s-disp em{color:var(--rust);font-weight:700}
 p{margin:0 0 14px;max-width:70ch}
 
 .masthead{background:var(--navy);border-bottom:4px solid var(--coral-bright);padding:38px 32px 46px}
@@ -53,7 +57,8 @@ section{margin:0 0 66px;scroll-margin-top:90px}
   margin:24px 0;max-width:30ch}
 .levers{font-family:var(--disp);font-weight:600;text-transform:uppercase;font-size:clamp(17px,2.6vw,24px);
   letter-spacing:.02em;color:var(--ink);margin:16px 0;overflow-wrap:break-word}
-.levers span{color:var(--rust);padding:0 2px}
+.levers span{color:var(--coral-text);padding:0 2px}
+@media(min-width:924px){.levers span{color:var(--rust)}}
 
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
@@ -172,7 +177,7 @@ footer{background:var(--navy);color:var(--on-navy-mute);font-family:var(--mono);
 
 <header class="masthead">
   <div class="in">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQxLjk5OTgiIGhlaWdodD0iMjQxLjk5OTgiIHZpZXdCb3g9IjAgMCAyNDEuOTk5OCAyNDEuOTk5OCI+CjxnIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiIGlua3NjYXBlOmxhYmVsPSJMYXllciAxIj4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMSwyNDAuOTk5OCkiIGQ9Ik0xMDkuODQxNCAxMTIuODc1NiAxMzAuNDExMyA1Mi40NTE3IDEzNi42NTE1IDM0LjEyMTIgMTIzLjQ0NDYgMjkuNDk1MyAxMTcuNjI0NSA0Ni41OTE3SDEwMi4wNThMOTYuMjM3OSAyOS40OTUzIDgzLjAzMTMgMzQuMTIxMiA4OS4yNzE1IDUyLjQ1MTdaTTE0My4wMTg2IDkwLjk3MjlIMTU2Ljk2ODJWMzQuMTIxMkgxNDMuMDE4NlpNMTEzLjI2MTcgNTkuNDA3NCAxMDkuODQxNCA2OS40NTQ4IDEwNi40MjA4IDU5LjQwNzRaIiBmaWxsPSIjRkY2RjVFIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMSwyNDAuOTk5OCkiIGQ9Ik0xMTkuOTk5OSAxMDYuMTcyNSAxNjYuNDcxMSAxNTguMjMwNVYzNC4xMjE1SDE5NC4wMzU3VjIwOC40NjMySDE3NC4yNzgzTDExOS45OTk5IDE0OS4xMDM4IDY1LjcyMTMgMjA4LjQ2MzJINDUuOTYzOFYzNC4xMjE1SDczLjUyODRWMTU4LjIzMDVaIiBmaWxsPSIjRjRGMUVBIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9nPgo8L3N2Zz4K" alt="Magnum AI" class="mh-logo">
+    <img src="../assets/logos/magnum-badge-ring-navy.svg" alt="Magnum AI" class="mh-logo" width="96" height="96">
     <h1>Brand <em>guidelines</em></h1>
     <p class="meta">Magnum AI &middot; Version 2.0 &middot; 24 September 2026</p>
   </div>

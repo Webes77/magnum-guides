@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#1E1B17">
 <title>Rollout exemplar · Magnum AI house style</title>
@@ -48,18 +51,18 @@ body{font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--body);
 
 nav{background:var(--ink);padding:20px 0}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
-nav .mlogo{height:34px;display:block}
+nav .mlogo{display:block;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:#F4F1EA}
 nav .lockup{display:flex;align-items:center;gap:12px}
-nav .for{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8E97A3}
+nav .for{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#C8CDD3}
 nav .clogo{height:24px;display:block}
 
 .hero{background:var(--navy);color:#F4F1EA;padding:64px 0 76px;border-bottom:4px solid var(--coral-bright)}
-.hero .eyebrow{color:var(--coral-text)}
+.hero .eyebrow{color:var(--coral-bright)}
 .hero .eyebrow::after{background:var(--rust);opacity:.5}
 .hero h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(46px,8vw,92px);line-height:.9;letter-spacing:-.01em}
 .hero h1 em{font-style:normal;color:var(--rust);display:block}
 .hero .sub{font-size:18px;color:#C8CDD3;max-width:56ch;margin-top:24px;line-height:1.6}
-.hero .begin{display:inline-flex;align-items:center;gap:10px;margin-top:44px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8E97A3;text-decoration:none}
+.hero .begin{display:inline-flex;align-items:center;gap:10px;margin-top:44px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C8CDD3;text-decoration:none}
 .hero .begin .ch{width:12px;height:12px;border-right:2px solid var(--rust);border-bottom:2px solid var(--rust);transform:rotate(45deg);margin-bottom:4px;animation:bob 1.8s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)}}
 
@@ -111,19 +114,19 @@ p.body:last-child{margin-bottom:0}
 .confirm p{font-size:16px;color:#C8CDD3;max-width:64ch;margin-bottom:10px;line-height:1.7}
 .confirm .qs{margin-top:22px;padding-top:22px;border-top:2px solid rgba(244,241,234,.25)}
 .confirm .q{font-size:16px;color:var(--paper);margin-bottom:10px;display:flex;gap:12px}
-.confirm .q span{font-family:var(--display);font-weight:700;color:var(--coral-text);font-size:18px;flex:0 0 auto}
+.confirm .q span{font-family:var(--display);font-weight:700;color:var(--rust);font-size:19px;flex:0 0 auto}
 
 .costs{margin-top:34px}
 .cost-row{display:flex;justify-content:space-between;align-items:baseline;gap:28px;padding:20px 0;border-bottom:1px solid rgba(30,27,23,.2)}
 .cost-row .cn{font-family:var(--display);font-weight:600;font-size:19px;text-transform:uppercase;color:var(--ink)}
 .cost-row .cd{font-size:14px;color:var(--mute);margin-top:4px}
 .cost-row .ca{font-family:var(--display);font-weight:600;font-size:22px;color:var(--ink);white-space:nowrap}
-.cost-row.fee .cn,.cost-row.fee .ca{color:var(--coral-text)}
+.cost-row.fee .cn,.cost-row.fee .ca{color:var(--rust);font-weight:700}
 .cost-divider{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral-text);padding-top:26px;margin-bottom:-6px}
 .cost-foot{font-size:14px;color:var(--mute);margin-top:22px;line-height:1.7;max-width:70ch}
 
-footer{background:var(--navy);color:#8E97A3;padding:44px 0;text-align:center;margin-top:20px}
-footer .mlogo{height:32px;margin-bottom:14px;opacity:.9}
+footer{background:var(--navy);color:#C8CDD3;padding:44px 0;text-align:center;margin-top:20px}
+footer .mlogo{display:block;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:#F4F1EA;margin-bottom:14px}
 footer p{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
 
 @media(max-width:680px){
@@ -139,7 +142,7 @@ footer p{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transfo
 
 <nav>
   <div class="wrap">
-    <img class="mlogo" src="LOGO_DATA_URI" alt="Magnum AI">
+    <span class="mlogo">Magnum AI</span>
     <span class="lockup"><span class="for">Prepared for</span><img class="clogo" src="CLIENT_DATA_URI" alt="Client"></span>
   </div>
 </nav>
@@ -266,7 +269,7 @@ footer p{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transfo
 </div>
 
 <footer>
-  <img class="mlogo" src="LOGO_DATA_URI" alt="Magnum AI">
+  <span class="mlogo">Magnum AI</span>
   <p>Magnum AI &middot; magnumai.com.au</p>
 </footer>
 
