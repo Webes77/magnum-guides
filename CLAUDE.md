@@ -19,8 +19,15 @@ These are absolute. Do not relitigate them.
 
 1. No em dashes, anywhere. Use a comma, a full stop, or a middot for separators.
 2. Never the word "solid".
-3. The 6 Levers are Role, Context, Constraints, Tone, Format, Output. That
-   order, those labels. Never renamed, reordered, or added to.
+3. Magnum AI leads with systems: Role Pack architecture and library, the
+   Iceberg Model, The Field Manual and the Talk-It-Out Technique. The 6 Lever
+   Framework is a supporting briefing checklist, used when teaching someone
+   to brief AI on a single task. It is never the headline, the opening hook
+   or the organising structure of a training, ad, offer or proposal. When it
+   appears, the labels are Role, Context, Constraints, Tone, Format, Output.
+   That order, those labels. Never renamed, reordered, or added to. Changed
+   4 Oct, on James's word, because the levers are a prompting technique and
+   they date as AI gets more intuitive.
 4. Prices are always quoted plus GST.
 5. No client material in the members area unless it is made generic enough to
    be an industry guide. Client names never ship.
@@ -2151,13 +2158,18 @@ Decks, from 4 Oct (later): the shared engine takes an optional `ic` on a
 slide, `ic:["Clock","Hourly to weekly"]`, rendered as the same icon row under
 the heading. The fifteen drawings sit in a `DSI` object beside `ICONS` in all
 five decks, byte-identical to the design system. The icon's size divides by
-`--z`, so it holds 40 to 46 real pixels at every window size. Nineteen slides
-carry one: Foundations 29 and 30; Make Claude Yours 7, 16, 28, 35 and 36;
-session three 6, 11, 14 and 15; Chatbots 17, 19 and 22; Social 1, 5, 12, 13
-and 20. Three more were tried and taken off because the deck check failed on
-them (Foundations 13, Make Claude Yours 5, Social 18): those slides are full,
-and the rule is fewer things on a slide, never smaller ones. Run
-`tools/check-decks.js` after adding an `ic` to any slide.
+`--z`, so it holds 40 to 46 real pixels at every window size. Twenty-two
+slides carry one: Foundations 13, 29 and 30; Make Claude Yours 5, 7, 16, 28,
+35 and 36; session three 6, 11, 14 and 15; Chatbots 17, 19 and 22; Social 1,
+5, 12, 13, 18 and 20. Three of them (Foundations 13, Make Claude Yours 5,
+Social 18) overflowed with the icon added and were fixed on James's word by
+taking something off, never by shrinking. Foundations 13 lost "One chat, one
+job", which repeated the slide's first point and is now the icon's label.
+Make Claude Yours 5 lost "Once off, a chat you delete is gone within 30
+days", which slide 8 already says. Social 18 lost "These go into the last
+question of the questionnaire", which slide 5 already says; its "General
+guidance, not legal advice" moved into the icon's label so it stays on the
+slide. Run `tools/check-decks.js` after adding an `ic` to any slide.
 
 Left alone on purpose: the Field Notes (the one-card shape is
 fixed and none of the three answers maps to a subject), Fine-Tune,
