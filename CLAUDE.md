@@ -2178,6 +2178,41 @@ deck engine's three off-spec tile icons on the Foundations card slide, which
 wait with that slide for a room. Contrast PASS on all eleven changed pages at
 four widths; style checker shows no new finding.
 
+**Systems first, the levers demoted, 4 Oct.** James repositioned Magnum AI:
+it leads with Role Pack architecture and library, the Iceberg Model, The
+Field Manual and the Talk-It-Out Technique, and the 6 Lever Framework is a
+supporting checklist for briefing one task (hard rule 3, rewritten the same
+day). Definitions are in Drive, `frameworks-and-ip.md`: F-002 Iceberg, F-003
+Talk-It-Out, F-004 Role Pack Architecture. The Field Manual is the sales
+method in the magnum-field-manual-builder skill, so it is not taught in the
+AI courses.
+
+What moved. Course one opens on the iceberg and Talk-It-Out (slides 1, 2 and
+29, and the meta description); the lever section is headed Brief one task and
+slide 17 is "Briefing one task"; slide 6, "You are using the tip", is no
+longer a skippable basic because the course now opens on it. The Prompt
+Shelf opens with "How to use the shelf" (iceberg, Talk-It-Out, the four Role
+Pack cards), and the six lines sit in their own box below it headed "A
+checklist for briefing one task". Talk-It-Out is rank 1 under Starting a
+task, Fix the yes-man 2, Fill in six lines 3. The front page's two Course one
+lines lead with the iceberg, and the levers watermark is gone. The brand page
+section says what Magnum AI leads with and calls the levers a checklist. Both
+share cards (Course one and the shelf) lost "the 6 levers" and the lever
+names in their footer, and were re-rendered. `notes/six-lines.md` carries a
+framing line; `brand/logo-brief.md` is marked superseded.
+
+Not changed, and the next session must know why. The Field Note and Sunday
+Brief routines were rewritten live on 4 Oct by another session (the
+RUNNING UNATTENDED block, the three piles, magnum-staff), and
+`notes/field-note-prompt.md` and `notes/sunday-brief-prompt.md` were not
+updated to match. They are stale copies now. Never push either file to its
+trigger without first reconciling it with the live prompt, or this morning's
+work is lost. Both live prompts still describe the shelf as "laid out on his
+6 Levers"; it should read "grouped by the moment you would use a card and by
+area of work", made wherever those routines are now maintained.
+`brand/Magnum-AI-House-Style.pdf` is the old 15 Sep House Style page, linked
+from nowhere, and still names the levers as the method.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from

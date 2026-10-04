@@ -2,6 +2,12 @@
 
 For a designer. Written 14 September 2026.
 
+Superseded. The logo was designed and delivered in September 2026 and lives
+in `assets/logos/`. Section 5's idea of building the mark on the six levers
+is also out of date: since 4 Oct Magnum AI leads with systems, and the levers
+are a supporting briefing checklist (hard rule 3 in `CLAUDE.md`). Kept as a
+record, not as a live brief.
+
 Everything in "The house you are joining" already exists and is in daily use.
 It is not a mood board and it is not negotiable without a conversation. The
 rest is open.

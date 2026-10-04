@@ -380,7 +380,15 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
   <a class="back" href="../index.html">&larr; Back to the members area</a>
 
   <div class="about primer">
-    <h2>The method in <em>six lines</em></h2>
+    <h2>How to use the <em>shelf</em></h2>
+    <p class="pintro">Most people use AI for two things. Find something, write something. That's the tip of the iceberg. The cards on this shelf are the rest of it: summarise, interview, analyse, coach, critique.</p>
+    <p>Don't know where to start? Run <a href="#talk-it-out">Talk-It-Out</a>. It asks you questions one at a time until it has the whole brief. It's like letting a new staff member interview you instead of handing them a manual they'll skim.</p>
+    <p>Four of the cards come straight from my Role Pack library of fifty. Paste one into a project and it stays that expert every time you open it.</p>
+    <p>Briefing one task from scratch? The six-line checklist is in the next box: Role, Context, Constraints, Tone, Format, Output.</p>
+  </div>
+
+  <div class="about primer checklist">
+    <h2>A checklist for briefing <em>one task</em></h2>
     <p class="pintro">Six lines, one per lever, top to bottom. Fill in the blanks and send. Nothing to say on a line? Leave it out. When an answer comes back weak, look for the thin line.</p>
     <ol class="levers-list">
       <li><i>Role</i><span><b>You are a ___ who works with ___.</b> A real job and its field. Nothing more.</span></li>
@@ -2288,7 +2296,7 @@ say so in one line and stop.
 Put the date and time you ran at the top. Then stop.`},
 
 /* ---------- Session one · AI Foundations ---------- */
-{kind:'prompt', id:'six-lines', sec:'Session one · AI Foundations', title:'Fill in six lines', where:'Any new chat, any job', type:'writing', when:'start', rank:1, hook:"Type over the grey words. Copy it. That is your prompt.", added:'2026-09-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'six-lines', sec:'Session one · AI Foundations', title:'Fill in six lines', where:'Any new chat, any job', type:'writing', when:'start', rank:3, hook:"Type over the grey words. Copy it. That is your prompt.", added:'2026-09-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
 builder:true, eg:{'job':'bookkeeper','field':'small trades businesses','what has happened, who it is for, what you tried':'a good client is 30 days late on an invoice. One reminder, no reply','a rule':'under 120 words','the reason':'they read it on their phone','a person you can picture':'an owner who is good at the job and does not need to chase','the shape you want back':'a subject line, then the email as plain text','the finished thing':'the email'},
 prompt:`You are a [job] who works with [field].
 
@@ -2302,7 +2310,7 @@ Lay it out as [the shape you want back].
 
 Give me [the finished thing]. Then stop.`},
 
-{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', hook:"Say the job out loud and get a brief you could not have typed.", rank:2, levers:['Context','Constraints','Output'],
+{kind:'prompt', id:'talk-it-out', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', hook:"Say the job out loud and get a brief you could not have typed.", rank:1, levers:['Context','Constraints','Output'],
 prompt:`I want your help with a real task, and I would rather talk it
 through than write you a brief.
 
@@ -2353,7 +2361,7 @@ the work.
 
 The chat:`},
 
-{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', hook:"Four lines that stop it agreeing with you.", rank:3, levers:['Constraints','Tone'],
+{kind:'prompt', id:'fix-the-yes-man', sec:'Session one · AI Foundations', title:'Fix the yes-man', where:'Top of any chat that matters', type:'rules', when:'start', hook:"Four lines that stop it agreeing with you.", rank:2, levers:['Constraints','Tone'],
 prompt:`From now on, in everything you do for me:
 
 Do not tell me what I want to hear. Tell me what I need to hear.
@@ -2826,7 +2834,7 @@ whenKeys.forEach(w=>{
     const el=document.createElement('article');
     el.className='pane';el.id=s.id;
     el.dataset.when=w;el.dataset.type=s.type||'';el.dataset.levers=(s.levers||[]).join(',');el.dataset.station=s.station||'';
-    // The levers are taught once, in the primer at the top of this page and in
+    // The levers are taught once, in the checklist box near the top of this page and in
     // the courses. They are not repeated on every card: 43 strips of six boxes
     // buried the prompt, which is the thing a client came for. The data stays
     // on the element, so the Lever filter chip still works. Changed 14 Sep.

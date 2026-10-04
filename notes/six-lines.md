@@ -1,7 +1,14 @@
 # The 6 Levers as six lines
 
+This is the briefing checklist for a single task, not the Magnum AI method.
+Since 4 Oct Magnum AI leads with systems (Role Pack architecture and library,
+the Iceberg Model, The Field Manual and the Talk-It-Out Technique), and the
+levers are taught only when someone is learning to brief AI on one job. They
+are never the headline, the opening hook or the organising structure of a
+training, ad, offer or proposal (hard rule 3).
+
 The one wording of the six levers. Every place that teaches them uses these
-lines exactly: the AI Foundations deck, the Prompt Shelf primer, the
+lines exactly: the AI Foundations deck, the Prompt Shelf checklist box, the
 `six-lines` shelf card, the six-lever-prompt-builder skill, and James's own
 talk track. Change a line here first, then everywhere else in the same pass.
 
