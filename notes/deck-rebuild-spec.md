@@ -50,7 +50,11 @@ Every slide declares one, or the engine infers it from its keys
   `where` line), THEN (the `after` steps with ghost numbers), and at the
   foot one tip drawn from the first `pts` entry in a coral-ruled box; the
   other points are dropped on this layout (hard rule 11 already says points
-  go before the prompt does). The card: 2px ink border, navy header 60px
+  go before the prompt does). Changed in the build: the rail keeps every
+  point, as a coral-ruled list at the top, then WHERE, then THEN. Dropping
+  live teaching copy to match a mockup was the wrong trade. The rail
+  scrolls with its own "More below" in a small window, and the deck check
+  fails a clipped rail that does not say so. The card: 2px ink border, navy header 60px
   with THE PROMPT in bright coral mono, a plain line "Tap a blank to fill
   it, then copy" in `--on-navy-mute`, and three buttons right, FILL IN and
   EXPAND outlined, COPY filled `--coral-bright` with ink text. Body: IBM
@@ -92,7 +96,8 @@ Every slide declares one, or the engine infers it from its keys
 
 ## Build order
 
-1. Social deck on a branch (`deck-rebuild`), laptop first, then phone.
+1. Social deck on the session branch, laptop first, then phone. Done 5 Oct,
+   see CLAUDE.md.
    Gates: `tools/check-decks.js` PASS at four sizes, `tools/check-contrast.js`
    PASS at 1440, 820 and 390 with the phone view rendered, nine prompts
    byte-identical to the shelf, fill-in and goTo still working, rendered and

@@ -22,6 +22,11 @@
     reports ghost failures at the width where it is collapsed. The rendered
     box is the only reliable test. Found 15 Sep, having briefly looked like a
     real front page regression.
+  - SVG text. A label inside a figure sits on a sibling shape (a white box on
+    a navy plate), which walking up the parents can never see, so every such
+    label read as 1:1 against the plate. Recorded as a false positive on the
+    bots and social decks since 24 Sep, excluded 5 Oct. Figure labels are
+    checked by rendering the figure and looking at it.
   - Nothing else. Zero is the number to keep.
 */
 const { chromium } = require('/opt/node22/lib/node_modules/playwright');
@@ -50,6 +55,7 @@ function lum(c){const s=c.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0
           const cs = getComputedStyle(el);
           if (cs.visibility === 'hidden' || +cs.opacity === 0) return;
           if (parseFloat(cs.webkitTextStrokeWidth) > 0) return;
+          if (el.closest('svg')) return;
           const fg = cs.color.match(/[\d.]+/g).slice(0,3).map(Number);
           const size = parseFloat(cs.fontSize), wt = parseInt(cs.fontWeight) || 400;
           const large = size >= 24 || (size >= 18.66 && wt >= 700);

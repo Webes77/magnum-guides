@@ -29,6 +29,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* Deck engine v2, 5 Oct 2026. Spec: notes/deck-rebuild-spec.md.
+   One slide array, two renderers. Laptop: every slide is laid out in a
+   1340 by 770 box, zoomed to the window, and sized to its own content
+   through one of four layouts (statement, rows, tiles, prompt). Phone,
+   under 760px: the same slides as one scrolling page. */
 :root{
   --paper:#FBFBF9;
   --paper-2:#FFFFFF;
@@ -37,209 +42,287 @@
   --coral-bright:#FF6F5E;
   --tint:#FBE1D8;
   --body:#2B2823;
-  --rust:#EF4029;--coral-ghost-navy:#A1524E; --coral-text:#C63A2A;
+  --rust:#EF4029;--coral-ghost:#F7BAB0;--coral-ghost-navy:#A1524E;--coral-text:#C63A2A;
   --olive:#5B6B7A;
   --char:#3A3630;
   --mute:#63615C;
-  --rule:#1E1B17;
+  --on-navy-mute:#C8CDD3;
+  --cream:#F4F1EA;
+  --hair:rgba(30,27,23,.2);
+  --display:"Oswald",Impact,"Arial Narrow",sans-serif;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:#1F2A37;color:var(--body);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:18px;line-height:1.45}
+html,body{height:100%;background:var(--navy);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.45}
 body{display:flex;flex-direction:column;overflow:hidden}
 button{font:inherit;cursor:pointer}
 button:focus-visible,a:focus-visible{outline:2px solid var(--rust);outline-offset:3px}
 
-header{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#C8CDD3}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-navy-mute)}
 header .brand{color:#FFFFFF;border-bottom:1px solid #FFFFFF;padding-bottom:2px;text-decoration:none}
-header .brand:hover{color:#FF6F5E;border-bottom-color:#FF6F5E}
+header .brand:hover{color:var(--coral-bright);border-bottom-color:var(--coral-bright)}
 header .count{color:#FFFFFF}
 
 main{flex:1;display:flex;padding:0 40px 8px;overflow:hidden}
 #deck{flex:1;background:var(--ink);padding:10px;display:flex;overflow:hidden}
-.slide{flex:1;display:none;padding:44px 64px 56px;overflow:auto;position:relative;
-  background:var(--paper);
-  
-  border:3px solid var(--paper);outline:1px solid var(--ink);outline-offset:-4px}
-.slide.on{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-content:start}
-.slide.has-fig.on{grid-template-columns:minmax(320px,6fr) minmax(360px,6fr)}
-.slide.has-prompt.on{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:16px;align-content:stretch}
-.slide.tiles.on{grid-template-columns:minmax(0,1fr)}
 
-.kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-text);display:flex;align-items:center;gap:14px}
-.kicker::after{content:"";flex:1;height:2px;background:var(--ink);max-width:420px}
-h1{font-family:"Oswald",sans-serif;font-weight:600;font-size:58px;line-height:.98;text-transform:uppercase;letter-spacing:-.005em;max-width:18ch;color:var(--ink);margin-top:10px}
-h1 .n{display:none}
+/* ---------- the slide ---------- */
+.slide{flex:1;display:none;padding:40px 64px 64px;overflow:auto;position:relative;background:var(--paper);
+  border:3px solid var(--paper);outline:1px solid var(--ink);outline-offset:-4px;--g:1}
+.slide.on{display:flex;flex-direction:column;gap:18px}
+.hd{display:flex;flex-direction:column;gap:6px}
+.kick{display:flex;align-items:baseline;gap:14px}
+.kick .kn::before,.band .bi::before{content:attr(data-n)}
+.kick .kn{font-family:var(--display);font-weight:600;font-size:44px;line-height:.85;color:var(--coral-ghost)}
+.kick .kt{font-family:var(--mono);font-size:max(13px,calc(12px / var(--z,1)));font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text)}
+.hrow{display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
+h1{font-family:var(--display);font-weight:600;font-size:64px;line-height:1;letter-spacing:.002em;color:var(--ink);text-wrap:balance;min-width:0}
 h1 em{font-style:normal;color:var(--rust)}
-.cover h1{font-size:132px;max-width:12ch;line-height:.92}
-.cover.has-fig.on{grid-template-columns:minmax(360px,6fr) minmax(320px,5fr)}
-.cover .sub{font-family:"Oswald",sans-serif;font-weight:500;font-size:30px;text-transform:uppercase;color:var(--rust);margin-top:12px}
-.cover p{font-size:21px;color:var(--body);max-width:40ch;margin-top:18px;line-height:1.5}
-.meta{margin-top:18px;padding-top:14px;border-top:2px solid var(--ink);font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);line-height:2}
+/* Icon row: one design-system icon and one mono label. The icon holds 40 to 46 real pixels at any zoom. */
+.icorow{display:flex;align-items:center;gap:16px;flex:none;max-width:560px;padding-bottom:8px}
+.icorow svg{flex:none;display:block;width:clamp(calc(40px / var(--z,1)),44px,calc(46px / var(--z,1)));height:auto}
+.icorow span{font-family:var(--mono);font-size:max(13px,calc(12px / var(--z,1)));font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);text-align:right;line-height:1.5}
+.bd{flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px}
+
+/* statement: points, figure, split, sized to fill */
+ul.points{list-style:none;max-width:84ch}
+ul.points li{font-size:calc(27px * var(--g));line-height:1.32;padding:calc(10px * var(--g)) 0 calc(10px * var(--g)) 34px;border-top:1px solid var(--hair);position:relative;color:var(--body)}
+ul.points li:last-child{border-bottom:2px solid var(--ink)}
+ul.points li::before{content:"";position:absolute;left:0;top:calc(10px * var(--g) + .62em);width:18px;height:3px;background:var(--rust)}
+ul.points li b{color:var(--ink);font-weight:600}
+ul.points a,.note a,.rail a{color:var(--coral-text)}
+.note{color:var(--mute);font-size:calc(18px * var(--g));max-width:70ch}
+.bd.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:52px;align-items:center}
+.bd.two .col{display:flex;flex-direction:column;gap:20px;min-width:0}
+.bd.two ul.points li{font-size:calc(24px * var(--g))}
+.bd > ul.points{max-width:none}
+.fig{background:var(--navy);border:2px solid var(--ink);padding:26px 26px 18px;display:flex;flex-direction:column;gap:14px}
+.fig svg{width:100%;height:auto;max-height:370px;display:block}
+.fig .cap{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);border-top:1px solid rgba(244,241,234,.35);padding-top:10px;line-height:1.7}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.split > div{border:2px solid var(--ink);background:var(--paper-2)}
+.split h3{font-family:var(--display);font-weight:500;font-size:calc(22px * var(--g));letter-spacing:.06em;text-transform:uppercase;padding:14px 22px;color:var(--paper);border-bottom:2px solid var(--ink)}
+.split .b h3{background:var(--navy)}.split .a h3{background:var(--coral-text)}
+.split p{font-size:calc(19px * var(--g));line-height:1.5;margin:16px 22px;color:var(--ink)}
+.split p:first-of-type{font-family:var(--mono);font-size:calc(19px * var(--g))}
+.meta{padding-top:14px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--body);line-height:2}
 .meta b{color:var(--coral-text);font-weight:500;margin-right:10px}
 
-/* Icon row, 4 Oct. One design-system icon and one mono label, opposite ends. The icon holds 40 to 46 real pixels at any zoom. */
-.icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:84ch}
-.icorow svg{flex:none;display:block;width:clamp(calc(40px / var(--z,1)),44px,calc(46px / var(--z,1)));height:auto}
-.icorow span{font-family:"IBM Plex Mono",monospace;font-size:max(13px,calc(12px / var(--z,1)));font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);text-align:right}
-ul.points{list-style:none;margin-top:6px;max-width:84ch}
-.has-fig ul.points{max-width:56ch}
-ul.points li{font-size:27px;line-height:1.32;padding:9px 0 9px 34px;border-top:1px solid rgba(30,27,23,.25);position:relative;color:var(--body)}
-ul.points li:last-child{border-bottom:2px solid var(--ink)}
-ul.points li::before{content:"";position:absolute;left:0;top:25px;width:18px;height:3px;background:var(--rust)}
-ul.points li b{color:var(--rust);font-weight:500}
-ul.points li code{font-family:"IBM Plex Mono",monospace;font-size:.82em;color:var(--ink);background:#fff8;border:1px solid var(--ink);padding:1px 6px}
-.note{margin-top:8px;color:var(--mute);font-size:17px;max-width:52ch}
-.left{display:flex;flex-direction:column;gap:18px;min-width:0}
-.has-prompt h1,.has-fig h1{font-size:44px}
-.slide.has-prompt{padding:26px 48px 52px}
-.has-prompt .left{gap:6px}
-.has-prompt h1{font-size:34px;max-width:none;margin-top:4px}
-.has-prompt .foot{left:48px;right:48px}
-.has-prompt ul.points{display:flex;flex-wrap:wrap;gap:0 32px;max-width:none;margin-top:2px;border-bottom:2px solid var(--ink)}
-.has-prompt ul.points li{font-size:max(15px,calc(14px / var(--z,1)));line-height:1.3;padding:6px 0 6px 22px;border-top:0;flex:1 1 28%;min-width:220px}
-.has-prompt ul.points li:last-child{border-bottom:0}
-.has-prompt ul.points li::before{top:13px;width:12px}
-.has-fig ul.points li{font-size:24px}
+/* rows: bands share the height */
+.bands{flex:1;display:grid;grid-auto-rows:minmax(min-content,1fr);border-top:2px solid var(--ink)}
+.band{display:grid;grid-template-columns:300px minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center;border-bottom:1px solid var(--hair);padding:calc(12px * var(--g)) 0}
+.bands.num .band{grid-template-columns:96px 260px minmax(0,1fr) minmax(0,1fr)}
+.band .bi{font-family:var(--display);font-weight:600;font-size:calc(64px * var(--g));line-height:.85;color:var(--coral-ghost);transition:color .14s}
+.band:hover .bi{color:var(--rust)}
+.band .bn{font-family:var(--display);font-weight:600;font-size:calc(34px * var(--g));line-height:1;text-transform:uppercase;color:var(--ink)}
+.band .bl1,.band .bl2{font-size:calc(21px * var(--g));line-height:1.36}
+.band .bl1{font-weight:500;color:var(--ink)}
+.band .bl2{color:var(--mute)}
+.band small{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);margin-bottom:4px}
 
-/* figure panel */
-.fig{background:var(--navy);border:2px solid var(--ink);padding:26px 26px 18px;display:flex;flex-direction:column;gap:14px;align-self:start;}
-.fig svg{width:100%;height:auto;max-height:50vh;display:block}
-.fig .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#F4F1EA;border-top:1px solid rgba(244,241,234,.35);padding-top:10px;line-height:1.7}
+/* tiles: portrait cards fill the frame */
+.grid{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(min-content,1fr);gap:22px}
+.tile{border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);padding:calc(26px * var(--g)) 28px;display:flex;flex-direction:column;gap:calc(14px * var(--g))}
+.tile svg{width:46px;height:46px;flex:none}
+.tile h3{font-family:var(--display);font-weight:600;font-size:calc(38px * var(--g));line-height:1;text-transform:uppercase}
+.tile p{font-size:calc(20px * var(--g));line-height:1.4}
+.grid.three .tile p{flex:1}
+.grid.many .tile h3{font-size:calc(25px * var(--g));line-height:1.1;text-transform:none}
+.grid.many .tile p{font-size:calc(19px * var(--g))}
+.tile.t{background:var(--tint);border-color:var(--tint)}
+.tile.b{background:var(--coral-bright);border-color:var(--coral-bright)}
+.tile.b svg{stroke:var(--ink)}
+.tile.c{background:var(--navy);border-color:var(--navy);color:#FFFFFF}
+.tile.c svg{stroke:var(--coral-bright)}
+.tile .goto{align-self:flex-start;font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 18px;border:2px solid var(--coral-text);background:var(--coral-text);color:#FFFFFF;cursor:pointer}
+.tile.b .goto{background:var(--ink);border-color:var(--ink);color:#FFFFFF}
+.tile.c .goto{background:var(--coral-bright);border-color:var(--coral-bright);color:var(--ink)}
+.tile .goto:hover{background:var(--ink);border-color:var(--ink);color:#FFFFFF}
+.tile.b .goto:hover{background:var(--navy)}
+.tile.c .goto:hover{background:#FFFFFF;border-color:#FFFFFF;color:var(--ink)}
+.goto{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:inherit;border:2px solid currentColor;padding:6px 10px;text-decoration:none;cursor:pointer;display:inline-block;margin-top:4px}
 
-/* tile grid */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
-.tile{padding:20px 20px 24px;color:var(--paper);min-height:150px;border:2px solid var(--ink)}
-.tile h3{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;opacity:.9}
-.tile p{font-size:22px;line-height:1.35}
-.tile.o{background:var(--olive)}.tile.t{background:var(--rust)}.tile.c{background:var(--char)}
-.tile.b{background:var(--coral-bright);color:var(--ink)}
-/* A tile carrying an icon is a card, so it stands portrait and the icon gets
-   room. Scoped with :has so the plain tile grids are untouched. */
-.tile:has(.ticon){min-height:300px;display:flex;flex-direction:column;padding-top:26px}
-.tile .ticon{display:block;margin:0 0 auto}
-.tile .ticon svg{width:112px;height:90px;display:block;--accent:var(--paper)}
-.tile.b .ticon svg{--accent:var(--paper)}
-.tile:has(.ticon) h3{margin-bottom:8px}
-.tile.b h3{opacity:1}
+/* cover */
+.slide.cover{background:var(--navy);border-color:var(--navy);color:#FFFFFF;padding:36px 64px 64px}
+.cover .ctop{display:flex;justify-content:space-between;align-items:flex-start}
+.cover .badge{width:124px;height:124px;display:block;clip-path:circle(49.2%)}
+.cover .clabel{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--on-navy-mute);text-align:right;line-height:1.7}
+.cover .clabel b{display:block;color:var(--coral-bright);font-weight:500}
+.cover .bd{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px;align-items:center}
+.cover h1{color:#FFFFFF;font-size:78px;line-height:.94;text-transform:uppercase;max-width:12ch}
+.cover h1 em{color:var(--coral-bright)}
+.cover .note{color:var(--on-navy-mute);font-size:19px;line-height:1.5;margin-top:18px;max-width:46ch}
+.cover .fig{border:0;padding:0;background:transparent}
+.cover .fig svg{max-height:340px}
+.cover .foot{color:var(--on-navy-mute);border-color:rgba(244,241,234,.3)}
+.cover .foot b{color:#FFFFFF}
 
-/* before / after split */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.split div{border:2px solid var(--ink);background:var(--paper-2);padding:0;}
-.split h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:20px;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;color:var(--paper);border-bottom:2px solid var(--ink)}
-.split .b h3{background:var(--navy)}.split .a h3{background:var(--rust)}
-.split p{font-family:"IBM Plex Mono",monospace;font-size:19px;line-height:1.5;margin:14px 20px;color:var(--ink)}
+/* prompt: rail, then the card */
+.slide.L-prompt .bd{display:grid;grid-template-columns:350px minmax(0,1fr);gap:34px;justify-content:stretch;align-items:stretch;min-height:0}
+.slide.L-prompt h1{font-size:54px}
+.railwrap{position:relative;min-height:0;display:flex}
+.rail{flex:1;overflow:auto;display:flex;flex-direction:column;gap:20px;padding:2px 6px 2px 0;font-size:max(15px,calc(14px / var(--z,1)));line-height:1.45;color:var(--body)}
+.rail .rk{font-family:var(--mono);font-size:max(11px,calc(11px / var(--z,1)));font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);margin-bottom:6px}
+.rail ul{list-style:none;display:flex;flex-direction:column;gap:10px;border-left:4px solid var(--rust);padding-left:14px}
+.rail ul b{color:var(--ink);font-weight:600}
+.rail ol{list-style:none;counter-reset:a;display:flex;flex-direction:column;gap:10px}
+.rail ol li{counter-increment:a;display:grid;grid-template-columns:34px 1fr;gap:6px}
+.rail ol li::before{content:counter(a,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:24px;line-height:1;color:var(--coral-ghost)}
+.railwrap::after{content:"More below \2193";position:absolute;left:0;right:0;bottom:0;padding:6px 0;font-family:var(--mono);font-size:max(11px,calc(11px / var(--z,1)));letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);background:var(--paper);border-top:1px solid var(--hair);pointer-events:none;opacity:0}
+.railwrap.more::after{opacity:1}
 
-/* agenda rows: step, what, why */
-.rows{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.3fr);border:2px solid var(--ink);background:var(--paper-2);margin-top:8px}
-.rows > div{padding:11px 18px;border-top:1px solid rgba(30,27,23,.3);font-size:21px;line-height:1.3;color:var(--body)}
-.rows > div:nth-child(-n+3){border-top:0;background:var(--navy);color:#F4F1EA;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:9px 18px}
-.rows .step{font-family:"Oswald",sans-serif;font-weight:600;font-size:22px;text-transform:uppercase;color:var(--rust);letter-spacing:.01em;white-space:nowrap}
-.rows .step b{display:inline-block;width:1.6em;color:var(--ink)}
-.slide.has-rows.on{grid-template-columns:minmax(0,1fr)}
-.has-rows h1{font-size:44px}
-/* do-this badge, top right */
-.dotag{position:absolute;top:26px;right:34px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;background:var(--coral-bright);color:var(--ink);padding:7px 14px;border:2px solid var(--ink);}
-/* chevron steps */
-.chev{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
-.chev span{background:var(--rust);color:var(--paper);font-family:"Oswald",sans-serif;font-size:17px;letter-spacing:.06em;padding:14px 26px 14px 30px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);text-transform:uppercase}
-.chev span:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
-.chev span:nth-child(even){background:var(--char)}
-.chev span:last-child{background:var(--olive)}
-
-/* prompt pane */
-.pane{background:var(--paper-2);border:2px solid var(--ink);display:flex;flex-direction:column;min-height:0;min-width:0;}
-.pane-head{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;background:var(--navy);color:#F4F1EA;font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--ink)}
-.copy{background:var(--rust);color:var(--paper);border:2px solid var(--ink);padding:7px 16px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;transition:background .15s}
-.copy:hover{background:var(--coral-text)}
-.copy.done{background:var(--olive)}
-.prewrap{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
-pre{font-family:"IBM Plex Mono",monospace;font-size:max(14px,calc(15px / var(--z,1)));line-height:1.42;white-space:pre-wrap;padding:14px 20px 22px;overflow:auto;flex:1;color:var(--ink)}
-.prewrap::after{content:"More below \2193";position:absolute;left:0;right:0;bottom:0;padding:8px 0;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral-text);background:var(--paper-2);border-top:1px solid #DADAD5;pointer-events:none;opacity:0;transition:opacity .15s}
-.pane.more .prewrap::after{opacity:1}
+.pane{background:var(--paper-2);border:2px solid var(--ink);display:flex;flex-direction:column;min-height:0;min-width:0}
+.pane-head{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:8px 14px 8px 22px;background:var(--navy);color:#FFFFFF;flex-wrap:wrap}
+.pane-head .pl{font-family:var(--mono);font-size:max(12px,calc(12px / var(--z,1)));font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);margin-right:12px}
+.pane-head .ps{font-size:max(14px,calc(13px / var(--z,1)));color:var(--on-navy-mute)}
 .btns{display:flex;gap:8px}
-.expand{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
-.expand:hover{border-color:#FF6F5E;color:#FF6F5E}
-/* Fill in the blanks, social deck only (5 Oct). A FILL IN button on any
-   prompt with blanks opens this panel. Answers are keyed by the blank's own
-   words, so one answer fills that blank in every prompt in the deck. */
-#filler{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:6}
-#filler.on{display:flex}
-#filler .rhead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 40px;background:var(--navy);color:#F4F1EA;font-family:"Oswald",sans-serif;font-size:22px;letter-spacing:.06em;text-transform:uppercase}
-#filler .fbody{overflow:auto;flex:1;padding:28px 40px 60px}
-#filler .fwrap{max-width:92ch;margin:0 auto}
-#filler .fhint{font-size:17px;color:var(--mute);margin:0 0 18px}
-#filler label{display:block;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:18px 0 6px}
-#filler textarea{width:100%;min-height:52px;font:inherit;font-size:18px;line-height:1.4;padding:10px 12px;border:2px solid var(--ink);background:#FFFFFF;color:var(--ink);border-radius:0;resize:vertical}
-#filler textarea:focus{outline:3px solid #FF6F5E;outline-offset:1px}
-#filler h3{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-text);margin:30px 0 8px}
-#filler pre{font-size:17px;line-height:1.6;white-space:pre-wrap;background:#FFFFFF;border:2px solid var(--ink);padding:18px 20px;margin:0}
-#filler .rclose,#filler .fclear{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
-#filler .rclose:hover,#filler .fclear:hover{border-color:#FF6F5E;color:#FF6F5E}
-@media (max-width:640px){.pane-head .btns button{white-space:nowrap}.pane-head{flex-wrap:wrap}footer .hint{display:none}}
-.pane-head .fill{background:#FF6F5E;color:var(--ink);border:2px solid var(--ink)}
-#reader{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:5}
-#reader.on{display:flex}
-#reader .rhead{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--navy);color:#F4F1EA;font-family:"Oswald",sans-serif;font-size:22px;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--ink)}
-#reader pre{font-size:19px;line-height:1.6;padding:36px 64px 60px;max-width:92ch;width:100%;margin:0 auto;box-sizing:border-box}
-#reader .rclose{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
-#reader .rclose:hover{border-color:#FF6F5E;color:#FF6F5E}
-.after{border-top:2px solid var(--ink);background:var(--paper)}
-.after summary{padding:8px 18px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
-.after summary::after{content:"+";color:var(--rust);font-size:20px;line-height:1}
-.after[open] summary::after{content:"\2212"}
-.after ol{list-style:none;counter-reset:s;padding:0 18px 16px;font-size:16px;color:var(--body)}
-.after ol li{counter-increment:s;margin:8px 0;padding-left:44px;position:relative;min-height:28px}
-.after ol li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;background:var(--navy);color:#F4F1EA;font-family:"IBM Plex Mono",monospace;font-size:12px;padding:3px 6px;letter-spacing:.1em}
+.pbtn{font-family:var(--mono);font-size:max(12px,calc(12px / var(--z,1)));font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border:2px solid var(--on-navy-mute);background:transparent;color:#FFFFFF;white-space:nowrap}
+.pbtn:hover{border-color:var(--coral-bright);color:var(--coral-bright)}
+.pbtn.copy{background:var(--coral-bright);border-color:var(--coral-bright);color:var(--ink)}
+.pbtn.copy:hover{background:#FFFFFF;border-color:#FFFFFF;color:var(--ink)}
+.pbtn.copy.done{background:#FFFFFF;border-color:#FFFFFF}
+.prewrap{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
+pre{font-family:var(--mono);font-size:max(15px,calc(15px / var(--z,1)));line-height:1.56;white-space:pre-wrap;padding:20px 26px 36px;overflow:auto;flex:1;color:var(--ink)}
+pre .lv{color:var(--coral-text);font-weight:500}
+pre .mk{color:var(--olive);font-weight:500}
+pre .bl{background:var(--tint);color:var(--ink);border-bottom:2px dotted var(--coral-text);padding:0 4px;cursor:pointer;font-weight:500}
+pre .bl.on{background:transparent;color:var(--ink);border-bottom-style:solid}
+pre .bl:hover{background:var(--coral-bright);color:var(--ink)}
+.prewrap::after{content:"More below \2193  scroll, or Expand";position:absolute;left:0;right:0;bottom:0;padding:9px 26px;font-family:var(--mono);font-size:max(11px,calc(11px / var(--z,1)));font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);background:var(--paper);border-top:1px solid var(--hair);pointer-events:none;opacity:0}
+.pane.more .prewrap::after{opacity:1}
 
-.foot{position:absolute;left:64px;right:64px;bottom:18px;border-top:2px solid var(--ink);padding-top:8px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.foot{position:absolute;left:64px;right:64px;bottom:20px;border-top:1px solid var(--hair);padding-top:9px;font-family:var(--mono);font-size:max(12px,calc(10px / var(--z,1)));letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
 .foot b{color:var(--ink);font-weight:500}
 
 footer{display:flex;align-items:center;justify-content:space-between;padding:12px 40px}
 .nav{display:flex;gap:8px}
-.nav button{background:transparent;color:#FFFFFF;border:1px solid var(--olive);padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
+.nav button{background:transparent;color:#FFFFFF;border:1px solid var(--olive);padding:8px 18px;font-family:var(--mono);letter-spacing:.16em;font-size:12px}
 .nav button:hover{border-color:#FFFFFF}
-.nav button.on{background:var(--rust);border-color:var(--rust)}
-#menulist li.basic button::after{content:"basics";grid-column:2;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#C8CDD3;margin-top:2px}
-.menu.skip #menulist li.basic button{opacity:.38}
+.nav button.on{background:var(--coral-text);border-color:var(--coral-text)}
 .bar{flex:1;height:3px;background:var(--olive);margin:0 28px;position:relative}
-.bar i{position:absolute;left:0;top:0;height:100%;background:var(--paper);transition:width .25s}
-.hint{color:#C8CDD3;font-size:12px;font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
+.bar i{position:absolute;left:0;top:0;height:100%;background:var(--coral-bright);transition:width .25s}
+.hint{color:var(--on-navy-mute);font-size:12px;font-family:var(--mono);letter-spacing:.08em}
 
-#menu{position:fixed;inset:0;background:rgba(31,42,55,.975);display:none;padding:56px 80px;overflow:auto;color:#FFFFFF}
+/* slide list */
+#menu{position:fixed;inset:0;background:rgba(31,42,55,.975);display:none;padding:56px 80px;overflow:auto;color:#FFFFFF;z-index:8}
 #menu.on{display:block}
-#menu h2{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;letter-spacing:-.005em;text-transform:uppercase;color:#FFFFFF;margin:0 0 26px;padding-top:14px;border-top:3px solid #FF6F5E}
+#menu h2{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;letter-spacing:-.005em;text-transform:uppercase;color:#FFFFFF;margin:0 0 26px;padding-top:14px;border-top:3px solid var(--coral-bright)}
 #menu ol{list-style:none;columns:2;column-gap:64px;max-width:1060px}
 #menu li{break-inside:avoid;margin:0 0 2px}
 #menu li.sec{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.05;letter-spacing:-.005em;text-transform:uppercase;color:#FFFFFF;margin:26px 0 10px;padding-top:10px;border-top:2px solid rgba(244,241,234,.26)}
 #menu li:first-child.sec{margin-top:0}
-#menulist button{background:none;border:0;color:#C8CDD3;font-size:17px;text-align:left;padding:5px 0;width:100%;
-  display:grid;grid-template-columns:42px 1fr;align-items:baseline;gap:0 14px;transition:color .14s ease}
-#menulist button .n{font-family:var(--display);font-weight:700;font-size:23px;line-height:1;
-  color:var(--coral-ghost-navy);transition:color .14s ease}
+#menulist button{background:none;border:0;color:var(--on-navy-mute);font-size:17px;text-align:left;padding:5px 0;width:100%;display:grid;grid-template-columns:42px 1fr;align-items:baseline;gap:0 14px;transition:color .14s ease}
+#menulist button .n{font-family:var(--display);font-weight:700;font-size:23px;line-height:1;color:var(--coral-ghost-navy);transition:color .14s ease}
 #menulist button:hover,#menulist button:focus-visible{color:#FFFFFF}
-#menulist button:hover .n,#menulist button:focus-visible .n{color:#FF6F5E}
-@media(prefers-reduced-motion:reduce){#menulist button,#menulist button .n{transition:none}}
-#menu .close{position:fixed;top:20px;right:40px;color:#FFFFFF;background:transparent;border:1px solid #C8CDD3;padding:8px 18px;font-family:"IBM Plex Mono",monospace;letter-spacing:.16em;font-size:12px}
-#menu .close:hover{border-color:#FFFFFF;color:#FF6F5E}
+#menulist button:hover .n,#menulist button:focus-visible .n{color:var(--coral-bright)}
+#menulist li.basic button::after{content:"basics";grid-column:2;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-mute);margin-top:2px}
+#menu.skip #menulist li.basic button{opacity:.38}
+#menu .close{position:fixed;top:20px;right:40px;color:#FFFFFF;background:transparent;border:1px solid var(--on-navy-mute);padding:8px 18px;font-family:var(--mono);letter-spacing:.16em;font-size:12px}
+#menu .close:hover{border-color:#FFFFFF;color:var(--coral-bright)}
 
-@media (max-width:1000px){
-  main{padding:0 12px 8px}
-  .slide{padding:28px 22px 60px}
-  .slide.has-fig.on{grid-template-columns:1fr}
-  .has-prompt ul.points li{flex-basis:100%}
-  .grid,.split{grid-template-columns:1fr}
-  h1{font-size:38px}.cover h1{font-size:56px}
-  ul.points li{font-size:20px}
-  .foot{left:22px;right:22px}
-  header,footer{padding:12px 16px}
+/* full-screen reader (Expand) and fill-in panel */
+#reader,#filler{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:6}
+#reader.on,#filler.on{display:flex}
+.rhead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 40px;background:var(--navy);color:var(--cream);font-family:var(--display);font-size:22px;letter-spacing:.06em;text-transform:uppercase}
+.rhead .rclose,.rhead .fclear{background:transparent;color:#FFFFFF;border:2px solid var(--on-navy-mute);padding:8px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.14em}
+.rhead .rclose:hover,.rhead .fclear:hover{border-color:var(--coral-bright);color:var(--coral-bright)}
+#reader pre{font-size:19px;line-height:1.62;padding:36px 64px 60px;max-width:92ch;width:100%;margin:0 auto}
+#filler .fbody{overflow:auto;flex:1;padding:28px 40px 60px}
+#filler .fwrap{max-width:92ch;margin:0 auto}
+#filler .fhint{font-size:17px;color:var(--mute);margin:0 0 18px}
+#filler label{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:18px 0 6px}
+#filler textarea{width:100%;min-height:52px;font:inherit;font-size:18px;line-height:1.4;padding:10px 12px;border:2px solid var(--ink);background:#FFFFFF;color:var(--ink);border-radius:0;resize:vertical}
+#filler textarea:focus{outline:3px solid var(--coral-bright);outline-offset:1px}
+#filler h3{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-text);margin:30px 0 8px}
+#filler pre{font-size:17px;line-height:1.6;background:#FFFFFF;border:2px solid var(--ink);padding:18px 20px;margin:0;overflow:visible}
+
+/* ---------- phone page ---------- */
+#page{display:none}
+.pbar{position:sticky;top:0;z-index:4;height:56px;background:var(--paper);border-bottom:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 16px}
+.pbar .pmark{display:block;width:34px;height:34px;flex:none}
+.pbar .pmark img{width:100%;height:100%;display:block}
+.pbar .ptitle{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbar button{flex:none;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border:2px solid var(--ink);background:transparent;color:var(--ink);padding:7px 10px}
+.pcover{background:var(--navy);color:#FFFFFF;padding:24px 20px 30px}
+.pcover .clabel{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright)}
+.pcover h2{font-family:var(--display);font-weight:600;font-size:46px;line-height:.95;text-transform:uppercase;margin-top:10px;text-wrap:balance}
+.pcover h2 em{font-style:normal;color:var(--coral-bright)}
+.pcover p{color:var(--on-navy-mute);font-size:16px;line-height:1.5;margin-top:14px}
+.pcover .fig{margin-top:20px;border:0;padding:0;background:transparent}
+.pcover .fig svg{max-height:260px}
+.psec{padding:30px 20px 8px;scroll-margin-top:60px}
+.psec .kick .kn::before,.band .bi::before{content:attr(data-n)}
+.kick .kn{font-size:38px}
+.psec h2{font-family:var(--display);font-weight:600;font-size:36px;line-height:1;color:var(--ink);margin:6px 0 10px;text-wrap:balance}
+.psec h2 em{font-style:normal;color:var(--rust)}
+.psec .icorow{max-width:none;padding:0 0 14px;justify-content:space-between;flex-direction:row-reverse}
+.psec .icorow svg{width:36px}
+.psec .icorow span{font-size:11px;text-align:left}
+.psec ul.points li{font-size:17px;padding:10px 0 10px 26px}
+.psec ul.points li::before{top:calc(10px + .62em);width:14px}
+.psec .note{font-size:15px;margin-top:12px}
+.psec .fig{margin-top:16px}
+.psec .split{grid-template-columns:1fr;gap:12px;margin-top:4px}
+.psec .split h3{font-size:17px;padding:10px 14px}
+.psec .split p,.psec .split p:first-of-type{font-size:16px;margin:12px 14px}
+.psec .grid{grid-template-columns:1fr;gap:12px}
+.psec .tile{padding:18px 18px 16px;gap:10px}
+.psec .tile svg{width:36px;height:36px}
+.psec .tile h3,.psec .grid.many .tile h3{font-size:24px}
+.psec .tile p,.psec .grid.many .tile p{font-size:16px}
+.psec .tile .goto{align-self:stretch;text-align:center;padding:13px}
+.psec .bands{border-top:2px solid var(--ink);grid-auto-rows:auto}
+.psec .band{align-items:start}
+.psec .band,.psec .bands.num .band{grid-template-columns:1fr;gap:8px;padding:16px 0}
+.psec .band .bi{font-size:34px}
+.psec .band .bn{font-size:24px}
+.psec .band .bl1,.psec .band .bl2{font-size:16px}
+.psec .bands.num .band{grid-template-columns:44px 1fr;column-gap:10px}
+.psec .bands.num .band > :nth-child(n+3){grid-column:2}
+.pwhere{font-size:15px;color:var(--mute);margin:18px 0 12px}
+.pwhere b{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text)}
+.ppc{border:2px solid var(--ink);background:var(--paper-2);margin:4px -6px 0}
+.ppc .phd{background:var(--navy);color:#FFFFFF;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.ppc .phd .pl{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright)}
+.ppc .phd .ps{font-size:13.5px;color:var(--on-navy-mute)}
+.ppc .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ppc .btns.one{grid-template-columns:1fr}
+.ppc .pbtn{padding:12px 10px;text-align:center}
+.ppc pre{font-size:15px;line-height:1.6;padding:16px 14px 18px;overflow:visible}
+.ppc.fold pre{max-height:calc(15px * 1.6 * 14 + 16px);overflow:hidden}
+.ppc .pmore{display:none;width:100%;text-align:left;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);background:var(--paper);border:0;border-top:1px solid var(--hair);padding:12px 14px}
+.ppc.long .pmore{display:block}
+.pthen{margin-top:16px}
+.pthen .rk{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);margin-bottom:8px}
+.pthen ol{list-style:none;counter-reset:a;display:flex;flex-direction:column;gap:10px}
+.pthen li{counter-increment:a;display:grid;grid-template-columns:32px 1fr;gap:6px;font-size:16px;line-height:1.45}
+.pthen li::before{content:counter(a,decimal-leading-zero);font-family:var(--display);font-weight:600;font-size:22px;line-height:1.1;color:var(--coral-ghost)}
+.pend{height:calc(90px + env(safe-area-inset-bottom,0px))}
+.pnext{position:fixed;left:0;right:0;bottom:0;z-index:4;background:var(--navy);color:#FFFFFF;display:flex;align-items:center;gap:12px;padding:0 16px env(safe-area-inset-bottom,0px);height:calc(60px + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.pnext .pline{flex:1;height:4px;background:var(--olive);position:relative;min-width:30px}
+.pnext .pline i{position:absolute;left:0;top:0;bottom:0;background:var(--coral-bright)}
+.pnext button{background:none;border:0;color:#FFFFFF;font:inherit;letter-spacing:inherit;text-transform:inherit;text-align:right;max-width:58%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:10px 0}
+.pnext button b{color:var(--coral-bright);font-weight:500}
+
+@media (max-width:760px){
+  html,body{height:auto;background:var(--paper)}
+  body{display:block;overflow:auto}
+  body > header,#deck,body > footer{display:none!important}
+  #page{display:block}
+  #menu{padding:64px 20px 40px}
+  #menu ol{columns:1}
+  #menu .close{top:12px;right:16px}
+  .rhead{padding:12px 16px;font-size:18px}
+  #reader pre{padding:20px 16px 40px;font-size:16px}
+  #filler .fbody{padding:20px 16px 50px}
+  #filler pre{font-size:15px;padding:14px}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-  /* Branch buttons on the starting-point slide. Social deck only. */
-  .goto{display:inline-block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:inherit;border:2px solid currentColor;padding:8px 12px;text-decoration:none;cursor:pointer}
-  .goto:hover{background:rgba(0,0,0,.08)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<div id="page"></div>
 <header>
   <a class="brand" href="../">MAGNUM AI</a>
   <span class="section" id="sec"></span>
@@ -252,8 +335,8 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
   <span class="hint">Arrow keys move. SLIDES for the full list.</span>
 </footer>
 <div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
-<div id="filler" role="dialog" aria-label="Fill in the blanks"><div class="rhead"><span>Fill in the blanks</span><div class="btns"><button class="copy" id="fcopy" data-i="0">COPY PROMPT</button><button class="fclear" id="fclear">CLEAR</button><button class="rclose" id="fclose">CLOSE ✕</button></div></div><div class="fbody"><div class="fwrap"><p class="fhint">Type a short answer in each box. The prompt underneath fills in as you type. Leave a box empty and its blank stays in the prompt. Your answers are kept on this device and fill the same blank in every prompt in the deck.</p><div id="ffields"></div><h3>Your prompt</h3><pre id="fpre"></pre></div></div></div>
-<div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="copy" id="rcopy" data-i="0">COPY PROMPT</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
+<div id="filler" role="dialog" aria-label="Fill in the blanks"><div class="rhead"><span>Fill in the blanks</span><div class="btns"><button class="pbtn copy" id="fcopy" data-copy="0">Copy</button><button class="fclear" id="fclear">CLEAR</button><button class="rclose" id="fclose">CLOSE ✕</button></div></div><div class="fbody"><div class="fwrap"><p class="fhint">Type a short answer in each box. The prompt underneath fills in as you type. Leave a box empty and its blank stays in the prompt. Your answers are kept on this device and fill the same blank in every prompt in the deck.</p><div id="ffields"></div><h3>Your prompt</h3><pre id="fpre"></pre></div></div></div>
+<div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="pbtn copy" id="rcopy" data-copy="0">Copy</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
 const P1 = `Role: You are a social media researcher who studies what the best small
@@ -509,10 +592,9 @@ const ICONS = {
 const F = {};
 F.cover = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><rect x="40" y="290" width="340" height="56"/><rect x="40" y="214" width="340" height="56"/><rect x="40" y="138" width="340" height="56"/><rect x="40" y="62" width="340" height="56"/></g><g fill="#3A3630"><rect x="62" y="311" width="120" height="12"/><rect x="62" y="235" width="150" height="12"/><rect x="62" y="159" width="110" height="12"/></g><rect x="62" y="83" width="160" height="12" fill="#FF6F5E"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17"><text x="276" y="322">RESEARCH</text><text x="252" y="246">YOUR VOICE</text><text x="300" y="170">WRITE</text></g><text x="258" y="94" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#C63A2A">AUTOPILOT</text><circle cx="360" cy="90" r="9" fill="#5B6B7A" stroke="#1E1B17" stroke-width="3"/></svg>',
  'Fig. 01 / four steps, bottom to top<br>Each one leaves something working'];
-F.flow = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><rect x="20" y="40" width="120" height="70"/><rect x="150" y="150" width="120" height="70"/><rect x="280" y="260" width="120" height="70"/></g><rect x="20" y="260" width="120" height="70" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle"><text x="80" y="80">PHOTO</text><text x="210" y="190">CLAUDE</text><text x="340" y="300">BUFFER</text></g><text x="80" y="300" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle">YOU CHECK IT</text><path d="M140 75 H210 V150" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M270 185 H340 V260" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M280 295 H140" fill="none" stroke="#5B6B7A" stroke-width="4" stroke-dasharray="9 8"/><path d="M200 138l10 12 10-12M330 248l10 12 10-12" fill="none" stroke="#1E1B17" stroke-width="4"/></svg>',
+F.flow = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><rect x="20" y="40" width="120" height="70"/><rect x="150" y="150" width="120" height="70"/><rect x="280" y="260" width="120" height="70"/></g><rect x="20" y="260" width="120" height="70" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle"><text x="80" y="80">PHOTO</text><text x="210" y="190">CLAUDE</text><text x="340" y="300">BUFFER</text></g><text x="80" y="300" font-family="IBM Plex Mono" font-size="13" letter-spacing="1" fill="#1E1B17" text-anchor="middle">YOU CHECK IT</text><path d="M140 75 H210 V150" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M270 185 H340 V260" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M280 295 H140" fill="none" stroke="#5B6B7A" stroke-width="4" stroke-dasharray="9 8"/><path d="M200 138l10 12 10-12M330 248l10 12 10-12" fill="none" stroke="#1E1B17" stroke-width="4"/></svg>',
  'Fig. 02 / photo in, draft out, you check it<br>Nothing goes out until you have read it'];
 
-function goTo(id){const n=S.findIndex(x=>x.id===id);if(n>=0)show(n);return false;}
 const S = [
 {sec:"", cover:true, fig:"cover", h:"Your posts, in your voice, <em>without the hours</em>", pts:[], sub:"Reference · Social Media with AI", note:"Start from nothing or from a feed that isn't working. Capture how you sound, write a post for every platform in two minutes, then let a queue fill up for you to check. You build each piece as you go."},
 
@@ -523,9 +605,9 @@ const S = [
  "This deck fixes all three. You get prompts that do the writing and a queue that fills up. Your only job is checking each post."]},
 
 {sec:"Start here", id:"start", ic:["Spanner","3 starting points &middot; pick yours"], h:"Where are you <em>starting?</em>", tiles:[
- ["o","Nothing yet","No accounts, or none you can get into. Start with the setup slide.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('setup')\">Start here &rarr;</a>"],
- ["b","Accounts, but quiet","You're on there but rarely post. Skip setup and start with the research.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>"],
- ["c","Posting, not working","You post, but it's bland or it's a chore. Research, then roast your feed.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>"]],
+ ["o","Nothing yet","No accounts, or none you can get into. Start with the setup slide.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('setup')\">Start here &rarr;</a>","Building"],
+ ["b","Accounts, but quiet","You're on there but rarely post. Skip setup and start with the research.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>","Clock"],
+ ["c","Posting, not working","You post, but it's bland or it's a chore. Research, then roast your feed.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>","Megaphone"]],
  pts:["Every path ends in the same place: your voice written down, posts in two minutes, and a queue you check from your phone."]},
 
 {sec:"Start here", id:"setup", ic:["Building","Starting from nothing &middot; about an hour"], h:"Set up from <em>zero</em>", pts:[
@@ -693,52 +775,147 @@ const S = [
 
 const deck = document.getElementById('deck');
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-const flow=t=>{const out=[];for(const raw of t.split('\n')){const l=raw.replace(/\s+$/,'');const prev=out.length?out[out.length-1]:'';const item=x=>/^\s*([-\u2022*]|\d+[.)])\s/.test(x)||/^[A-Z][A-Z0-9 ]{2,}:/.test(x);const indented=/^\s+\S/.test(raw);if(l===''){out.push('');}else if(prev!==''&&(indented||/^[a-z]/.test(l)||(!item(l)&&!item(prev)))){out[out.length-1]=prev+' '+l.trim();}else{out.push(l);}}return out.join('\n');};
+const flow=t=>{const out=[];for(const raw of t.split('\n')){const l=raw.replace(/\s+$/,'');const prev=out.length?out[out.length-1]:'';const item=x=>/^\s*([-•*]|\d+[.)])\s/.test(x)||/^[A-Z][A-Z0-9 ]{2,}:/.test(x);const indented=/^\s+\S/.test(raw);if(l===''){out.push('');}else if(prev!==''&&(indented||/^[a-z]/.test(l)||(!item(l)&&!item(prev)))){out[out.length-1]=prev+' '+l.trim();}else{out.push(l);}}return out.join('\n');};
 
+/* Fill in the blanks. A bracket in capitals, like [CHECK], is an answer
+   marker and never becomes a blank. Answers are keyed by the blank's own
+   words, so one answer fills that blank in every prompt in the deck.
+   Nothing typed means the authored text, byte for byte. */
+const FKEY='magnum-social-fill';
+let FV={};try{FV=JSON.parse(localStorage.getItem(FKEY)||'{}');}catch(e){}
+const fsave=()=>{try{localStorage.setItem(FKEY,JSON.stringify(FV));}catch(e){}};
+const blanks=p=>{const out=[];(p.match(/\[[^\]]+\]/g)||[]).forEach(b=>{const l=b.slice(1,-1);if(/[a-z]/.test(l)&&!out.includes(l))out.push(l);});return out;};
+const fk=l=>l.replace(/\s+/g,' ');
+const filled=i=>{let t=S[i].prompt;blanks(t).forEach(l=>{const v=(FV[fk(l)]||'').trim();if(v)t=t.split('['+l+']').join(v);});return t;};
+
+const NAME=document.title.split(' · ')[0];
+const LAST=S.length-1;
+const NPROMPTS=S.filter(x=>x.prompt).length;
+const two=n=>String(n).padStart(2,'0');
+const pnum=i=>S.slice(0,i+1).filter(x=>x.prompt).length;
+const plain=h=>h.replace(/<[^>]+>/g,'');
+const kickText=(s,i)=>s.prompt?`${s.sec} · Prompt ${pnum(i)}`:(s.sec||'');
+const icon=k=>DSI[k]||ICONS[k]||'';
+
+/* The prompt on screen: lever labels marked, blanks as chips you tap to
+   fill. Display only. Copy always reads S[i].prompt through filled(). */
+function promptHTML(i){
+  return esc(flow(S[i].prompt))
+    .replace(/^(Role|Context|Constraints|Tone|Format|Output):/gm,'<span class="lv">$1:</span>')
+    .replace(/\[([^\]]+)\]/g,(m,l)=>{
+      if(!/[a-z]/.test(l))return `<span class="mk">${m}</span>`;
+      const v=(FV[fk(l)]||'').trim();
+      return `<span class="bl${v?' on':''}" data-i="${i}" data-l="${l.replace(/"/g,'&quot;')}" title="Tap to fill in">${v?esc(v):l}</span>`;
+    });
+}
+function paintPrompt(i){document.querySelectorAll(`pre[data-p="${i}"]`).forEach(pre=>{pre.innerHTML=promptHTML(i);});}
+
+/* Content blocks, shared by both renderers */
+const ptsH=s=>s.pts&&s.pts.length?`<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`:'';
+const noteH=s=>s.note?`<p class="note">${s.note}</p>`:'';
+const metaH=s=>s.meta?`<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`:'';
+const figH=s=>s.fig?`<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`:'';
+const splitH=s=>s.split?`<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`:'';
+const bandsH=s=>{
+  if(!s.rows)return '';
+  const hd=s.rowhead||["Step","What we do","Why it matters"], num=!s.rowhead;
+  return `<div class="bands${num?' num':''}">${s.rows.map((r,k)=>`<div class="band">${num?`<span class="bi" data-n="${two(k+1)}" aria-hidden="true"></span>`:''}<div class="bn">${num?'':`<small>${hd[0]}</small>`}${r[0]}</div><div class="bl1"><small>${hd[1]}</small>${r[1]}</div><div class="bl2"><small>${hd[2]}</small>${r[2]}</div></div>`).join('')}</div>`;
+};
+const GO=/<br>\s*(<a class="goto"[\s\S]*?<\/a>)\s*$/;
+const tilesH=s=>{
+  if(!s.tiles)return '';
+  return `<div class="grid ${s.tiles.length>3?'many':'three'}">${s.tiles.map(t=>{
+    let body=t[2],go='';const m=body.match(GO);if(m){go=m[1];body=body.replace(GO,'');}
+    return `<div class="tile ${t[0]}">${t[3]?icon(t[3]):''}<h3>${t[1]}</h3><p>${body}</p>${go}</div>`;}).join('')}</div>`;
+};
+const icoH=s=>s.ic&&DSI[s.ic[0]]?`<div class="icorow"><span>${s.ic[1]}</span>${DSI[s.ic[0]]}</div>`:'';
+const kickH=(s,i)=>`<div class="kick"><span class="kn" data-n="${two(i)}" aria-hidden="true"></span><span class="kt">${kickText(s,i)}</span></div>`;
+
+/* ---------- laptop: one slide per section, four layouts ---------- */
 S.forEach((s,i)=>{
-  const el = document.createElement('section');
-  el.className = 'slide' + (s.prompt?' has-prompt':'') + (s.cover?' cover':'') + (s.tiles?' tiles':'') + (s.rows?' has-rows':'') + (s.fig?' has-fig':'');
-  const num = i===0 ? '' : `<span class="n">${i}</span>`;
-  let left = `<div class="left">`;
-  if(s.sec) left += `<div class="kicker">${s.sec}</div>`;
-  left += `<h1>${s.h}</h1>`;
-  if(s.sub) left += `<div class="sub">${s.sub}</div>`;
-  if(s.ic && DSI[s.ic[0]]) left += `<div class="icorow">${DSI[s.ic[0]]}<span>${s.ic[1]}</span></div>`;
-  if(s.chev) left += `<div class="chev">${s.chev.map(c=>`<span>${c}</span>`).join('')}</div>`;
-  if(s.rows){ const hd=s.rowhead||["Step","What we do","Why it matters"]; const num=!s.rowhead; left += `<div class="rows"><div>${hd[0]}</div><div>${hd[1]}</div><div>${hd[2]}</div>${s.rows.map((r,i)=>`<div class="step">${num?`<b>${i+1}</b>`:''}${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div>`).join('')}</div>`; }
-  if(s.tiles) left += `<div class="grid">${s.tiles.map(t=>`<div class="tile ${t[0]}">${t[3]?`<span class="ticon">${ICONS[t[3]]||''}</span>`:''}<h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('')}</div>`;
-  if(s.pts&&s.pts.length) left += `<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`;
-  if(s.split) left += `<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`;
-  if(s.note) left += `<p class="note">${s.note}</p>`;
-  if(s.meta) left += `<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`;
-  left += `</div>`;
-  let right = '';
-  if(s.fig){ right = `<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`; }
-  if(s.prompt){
-    right = `<div class="pane">
-      <div class="pane-head"><span class="where">${s.where}</span><div class="btns"><button class="expand" data-i="${i}">EXPAND</button><button class="copy" data-i="${i}">COPY PROMPT</button></div></div>
-      <div class="prewrap"><pre>${esc(flow(s.prompt))}</pre></div>
-      <details class="after"><summary>What to do with this</summary><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></details>
-    </div>`;
+  const el=document.createElement('section');
+  const L=s.cover?'cover':s.prompt?'prompt':s.tiles?'tiles':s.rows?'rows':'statement';
+  el.className=`slide L-${L}`+(s.cover?' cover':'');
+  el.dataset.layout=L;
+  let h='';
+  if(s.cover){
+    h=`<div class="ctop"><img class="badge" src="../assets/logos/magnum-badge-ring-navy-red-ai.svg" alt="Magnum AI"><div class="clabel"><b>${s.sub||''}</b>${LAST} slides · ${NPROMPTS} prompts</div></div>
+      <div class="bd"><div><h1>${s.h}</h1>${noteH(s)}</div>${figH(s)}</div>`;
+  }else{
+    h=`<div class="hd">${kickH(s,i)}<div class="hrow"><h1>${s.h}</h1>${icoH(s)}</div></div>`;
+    if(L==='prompt'){
+      const nb=blanks(s.prompt).length;
+      h+=`<div class="bd"><div class="railwrap"><div class="rail">${s.pts&&s.pts.length?`<ul>${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`:''}<div><div class="rk">Where</div><p>${s.where}</p></div>${s.after&&s.after.length?`<div><div class="rk">Then</div><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></div>`:''}</div></div>
+        <div class="pane"><div class="pane-head"><div><span class="pl">The prompt</span><span class="ps">${nb?'Tap a blank to fill it, then copy':'Copy it, then paste it in'}</span></div><div class="btns">${nb?`<button class="pbtn" data-fill="${i}">Fill in</button>`:''}<button class="pbtn" data-expand="${i}">Expand</button><button class="pbtn copy" data-copy="${i}">Copy</button></div></div><div class="prewrap"><pre data-p="${i}"></pre></div></div></div>`;
+    }else if(s.fig){
+      h+=`<div class="bd two"><div class="col">${ptsH(s)}${splitH(s)}${noteH(s)}${metaH(s)}</div>${figH(s)}</div>`;
+    }else{
+      h+=`<div class="bd">${bandsH(s)}${tilesH(s)}${splitH(s)}${ptsH(s)}${noteH(s)}${metaH(s)}</div>`;
+    }
   }
-  const badge = `<div class="foot"><span>Magnum AI / Reference</span><span>${s.sec||'Social'}</span><b>${String(i).padStart(2,'0')} / ${S.length-1}</b></div>`;
-  const dotag = (s.tag==='do' || s.prompt) ? '<div class="dotag">Do this now</div>' : '';
-  el.innerHTML = left + right + badge + dotag;
+  h+=`<div class="foot"><span>Magnum AI / Reference</span><span>${s.sec||NAME}</span><b>${two(i)} / ${LAST}</b></div>`;
+  el.innerHTML=h;
   deck.appendChild(el);
 });
 
-const slides=[...document.querySelectorAll('.slide')];
+/* ---------- phone: the same slides as one page ---------- */
+const page=document.getElementById('page');
+(function(){
+  let ph=`<div class="pbar"><a class="pmark" href="../" aria-label="Magnum AI members area"><img src="../assets/logos/magnum-mark.svg" alt=""></a><span class="ptitle">${NAME}</span><button type="button" onclick="toggleMenu()">Slides</button></div>`;
+  S.forEach((s,i)=>{
+    if(s.cover){ph+=`<section class="pcover" id="p0"><div class="clabel">${s.sub?s.sub+' · ':''}${LAST} slides · ${NPROMPTS} prompts</div><h2>${s.h}</h2>${s.note?`<p>${s.note}</p>`:''}${figH(s)}</section>`;return;}
+    let b=`<section class="psec" id="p${i}">${kickH(s,i)}<h2>${s.h}</h2>${icoH(s)}`;
+    if(s.prompt){
+      const nb=blanks(s.prompt).length;
+      b+=`${ptsH(s)}<p class="pwhere"><b>Where</b>${s.where}</p><div class="ppc${s.prompt.length>700?' fold long':''}"><div class="phd"><div><div class="pl">The prompt</div><div class="ps">${nb?'Tap a blank to fill it, then copy':'Copy it, then paste it in'}</div></div><div class="btns${nb?'':' one'}">${nb?`<button class="pbtn" data-fill="${i}">Fill in</button>`:''}<button class="pbtn copy" data-copy="${i}">Copy</button></div></div><pre data-p="${i}"></pre><button class="pmore" type="button">Read the whole prompt</button></div>${s.after&&s.after.length?`<div class="pthen"><div class="rk">Then</div><ol>${s.after.map(a=>`<li>${a}</li>`).join('')}</ol></div>`:''}`;
+    }else{
+      b+=bandsH(s)+tilesH(s)+splitH(s)+ptsH(s)+figH(s)+noteH(s)+metaH(s);
+    }
+    ph+=b+'</section>';
+  });
+  ph+=`<div class="pend"></div><nav class="pnext" aria-label="Where you are"><span id="pcount"></span><span class="pline"><i id="pfill"></i></span><button type="button" id="pnext"></button></nav>`;
+  page.innerHTML=ph;
+})();
+S.forEach((s,i)=>{if(s.prompt)paintPrompt(i);});
+
+const slides=[...deck.querySelectorAll('.slide')];
+const phoneMQ=matchMedia('(max-width:760px)');
+const isPhone=()=>phoneMQ.matches;
+const calm=matchMedia('(prefers-reduced-motion:reduce)');
 let cur=0;
+
+/* Size each slide to its content. --g scales the body type of a slide
+   from 1 up to its layout's cap, as far as it still fits the box. The
+   prompt layout never grows: the prompt has its own floor and scrolls. */
+const GMAX={statement:1.35,rows:1.3,tiles:1.3};
+function grow(i){
+  const sl=slides[i];if(!sl)return;
+  const max=GMAX[sl.dataset.layout]||1;
+  sl.style.setProperty('--g',1);
+  if(max<=1||isPhone())return;
+  const fits=()=>sl.scrollHeight<=sl.clientHeight+1;
+  if(!fits())return;
+  sl.style.setProperty('--g',max);if(fits())return;
+  let lo=1,hi=max;
+  for(let k=0;k<7;k++){const m=(lo+hi)/2;sl.style.setProperty('--g',m);if(fits())lo=m;else hi=m;}
+  sl.style.setProperty('--g',lo);
+}
+
 function show(n){
   cur=Math.max(0,Math.min(slides.length-1,n));
+  if(isPhone()){scrollToSec(cur,true);return;}
   slides.forEach((s,i)=>s.classList.toggle('on',i===cur));
-  document.getElementById('sec').textContent=S[cur].sec;
-  document.getElementById('count').textContent=cur===0?'':`${cur} / ${slides.length-1}`;
-  document.getElementById('fill').style.width=(cur/(slides.length-1)*100)+'%';
+  document.getElementById('sec').textContent=S[cur].sec||'';
+  document.getElementById('count').textContent=cur===0?'':`${cur} / ${LAST}`;
+  document.getElementById('fill').style.width=(cur/LAST*100)+'%';
   history.replaceState(null,'',cur?('#'+cur):location.pathname);
   slides[cur].scrollTop=0;
+  grow(cur);
   checkMore();
 }
+function nav(i){if(isPhone())scrollToSec(i);else show(i);}
+function goTo(id){const n=S.findIndex(x=>x.id===id);if(n>=0)nav(n);return false;}
+
 // Skip basics: slides marked basic:true drop out of Next and Back when the
 // switch is on, so one deck serves a room that already knows the basics.
 let skip=/[?&]short\b/.test(location.search);
@@ -749,6 +926,7 @@ function paintSkip(){const b=document.getElementById('skipbtn');b.hidden=!hasBas
 document.getElementById('next').onclick=()=>step(1);
 document.getElementById('prev').onclick=()=>step(-1);
 document.addEventListener('keydown',e=>{
+  if(isPhone())return;
   if(document.getElementById('reader').classList.contains('on')){if(e.key==='Escape')closeReader();return;}
   if(document.getElementById('menu').classList.contains('on')&&e.key==='Escape'){toggleMenu();return;}
   if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();step(1);}
@@ -757,16 +935,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='b'||e.key==='B'){toggleSkip();}
 });
 
-document.querySelectorAll('.copy').forEach(b=>{
-  b.onclick=async()=>{
-    const t=S[+b.dataset.i].prompt;
-    try{await navigator.clipboard.writeText(t);}
-    catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
-    b.textContent='COPIED';b.classList.add('done');
-    setTimeout(()=>{b.textContent='COPY PROMPT';b.classList.remove('done');},1800);
-  };
-});
-
+/* the slide list */
 const ml=document.getElementById('menulist');
 let lastSec=null;
 S.forEach((s,i)=>{
@@ -774,70 +943,106 @@ S.forEach((s,i)=>{
   if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
   const li=document.createElement('li');if(s.basic)li.className='basic';
   const b=document.createElement('button');
-  const n=document.createElement('span');n.className='n';n.textContent=String(i).padStart(2,'0');
-  const t=document.createElement('span');t.textContent=s.h.replace(/<\/?em>/g,'');
-  b.appendChild(n);b.appendChild(t);b.onclick=()=>{show(i);toggleMenu();};
+  const n=document.createElement('span');n.className='n';n.textContent=two(i);
+  const t=document.createElement('span');t.textContent=plain(s.h);
+  b.appendChild(n);b.appendChild(t);b.onclick=()=>{toggleMenu();nav(i);};
   li.appendChild(b);ml.appendChild(li);
 });
-function checkMore(){document.querySelectorAll('.slide.on .pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');if(!pre)return;p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});}
-document.querySelectorAll('.prewrap pre').forEach(pre=>pre.addEventListener('scroll',checkMore));
-window.addEventListener('resize',checkMore);
-document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const s=S[+b.dataset.i];document.getElementById('rwhere').textContent=s.where;document.getElementById('rpre').textContent=flow(s.prompt);document.getElementById('rcopy').dataset.i=b.dataset.i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;};});
-function closeReader(){document.getElementById('reader').classList.remove('on');}
 function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu')toggleMenu();});
 paintSkip();
-document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu'){toggleMenu();}});
 
-// Fit every slide to the screen. The decks are laid out for a box of
-// FIT_W by FIT_H (the tallest slide at a 1440-wide window) and scaled to
-// whatever the deck area actually is, so nothing spills past the box and
-// the footer never prints over the last line. One zoom for the whole deck
-// keeps the text size consistent from slide to slide. Prompt text and the
-// points beside it hold a real-pixel floor (see the pre rule in the CSS) so
-// a small window scrolls the prompt rather than shrinking it.
+/* "More below" on the prompt and on the rail beside it */
+function checkMore(){
+  const sl=slides[cur];if(!sl)return;
+  sl.querySelectorAll('.pane').forEach(p=>{const pre=p.querySelector('.prewrap pre');p.classList.toggle('more',pre.scrollHeight-pre.clientHeight-pre.scrollTop>8);});
+  sl.querySelectorAll('.railwrap').forEach(w=>{const r=w.firstElementChild;w.classList.toggle('more',r.scrollHeight-r.clientHeight-r.scrollTop>8);});
+}
+deck.querySelectorAll('.prewrap pre,.rail').forEach(el=>el.addEventListener('scroll',checkMore));
+
+/* copy, fill in, expand: one handler for both renderers */
+async function copyPrompt(i,b){
+  const t=filled(i);
+  try{await navigator.clipboard.writeText(t);}
+  catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+  if(!b.dataset.lab)b.dataset.lab=b.textContent;
+  b.textContent='Copied';b.classList.add('done');
+  clearTimeout(b._t);b._t=setTimeout(()=>{b.textContent=b.dataset.lab;b.classList.remove('done');},1800);
+}
+function openReader(i){document.getElementById('rwhere').textContent=S[i].where;document.getElementById('rpre').textContent=flow(filled(i));document.getElementById('rcopy').dataset.copy=i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;}
+function closeReader(){document.getElementById('reader').classList.remove('on');}
+let fCur=0;
+function openFill(i,focusLabel){
+  fCur=i;const box=document.getElementById('ffields');box.innerHTML='';
+  let focusEl=null;
+  blanks(S[i].prompt).forEach((l,k)=>{
+    const lab=document.createElement('label');lab.htmlFor='fb'+k;lab.textContent=fk(l);
+    const ta=document.createElement('textarea');ta.id='fb'+k;ta.value=FV[fk(l)]||'';
+    ta.oninput=()=>{FV[fk(l)]=ta.value;fsave();document.getElementById('fpre').textContent=filled(i);};
+    box.appendChild(lab);box.appendChild(ta);
+    if(focusLabel&&fk(l)===fk(focusLabel))focusEl=ta;
+  });
+  document.getElementById('fpre').textContent=filled(i);
+  document.getElementById('fcopy').dataset.copy=i;
+  document.getElementById('filler').classList.add('on');
+  (focusEl||box.querySelector('textarea')||{focus(){}}).focus();
+}
+function closeFill(){document.getElementById('filler').classList.remove('on');S.forEach((s,i)=>{if(s.prompt)paintPrompt(i);});checkMore();}
+document.getElementById('fclose').onclick=closeFill;
+document.getElementById('fclear').onclick=()=>{blanks(S[fCur].prompt).forEach(l=>delete FV[fk(l)]);fsave();openFill(fCur);};
+document.addEventListener('keydown',e=>{if(!document.getElementById('filler').classList.contains('on'))return;e.stopImmediatePropagation();if(e.key==='Escape')closeFill();},true);
+document.addEventListener('click',e=>{
+  const c=e.target.closest('[data-copy]');if(c){copyPrompt(+c.dataset.copy,c);return;}
+  const f=e.target.closest('[data-fill]');if(f){openFill(+f.dataset.fill);return;}
+  const x=e.target.closest('[data-expand]');if(x){openReader(+x.dataset.expand);return;}
+  const bl=e.target.closest('pre .bl');if(bl){openFill(+bl.dataset.i,bl.dataset.l);return;}
+  const mo=e.target.closest('.pmore');
+  if(mo){const card=mo.closest('.ppc');const folded=card.classList.toggle('fold');mo.textContent=folded?'Read the whole prompt':'Fold it away';if(folded)card.scrollIntoView({block:'start'});}
+});
+
+/* phone: where you are, and what is next */
+let pcur=-1;
+function scrollToSec(i,instant){
+  const el=document.getElementById('p'+i);if(!el)return;
+  const top=i?el.getBoundingClientRect().top+window.scrollY-58:0;
+  window.scrollTo({top,behavior:(instant||calm.matches)?'auto':'smooth'});
+}
+function pTrack(){
+  if(!isPhone())return;
+  const y=window.innerHeight*.35;let k=0;
+  for(let i=1;i<S.length;i++){const el=document.getElementById('p'+i);if(el&&el.getBoundingClientRect().top<=y)k=i;else break;}
+  if(k===pcur)return;
+  pcur=k;cur=k;
+  document.getElementById('pcount').textContent=`${two(k)} / ${LAST}`;
+  document.getElementById('pfill').style.width=(k/LAST*100)+'%';
+  document.getElementById('pnext').innerHTML=k<LAST?`Next <b>${plain(S[k+1].h)}</b>`:'Back to <b>the top</b>';
+  history.replaceState(null,'',k?('#'+k):location.pathname);
+}
+document.getElementById('pnext').onclick=()=>scrollToSec(pcur<LAST?pcur+1:0);
+window.addEventListener('scroll',pTrack,{passive:true});
+
+/* Fit every slide to the screen. Slides are laid out for a box of FIT_W
+   by FIT_H and zoomed to the deck area. Prompt text and the rail beside it
+   hold a real-pixel floor through --z, so a small window scrolls them
+   rather than shrinking them. */
 const FIT_W=1340, FIT_H=770;
 function fit(){
-  const r=document.getElementById('deck').getBoundingClientRect();
+  if(isPhone())return;
+  const r=deck.getBoundingClientRect();
   const z=Math.max(0.4,Math.min((r.width-20)/FIT_W,(r.height-20)/FIT_H,1.35));
-  document.querySelectorAll('.slide').forEach(s=>{s.style.zoom=z;});
-  document.documentElement.style.setProperty('--z',z); // prompt text floors read this
+  slides.forEach(s=>{s.style.zoom=z;});
+  document.documentElement.style.setProperty('--z',z);
+  grow(cur);
   checkMore();
 }
 window.addEventListener('resize',fit);
-fit();
+phoneMQ.addEventListener('change',()=>{if(isPhone()){pcur=-1;scrollToSec(cur,true);pTrack();}else{fit();show(cur);}});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{fit();});
 
-/* Fill in the blanks (social deck only). A bracket in capitals, like
-   [CHECK], is an answer marker and never becomes a box. */
-const FKEY='magnum-social-fill';
-let FV={};try{FV=JSON.parse(localStorage.getItem(FKEY)||'{}');}catch(e){}
-const fsave=()=>{try{localStorage.setItem(FKEY,JSON.stringify(FV));}catch(e){}};
-const blanks=p=>{const out=[];(p.match(/\[[^\]]+\]/g)||[]).forEach(b=>{const l=b.slice(1,-1);if(/[a-z]/.test(l)&&!out.includes(l))out.push(l);});return out;};
-const fk=l=>l.replace(/\s+/g,' ');
-const filled=i=>{let t=S[i].prompt;blanks(t).forEach(l=>{const v=(FV[fk(l)]||'').trim();if(v)t=t.split('['+l+']').join(v);});return t;};
-function paintSlide(i){const pre=slides[i].querySelector('.prewrap pre');if(pre)pre.textContent=flow(filled(i));}
-let fCur=0;
-function openFill(i){fCur=i;const box=document.getElementById('ffields');box.innerHTML='';
-  blanks(S[i].prompt).forEach((l,k)=>{const lab=document.createElement('label');lab.htmlFor='fb'+k;lab.textContent=fk(l);
-    const ta=document.createElement('textarea');ta.id='fb'+k;ta.value=FV[fk(l)]||'';
-    ta.oninput=()=>{FV[fk(l)]=ta.value;fsave();document.getElementById('fpre').textContent=filled(i);};
-    box.appendChild(lab);box.appendChild(ta);});
-  document.getElementById('fpre').textContent=filled(i);
-  document.getElementById('fcopy').dataset.i=i;
-  document.getElementById('filler').classList.add('on');
-  const first=box.querySelector('textarea');if(first)first.focus();}
-function closeFill(){document.getElementById('filler').classList.remove('on');S.forEach((s,i)=>{if(s.prompt)paintSlide(i);});checkMore();}
-document.getElementById('fclose').onclick=closeFill;
-document.getElementById('fclear').onclick=()=>{blanks(S[fCur].prompt).forEach(l=>delete FV[fk(l)]);fsave();openFill(fCur);};
-S.forEach((s,i)=>{if(!s.prompt||!blanks(s.prompt).length)return;
-  const btns=slides[i].querySelector('.pane-head .btns');const b=document.createElement('button');
-  b.className='fill';b.textContent='FILL IN';b.onclick=()=>openFill(i);btns.insertBefore(b,btns.firstChild);paintSlide(i);});
-/* Copy and Expand hand over the filled prompt; nothing typed means the authored text, byte for byte. */
-document.querySelectorAll('.copy').forEach(b=>{b.onclick=async()=>{const t=filled(+b.dataset.i);
-  try{await navigator.clipboard.writeText(t);}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
-  b.textContent='COPIED';b.classList.add('done');setTimeout(()=>{b.textContent='COPY PROMPT';b.classList.remove('done');},1800);};});
-document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const i=+b.dataset.i;document.getElementById('rwhere').textContent=S[i].where;document.getElementById('rpre').textContent=flow(filled(i));document.getElementById('rcopy').dataset.i=i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;};});
-document.addEventListener('keydown',e=>{if(!document.getElementById('filler').classList.contains('on'))return;e.stopImmediatePropagation();if(e.key==='Escape')closeFill();},true);
-show(parseInt(location.hash.slice(1))||0);
+const start=parseInt(location.hash.slice(1))||0;
+fit();
+if(isPhone()){cur=start;requestAnimationFrame(()=>{scrollToSec(start,true);pTrack();});}
+else show(start);
 </script>
 </body>
 </html>

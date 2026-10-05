@@ -28,7 +28,7 @@ const MIN_PRE_LINES = 10;  // prompt lines visible before "More below", the open
           const box = e => e.getBoundingClientRect();
           const foot = sl.querySelector('.foot'); const fb = foot ? box(foot) : null;
           if (sl.scrollHeight - sl.clientHeight > 4) out.problems.push(`overflow ${sl.scrollHeight - sl.clientHeight}px`);
-          const els = [...sl.querySelectorAll('h1,.sub,.note,ul.points li,.pane,.tile,.split>*,.fig,.after,.chev span,.meta')]
+          const els = [...sl.querySelectorAll('h1,.sub,.note,ul.points li,.pane,.railwrap,.tile,.split>*,.fig,.after,.chev span,.meta,.band')]
             .filter(e => !e.closest('.foot') && box(e).height > 0);
           for (const e of els) {
             const r = box(e);
@@ -52,6 +52,8 @@ const MIN_PRE_LINES = 10;  // prompt lines visible before "More below", the open
             if (lines < MIN_PRE_LINES) out.problems.push(`prompt shows ${lines} lines`);
             if (out.pre.clipped && !out.pre.more) out.problems.push('prompt clipped without More below');
           }
+          const rail = sl.querySelector('.rail');
+          if (rail && rail.scrollHeight > rail.clientHeight + 8 && !rail.parentElement.classList.contains('more')) out.problems.push('rail clipped without More below');
           return out;
         }, { i, MIN_PRE_PX, MIN_PRE_LINES });
         if (r && r.problems.length) rows.push(r);
@@ -60,6 +62,24 @@ const MIN_PRE_LINES = 10;  // prompt lines visible before "More below", the open
       for (const r of rows) { fails++; console.log(`   slide ${r.i} "${r.h}": ${[...new Set(r.problems)].join('; ')}`); }
       await p.close();
     }
+  }
+  // Phone page (engine v2 decks only): no sideways scroll, prompts at 15px or more.
+  for (const deck of DECKS) {
+    const p = await b.newPage({ viewport: { width: 390, height: 844 } });
+    await p.route(/fonts\.g(oogleapis|static)\.com/, r => r.abort());
+    await p.goto(`${BASE}/${deck}/index.html`, { waitUntil: 'domcontentloaded' });
+    const r = await p.evaluate(() => {
+      const page = document.getElementById('page'); if (!page) return null;
+      const problems = [];
+      if (document.documentElement.scrollWidth > innerWidth + 1) problems.push(`sideways scroll ${document.documentElement.scrollWidth - innerWidth}px`);
+      page.querySelectorAll('pre').forEach(pre => { const fs = parseFloat(getComputedStyle(pre).fontSize); if (fs < 15) problems.push(`prompt text ${fs}px`); });
+      page.querySelectorAll('section').forEach(sec => { if (sec.scrollWidth > sec.clientWidth + 1) problems.push(`${sec.id} wider than the screen`); });
+      return [...new Set(problems)];
+    });
+    if (r === null) continue;
+    console.log(`${deck} @ phone 390: ${r.length} problem${r.length === 1 ? '' : 's'}`);
+    for (const x of r) { fails++; console.log('   ' + x); }
+    await p.close();
   }
   await b.close();
   console.log(fails ? `FAIL: ${fails} slide checks failed` : 'PASS: every slide fits at every size');

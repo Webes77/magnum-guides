@@ -2363,6 +2363,55 @@ Nothing redrawn. This departs from the design system, whose navy badge is all
 white, and James asked for it in those words. The brand page masthead still
 carries the delivered all-white file, because it documents the logo set.
 
+**Deck engine v2, built 5 Oct in the social deck, on the session branch, not
+merged.** James said the decks looked poor on a phone (tiny slides, a big gap
+under each one) and had dead space on a laptop too, and asked for a proper
+rebuild with his colours and logo. Design was settled first on Fable as Phase 0:
+`notes/deck-rebuild-spec.md` is the brief and `notes/deck-rebuild-mockup.html`
+the page he signed off. The build followed it on Opus.
+
+One slide array, two renderers. On a laptop every slide is still laid out in
+the 1340 by 770 box and zoomed, but takes one of four layouts (statement,
+rows, tiles, prompt) and is sized to its content: `grow()` raises a `--g`
+variable on the slide from 1 to the layout's cap (1.35 statement, 1.3 rows and
+tiles) by binary search while `scrollHeight` still fits, so a short slide gets
+bigger type instead of a gap. The prompt layout never grows. Under 760px the
+deck is replaced by `#page`, the same slides as one scrolling page, with a
+paper bar carrying the small mark, a navy bottom bar showing where you are and
+what is next, and prompts as full-width cards that fold after about fourteen
+lines. `#n` hashes land on the right section in both.
+
+The prompt is a card now: navy header with Fill in, Expand and Copy (Copy in
+bright coral), lever labels in coral text, blanks as tint chips you tap to
+fill (the panel opens on that blank), and capital markers like [CHECK] in
+slate. The points that sat above the prompt moved into a 350px rail on the
+left with Where and Then; the spec said drop all but one point, and the build
+kept them all, because cutting live teaching copy to match a mockup was the
+wrong trade. The cover is navy with the delivered badge. Ghost numbers are
+drawn from `data-n` in a pseudo-element, the site's existing pattern, so the
+audit does not read them as text. The three starting-point tiles gained
+Building, Clock and Megaphone.
+
+Gates, all passing: deck check at four sizes plus a new phone pass (no
+sideways scroll, no prompt under 15px) and a new rail rule (a clipped rail
+must say More below); contrast zero at four widths; nine prompts byte-identical
+to the shelf; a functional script that clicks every Copy with nothing typed and
+gets the authored text, taps a chip, types, presses arrow keys, copies the
+filled text, follows every `goTo`, and walks the phone page. Small labels on
+the card (kicker, header, buttons) carry the same `--z` real-pixel floor as the
+prompt, found by rendering a 1280 by 600 window, where they had fallen to 7px.
+`check-contrast.js` gained one exclusion: SVG text, whose ground is a sibling
+shape the parent walk cannot see. That was the standing false positive on the
+bots and social figures.
+
+Two small fixes rode along: the flow figure's YOU CHECK IT label overran its
+box (letter-spacing 2 to 1), and the chip text is ink, not coral text, because
+coral text on the tint is 4.17:1.
+
+Next: James reads the preview on his phone. If it holds, merge before the
+7 Oct room or after it, his call, then port the engine to the other four
+decks (step 2 of the spec).
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
