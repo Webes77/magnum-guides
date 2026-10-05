@@ -42,7 +42,6 @@
   --char:#3A3630;
   --mute:#63615C;
   --rule:#1E1B17;
-  --grid:rgba(120,90,60,.13);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#1F2A37;color:var(--body);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:18px;line-height:1.45}
@@ -176,6 +175,7 @@ pre{font-family:"IBM Plex Mono",monospace;font-size:max(14px,calc(15px / var(--z
 #filler pre{font-size:17px;line-height:1.6;white-space:pre-wrap;background:#FFFFFF;border:2px solid var(--ink);padding:18px 20px;margin:0}
 #filler .rclose,#filler .fclear{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
 #filler .rclose:hover,#filler .fclear:hover{border-color:#FF6F5E;color:#FF6F5E}
+@media (max-width:640px){.pane-head .btns button{white-space:nowrap}.pane-head{flex-wrap:wrap}footer .hint{display:none}}
 .pane-head .fill{background:#FF6F5E;color:var(--ink);border:2px solid var(--ink)}
 #reader{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:5}
 #reader.on{display:flex}
@@ -266,7 +266,8 @@ to learn from, not to copy.
 
 Constraints: Look at real accounts and published guidance from the last
 12 months, and name your sources, because I will check the examples
-myself. Focus on small and medium businesses like mine, not national
+myself. If you cannot confirm an account exists, say so rather than
+naming one. Focus on small and medium businesses like mine, not national
 brands with marketing teams, because their budgets set a bar I cannot
 use. Say what the good ones do in plain words, not marketing jargon.
 Include any rules or common mistakes specific to my industry, such as
@@ -363,7 +364,8 @@ file, and none for any we do not use. LINKEDIN: three to five lines on
 the work and what it shows about how we do things. INSTAGRAM: two to four
 short lines, then up to three hashtags. FACEBOOK: three to five lines,
 conversational and local, ending with one next step. GOOGLE: two plain
-lines and a next step, no hashtags.
+lines and a next step, no hashtags. TIKTOK: one hook line and a caption
+under 30 words.
 
 Output: The versions, then one line headed NOT CONFIRMED listing
 anything marked [CHECK].`;
@@ -405,8 +407,9 @@ a wrong detail in public is worse than none. If they ask about a price,
 stock or a date you do not have, say we will message them. If it is a
 complaint, thank them, do not argue, and move it to a private message or
 a phone call. Offer no refund, discount or promise unless I tell you
-to, because a public offer binds us. Never share anything private about
-the customer, because it is their information, not ours.
+to, because a public offer binds us. Never share or confirm anything private about
+the customer, such as their address or when they visited, because it is
+their information, not ours.
 
 Tone: As the voice file says. Warm if they are happy. Calm and brief if
 they are not.
@@ -538,7 +541,7 @@ const S = [
  ["Autopilot","Buffer fills the week, you check it on your phone","Fifteen minutes a week, and it keeps going"]]},
 
 {sec:"1 · Research", id:"research", ic:["Globe","Your industry &middot; a few minutes"], h:"Start with what <em>good</em> looks like", pts:[
- "So we don't ask. We look at the best businesses in your trade first, and you react. “That's us.” “That's not us at all.”",
+ "We don't ask you to describe your brand. We look at the best businesses in your trade first, and you react. “That's us.” “That's not us at all.”",
  "It takes a few minutes to run. Starting from zero? It works just as well: it shows you what to aim for."],
  prompt:P1, where:"A new chat. Turn on Research if your plan has it", after:[
  "Fill the three blanks. No accounts yet? Write “none yet”.",
@@ -591,7 +594,7 @@ const S = [
 {sec:"3 · Write", ic:["Percent","6 giveaways &middot; the prompts block them"], h:"What gives AI <em>away</em>", tiles:[
  ["o","Hype words","Elevate, unlock, stunning, game-changer. Nobody talks like that at the counter."],
  ["t","Emoji walls","One emoji is a person. Six is a template."],
- ["c","Hashtag stacks","Instagram now limits them. Three good ones beat thirty."],
+ ["c","Hashtag stacks","Three good ones beat thirty."],
  ["o","Nothing specific","No job, no product, no suburb. It could be anyone."],
  ["t","The question opener","“Looking for the perfect…?” Everyone scrolls past it."],
  ["c","Made-up detail","A happy customer who doesn't exist. That one can cost you."]]},
@@ -614,9 +617,9 @@ const S = [
  "Nothing about the customer that they didn't say themselves.",
  "Do a week of these and you'll barely need the prompt."]},
 
-{sec:"4 · Autopilot", ic:["Coins","3 tools &middot; about A$79 + GST a month"], h:"The <em>stack</em>", rows:[
+{sec:"4 · Autopilot", ic:["Coins","3 tools &middot; about A$86 + GST a month"], h:"The <em>stack</em>", rows:[
  ["Claude Pro","Your voice file, the prompts, the writing","About A$31 + GST a month"],
- ["Buffer","One queue for LinkedIn, Instagram, Facebook and Google. Check and schedule from your phone.","About A$30 + GST a month for four channels"],
+ ["Buffer","One queue for LinkedIn, Instagram, Facebook and Google. Check and schedule from your phone.","About A$37 + GST a month for four channels"],
  ["Canva Pro","Your brand kit and templates for images","About A$18 + GST a month"]],
  rowhead:["Tool","Its job","Cost"],
  pts:["Already pay for Canva? Keep it. Starting out? The free versions of Canva and Buffer are fine for month one. Prices checked September 2026."]},
@@ -661,7 +664,7 @@ const S = [
 {sec:"Stay safe", ic:["Building","4 kinds of business &middot; general guidance, not legal advice"], h:"Your <em>industry's</em> rules", rows:[
  ["Builders and trades","Licence number and licensed name on every profile, and on every post that sells work","The QBCC counts a Facebook page as advertising"],
  ["Pubs and bars","No drink prices, discounts, happy hours or “thirsty Thursday” names in any post. Nobody who looks under 25. Accounts set to 18+","Queensland liquor law restricts advertising drink deals outside the venue"],
- ["Adventure and tours","No “100% safe” or “suitable for everyone”. Safety gear visible in action shots","Misleading safety claims breach Australian Consumer Law"],
+ ["Adventure and tours","No “100% safe” or “suitable for everyone”. Safety gear visible in action shots. Ask before posting anyone you can recognise","Misleading safety claims breach Australian Consumer Law"],
  ["Shops","Prices include GST. “Australian made” only when it really is","A customer's price is the full price"]],
  rowhead:["If you're","The rule","Why"]},
 

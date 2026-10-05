@@ -1758,6 +1758,23 @@ the prompt; where the point said something needed, it moved into the icon's
 label. "Paid or gifted posts say #ad" now lives only in the Spot the problem
 label. Deck check PASS, style checker clean, contrast unchanged.
 
+**Final outside review, 5 Oct (evening), two days before the room.** James
+spotted that the questionnaire's pictures question had no AI option; it now
+offers AI-made images and Canva templates, with a hint that AI pictures suit
+tips and promos but never stand in for real work. An outside review agent then
+walked the deck and questionnaire in a browser at 1440 and 390. Its four
+must-fixes went in: Buffer was priced at the three-channel figure (now about
+A$37 + GST for four, A$86 + GST total, register row 69 corrected); the
+research slide opened "So we don't ask", which read cold after a branch jump;
+tours lacked the consent rule from research 07 (slide and questionnaire); and
+the questionnaire offered TikTok while P4 had no TikTok format (P4 has one
+now). Should-fixes taken: P1 says when it cannot confirm an account exists, P6
+never confirms a customer's address or visit, the Instagram hashtag claim came
+off the tile, the dead `--grid` token went, the phone bar hides the arrow-key
+hint and the FILL IN button no longer wraps, and the questionnaire gained Tips,
+Reviews, Seasonal, Kids or minors, and Nobody yet. P1, P4 and P6 are mirrored
+on the shelf byte for byte.
+
 **The 6 Levers are taught as six lines, 25 Sep, on a branch for James to read.**
 James said the framework had gone convoluted and asked for paint-by-numbers.
 The labels and order did not move (hard rule 3); the teaching did. Each lever
