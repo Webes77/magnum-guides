@@ -19,15 +19,19 @@ These are absolute. Do not relitigate them.
 
 1. No em dashes, anywhere. Use a comma, a full stop, or a middot for separators.
 2. Never the word "solid".
-3. Magnum AI leads with systems: Role Pack architecture and library, the
-   Iceberg Model, The Field Manual and the Talk-It-Out Technique. The 6 Lever
-   Framework is a supporting briefing checklist, used when teaching someone
-   to brief AI on a single task. It is never the headline, the opening hook
-   or the organising structure of a training, ad, offer or proposal. When it
-   appears, the labels are Role, Context, Constraints, Tone, Format, Output.
-   That order, those labels. Never renamed, reordered, or added to. Changed
-   4 Oct, on James's word, because the levers are a prompting technique and
-   they date as AI gets more intuitive.
+3. Training content leads with the member's problem and what works in AI
+   right now. The Talk-It-Out Technique, the Iceberg Model, Role Packs, The
+   Field Manual and the 6 Lever Framework are tools in the kit. Each appears
+   where it is the right tool for that lesson. None is the headline, the
+   opener or the organising structure of a training pack, and none is
+   presented as a timeless fundamental. The 6 Lever Framework belongs in
+   content that teaches prompt building. The Field Manual is the sales
+   method and is not taught in the members area. When the levers appear,
+   the labels are Role, Context, Constraints, Tone, Format, Output. That
+   order, those labels. Never renamed, reordered, or added to. Changed 4 Oct
+   and again 5 Oct, on James's word: the levers are a prompting technique
+   and they date as AI gets more intuitive, and the 4 Oct version had only
+   swapped one technique in the lead for four others.
 4. Prices are always quoted plus GST.
 5. No client material in the members area unless it is made generic enough to
    be an industry guide. Client names never ship.
@@ -423,8 +427,9 @@ source grade; `notes/fact-check-prompt.md` is the versioned routine prompt;
 `notes/fact-check-log.md` takes one entry per run. The register is
 deliberately bounded. A claim earns a row only if it asserts something
 about a third-party product, plan or policy and a client acting on it
-while wrong would be misled. Teaching, method and the 6 Levers are not on
-it and never go stale. Magnum pricing is never a routine's to touch.
+while wrong would be misled. Teaching and method are not on it: whether a
+technique still earns its place is James's judgement, not a fact a routine
+checks. Magnum pricing is never a routine's to touch.
 
 The routine is `trig_01Ug88bf3JAkccEhX6f7Nd2x`, cron `0 21 1 * *`, the 1st
 of each month at 21:00 UTC, 7am Gold Coast on the 2nd, fresh session each
