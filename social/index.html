@@ -121,10 +121,19 @@ ul.points a,.note a,.rail a{color:var(--coral-text)}
 .band .bl2{color:var(--mute)}
 .band small{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);margin-bottom:4px}
 
+.bands.dense .band{padding:calc(6px * var(--g)) 0;gap:24px}
+.bands.dense .band .bn{font-size:calc(25px * var(--g))}
+.bands.dense .band .bi{font-size:calc(44px * var(--g))}
+.bands.dense .band .bl1,.bands.dense .band .bl2{font-size:calc(19px * var(--g));line-height:1.3}
+.bands.dense .band:not(:first-child) small{display:none}
+.bands.dense.num .band{grid-template-columns:70px 240px minmax(0,1fr) minmax(0,1fr)}
+.cover h1.long{font-size:62px}
 /* tiles: portrait cards fill the frame */
 .grid{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(min-content,1fr);gap:22px}
 .tile{border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);padding:calc(26px * var(--g)) 28px;display:flex;flex-direction:column;gap:calc(14px * var(--g))}
 .tile svg{width:46px;height:46px;flex:none}
+.tile svg[aria-hidden]{width:96px;height:77px;--accent:var(--coral-bright)}
+.tile.b svg[aria-hidden]{--accent:var(--paper-2)}
 .tile h3{font-family:var(--display);font-weight:600;font-size:calc(38px * var(--g));line-height:1;text-transform:uppercase}
 .tile p{font-size:calc(20px * var(--g));line-height:1.4}
 .grid.three .tile p{flex:1}
@@ -819,7 +828,7 @@ const splitH=s=>s.split?`<div class="split"><div class="b"><h3>${s.split[0][0]}<
 const bandsH=s=>{
   if(!s.rows)return '';
   const hd=s.rowhead||["Step","What we do","Why it matters"], num=!s.rowhead;
-  return `<div class="bands${num?' num':''}">${s.rows.map((r,k)=>`<div class="band">${num?`<span class="bi" data-n="${two(k+1)}" aria-hidden="true"></span>`:''}<div class="bn">${num?'':`<small>${hd[0]}</small>`}${r[0]}</div><div class="bl1"><small>${hd[1]}</small>${r[1]}</div><div class="bl2"><small>${hd[2]}</small>${r[2]}</div></div>`).join('')}</div>`;
+  return `<div class="bands${num?' num':''}${s.rows.length>4?' dense':''}">${s.rows.map((r,k)=>`<div class="band">${num?`<span class="bi" data-n="${two(k+1)}" aria-hidden="true"></span>`:''}<div class="bn">${num?'':`<small>${hd[0]}</small>`}${r[0]}</div><div class="bl1"><small>${hd[1]}</small>${r[1]}</div><div class="bl2"><small>${hd[2]}</small>${r[2]}</div></div>`).join('')}</div>`;
 };
 const GO=/<br>\s*(<a class="goto"[\s\S]*?<\/a>)\s*$/;
 const tilesH=s=>{
@@ -840,7 +849,7 @@ S.forEach((s,i)=>{
   let h='';
   if(s.cover){
     h=`<div class="ctop"><img class="badge" src="../assets/logos/magnum-badge-ring-navy-red-ai.svg" alt="Magnum AI"><div class="clabel"><b>${s.sub||''}</b>${LAST} slides · ${NPROMPTS} prompts</div></div>
-      <div class="bd"><div><h1>${s.h}</h1>${noteH(s)}</div>${figH(s)}</div>`;
+      <div class="bd"><div><h1${plain(s.h).length>40?' class="long"':''}>${s.h}</h1>${noteH(s)}</div>${figH(s)}</div>`;
   }else{
     h=`<div class="hd">${kickH(s,i)}<div class="hrow"><h1>${s.h}</h1>${icoH(s)}</div></div>`;
     if(L==='prompt'){
@@ -888,15 +897,16 @@ let cur=0;
    from 1 up to its layout's cap, as far as it still fits the box. The
    prompt layout never grows: the prompt has its own floor and scrolls. */
 const GMAX={statement:1.35,rows:1.3,tiles:1.3};
+const GMIN=.88;
 function grow(i){
   const sl=slides[i];if(!sl)return;
   const max=GMAX[sl.dataset.layout]||1;
   sl.style.setProperty('--g',1);
   if(max<=1||isPhone())return;
   const fits=()=>sl.scrollHeight<=sl.clientHeight+1;
-  if(!fits())return;
-  sl.style.setProperty('--g',max);if(fits())return;
   let lo=1,hi=max;
+  if(!fits()){lo=GMIN;hi=1;}            // a tight slide gives a little back, never below GMIN
+  else{sl.style.setProperty('--g',max);if(fits())return;}
   for(let k=0;k<7;k++){const m=(lo+hi)/2;sl.style.setProperty('--g',m);if(fits())lo=m;else hi=m;}
   sl.style.setProperty('--g',lo);
 }

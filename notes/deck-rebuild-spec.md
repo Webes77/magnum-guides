@@ -102,7 +102,7 @@ Every slide declares one, or the engine infers it from its keys
    PASS at 1440, 820 and 390 with the phone view rendered, nine prompts
    byte-identical to the shelf, fill-in and goTo still working, rendered and
    read at 1440 and 390. Then James reads it on his phone.
-2. Port the engine to the other four decks. Same gates. The deck check
+2. Port the engine to the other four decks. Done 5 Oct. Same gates. The deck check
    learns the phone view: no sideways scroll, no prompt under 15px.
 3. The members area shell: one shared stylesheet, a page per course,
    "carry on where you left off" in localStorage, search across the shelf.

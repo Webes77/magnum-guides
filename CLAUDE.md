@@ -2363,8 +2363,7 @@ Nothing redrawn. This departs from the design system, whose navy badge is all
 white, and James asked for it in those words. The brand page masthead still
 carries the delivered all-white file, because it documents the logo set.
 
-**Deck engine v2, built 5 Oct in the social deck, on the session branch, not
-merged.** James said the decks looked poor on a phone (tiny slides, a big gap
+**Deck engine v2, built 5 Oct in the social deck, now in all five decks.** James said the decks looked poor on a phone (tiny slides, a big gap
 under each one) and had dead space on a laptop too, and asked for a proper
 rebuild with his colours and logo. Design was settled first on Fable as Phase 0:
 `notes/deck-rebuild-spec.md` is the brief and `notes/deck-rebuild-mockup.html`
@@ -2408,9 +2407,33 @@ Two small fixes rode along: the flow figure's YOU CHECK IT label overran its
 box (letter-spacing 2 to 1), and the chip text is ink, not coral text, because
 coral text on the tint is 4.17:1.
 
-Next: James reads the preview on his phone. If it holds, merge before the
-7 Oct room or after it, his call, then port the engine to the other four
-decks (step 2 of the spec).
+Merged to main and live on 5 Oct (`76b62cb`) on James's word, after he read
+the preview on his phone.
+
+**Ported to all four other decks the same day (step 2 of the spec).** The
+engine and stylesheet are byte-identical across the five decks now, apart
+from two per-deck strings: the fill-in storage key (`magnum-<folder>-fill`)
+and the footer label (Course one, two, three, or Reference, where the old
+footers said Session). No slide data, prompt or figure moved; the diff
+touches only the style block, the chrome and the engine. Three engine
+additions came out of the port and went into all five decks: rows with more
+than four bands render dense (smaller names, labels on the first row only),
+a cover headline over 40 characters drops to 62px, and `grow()` may give
+back down to `GMIN` (.88) on a tight slide instead of overflowing. That last
+one was needed because the deck check blocks Google Fonts, and the fallback
+faces run wider than Oswald and Plex. The old 120 by 96 tile icons (the
+Foundations card slide) keep their own size through `svg[aria-hidden]`.
+
+Gates: deck check PASS at four sizes and on the phone page for all five,
+contrast zero across all five at four widths, every prompt in every deck
+copies the authored text with nothing typed (6, 5, 4, 3 and 9), the nine
+social prompts still match the shelf, and the functional script passes on
+each deck (Make Claude Yours and session three have no fillable blanks, so
+they get no Fill in button). The Foundations card slide still carries its
+two known faults, which wait for a room as before.
+
+Next: step 3 of the spec, the members area shell. Ask James before the front
+page changes.
 
 ## Decisions already made
 
