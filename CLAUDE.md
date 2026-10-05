@@ -2464,9 +2464,9 @@ it returns to the chooser. `state.q` sits beside the other filters.
 Every deck remembers the last slide this browser opened (`magnum-last` in
 localStorage, set by `remember()` in `show()` and the phone tracker). The
 front page reads it and turns Start course one into "Carry on: <deck>, slide n
-of m", with "or start course one" under it. That front page change is on the
-session branch, not merged, because James asked to see front page changes
-before they ship.
+of m", with "or start course one" under it. James saw it and said yes on 5 Oct,
+and asked for progress: the button carries a thin bar and "39% through ·
+slide 14 of 36" under the deck name. Merged the same day.
 
 Course pages were proposed in the plan and are not being built: the decks'
 phone page now does the job a course page would have done.

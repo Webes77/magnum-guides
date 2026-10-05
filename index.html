@@ -70,6 +70,9 @@ body{
 .mast-alt{display:inline-block;margin:14px 0 0 18px;color:var(--on-navy-mute,#C8CDD3);font-size:15px;text-decoration:underline;text-underline-offset:3px}
 .mast-alt:hover{color:#FFFFFF}
 @media (max-width:820px){.mast-alt{display:block;margin:14px 0 0}}
+.mast-prog{display:block;height:4px;background:rgba(30,27,23,.25);margin:12px 0 8px}
+.mast-prog i{display:block;height:100%;background:var(--ink)}
+.mast-pc{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 
 /* SECTIONS */
 main.wrap{padding-top:56px;padding-bottom:20px}
@@ -592,7 +595,8 @@ section,.start{scroll-margin-top:64px}
   var cta=document.querySelector('.mast-cta');if(!cta)return;
   var start=cta.getAttribute('href');
   cta.setAttribute('href',d.p+'#'+d.i);
-  cta.textContent='Carry on: '+d.n+', slide '+d.i+' of '+d.t+' \u2192';
+  var pc=Math.max(1,Math.min(99,Math.round(d.i/d.t*100)));
+  cta.innerHTML='Carry on: '+d.n.replace(/</g,'&lt;')+' \u2192<span class="mast-prog"><i style="width:'+pc+'%"></i></span><span class="mast-pc">'+pc+'% through \u00b7 slide '+d.i+' of '+d.t+'</span>';
   var alt=document.createElement('a');alt.className='mast-alt';alt.href=start;alt.textContent='or start course one';
   cta.insertAdjacentElement('afterend',alt);
 })();
