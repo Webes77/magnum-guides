@@ -2262,6 +2262,19 @@ lines, Prompt Architect and overdue invoice cards, the Six Levers pass in
 prompt on the levers", and the labels rule in the brand skill files. Not
 done: regenerating `brand/Magnum-AI-House-Style.pdf`.
 
+Merged to main on 5 Oct at James's word ("MERGE"), live at `575f72f`. Field
+Note and fact check triggers were pushed and asserted equal to their files
+(26,142 and 8,486 characters). **The Sunday Brief trigger is broken and needs
+James.** The `update_trigger` call for it was interrupted partway and the
+server saved what had arrived: the live prompt ends mid-word in Step 5's
+second test, missing the rest of Step 5, Steps 6 to 8 and the RUNNING
+UNATTENDED block. It cannot be re-sent from that session. The fix is James
+pasting `notes/sunday-brief-prompt.md`'s body (32,629 characters) into the
+routine's Instructions box. Next fire is Sunday 11 Oct 6am Gold Coast. Until
+it is fixed, a run sends the brief but writes no vault file (so Wednesday's
+Field Note falls back to the shelf) and skips the inbox tidy. Any session
+that sees this note should check the live prompt against the file first.
+
 Outside the repo and James's to paste: `frameworks-and-ip.md` in Drive, F-001,
 still says the 6 Lever Framework is the foundation of every product and the
 brand. The Drive connector cannot edit file content. The Role Pack Library PDF
