@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
 <title>Your Business in Your Words · Magnum AI</title>
-<meta name="description" content="Sixteen questions, about fifteen minutes. Your answers become the voice file every social post is written from.">
+<meta name="description" content="About ten minutes, mostly tapping. Your answers become the voice file every social post is written from.">
 <meta name="author" content="Magnum AI">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#1F2A37">
@@ -26,36 +26,47 @@
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.55}
-  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
-  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:44px 20px 28px;margin:0 -20px 36px}
-  .crumb{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-bright);margin:0 0 14px}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px 60px}
+  .masthead{background:var(--navy);color:var(--on-navy);border-bottom:4px solid var(--coral-bright);padding:30px 20px 22px;margin:0 -20px 24px}
+  .crumb{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-bright);margin:0 0 10px}
   .crumb a{color:var(--coral-bright)}
-  h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(38px,8vw,64px);line-height:.95;margin:0 0 14px;color:var(--on-navy)}
+  h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(32px,7vw,52px);line-height:.95;margin:0;color:var(--on-navy)}
   h1 em{font-style:normal;color:var(--coral-bright)}
-  .sub{font-size:18px;margin:0;color:var(--on-navy-mute);max-width:60ch}
-  h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:28px;color:var(--ink);margin:40px 0 6px;padding-top:14px;border-top:3px solid var(--ink)}
-  .how{background:var(--paper-2);border:2px solid var(--ink);padding:18px 20px;margin:0 0 8px}
-  .how p{margin:0 0 8px}.how p:last-child{margin:0}
-  .q{margin:22px 0 0}
-  .q label{display:block;font-weight:500;color:var(--ink);margin:0 0 4px}
-  .q .n{font-family:var(--mono);font-size:13px;color:var(--coral-text);margin-right:8px}
-  .q .hint{display:block;font-size:14px;color:var(--mute);margin:0 0 6px}
-  textarea{width:100%;min-height:84px;padding:10px 12px;font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);border:2px solid var(--ink);border-radius:0;resize:vertical}
-  textarea:focus{outline:3px solid var(--coral-bright);outline-offset:1px}
-  .done{background:var(--navy);color:var(--on-navy);padding:24px 20px;margin:44px 0 0}
-  .done h2{color:var(--on-navy);border-top-color:var(--coral-bright);margin-top:0}
-  .done p{margin:0 0 14px;color:var(--on-navy-mute)}
-  button{font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);padding:12px 18px;cursor:pointer;margin:0 10px 10px 0}
-  button.plain{background:transparent;color:var(--on-navy);border-color:var(--on-navy-mute)}
-  button:focus-visible{outline:3px solid var(--on-navy);outline-offset:2px}
+  .bar{height:8px;background:var(--paper);border:2px solid var(--ink);margin:0 0 8px}
+  .bar i{display:block;height:100%;width:0;background:var(--rust);transition:width .25s}
+  .count{font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0 0 18px}
+  .card{background:var(--paper-2);border:2px solid var(--ink);padding:24px 22px 26px}
+  .card h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(24px,5.4vw,32px);line-height:1.05;color:var(--ink);margin:0 0 8px}
+  .hint{color:var(--mute);margin:0 0 18px;font-size:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 6px}
+  .chip{font:inherit;font-size:16px;background:var(--paper-2);color:var(--ink);border:2px solid var(--ink);padding:10px 16px;cursor:pointer;min-height:48px;text-align:left}
+  .chip[aria-pressed="true"]{background:var(--navy);color:#FFFFFF;border-color:var(--navy)}
+  .chip[aria-pressed="true"]::before{content:"✓ ";color:var(--coral-bright)}
+  .chip:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--coral-bright);outline-offset:2px}
+  label.f{display:block;font-weight:500;color:var(--ink);margin:14px 0 6px}
+  input[type=text],textarea{width:100%;padding:12px;font:inherit;font-size:16px;color:var(--ink);background:var(--paper-2);border:2px solid var(--ink);border-radius:0}
+  textarea{min-height:110px;resize:vertical}
+  .eg{font-size:15px;color:var(--mute);margin:8px 0 0}
+  .eg b{color:var(--ink);font-weight:500}
+  .nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:20px 0 0}
+  .btn{font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--ink);padding:14px 22px;cursor:pointer;min-height:52px}
+  .btn.go{background:var(--coral-bright);color:var(--ink)}
+  .btn.back{background:transparent;color:var(--ink)}
+  .btn[disabled]{opacity:.4;cursor:not-allowed}
+  .skip{font:inherit;font-size:15px;background:none;border:none;color:var(--coral-text);text-decoration:underline;cursor:pointer;padding:8px 0}
+  .start p{margin:0 0 12px}
+  .start ul{margin:0 0 16px;padding-left:20px}
+  .done{background:var(--navy);color:var(--on-navy);padding:24px 22px}
+  .done h2{color:var(--on-navy)}
+  .done p{color:var(--on-navy-mute);margin:0 0 14px}
+  .done .btn{margin:0 10px 10px 0}
+  .done .btn.back{color:var(--on-navy);border-color:var(--on-navy-mute)}
+  .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 14px}
+  .icorow svg{width:44px;height:44px;flex:none;display:block}
+  .icorow span{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--on-navy-mute);text-align:right}
+  pre#summary{white-space:pre-wrap;font-family:var(--mono);font-size:14px;line-height:1.5;background:var(--paper-2);color:var(--ink);border:2px solid var(--ink);padding:14px;max-height:320px;overflow:auto;margin:0 0 16px}
   #status{font-family:var(--mono);font-size:13px;color:var(--coral-bright);min-height:1.4em;margin:6px 0 0}
-  footer{font-size:14px;color:var(--mute);margin-top:32px}
-  @media print{.masthead{background:none;color:var(--ink)}h1,.sub{color:var(--ink)}.done{display:none}textarea{border:1px solid var(--olive);min-height:120px}}
-  /* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
-  .icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:20px 0;}
-  .icorow svg{width:44px;height:44px;flex:none;display:block;}
-  .icorow span{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text,#C63A2A);text-align:right;}
-  .icorow.on-navy span{color:var(--on-navy-mute,#C8CDD3);}
+  footer{font-size:14px;color:var(--mute);margin-top:28px}
 </style>
 </head>
 <body>
@@ -63,81 +74,157 @@
   <header class="masthead">
     <p class="crumb"><a href="./">Social Media with AI</a> · Step 2</p>
     <h1>Your business <em>in your words</em></h1>
-    <p class="sub">Sixteen questions, about fifteen minutes. Your answers become the voice file every post is written from.</p>
   </header>
 
-  <div class="how">
-    <p><b>Short answers are fine.</b> There are no wrong ones. We'd rather have how you'd say it to a mate than something polished.</p>
-    <p>On a phone, tap the microphone on your keyboard and just talk. Your answers save on this device as you go, so you can stop and come back.</p>
-  </div>
+  <div class="bar" aria-hidden="true"><i id="fill"></i></div>
+  <p class="count" id="count" aria-live="polite"></p>
+  <main id="stage"></main>
 
-  <form id="qs" autocomplete="off"></form>
-
-  <section class="done">
-    <h2>Finished?</h2>
-    <div class="icorow on-navy"><svg aria-label="Tick" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M15 24 L21 31 L33 17"/></svg><span>Last step</span></div>
-    <p>Copy your answers and send them to whoever is setting this up with you, or paste them straight under the voice file prompt yourself.</p>
-    <button type="button" id="copy">Copy my answers</button>
-    <button type="button" class="plain" id="clear">Clear and start again</button>
-    <p id="status" aria-live="polite"></p>
-  </section>
-
-  <footer>Magnum AI · Social Media with AI. Nothing you type here is sent anywhere until you copy it.</footer>
+  <footer>Magnum AI · Social Media with AI. Nothing you type here is sent anywhere. Your answers stay on this device until you copy them.</footer>
 </div>
 <script>
-const Q=[
- ['The business',[
-  ['What do you do, in one or two sentences, as you would say it to someone at a barbecue?',''],
-  ['Who are your best customers? Describe one you would love ten more of.',''],
-  ['Why do people pick you over the place down the road?',''],
-  ['Which suburbs, towns or areas do you serve?','Real place names make posts sound local.']]],
- ['How you sound',[
-  ['Three words that describe how you talk to customers.',''],
-  ['Now the opposite: three words you never want to sound like.','For example: salesy, stiff, try-hard.'],
-  ['Do you use humour?','Always, sometimes, or never.'],
-  ['Any words or phrases you always use, or cannot stand?',''],
-  ['Paste a message, email or post you wrote that you are proud of.','']]],
- ['What to post',[
-  ['What happens in your week that customers would find interesting?','Jobs finished, new stock, events, behind the scenes.'],
-  ['What are customers always asking you? List three questions.',''],
-  ['Anything you never want posted?','Topics, prices, people, competitors.']]],
- ['The practical bits',[
-  ['Your business name, and any licence number, written exactly as they must appear.','For example your QBCC licence, or your liquor licence name.'],
-  ['Where do your photos come from now?','Your phone, staff, a photographer, nowhere yet.'],
-  ['Who approves posts before they go out, and how would they like to do it?','Phone, email, or a quick weekly look.'],
-  ['Anything we must always include or check?','For example a licence number, an 18+ setting for a bar, safety wording, or opening hours.']]]
+/* One question per screen. Taps first, typing only where only the owner can
+   say it. Answers save on this device as they go (try/catch, so a private
+   window still works). The copied text is plain, ready to paste under the
+   voice file prompt. */
+const KIND = {
+  trade:'Builder or trade', shop:'Shop or retail', venue:'Pub, bar or venue',
+  tours:'Tours or adventure', food:'Café or restaurant', care:'Health, beauty or fitness', other:'Something else'
+};
+const MUST = {
+  trade:['Our licence number and licensed name on every post that sells work'],
+  shop:['Prices shown as the customer pays them, including GST','“Australian made” only when it really is'],
+  venue:['No drink prices, discounts or happy hours in any post','Accounts set to 18+','Nobody in photos who looks under 25'],
+  tours:['Never “totally safe” or “suitable for everyone”','Safety gear visible in action shots'],
+  food:['Prices shown as the customer pays them, including GST'],
+  care:['No promises of results we cannot guarantee'],
+  other:[]
+};
+const ALWAYS = ['A yes from anyone recognisable in a photo','No house numbers, number plates or addresses in photos','How to book, call or find us'];
+
+const Q = [
+ {id:'kind', t:'What kind of business are you?', h:'Pick the closest. It sets the rules your posts must follow.', type:'one', opts:Object.values(KIND), other:true},
+ {id:'stage', t:'Where are you on social media today?', h:'No wrong answer. Most people start at the first one.', type:'one',
+  opts:['Nothing yet, no accounts','Accounts, but we rarely post','We post, but it isn’t working','We post regularly and want it easier']},
+ {id:'where', t:'Which ones do you use, or want to?', h:'Not sure? Tap Google, Facebook and Instagram. That covers most local businesses.', type:'many',
+  opts:['Google Business Profile','Facebook','Instagram','LinkedIn','TikTok','Not sure yet']},
+ {id:'name', t:'Your business name and where you work', type:'fields', fields:[
+   ['Business name, exactly as customers know it','e.g. Coastline Joinery'],
+   ['Suburbs, towns or areas you serve','e.g. Burleigh, Palm Beach, the southern Gold Coast']]},
+ {id:'what', t:'What do you do?', h:'Say it like you would at a barbecue. One or two sentences. Tap the microphone on your keyboard and talk if that is easier.', type:'text',
+  eg:'We build decks and pergolas for families on the southern Gold Coast, mostly hardwood.'},
+ {id:'who', t:'Who is your favourite kind of customer?', h:'Describe one you would love ten more of.', type:'text',
+  eg:'Couples in their 40s renovating their first proper home. They want it done once and done right.'},
+ {id:'why', t:'Why do people pick you?', h:'Tap all that fit.', type:'many',
+  opts:['Quality','Price','Speed','Friendly','Local','Experience','Range','Reliable','We explain things'], other:true},
+ {id:'sound', t:'How do you sound to customers?', h:'Tap up to three.', type:'many', max:3,
+  opts:['Friendly','Down to earth','Professional','Straight-talking','Warm','Funny','Expert','Relaxed','Energetic','Calm']},
+ {id:'never', t:'What should you never sound like?', h:'Tap any that would make you cringe.', type:'many',
+  opts:['Salesy','Corporate','Cheesy','Pushy','Over the top','Stiff','Try-hard','Know-it-all']},
+ {id:'humour', t:'Do you use humour?', type:'one', opts:['Never','Sometimes','Often']},
+ {id:'week', t:'What happens in a normal week that people would like to see?', h:'Tap all that happen. These become your posts.', type:'many',
+  opts:['Jobs finished','Before and after','New stock','Events','The team','Behind the scenes','Customer questions answered','Specials'], other:true},
+ {id:'ask', t:'What do customers always ask you?', h:'One or two questions. Each one is a ready-made post.', type:'text', optional:true,
+  eg:'How long does a deck take? Do you do council approval?'},
+ {id:'off', t:'Anything you never want posted?', h:'Tap any, or add your own.', type:'many', optional:true,
+  opts:['Prices','Competitors','Staff faces','Customers’ homes','Politics','Complaints'], other:true},
+ {id:'photos', t:'Where will the photos come from?', type:'many', opts:['My phone','Staff phones','A photographer','Stock photos','No idea yet']},
+ {id:'check', t:'Who checks each post before it goes out?', h:'Someone always does. It takes ten seconds a post.', type:'one', opts:['Me','A staff member','Someone else'], other:true},
+ {id:'must', t:'What must every post get right?', h:'We have ticked the usual ones for your kind of business. Untick any that do not apply, add anything else.', type:'many', must:true, other:true},
+ {id:'licence', t:'Any licence number that must appear?', h:'Builders need their QBCC number on posts that sell work. Leave it blank if this is not you.', type:'fields', optional:true, fields:[
+   ['Licence name and number, exactly as it must appear','e.g. Coastline Joinery Pty Ltd, QBCC 1234567']]},
+ {id:'proud', t:'Got something you wrote that sounds like you?', h:'A post, an email, a text to a customer. Paste it in. Skip if not.', type:'text', optional:true}
 ];
-const KEY='magnum-social-questionnaire';
-const form=document.getElementById('qs');
-let saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-let n=0;
-Q.forEach(([sec,qs])=>{
-  const h=document.createElement('h2');h.textContent=sec;form.appendChild(h);
-  qs.forEach(([q,hint])=>{n++;const id='q'+n;
-    const d=document.createElement('div');d.className='q';
-    d.innerHTML=`<label for="${id}"><span class="n">${String(n).padStart(2,'0')}</span>${q}${hint?`<span class="hint">${hint}</span>`:''}</label><textarea id="${id}" data-q="${q.replace(/"/g,'&quot;')}"></textarea>`;
-    form.appendChild(d);
-    const t=d.querySelector('textarea');t.value=saved[id]||'';
-    t.addEventListener('input',()=>{saved[id]=t.value;try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}});
-  });
-});
-const status=document.getElementById('status');
-function answers(){
-  let out='MY BRAND QUESTIONNAIRE\n';
-  let i=0;
-  Q.forEach(([sec,qs])=>{out+='\n'+sec.toUpperCase()+'\n';qs.forEach(([q])=>{i++;const v=document.getElementById('q'+i).value.trim();out+=`${i}. ${q}\n${v||'(no answer)'}\n\n`;});});
-  return out.trim();
+
+const KEY='magnum-social-q2';
+let A={}, i=-1;
+try{A=JSON.parse(localStorage.getItem(KEY)||'{}');i=A.__i??-1;}catch(e){}
+const save=()=>{A.__i=i;try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){}};
+const stage=document.getElementById('stage'), fill=document.getElementById('fill'), count=document.getElementById('count');
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+
+function kindKey(){const v=A.kind&&A.kind.pick;return Object.keys(KIND).find(k=>KIND[k]===v)||'other';}
+function mustOpts(){return [...(MUST[kindKey()]||[]),...ALWAYS];}
+function answered(q){
+  const a=A[q.id]; if(q.optional) return true;
+  if(!a) return false;
+  if(q.type==='text') return (a.text||'').trim().length>0;
+  if(q.type==='fields') return (a.f||[]).some(x=>(x||'').trim());
+  return (a.pick&&(Array.isArray(a.pick)?a.pick.length:true))||(a.other||'').trim().length>0;
 }
-document.getElementById('copy').addEventListener('click',async()=>{
-  const text=answers();
-  try{await navigator.clipboard.writeText(text);status.textContent='Copied. Paste it into an email or under the voice file prompt.';}
-  catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');status.textContent='Copied.';}catch(_){status.textContent='Copy did not work here. Select the answers and copy them by hand.';}ta.remove();}
-});
-document.getElementById('clear').addEventListener('click',()=>{
-  if(!confirm('Clear every answer on this device?'))return;
-  saved={};try{localStorage.removeItem(KEY)}catch(e){}
-  form.querySelectorAll('textarea').forEach(t=>t.value='');status.textContent='Cleared.';
-});
+function render(){
+  fill.style.width=Math.max(0,Math.min(100,((i+1)/(Q.length+1))*100))+'%';
+  if(i<0){count.textContent='About ten minutes · mostly tapping';
+    stage.innerHTML=`<section class="card start"><h2>Let’s find your voice</h2>
+      <p>Eighteen quick questions. Most are taps. A few ask you to type a sentence, and you can talk instead of typing.</p>
+      <ul><li>No wrong answers.</li><li>You can stop and come back. It saves on this phone.</li><li>At the end you copy your answers in one tap.</li></ul>
+      <div class="nav"><span></span><button class="btn go" id="next">Start</button></div></section>`;
+    document.getElementById('next').onclick=()=>{i=0;save();render();};return;}
+  if(i>=Q.length){count.textContent='Done';return renderDone();}
+  const q=Q[i]; count.textContent=`Question ${i+1} of ${Q.length}`;
+  const a=A[q.id]||(A[q.id]={});
+  let body='';
+  if(q.type==='one'||q.type==='many'){
+    let opts=q.must?mustOpts():q.opts;
+    if(q.must&&!a.init){a.pick=[...mustOpts()];a.init=1;}
+    const pick=q.type==='one'?[a.pick]:(a.pick||[]);
+    body=`<div class="chips" role="group" aria-label="${esc(q.t)}">${opts.map(o=>`<button type="button" class="chip" aria-pressed="${pick.includes(o)}" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
+    if(q.other) body+=`<label class="f" for="oth">Something else? <span style="font-weight:400;color:var(--mute)">(optional)</span></label><input type="text" id="oth" value="${esc(a.other||'')}">`;
+  } else if(q.type==='text'){
+    body=`<textarea id="txt" aria-label="${esc(q.t)}">${esc(a.text||'')}</textarea>${q.eg?`<p class="eg"><b>For example:</b> ${esc(q.eg)}</p>`:''}`;
+  } else if(q.type==='fields'){
+    body=q.fields.map((f,k)=>`<label class="f" for="f${k}">${esc(f[0])}</label><input type="text" id="f${k}" placeholder="${esc(f[1])}" value="${esc((a.f||[])[k]||'')}">`).join('');
+  }
+  stage.innerHTML=`<section class="card"><h2>${esc(q.t)}</h2>${q.h?`<p class="hint">${esc(q.h)}</p>`:''}${body}
+    <div class="nav"><button class="btn back" id="back">Back</button>
+    ${q.optional?'<button class="skip" id="skip">Skip</button>':''}
+    <button class="btn go" id="next">${i===Q.length-1?'Finish':'Next'}</button></div></section>`;
+  const next=document.getElementById('next');
+  const upd=()=>{next.disabled=!answered(q);};
+  stage.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{
+    const o=b.dataset.o;
+    if(q.type==='one'){a.pick=o;stage.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));}
+    else{let p=a.pick||[];if(p.includes(o))p=p.filter(x=>x!==o);else{if(q.max&&p.length>=q.max)return;p=[...p,o];}a.pick=p;b.setAttribute('aria-pressed',p.includes(o));}
+    save();upd();});
+  const oth=document.getElementById('oth'); if(oth) oth.oninput=()=>{a.other=oth.value;save();upd();};
+  const txt=document.getElementById('txt'); if(txt) txt.oninput=()=>{a.text=txt.value;save();upd();};
+  stage.querySelectorAll('input[id^=f]').forEach((el,k)=>el.oninput=()=>{a.f=a.f||[];a.f[k]=el.value;save();upd();});
+  document.getElementById('back').onclick=()=>{i--;save();render();};
+  next.onclick=()=>{i++;save();render();window.scrollTo(0,0);};
+  const sk=document.getElementById('skip'); if(sk) sk.onclick=()=>{i++;save();render();};
+  upd();
+  const first=stage.querySelector('.chip,textarea,input'); if(first&&i>0) first.focus({preventScroll:true});
+}
+function line(q){
+  const a=A[q.id]||{};
+  if(q.type==='text') return (a.text||'').trim();
+  if(q.type==='fields') return q.fields.map((f,k)=>`${f[0]}: ${((a.f||[])[k]||'').trim()}`).filter(s=>!/: $/.test(s)).join('\n');
+  const p=a.pick?(Array.isArray(a.pick)?a.pick:[a.pick]):[];
+  return [...p,(a.other||'').trim()].filter(Boolean).join(', ');
+}
+function summary(){
+  return 'MY BRAND QUESTIONNAIRE\n\n'+Q.map((q,k)=>`${k+1}. ${q.t}\n${line(q)||'(skipped)'}`).join('\n\n');
+}
+function renderDone(){
+  fill.style.width='100%';
+  stage.innerHTML=`<section class="done"><div class="icorow"><svg aria-label="Tick" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M15 24 L21 31 L33 17"/></svg><span>Last step</span></div>
+    <h2>That’s it. Nice work.</h2>
+    <p>Copy your answers. Then paste them into Claude under the voice file prompt, or send them to whoever is setting this up with you.</p>
+    <pre id="summary"></pre>
+    <button class="btn go" id="copy">Copy my answers</button>
+    <button class="btn back" id="edit">Change an answer</button>
+    <button class="btn back" id="clear">Start again</button>
+    <p id="status" aria-live="polite"></p></section>`;
+  document.getElementById('summary').textContent=summary();
+  const st=document.getElementById('status');
+  document.getElementById('copy').onclick=async()=>{const t=summary();
+    try{await navigator.clipboard.writeText(t);st.textContent='Copied. Now paste it where you need it.';}
+    catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');st.textContent='Copied.';}catch(_){st.textContent='Copy did not work here. Press and hold the answers above, then copy.';}ta.remove();}};
+  document.getElementById('edit').onclick=()=>{i=0;save();render();};
+  document.getElementById('clear').onclick=()=>{if(!confirm('Clear every answer on this device?'))return;A={};i=-1;try{localStorage.removeItem(KEY)}catch(e){}render();};
+}
+render();
 </script>
 </body>
 </html>

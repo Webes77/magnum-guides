@@ -2018,12 +2018,12 @@ One line each, with why it is a problem.
 SAFE TO KEEP: the rest, in one line.
 
 Stop after that list.`},
-{kind:'prompt', id:'industry-research', sec:'Reference · Social Media with AI', title:"Research your industry first", where:"A new chat with Research turned on", type:'does', when:'setup', hook:"See what the best in your trade post, before you write a word.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'industry-research', sec:'Reference · Social Media with AI', title:"Research your industry first", where:"A new chat. Turn on Research if your plan has it", type:'does', when:'setup', hook:"See what the best in your trade post, before you write a word.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`Role: You are a social media researcher who studies what the best small
 businesses in one industry actually post, and why it works for them.
 
 Context: I run [type of business] in [town or region], Australia, and I
-post on [which platforms]. I want to see what good looks like in my
+post on [which platforms, or none yet]. I want to see what good looks like in my
 industry before I decide how my own posts should sound. This is research
 to learn from, not to copy.
 
@@ -2076,11 +2076,12 @@ biggest difference, in order. Stop there.`},
 prompt:`Role: You are a copywriter who can hear how an owner really talks and
 write it down so anyone could copy it.
 
-Context: Below are three things: my answers to the brand questionnaire,
-[three to five posts, emails or messages I am proud of], and [ten to
-twenty of my Google reviews, copied word for word]. Turn them into a
-voice file that will guide every post written for my business from now
-on.
+Context: Below are my answers to the brand questionnaire, and if I have
+them, [a few posts, emails or messages I am proud of] and [some of my
+Google reviews, copied word for word]. Turn them into a voice file that
+will guide every post written for my business from now on. If I have
+pasted only the questionnaire, build it from that alone and tell me what
+would make it better later.
 
 Constraints: Base everything on what I have pasted, and quote the words
 that support each point, because a voice file built on guesses writes
@@ -2207,7 +2208,7 @@ platforms, the photo it uses, and the text.
 Output: Confirm what went into Buffer as drafts, channel by channel,
 then list anything marked [CHECK]. Stop there.`},
 
-{kind:'prompt', id:'social-autopilot', sec:'Reference · Social Media with AI', title:"Social media on autopilot", where:"A scheduled task inside your social media project", type:'scheduled', when:'weekly', hook:"Every Monday, the photo folder becomes a week of drafts in Buffer.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'social-autopilot', sec:'Reference · Social Media with AI', title:"Social media on autopilot", where:"A scheduled task in Claude, using your social media project", type:'scheduled', when:'weekly', hook:"Every Monday, the photo folder becomes a week of drafts in Buffer.", added:'2026-09-24', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`Role: You are this business's social media writer, working on your own
 once a week.
 

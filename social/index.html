@@ -217,6 +217,9 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
   header,footer{padding:12px 16px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  /* Branch buttons on the starting-point slide. Social deck only. */
+  .goto{display:inline-block;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:inherit;border:2px solid currentColor;padding:8px 12px;text-decoration:none;cursor:pointer}
+  .goto:hover{background:rgba(0,0,0,.08)}
 </style>
 </head>
 <body>
@@ -239,7 +242,7 @@ const P1 = `Role: You are a social media researcher who studies what the best sm
 businesses in one industry actually post, and why it works for them.
 
 Context: I run [type of business] in [town or region], Australia, and I
-post on [which platforms]. I want to see what good looks like in my
+post on [which platforms, or none yet]. I want to see what good looks like in my
 industry before I decide how my own posts should sound. This is research
 to learn from, not to copy.
 
@@ -290,11 +293,12 @@ biggest difference, in order. Stop there.`;
 const P3 = `Role: You are a copywriter who can hear how an owner really talks and
 write it down so anyone could copy it.
 
-Context: Below are three things: my answers to the brand questionnaire,
-[three to five posts, emails or messages I am proud of], and [ten to
-twenty of my Google reviews, copied word for word]. Turn them into a
-voice file that will guide every post written for my business from now
-on.
+Context: Below are my answers to the brand questionnaire, and if I have
+them, [a few posts, emails or messages I am proud of] and [some of my
+Google reviews, copied word for word]. Turn them into a voice file that
+will guide every post written for my business from now on. If I have
+pasted only the questionnaire, build it from that alone and tell me what
+would make it better later.
 
 Constraints: Base everything on what I have pasted, and quote the words
 that support each point, because a voice file built on guesses writes
@@ -487,14 +491,27 @@ F.cover = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke
 F.flow = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"><rect x="20" y="40" width="120" height="70"/><rect x="150" y="150" width="120" height="70"/><rect x="280" y="260" width="120" height="70"/></g><rect x="20" y="260" width="120" height="70" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><g font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle"><text x="80" y="80">PHOTO</text><text x="210" y="190">CLAUDE</text><text x="340" y="300">BUFFER</text></g><text x="80" y="300" font-family="IBM Plex Mono" font-size="13" letter-spacing="2" fill="#1E1B17" text-anchor="middle">YOU CHECK IT</text><path d="M140 75 H210 V150" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M270 185 H340 V260" fill="none" stroke="#1E1B17" stroke-width="4"/><path d="M280 295 H140" fill="none" stroke="#5B6B7A" stroke-width="4" stroke-dasharray="9 8"/><path d="M200 138l10 12 10-12M330 248l10 12 10-12" fill="none" stroke="#1E1B17" stroke-width="4"/></svg>',
  'Fig. 02 / photo in, draft out, you check it<br>Nothing goes out until you have read it'];
 
+function goTo(id){const n=S.findIndex(x=>x.id===id);if(n>=0)show(n);return false;}
 const S = [
-{sec:"", cover:true, fig:"cover", h:"Your posts, in your voice, <em>without the hours</em>", pts:[], sub:"Reference · Social Media with AI", note:"Four steps. Research your industry, capture your voice, write a post for every platform in two minutes, then put it on autopilot. You build each one as you go."},
+{sec:"", cover:true, fig:"cover", h:"Your posts, in your voice, <em>without the hours</em>", pts:[], sub:"Reference · Social Media with AI", note:"Start from nothing or from a feed that isn't working. Capture how you sound, write a post for every platform in two minutes, then let a queue fill up for you to check. You build each piece as you go."},
 
 {sec:"Why", ic:["Megaphone","4 platforms &middot; every week"], h:"The two <em>problems</em>", pts:[
- "<b>“I don't know how to use AI for this.”</b> So the posts either don't happen, or they sound like every other business.",
- "<b>“I don't have the time.”</b> Four platforms, every week, on top of running the place.",
- "This deck fixes both. You get prompts that do the work, and a queue that fills itself.",
- "You check each post. That's the only job left."]},
+ "<b>“I'm not even on there.”</b> Or the accounts exist and nobody's posted in a year.",
+ "<b>“I don't know how to use AI for this.”</b> So the posts don't happen, or they sound like every other business.",
+ "<b>“I don't have the time.”</b> Google, Facebook, Instagram, every week, on top of running the place.",
+ "This deck fixes all three. You get prompts that do the writing and a queue that fills up. Your only job is checking each post."]},
+
+{sec:"Start here", id:"start", h:"Where are you <em>starting?</em>", tiles:[
+ ["o","Nothing yet","No accounts, or none you can get into. Start with the setup slide.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('setup')\">Start here &rarr;</a>"],
+ ["b","Accounts, but quiet","You're on there but rarely post. Skip setup and start with the research.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>"],
+ ["c","Posting, not working","You post, but it's bland or it's a chore. Research, then roast your feed.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>"]],
+ pts:["Every path ends in the same place: your voice written down, posts in two minutes, and a queue you check from your phone."]},
+
+{sec:"Start here", id:"setup", ic:["Building","Starting from nothing &middot; about an hour"], h:"Set up from <em>zero</em>", pts:[
+ "<b>Google Business Profile first.</b> It's what people see when they search your name. Claim it, add your hours, your area and ten real photos.",
+ "<b>Then a Facebook Page</b> for the business, not your personal profile. Then an Instagram business account, linked to that Page.",
+ "Use an email the business owns, and add a second person as an admin, so nobody gets locked out.",
+ "Done this already? <a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Skip to research &rarr;</a>"]},
 
 {sec:"Why", h:"The four <em>steps</em>", rows:[
  ["Research","See what the best in your industry post, live","You react to examples instead of explaining yourself"],
@@ -502,17 +519,17 @@ const S = [
  ["Write","One photo in, every platform out","Two minutes a post instead of twenty"],
  ["Autopilot","Buffer fills the week, you check it on your phone","Fifteen minutes a week, and it keeps going"]]},
 
-{sec:"1 · Research", h:"Start with what <em>good</em> looks like", pts:[
+{sec:"1 · Research", id:"research", h:"Start with what <em>good</em> looks like", pts:[
  "Most owners can't describe their own brand. Nobody can, cold.",
  "So we don't ask. We look at the best businesses in your trade first, and you react. “That's us.” “That's not us at all.”",
- "It takes a few minutes to run. Start it, then do the roast while it works."],
- prompt:P1, where:"A new chat with Research turned on", after:[
- "Fill the three blanks and press go.",
+ "It takes a few minutes to run. Starting from zero? It works just as well: it shows you what to aim for."],
+ prompt:P1, where:"A new chat. Turn on Research if your plan has it", after:[
+ "Fill the three blanks. No accounts yet? Write “none yet”.",
  "Open the three accounts it names. Check they're real and still posting.",
  "Keep THE GAP TO CLOSE FIRST. It's the headline of your plan."]},
 
 {sec:"1 · Research", h:"Roast the <em>feed</em>", pts:[
- "Now your own. Copy your last twenty or so posts into the chat.",
+ "Already posting? Copy your recent posts into the chat. Even five is enough. Fewer than that? <a class=\"goto\" href=\"#\" onclick=\"return goTo('voice')\">Skip this one &rarr;</a>",
  "It sorts them three ways: sounds like you, sounds like everyone, missing.",
  "It stings a little. That's the point."],
  prompt:P2, where:"A new chat. Paste your posts below the prompt", after:[
@@ -521,15 +538,21 @@ const S = [
  "Put the research and the roast side by side. The gap is usually that the posts could be from anyone.",
  "Keep the three changes. They go into the questionnaire next."]},
 
-{sec:"2 · Your voice", ic:["Clock","16 questions &middot; about 15 min"], h:"Tell us about <em>you</em>", pts:[
- "Sixteen questions. About fifteen minutes on your phone. Voice-to-text is fine.",
- "The business, how you sound, what to post, and the practical bits: who approves, where photos come from, what must always be included.",
- "The last question is the one that keeps you out of trouble: licence numbers, the 18+ setting for a pub, safety lines.",
+{sec:"2 · Your voice", id:"voice", ic:["Clock","About 10 min &middot; mostly tapping"], h:"Tell us about <em>you</em>", pts:[
+ "One question at a time, mostly taps. A few ask for a sentence, and you can talk instead of typing.",
+ "No posts, no reviews, no problem. This is enough to build your voice from.",
+ "Tell it your kind of business and it ticks the rules your posts must follow: a builder's licence number, a pub's 18+ setting, safety wording.",
  "Open it here: <a href=\"questionnaire.html\">the brand questionnaire</a>. Copy your answers when you're done."]},
 
+{sec:"2 · Your voice", h:"What's a Claude <em>project?</em>", pts:[
+ "A project is a folder Claude remembers. Anything you put in it, Claude reads every time you chat inside it.",
+ "Make one called Social media. You'll find Projects in Claude's sidebar. Your voice file goes in it, once.",
+ "From then on, every prompt in this deck runs inside that project, so every post already knows how you sound.",
+ "Projects work best on a paid Claude plan. That's the first cost in the stack, later in the deck."]},
+
 {sec:"2 · Your voice", h:"Build the voice <em>file</em>", pts:[
- "Make a project in Claude for your social media. Everything from here lives in it.",
- "Paste the questionnaire, your best posts and your Google reviews under the prompt.",
+ "Open your Social media project and start a new chat inside it.",
+ "Paste the prompt, then your questionnaire answers. Got posts or reviews you like? Paste those too. If not, skip them.",
  "Save what comes back into the project's files. Every prompt after this reads it."],
  prompt:P3, where:"A new chat inside your social media project", after:[
  "Read HOW WE SOUND out loud. If it doesn't sound like you, say what's wrong and ask again.",
@@ -537,8 +560,8 @@ const S = [
  "Save it as a file in the project. Name it Voice file."]},
 
 {sec:"2 · Your voice", h:"Spot <em>yourself</em>", split:[
- ["Generic AI","“We're thrilled to unveil our stunning new range! Elevate your space with timeless elegance. ✨🛋️ Don't miss out!”","Could be any shop in the country.","This is what you get with no voice file."],
- ["With your voice file","“The oak dining tables landed Tuesday. Six-seater, built to outlast the kids. Come and give one a knock.”","One real detail. How the owner talks.","Same photo. Same two minutes."]]},
+ ["Generic AI","“We're thrilled to unveil our stunning new menu! Elevate your lunch with fresh, vibrant flavours. ✨🥗 Don't miss out!”","Could be any café in the country.","This is what you get with no voice file."],
+ ["With your voice file","“Pumpkin soup's back from Tuesday. Sourdough from the bakery two doors down. Bring a jumper, it's that weather.”","One real detail. How the owner talks.","Same photo. Same two minutes."]]},
 
 {sec:"3 · Write", h:"One photo, <em>every</em> platform", fig:"flow", pts:[
  "This is the everyday move. A photo from your phone and one line about it.",
@@ -559,13 +582,13 @@ const S = [
  pts:["Your voice file and the prompts already block all six. This is how you spot one that slipped through."]},
 
 {sec:"3 · Write", h:"Offers and <em>specials</em>", pts:[
- "The prompt that needs the most care, because a price in public is a promise.",
- "Customer prices go up including GST. That's the price they pay.",
- "No fake urgency. “Last chance” when it isn't is misleading."],
+ "Pubs and bars: skip this one for drinks. No drink prices or specials in posts. Sell the venue, not the drink.",
+ "Everyone else: this needs the most care, because a price in public is a promise.",
+ "Customer prices include GST. No fake urgency."],
  prompt:P5, where:"A new chat inside your social media project", after:[
  "Type the price exactly as the customer pays it.",
  "Check the last line against your own price and dates.",
- "Licensed venues: never a drink price, discount or happy hour in a post. Sell the venue, not the drink."]},
+ "Food and other offers at a venue are fine. Drinks are not."]},
 
 {sec:"3 · Write", h:"Reviews and <em>comments</em>", pts:[
  "Every review answered is proof someone's home.",
@@ -581,11 +604,11 @@ const S = [
  ["Buffer","One queue for LinkedIn, Instagram, Facebook and Google. Check and schedule from your phone.","About A$30 + GST a month for four channels"],
  ["Canva Pro","Your brand kit and templates for images","About A$18 + GST a month"]],
  rowhead:["Tool","Its job","Cost"],
- pts:["Prices move. These were checked in September 2026. Free versions of all three exist if you'd rather start there."]},
+ pts:["Already pay for Canva? Keep it. Starting out? The free versions of Canva and Buffer are fine for month one. Prices checked September 2026."]},
 
 {sec:"4 · Autopilot", ic:["Megaphone","4 channels"], h:"Connect <em>Buffer</em>", pts:[
- "<b>Connect your accounts in Buffer.</b> LinkedIn, Instagram, Facebook, Google. Instagram needs to be a business account linked to your Facebook Page.",
- "<b>Connect Buffer to Claude.</b> Buffer gives you a connector address. Add it to Claude as a custom connector and sign in to Buffer when it asks. Claude can now put drafts in your queue.",
+ "<b>Connect your accounts in Buffer.</b> Google, Facebook, Instagram, and LinkedIn if you use it. Instagram must be a business account linked to your Facebook Page.",
+ "<b>Connect Buffer to Claude.</b> A connector is a plug that lets Claude use another app. Buffer gives you its address; add it in Claude's connector settings and sign in. We do this one together.",
  "<b>Put the Buffer app on your phone.</b> That's where you check each draft and schedule it.",
  "<b>One rule:</b> Claude drafts, you publish. Never let anything go out unread."]},
 
@@ -598,13 +621,13 @@ const S = [
  "Fix anything marked [CHECK], then schedule each one.",
  "Keep this chat. Next month's tune reads it."]},
 
-{sec:"4 · Autopilot", h:"Let it run <em>itself</em>", pts:[
+{sec:"4 · Autopilot", h:"Optional: let it run <em>itself</em>", pts:[
  "Make a folder in Google Drive and connect Drive to Claude. Anyone on the team adds photos from their phone with a line about each.",
  "A scheduled task reads the folder every Monday and fills the Buffer queue with drafts.",
  "This is the advanced step. We test it in your account before you rely on it. Until then, the week in the queue does the same job."],
- prompt:P8, where:"A scheduled task inside your social media project", after:[
+ prompt:P8, where:"A scheduled task in Claude, using your social media project", after:[
  "Run it now, once, and read every draft against the photos. Delete the test drafts from Buffer after.",
- "Two clean runs in a row, then set it to Monday at 7am.",
+ "Two clean runs in a row, then switch the schedule on.",
  "If a Monday brings nothing, it says so. Silence means check it."]},
 
 {sec:"4 · Autopilot", h:"Where <em>you</em> stay in", fig:"flow", pts:[
@@ -649,7 +672,7 @@ const S = [
  "AI writes it, you check it, the queue posts it.",
  "Specific beats polished. The real job, the real product, the real suburb.",
  "Fifteen minutes a week, and you still sound like you.",
- "Every prompt in this deck is on the Prompt Shelf, ready to copy."]}
+ "Every prompt in this deck is on the <a href=\"../prompts/\">Prompt Shelf</a>, ready to copy."]}
 ];
 
 const deck = document.getElementById('deck');

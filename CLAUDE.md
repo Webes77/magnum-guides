@@ -1702,6 +1702,42 @@ contrast audit reports four failures on the cover figure's labels; they are
 the same false positive the bots deck shows (labels measured against the navy
 plate, not the white boxes they sit in). Eight register rows, 67 to 74.
 
+**Made foolproof, 5 Oct, two days before the first room.** James said it
+still read busy and assumed an owner already had posts, when most of his
+clients have nothing. A usability stress test walked it as three owners (no
+accounts, dormant accounts, posting but bland); the no-accounts owner was
+stuck by slide 5. What changed:
+
+- Slide 1 names a third problem, "I'm not even on there", and slide 2 is a
+  branch: Nothing yet, Accounts but quiet, Posting but not working, each with
+  a Start here button that jumps to its slide. Jumps use a `goTo(id)` helper
+  and optional `id` keys on slides, defined in the social deck only, beside
+  `S`, so the shared engine is untouched.
+- New slide, Set up from zero: Google Business Profile, then a Facebook Page,
+  then an Instagram business account linked to it, owned email, second admin.
+- New slide, What's a Claude project: "a folder Claude remembers".
+- The roast says even five posts will do and links past itself if you have
+  fewer. P1 takes "none yet" for platforms. P3's posts and reviews are
+  optional, and it builds from the questionnaire alone when that is all it
+  gets. Both are mirrored on the shelf.
+- The offers slide opens with the pub exception; the stack slide tells a
+  Canva owner to keep it and a beginner to start free; Buffer's connector is
+  defined in a line and marked "we do this one together"; the Monday
+  auto-fill is headed Optional. The furniture example became a café, since
+  James's biggest client is a furniture retailer.
+- The questionnaire is a one-question-per-screen card now: 18 questions,
+  mostly taps, a progress bar, Back, Skip on the optional ones, answers saved
+  on the device under a new storage key. The kind of business pre-ticks the
+  rules every post must follow (QBCC licence for trades, no drink prices and
+  18+ for venues, no safety promises for tours, GST-inclusive prices for
+  shops). The finish screen shows the answers and copies them in one tap.
+  Tested end to end at 390 wide with no sideways scroll.
+
+Deck check PASS at four sizes across all decks, contrast unchanged (the same
+four cover-label false positives), style checker clean on the questionnaire.
+The middle branch tile uses `b` (bright coral, ink text), not `t`, because
+white on `--rust` fails at that text size. Register rows 83 and 84.
+
 **The 6 Levers are taught as six lines, 25 Sep, on a branch for James to read.**
 James said the framework had gone convoluted and asked for paint-by-numbers.
 The labels and order did not move (hard rule 3); the teaching did. Each lever
