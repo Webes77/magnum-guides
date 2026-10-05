@@ -363,6 +363,10 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
   .icorow svg{width:44px;height:44px;flex:none;display:block;}
   .icorow span{font-family:var(--mono,"IBM Plex Mono",monospace);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text,#C63A2A);text-align:right;}
   .icorow.on-navy span{color:var(--on-navy-mute,#C8CDD3);}
+.search{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 22px;border:2px solid var(--ink);background:#FFFFFF;padding:10px 14px}
+.search label{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text)}
+.search input{flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:18px;color:var(--ink);background:transparent;padding:6px 0}
+.search:focus-within{outline:3px solid var(--coral-bright);outline-offset:2px}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -409,6 +413,8 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
     <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act, setting up, every week, every month. The chips at the top narrow it further by what a card does for you. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
     <p>You do not need to know any technique to use a card. The prompt already does that work. <a href="../ai-foundations/">Session one</a> teaches how to brief a job yourself.</p>
   </div>
+
+  <div class="search" role="search"><label for="q">Search the shelf</label><input id="q" type="search" autocomplete="off" placeholder="Try quote, invoice, Instagram, meeting"></div>
 
   <div class="vault" id="vault" aria-label="Choose a moment or an area">
     <div class="label">Where are you?</div>
@@ -2927,7 +2933,8 @@ function renderStationHead(k){
 
 // ---- the filter row. One active chip per group. Groups combine.
 const filters=document.getElementById('filters');
-const state={when:'',type:'',station:''};
+const state={when:'',type:'',station:'',q:''};
+const HAY={};S.forEach(c=>{HAY[c.id]=[c.title,c.hook,c.where,c.sec,c.prompt].join(' ').toLowerCase();});
 const present={when:whenKeys.filter(k=>S.some(c=>whenOf(c)===k)),type:typeKeys.filter(k=>S.some(c=>c.type===k))};
 let revealed=false;
 const chipRow=(name,g,keys,lab)=>`<div class="frow"><span class="fname">${name}</span><div class="chips"><button class="chip on" data-g="${g}" data-v="">All</button>${keys.map(k=>`<button class="chip" data-g="${g}" data-v="${esc(k)}">${esc(lab(k))}</button>`).join('')}</div></div>`;
@@ -2957,9 +2964,10 @@ if(stationKeys.length){
   };});
 }
 vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.when=b.dataset.when;state.type='';state.station='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
-document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.station='';revealed=false;applyFilters();window.scrollTo({top:0});};
+document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.station='';state.q='';document.getElementById('q').value='';revealed=false;applyFilters();window.scrollTo({top:0});};
 function applyFilters(){
-  const any=!!(state.when||state.type||state.station);
+  const words=state.q.toLowerCase().split(/\s+/).filter(Boolean);
+  const any=!!(state.when||state.type||state.station||words.length);
   if(any) revealed=true;
   const landing=!revealed;
   document.getElementById('vault').hidden=!landing;
@@ -2971,7 +2979,7 @@ function applyFilters(){
   if(landing){document.getElementById('none').hidden=true;document.getElementById('fcount').textContent=`${S.length} cards`;filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.v===''));return;}
   let n=0;
   document.querySelectorAll('.pane').forEach(p=>{
-    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.station||p.dataset.station===state.station);
+    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.station||p.dataset.station===state.station)&&words.every(w=>(HAY[p.id]||'').includes(w));
     p.hidden=!ok;if(ok)n++;
   });
   document.querySelectorAll('#shelf .subgroup').forEach(g=>{g.hidden=!g.querySelector('.pane:not([hidden])');});
@@ -2982,7 +2990,8 @@ function applyFilters(){
   checkMore();
 }
 filters.querySelectorAll('.chip:not(.back)').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
-document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.station='';applyFilters();};
+document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.station='';state.q='';document.getElementById('q').value='';applyFilters();};
+document.getElementById('q').addEventListener('input',e=>{state.q=e.target.value;if(!state.q.trim()&&!state.when&&!state.type&&!state.station)revealed=false;applyFilters();});
 applyFilters();
 
 async function doCopy(b){

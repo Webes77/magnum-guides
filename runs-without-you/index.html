@@ -697,6 +697,7 @@ function grow(i){
   sl.style.setProperty('--g',lo);
 }
 
+function remember(i){if(i<1)return;try{localStorage.setItem('magnum-last',JSON.stringify({p:location.pathname,n:NAME,i:i,t:LAST,h:plain(S[i].h)}));}catch(e){}}
 function show(n){
   cur=Math.max(0,Math.min(slides.length-1,n));
   if(isPhone()){scrollToSec(cur,true);return;}
@@ -705,6 +706,7 @@ function show(n){
   document.getElementById('count').textContent=cur===0?'':`${cur} / ${LAST}`;
   document.getElementById('fill').style.width=(cur/LAST*100)+'%';
   history.replaceState(null,'',cur?('#'+cur):location.pathname);
+  remember(cur);
   slides[cur].scrollTop=0;
   grow(cur);
   checkMore();
@@ -812,6 +814,7 @@ function pTrack(){
   document.getElementById('pfill').style.width=(k/LAST*100)+'%';
   document.getElementById('pnext').innerHTML=k<LAST?`Next <b>${plain(S[k+1].h)}</b>`:'Back to <b>the top</b>';
   history.replaceState(null,'',k?('#'+k):location.pathname);
+  remember(k);
 }
 document.getElementById('pnext').onclick=()=>scrollToSec(pcur<LAST?pcur+1:0);
 window.addEventListener('scroll',pTrack,{passive:true});

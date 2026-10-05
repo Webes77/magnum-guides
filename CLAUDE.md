@@ -2442,6 +2442,35 @@ the phone bar say SECTIONS; M still opens it. All five decks.
 Next: step 3 of the spec, the members area shell. Ask James before the front
 page changes.
 
+**The rest of the site, part one, 5 Oct.** James said do the rest of the site
+after the decks. Three pieces, each small and reversible.
+
+Every guide's prompt block now reads like the deck prompt card: navy header
+saying The prompt, Copy in bright coral, Role to Output labels in coral text,
+lowercase blanks tinted and capital markers in slate. It is one shared layer,
+`assets/site.css` and `assets/site.js`, linked after each page's own styles on
+`privacy/`, `cowork/`, `agent-workforce/`, `manus-bridge/` and
+`manus-website-manual.html`. The script only wraps text in spans and puts a
+block back untouched if a single character would change, and every page's own
+Copy still reads the `<pre>` text, so nothing copied moved. Fine-Tune and the
+shelf keep their own prompt designs for now. Authored hard line breaks still
+show ragged on a phone inside these blocks; reflowing them would change what
+Copy reads on those pages, so it waits for the shared-stylesheet pass.
+
+The Prompt Shelf has a search box above the chooser. It matches every word
+typed against the card's title, hook, where line, source and prompt; clearing
+it returns to the chooser. `state.q` sits beside the other filters.
+
+Every deck remembers the last slide this browser opened (`magnum-last` in
+localStorage, set by `remember()` in `show()` and the phone tracker). The
+front page reads it and turns Start course one into "Carry on: <deck>, slide n
+of m", with "or start course one" under it. That front page change is on the
+session branch, not merged, because James asked to see front page changes
+before they ship.
+
+Course pages were proposed in the plan and are not being built: the decks'
+phone page now does the job a course page would have done.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
