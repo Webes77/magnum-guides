@@ -1,0 +1,468 @@
+<title>Members Area Rebuild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a design sheet. Paper ground, one column of frames, each frame a true-size stage scaled to fit. */
+:root{
+  --paper:#FBFBF9;--white:#FFFFFF;--ink:#1E1B17;--navy:#1F2A37;
+  --rust:#EF4029;--coral-text:#C63A2A;--coral-bright:#FF6F5E;--tint:#FBE1D8;
+  --olive:#5B6B7A;--mute:#63615C;--ghost:#F7BAB0;--ghost-navy:#A1524E;--on-navy-mute:#C8CDD3;--cream:#F4F1EA;
+  --display:'Oswald',Impact,'Arial Narrow',sans-serif;
+  --sans:'IBM Plex Sans',Helvetica,Arial,sans-serif;
+  --mono:'IBM Plex Mono',Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--coral-text)}
+.wrap{max-width:1240px;margin:0 auto;padding-block:0 80px;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:.005em}
+h1{font-size:clamp(44px,7vw,84px);text-transform:uppercase}
+h1 em,.h em{font-style:normal;color:var(--rust)}
+p{margin:0}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+
+/* page masthead */
+.mast{background:var(--navy);color:var(--white);padding-block:28px 44px;padding-inline:20px;margin-bottom:56px}
+.mast .in{max-width:1240px;margin:0 auto;display:flex;gap:28px;align-items:flex-start;justify-content:space-between}
+.mast .mono{color:var(--coral-bright)}
+.mast p{color:var(--on-navy-mute);max-width:62ch;font-size:18px;margin-top:14px}
+.mast .badge{width:150px;flex:none}
+.mast .badge svg{width:100%;height:auto;display:block}
+@media(max-width:700px){.mast .badge{width:96px}}
+
+/* section index entry */
+.sec{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;border-bottom:3px solid var(--ink);padding-bottom:10px;margin:64px 0 18px}
+.sec .n{font-family:var(--display);font-size:56px;line-height:.9;color:var(--ghost);font-weight:600}
+.sec h2{font-size:40px}
+.sec:hover .n{color:var(--rust)}
+.lede{max-width:66ch;color:var(--ink);margin:0 0 26px;font-size:18px}
+.lede b{font-weight:600}
+
+/* frame caption */
+.frame{margin:0 0 46px}
+.cap{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;margin:0 0 10px}
+.cap h3{font-size:24px;font-weight:500}
+.cap .mono{color:var(--coral-text)}
+.note{margin-top:12px;color:var(--mute);font-size:15.5px;max-width:72ch}
+.note b{color:var(--ink);font-weight:600}
+
+/* stage scaler */
+.scroller{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;border:2px solid var(--ink);background:var(--white)}
+.stage{position:relative;overflow:hidden}
+.stage>.art{position:absolute;left:0;top:0;transform-origin:0 0}
+.swipe{display:none;color:var(--mute);font-size:13px;margin-top:6px}
+@media(max-width:760px){.swipe{display:block}}
+
+/* ===== LAPTOP SLIDES (laid out at 1340 x 770, scaled) ===== */
+.slide{width:1340px;height:770px;background:var(--paper);color:var(--ink);padding:52px 64px 70px;display:flex;flex-direction:column;position:relative;font-size:19px}
+.slide .foot{position:absolute;left:64px;right:64px;bottom:22px;display:flex;justify-content:space-between;color:var(--mute);font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;border-top:1px solid var(--on-navy-mute);padding-top:10px}
+.slide.navy{background:var(--navy);color:var(--white)}
+.slide.navy .foot{color:var(--on-navy-mute);border-color:var(--olive)}
+.kick{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.kick .n{font-family:var(--display);font-size:44px;line-height:.9;color:var(--ghost);font-weight:600}
+.kick .t{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);font-weight:500}
+.h{font-family:var(--display);font-weight:600;line-height:1;text-transform:none;letter-spacing:.002em}
+.icorow{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:6px}
+.icorow svg{width:44px;height:44px;flex:none}
+.icorow .l{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);font-weight:500;text-align:right}
+.slide.navy .icorow .l{color:var(--on-navy-mute)}
+.slide.navy .icorow svg{stroke:var(--coral-bright)}
+
+/* cover */
+.cover{padding:40px 64px 70px}
+.cover .top{display:flex;justify-content:space-between;align-items:flex-start}
+.cover .badge{width:170px;clip-path:circle(49.2%)}
+.mast .badge{clip-path:circle(49.2%)}
+.cover .badge svg{width:100%;height:auto;display:block}
+.cover .label{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);font-weight:500;margin-top:14px}
+.cover .body{flex:1;display:grid;grid-template-columns:1.25fr .9fr;gap:60px;align-items:center}
+.cover .h{font-size:86px;line-height:.94;text-transform:uppercase}
+.cover .h em{color:var(--coral-bright)}
+.cover .sub{font-size:19px;color:var(--on-navy-mute);max-width:46ch;margin-top:20px;line-height:1.45}
+.steps{display:flex;flex-direction:column-reverse;gap:16px}
+.steps .s{background:var(--white);color:var(--ink);border:2px solid var(--ink);height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-family:var(--display);font-size:20px;letter-spacing:.06em;text-transform:uppercase}
+.steps .s i{display:block;height:10px;width:150px;background:var(--olive)}
+.steps .s.on i{background:var(--rust);width:210px}
+.steps .s.on{outline:3px solid var(--coral-bright);outline-offset:3px}
+.steps .fig{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-mute);margin-top:4px}
+
+/* content-sized statement: the four steps */
+.bands{flex:1;display:grid;grid-template-rows:repeat(4,1fr);margin-top:22px;border-top:2px solid var(--ink)}
+.band{display:grid;grid-template-columns:110px 300px 1fr 1fr;gap:28px;align-items:center;border-bottom:1px solid var(--on-navy-mute);padding:0 0 0 4px}
+.band .i{font-family:var(--display);font-size:76px;line-height:.85;color:var(--ghost);font-weight:600}
+.band:hover .i{color:var(--rust)}
+.band .nm{font-family:var(--display);font-size:44px;font-weight:600;text-transform:uppercase;line-height:.95}
+.band .do{font-size:23px;line-height:1.35;font-weight:500}
+.band .why{font-size:19px;line-height:1.4;color:var(--mute)}
+.band .why::before{content:'WHY IT MATTERS';display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--coral-text);margin-bottom:4px;font-weight:500}
+.band .do::before{content:'WHAT WE DO';display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--coral-text);margin-bottom:4px;font-weight:500}
+
+/* tiles */
+.tiles{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:26px;margin-bottom:12px}
+.tile{border:2px solid var(--ink);background:var(--white);padding:30px 30px 28px;display:flex;flex-direction:column;gap:16px}
+.tile svg{width:46px;height:46px}
+.tile .tt{font-family:var(--display);font-size:40px;font-weight:600;line-height:.98;text-transform:uppercase}
+.tile .tb{font-size:20px;line-height:1.4;flex:1}
+.tile .go{align-self:flex-start;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:14px 18px;border:2px solid var(--ink);color:var(--ink);background:transparent}
+.tile.b{background:var(--coral-bright);border-color:var(--coral-bright)}
+.tile.b svg{stroke:var(--ink)}
+.tile.b .go{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.tile.c{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.tile.c svg{stroke:var(--coral-bright)}
+.tile.c .go{background:var(--coral-bright);color:var(--ink);border-color:var(--coral-bright)}
+.tile.o .go{background:var(--rust);color:var(--white);border-color:var(--rust)}
+.tile .tag{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);font-weight:500}
+.tile.c .tag{color:var(--on-navy-mute)}
+.tile.b .tag{color:var(--ink)}
+
+/* prompt slide */
+.pgrid{flex:1;display:grid;grid-template-columns:300px 1fr;gap:36px;margin-top:20px;min-height:0}
+.rail{display:flex;flex-direction:column;gap:26px;padding-top:6px}
+.rail .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);font-weight:500;margin-bottom:8px}
+.rail p{font-size:17px;line-height:1.45}
+.rail ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;counter-reset:a}
+.rail li{counter-increment:a;display:grid;grid-template-columns:34px 1fr;gap:8px;font-size:16.5px;line-height:1.4}
+.rail li::before{content:counter(a,decimal-leading-zero);font-family:var(--display);font-size:26px;line-height:1;color:var(--ghost);font-weight:600}
+.rail .tip{border-left:4px solid var(--rust);padding:10px 14px;background:var(--white);font-size:15.5px;color:var(--ink);margin-top:auto}
+.pcard{border:2px solid var(--ink);background:var(--white);display:flex;flex-direction:column;min-height:0}
+.pcard .hd{background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 18px 0 22px;height:60px;gap:16px}
+.pcard .hd .l1{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);font-weight:600}
+.pcard .hd .l2{font-size:14px;color:var(--on-navy-mute);margin-left:10px}
+.pcard .btns{display:flex;gap:8px}
+.pcard .btn{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:10px 14px;border:2px solid var(--on-navy-mute);color:var(--white);background:transparent}
+.pcard .btn.p{background:var(--coral-bright);border-color:var(--coral-bright);color:var(--ink)}
+.pcard .bd{position:relative;flex:1;min-height:0;overflow:hidden;padding:24px 26px 0 26px}
+.pcard pre{margin:0;font-family:var(--mono);font-size:15.5px;line-height:1.62;white-space:pre-wrap;color:var(--ink);font-weight:400}
+.pcard pre .lv{color:var(--coral-text);font-weight:600}
+.pcard pre .bl{background:var(--tint);color:var(--coral-text);border-bottom:2px dotted var(--coral-text);padding:1px 6px;font-weight:500}
+.pcard pre .mk{color:var(--olive);font-weight:600}
+.pcard .more{position:absolute;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--on-navy-mute);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);padding:10px 26px;display:flex;justify-content:space-between;font-weight:500}
+
+/* ===== PHONE (laid out at 390 wide) ===== */
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px}
+.phone{width:390px;height:800px;background:var(--paper);position:relative;overflow:hidden;font-size:16px}
+.pbar{position:sticky;top:0;height:56px;background:var(--paper);border-bottom:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:2}
+.pbar .mk{width:34px;height:34px}
+.pbar .mk svg{width:100%;height:100%;display:block}
+.pbar .ti{font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.pbar .mn{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:2px solid var(--ink);padding:7px 10px}
+.pcover{background:var(--navy);color:var(--white);padding:26px 20px 28px}
+.pcover .label{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);font-weight:500}
+.pcover .h{font-size:52px;line-height:.95;text-transform:uppercase;margin-top:10px}
+.pcover .h em{color:var(--coral-bright)}
+.pcover p{color:var(--on-navy-mute);font-size:15.5px;margin-top:14px;line-height:1.5}
+.pcover .steps{margin-top:22px;gap:8px}
+.pcover .steps .s{height:40px;font-size:13px;padding:0 12px}
+.pcover .steps .s i{width:70px;height:7px}
+.pcover .steps .s.on i{width:110px}
+.psec{padding:26px 20px 10px}
+.psec .kick .n{font-size:40px}
+.psec .h{font-size:40px;line-height:.98;margin:4px 0 14px}
+.psec .pts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.psec .pts li{padding-left:18px;position:relative;font-size:16.5px;line-height:1.45}
+.psec .pts li::before{content:'';position:absolute;left:0;top:11px;width:8px;height:8px;background:var(--rust)}
+.psec .pts b{font-weight:600}
+.pnext{position:absolute;left:0;right:0;bottom:0;height:60px;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.pnext .bar{height:4px;background:var(--olive);flex:1;margin:0 14px;position:relative}
+.pnext .bar i{position:absolute;left:0;top:0;bottom:0;width:17%;background:var(--coral-bright)}
+.pnext b{color:var(--coral-bright);font-weight:600}
+/* phone prompt card */
+.ppc{margin:0 14px 20px;border:2px solid var(--ink);background:var(--white)}
+.ppc .hd{background:var(--navy);color:var(--white);padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.ppc .hd .l1{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-bright);font-weight:600}
+.ppc .hd .l2{font-size:13.5px;color:var(--on-navy-mute)}
+.ppc .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ppc .btn{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:12px 10px;text-align:center;border:2px solid var(--on-navy-mute);color:var(--white)}
+.ppc .btn.p{background:var(--coral-bright);border-color:var(--coral-bright);color:var(--ink)}
+.ppc pre{margin:0;padding:16px 14px 18px;font-family:var(--mono);font-size:15px;line-height:1.6;white-space:pre-wrap}
+.ppc pre .lv{color:var(--coral-text);font-weight:600}
+.ppc pre .bl{background:var(--tint);color:var(--coral-text);border-bottom:2px dotted var(--coral-text);padding:1px 5px;font-weight:500}
+.ppc pre .mk{color:var(--olive);font-weight:600}
+.ppc .fade{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);border-top:1px solid var(--on-navy-mute);padding:10px 14px;font-weight:500;background:var(--paper)}
+.ptiles{padding:0 14px;display:flex;flex-direction:column;gap:12px}
+.ptiles .tile{padding:18px 18px 16px;gap:10px}
+.ptiles .tile svg{width:36px;height:36px}
+.ptiles .tile .tt{font-size:28px}
+.ptiles .tile .tb{font-size:15.5px}
+.ptiles .tile .go{align-self:stretch;text-align:center;padding:12px}
+
+/* summary */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:8px}
+.card{border:2px solid var(--ink);background:var(--white);padding:22px 24px}
+.card.n{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.card h3{font-size:24px;margin-bottom:10px;font-weight:500}
+.card .mono{color:var(--coral-text);margin-bottom:6px;display:block}
+.card.n .mono{color:var(--coral-bright)}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.card li{padding-left:18px;position:relative;font-size:16px;line-height:1.45}
+.card li::before{content:'';position:absolute;left:0;top:10px;width:8px;height:8px;background:var(--rust)}
+.card.n li::before{background:var(--coral-bright)}
+.ask{margin-top:30px;border-left:6px solid var(--rust);background:var(--white);padding:18px 22px;font-size:18px;max-width:72ch}
+.ask b{font-weight:600}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="mast"><div class="in">
+  <div>
+    <div class="mono">Magnum AI · Members area · Phase 0</div>
+    <h1 style="margin-top:12px">The rebuild, <em>before</em> it is built</h1>
+    <p>Five frames in your colours with the delivered badge. Four are the laptop deck. One is the same deck on a phone. Read it, mark it up, and say go or change it. Nothing on the live site moves until you do.</p>
+  </div>
+  <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 241.9992 241.9992">
+<g>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M0 239.9992H239.9992V0H0Z" fill="#1f2b37" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M73.4751 156.5014 75.3965 158.546 69.2493 164.3221 75.738 163.1965 75.7888 163.2506 74.2467 169.7221 80.4345 163.9077 82.3808 165.979 72.9034 174.8852 70.7913 172.6376 72.4581 166.3804 66.1093 167.6551 63.9975 165.4075ZM87.5021 169.327 90.0598 170.7296 89.7001 173.8587 94.5221 176.5032 96.9673 174.5172 99.5902 175.9555 88.4049 184.7608 86.0913 183.4923ZM89.3812 176.5658 88.8684 181.0947 92.4111 178.2272ZM111.1912 178.1189C113.5395 178.4954 115.2088 179.7038 116.3503 181.0344L115.4568 186.6112 109.8797 185.7178 110.2706 183.278 113.1143 183.7335 113.4082 181.8989C112.7747 181.2705 111.8988 180.8668 110.8715 180.7024 108.5964 180.3379 106.7057 181.8037 106.3295 184.1516L106.3236 184.1882C105.9738 186.3714 107.3157 188.4492 109.3706 188.7786 110.8565 189.0167 111.8134 188.6808 112.9363 188.0138L114.372 190.4454C112.8504 191.3683 111.3562 191.7686 109.0446 191.3981 105.1554 190.7751 102.7911 187.3293 103.3761 183.6785L103.3821 183.6417C103.9904 179.8444 107.1918 177.4783 111.1912 178.1189ZM123.5061 179.0847 126.2942 178.638 127.6024 186.8017 132.5134 177.6416 134.9167 177.2563 136.9743 190.0984 134.1856 190.5452 132.9188 182.6379 128.1685 191.5092 125.5635 191.9265ZM146.6813 172.3416C149.7654 170.7021 152.6247 171.3708 154.4734 174.8486L157.9184 181.3286 155.3919 182.6717 151.8948 176.0933C150.9267 174.272 149.4944 173.8341 147.9523 174.6539 146.41 175.4736 145.9894 176.9386 146.9837 178.8089L150.4372 185.3056 147.911 186.6484 144.4226 180.0862C142.626 176.7067 143.5969 173.9815 146.6813 172.3416ZM157.8064 166.0944 159.6821 164.0083 165.9543 169.6482 164.2876 163.277 164.3372 163.2217 170.9152 164.2147 164.6016 158.5375 166.5023 156.4237 176.1729 165.1198 174.1107 167.413 167.7356 166.278 169.5393 172.4973 167.4771 174.7905Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M186.9109 126.7801 190.3246 123.3666 193.7378 119.9531 190.3246 116.5394 186.9109 113.1262 183.4971 116.5394 180.0836 119.9531 183.4971 123.3666Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M53.0881 126.7801 56.5019 123.3666 59.9151 119.9531 56.5019 116.5394 53.0881 113.1262 49.6746 116.5394 46.2609 119.9531 49.6746 123.3666Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M115.5189 116.2871 124.5915 89.6363 127.3436 81.5513 121.5187 79.511 118.9517 87.0517H112.0859L109.5188 79.511 103.6939 81.5513 106.446 89.6363ZM130.1522 106.6266H136.3048V81.5513H130.1522ZM117.0275 92.704 115.5189 97.1357 114.01 92.704Z" fill="#ef4029" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M81.883 58.339 83.23 57.649 86.0811 63.2151 86.6486 58.3149 86.6931 58.2922 91.0352 60.7056 88.1728 55.1174 89.5422 54.4161 93.5331 62.2086 92.075 62.9555 87.8165 60.4851 87.3326 65.3845 85.8742 66.1314ZM99.3506 50.7195 100.8252 50.379 102.2318 56.4727 103.9782 51.859 104.0267 51.8479 107.6485 55.2478 106.2366 49.1301 107.7352 48.784 109.7045 57.3148 108.108 57.6833 104.5809 54.2486 102.9163 58.8818 101.3199 59.2503ZM117.5899 47.7323 119.3528 47.7768 121.5822 51.1489 123.9664 47.8936 125.7795 47.9395 122.4907 52.3352 125.4334 56.6887 123.6705 56.6439 121.5615 53.4504 119.3068 56.5336 117.4938 56.488 120.6658 52.2643ZM134.9578 49.2228 136.654 49.7044 137.9747 53.5249 141.0936 50.9652 142.8384 51.4604 138.5592 54.9 140.3266 59.8484 138.6303 59.3668 137.382 55.749 134.4311 58.1746 132.6866 57.6791 136.8094 54.3773ZM154.2835 56.4214 155.4548 57.0949 154.2146 66.5532 152.7724 65.7241 153.8495 58.5814 148.2075 63.0992 146.7332 62.2514Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M167.817 75.996 170.0155 73.7977 172.2138 71.5992 170.0155 69.4006 167.817 67.2024 165.6184 69.4006 163.4199 71.5992 165.6184 73.7977Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M72.1823 75.996 74.3805 73.7977 76.5788 71.5992 74.3805 69.4006 72.1823 67.2024 69.9837 69.4006 67.7852 71.5992 69.9837 73.7977Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M63.042 85.8838C59.1778 92.3295 56.376 99.4853 54.8802 107.1091 54.6021 108.5244 52.8925 108.271 53.1034 107.0325 54.6123 99.18 57.4705 91.8065 61.4256 85.163 62.348 83.4605 63.8391 84.9209 63.042 85.8838ZM176.9539 85.8838C180.8181 92.3295 183.6198 99.4853 185.1157 107.1091 185.3938 108.5244 187.1033 108.271 186.8924 107.0325 185.3836 99.18 182.5254 91.8065 178.5702 85.163 177.6478 83.4605 176.1568 84.9209 176.9539 85.8838ZM176.9539 154.0698C180.8181 147.6241 183.6198 140.468 185.1157 132.8443 185.3938 131.4289 187.1033 131.6823 186.8924 132.9211 185.3836 140.7736 182.5254 148.1468 178.5702 154.7904 177.6478 156.4931 176.1568 155.0327 176.9539 154.0698ZM63.042 154.0698C59.1778 147.6241 56.376 140.468 54.8802 132.8443 54.6021 131.4289 52.8925 131.6823 53.1034 132.9211 54.6123 140.7736 57.4705 148.1468 61.4256 154.7904 62.348 156.4931 63.8391 155.0327 63.042 154.0698" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M119.9993 212.6245C171.1551 212.6245 212.6245 171.1551 212.6245 119.9996 212.6245 68.8439 171.1551 27.3745 119.9993 27.3745 68.8439 27.3745 27.3745 68.8439 27.3745 119.9996 27.3745 171.1551 68.8439 212.6245 119.9993 212.6245ZM119.9993 201.8588C165.2091 201.8588 201.8588 165.2091 201.8588 119.9996 201.8588 74.7899 165.2091 38.1402 119.9993 38.1402 74.7899 38.1402 38.1402 74.7899 38.1402 119.9996 38.1402 165.2091 74.7899 201.8588 119.9993 201.8588" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M119.9996 113.3306 140.4964 136.2915V81.5513H152.6542V158.4476H143.9399L119.9996 132.266 96.0593 158.4476H87.3448V81.5513H99.5026V136.2915Z" fill="#ffffff" fill-rule="evenodd"></path>
+</g>
+</svg></div>
+</div></header>
+
+<main class="wrap">
+
+<div class="sec"><div class="n">01</div><h2>The laptop deck</h2></div>
+<p class="lede">The gaps you saw come from one rule: every slide is laid out in the same 1340 by 770 box and the content sits at the top. The new engine measures what is on a slide and lets it fill the frame. Four layouts, each with its own way of filling it.</p>
+
+<section class="frame">
+  <div class="cap"><h3>Frame A · The cover</h3><span class="mono">Statement layout · navy</span></div>
+  <div class="scroller"><div class="stage" data-w="1340" data-h="770" data-min="960"><div class="art">
+    <div class="slide navy cover">
+      <div class="top">
+        <div><div class="badge"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 241.9992 241.9992">
+<g>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M0 239.9992H239.9992V0H0Z" fill="#1f2b37" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M73.4751 156.5014 75.3965 158.546 69.2493 164.3221 75.738 163.1965 75.7888 163.2506 74.2467 169.7221 80.4345 163.9077 82.3808 165.979 72.9034 174.8852 70.7913 172.6376 72.4581 166.3804 66.1093 167.6551 63.9975 165.4075ZM87.5021 169.327 90.0598 170.7296 89.7001 173.8587 94.5221 176.5032 96.9673 174.5172 99.5902 175.9555 88.4049 184.7608 86.0913 183.4923ZM89.3812 176.5658 88.8684 181.0947 92.4111 178.2272ZM111.1912 178.1189C113.5395 178.4954 115.2088 179.7038 116.3503 181.0344L115.4568 186.6112 109.8797 185.7178 110.2706 183.278 113.1143 183.7335 113.4082 181.8989C112.7747 181.2705 111.8988 180.8668 110.8715 180.7024 108.5964 180.3379 106.7057 181.8037 106.3295 184.1516L106.3236 184.1882C105.9738 186.3714 107.3157 188.4492 109.3706 188.7786 110.8565 189.0167 111.8134 188.6808 112.9363 188.0138L114.372 190.4454C112.8504 191.3683 111.3562 191.7686 109.0446 191.3981 105.1554 190.7751 102.7911 187.3293 103.3761 183.6785L103.3821 183.6417C103.9904 179.8444 107.1918 177.4783 111.1912 178.1189ZM123.5061 179.0847 126.2942 178.638 127.6024 186.8017 132.5134 177.6416 134.9167 177.2563 136.9743 190.0984 134.1856 190.5452 132.9188 182.6379 128.1685 191.5092 125.5635 191.9265ZM146.6813 172.3416C149.7654 170.7021 152.6247 171.3708 154.4734 174.8486L157.9184 181.3286 155.3919 182.6717 151.8948 176.0933C150.9267 174.272 149.4944 173.8341 147.9523 174.6539 146.41 175.4736 145.9894 176.9386 146.9837 178.8089L150.4372 185.3056 147.911 186.6484 144.4226 180.0862C142.626 176.7067 143.5969 173.9815 146.6813 172.3416ZM157.8064 166.0944 159.6821 164.0083 165.9543 169.6482 164.2876 163.277 164.3372 163.2217 170.9152 164.2147 164.6016 158.5375 166.5023 156.4237 176.1729 165.1198 174.1107 167.413 167.7356 166.278 169.5393 172.4973 167.4771 174.7905Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M186.9109 126.7801 190.3246 123.3666 193.7378 119.9531 190.3246 116.5394 186.9109 113.1262 183.4971 116.5394 180.0836 119.9531 183.4971 123.3666Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M53.0881 126.7801 56.5019 123.3666 59.9151 119.9531 56.5019 116.5394 53.0881 113.1262 49.6746 116.5394 46.2609 119.9531 49.6746 123.3666Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M115.5189 116.2871 124.5915 89.6363 127.3436 81.5513 121.5187 79.511 118.9517 87.0517H112.0859L109.5188 79.511 103.6939 81.5513 106.446 89.6363ZM130.1522 106.6266H136.3048V81.5513H130.1522ZM117.0275 92.704 115.5189 97.1357 114.01 92.704Z" fill="#ef4029" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M81.883 58.339 83.23 57.649 86.0811 63.2151 86.6486 58.3149 86.6931 58.2922 91.0352 60.7056 88.1728 55.1174 89.5422 54.4161 93.5331 62.2086 92.075 62.9555 87.8165 60.4851 87.3326 65.3845 85.8742 66.1314ZM99.3506 50.7195 100.8252 50.379 102.2318 56.4727 103.9782 51.859 104.0267 51.8479 107.6485 55.2478 106.2366 49.1301 107.7352 48.784 109.7045 57.3148 108.108 57.6833 104.5809 54.2486 102.9163 58.8818 101.3199 59.2503ZM117.5899 47.7323 119.3528 47.7768 121.5822 51.1489 123.9664 47.8936 125.7795 47.9395 122.4907 52.3352 125.4334 56.6887 123.6705 56.6439 121.5615 53.4504 119.3068 56.5336 117.4938 56.488 120.6658 52.2643ZM134.9578 49.2228 136.654 49.7044 137.9747 53.5249 141.0936 50.9652 142.8384 51.4604 138.5592 54.9 140.3266 59.8484 138.6303 59.3668 137.382 55.749 134.4311 58.1746 132.6866 57.6791 136.8094 54.3773ZM154.2835 56.4214 155.4548 57.0949 154.2146 66.5532 152.7724 65.7241 153.8495 58.5814 148.2075 63.0992 146.7332 62.2514Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M167.817 75.996 170.0155 73.7977 172.2138 71.5992 170.0155 69.4006 167.817 67.2024 165.6184 69.4006 163.4199 71.5992 165.6184 73.7977Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M72.1823 75.996 74.3805 73.7977 76.5788 71.5992 74.3805 69.4006 72.1823 67.2024 69.9837 69.4006 67.7852 71.5992 69.9837 73.7977Z" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M63.042 85.8838C59.1778 92.3295 56.376 99.4853 54.8802 107.1091 54.6021 108.5244 52.8925 108.271 53.1034 107.0325 54.6123 99.18 57.4705 91.8065 61.4256 85.163 62.348 83.4605 63.8391 84.9209 63.042 85.8838ZM176.9539 85.8838C180.8181 92.3295 183.6198 99.4853 185.1157 107.1091 185.3938 108.5244 187.1033 108.271 186.8924 107.0325 185.3836 99.18 182.5254 91.8065 178.5702 85.163 177.6478 83.4605 176.1568 84.9209 176.9539 85.8838ZM176.9539 154.0698C180.8181 147.6241 183.6198 140.468 185.1157 132.8443 185.3938 131.4289 187.1033 131.6823 186.8924 132.9211 185.3836 140.7736 182.5254 148.1468 178.5702 154.7904 177.6478 156.4931 176.1568 155.0327 176.9539 154.0698ZM63.042 154.0698C59.1778 147.6241 56.376 140.468 54.8802 132.8443 54.6021 131.4289 52.8925 131.6823 53.1034 132.9211 54.6123 140.7736 57.4705 148.1468 61.4256 154.7904 62.348 156.4931 63.8391 155.0327 63.042 154.0698" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M119.9993 212.6245C171.1551 212.6245 212.6245 171.1551 212.6245 119.9996 212.6245 68.8439 171.1551 27.3745 119.9993 27.3745 68.8439 27.3745 27.3745 68.8439 27.3745 119.9996 27.3745 171.1551 68.8439 212.6245 119.9993 212.6245ZM119.9993 201.8588C165.2091 201.8588 201.8588 165.2091 201.8588 119.9996 201.8588 74.7899 165.2091 38.1402 119.9993 38.1402 74.7899 38.1402 38.1402 74.7899 38.1402 119.9996 38.1402 165.2091 74.7899 201.8588 119.9993 201.8588" fill="#ffffff" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9992)" d="M119.9996 113.3306 140.4964 136.2915V81.5513H152.6542V158.4476H143.9399L119.9996 132.266 96.0593 158.4476H87.3448V81.5513H99.5026V136.2915Z" fill="#ffffff" fill-rule="evenodd"></path>
+</g>
+</svg></div></div>
+        <div class="icorow" style="margin:0"><span class="l" style="color:var(--on-navy-mute)">Reference · 24 slides · 9 prompts</span><svg aria-label="Megaphone" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20 H16 L36 9 V37 L16 28 H8 Z"/><path d="M14 28 L17 39 H22 L20 29.5"/><path d="M40 18 Q43 23 40 28"/></svg></div>
+      </div>
+      <div class="body">
+        <div>
+          <div class="h">Your posts, in your voice, <em>without the hours</em></div>
+          <p class="sub">Start from nothing or from a feed that isn't working. Capture how you sound, write a post for every platform in two minutes, then let a queue fill up for you to check.</p>
+        </div>
+        <div>
+          <div class="steps">
+            <div class="s"><i></i>Research</div>
+            <div class="s"><i></i>Your voice</div>
+            <div class="s"><i></i>Write</div>
+            <div class="s on"><i></i>Autopilot</div>
+          </div>
+          <div class="fig" style="margin-top:14px">Fig. 01 / four steps, bottom to top · each leaves something working</div>
+        </div>
+      </div>
+      <div class="foot"><span>Magnum AI / Reference</span><span>Social Media with AI</span><span>00 / 24</span></div>
+    </div>
+  </div></div></div>
+  <p class="swipe">Swipe across to see the whole slide.</p>
+  <p class="note"><b>What changed.</b> The cover goes navy and carries the badge, so the first thing a room sees is your brand rather than a white page with a mono wordmark. The headline takes the full height. The figure is the same four steps, with the one you are building toward lit in coral.</p>
+</section>
+
+<section class="frame">
+  <div class="cap"><h3>Frame B · The four steps</h3><span class="mono">Rows layout · sized to content</span></div>
+  <div class="scroller"><div class="stage" data-w="1340" data-h="770" data-min="960"><div class="art">
+    <div class="slide">
+      <div class="kick"><span class="n">04</span><span class="t">Why</span></div>
+      <div class="icorow"><div class="h" style="font-size:72px">The four <em>steps</em></div><div style="display:flex;align-items:center;gap:16px"><span class="l">4 steps · each leaves something working</span><svg aria-label="Tick" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M15 24 L21 31 L33 17"/></svg></div></div>
+      <div class="bands">
+        <div class="band"><div class="i">01</div><div class="nm">Research</div><div class="do">See what the best in your industry post, live</div><div class="why">You react to examples instead of explaining yourself</div></div>
+        <div class="band"><div class="i">02</div><div class="nm">Your voice</div><div class="do">A questionnaire, then a voice file</div><div class="why">Every post sounds like you, not like AI</div></div>
+        <div class="band"><div class="i">03</div><div class="nm">Write</div><div class="do">One photo in, every platform out</div><div class="why">Two minutes a post instead of twenty</div></div>
+        <div class="band"><div class="i">04</div><div class="nm">Autopilot</div><div class="do">Buffer fills the week, you check it on your phone</div><div class="why">Fifteen minutes a week, and it keeps going</div></div>
+      </div>
+      <div class="foot"><span>Magnum AI / Reference</span><span>Why</span><span>04 / 24</span></div>
+    </div>
+  </div></div></div>
+  <p class="swipe">Swipe across to see the whole slide.</p>
+  <p class="note"><b>What changed.</b> This is the slide with the gap. Instead of a small table at the top, the four rows share the height, each with its ghost number, the step name in display type, what we do and why it matters. Same words, nothing added. The index number fills coral when the cursor is on it, the same movement the front page uses.</p>
+</section>
+
+<section class="frame">
+  <div class="cap"><h3>Frame C · Where are you starting?</h3><span class="mono">Tiles layout · three portrait</span></div>
+  <div class="scroller"><div class="stage" data-w="1340" data-h="770" data-min="960"><div class="art">
+    <div class="slide">
+      <div class="kick"><span class="n">02</span><span class="t">Start here</span></div>
+      <div class="icorow"><div class="h" style="font-size:72px">Where are you <em>starting?</em></div><div style="display:flex;align-items:center;gap:16px"><span class="l">3 starting points · pick yours</span><svg aria-label="Spanner" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M40.12 12.12 L36.95 15.29 L32.71 11.05 L35.87 7.88 A9 9 0 1 0 40.12 12.12 Z"/><path d="M28.61 24.33 L18.71 34.23 A3.5 3.5 0 0 1 13.77 29.29 L23.67 19.39"/></svg></div></div>
+      <div class="tiles">
+        <div class="tile o"><svg aria-label="Building" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="8" width="26" height="32" rx="2"/><path d="M21 40 V33 H27 V40"/><path d="M18 15 H20 M28 15 H30 M18 22 H20 M28 22 H30"/><path d="M6 40 H42"/></svg><div class="tag">Path one</div><div class="tt">Nothing yet</div><div class="tb">No accounts, or none you can get into. Start with the setup slide.</div><div class="go">Start here &rarr;</div></div>
+        <div class="tile b"><svg aria-label="Clock" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 12 L24 24 L33 29"/></svg><div class="tag">Path two</div><div class="tt">Accounts, but quiet</div><div class="tb">You're on there but rarely post. Skip setup and start with the research.</div><div class="go">Start here &rarr;</div></div>
+        <div class="tile c"><svg aria-label="Megaphone" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20 H16 L36 9 V37 L16 28 H8 Z"/><path d="M14 28 L17 39 H22 L20 29.5"/><path d="M40 18 Q43 23 40 28"/></svg><div class="tag">Path three</div><div class="tt">Posting, not working</div><div class="tb">You post, but it's bland or it's a chore. Research, then roast your feed.</div><div class="go">Start here &rarr;</div></div>
+      </div>
+      <div class="foot"><span>Magnum AI / Reference</span><span>Start here</span><span>02 / 24</span></div>
+    </div>
+  </div></div></div>
+  <p class="swipe">Swipe across to see the whole slide.</p>
+  <p class="note"><b>What changed.</b> Tiles stand portrait and fill the frame, with the icon, a path tag, the title in display type and a real button at the foot instead of a text link. Three grounds from the palette, white, bright coral and navy, so the three paths read as three choices rather than three paragraphs.</p>
+</section>
+
+<section class="frame">
+  <div class="cap"><h3>Frame D · The prompt</h3><span class="mono">Prompt layout · the card</span></div>
+  <div class="scroller"><div class="stage" data-w="1340" data-h="770" data-min="960"><div class="art">
+    <div class="slide">
+      <div class="kick"><span class="n">12</span><span class="t">3 · Write</span></div>
+      <div class="icorow"><div class="h" style="font-size:60px">Prompt 4 · One photo, <em>every</em> platform</div><div style="display:flex;align-items:center;gap:16px"><span class="l">1 photo · every platform</span><svg aria-label="Megaphone" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20 H16 L36 9 V37 L16 28 H8 Z"/><path d="M14 28 L17 39 H22 L20 29.5"/><path d="M40 18 Q43 23 40 28"/></svg></div></div>
+      <div class="pgrid">
+        <div class="rail">
+          <div><div class="k">Where</div><p>A new chat inside your social media project. Attach the photo.</p></div>
+          <div><div class="k">Then</div><ol>
+            <li>Fill the blank with one line: what it is, and anything worth knowing.</li>
+            <li>Fix anything marked CHECK before you post.</li>
+            <li>Copy each version to its platform, or send them to Buffer in step 4.</li>
+          </ol></div>
+          <div class="tip">Time it the first time. Under two minutes is normal.</div>
+        </div>
+        <div class="pcard">
+          <div class="hd"><div><span class="l1">The prompt</span><span class="l2">Tap a blank to fill it, then copy</span></div><div class="btns"><span class="btn">Fill in</span><span class="btn">Expand</span><span class="btn p">Copy</span></div></div>
+          <div class="bd"><pre><span class="lv">Role:</span> You write social posts for this business, the way the owner would if they had the time.
+
+<span class="lv">Context:</span> I have attached a photo. It shows <span class="bl">what it is, and anything worth knowing, in one line</span>. Use the voice file in this project for how we sound and what we must always include.
+
+<span class="lv">Constraints:</span> Use only what is in the photo, my line above and the voice file. Never invent a customer, a result, a price, a date or a quote, because a made-up detail in a public post is the fastest way to lose trust. If a post needs a detail you do not have, write <span class="mk">[CHECK]</span> in its place. Mention one specific thing you can see in the photo, because a real detail is what makes a post sound like a person was there. Use at most one emoji and never a dash to join two thoughts, because both are the quickest signs a machine wrote it. Write each platform its own way rather than one post copied across, because each one is read differently.
+
+<span class="lv">Tone:</span> As the voice file says.
+
+<span class="lv">Format:</span> One labelled version for each platform listed in the voice file, and none for any we do not use. LINKEDIN: three to five lines on the work and what it shows about how we do things. INSTAGRAM: two to four short lines, then up to three hashtags.</pre>
+          <div class="more"><span>More below · scroll, or Expand</span><span>4 of 9</span></div></div>
+        </div>
+      </div>
+      <div class="foot"><span>Magnum AI / Reference</span><span>3 · Write</span><span>12 / 24</span></div>
+    </div>
+  </div></div></div>
+  <p class="swipe">Swipe across to see the whole slide.</p>
+  <p class="note"><b>What changed.</b> The prompt is a card with a navy header carrying its buttons, Copy in bright coral, so the thing you do with it sits on it. The lever words are the only coral in the text. The blank is a chip you tap to fill. The points moved into a narrow rail on the left: where to run it, then what to do, then the one tip. The prompt keeps its 15 pixel floor and never shrinks, which is the standing rule.</p>
+</section>
+
+<div class="sec"><div class="n">02</div><h2>The same deck on a phone</h2></div>
+<p class="lede">On a phone the deck stops being slides. The same content becomes one page you scroll, at normal size, with a bar at the bottom showing where you are. Prompts become full-width cards with Copy and Fill in at the top. Three screens from it:</p>
+
+<div class="phones">
+  <div class="scroller" style="border:0;background:none"><div class="stage" data-w="390" data-h="800" data-max="1" style="border:2px solid var(--ink)"><div class="art">
+    <div class="phone">
+      <div class="pbar"><div class="mk"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 241.9998 241.9998">
+<g>
+<path transform="matrix(1,0,0,-1,1,240.9998)" d="M109.8414 112.8756 130.4113 52.4517 136.6515 34.1212 123.4446 29.4953 117.6245 46.5917H102.058L96.2379 29.4953 83.0313 34.1212 89.2715 52.4517ZM143.0186 90.9729H156.9682V34.1212H143.0186ZM113.2617 59.4074 109.8414 69.4548 106.4208 59.4074Z" fill="#ef4029" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9998)" d="M119.9999 106.1725 166.4711 158.2305V34.1215H194.0357V208.4632H174.2783L119.9999 149.1038 65.7213 208.4632H45.9638V34.1215H73.5284V158.2305Z" fill="#1f2b37" fill-rule="evenodd"></path>
+</g>
+</svg></div><div class="ti">Social Media with AI</div><div class="mn">Slides</div></div>
+      <div class="pcover">
+        <div class="label">Reference · 24 slides · 9 prompts</div>
+        <div class="h">Your posts, in your voice, <em>without the hours</em></div>
+        <p>Start from nothing or from a feed that isn't working. Capture how you sound, write a post for every platform in two minutes, then let a queue fill up for you to check.</p>
+        <div class="steps"><div class="s"><i></i>Research</div><div class="s"><i></i>Your voice</div><div class="s"><i></i>Write</div><div class="s on"><i></i>Autopilot</div></div>
+      </div>
+      <div class="psec">
+        <div class="kick"><span class="n">01</span><span class="t">Why</span></div>
+        <div class="h">The three <em>problems</em></div>
+        <ul class="pts">
+          <li><b>“I'm not even on there.”</b> Or the accounts exist and nobody's posted in a year.</li>
+          <li><b>“I don't know how to use AI for this.”</b> So the posts don't happen, or they sound like every other business.</li>
+          <li><b>“I don't have the time.”</b> Google, Facebook, Instagram, every week, on top of running the place.</li>
+        </ul>
+      </div>
+      <div class="pnext"><span>01 / 24</span><span class="bar"><i></i></span><span>Next <b>Start here</b></span></div>
+    </div>
+  </div></div></div>
+
+  <div class="scroller" style="border:0;background:none"><div class="stage" data-w="390" data-h="800" data-max="1" style="border:2px solid var(--ink)"><div class="art">
+    <div class="phone">
+      <div class="pbar"><div class="mk"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 241.9998 241.9998">
+<g>
+<path transform="matrix(1,0,0,-1,1,240.9998)" d="M109.8414 112.8756 130.4113 52.4517 136.6515 34.1212 123.4446 29.4953 117.6245 46.5917H102.058L96.2379 29.4953 83.0313 34.1212 89.2715 52.4517ZM143.0186 90.9729H156.9682V34.1212H143.0186ZM113.2617 59.4074 109.8414 69.4548 106.4208 59.4074Z" fill="#ef4029" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9998)" d="M119.9999 106.1725 166.4711 158.2305V34.1215H194.0357V208.4632H174.2783L119.9999 149.1038 65.7213 208.4632H45.9638V34.1215H73.5284V158.2305Z" fill="#1f2b37" fill-rule="evenodd"></path>
+</g>
+</svg></div><div class="ti">Social Media with AI</div><div class="mn">Slides</div></div>
+      <div class="psec" style="padding-bottom:14px">
+        <div class="kick"><span class="n">12</span><span class="t">3 · Write</span></div>
+        <div class="h" style="font-size:34px">Prompt 4 · One photo, <em>every</em> platform</div>
+        <p style="font-size:15px;color:var(--mute)">A new chat inside your social media project. Attach the photo.</p>
+      </div>
+      <div class="ppc">
+        <div class="hd"><div><div class="l1">The prompt</div><div class="l2">Tap a blank to fill it, then copy</div></div><div class="btns"><span class="btn">Fill in</span><span class="btn p">Copy</span></div></div>
+        <pre><span class="lv">Role:</span> You write social posts for this business, the way the owner would if they had the time.
+
+<span class="lv">Context:</span> I have attached a photo. It shows <span class="bl">what it is, and anything worth knowing, in one line</span>. Use the voice file in this project for how we sound and what we must always include.
+
+<span class="lv">Constraints:</span> Use only what is in the photo, my line above and the voice file. Never invent a customer, a result, a price, a date or a quote, because a made-up detail in a public post is the fastest way to lose trust. If a post needs a detail you do not have, write <span class="mk">[CHECK]</span> in its place.</pre>
+        <div class="fade">Read the rest · 14 more lines</div>
+      </div>
+      <div class="pnext"><span>12 / 24</span><span class="bar"><i style="width:50%"></i></span><span>Next <b>AI giveaways</b></span></div>
+    </div>
+  </div></div></div>
+
+  <div class="scroller" style="border:0;background:none"><div class="stage" data-w="390" data-h="800" data-max="1" style="border:2px solid var(--ink)"><div class="art">
+    <div class="phone">
+      <div class="pbar"><div class="mk"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 241.9998 241.9998">
+<g>
+<path transform="matrix(1,0,0,-1,1,240.9998)" d="M109.8414 112.8756 130.4113 52.4517 136.6515 34.1212 123.4446 29.4953 117.6245 46.5917H102.058L96.2379 29.4953 83.0313 34.1212 89.2715 52.4517ZM143.0186 90.9729H156.9682V34.1212H143.0186ZM113.2617 59.4074 109.8414 69.4548 106.4208 59.4074Z" fill="#ef4029" fill-rule="evenodd"></path>
+<path transform="matrix(1,0,0,-1,1,240.9998)" d="M119.9999 106.1725 166.4711 158.2305V34.1215H194.0357V208.4632H174.2783L119.9999 149.1038 65.7213 208.4632H45.9638V34.1215H73.5284V158.2305Z" fill="#1f2b37" fill-rule="evenodd"></path>
+</g>
+</svg></div><div class="ti">Social Media with AI</div><div class="mn">Slides</div></div>
+      <div class="psec" style="padding-bottom:14px">
+        <div class="kick"><span class="n">02</span><span class="t">Start here</span></div>
+        <div class="h">Where are you <em>starting?</em></div>
+      </div>
+      <div class="ptiles">
+        <div class="tile o"><svg aria-label="Building" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="8" width="26" height="32" rx="2"/><path d="M21 40 V33 H27 V40"/><path d="M18 15 H20 M28 15 H30 M18 22 H20 M28 22 H30"/><path d="M6 40 H42"/></svg><div class="tt">Nothing yet</div><div class="tb">No accounts, or none you can get into. Start with the setup slide.</div><div class="go">Start here &rarr;</div></div>
+        <div class="tile b"><svg aria-label="Clock" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 12 L24 24 L33 29"/></svg><div class="tt">Accounts, but quiet</div><div class="tb">You're on there but rarely post. Skip setup and start with the research.</div><div class="go">Start here &rarr;</div></div>
+        <div class="tile c"><svg aria-label="Megaphone" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20 H16 L36 9 V37 L16 28 H8 Z"/><path d="M14 28 L17 39 H22 L20 29.5"/><path d="M40 18 Q43 23 40 28"/></svg><div class="tt">Posting, not working</div><div class="tb">You post, but it's bland or it's a chore.</div><div class="go">Start here &rarr;</div></div>
+      </div>
+      <div class="pnext"><span>02 / 24</span><span class="bar"><i style="width:8%"></i></span><span>Next <b>Set up from zero</b></span></div>
+    </div>
+  </div></div></div>
+</div>
+<p class="note" style="margin-top:18px"><b>What changed.</b> No zooming and no pager. Headings read as headings and tiles stack with full-width buttons. The prompt card is the same component as on the laptop with the buttons at the top, so a client takes the prompt without reading it. The bottom bar is the only chrome: where you are, and what is next. The small mark sits on paper because there is no small reverse mark in the logo set.</p>
+
+<div class="sec"><div class="n">03</div><h2>What this commits to</h2></div>
+<div class="two">
+  <div class="card"><span class="mono">Changes</span><h3>What the new engine does</h3><ul>
+    <li>Sizes each slide to its content, so short slides get bigger type and no dead gap.</li>
+    <li>Four layouts: statement, rows, tiles and prompt, each with its own way of filling the frame.</li>
+    <li>The prompt card with Copy, Fill in and Expand in its header, and tap-to-fill blanks.</li>
+    <li>The phone view: the same slides as one scrolling page.</li>
+    <li>Navy cover with the badge on every deck.</li>
+  </ul></div>
+  <div class="card n"><span class="mono">Fixed</span><h3>What does not move</h3><ul>
+    <li>No URL changes. Every link already sent keeps working.</li>
+    <li>Your logos are never redrawn or recoloured beyond the delivered files.</li>
+    <li>Prompts are never shrunk. The 15 pixel floor stays.</li>
+    <li>Every prompt stays byte-identical to its Prompt Shelf card.</li>
+    <li>No logins, no server, no tracking.</li>
+  </ul></div>
+</div>
+<div class="ask"><b>Your call.</b> Go, and I build the social deck on a branch first and send it to your phone. Or name the frame and what you would change, and this page is updated before anything is built.</div>
+
+</main>
+
+<script>
+(function(){
+  function fit(){
+    document.querySelectorAll('.stage').forEach(function(st){
+      var w=+st.dataset.w,h=+st.dataset.h,min=+(st.dataset.min||0),max=+(st.dataset.max||99);
+      var box=st.parentElement.clientWidth-(st.style.border?4:0);
+      var s=box/w; if(s>max)s=max; if(min&&w*s<min)s=min/w;
+      st.style.width=(w*s)+'px';st.style.height=(h*s)+'px';
+      st.firstElementChild.style.transform='scale('+s+')';
+    });
+  }
+  window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  fit();
+})();
+</script>
