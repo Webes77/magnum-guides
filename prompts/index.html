@@ -367,6 +367,16 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 .search label{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text)}
 .search input{flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:18px;color:var(--ink);background:transparent;padding:6px 0}
 .search:focus-within{outline:3px solid var(--coral-bright);outline-offset:2px}
+/* 5 Oct: the card matches the deck prompt card */
+.prewrap pre{background:#FFFFFF;color:var(--ink);font-size:15px;line-height:1.6}
+.prewrap pre .lv{color:var(--coral-text);font-weight:500}
+.prewrap pre .bl{background:var(--tint);border-bottom:2px dotted var(--coral-text)}
+.prewrap pre .mk{color:var(--olive);font-weight:500}
+.copy{background:var(--coral-bright);color:var(--ink);border-color:var(--coral-bright)}
+.copy:hover{background:var(--ink);border-color:var(--ink);color:#FFFFFF}
+.pane-head .copy:hover{background:#FFFFFF;border-color:#FFFFFF;color:var(--ink)}
+.copy.done{background:#FFFFFF;border-color:var(--ink);color:var(--ink)}
+.pane-head h3{flex:0 1 auto}
 </style>
 </head>
 <body style="background:#FFFFFF">
@@ -2768,7 +2778,10 @@ const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
    only: Copy reads the stored prompt, so the brackets go onto the clipboard as
    plain text. Used by Prompts for learning faster, 27 Sep. */
 const shown=(s,t)=>s.asWritten?t:flow(t);
-const paint=(s,h)=>s.asWritten?h.replace(/\[[^\]\n]{2,120}\]/g,'<mark class="ph">$&</mark>'):h;
+const paint=(s,h)=>s.asWritten?h.replace(/\[[^\]\n]{2,120}\]/g,'<mark class="ph">$&</mark>')
+  // display only, as on the deck prompt card: lever labels in coral, blanks tinted, capital markers in slate
+  :h.replace(/^(Role|Context|Constraints|Tone|Format|Output):/gm,'<span class="lv">$1:</span>')
+    .replace(/\[([^\]\n<]{2,160})\]/g,(m,l)=>/[a-z]/.test(l)?`<span class="bl">${m}</span>`:`<span class="mk">${m}</span>`);
 const stepsText=s=>s.steps.map((t,i)=>`${i+1}. ${t.replace(/<[^>]+>/g,'')}`).join('\n');
 /* Fill-in-the-blanks. A prompt with five or six bracketed blanks scattered
    through it is the one nobody edits correctly by hand: miss one and the

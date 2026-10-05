@@ -2497,8 +2497,22 @@ halves, and a capture listener copies the stored original before any page's
 own Copy handler runs. Every Copy on all five prompt pages was clicked in a
 browser and returned the authored text exactly (34 buttons).
 
-Next in the shared stylesheet: the Prompt Shelf, the Field Notes and the
-front page, then the brand page and Fine-Tune.
+**The shared stylesheet stops at the guides, 5 Oct, and that is the finding,
+not a gap.** The same adoption was tried on the shelf, the front page, the
+brand page, Fine-Tune and the Field Note archive, with the same computed-style
+diff as the gate. Only 0 to 9 of the 73 core rules matched any of them, and
+linking the core changed between 64 and 580 elements per page. Those pages
+each run their own system, so forcing one file onto them would be a redesign
+wearing a refactor's name. All five were reverted. The Field Notes stay
+self-contained on purpose: an issue is sent on its own and printed.
+
+What the shelf got instead, at James's go: its prompt matches the deck card.
+White ground, ink text at 15px, lever labels in coral text, lowercase blanks
+tinted, capital markers slate, all through `paint()` and display only; Copy is
+bright coral with ink text. All 88 cards display exactly the text they did
+before, and all 88 Copy buttons return `copyText()` byte for byte, checked in
+a browser. One real bug went with it: on a phone `.pane-head h3` kept a 300px
+flex basis in a column, which left a tall empty band in every card head.
 
 ## Decisions already made
 
