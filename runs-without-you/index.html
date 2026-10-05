@@ -133,7 +133,10 @@ ul.points a,.note a,.rail a{color:var(--coral-text)}
 .tile{border:2px solid var(--ink);background:var(--paper-2);color:var(--ink);padding:calc(26px * var(--g)) 28px;display:flex;flex-direction:column;gap:calc(14px * var(--g))}
 .tile svg{width:46px;height:46px;flex:none}
 .tile svg[aria-hidden]{width:96px;height:77px;--accent:var(--coral-bright)}
-.tile.b svg[aria-hidden]{--accent:var(--paper-2)}
+.tile.b svg[aria-hidden]{--accent:var(--ink)}
+/* picture cards (the three-ways slide): narrow portrait cards centred, paper either side */
+.grid.cards{grid-template-columns:repeat(3,minmax(0,280px));justify-content:center;flex:0 0 auto}
+.grid.cards .tile{aspect-ratio:3/4;justify-content:flex-start}
 .tile h3{font-family:var(--display);font-weight:600;font-size:calc(38px * var(--g));line-height:1;text-transform:uppercase}
 .tile p{font-size:calc(20px * var(--g));line-height:1.4}
 .grid.three .tile p{flex:1}
@@ -619,7 +622,7 @@ const bandsH=s=>{
 const GO=/<br>\s*(<a class="goto"[\s\S]*?<\/a>)\s*$/;
 const tilesH=s=>{
   if(!s.tiles)return '';
-  return `<div class="grid ${s.tiles.length>3?'many':'three'}">${s.tiles.map(t=>{
+  return `<div class="grid ${s.tiles.length>3?'many':'three'}${s.tiles.some(t=>t[3]&&ICONS[t[3]])?' cards':''}">${s.tiles.map(t=>{
     let body=t[2],go='';const m=body.match(GO);if(m){go=m[1];body=body.replace(GO,'');}
     return `<div class="tile ${t[0]}">${t[3]?icon(t[3]):''}<h3>${t[1]}</h3><p>${body}</p>${go}</div>`;}).join('')}</div>`;
 };

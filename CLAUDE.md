@@ -1118,23 +1118,13 @@ Two things James should know, both said to him. The names are a first pass and
 his will be better, because he has heard how clients describe these. And three
 is the discipline: a fourth card turns a device into a grid.
 
-**Two known faults, deliberately not fixed, and they wait for a room.** Both
-were put to James on 16 Sep with the recommendation to run the slide in a
-session first, and he took it. Do not fix these before that happens.
-
-The cards read landscape rather than portrait. The 300px floor does not get
-there, because the deck scales everything into its 1340 by 770 box, so three
-across full width comes out wider than tall at any real window. The fix is
-constraining the grid width so they sit as three narrower columns with paper
-either side, not raising the height again.
-
-And card III's icon is mixed, ink pages with a cream arrow, where the other
-two share a tone across both elements. It is the one card where the eye has
-to work.
-
-The reason to wait is that the names are what James will want to change after
-hearing himself say them out loud, and shape and copy are cheaper to fix in
-one pass than two. When he comes back from a session, do both together.
+**The two known faults are fixed, 5 Oct, on James's word.** A tile grid whose
+tiles carry an icon takes a `cards` class: three columns capped at 280px,
+centred with paper either side, each tile 3:4, so the cards stand portrait at
+every window. Card III's icon is one tone now: on a bright coral tile the icon
+accent is ink, not cream. All five decks carry the engine change. The card
+names are still a first pass and James's to change once he has said them in a
+room.
 
 **Cowork is being folded into Claude, announced 16 Sep, patched here 20 Sep.**
 Anthropic is merging Chat and Cowork: three modes become two, Chat and Code,
@@ -2429,8 +2419,7 @@ contrast zero across all five at four widths, every prompt in every deck
 copies the authored text with nothing typed (6, 5, 4, 3 and 9), the nine
 social prompts still match the shelf, and the functional script passes on
 each deck (Make Claude Yours and session three have no fillable blanks, so
-they get no Fill in button). The Foundations card slide still carries its
-two known faults, which wait for a room as before.
+they get no Fill in button).
 
 **The slide list is a Sections panel, 5 Oct, on James's word.** He said the
 SLIDES button opened a huge, busy page of every slide title. It is a small
