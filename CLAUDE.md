@@ -23,9 +23,9 @@ These are absolute. Do not relitigate them.
    right now. The Talk-It-Out Technique, the Iceberg Model, Role Packs, The
    Field Manual and the 6 Lever Framework are tools in the kit. Each appears
    where it is the right tool for that lesson. None is the headline, the
-   opener or the organising structure of a training pack, and none is
-   presented as a timeless fundamental. The 6 Lever Framework belongs in
-   content that teaches prompt building. The Field Manual is the sales
+   opener or the organising structure of a training pack, ad, offer or
+   proposal, and none is presented as a timeless fundamental. The 6 Lever
+   Framework belongs in content that teaches prompt building. The Field Manual is the sales
    method and is not taught in the members area. When the levers appear,
    the labels are Role, Context, Constraints, Tone, Format, Output. That
    order, those labels. Never renamed, reordered, or added to. Changed 4 Oct
