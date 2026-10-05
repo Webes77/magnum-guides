@@ -9,6 +9,7 @@ recolour these. Pick the file whose ink matches the ground.
 |---|---|
 | `magnum-badge-ring.svg` | Primary badge on paper, 90px and up |
 | `magnum-badge-ring-navy.svg` | Primary badge on a navy band, 90px and up |
+| `magnum-badge-ring-navy-red-ai.svg` | The navy badge with the A and I in coral `#EF4029`, on James's word, 5 Oct. One fill changed from the delivered navy file, nothing redrawn. The members area masthead uses it |
 | `magnum-badge-ring-paper.svg`, `-coral`, `-mono`, `-white` | The other colourways |
 | `magnum-badge.svg`, `magnum-badge-navy.svg` | Secondary lockup, no outer ring |
 | `magnum-mark.svg` | Below 90px, on paper |

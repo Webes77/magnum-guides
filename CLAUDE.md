@@ -2281,6 +2281,15 @@ uploaded into a Claude project, the project copy is separate and James swaps
 it there. The Role Pack Library PDF cover still leads with the levers, which
 is his product call.
 
+**The masthead badge moved and recoloured, 5 Oct, on James's word.** It sits
+at the right edge of the masthead column now (`justify-content:space-between`
+on `.mast-head`), and it is `assets/logos/magnum-badge-ring-navy-red-ai.svg`:
+the delivered navy badge with one fill changed, the A and I path, from white
+to coral `#EF4029`, the same coral the delivered paper badge uses for its AI.
+Nothing redrawn. This departs from the design system, whose navy badge is all
+white, and James asked for it in those words. The brand page masthead still
+carries the delivered all-white file, because it documents the logo set.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
