@@ -6,7 +6,9 @@ it was last checked. The fact-check routine works this list. Nothing else.
 "Check everything" produces noise. A claim earns a row here when both are
 true: it asserts something about a third-party product, plan or policy, and
 a client acting on it while it is wrong would be misled or embarrassed.
-Teaching, opinion and method are not on this list and never go stale.
+Teaching, opinion and method are not on this list. They can date too, but
+whether a technique still earns its place is James's judgement, not a fact
+this routine checks.
 
 Grades follow `notes/prompt-review-standards.md`. A is the vendor's own
 page, B an independent practitioner, C journalism, D marketing and forums.
@@ -194,6 +196,7 @@ which version of that article you are reading before changing anything.
 
 ## Not on this list, deliberately
 
-The 6 Levers, the method, the prompts themselves, the exercises, anything
-about how to think. None of it depends on a vendor's menu. Magnum pricing
+The techniques, the prompts themselves, the exercises, anything about how to
+think. None of it is a claim about a vendor's product. Whether a technique
+has dated is James's call, not this routine's. Magnum pricing
 lives in the service menu skill and is James's alone, never a routine's.

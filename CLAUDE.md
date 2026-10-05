@@ -19,15 +19,19 @@ These are absolute. Do not relitigate them.
 
 1. No em dashes, anywhere. Use a comma, a full stop, or a middot for separators.
 2. Never the word "solid".
-3. Magnum AI leads with systems: Role Pack architecture and library, the
-   Iceberg Model, The Field Manual and the Talk-It-Out Technique. The 6 Lever
-   Framework is a supporting briefing checklist, used when teaching someone
-   to brief AI on a single task. It is never the headline, the opening hook
-   or the organising structure of a training, ad, offer or proposal. When it
-   appears, the labels are Role, Context, Constraints, Tone, Format, Output.
-   That order, those labels. Never renamed, reordered, or added to. Changed
-   4 Oct, on James's word, because the levers are a prompting technique and
-   they date as AI gets more intuitive.
+3. Training content leads with the member's problem and what works in AI
+   right now. The Talk-It-Out Technique, the Iceberg Model, Role Packs, The
+   Field Manual and the 6 Lever Framework are tools in the kit. Each appears
+   where it is the right tool for that lesson. None is the headline, the
+   opener or the organising structure of a training pack, ad, offer or
+   proposal, and none is presented as a timeless fundamental. The 6 Lever
+   Framework belongs in content that teaches prompt building. The Field
+   Manual is the sales method and is not taught in the members area. When
+   the levers appear, the labels are Role, Context, Constraints, Tone,
+   Format, Output. That order, those labels. Never renamed, reordered, or
+   added to. Changed 4 Oct and again 5 Oct, on James's word: the levers are
+   a prompting technique and they date as AI gets more intuitive, and the 4
+   Oct version had only swapped one technique in the lead for four others.
 4. Prices are always quoted plus GST.
 5. No client material in the members area unless it is made generic enough to
    be an industry guide. Client names never ship.
@@ -423,8 +427,9 @@ source grade; `notes/fact-check-prompt.md` is the versioned routine prompt;
 `notes/fact-check-log.md` takes one entry per run. The register is
 deliberately bounded. A claim earns a row only if it asserts something
 about a third-party product, plan or policy and a client acting on it
-while wrong would be misled. Teaching, method and the 6 Levers are not on
-it and never go stale. Magnum pricing is never a routine's to touch.
+while wrong would be misled. Teaching and method are not on it: whether a
+technique still earns its place is James's judgement, not a fact a routine
+checks. Magnum pricing is never a routine's to touch.
 
 The routine is `trig_01Ug88bf3JAkccEhX6f7Nd2x`, cron `0 21 1 * *`, the 1st
 of each month at 21:00 UTC, 7am Gold Coast on the 2nd, fresh session each
@@ -2178,7 +2183,9 @@ deck engine's three off-spec tile icons on the Foundations card slide, which
 wait with that slide for a room. Contrast PASS on all eleven changed pages at
 four widths; style checker shows no new finding.
 
-**Systems first, the levers demoted, 4 Oct.** James repositioned Magnum AI:
+**Systems first, the levers demoted, 4 Oct.** Superseded on 5 Oct, see the
+entry after this one: leading with four techniques instead of one was the
+same fault. James repositioned Magnum AI:
 it leads with Role Pack architecture and library, the Iceberg Model, The
 Field Manual and the Talk-It-Out Technique, and the 6 Lever Framework is a
 supporting checklist for briefing one task (hard rule 3, rewritten the same
@@ -2217,6 +2224,48 @@ editing either, compare it with the live prompt first; another session may
 have moved it.
 `brand/Magnum-AI-House-Style.pdf` is the old 15 Sep House Style page, linked
 from nowhere, and still names the levers as the method.
+
+**The techniques are tools, not the core, 5 Oct, on branch
+`technique-repositioning`, not merged.** James clarified the 4 Oct brief a day
+later. Training leads with the member's problem and what works in AI right
+now. Talk-It-Out, the Iceberg Model, Role Packs, The Field Manual and the 6
+Lever Framework are tools, each used only where it is the right tool for the
+lesson, and none is sold as a timeless fundamental. The 4 Oct pass had swapped
+one technique in the lead for four others, so most of this branch undoes my
+own lines from the day before. Hard rule 3 is rewritten to match.
+
+It ran as a two-phase brief: an audit table first, approved, then the changes
+on a branch of its own name with nothing merged, which overrides the usual
+merge-to-main here for this one piece of work. Every file naming a technique
+was checked; history entries, logs and research notes were left as written.
+
+What changed. Instruction files: hard rule 3, the fact register paragraph
+above, `notes/six-lines.md`, `notes/fact-register.md`, and the three routine
+prompts (Field Note, Sunday Brief, fact check). The routine files are ahead of
+the live triggers on purpose: push them with `update_trigger` only once James
+merges, using the procedure in the gotchas, and assert `live == file` after.
+The fact-check file had drifted behind its trigger (another session added the
+RUNNING UNATTENDED block on 4 Oct) and was brought level first. Copy: Course
+one's opening two slides, agenda and meta lead with the problem; three lines
+selling a technique as timeless were softened ("Today was method. It works in
+any tool, on any day", "cover all six levers, which is why it works", "That
+is the whole method"); the front page Course one lines; the shelf intro, and
+its false line that every card is built on the six levers; session three's
+recap and "load-bearing"; the effort guide's "comes first" (log row 1.2); the
+brand page section; the logo brief's superseded note. Both share cards were
+re-rendered.
+
+Left as they are, because each is the right tool where it sits: the Brief one
+task section of Course one, the shelf checklist box and the Talk-It-Out, Six
+lines, Prompt Architect and overdue invoice cards, the Six Levers pass in
+`notes/prompt-review-standards.md`, the Field Note template's "build the
+prompt on the levers", and the labels rule in the brand skill files. Not
+done: regenerating `brand/Magnum-AI-House-Style.pdf`.
+
+Outside the repo and James's to paste: `frameworks-and-ip.md` in Drive, F-001,
+still says the 6 Lever Framework is the foundation of every product and the
+brand. The Drive connector cannot edit file content. The Role Pack Library PDF
+cover still leads with the levers, which is his product call.
 
 ## Decisions already made
 
