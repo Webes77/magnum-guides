@@ -1738,6 +1738,26 @@ four cover-label false positives), style checker clean on the questionnaire.
 The middle branch tile uses `b` (bright coral, ink text), not `t`, because
 white on `--rust` fails at that text size. Register rows 83 and 84.
 
+**Fill-in and icons, 5 Oct (later), on James's word.** Every prompt slide in
+`social/` has a FILL IN button beside EXPAND. It opens a panel with one box
+per blank and the prompt filling in underneath; Copy and Expand on the slide
+then hand over the filled text, and the slide's own prompt pane shows it.
+Answers are keyed by the blank's words with whitespace collapsed, so a blank
+that recurs (type of business) is typed once for the whole deck, and they are
+kept in `localStorage` under `magnum-social-fill`. A bracket in capitals is an
+answer marker and never a box. With nothing typed every prompt copies
+byte-identical to the authored text, asserted in the browser. Two bugs caught
+in testing: blanks that wrap across a line were missed (the matcher stopped at
+the newline), and arrow keys typed into a box changed slides behind the panel;
+a capture listener now swallows deck keys while the panel is open. Social
+deck only, beside `goTo`, so the shared engine is untouched.
+
+Every content slide carries a design-system icon now (24 of 25; the cover
+does not). Six prompt and tile slides overflowed and lost a point each, never
+the prompt; where the point said something needed, it moved into the icon's
+label. "Paid or gifted posts say #ad" now lives only in the Spot the problem
+label. Deck check PASS, style checker clean, contrast unchanged.
+
 **The 6 Levers are taught as six lines, 25 Sep, on a branch for James to read.**
 James said the framework had gone convoluted and asked for paint-by-numbers.
 The labels and order did not move (hard rule 3); the teaching did. Each lever

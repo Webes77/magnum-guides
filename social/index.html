@@ -160,6 +160,23 @@ pre{font-family:"IBM Plex Mono",monospace;font-size:max(14px,calc(15px / var(--z
 .btns{display:flex;gap:8px}
 .expand{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
 .expand:hover{border-color:#FF6F5E;color:#FF6F5E}
+/* Fill in the blanks, social deck only (5 Oct). A FILL IN button on any
+   prompt with blanks opens this panel. Answers are keyed by the blank's own
+   words, so one answer fills that blank in every prompt in the deck. */
+#filler{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:6}
+#filler.on{display:flex}
+#filler .rhead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 40px;background:var(--navy);color:#F4F1EA;font-family:"Oswald",sans-serif;font-size:22px;letter-spacing:.06em;text-transform:uppercase}
+#filler .fbody{overflow:auto;flex:1;padding:28px 40px 60px}
+#filler .fwrap{max-width:92ch;margin:0 auto}
+#filler .fhint{font-size:17px;color:var(--mute);margin:0 0 18px}
+#filler label{display:block;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:18px 0 6px}
+#filler textarea{width:100%;min-height:52px;font:inherit;font-size:18px;line-height:1.4;padding:10px 12px;border:2px solid var(--ink);background:#FFFFFF;color:var(--ink);border-radius:0;resize:vertical}
+#filler textarea:focus{outline:3px solid #FF6F5E;outline-offset:1px}
+#filler h3{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral-text);margin:30px 0 8px}
+#filler pre{font-size:17px;line-height:1.6;white-space:pre-wrap;background:#FFFFFF;border:2px solid var(--ink);padding:18px 20px;margin:0}
+#filler .rclose,#filler .fclear{background:transparent;color:var(--paper);border:2px solid var(--paper);padding:7px 14px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
+#filler .rclose:hover,#filler .fclear:hover{border-color:#FF6F5E;color:#FF6F5E}
+.pane-head .fill{background:#FF6F5E;color:var(--ink);border:2px solid var(--ink)}
 #reader{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:5}
 #reader.on{display:flex}
 #reader .rhead{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--navy);color:#F4F1EA;font-family:"Oswald",sans-serif;font-size:22px;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--ink)}
@@ -235,6 +252,7 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
   <span class="hint">Arrow keys move. SLIDES for the full list.</span>
 </footer>
 <div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
+<div id="filler" role="dialog" aria-label="Fill in the blanks"><div class="rhead"><span>Fill in the blanks</span><div class="btns"><button class="copy" id="fcopy" data-i="0">COPY PROMPT</button><button class="fclear" id="fclear">CLEAR</button><button class="rclose" id="fclose">CLOSE ✕</button></div></div><div class="fbody"><div class="fwrap"><p class="fhint">Type a short answer in each box. The prompt underneath fills in as you type. Leave a box empty and its blank stays in the prompt. Your answers are kept on this device and fill the same blank in every prompt in the deck.</p><div id="ffields"></div><h3>Your prompt</h3><pre id="fpre"></pre></div></div></div>
 <div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="copy" id="rcopy" data-i="0">COPY PROMPT</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
@@ -495,13 +513,13 @@ function goTo(id){const n=S.findIndex(x=>x.id===id);if(n>=0)show(n);return false
 const S = [
 {sec:"", cover:true, fig:"cover", h:"Your posts, in your voice, <em>without the hours</em>", pts:[], sub:"Reference · Social Media with AI", note:"Start from nothing or from a feed that isn't working. Capture how you sound, write a post for every platform in two minutes, then let a queue fill up for you to check. You build each piece as you go."},
 
-{sec:"Why", ic:["Megaphone","4 platforms &middot; every week"], h:"The two <em>problems</em>", pts:[
+{sec:"Why", ic:["Megaphone","3 problems &middot; 1 fix"], h:"The three <em>problems</em>", pts:[
  "<b>“I'm not even on there.”</b> Or the accounts exist and nobody's posted in a year.",
  "<b>“I don't know how to use AI for this.”</b> So the posts don't happen, or they sound like every other business.",
  "<b>“I don't have the time.”</b> Google, Facebook, Instagram, every week, on top of running the place.",
  "This deck fixes all three. You get prompts that do the writing and a queue that fills up. Your only job is checking each post."]},
 
-{sec:"Start here", id:"start", h:"Where are you <em>starting?</em>", tiles:[
+{sec:"Start here", id:"start", ic:["Spanner","3 starting points &middot; pick yours"], h:"Where are you <em>starting?</em>", tiles:[
  ["o","Nothing yet","No accounts, or none you can get into. Start with the setup slide.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('setup')\">Start here &rarr;</a>"],
  ["b","Accounts, but quiet","You're on there but rarely post. Skip setup and start with the research.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>"],
  ["c","Posting, not working","You post, but it's bland or it's a chore. Research, then roast your feed.<br><a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Start here &rarr;</a>"]],
@@ -513,14 +531,13 @@ const S = [
  "Use an email the business owns, and add a second person as an admin, so nobody gets locked out.",
  "Done this already? <a class=\"goto\" href=\"#\" onclick=\"return goTo('research')\">Skip to research &rarr;</a>"]},
 
-{sec:"Why", h:"The four <em>steps</em>", rows:[
+{sec:"Why", ic:["Tick","4 steps &middot; each leaves something working"], h:"The four <em>steps</em>", rows:[
  ["Research","See what the best in your industry post, live","You react to examples instead of explaining yourself"],
  ["Your voice","A questionnaire, then a voice file","Every post sounds like you, not like AI"],
  ["Write","One photo in, every platform out","Two minutes a post instead of twenty"],
  ["Autopilot","Buffer fills the week, you check it on your phone","Fifteen minutes a week, and it keeps going"]]},
 
-{sec:"1 · Research", id:"research", h:"Start with what <em>good</em> looks like", pts:[
- "Most owners can't describe their own brand. Nobody can, cold.",
+{sec:"1 · Research", id:"research", ic:["Globe","Your industry &middot; a few minutes"], h:"Start with what <em>good</em> looks like", pts:[
  "So we don't ask. We look at the best businesses in your trade first, and you react. “That's us.” “That's not us at all.”",
  "It takes a few minutes to run. Starting from zero? It works just as well: it shows you what to aim for."],
  prompt:P1, where:"A new chat. Turn on Research if your plan has it", after:[
@@ -528,10 +545,10 @@ const S = [
  "Open the three accounts it names. Check they're real and still posting.",
  "Keep THE GAP TO CLOSE FIRST. It's the headline of your plan."]},
 
-{sec:"1 · Research", h:"Roast the <em>feed</em>", pts:[
- "Already posting? Copy your recent posts into the chat. Even five is enough. Fewer than that? <a class=\"goto\" href=\"#\" onclick=\"return goTo('voice')\">Skip this one &rarr;</a>",
+{sec:"1 · Research", ic:["Chat bubble","Even 5 posts is enough"], h:"Roast the <em>feed</em>", pts:[
+ "Already posting? Paste your recent posts in. Fewer than five? <a class=\"goto\" href=\"#\" onclick=\"return goTo('voice')\">Skip this one &rarr;</a>",
  "It sorts them three ways: sounds like you, sounds like everyone, missing.",
- "It stings a little. That's the point."],
+],
  prompt:P2, where:"A new chat. Paste your posts below the prompt", after:[
  "Paste the text of each post, newest first. Captions are enough.",
  "Read SOUNDS LIKE EVERYONE twice. That's the list to fix.",
@@ -544,14 +561,13 @@ const S = [
  "Tell it your kind of business and it ticks the rules your posts must follow: a builder's licence number, a pub's 18+ setting, safety wording.",
  "Open it here: <a href=\"questionnaire.html\">the brand questionnaire</a>. Copy your answers when you're done."]},
 
-{sec:"2 · Your voice", h:"What's a Claude <em>project?</em>", pts:[
+{sec:"2 · Your voice", ic:["Carton","1 folder &middot; Claude remembers it"], h:"What's a Claude <em>project?</em>", pts:[
  "A project is a folder Claude remembers. Anything you put in it, Claude reads every time you chat inside it.",
  "Make one called Social media. You'll find Projects in Claude's sidebar. Your voice file goes in it, once.",
  "From then on, every prompt in this deck runs inside that project, so every post already knows how you sound.",
  "Projects work best on a paid Claude plan. That's the first cost in the stack, later in the deck."]},
 
-{sec:"2 · Your voice", h:"Build the voice <em>file</em>", pts:[
- "Open your Social media project and start a new chat inside it.",
+{sec:"2 · Your voice", ic:["Database","Saved once &middot; read every time"], h:"Build the voice <em>file</em>", pts:[
  "Paste the prompt, then your questionnaire answers. Got posts or reviews you like? Paste those too. If not, skip them.",
  "Save what comes back into the project's files. Every prompt after this reads it."],
  prompt:P3, where:"A new chat inside your social media project", after:[
@@ -559,11 +575,11 @@ const S = [
  "Check MUST ALWAYS INCLUDE word for word.",
  "Save it as a file in the project. Name it Voice file."]},
 
-{sec:"2 · Your voice", h:"Spot <em>yourself</em>", split:[
+{sec:"2 · Your voice", ic:["Chat bubble","Same photo &middot; same 2 minutes"], h:"Spot <em>yourself</em>", split:[
  ["Generic AI","“We're thrilled to unveil our stunning new menu! Elevate your lunch with fresh, vibrant flavours. ✨🥗 Don't miss out!”","Could be any café in the country.","This is what you get with no voice file."],
  ["With your voice file","“Pumpkin soup's back from Tuesday. Sourdough from the bakery two doors down. Bring a jumper, it's that weather.”","One real detail. How the owner talks.","Same photo. Same two minutes."]]},
 
-{sec:"3 · Write", h:"One photo, <em>every</em> platform", fig:"flow", pts:[
+{sec:"3 · Write", ic:["Megaphone","1 photo &middot; every platform"], h:"One photo, <em>every</em> platform", fig:"flow", pts:[
  "This is the everyday move. A photo from your phone and one line about it.",
  "Back come four versions, each written the way that platform is read.",
  "Time it the first time. Under two minutes is normal."],
@@ -572,25 +588,24 @@ const S = [
  "Fix anything marked [CHECK] before you post.",
  "Copy each version to its platform, or send them to Buffer in step 4."]},
 
-{sec:"3 · Write", h:"What gives AI <em>away</em>", tiles:[
+{sec:"3 · Write", ic:["Percent","6 giveaways &middot; the prompts block them"], h:"What gives AI <em>away</em>", tiles:[
  ["o","Hype words","Elevate, unlock, stunning, game-changer. Nobody talks like that at the counter."],
  ["t","Emoji walls","One emoji is a person. Six is a template."],
  ["c","Hashtag stacks","Instagram now limits them. Three good ones beat thirty."],
  ["o","Nothing specific","No job, no product, no suburb. It could be anyone."],
  ["t","The question opener","“Looking for the perfect…?” Everyone scrolls past it."],
- ["c","Made-up detail","A happy customer who doesn't exist. That one can cost you."]],
- pts:["Your voice file and the prompts already block all six. This is how you spot one that slipped through."]},
+ ["c","Made-up detail","A happy customer who doesn't exist. That one can cost you."]]},
 
-{sec:"3 · Write", h:"Offers and <em>specials</em>", pts:[
+{sec:"3 · Write", ic:["Price tag","Customer prices include GST &middot; no fake urgency"], h:"Offers and <em>specials</em>", pts:[
  "Pubs and bars: skip this one for drinks. No drink prices or specials in posts. Sell the venue, not the drink.",
  "Everyone else: this needs the most care, because a price in public is a promise.",
- "Customer prices include GST. No fake urgency."],
+],
  prompt:P5, where:"A new chat inside your social media project", after:[
  "Type the price exactly as the customer pays it.",
  "Check the last line against your own price and dates.",
  "Food and other offers at a venue are fine. Drinks are not."]},
 
-{sec:"3 · Write", h:"Reviews and <em>comments</em>", pts:[
+{sec:"3 · Write", ic:["Envelope","Every review answered"], h:"Reviews and <em>comments</em>", pts:[
  "Every review answered is proof someone's home.",
  "Paste it word for word. You get a shorter and a warmer reply.",
  "Complaints go private. Nobody wins an argument in public."],
@@ -612,7 +627,7 @@ const S = [
  "<b>Put the Buffer app on your phone.</b> That's where you check each draft and schedule it.",
  "<b>One rule:</b> Claude drafts, you publish. Never let anything go out unread."]},
 
-{sec:"4 · Autopilot", h:"A week in the <em>queue</em>", pts:[
+{sec:"4 · Autopilot", ic:["Clock","15 minutes a week"], h:"A week in the <em>queue</em>", pts:[
  "Tell it what's happening this week and attach the photos.",
  "Drafts land in Buffer, one per platform, ready for you.",
  "Your job: open each draft on your phone, fix a word if needed, and schedule it."],
@@ -621,29 +636,27 @@ const S = [
  "Fix anything marked [CHECK], then schedule each one.",
  "Keep this chat. Next month's tune reads it."]},
 
-{sec:"4 · Autopilot", h:"Optional: let it run <em>itself</em>", pts:[
+{sec:"4 · Autopilot", ic:["Truck","Optional &middot; fills Buffer every Monday"], h:"Optional: let it run <em>itself</em>", pts:[
  "Make a folder in Google Drive and connect Drive to Claude. Anyone on the team adds photos from their phone with a line about each.",
- "A scheduled task reads the folder every Monday and fills the Buffer queue with drafts.",
  "This is the advanced step. We test it in your account before you rely on it. Until then, the week in the queue does the same job."],
  prompt:P8, where:"A scheduled task in Claude, using your social media project", after:[
  "Run it now, once, and read every draft against the photos. Delete the test drafts from Buffer after.",
  "Two clean runs in a row, then switch the schedule on.",
  "If a Monday brings nothing, it says so. Silence means check it."]},
 
-{sec:"4 · Autopilot", h:"Where <em>you</em> stay in", fig:"flow", pts:[
+{sec:"4 · Autopilot", ic:["Tick","You check every post"], h:"Where <em>you</em> stay in", fig:"flow", pts:[
  "Automated means drafted and queued for you. It doesn't mean published without anyone looking.",
  "A wrong price, a made-up claim or a missing licence number goes out under your name.",
  "Checking takes ten seconds a post. That ten seconds is the whole safety system.",
  "Replies stay yours too. AI can draft them. You send them."]},
 
-{sec:"Stay safe", h:"Spot the <em>problem</em>", tiles:[
+{sec:"Stay safe", ic:["Tick","6 problems &middot; paid posts say #ad"], h:"Spot the <em>problem</em>", tiles:[
  ["o","“Best prices on the Coast, guaranteed!”","Can you prove it? A claim you can't back up is misleading."],
  ["t","“Our happy customer Sarah loved her new deck!”","Sarah doesn't exist. AI made her up. A fake customer is a fake review."],
  ["c","“$5 schooners every Friday!”","A drink price in a post. Queensland liquor law restricts that outside the venue."],
  ["o","“Totally safe, fun for all ages!”","A safety promise nobody can keep. Misleading under consumer law."],
  ["t","Kitchen reno, house number in the shot","The client didn't say yes. Crop the address, ask first."],
- ["c","“5-star review = 10% off!”","Google bans rewards for reviews, even from real customers."]],
- pts:["Two more to know: a paid or gifted post says #ad up front, and a business account uses the platform's business music."]},
+ ["c","“5-star review = 10% off!”","Google bans rewards for reviews, even from real customers."]]},
 
 {sec:"Stay safe", ic:["Building","4 kinds of business &middot; general guidance, not legal advice"], h:"Your <em>industry's</em> rules", rows:[
  ["Builders and trades","Licence number and licensed name on every profile, and on every post that sells work","The QBCC counts a Facebook page as advertising"],
@@ -652,7 +665,7 @@ const S = [
  ["Shops","Prices include GST. “Australian made” only when it really is","A customer's price is the full price"]],
  rowhead:["If you're","The rule","Why"]},
 
-{sec:"Keep it sharp", h:"The monthly <em>tune</em>", pts:[
+{sec:"Keep it sharp", ic:["Spanner","Once a month"], h:"The monthly <em>tune</em>", pts:[
  "Once a month, show it what you changed.",
  "The words you always cut and the lines you always add become rules in the voice file.",
  "Month three, you're barely editing."],
@@ -668,7 +681,7 @@ const S = [
  ["The queue","A week of drafts, checked and scheduled from your phone","Step 4"]],
  rowhead:["Piece","What it is","Where"]},
 
-{sec:"Close", h:"One sentence to <em>keep</em>", pts:[
+{sec:"Close", ic:["Chat bubble","1 sentence"], h:"One sentence to <em>keep</em>", pts:[
  "AI writes it, you check it, the queue posts it.",
  "Specific beats polished. The real job, the real product, the real suburb.",
  "Fifteen minutes a week, and you still sound like you.",
@@ -789,6 +802,38 @@ function fit(){
 }
 window.addEventListener('resize',fit);
 fit();
+
+/* Fill in the blanks (social deck only). A bracket in capitals, like
+   [CHECK], is an answer marker and never becomes a box. */
+const FKEY='magnum-social-fill';
+let FV={};try{FV=JSON.parse(localStorage.getItem(FKEY)||'{}');}catch(e){}
+const fsave=()=>{try{localStorage.setItem(FKEY,JSON.stringify(FV));}catch(e){}};
+const blanks=p=>{const out=[];(p.match(/\[[^\]]+\]/g)||[]).forEach(b=>{const l=b.slice(1,-1);if(/[a-z]/.test(l)&&!out.includes(l))out.push(l);});return out;};
+const fk=l=>l.replace(/\s+/g,' ');
+const filled=i=>{let t=S[i].prompt;blanks(t).forEach(l=>{const v=(FV[fk(l)]||'').trim();if(v)t=t.split('['+l+']').join(v);});return t;};
+function paintSlide(i){const pre=slides[i].querySelector('.prewrap pre');if(pre)pre.textContent=flow(filled(i));}
+let fCur=0;
+function openFill(i){fCur=i;const box=document.getElementById('ffields');box.innerHTML='';
+  blanks(S[i].prompt).forEach((l,k)=>{const lab=document.createElement('label');lab.htmlFor='fb'+k;lab.textContent=fk(l);
+    const ta=document.createElement('textarea');ta.id='fb'+k;ta.value=FV[fk(l)]||'';
+    ta.oninput=()=>{FV[fk(l)]=ta.value;fsave();document.getElementById('fpre').textContent=filled(i);};
+    box.appendChild(lab);box.appendChild(ta);});
+  document.getElementById('fpre').textContent=filled(i);
+  document.getElementById('fcopy').dataset.i=i;
+  document.getElementById('filler').classList.add('on');
+  const first=box.querySelector('textarea');if(first)first.focus();}
+function closeFill(){document.getElementById('filler').classList.remove('on');S.forEach((s,i)=>{if(s.prompt)paintSlide(i);});checkMore();}
+document.getElementById('fclose').onclick=closeFill;
+document.getElementById('fclear').onclick=()=>{blanks(S[fCur].prompt).forEach(l=>delete FV[fk(l)]);fsave();openFill(fCur);};
+S.forEach((s,i)=>{if(!s.prompt||!blanks(s.prompt).length)return;
+  const btns=slides[i].querySelector('.pane-head .btns');const b=document.createElement('button');
+  b.className='fill';b.textContent='FILL IN';b.onclick=()=>openFill(i);btns.insertBefore(b,btns.firstChild);paintSlide(i);});
+/* Copy and Expand hand over the filled prompt; nothing typed means the authored text, byte for byte. */
+document.querySelectorAll('.copy').forEach(b=>{b.onclick=async()=>{const t=filled(+b.dataset.i);
+  try{await navigator.clipboard.writeText(t);}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();}
+  b.textContent='COPIED';b.classList.add('done');setTimeout(()=>{b.textContent='COPY PROMPT';b.classList.remove('done');},1800);};});
+document.querySelectorAll('.expand').forEach(b=>{b.onclick=()=>{const i=+b.dataset.i;document.getElementById('rwhere').textContent=S[i].where;document.getElementById('rpre').textContent=flow(filled(i));document.getElementById('rcopy').dataset.i=i;document.getElementById('reader').classList.add('on');document.getElementById('rpre').scrollTop=0;};});
+document.addEventListener('keydown',e=>{if(!document.getElementById('filler').classList.contains('on'))return;e.stopImmediatePropagation();if(e.key==='Escape')closeFill();},true);
 show(parseInt(location.hash.slice(1))||0);
 </script>
 </body>
