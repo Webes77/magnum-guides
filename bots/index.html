@@ -213,23 +213,21 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 .bar i{position:absolute;left:0;top:0;height:100%;background:var(--coral-bright);transition:width .25s}
 .hint{color:var(--on-navy-mute);font-size:12px;font-family:var(--mono);letter-spacing:.08em}
 
-/* slide list */
-#menu{position:fixed;inset:0;background:rgba(31,42,55,.975);display:none;padding:56px 80px;overflow:auto;color:#FFFFFF;z-index:8}
+/* sections panel: one row per part of the deck */
+#menu{position:fixed;inset:0;background:rgba(31,42,55,.55);display:none;z-index:8}
 #menu.on{display:block}
-#menu h2{font-family:var(--display);font-weight:700;font-size:40px;line-height:.95;letter-spacing:-.005em;text-transform:uppercase;color:#FFFFFF;margin:0 0 26px;padding-top:14px;border-top:3px solid var(--coral-bright)}
-#menu ol{list-style:none;columns:2;column-gap:64px;max-width:1060px}
-#menu li{break-inside:avoid;margin:0 0 2px}
-#menu li.sec{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.05;letter-spacing:-.005em;text-transform:uppercase;color:#FFFFFF;margin:26px 0 10px;padding-top:10px;border-top:2px solid rgba(244,241,234,.26)}
-#menu li:first-child.sec{margin-top:0}
-#menulist button{background:none;border:0;color:var(--on-navy-mute);font-size:17px;text-align:left;padding:5px 0;width:100%;display:grid;grid-template-columns:42px 1fr;align-items:baseline;gap:0 14px;transition:color .14s ease}
-#menulist button .n{font-family:var(--display);font-weight:700;font-size:23px;line-height:1;color:var(--coral-ghost-navy);transition:color .14s ease}
-#menulist button:hover,#menulist button:focus-visible{color:#FFFFFF}
-#menulist button:hover .n,#menulist button:focus-visible .n{color:var(--coral-bright)}
-#menulist li.basic button::after{content:"basics";grid-column:2;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-mute);margin-top:2px}
-#menu.skip #menulist li.basic button{opacity:.38}
-#menu .close{position:fixed;top:20px;right:40px;color:#FFFFFF;background:transparent;border:1px solid var(--on-navy-mute);padding:8px 18px;font-family:var(--mono);letter-spacing:.16em;font-size:12px}
+#menu .mpanel{position:absolute;left:40px;bottom:68px;width:440px;max-width:calc(100% - 32px);max-height:72vh;overflow:auto;background:var(--navy);color:#FFFFFF;border-top:3px solid var(--coral-bright);padding:18px 22px 14px}
+#menu .mhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+#menu h2{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.02em;text-transform:uppercase;color:#FFFFFF}
+#menu ol{list-style:none}
+#menulist button{background:none;border:0;border-top:1px solid rgba(244,241,234,.18);color:var(--on-navy-mute);text-align:left;width:100%;padding:10px 0;display:grid;grid-template-columns:40px 1fr auto;align-items:baseline;gap:0 12px;font-size:17px}
+#menulist button .n::before{content:attr(data-n)}
+#menulist button .n{font-family:var(--display);font-weight:700;font-size:22px;line-height:1;color:var(--coral-ghost-navy)}
+#menulist button .c{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-navy-mute)}
+#menulist button:hover,#menulist button:focus-visible,#menulist li.cur button{color:#FFFFFF}
+#menulist button:hover .n,#menulist button:focus-visible .n,#menulist li.cur button .n{color:var(--coral-bright)}
+#menu .close{background:transparent;color:#FFFFFF;border:1px solid var(--on-navy-mute);padding:6px 12px;font-family:var(--mono);letter-spacing:.14em;font-size:11px}
 #menu .close:hover{border-color:#FFFFFF;color:var(--coral-bright)}
-
 /* full-screen reader (Expand) and fill-in panel */
 #reader,#filler{position:fixed;inset:0;background:var(--paper);display:none;flex-direction:column;z-index:6}
 #reader.on,#filler.on{display:flex}
@@ -319,9 +317,7 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
   body{display:block;overflow:auto}
   body > header,#deck,body > footer{display:none!important}
   #page{display:block}
-  #menu{padding:64px 20px 40px}
-  #menu ol{columns:1}
-  #menu .close{top:12px;right:16px}
+  #menu .mpanel{left:0;right:0;bottom:0;width:auto;max-width:none;max-height:75vh;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
   .rhead{padding:12px 16px;font-size:18px}
   #reader pre{padding:20px 16px 40px;font-size:16px}
   #filler .fbody{padding:20px 16px 50px}
@@ -339,11 +335,11 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 </header>
 <main id="deck"></main>
 <footer>
-  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SLIDES</button><button id="skipbtn" onclick="toggleSkip()" hidden>SKIP BASICS</button></div>
+  <div class="nav"><button id="prev">BACK</button><button id="next">NEXT</button><button id="menubtn" onclick="toggleMenu()">SECTIONS</button><button id="skipbtn" onclick="toggleSkip()" hidden>SKIP BASICS</button></div>
   <div class="bar"><i id="fill"></i></div>
-  <span class="hint">Arrow keys move. SLIDES for the full list.</span>
+  <span class="hint">Arrow keys move. SECTIONS to jump.</span>
 </footer>
-<div id="menu"><button class="close" onclick="toggleMenu()">CLOSE ✕</button><h2>Slides</h2><ol id="menulist"></ol></div>
+<div id="menu"><div class="mpanel" role="dialog" aria-label="Sections"><div class="mhead"><h2>Sections</h2><button class="close" type="button" onclick="toggleMenu()">CLOSE ✕</button></div><ol id="menulist"></ol></div></div>
 <div id="filler" role="dialog" aria-label="Fill in the blanks"><div class="rhead"><span>Fill in the blanks</span><div class="btns"><button class="pbtn copy" id="fcopy" data-copy="0">Copy</button><button class="fclear" id="fclear">CLEAR</button><button class="rclose" id="fclose">CLOSE ✕</button></div></div><div class="fbody"><div class="fwrap"><p class="fhint">Type a short answer in each box. The prompt underneath fills in as you type. Leave a box empty and its blank stays in the prompt. Your answers are kept on this device and fill the same blank in every prompt in the deck.</p><div id="ffields"></div><h3>Your prompt</h3><pre id="fpre"></pre></div></div></div>
 <div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="pbtn copy" id="rcopy" data-copy="0">Copy</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
@@ -684,7 +680,7 @@ S.forEach((s,i)=>{
 /* ---------- phone: the same slides as one page ---------- */
 const page=document.getElementById('page');
 (function(){
-  let ph=`<div class="pbar"><a class="pmark" href="../" aria-label="Magnum AI members area"><img src="../assets/logos/magnum-mark.svg" alt=""></a><span class="ptitle">${NAME}</span><button type="button" onclick="toggleMenu()">Slides</button></div>`;
+  let ph=`<div class="pbar"><a class="pmark" href="../" aria-label="Magnum AI members area"><img src="../assets/logos/magnum-mark.svg" alt=""></a><span class="ptitle">${NAME}</span><button type="button" onclick="toggleMenu()">Sections</button></div>`;
   S.forEach((s,i)=>{
     if(s.cover){ph+=`<section class="pcover" id="p0"><div class="clabel">${s.sub?s.sub+' · ':''}${LAST} slides · ${NPROMPTS} prompts</div><h2>${s.h}</h2>${s.note?`<p>${s.note}</p>`:''}${figH(s)}</section>`;return;}
     let b=`<section class="psec" id="p${i}">${kickH(s,i)}<h2>${s.h}</h2>${icoH(s)}`;
@@ -759,20 +755,19 @@ document.addEventListener('keydown',e=>{
   if(e.key==='b'||e.key==='B'){toggleSkip();}
 });
 
-/* the slide list */
+/* sections: a short list to jump between parts of the deck, not every slide */
 const ml=document.getElementById('menulist');
-let lastSec=null;
-S.forEach((s,i)=>{
-  if(i===0)return;
-  if(s.sec!==lastSec){const h=document.createElement('li');h.className='sec';h.textContent=s.sec;ml.appendChild(h);lastSec=s.sec;}
-  const li=document.createElement('li');if(s.basic)li.className='basic';
-  const b=document.createElement('button');
-  const n=document.createElement('span');n.className='n';n.textContent=two(i);
-  const t=document.createElement('span');t.textContent=plain(s.h);
-  b.appendChild(n);b.appendChild(t);b.onclick=()=>{toggleMenu();nav(i);};
-  li.appendChild(b);ml.appendChild(li);
+const SECS=[];
+S.forEach((s,i)=>{if(i===0)return;const L=SECS[SECS.length-1];if(L&&L.name===s.sec)L.n++;else SECS.push({name:s.sec||NAME,start:i,n:1});});
+SECS.forEach((g,k)=>{
+  const li=document.createElement('li');const b=document.createElement('button');b.type='button';
+  b.innerHTML=`<span class="n" data-n="${two(k+1)}" aria-hidden="true"></span><span class="t">${esc(g.name)}</span><span class="c">${g.n===1?'1 slide':g.n+' slides'}</span>`;
+  b.onclick=()=>{toggleMenu();nav(g.start);};li.appendChild(b);ml.appendChild(li);g.li=li;
 });
-function toggleMenu(){document.getElementById('menu').classList.toggle('on');}
+function toggleMenu(){
+  const m=document.getElementById('menu');const open=m.classList.toggle('on');
+  if(open){SECS.forEach(g=>g.li.classList.toggle('cur',cur>=g.start&&cur<g.start+g.n));const c=ml.querySelector('.cur button')||ml.querySelector('button');if(c)c.focus();}
+}
 document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu')toggleMenu();});
 paintSkip();
 

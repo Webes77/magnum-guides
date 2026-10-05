@@ -2432,6 +2432,13 @@ each deck (Make Claude Yours and session three have no fillable blanks, so
 they get no Fill in button). The Foundations card slide still carries its
 two known faults, which wait for a room as before.
 
+**The slide list is a Sections panel, 5 Oct, on James's word.** He said the
+SLIDES button opened a huge, busy page of every slide title. It is a small
+navy panel now, bottom left on a laptop and a bottom sheet on a phone, with
+one row per section (ghost number, name, slide count) and the section you are
+in marked. Tapping a row jumps to that section's first slide. The button and
+the phone bar say SECTIONS; M still opens it. All five decks.
+
 Next: step 3 of the spec, the members area shell. Ask James before the front
 page changes.
 
