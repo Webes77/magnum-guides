@@ -2272,10 +2272,14 @@ same day, and the live prompt was then asserted equal to
 their files. If an `update_trigger` call is ever interrupted, read the
 trigger back before doing anything else: the server keeps whatever arrived.
 
-Outside the repo and James's to paste: `frameworks-and-ip.md` in Drive, F-001,
-still says the 6 Lever Framework is the foundation of every product and the
-brand. The Drive connector cannot edit file content. The Role Pack Library PDF
-cover still leads with the levers, which is his product call.
+`frameworks-and-ip.md` in Drive (Content Library / Content Index) is done, on
+James's word: a corrected copy was uploaded beside it with F-001's Definition
+and Product potential lines rewritten as a tool, verified byte for byte
+against the original with only those two lines different, and the old file
+moved to the Drive bin. The file id changed with it. If that file is also
+uploaded into a Claude project, the project copy is separate and James swaps
+it there. The Role Pack Library PDF cover still leads with the levers, which
+is his product call.
 
 ## Decisions already made
 
