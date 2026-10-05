@@ -2471,6 +2471,35 @@ slide 14 of 36" under the deck name. Merged the same day.
 Course pages were proposed in the plan and are not being built: the decks'
 phone page now does the job a course page would have done.
 
+**Shared stylesheet, guides done, 5 Oct.** The six guides that share the
+privacy shell (`privacy/`, `cowork/`, `team-seats/`, `effort/`,
+`agent-workforce/`, `manus-bridge/`) now load `assets/site.css` before their
+own `<style>`: the 73 rules at least four of them carried word for word
+(reset, body, masthead, headings, index labels, cards, tables, the say block,
+icon rows, footer), each written once. A page's own rules still come after it
+and win, and colours still come from each page's `:root`. 755 lines came out
+of the pages. The prompt card moved to `assets/prompt.css`, prefixed `html` so
+it outranks older prompt styles; the Manus website manual loads only that,
+because it is not built on the guide shell and the core changed 882 of its
+elements when tried.
+
+How it was proved, and how the next page should be: `getComputedStyle` of
+every element on every page at 1440 and 390, saved before and after and
+diffed. Zero differences on all seven pages (the only diffs seen were a
+summary's hover tint following the test's mouse). The shared rules were
+picked by a script that matched rules across pages, never by eye; one bug
+in it, stripping spaces inside values ('IBMPlexSans'), was caught before
+commit by reading the output.
+
+`assets/site.js` now reflows each prompt's authored line breaks for display
+with the decks' `flow()`, so a phone shows whole lines instead of ragged
+halves, and a capture listener copies the stored original before any page's
+own Copy handler runs. Every Copy on all five prompt pages was clicked in a
+browser and returned the authored text exactly (34 buttons).
+
+Next in the shared stylesheet: the Prompt Shelf, the Field Notes and the
+front page, then the brand page and Fine-Tune.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
