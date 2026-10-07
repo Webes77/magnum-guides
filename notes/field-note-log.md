@@ -9,6 +9,10 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-10-07 (issue 08 replaced)
+
+James read the fixed Pasting issue and said it was too complicated and not relevant to his clients yet, the kind of issue that makes a reader think "this doesn't affect me". Replaced it as issue 08 with Replying: "Reply to the angry email without regret", built on the difficult-email card, cut to two fill-ins and three rules so it pastes cold. The Pasting page stays at its URL, unlinked, in case anyone already has the link. Lesson for the routine: a commission must pass "would a busy owner use this this week", not just "is it true and useful".
+
 ## 2026-10-07 (fix, same day)
 
 James read issue 08 and could not follow it. Two faults. The prompt told Claude to read "the text between the pasted tags" but the page never gave the reader any tags, so a cold paste failed. And the prompt said "I can't see what it says", which is untrue of a reader who has just pasted it. Rewrote the headline to "Stop pasted emails giving Claude orders", the three answers, the steps (step two now says to paste between the tags) and the prompt (tags written in, an example of a hidden order, no false line). Why it works now says what the risk is before the comparison. Thumbnail re-rendered. Check PASS. Same URL.
