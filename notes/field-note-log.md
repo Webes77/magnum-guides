@@ -9,6 +9,10 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-10-07 (fix, same day)
+
+James read issue 08 and could not follow it. Two faults. The prompt told Claude to read "the text between the pasted tags" but the page never gave the reader any tags, so a cold paste failed. And the prompt said "I can't see what it says", which is untrue of a reader who has just pasted it. Rewrote the headline to "Stop pasted emails giving Claude orders", the three answers, the steps (step two now says to paste between the tags) and the prompt (tags written in, an example of a hidden order, no false line). Why it works now says what the risk is before the comparison. Thumbnail re-rendered. Check PASS. Same URL.
+
 ## Format
 
 A heading with the branch date, then one short paragraph: the issue number and
