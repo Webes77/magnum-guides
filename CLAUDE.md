@@ -2105,6 +2105,8 @@ shape; only CSS moved. The shelf's two recorded contrast failures (Copy
 
 **Agent workforce refreshed, 4 Oct, at James's word ("make sure it's up to date and relevant").** Lessons from his own team's first week, made generic: roster now seven (Archie added, the one local agent; Percy's Sunday brief does safe jobs itself; Quinn trained on real emails plus a never-write list); a fifth house rule, Done, not to-do; prompt 2.3 checks Sent Items and replies before calling anything undone; prompt 5.3 adds a list of lines that sound wrong; prompt 5.5 names each routine "[AGENT NAME] · [THE JOB] · [DAY]" and gives it only the connectors it needs, with a note. The three shelf cards were re-synced byte-identical from the page. Still nineteen prompts. Register row for the connectors claim.
 
+**Field Note relevance gate, 7 Oct, James's word.** Before a Field Note is built, and before the Sunday Brief commissions one, the idea must pass one test: would a busy small business owner use this prompt this week, on a job they already do? Issue 08 first shipped on pasted-text safety; James said it was too complicated and irrelevant to his clients right now, "exactly the type of field note that would turn people off". If the commission fails the test, ignore it and take the shelf fallback. Prefer everyday jobs: replying, quoting, chasing, writing, deciding. No security, setup or AI-mechanics topics unless a client is actually hitting the problem.
+
 **The Field Note is one card now, 30 Sep, and the live routine carries it.**
 James read issue 07 live and said no client would read it: confusing, too
 dense, a prompt he did not like, and headlines that read like advertising
