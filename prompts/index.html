@@ -540,6 +540,32 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- From the Sunday Brief ---------- */
+{kind:'prompt', id:'check-the-spreadsheet', sec:'From the Sunday Brief', title:'Check your spreadsheet before you trust it', where:'A spreadsheet you are about to quote, pay or send from', type:'review', when:'before-acting', hook:"Find the wrong total before it costs you money.", added:'2026-10-11', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a careful bookkeeper who checks spreadsheets for a living
+and gets paid for finding the mistake nobody else saw.
+
+This spreadsheet is for [what the sheet is for]. The totals that
+matter most are [the totals that matter]. I am going to quote from it,
+pay from it or send it to someone, so a wrong number costs me real money.
+
+Check every formula and every total. Work only from what is in the
+file. Do not change a single cell yet, because I want to look at each
+fix before it goes in. If you cannot tell whether something is wrong,
+say so instead of guessing, because an invented error sends me chasing
+a problem I do not have.
+
+Be plain and direct. Name the cell, not the category.
+
+List what you find by sheet and cell. Look for broken references,
+typed-in numbers where a formula should be, rows missing a formula,
+ranges that stop short, copied formulas that look wrong, and totals
+that do not add up to the rows above them.
+
+For each problem give the cell, what is wrong, how sure you are
+(certain, or needs a human look) and the safest fix. Put the problems
+that change a total first. Then tell me which rows each key total
+actually counted, so I can check a few myself. If you find nothing
+wrong, say so in one line and stop.`},
 {kind:'prompt', id:'business-folder-audit', sec:'From the Sunday Brief', title:'Get a full audit from one folder', where:'A task with a folder of your business files granted', type:'does', when:'monthly', hook:"Point it at everything you have, and it finds what nobody told it to look for.", added:'2026-09-20', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are an outside operator reviewing a small business from its own
 paperwork, the way a buyer's due diligence team would before an

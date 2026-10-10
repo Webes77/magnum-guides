@@ -202,3 +202,8 @@ The techniques, the prompts themselves, the exercises, anything about how to
 think. None of it is a claim about a vendor's product. Whether a technique
 has dated is James's call, not this routine's. Magnum pricing
 lives in the service menu skill and is James's alone, never a routine's.
+| 85 | OpenAI Dots: an always-on agent in ChatGPT with its own cloud computer, launched 29 Sep 2026 on Pro and Business Premium plans, not in every country | `bots` In ChatGPT | 2026-10-11 | C, third-party only (TechRadar, DataCamp, Android Authority); sources differ on which plans |
+| 86 | Grok Bot began routing some tasks to other makers' models, Claude among them, announced by Musk 7 Oct 2026; no detail on when or how | `bots` Grok Bot | 2026-10-11 | C, third-party only (TheNextWeb, aiweekly); secondhand reporting of a post on X |
+| 87 | Claude has a sidebar in Google Docs, Sheets and Slides, in beta on paid plans, asking approval before edits unless told otherwise | not taught anywhere yet; recorded so the check can say when it is worth teaching | 2026-10-11 | C, third-party only (several newsletters, 6 to 9 Oct 2026) |
+| 88 | ChatGPT's newest model, GPT-6, rolled out to free users on 8 Oct 2026 (as GPT-6 Luna), with interactive answers | not taught anywhere; recorded for the bots deck and any "free tier" claim | 2026-10-11 | C, third-party only |
+| 89 | Anthropic updated its consumer terms in early Oct 2026 and may keep chats up to 5 years with the training setting on | `privacy` retention table | 2026-10-11 | C, one newsletter's line only; the page already says up to 5 years with the setting on, so the routine should confirm nothing has moved |
