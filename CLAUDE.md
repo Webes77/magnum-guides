@@ -2623,8 +2623,18 @@ Two verdicts differ from the research, both James's call: Wispr Flow is
 Worth it (start free, pay when the weekly cap bites), and Granola is Skip
 for now because of the US consent class action filed 30 Jul. Revisit
 Granola when the case moves. Kling was added as its own card the same day
-at James's word, Only if, making 25 tools; it is not a picker pick, because
+at James's word, Only if; it is not a picker pick, because
 Google AI Pro covers the owner's clip and Kling sits inside Higgsfield.
+Later the same day James said the pictures and video advice was too
+narrow: name the models, and recommend the one-stop shops, Fal.ai included.
+So Pictures and Short videos each open with a model list (maker, best at,
+where to use it), and a new One-stop shops group carries Fal.ai (Worth it,
+his call, was Skip), Higgsfield, Krea, Magnific (Freepik renamed in April)
+and Adobe Firefly. Midjourney was added under Pictures. Research is
+`notes/tools-research/05-models-and-hubs.md`. The "where" column dates
+fastest of anything on the page, because shops add model versions weekly
+and run a version behind the makers. On "best tool for each job" the picker
+now sends pictures and video to Fal.ai. 29 tools, 15 models.
 Copilot, Granola and n8n carry "From research,
 not use", because James does not use them and the page never claims he does.
 

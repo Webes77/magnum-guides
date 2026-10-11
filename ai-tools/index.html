@@ -183,6 +183,21 @@
     font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);}
   .again:hover,.again:focus-visible{color:var(--coral-text);outline:none;}
 
+  /* the model lists inside Pictures and Short videos */
+  .msub{font-size:18px;margin:6px 0 10px;}
+  .mlist{border:2px solid var(--ink);background:var(--paper);margin:0 0 8px;}
+  .mrow{display:grid;grid-template-columns:190px 1fr 210px;gap:4px 16px;align-items:baseline;
+    padding:10px 16px 11px;border-top:1px solid rgba(30,27,23,.12);}
+  .mrow:first-child{border-top:0;}
+  .mname{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:17px;line-height:1.15;color:var(--ink);}
+  .mname small{display:block;font-family:var(--mono);font-weight:400;text-transform:uppercase;font-size:10.5px;
+    letter-spacing:.14em;color:var(--mute);margin-top:3px;}
+  .mbest{font-size:15px;line-height:1.45;color:var(--char);}
+  .mwhere{font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--ink);}
+  @media(max-width:760px){
+    .mrow{grid-template-columns:1fr;}
+    .mwhere::before{content:"Where: ";color:var(--mute);}
+  }
   .sources-acc .acc-body li{font-size:14px;}
 
   @media print{
@@ -197,7 +212,7 @@
 <body>
 <header class="masthead"><div class="wrap">
     <h1>Which AI tools are <em>worth paying for?</em></h1>
-    <p class="sub">What each tool does, whether I&rsquo;d pay for it, and what you probably already have. Three questions below give you your own short list.</p>
+    <p class="sub">What each tool does, whether I&rsquo;d pay for it, and what you probably already have. The picture and video models are named too. Three questions below give you your own short list.</p>
   </div></header>
   <div class="wrap">
 
@@ -210,7 +225,7 @@
     <p class="lead">Most small businesses I work with already pay for half the AI they need. They just haven&rsquo;t found it yet. Gemini comes with most Google Workspace plans. Copilot Chat comes with Microsoft 365. Claude&rsquo;s slides come with every Claude plan, even the free one.</p>
     <p>So start with what you&rsquo;ve got. Then add one tool per job, and only once that job keeps coming back. Three tools doing the same thing is like paying for three streaming services and watching one.</p>
     <p>I use most of what&rsquo;s on this page. Claude every day, plus ChatGPT, Gemini, Gamma, Manus, Wispr Flow and Fireflies. Where I haven&rsquo;t used something, I say so.</p>
-    <div class="icorow"><svg aria-label="Price tag" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24 V10 A2 2 0 0 1 10 8 H24 L41 25 L25 41 Z"/><circle cx="16" cy="16" r="2.6"/></svg><span>25 tools &middot; 9 jobs</span></div>
+    <div class="icorow"><svg aria-label="Price tag" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24 V10 A2 2 0 0 1 10 8 H24 L41 25 L25 41 Z"/><circle cx="16" cy="16" r="2.6"/></svg><span>29 tools &middot; 15 models</span></div>
   </section>
 
   <!-- ============ 02 THE PICKER ============ -->
@@ -256,12 +271,18 @@
       <div class="brow"><a href="#t-chatgpt-images">ChatGPT Images</a><span class="v v-worth">Worth it</span><span class="why">The best at words on a picture.</span></div>
       <div class="brow"><a href="#t-gemini-images">Gemini</a><span class="v v-worth">Worth it</span><span class="why">The best realistic photos for the money.</span></div>
       <div class="brow"><a href="#t-ideogram">Ideogram</a><span class="v v-only">Only if</span><span class="why">Text-heavy promo graphics are a weekly job.</span></div>
-      <div class="brow"><a href="#t-fal">Fal.ai</a><span class="v v-skip">Skip</span><span class="why">Built for developers.</span></div>
+      <div class="brow"><a href="#t-midjourney">Midjourney</a><span class="v v-only">Only if</span><span class="why">A distinctive look is the point.</span></div>
 
       <p class="board-job">Short videos</p>
       <div class="brow"><a href="#t-gemini-video">Gemini</a><span class="v v-worth">Worth it</span><span class="why">Comes with Google AI Pro. One plan covers pictures and video.</span></div>
+      <div class="brow"><a href="#t-kling">Kling</a><span class="v v-only">Only if</span><span class="why">You want one cheap video app of its own.</span></div>
+
+      <p class="board-job">One-stop shops for pictures and video</p>
+      <div class="brow"><a href="#t-fal">Fal.ai</a><span class="v v-worth">Worth it</span><span class="why">Every major model in one place, paid per picture or per clip.</span></div>
       <div class="brow"><a href="#t-higgsfield">Higgsfield</a><span class="v v-only">Only if</span><span class="why">Video or ads are a weekly job. Pay monthly.</span></div>
-      <div class="brow"><a href="#t-kling">Kling</a><span class="v v-only">Only if</span><span class="why">You want one cheap video tool and you&rsquo;re not on Higgsfield.</span></div>
+      <div class="brow"><a href="#t-krea">Krea</a><span class="v v-only">Only if</span><span class="why">You want one cheap login across many picture models.</span></div>
+      <div class="brow"><a href="#t-magnific">Magnific</a><span class="v v-only">Only if</span><span class="why">You already use Freepik stock. Same company, new name.</span></div>
+      <div class="brow"><a href="#t-firefly">Adobe Firefly</a><span class="v v-only">Only if</span><span class="why">You already pay for Adobe.</span></div>
 
       <p class="board-job">Social posts</p>
       <div class="brow"><a href="#t-buffer">Buffer</a><span class="v v-worth">Worth it</span><span class="why">One queue for every account, and Claude drafts into it.</span></div>
@@ -432,8 +453,20 @@
     </details>
 
     <details class="acc" id="job-images">
-      <summary>Pictures <small>4 tools</small><span class="sign"></span></summary>
+      <summary>Pictures <small>4 tools &middot; 7 models</small><span class="sign"></span></summary>
       <div class="acc-body">
+        <p>Check your plan first. ChatGPT and Gemini both make pictures, and so does Canva Pro. The model is what does the work. The app or the shop is just where you use it, so here are the models worth knowing, then the tools.</p>
+        <h3 class="msub">The models, October 2026</h3>
+        <div class="mlist">
+          <div class="mrow"><span class="mname">GPT Image 2.5<small>OpenAI</small></span><span class="mbest">Words on a picture, and following a long brief. Top of both public leaderboards.</span><span class="mwhere">ChatGPT, Magnific</span></div>
+          <div class="mrow"><span class="mname">Nano Banana 2.1 and Pro<small>Google</small></span><span class="mbest">Realistic photos and product shots. Pro is the high-detail one.</span><span class="mwhere">Gemini, Fal.ai, and Pro in most shops</span></div>
+          <div class="mrow"><span class="mname">Seedream 5.0 Pro<small>ByteDance</small></span><span class="mbest">Busy layouts and text in many languages.</span><span class="mwhere">Fal.ai, Magnific, Dreamina</span></div>
+          <div class="mrow"><span class="mname">Ideogram 4.5<small>Ideogram</small></span><span class="mbest">Changing one detail, like a price, without the rest moving.</span><span class="mwhere">Ideogram</span></div>
+          <div class="mrow"><span class="mname">Midjourney V8.2<small>Midjourney</small></span><span class="mbest">A distinctive, art-directed look.</span><span class="mwhere">Midjourney</span></div>
+          <div class="mrow"><span class="mname">Recraft V4<small>Recraft</small></span><span class="mbest">Logos and icons as real vector files that scale.</span><span class="mwhere">Recraft</span></div>
+          <div class="mrow"><span class="mname">FLUX 3<small>Black Forest Labs</small></span><span class="mbest">Precise edits that leave everything else alone.</span><span class="mwhere">Fal.ai</span></div>
+        </div>
+
         <article class="tool" id="t-chatgpt-images">
           <div class="tool-head"><h3>ChatGPT Images</h3><span class="v v-worth">Worth it</span></div>
           <p class="what">Makes and edits pictures by asking for them inside ChatGPT.</p>
@@ -462,12 +495,13 @@
           </dl>
         </article>
 
-        <article class="tool" id="t-fal">
-          <div class="tool-head"><h3>Fal.ai</h3><span class="v v-skip">Skip</span></div>
-          <p class="what">A pay-as-you-go shop for hundreds of image and video models, charged one picture or one second at a time.</p>
-          <p>I use it, because I like testing new models the week they land. You almost certainly don&rsquo;t need it. It&rsquo;s built for developers, and the plan you already have does the job with far less to learn.</p>
+        <article class="tool" id="t-midjourney">
+          <div class="tool-head"><h3>Midjourney</h3><span class="v v-only">Only if</span></div>
+          <p class="what">Pictures with a strong, art-directed look, made on midjourney.com. It can also turn its own stills into short silent clips.</p>
+          <p>I&rsquo;ve used it, video included. Nothing beats it for mood and style: an illustrated menu board, a poster look. It&rsquo;s not the pick for words on a picture or a faithful photo of your real product, and Claude can&rsquo;t drive it, so you paste the prompt in yourself.</p>
           <dl class="facts">
-            <dt>Price</dt><dd>Pay per result. There&rsquo;s no monthly plan.</dd>
+            <dt>Price</dt><dd>Basic is US$10 a month. Standard, US$30, gives unlimited slower pictures.</dd>
+            <dt>Watch for</dt><dd>A business turning over more than US$1 million a year has to be on Pro, US$60, to own what it makes. On the cheaper plans, everything you make shows in its public gallery.</dd>
           </dl>
         </article>
 
@@ -479,8 +513,21 @@
     </details>
 
     <details class="acc" id="job-video">
-      <summary>Short videos <small>3 tools</small><span class="sign"></span></summary>
+      <summary>Short videos <small>2 tools &middot; 8 models</small><span class="sign"></span></summary>
       <div class="acc-body">
+        <p>ChatGPT makes no video now. OpenAI closed Sora in April. Gemini does, on a paid Google plan. For anything else, use one of the models below, through its own app or a <a href="#job-shops">one-stop shop</a>.</p>
+        <h3 class="msub">The models, October 2026</h3>
+        <div class="mlist">
+          <div class="mrow"><span class="mname">Gemini Omni<small>Google</small></span><span class="mbest">Ten-second clips with sound. Top of the main public video leaderboard.</span><span class="mwhere">Gemini on a paid plan, Fal.ai</span></div>
+          <div class="mrow"><span class="mname">Veo 3.1<small>Google</small></span><span class="mbest">Realism, sound and lip-sync. The usual premium pick.</span><span class="mwhere">Flow, and nearly every shop</span></div>
+          <div class="mrow"><span class="mname">Seedance 2.5<small>ByteDance</small></span><span class="mbest">Clips up to 30 seconds that keep a product or person steady.</span><span class="mwhere">Higgsfield, Fal.ai, Krea, Dreamina</span></div>
+          <div class="mrow"><span class="mname">Kling 3.0<small>Kuaishou</small></span><span class="mbest">Natural movement for the money. Version 4.0 is due this month.</span><span class="mwhere">Kling, and every shop</span></div>
+          <div class="mrow"><span class="mname">Wan 3.0<small>Alibaba</small></span><span class="mbest">Longer clips, cheap. Near the top of the leaderboards.</span><span class="mwhere">Krea, Magnific</span></div>
+          <div class="mrow"><span class="mname">MiniMax Hailuo 3<small>MiniMax</small></span><span class="mbest">Up to 15 seconds in high resolution, with sound.</span><span class="mwhere">Hailuo, Fal.ai, Krea</span></div>
+          <div class="mrow"><span class="mname">Runway Gen-4.5<small>Runway</small></span><span class="mbest">Controlled, cinematic shots for people who edit video.</span><span class="mwhere">Runway, Firefly, Magnific</span></div>
+          <div class="mrow"><span class="mname">Luma Ray3.2<small>Luma</small></span><span class="mbest">Up to 20 seconds with fine control over each shot.</span><span class="mwhere">Luma</span></div>
+        </div>
+
         <article class="tool" id="t-gemini-video">
           <div class="tool-head"><h3>Gemini</h3><span class="v v-worth">Worth it</span></div>
           <p class="what">Short clips with sound, from a sentence or a photo, in the Gemini app or Google&rsquo;s Flow.</p>
@@ -491,16 +538,6 @@
           </dl>
         </article>
 
-        <article class="tool" id="t-higgsfield">
-          <div class="tool-head"><h3>Higgsfield</h3><span class="v v-only">Only if</span></div>
-          <p class="what">One subscription that reaches many video models, Seedance and Kling among them, plus ready-made styles and ad tools.</p>
-          <p>It&rsquo;s what I publish with, and Seedance is my pick inside it for longer, consistent clips. It has a Claude connector, too. But it&rsquo;s only worth it if video or ads are a weekly job. There are billing complaints and renewals aren&rsquo;t refunded, so pay monthly until you know you&rsquo;ll use it.</p>
-          <dl class="facts">
-            <dt>Price</dt><dd>Plans start somewhere between US$15 and US$19 a month. Sources disagree, so check the page.</dd>
-            <dt>Watch for</dt><dd>Never put a real person or a famous character in a clip without permission.</dd>
-          </dl>
-        </article>
-
         <article class="tool" id="t-kling">
           <div class="tool-head"><h3>Kling</h3><span class="v v-only">Only if</span></div>
           <p class="what">A video maker known for natural movement. Give it a still picture and describe the motion, and it animates it.</p>
@@ -508,6 +545,63 @@
           <dl class="facts">
             <dt>Price</dt><dd>Standard is US$8.80 a month. How many seconds that buys depends on the model and the quality, and sources disagree.</dd>
             <dt>Watch for</dt><dd>The free plan is watermarked and not licensed for business use.</dd>
+          </dl>
+        </article>
+      </div>
+    </details>
+
+    <details class="acc" id="job-shops">
+      <summary>One-stop shops <small>5 tools</small><span class="sign"></span></summary>
+      <div class="acc-body">
+        <p>One login and one bill that reach many makers&rsquo; picture and video models. You pay for the choice with credits that don&rsquo;t map neatly to a picture or a second of video, and a small markup on each model. The shops are often a version behind the makers, so check the model you want is there. I left OpenArt off: its cheapest plan doesn&rsquo;t cover business use.</p>
+
+        <article class="tool" id="t-fal">
+          <div class="tool-head"><h3>Fal.ai</h3><span class="v v-worth">Worth it</span></div>
+          <p class="what">Hundreds of picture and video models in one place, charged one picture or one second at a time. No subscription.</p>
+          <p>It&rsquo;s where I try every new model the week it lands, and it&rsquo;s the cheapest way to use them. It looks like a site for developers, but you don&rsquo;t need code. Start in the Sandbox: type one prompt, run it on several models side by side, and see the cost before you press go. It has a Claude connector too, so Claude can make the pictures for you.</p>
+          <dl class="facts">
+            <dt>Price</dt><dd>Pay as you go. Ten Nano Banana pictures cost about US$0.40, and an eight-second Gemini Omni clip about US$0.80. Load US$10 to US$20 of credit to start; it lasts a year. The Sandbox gives a few free goes a day.</dd>
+            <dt>Watch for</dt><dd>Each model has its own licence. Look for the &ldquo;Commercial use&rdquo; badge on the model&rsquo;s page before you publish anything.</dd>
+          </dl>
+        </article>
+
+        <article class="tool" id="t-higgsfield">
+          <div class="tool-head"><h3>Higgsfield</h3><span class="v v-only">Only if</span></div>
+          <p class="what">One subscription that reaches many video and picture models, Seedance, Kling and Veo among them, plus ready-made styles and ad tools.</p>
+          <p>It&rsquo;s what I publish with, and Seedance is my pick inside it for longer, steady clips. It&rsquo;s the friendliest front door of the shops: you pick a style rather than write a long prompt. Its Ads Studio turns a product link into a batch of static ads for about US$0.20 each, and it has a Claude connector. Only worth it if video or ads are a weekly job.</p>
+          <dl class="facts">
+            <dt>Price</dt><dd>Plans start somewhere between US$15 and US$19 a month. Sources disagree, so check the page.</dd>
+            <dt>Watch for</dt><dd>There are billing complaints and renewals aren&rsquo;t refunded, so pay monthly until you know you&rsquo;ll use it. Never put a real person or a famous character in a clip without permission.</dd>
+          </dl>
+        </article>
+
+        <article class="tool" id="t-krea">
+          <div class="tool-head"><h3>Krea</h3><span class="v v-only">Only if</span><span class="own">From research, not use</span></div>
+          <p class="what">A browser app: type a prompt, pick a model from the menu, and get a picture or a video. It has its own picture model as well.</p>
+          <p>The cheapest commercial licence of the shops for pictures, and the menu is long: Nano Banana, GPT Image, Seedance, Veo, Kling, Wan and more. It has a Claude connector.</p>
+          <dl class="facts">
+            <dt>Price</dt><dd>Basic is US$9 a month, about A$15 with GST, for pictures. Video needs Pro, US$35, about A$60.</dd>
+            <dt>Watch for</dt><dd>Refunds are strict, and some users report losing unused credit when they cancel. Pay monthly. The free plan isn&rsquo;t licensed for business use.</dd>
+          </dl>
+        </article>
+
+        <article class="tool" id="t-magnific">
+          <div class="tool-head"><h3>Magnific</h3><span class="v v-only">Only if</span><span class="own">From research, not use</span></div>
+          <p class="what">Freepik, renamed in April: stock photos plus AI pictures and video from many makers, on one bill.</p>
+          <p>Worth a look if you already use Freepik stock, because it&rsquo;s the same login. It carries GPT Image 2.5, which most shops don&rsquo;t yet, and its new Brand Kit pulls your logo, colours and fonts from your website and applies them. It has a Claude connector.</p>
+          <dl class="facts">
+            <dt>Price</dt><dd>Premium is US$20 a month, or US$14.50 a month on annual billing.</dd>
+            <dt>Watch for</dt><dd>Credits come as a yearly pool, and reviewers report losing them when they cancel. Start monthly and watch how fast the credit goes.</dd>
+          </dl>
+        </article>
+
+        <article class="tool" id="t-firefly">
+          <div class="tool-head"><h3>Adobe Firefly</h3><span class="v v-only">Only if</span><span class="own">From research, not use</span></div>
+          <p class="what">Adobe&rsquo;s AI app. It carries Adobe&rsquo;s own model plus Google&rsquo;s, OpenAI&rsquo;s, Kling, Runway and others.</p>
+          <p>If you already pay for Adobe, it&rsquo;s the cheapest way to reach Nano Banana, GPT Image, Veo and Kling on one bill. Adobe&rsquo;s own model is trained on licensed material, which makes it the safest choice for anything you print or sell. It has a Claude connector.</p>
+          <dl class="facts">
+            <dt>Price</dt><dd>Standard is US$9.99 a month. Pro, US$19.99, includes Adobe Express Premium.</dd>
+            <dt>Watch for</dt><dd>Only Adobe&rsquo;s own model carries its &ldquo;commercially safe&rdquo; promise. The other makers&rsquo; models inside it don&rsquo;t.</dd>
           </dl>
         </article>
       </div>
@@ -603,7 +697,9 @@
           <li>Gamma: Gamma&rsquo;s Gamma 5 release (6 October) and developer changelog.</li>
           <li>Wispr Flow and Fireflies: each company&rsquo;s pricing and privacy pages; Fireflies&rsquo; Talk launch (29 September).</li>
           <li>Granola: Computerworld on the class action filed 30 July 2026.</li>
-          <li>Ideogram: Ideogram&rsquo;s plans pages and its 4.5 announcement. Fal.ai: its pricing documentation.</li>
+          <li>Ideogram: Ideogram&rsquo;s plans pages and its 4.5 announcement. Midjourney: its version notes, with plan prices and the US$1 million rule from third-party reviews.</li>
+          <li>The model lists: the Artificial Analysis and arena.ai leaderboards as seen on 11 October, and each maker&rsquo;s own release notes.</li>
+          <li>One-stop shops: each shop&rsquo;s own pricing, connector and documentation pages, including Fal.ai&rsquo;s Sandbox and Claude connector pages; Magnific&rsquo;s rename announcement (April) and VentureBeat on Magnific One (8 October); Adobe&rsquo;s partner-model pages; review sites on refunds and billing.</li>
           <li>Higgsfield and Seedance: Higgsfield&rsquo;s help centre and blog; ByteDance Seed on Seedance 2.5; review sites on refunds.</li>
           <li>Picture rules: commentary on the ACCC&rsquo;s guidance on misleading claims; eWeek on Google&rsquo;s SynthID Detector (7 October).</li>
           <li>Buffer, Zapier, Make and n8n: each company&rsquo;s pricing pages and help centre; CISA&rsquo;s list of exploited flaws on n8n.</li>

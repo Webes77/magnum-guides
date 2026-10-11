@@ -160,10 +160,12 @@
     },
 
     img: function (P, B, J) {
+      var fal = 'For every other model, Fal.ai charges per picture with no subscription.';
       if (P.chatgpt) {
         return pick('ChatGPT Images', 'have',
           'It is in your ChatGPT plan, and it is the best of these at words on a picture.',
-          'Already in your plan', '#t-chatgpt-images');
+          'Already in your plan', '#t-chatgpt-images',
+          B === 'best' ? { also: fal } : null);
       }
       if (P.canva && B !== 'best') {
         return pick("Canva's AI images", 'have',
@@ -173,7 +175,14 @@
       if (B === 'free') {
         return pick('ChatGPT, free plan', 'free',
           'A few pictures a day, and the best of these at words on a picture.',
-          'Free', '#t-chatgpt-images');
+          'Free', '#t-chatgpt-images',
+          { also: "Fal.ai's Sandbox gives a few free goes a day on other models, with no account." });
+      }
+      if (B === 'best') {
+        return pick('Fal.ai', 'paid',
+          'Every major picture model in one place, paid per picture. You pick the right model for each job.',
+          'Pay as you go, about US$0.04 a picture', '#t-fal',
+          { also: 'If you would rather one simple app, Gemini on Google AI Plus is A$7.99 a month.', sub: 'Fal.ai credit' });
       }
       if (J.vid) {
         return pick('Gemini, on ' + GAI_PRO, 'paid',
@@ -188,24 +197,29 @@
     },
 
     vid: function (P, B) {
+      var sora = 'ChatGPT makes no video now. OpenAI closed Sora in April.';
       if (B === 'free') {
         return pick('Your phone', 'free',
-          "Gemini's video needs a paid Google plan, and free allowances elsewhere are too small to post from. Film it.",
+          "Gemini's video needs a paid Google plan. Film it yourself, and experiment with AI video for free on the side.",
           'Free', '#t-gemini-video',
-          P.chatgpt ? { also: 'ChatGPT makes no video now. OpenAI closed Sora in April.' } : null);
+          { also: 'Fal.ai gives a few free AI clips a day on one model, if you want to see what it can do.' });
       }
       if (P.canva && B === 'lean') {
         return pick("Canva's AI video", 'have',
           'Already in your Canva Pro plan, for the odd short clip. It shares one monthly AI allowance with everything else in Canva.',
-          'Already in your plan', '#t-canva');
+          'Already in your plan', '#t-canva',
+          P.chatgpt ? { also: sora } : null);
       }
-      var also = B === 'best'
-        ? 'Add Higgsfield only if video or ads are a weekly job, and pay monthly.'
-        : (P.chatgpt ? 'ChatGPT makes no video now. OpenAI closed Sora in April.' : null);
+      if (B === 'best') {
+        return pick('Fal.ai', 'paid',
+          "Every top video model, Google's Omni, Seedance and Kling among them, paid per clip.",
+          'About US$0.80 to US$3 for an eight-second clip', '#t-fal',
+          { also: 'Higgsfield is the friendlier front door if video or ads are a weekly job. Pay it monthly.', sub: 'Fal.ai credit' });
+      }
       return pick('Gemini video, on ' + GAI_PRO, 'paid',
         'Clips with sound, about eight to ten seconds each. Enough for a Reel or a story.',
         'About A$33 a month', '#t-gemini-video',
-        { also: also, sub: GAI_PRO });
+        { also: P.chatgpt ? sora : null, sub: GAI_PRO });
     },
 
     social: function (P, B) {

@@ -56,3 +56,14 @@ Seedance sits inside the Higgsfield card rather than as a card of its own: an ow
 ## For the fact register when the page is built
 
 One row per job rather than per tool, so the monthly check stays bounded. Separately: new Cowork scheduled tasks run in the cloud from 6 Oct per file 04, while CLAUDE.md has recorded cloud scheduled tasks since 4 Sep; worth a row to settle which is right.
+
+## Changed 11 Oct, later, on James's word: models named, shops added
+
+James said the page was too narrow on pictures and video: name the actual models, and recommend the one-stop shops, Fal.ai included. Research for it is file 05.
+
+- Pictures and Short videos each open with a list of the models (seven picture, eight video): maker, what it is best at, where to use it.
+- New group, One-stop shops: **Fal.ai Worth it** (was Skip; James recommends it; the card says start in the Sandbox and check each model's Commercial use badge), Higgsfield Only if (moved here), **Krea Only if**, **Magnific Only if** (Freepik renamed in April), **Adobe Firefly Only if**. OpenArt left off with a line saying why: its cheapest plan has no commercial licence. Leonardo, Flora and Artlist dropped (file 05, 1.5).
+- **Midjourney Only if** added under Pictures: a distinctive look, no Claude route, the US$1 million revenue rule.
+- Picker: on "best tool for each job", pictures and video now pick Fal.ai, counted as one new bill. Free and "a few subscriptions" are unchanged apart from a Fal.ai free-goes line.
+
+29 tools and 15 models on the page.
