@@ -2547,6 +2547,13 @@ screenshot cropped to the video's shape and self-hosted. Adding that host to
 the environment's allowed domains lets next time self-host. The draft had no
 images beyond the hero and the Newsline's og image, which James was told;
 nothing was faked to fill the gap. Deploy confirmed on `head_sha` `aebcbde`.
+James then asked for placeholder images on stories with none, starting with
+The Win. The builder now takes `--illustration "The Win=path"` plus
+`illustration_alt`: a picture made for the story, self-hosted, credited
+"Illustration: Magnum AI". The first is a drawn quote sheet with the two
+faults marked. A 1200-wide landscape version was unreadable at phone width,
+so draw these about 800px wide with large type. Republished with
+`--replace` at the same URL, deploy confirmed on `fd121f2`.
 
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
