@@ -2622,7 +2622,10 @@ Seedance and "N-A-N" is n8n.
 Two verdicts differ from the research, both James's call: Wispr Flow is
 Worth it (start free, pay when the weekly cap bites), and Granola is Skip
 for now because of the US consent class action filed 30 Jul. Revisit
-Granola when the case moves. Copilot, Granola and n8n carry "From research,
+Granola when the case moves. Kling was added as its own card the same day
+at James's word, Only if, making 25 tools; it is not a picker pick, because
+Google AI Pro covers the owner's clip and Kling sits inside Higgsfield.
+Copilot, Granola and n8n carry "From research,
 not use", because James does not use them and the page never claims he does.
 
 The page: 01 short version (check what you already pay for first), 02 the

@@ -29,13 +29,14 @@ Shape of the page: grouped by job, not by vendor, because the tools nest. Gemini
 | Images | Fal.ai | Skip | Pay-per-use hub of models, built for developers | Usage |
 | Video | Gemini (Veo, Omni) | Worth it | Top-ranked video with sound, included in AI Pro. Simplest single pick for images and video | In AI Pro |
 | Video | Higgsfield (Seedance, Kling inside it) | Only if | Video or ad creative is a weekly job. Widest choice and a Claude connector, but billing complaints, so pay monthly | Credits, pricing unsettled |
+| Video | Kling | Only if | You want one cheap video tool and are not on Higgsfield. Free plan is watermarked and not for business; 4.0 due this month | Standard US$8.80/mo |
 | Social scheduling | Buffer | Worth it | One queue for every channel, Claude drafts into it, free for three channels | Free, then US$6/channel/mo |
 | Social scheduling | Meta Business Suite | Only if | You post to Facebook and Instagram only | Free |
 | Automation | Zapier | Worth it | The one to start with: easiest to learn, builds from a sentence | Free, then from US$19.99/mo yearly |
 | Automation | Make | Only if | A Zapier bill or a branching job pushes you there, or someone builds it for you | From about US$9 to US$12/mo |
 | Automation | n8n | Skip | Unless a technical person owns it. No free hosted plan | From about €20/mo |
 
-Seedance and Kling sit inside the Higgsfield card rather than as cards of their own: an owner reaches them through Higgsfield, and three separate video cards would make the page about models rather than jobs.
+Seedance sits inside the Higgsfield card rather than as a card of its own: an owner reaches it through Higgsfield. Kling was added as its own card on 11 Oct at James's request (he has used it, to animate the 27 Sep newsletter still), verdict Only if: the cheapest dedicated video tool, but already inside Higgsfield, and Kling 4.0 is due in October.
 
 ## Where the proposal differs from the research
 
