@@ -2532,8 +2532,21 @@ and otherwise sends one reminder with the same line. The retry routine was
 already deleted. The procedure a session follows is **Publish from a chat**
 in that repo's `ROUTINE.md`, and its new `CLAUDE.md` points at it.
 `ROUTINE.md` had drifted from the live triggers on 3 and 4 Oct and now
-carries the live text again. The 11 Oct edition was not published at the
-time of writing; it waits on James's picture.
+carries the live text again.
+
+The 11 Oct edition went live the same day from this session, the first run
+of that procedure. The Magnum is a how-to rather than a picture prompt:
+James's Higgsfield Genjutsu piece, his copy with one fix (the video is
+Motion Transfer, not Object Swap, so the line saying Object Swap made the
+zombie came out), and his zombie video with Courtney. `build_edition.py`
+gained the shape for it: a Magnum may carry `steps` and `after` and no
+`prompt` or `take`; absent, it renders as before. The video is hotlinked to
+Higgsfield's CDN (`d8j0ntlcm91z4.cloudfront.net`), a host James does not
+control, because the sandbox proxy refuses it; the poster is his own
+screenshot cropped to the video's shape and self-hosted. Adding that host to
+the environment's allowed domains lets next time self-host. The draft had no
+images beyond the hero and the Newsline's og image, which James was told;
+nothing was faked to fill the gap. Deploy confirmed on `head_sha` `aebcbde`.
 
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
