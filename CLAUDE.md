@@ -2601,6 +2601,66 @@ stage 5 the reading questionnaire, stage 6 shelf cards. Then one push of
 the whole prompt with the extract, diff, read in full, emit, read back
 procedure.
 
+**AI tools guide, built 11 Oct on `claude/confident-davinci-ht1ufd`, live at
+`ai-tools/` once merged.** James asked for a tools section: what each tool
+does, whether it is worth paying for, and a small tool that recommends
+tools from what a reader uses them for. Titled "Which AI Tools Are Worth
+Paying For?". The folder is `ai-tools/` because `tools/` already holds the
+check scripts.
+
+How it was made, and the shape to repeat. James named his own stack first
+(Claude, ChatGPT, Gemini, Manus, Gamma, Claude Slides, Wispr Flow, Fireflies,
+Fal.ai, Ideogram, Higgsfield with Seedance, Make, Zapier; Buffer as the
+social pick; Copilot, Granola and n8n by reputation only). Four research
+agents then checked every tool by search in parallel, fed with the launches
+the Sunday Brief vault had already caught (Gamma 5, Claude Docs and Slides
+on Free, GPT-6 free, Wispr Notetaker, Fireflies Talk). The research is
+`notes/tools-research/` 01 to 04, and `00-shortlist.md` is the verdict table
+James approved, with "yes", before anything was built. "C Dance" is
+Seedance and "N-A-N" is n8n.
+
+Two verdicts differ from the research, both James's call: Wispr Flow is
+Worth it (start free, pay when the weekly cap bites), and Granola is Skip
+for now because of the US consent class action filed 30 Jul. Revisit
+Granola when the case moves. Copilot, Granola and n8n carry "From research,
+not use", because James does not use them and the page never claims he does.
+
+The page: 01 short version (check what you already pay for first), 02 the
+picker, 03 every tool on one line, 04 nine closed accordions by job with a
+card per tool, then sources. Copy through `james-writes`; every claim about
+James is one he made in chat.
+
+The picker is three questions: jobs (tick many), what the business already
+pays for (tick many, "None of these" clears the rest), and spending (free
+only, a few subscriptions, best tool per job). One pick per job, tagged
+Already paying, Free or New bill, and a headline counting new bills, which
+is often none. No price is ever added up. The logic lives in
+`ai-tools/picker.js` so `tools/check-ai-tools.js` can run all 98,112
+combinations in node: it fails if a pick claims "already in your plan" for a
+box that was not ticked, if "free only" ever returns a paid plan, if a line
+repeats, if a placeholder leaks, or if a pick links to a card that is not on
+the page. It was proved by breaking the logic on purpose and watching it
+fail.
+
+A price lives in two places: the card in `index.html` and the string in
+`picker.js`. Change both, run the check, update the date in the verified
+line, the footer and register rows 90 to 100.
+
+Found while building, both fixed: "Start again" in the picker head was coral
+text on the tint at 4.17:1, and `team-seats/` carried the same fault live,
+so it was fixed there too. And a `.board-job` heading inherited
+`p{max-width:64ch}` from `assets/site.css`, so its rule stopped halfway
+across. Any `<p>` used as a full-width heading needs `max-width:none`.
+
+`tools/check-contrast.js` takes `OPEN=1` now, which opens every
+`<details>` before measuring. Run any page with folds both ways.
+
+Front page, on James's yes: the Tool manuals section is now Tools, with
+this guide as the first card and the two Manus manuals under it. The
+`#manuals` anchor is unchanged. The Index dropdown lists it first under
+Tools and industry. Card at `assets/thumbnails/ai-tools.jpg`, source
+`ai-tools/thumbnail.html`.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
@@ -2617,6 +2677,10 @@ procedure.
   training for other chat models; that is the retired Big 6. Things the
   Sunday Brief finds go to the shelf or a Field Note, not a manual. Decided
   4 Sep.
+  Since 11 Oct the section is called Tools and opens with the AI tools
+  guide. A verdict card saying what another chat model is and who it suits
+  is a recommendation, not training, so Gemini, ChatGPT and Copilot have
+  cards there and still get no setup steps or prompting guides.
 - Every prompt on the shelf is reviewed against
   `notes/prompt-review-standards.md`, James's September 2026 reference
   checked against Anthropic's live docs. Pasted in verbatim on 4 Sep. The
