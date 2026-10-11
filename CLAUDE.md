@@ -2505,6 +2505,82 @@ before, and all 88 Copy buttons return `copyText()` byte for byte, checked in
 a browser. One real bug went with it: on a phone `.pane-head h3` kept a 300px
 flex basis in a column, which left a tall empty band in every card head.
 
+**11 Oct: the approval backlog is cleared, the newsletter hand-over moved to
+chat, and the Sunday Brief review is half done. Read this before touching
+either routine.**
+
+Merged to `main` on James's "yes to all": `read-your-account` (27 Sep),
+`check-dates-numbers` and `paste-in-a-box` (4 Oct), `check-the-spreadsheet`
+plus the Chatbots deck lines on OpenAI Dots and Grok Bot routing (11 Oct),
+and the 1 Oct fact check's two both-worlds menu paths. Every card checked
+byte-identical to its branch, deck check PASS at every size, deployed and
+confirmed on `head_sha`. `sunday-brief/2026-09-20` is already on `main` and
+its branch can be deleted. James had forgotten these because the briefs
+told him to "tell me yes or no", and a reply to a routine's email goes
+nowhere. Approval happens in a chat session; any email that asks for one
+must name where to go and the exact words to say.
+
+**The weekly Magnum is handed over in a chat, not in Drive.** James asked
+for this and on 26 Sep was told it was the route, but only the handover
+note changed, so the Saturday email kept telling him to save into Drive and
+write a `notes.txt`. Fixed in the routines this time, both read back:
+`trig_01V11Esew2jfd6b4oi8Hzbu2` (Saturday draft) now tells him to make the
+picture, open a Claude Code session on `magnum-newsletter`, drop it in and
+paste one line; `trig_01QT4LvUrH2ZyNEKGRShmRLd` (Sunday 4pm) stops quietly
+when the edition is live, keeps the Drive forms only as a silent fallback,
+and otherwise sends one reminder with the same line. The retry routine was
+already deleted. The procedure a session follows is **Publish from a chat**
+in that repo's `ROUTINE.md`, and its new `CLAUDE.md` points at it.
+`ROUTINE.md` had drifted from the live triggers on 3 and 4 Oct and now
+carries the live text again. The 11 Oct edition was not published at the
+time of writing; it waits on James's picture.
+
+**The Sunday Brief review, stage by stage, on James's instruction: do not
+change the routine until every stage is agreed.** The live routine
+(`trig_014BpCSeSMonkfgePpN5tBfN`, renamed "Percy · Sunday Brief") was
+rebuilt by another session on 4 Oct into do-it-for-you mode: blocks A
+ALREADY DONE FOR YOU, B SAY GO AND THESE GET APPLIED, C DO THESE THIS WEEK,
+then news, tools, skills, cards and spare time, sent from Outlook. It works
+on `magnum-staff` as well as this repo. `notes/sunday-brief-prompt.md`
+here carries that version. None of the 27 Sep answers below reached it.
+
+Locked, stage 1, what makes the cut: politics and science stories out
+entirely, however big. Every new model or launch answers four questions:
+what is it, what does it do, why do I need to know, does it add value. Then
+techniques he can put into his own instructions, and prompts for the
+members area. Writing that is exciting, really simple and never waffle.
+
+Locked, stage 2, the sections: A, B and C stay as they are, then 1 WATCH
+OUT (risks to a client or the business, competitors moving in; only when
+needed), 2 SEND THIS TO YOUR CLIENTS (a titled heads-up ready to paste;
+only when something genuinely matters and clients can act on it this week),
+3 NEW MODELS AND LAUNCHES (the four questions, ending Worth it, Not yet or
+Skip), 4 TOOLS WORTH TRYING, 5 TRY THIS YOURSELF (lines to paste into his
+own Claude setup, the one place a routine cannot reach), 6 MONEY
+OPPORTUNITIES (business only, behind a hard gate: it pays within 90 days,
+he can do it alone, someone is already paying for it; forecasts, get-rich
+schemes and course pitches out), 7 APPROVE THESE FOR YOUR MEMBERS AREA, 8
+ONLY IF YOU HAVE SPARE TIME. The general news section goes, because This
+Week in AI already covers news. No list of what was cut, anywhere.
+
+Locked, investments: a separate short email from the same Sunday run,
+"Money watch, D Month", only in a week with something. Big moves around AI
+companies covered by several newsletters: listings, share swings, major
+deals. It reports and never says buy, sell or hold, never gives a price
+target, never tips crypto. No new routine.
+
+Already agreed for stage 3, how each item is written: headlines and bullet
+points, never paragraphs; and every approval or decision line names where
+to go and the exact words to say, because replying to the email does
+nothing. The same reply-goes-nowhere fault sits in the shared WRITING TO
+JAMES block ("Each item ends by naming what you want him to say back") in
+every routine; fix it there once stage 3 is settled, not before.
+
+Still to do, in order: stage 3 how each item is written, stage 4 length,
+stage 5 the reading questionnaire, stage 6 shelf cards. Then one push of
+the whole prompt with the extract, diff, read in full, emit, read back
+procedure.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
