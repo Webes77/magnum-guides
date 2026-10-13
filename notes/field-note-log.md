@@ -9,6 +9,64 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-10-14
+
+Issue 09, Numbers. The Sunday Brief vault file for 2026-10-11 carries a
+`## field-note-commission` section naming the card directly: headline "Check
+your spreadsheet before you send the numbers," shelf card
+`check-the-spreadsheet`. The headline names its subject in the first three
+words, says what to do and when, and is eight words, so it stood as written
+with no rewrite needed.
+
+The card was on branch `sunday-brief/2026-10-11` when the commission was
+written, but that branch merged to main on 11 Oct (commit `d47c10d`), three
+days before this run, so it was read straight from `prompts/index.html` on
+`main`, no `git show` against the branch required.
+
+Card check against `notes/prompt-review-standards.md`: passes every item that
+usually catches a thin card. Role sentence present (item 7, "a careful
+bookkeeper who checks spreadsheets for a living"). Every rule carries its
+reason (item 2: "because I want to look at each fix before it goes in",
+"because an invented error sends me chasing a problem I do not have"). Guard
+against invention present (item 9: "If you cannot tell whether something is
+wrong, say so instead of guessing"). Output format and stop boundary stated
+(item 10: list by sheet and cell, four fields per problem, "If you find
+nothing wrong, say so in one line and stop"). The problems that change a
+total are explicitly put first, so the model is told which finding matters
+most.
+
+Held against the cold-paste test too. The prompt never claims the model can
+already see the spreadsheet, it only says to work from what is in the file,
+so it cannot fail the way issue 07 originally did. It does not contain the
+literal word "attached", which is the one soft spot; the three steps carry
+that instruction instead ("attach the spreadsheet"), which is enough to pass
+in substance. No word changed in the prompt beyond what the shelf card
+already carries; both blanks were already square-bracket fill-ins
+([what the sheet is for], [the totals that matter]), so nothing needed
+generalising for the business-neutral rule.
+
+Held against the 7 Oct relevance gate: a busy owner checking a spreadsheet
+before quoting, invoicing or paying from it is an everyday job, not a
+security, setup or AI-mechanics topic, so it passes easily.
+
+Words around the prompt (what it is, what you get, the three steps, why it
+works): 139, under the 170 ceiling. Headline: 8 words. Phone screens at 390
+wide: 2.46, measured by `scrollHeight / 844`.
+
+`node tools/check-field-note.js --shape newsletter/field-note-09-numbers.html`
+prints PASS, and the same run across every live issue plus this one also
+prints PASS. Checked in headless Chromium at 1440, 820 and 390: no console
+errors, no sideways scroll at any width. Card image rendered clean at
+1200x630 on the first attempt, fonts inlined per the sandbox gotcha (Google
+Fonts reachable this run).
+
+No interface claims about Claude, Cowork or Anthropic appear anywhere on the
+page, so no WebSearch verification was needed.
+
+Everything else finished: head tags, the mailto link, the thumbnail source,
+the front page (newest card plus the three before it, issue 05 dropped off
+by design), and the archive, all updated and all pass their checks.
+
 ## 2026-10-07 (issue 08 replaced)
 
 James read the fixed Pasting issue and said it was too complicated and not relevant to his clients yet, the kind of issue that makes a reader think "this doesn't affect me". Replaced it as issue 08 with Replying: "Reply to the angry email without regret", built on the difficult-email card, cut to two fill-ins and three rules so it pastes cold. The Pasting page stays at its URL, unlinked, in case anyone already has the link. Lesson for the routine: a commission must pass "would a busy owner use this this week", not just "is it true and useful".
@@ -38,7 +96,8 @@ reading four pages of HTML. Add to it when an issue merges.
 | 05 | Arguing | Redline your own plan | `redline-your-plan` |
 | 06 | Auditing | Get a full audit from one folder | `business-folder-audit` |
 | 07 | Proof | Check your bill before you renew (rebuilt as a prompt, one-card shape) | `read-your-account` |
-| 08 | Pasting | Stop pasted text from giving your AI orders | `paste-in-a-box` |
+| 08 | Replying (replaced Pasting at the same issue number on 7 Oct; the Pasting page stays live, unlinked, at its own URL) | Reply to the difficult email | `difficult-email` |
+| 09 | Numbers | Check your spreadsheet before you send the numbers | `check-the-spreadsheet` |
 
 ## Entries
 
