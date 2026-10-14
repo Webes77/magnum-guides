@@ -79,14 +79,12 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 .copy{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
   background:var(--coral-bright);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
 .copy.done{background:var(--tint)}
-.fill{margin:0 0 14px}
-.fill label{display:block;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
-  letter-spacing:.14em;color:var(--coral-text);margin:0 0 6px}
-.fill input,.fill textarea{display:block;width:100%;font-family:var(--sans);font-size:16px;line-height:1.45;
-  color:var(--ink);background:var(--white);border:2px solid var(--ink);border-radius:0;padding:10px 12px;margin:0 0 14px;resize:vertical}
-.fill textarea{margin-bottom:0}
-.fill input:focus,.fill textarea:focus{outline:3px solid var(--coral-bright);outline-offset:0}
-.pbox pre .blank{color:var(--coral-bright)}
+.pbox pre .blank{display:inline;background:var(--coral-bright);color:var(--ink);padding:1px 5px;
+  outline:none;cursor:text;-webkit-user-select:text;user-select:text;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pbox pre .blank:empty::before{content:attr(data-ph)}
+.pbox pre .blank:focus{background:var(--white)}
+.pbox pre .blank:focus:empty::before{color:var(--mute)}
+.pbox .hint{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-navy-mute);margin:0 0 12px}
 .pbox pre{font-family:var(--mono);font-size:14px;line-height:1.6;white-space:pre-wrap;
   word-break:break-word;color:var(--white)}
 
@@ -109,7 +107,7 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 }
 @media print{
   html,body{background:#fff}
-  .sitebar,.sharebar,.copy,.fill{display:none}
+  .sitebar,.sharebar,.copy,.hint{display:none}
   .note{border:0}
   .pbox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
@@ -138,23 +136,17 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
       <dt>What you do</dt>
       <dd>
         <ol class="steps">
-          <li>Fill in the two boxes: your industry, then your plan in a few lines.</li>
-          <li>Copy the prompt into a new chat in Claude or ChatGPT.</li>
+          <li>Tap the two coral blanks in the prompt and type your answers in.</li>
+          <li>Press Copy and paste it into a new chat in Claude or ChatGPT.</li>
           <li>Fix the one that matters before anything else.</li>
         </ol>
       </dd>
     </div>
   </dl>
 
-  <div class="fill">
-    <label for="f-ind">Your industry</label>
-    <input id="f-ind" type="text" autocomplete="off" placeholder="e.g. hospitality, building, real estate">
-    <label for="f-plan">Your plan</label>
-    <textarea id="f-plan" rows="4" placeholder="e.g. We're a 6-person café in Burleigh. From November we open Sunday nights with a pizza menu. Two extra staff and an $8,000 oven."></textarea>
-  </div>
-
   <div class="pbox">
     <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
+    <p class="hint">Tap a coral blank to type in it</p>
     <pre>You are the most experienced operator in [your industry], brought in to find the reason this plan fails. Nobody is paying you to be encouraging.
 
 The plan below is mine and I am about to spend my own time and money on it, so a miss here costs me a week of work, not a mark out of ten.
@@ -210,24 +202,33 @@ function copyText(text, done){
     fallback(text, done);
   }
 }
-var PROMPT = document.querySelector('.pbox pre').textContent;
-var BLANKS = [['[your industry]','f-ind'],['[your plan, a few lines is plenty]','f-plan']];
+var pre = document.querySelector('.pbox pre');
+var PROMPT = pre.textContent;
+var BLANKS = ['[your industry]','[your plan, a few lines is plenty]'];
+function esc(x){ return x.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+(function(){
+  var h = esc(PROMPT);
+  BLANKS.forEach(function(b, i){
+    h = h.split(esc(b)).join('<span class="blank" contenteditable="true" spellcheck="false" role="textbox" aria-label="' + esc(b.slice(1,-1)) + '" data-i="' + i + '" data-ph="' + esc(b) + '"></span>');
+  });
+  pre.innerHTML = h;
+})();
+pre.querySelectorAll('.blank').forEach(function(el){
+  el.addEventListener('paste', function(e){
+    e.preventDefault();
+    var t = (e.clipboardData || window.clipboardData).getData('text');
+    document.execCommand('insertText', false, t);
+  });
+  el.addEventListener('input', function(){ if (!el.textContent.trim()) el.innerHTML = ''; });
+});
 function filled(){
   var t = PROMPT;
-  BLANKS.forEach(function(b){
-    var v = document.getElementById(b[1]).value.trim();
-    if (v) t = t.split(b[0]).join(v);
+  pre.querySelectorAll('.blank').forEach(function(el){
+    var v = el.innerText.replace(/ /g,' ').trim();
+    if (v) t = t.split(BLANKS[+el.dataset.i]).join(v);
   });
   return t;
 }
-function esc(x){ return x.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function paint(){
-  var h = esc(filled());
-  BLANKS.forEach(function(b){ h = h.split(esc(b[0])).join('<span class="blank">' + esc(b[0]) + '</span>'); });
-  document.querySelector('.pbox pre').innerHTML = h;
-}
-BLANKS.forEach(function(b){ document.getElementById(b[1]).addEventListener('input', paint); });
-paint();
 document.querySelectorAll('[data-copy]').forEach(function(btn){
   btn.addEventListener('click', function(){
     var text = filled();
