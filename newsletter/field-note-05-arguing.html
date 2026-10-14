@@ -79,6 +79,14 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 .copy{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
   background:var(--coral-bright);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
 .copy.done{background:var(--tint)}
+.fill{margin:0 0 14px}
+.fill label{display:block;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--coral-text);margin:0 0 6px}
+.fill input,.fill textarea{display:block;width:100%;font-family:var(--sans);font-size:16px;line-height:1.45;
+  color:var(--ink);background:var(--white);border:2px solid var(--ink);border-radius:0;padding:10px 12px;margin:0 0 14px;resize:vertical}
+.fill textarea{margin-bottom:0}
+.fill input:focus,.fill textarea:focus{outline:3px solid var(--coral-bright);outline-offset:0}
+.pbox pre .blank{color:var(--coral-bright)}
 .pbox pre{font-family:var(--mono);font-size:14px;line-height:1.6;white-space:pre-wrap;
   word-break:break-word;color:var(--white)}
 
@@ -101,7 +109,7 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 }
 @media print{
   html,body{background:#fff}
-  .sitebar,.sharebar,.copy{display:none}
+  .sitebar,.sharebar,.copy,.fill{display:none}
   .note{border:0}
   .pbox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
@@ -130,19 +138,26 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
       <dt>What you do</dt>
       <dd>
         <ol class="steps">
-          <li>Write your plan in a few lines, or use the one Claude just gave you.</li>
-          <li>In the same chat, paste the prompt straight under the plan.</li>
+          <li>Fill in the two boxes: your business, then your plan in a few lines.</li>
+          <li>Copy the prompt into a new chat in Claude or ChatGPT.</li>
           <li>Fix the one that matters before anything else.</li>
         </ol>
       </dd>
     </div>
   </dl>
 
+  <div class="fill">
+    <label for="f-biz">Your business</label>
+    <input id="f-biz" type="text" autocomplete="off" placeholder="e.g. Café in Burleigh, 6 staff, mostly takeaway coffee">
+    <label for="f-plan">Your plan</label>
+    <textarea id="f-plan" rows="3" placeholder="e.g. Open Sunday nights with a pizza menu from November. Two extra staff and an $8,000 oven."></textarea>
+  </div>
+
   <div class="pbox">
     <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
-    <pre>You are the most experienced operator in my trade, brought in to find the reason this fails. Nobody is paying you to be encouraging.
+    <pre>You are the most experienced operator in my industry, brought in to find the reason this plan fails. Nobody is paying you to be encouraging.
 
-The plan above is mine and I am about to spend my own time and money on it, so a miss here costs me a week of work, not a mark out of ten.
+The plan below is mine and I am about to spend my own time and money on it, so a miss here costs me a week of work, not a mark out of ten.
 
 Work only from what is written. Where the plan leans on something I have not told you, say so rather than filling the gap, because an invented risk sends me chasing a problem I do not have.
 
@@ -159,7 +174,13 @@ Each assumption the plan rests on, with the question I should have asked to test
 WHAT YOU WOULD WANT TO KNOW
 The things you would ask before you put your own name on this.
 
-If the plan holds up, say so in one line. Do not invent a fourth problem to look useful.</pre>
+If the plan holds up, say so in one line. Do not invent a fourth problem to look useful.
+
+MY BUSINESS
+[what you sell, who to, where, how many staff]
+
+MY PLAN
+[your plan, a few lines is plenty]</pre>
   </div>
 
   <section class="why">
@@ -192,9 +213,27 @@ function copyText(text, done){
     fallback(text, done);
   }
 }
+var PROMPT = document.querySelector('.pbox pre').textContent;
+var BLANKS = [['[what you sell, who to, where, how many staff]','f-biz'],['[your plan, a few lines is plenty]','f-plan']];
+function filled(){
+  var t = PROMPT;
+  BLANKS.forEach(function(b){
+    var v = document.getElementById(b[1]).value.trim();
+    if (v) t = t.split(b[0]).join(v);
+  });
+  return t;
+}
+function esc(x){ return x.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function paint(){
+  var h = esc(filled());
+  BLANKS.forEach(function(b){ h = h.split(esc(b[0])).join('<span class="blank">' + esc(b[0]) + '</span>'); });
+  document.querySelector('.pbox pre').innerHTML = h;
+}
+BLANKS.forEach(function(b){ document.getElementById(b[1]).addEventListener('input', paint); });
+paint();
 document.querySelectorAll('[data-copy]').forEach(function(btn){
   btn.addEventListener('click', function(){
-    var text = btn.closest('.pbox').querySelector('pre').textContent;
+    var text = filled();
     copyText(text, function(){
       btn.textContent = 'Copied';
       btn.classList.add('done');
