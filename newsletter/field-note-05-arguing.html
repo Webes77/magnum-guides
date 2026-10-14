@@ -138,7 +138,7 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
       <dt>What you do</dt>
       <dd>
         <ol class="steps">
-          <li>Fill in the two boxes: your business, then your plan in a few lines.</li>
+          <li>Fill in the two boxes: your industry, then your plan in a few lines.</li>
           <li>Copy the prompt into a new chat in Claude or ChatGPT.</li>
           <li>Fix the one that matters before anything else.</li>
         </ol>
@@ -147,15 +147,15 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
   </dl>
 
   <div class="fill">
-    <label for="f-biz">Your business</label>
-    <input id="f-biz" type="text" autocomplete="off" placeholder="e.g. Café in Burleigh, 6 staff, mostly takeaway coffee">
+    <label for="f-ind">Your industry</label>
+    <input id="f-ind" type="text" autocomplete="off" placeholder="e.g. hospitality, building, real estate">
     <label for="f-plan">Your plan</label>
-    <textarea id="f-plan" rows="3" placeholder="e.g. Open Sunday nights with a pizza menu from November. Two extra staff and an $8,000 oven."></textarea>
+    <textarea id="f-plan" rows="4" placeholder="e.g. We're a 6-person café in Burleigh. From November we open Sunday nights with a pizza menu. Two extra staff and an $8,000 oven."></textarea>
   </div>
 
   <div class="pbox">
     <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
-    <pre>You are the most experienced operator in my industry, brought in to find the reason this plan fails. Nobody is paying you to be encouraging.
+    <pre>You are the most experienced operator in [your industry], brought in to find the reason this plan fails. Nobody is paying you to be encouraging.
 
 The plan below is mine and I am about to spend my own time and money on it, so a miss here costs me a week of work, not a mark out of ten.
 
@@ -175,9 +175,6 @@ WHAT YOU WOULD WANT TO KNOW
 The things you would ask before you put your own name on this.
 
 If the plan holds up, say so in one line. Do not invent a fourth problem to look useful.
-
-MY BUSINESS
-[what you sell, who to, where, how many staff]
 
 MY PLAN
 [your plan, a few lines is plenty]</pre>
@@ -214,7 +211,7 @@ function copyText(text, done){
   }
 }
 var PROMPT = document.querySelector('.pbox pre').textContent;
-var BLANKS = [['[what you sell, who to, where, how many staff]','f-biz'],['[your plan, a few lines is plenty]','f-plan']];
+var BLANKS = [['[your industry]','f-ind'],['[your plan, a few lines is plenty]','f-plan']];
 function filled(){
   var t = PROMPT;
   BLANKS.forEach(function(b){
