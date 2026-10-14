@@ -197,7 +197,9 @@ function check(file) {
         ['twitter:image', meta(/name="twitter:image" content="([^"]*)"/), img],
       ];
       for (const [name, got, want] of pairs) {
-        if (got !== want) fail.push(`${name} is ${got || 'missing'}, expected ${want}`);
+        // A share image may carry ?v=N so WhatsApp and LinkedIn fetch a re-rendered card.
+        const norm = (name === 'og:image' || name === 'twitter:image') && got ? got.replace(/\?v=\d+$/, '') : got;
+        if (norm !== want) fail.push(`${name} is ${got || 'missing'}, expected ${want}`);
       }
 
       for (const tag of ['og:type','og:site_name','og:title','og:description',
