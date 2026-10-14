@@ -2638,6 +2638,48 @@ now sends pictures and video to Fal.ai. 29 tools, 15 models.
 Copilot, Granola and n8n carry "From research,
 not use", because James does not use them and the page never claims he does.
 
+**Rebuilt 14 Oct, on James's word, after he said the verdicts were biased
+and the page looked and read off.** He was right on both. "Worth it / Only
+if / Skip" ranked companies rather than jobs, so ChatGPT and Gemini read as
+runners-up, and the picker handed the writing job to Claude by default.
+The page also showed every tool twice (a one-line list and a card), opened
+on four paragraphs before any answer, and set every card as the same block
+of prose.
+
+What replaced it, signed off from `notes/ai-tools-mockup.html` first:
+- **The shadow board** is the page's idea, James approved. A tradie's
+  shadow board paints each tool's outline on the wall. 01 is his board on a
+  navy plate (Claude or ChatGPT, Google AI Pro, Wispr Flow, Fireflies,
+  Gamma, and an empty outline, "This one's yours", that links to the
+  picker). The picker's answer is drawn as the reader's own board: owned
+  tools solid, new bills in coral, "Same bill" when a pick rides on a
+  subscription already counted, and unticked jobs as dashed outlines.
+- **Verdicts are Top pick, Good if (with the condition on the ribbon),
+  Skip.** A job can have two top picks. Claude and ChatGPT are both top
+  picks under Your main AI, side by side at the same size. The picker
+  treats them as equals: paying for neither, the writing pick is "Claude
+  or ChatGPT" unless pictures were also asked for, when ChatGPT Plus does
+  both on one bill. `tools/check-ai-tools.js` asserts it.
+- **James's streaming tip**, in his words: AI models are going the way of
+  streaming services, so keep your regulars and rent the rest for a month.
+  It is the tip card under the board, and it is why the specialist cards
+  say pay monthly. "Hilux or Ranger" was tried in the mockup and thrown
+  out as American; do not reach for car-brand comparisons.
+- **Every tool is one tile** with the same shape: ribbon, name, best for,
+  fixed facts (Price, Free plan, one more), and My take folded with a Watch
+  for line. Each job is a fold with its top picks named on the head; Your
+  main AI is open on load. The models lists stay inside Pictures and Short
+  videos.
+
+The page is generated from one data list so the tiles cannot drift apart.
+The generator is not in the repo; edit `ai-tools/index.html` directly and
+keep the tile shape. Two bugs worth keeping: the job folds took the class
+`job`, which the board's tile label also used, so every board label grew a
+white box and a border until it was renamed `sjob`; and a `sed` replacement
+containing `&rsquo;` garbled the tip, because `&` in a sed replacement
+means the whole match. Use Python for any text edit carrying an entity.
+
+
 The page: 01 short version (check what you already pay for first), 02 the
 picker, 03 every tool on one line, 04 nine closed accordions by job with a
 card per tool, then sources. Copy through `james-writes`; every claim about

@@ -15,9 +15,9 @@
   'use strict';
 
   var JOBS = [
-    { k: 'write',  label: 'Writing: emails, quotes, proposals',            title: 'Writing' },
-    { k: 'slides', label: 'Presentations and proposal decks',               title: 'Presentations' },
-    { k: 'talk',   label: 'Talking instead of typing',                      title: 'Talking instead of typing' },
+    { k: 'write',  label: 'Writing: emails, quotes, proposals',            title: 'Your main AI' },
+    { k: 'slides', label: 'Presentations and proposal decks',               title: 'Decks and proposals' },
+    { k: 'talk',   label: 'Talking instead of typing',                      title: 'Talking, not typing' },
     { k: 'meet',   label: 'Notes from meetings and calls',                  title: 'Meeting notes' },
     { k: 'img',    label: 'Pictures for posts and promos',                  title: 'Pictures' },
     { k: 'vid',    label: 'Short videos',                                   title: 'Short videos' },
@@ -59,17 +59,24 @@
 
   var RULES = {
 
-    write: function (P, B) {
+    /* Claude and ChatGPT are equals here. Neither is the default: a reader
+       who pays for neither gets both named, unless they also want pictures,
+       where ChatGPT does both jobs from one bill and wins on that alone. */
+    write: function (P, B, J) {
+      if (P.claude && P.chatgpt) {
+        return pick('Claude or ChatGPT', 'have',
+          'You pay for both. Keep the one you open most, and cancel the other until you need it again.',
+          'Already in your plan', '#t-claude');
+      }
       if (P.claude) {
         return pick('Claude', 'have',
-          'You already pay for it, and it is the strongest of the three at writing that sounds like a person.',
+          'You already pay for it. Learn it properly before adding another.',
           'Already in your plan', '#t-claude');
       }
       if (P.chatgpt) {
         return pick('ChatGPT', 'have',
-          'You already pay for it. Use it before adding another subscription.',
-          'Already in your plan', '#t-chatgpt',
-          B === 'best' ? { also: 'Claude Pro is the step up for long documents in your own voice, at A$34 a month.' } : null);
+          'You already pay for it. Learn it properly before adding another.',
+          'Already in your plan', '#t-chatgpt');
       }
       if (B === 'free') {
         if (P.gws) {
@@ -82,18 +89,23 @@
             'It comes free with Microsoft 365 business plans, with business-grade data protection.',
             'Already in your plan', '#t-copilot');
         }
-        return pick('Claude, free plan', 'free',
-          'Good enough for light work. On a real working day you will hit its limit.',
-          'Free', '#t-claude',
-          { also: "ChatGPT's free version runs on GPT-6 now, with ads, if you want a second opinion." });
+        return pick('Claude or ChatGPT, free plans', 'free',
+          "Both are good enough for light work. ChatGPT's free plan runs on GPT-6 now, with ads.",
+          'Free', '#t-chatgpt');
       }
       var also = null;
       if (P.gws) { also = 'Switch on the Gemini already in your Workspace first. On Business Standard and higher it may be enough.'; }
       else if (P.m365) { also = 'Try the free Copilot Chat in your Microsoft 365 first. It may be enough for quick questions.'; }
-      return pick('Claude Pro', 'paid',
-        'The best of the three for writing in your own voice and for long documents.',
-        'A$34 a month, including GST', '#t-claude',
-        { also: also, sub: 'Claude Pro' });
+      if (J.img) {
+        return pick('ChatGPT Plus', 'paid',
+          'You want pictures as well as words, and ChatGPT does both from one app.',
+          'US$20 a month', '#t-chatgpt',
+          { also: also, sub: 'ChatGPT Plus' });
+      }
+      return pick('Claude or ChatGPT', 'paid',
+        'Pick one and learn it properly. Claude if your week is writing and long documents. ChatGPT if you want words, pictures and voice in one app.',
+        'A$34 or US$20 a month', '#t-claude',
+        { also: also, sub: 'Claude or ChatGPT' });
     },
 
     slides: function (P, B) {
@@ -161,6 +173,12 @@
 
     img: function (P, B, J) {
       var fal = 'For every other model, Fal.ai charges per picture with no subscription.';
+      if (J.write && B !== 'free' && !P.claude && !P.chatgpt) {
+        return pick('ChatGPT Images', 'paid',
+          'Comes with the ChatGPT Plus picked for your writing. The best of the lot at words on a picture.',
+          'Included in ChatGPT Plus', '#t-chatgpt-images',
+          B === 'best' ? { also: fal, sub: 'ChatGPT Plus' } : { sub: 'ChatGPT Plus' });
+      }
       if (P.chatgpt) {
         return pick('ChatGPT Images', 'have',
           'It is in your ChatGPT plan, and it is the best of these at words on a picture.',
@@ -224,7 +242,7 @@
 
     social: function (P, B) {
       return pick('Buffer', 'free',
-        'One queue for every account. Claude drafts into it and you check each post on your phone.',
+        'One queue for every account. Your AI drafts into it and you check each post on your phone.',
         B === 'free' ? 'Free for three channels' : 'Free for three channels, then US$6 a channel a month',
         '#t-buffer',
         { also: 'If you only post to Facebook and Instagram, Meta Business Suite does it free.' });

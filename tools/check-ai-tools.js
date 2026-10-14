@@ -83,6 +83,18 @@ for (const jobs of jobSets) {
         for (const l of [row.why, row.also, row.note]) { if (l) { lines.push(l); } }
       }
 
+      /* Claude and ChatGPT are equals. A reader paying for neither, on a
+         budget that allows a bill, never gets one of them alone as the
+         writing pick unless pictures were asked for too (ChatGPT then does
+         both jobs on one bill), and a free-only reader gets both named. */
+      const w = r.rows.find(x => x.key === 'write');
+      if (w && !pays.includes('claude') && !pays.includes('chatgpt')) {
+        const both = /Claude or ChatGPT/.test(w.tool);
+        if (b !== 'free' && !jobs.includes('img') && !both) { fail(`write: "${w.tool}" picked over the other with nothing to break the tie`); }
+        if (b !== 'free' && jobs.includes('img') && w.tool !== 'ChatGPT Plus') { fail(`write: pictures asked for but "${w.tool}" picked`); }
+        if (b === 'free' && !pays.includes('gws') && !pays.includes('m365') && !both) { fail(`write: free pick names one of Claude or ChatGPT only`); }
+      }
+
       const dup = lines.find((l, i) => lines.indexOf(l) !== i);
       if (dup) { fail(`repeated line: ${dup}`); }
       if (b === 'free' && r.subs.length) { fail('new subscriptions on free only'); }
