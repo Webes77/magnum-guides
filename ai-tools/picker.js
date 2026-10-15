@@ -16,14 +16,18 @@
 
   var JOBS = [
     { k: 'write',  label: 'Writing: emails, quotes, proposals',            title: 'Your main AI' },
+    { k: 'email',  label: 'Getting on top of your inbox',                   title: 'Your inbox' },
+    { k: 'phone',  label: 'Answering the phone when you can\'t',            title: 'The phone' },
     { k: 'slides', label: 'Presentations and proposal decks',               title: 'Decks and proposals' },
     { k: 'talk',   label: 'Talking instead of typing',                      title: 'Talking, not typing' },
     { k: 'meet',   label: 'Notes from meetings and calls',                  title: 'Meeting notes' },
+    { k: 'docs',   label: 'Making sense of a pile of documents',            title: 'Your own documents' },
     { k: 'img',    label: 'Pictures for posts and promos',                  title: 'Pictures' },
     { k: 'vid',    label: 'Short videos',                                   title: 'Short videos' },
     { k: 'social', label: 'Scheduling social posts',                        title: 'Social posts' },
+    { k: 'web',    label: 'Building or updating your website',              title: 'Your website' },
     { k: 'auto',   label: 'Jobs that run on their own between your apps',   title: 'Automation' },
-    { k: 'whole',  label: 'Handing off a whole job, like research or a website', title: 'A whole job' }
+    { k: 'whole',  label: 'Handing off a whole job, start to finish',       title: 'A whole job' }
   ];
 
   var PAYS = [
@@ -33,6 +37,7 @@
     { k: 'chatgpt', label: 'ChatGPT' },
     { k: 'canva',   label: 'Canva Pro' },
     { k: 'zoom',    label: 'A paid Zoom plan' },
+    { k: 'servicem8', label: 'ServiceM8' },
     { k: 'none',    label: 'None of these', only: true }
   ];
 
@@ -106,6 +111,75 @@
         'Pick one and learn it properly. Claude if your week is writing and long documents. ChatGPT if you want words, pictures and voice in one app.',
         'A$34 or US$20 a month', '#t-claude',
         { also: also, sub: 'Claude or ChatGPT' });
+    },
+
+    /* The AI already inside the inbox comes first. A Claude subscription
+       reaches the inbox through its connectors. Fyxer only on "best". */
+    email: function (P, B) {
+      var fy = 'If email eats an hour a day, Fyxer leaves drafted replies waiting each morning, from US$22.50 a month.';
+      var p;
+      if (P.gws) {
+        p = pick('Gemini in Gmail', 'have',
+          'It drafts replies from a few bullet points and summarises long threads. Thin on Business Starter.',
+          'Already in your plan', '#t-inbox-ai');
+      } else if (P.m365) {
+        p = pick('Copilot Chat in Outlook', 'have',
+          'Free with Microsoft 365 business plans. Ask it about your inbox and have it summarise a thread.',
+          'Already in your plan', '#t-inbox-ai');
+      } else if (P.claude) {
+        p = pick('Claude, with your email connected', 'have',
+          'Connect Gmail or Outlook and ask it to sort the morning and draft the replies. You press send.',
+          'Already in your plan', '#t-inbox-ai');
+      } else if (B === 'best') {
+        return pick('Fyxer', 'paid',
+          'It sits inside Gmail or Outlook, sorts the mail and leaves replies drafted in your voice. It never sends.',
+          'From US$22.50 a month on annual billing', '#t-fyxer', { sub: 'Fyxer' });
+      } else {
+        return pick('Your main AI, with the thread pasted in', 'free',
+          'Paste the email in, say what you want to say back, and ask for the reply. Works with any inbox.',
+          'Free', '#t-inbox-ai');
+      }
+      if (B === 'best') { p.also = fy; }
+      return p;
+    },
+
+    /* No free tool answers a phone well. ServiceM8 users get the one built
+       into the software they already run. */
+    phone: function (P, B) {
+      var p;
+      if (B === 'free') {
+        p = pick('Your voicemail, for now', 'free',
+          'Nothing free does this well. When one missed job a month costs more than A$99, trial Hey Jodie for a week.',
+          'Free', '#t-heyjodie');
+      } else if (P.servicem8) {
+        p = pick('ServiceM8 Phone Agent', 'paid',
+          'You already run ServiceM8, so every call lands on the job card. Switch it on before buying anything else.',
+          'A$49 a month on Connect Plus', '#t-servicem8', { sub: 'ServiceM8 Connect Plus' });
+      } else {
+        p = pick('Hey Jodie', 'paid',
+          'Divert missed calls to it for a week on the free trial. Ring it five times yourself before a customer does.',
+          'About A$99 a month, no setup fee', '#t-heyjodie', { sub: 'Hey Jodie' });
+      }
+      p.note = 'Have it say the call is recorded in its first sentence.';
+      return p;
+    },
+
+    docs: function (P) {
+      return pick('Gemini Notebook', 'free',
+        'Upload the documents and it answers only from them, with the page each answer came from.',
+        'Free with a Google account', '#t-notebook',
+        (P.claude || P.chatgpt) ? { also: 'For research across the web, use the deep research mode in the plan you already pay for.' } : null);
+    },
+
+    web: function (P, B) {
+      if (B === 'free') {
+        return pick('Wix, free plan', 'free',
+          'Claude and ChatGPT can both build and edit a Wix site directly. Move to a paid plan when you want your own domain.',
+          'Free on a Wix address, with Wix ads', '#t-wix');
+      }
+      return pick('Wix', 'paid',
+        'The one builder Claude and ChatGPT can both work on directly. Bookings and a shop are built in.',
+        'From about A$16 a month on annual billing', '#t-wix', { sub: 'Wix' });
     },
 
     slides: function (P, B) {

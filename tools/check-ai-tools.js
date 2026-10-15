@@ -4,8 +4,9 @@
 
    node tools/check-ai-tools.js        exits 1 on any failure
 
-   Combinations: every non-empty set of jobs (511), every set of things
-   already paid for plus "none" (65), and all three budgets. */
+   Combinations: every non-empty set of jobs (8,191), every set of things
+   already paid for, with the empty set standing for "none" (128), and all
+   three budgets. About 3.1 million runs, under a minute. */
 'use strict';
 const path = require('path');
 const fs = require('fs');
@@ -16,7 +17,7 @@ const M = require(path.join(__dirname, '..', 'ai-tools', 'picker.js'));
 const OWNER = [
   ['Claude Slides', 'claude'], ['Claude', 'claude'],
   ['ChatGPT', 'chatgpt'],
-  ['Gemini in your Workspace', 'gws'], ['Gemini in Google Meet', 'gws'],
+  ['Gemini in your Workspace', 'gws'], ['Gemini in Google Meet', 'gws'], ['Gemini in Gmail', 'gws'],
   ['Copilot', 'm365'],
   ['Canva', 'canva'],
   ['Zoom', 'zoom']
