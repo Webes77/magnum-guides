@@ -2716,6 +2716,46 @@ this guide as the first card and the two Manus manuals under it. The
 Tools and industry. Card at `assets/thumbnails/ai-tools.jpg`, source
 `ai-tools/thumbnail.html`.
 
+**The AI tools page gained pictures, a letter and twelve tools, 15 Oct, on
+the same branch, not merged.** James said the page was cold, had no
+pictures, and wanted it a bit more comprehensive but not fifty tools.
+
+The images are a locked house style now, and the recipe is
+`notes/image-style.md`: a modern adult animated-series cartoon, rounded
+ink lines, daylight, the five palette colours, a thin panel border, one
+human detail per scene, right-hand-drive vehicles. It took four rounds of
+samples: photographs (rejected, too real), flat and clean-line comic (people
+read as kids' characters), graphic-novel noir (too dark), then the middle,
+which James called perfect. He wants this style across the whole members
+area; that is the next piece of work, scoped page by page and put to him
+before anything is made. About 16 images were made for this page at about
+2 credits each on Higgsfield.
+
+The images are hotlinked to Higgsfield's CDN as the `_min.webp` version
+(about 110 KB each), because this sandbox cannot reach
+`d8j0ntlcm91z4.cloudfront.net` to self-host, even after James added it to
+the allowed domains (the change did not reach this running session). A
+session that can reach it should download them into
+`assets/illustrations/` and swap the one `CDN` line in the page. The
+earlier photographic set is unused and should not come back.
+
+Twelve tools were added from research files 06 and 07 (12 picked from about
+60): four new jobs (Your inbox, The phone, Your own documents, Your website),
+a group for the AI already inside Xero, Shopify and Square, plus Plaud under
+meeting notes and CapCut under video. Tools owners ask about and should
+skip get one line each in an "Asked about, left off" strip, not a card:
+DeepSeek, Grok, Meta AI, Mistral, Superhuman, Otter, Read.ai, Squarespace,
+Framer, Lovable and the US phone services. 41 tools, 15 models. The picker
+gained the four jobs and ServiceM8 under what you already pay for, so the
+check now runs 3.1 million combinations in about 30 seconds.
+
+Tiles carry a mark: a real logo from the Simple Icons and LobeHub sets
+(`ai-tools/logos/`, recoloured to ink) where one exists, and a two-letter
+badge where it does not. ChatGPT and Claude both have real logos, which
+matters for the parity rule. The opening is a letter in James's voice built
+on a made-up composite (a builder's card statement), at his instruction;
+it names no real client. Register rows 102 to 108.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
