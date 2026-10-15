@@ -2857,6 +2857,17 @@ someone is doing a job, and with his face on them they read as things he
 did. The scenes with the course cartoons (`ai-foundations.jpg` and the rest)
 stay on the deck covers.
 
+The members area share card (`assets/thumbnails/members-area.jpg`, source
+`members-area-thumbnail.html`) carries a picture now, a still life of the
+coral door propped open with nobody in it, built like the Field Note cards.
+James said the same night that the pictures need not be a person every
+time, so the Wednesday Field Note scheduled task alternates: a still life
+whenever the previous issue's card showed a person. That one sentence in
+Step 6 is the only change; the file and the live task were asserted equal
+at 28,456 characters. The task still has only Google Drive and Microsoft
+365 attached, so until Higgsfield is added in Scheduled its cards use the
+stand-in picture.
+
 The Routines screen is called Scheduled now (James, 15 Oct). Where this file
 says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
 a scheduled task are added there by James; `update_trigger` has no connectors
