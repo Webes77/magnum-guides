@@ -125,6 +125,7 @@ section:hover > .label::before,section:focus-within > .label::before,
 .start .grid{gap:18px}
 .step{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--paper-2);border:2px solid var(--ink);padding:18px 20px 20px;min-height:150px;transition:transform .14s ease, box-shadow .14s ease}
 .step:hover{border-color:var(--rust)}
+.step .pic{display:block;width:calc(100% + 40px);height:auto;margin:-18px -20px 14px;aspect-ratio:4/3;object-fit:cover;border-bottom:2px solid var(--ink);background:#F4F1EA}
 .step .n{font-family:var(--display);font-weight:700;font-size:34px;line-height:1;color:var(--rust)}
 .step h3{font-family:var(--display);font-weight:600;font-size:20px;line-height:1.1;text-transform:uppercase;color:var(--ink);margin-top:10px}
 .step p{font-size:14.5px;color:var(--char);line-height:1.45;margin-top:6px}
@@ -180,6 +181,8 @@ footer b{color:var(--paper);font-weight:500}
   .step h3{margin-top:0;font-size:19px;grid-column:2;grid-row:1}
   .step p{grid-column:2;grid-row:2;font-size:14px;margin-top:0}
   .step .meta{display:none}
+  .step{grid-template-columns:auto minmax(0,1fr) 76px}
+  .step .pic{grid-column:3;grid-row:1/3;width:76px;height:76px;margin:0;aspect-ratio:auto;border:2px solid var(--ink);align-self:center}
   .card.wide{flex-direction:column}
   .card.wide img{width:100%;border-right:0;border-bottom:2px solid var(--ink)}
   .card.wide .inner{padding:24px 26px 26px}
@@ -321,24 +324,28 @@ section,.start{scroll-margin-top:64px}
     <div class="label" data-n="01">Start here</div>
     <div class="grid four">
       <a class="step" href="bots/">
+        <img class="pic" src="assets/illustrations/start-00.jpg" alt="A cartoon line-up on a workbench: a desk bell, a walkie-talkie and a wind-up robot." width="800" height="600" loading="lazy" decoding="async">
         <span class="n">00</span>
         <h3>Chatbots, Agents and Bots</h3>
         <p>Learn the words. What they are, what is out there, and one built in Claude.</p>
         <span class="meta">Reference &middot; Before course one</span>
       </a>
       <a class="step" href="ai-foundations/">
+        <img class="pic" src="assets/illustrations/start-01.jpg" alt="Two cartoon coffee cups facing each other on a café table, their steam twisting together." width="800" height="600" loading="lazy" decoding="async">
         <span class="n">01</span>
         <h3>AI Foundations</h3>
         <p>How to talk to it. Why the answers come out generic, how to get a better one without typing a long prompt, and how to make it honest. Nothing to set up.</p>
         <span class="meta">Course one</span>
       </a>
       <a class="step" href="make-claude-yours/">
+        <img class="pic" src="assets/illustrations/start-02.jpg" alt="A cartoon bunch of shop keys with a coral tag resting on an open handover notebook." width="800" height="600" loading="lazy" decoding="async">
         <span class="n">02</span>
         <h3>Make Claude Yours</h3>
         <p>Teach it your business. Your account, your instructions, your first project and skill.</p>
         <span class="meta">Course two</span>
       </a>
       <a class="step" href="runs-without-you/">
+        <img class="pic" src="assets/illustrations/start-03.jpg" alt="A cartoon alarm clock ringing at sunrise beside a stack of finished parcels and an empty chair." width="800" height="600" loading="lazy" decoding="async">
         <span class="n">03</span>
         <h3>Work That Runs Without You</h3>
         <p>Put one job on a timer. Scheduled tasks that run with the laptop shut.</p>

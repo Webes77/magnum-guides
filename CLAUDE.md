@@ -2798,6 +2798,17 @@ procedure. Every page, the five decks and the AI tools page now point at
 with none broken. James's 310 credits cover about three years of weekly
 cards.
 
+Later the same day the front page Start here strip gained four pictures, at
+James's word that it looked bare and that pictures can be objects and
+symbols, not only people. Four still lifes in the same style, listed in
+`notes/image-style.md`. Their white margins were cropped off in the files
+so they meet the block's ink border cleanly. About 8 credits.
+
+The Routines screen is called Scheduled now (James, 15 Oct). Where this file
+says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
+a scheduled task are added there by James; `update_trigger` has no connectors
+field and cannot do it.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from

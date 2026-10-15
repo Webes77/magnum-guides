@@ -89,6 +89,14 @@ under the masthead, in a `<figure class="ill">` with the credit line, styled by
   1280 by 600.
 - The front page: the course, shelf and tool cards show the pictures. The AI
   tools card uses the shadow board. The footer carries the credit.
+- The front page Start here strip (since 15 Oct, later): four still lifes,
+  objects rather than people, so they read as symbols beside the course
+  pictures below them (`start-00.jpg` to `start-03.jpg`: a desk bell, a
+  walkie-talkie and a wind-up robot; two coffee cups mid-conversation; shop
+  keys on a handover notebook; an alarm clock beside finished parcels). Full
+  width at the top of each block on a laptop, a 76px square beside the title
+  on a phone. James said pictures need not be people: objects and symbols
+  are fine in this style.
 
 Left alone on purpose. The share cards (`og:image`) keep their titles, because
 WhatsApp shows them. The Field Notes are sent and printed on their own, and a
