@@ -2816,6 +2816,47 @@ that trims the picture's own thin panel frame, because inside a card's ink
 border it read as a box in a box. The `.ref` pattern is retired on the front
 page; a new guide gets a `.gcard`, not a line.
 
+**The front page was rebuilt again the same night, on James's word
+("whatever you think is the right thing").** He said the courses needed a
+number or symbol, that Start here and The courses showed the same four
+things twice, and that his logo no longer fitted beside the pictures. The
+mockup went up on draft PR #12 first and he said go.
+
+How it opens now, top to bottom. A white top bar, sticky, with the small
+`magnum-mark.svg` and the name on the left and five links on the right:
+Courses, Prompts, This week, Guides, Tools. It replaces the navy masthead
+and the Index dropdown. A welcome block on paper: kicker, MEMBERS AREA, one
+line, one button (Start here, to `bots/`; Carry on when a deck is
+remembered, the same `magnum-last` script retargeted to `.cta`), and the
+welcome picture. Then Your path: the four courses once, 00 to 03, each with
+its still life and a coral number tag (`.num`), joined by a short ink rule
+on a laptop and as side-by-side rows on a phone. Then Use it every day (the
+shelf), This week, and The library: twelve picture cards (`.g`) labelled
+Tools, Guide, Manual, By industry or Archive, replacing Tools, By industry
+and the guides grid. The full badge sits in the navy footer, where its
+ground matches.
+
+Numbers now mean one thing on this page: the order of the courses. The
+section headings lost their ghost numbers (`.h2` replaces `.label` here
+only), which was half of the doubled-up feeling.
+
+What did not move, on purpose. Every anchor still resolves (`#sessions` is
+the path, `#prompts`, `#week`, and `#manuals` and `#industry` are empty
+spans at the top of the library), so no sent link breaks. The This week
+block is the old markup byte for byte apart from its heading, because the
+Wednesday Field Note routine edits that card and the earlier-issues list
+every week (Step 7 of `notes/field-note-prompt.md`), and
+`tools/check-field-note.js` reads the front page for the newest four.
+Change that markup and the routine breaks.
+
+The welcome picture is James and his British Bulldog, at his request, drawn
+from a written description of two photos he supplied, because Higgsfield's
+upload host is blocked from the sandbox. The photos were never uploaded or
+committed. Keep his likeness to the front page: in the other pictures
+someone is doing a job, and with his face on them they read as things he
+did. The scenes with the course cartoons (`ai-foundations.jpg` and the rest)
+stay on the deck covers.
+
 The Routines screen is called Scheduled now (James, 15 Oct). Where this file
 says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
 a scheduled task are added there by James; `update_trigger` has no connectors
