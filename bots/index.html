@@ -167,6 +167,10 @@ ul.points a,.note a,.rail a{color:var(--coral-text)}
 .cover .note{color:var(--on-navy-mute);font-size:19px;line-height:1.5;margin-top:18px;max-width:46ch}
 .cover .fig{border:0;padding:0;background:transparent}
 .cover .fig svg{max-height:340px}
+.cover .bd.has-ill{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+.cover .ill{margin:0;width:100%;max-width:500px;justify-self:end}
+.cover .ill img{display:block;width:100%;height:auto;aspect-ratio:1376/768;border:2px solid #FFFFFF}
+.cover .ill figcaption{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-mute);margin-top:10px}
 .cover .foot{color:var(--on-navy-mute);border-color:rgba(244,241,234,.3)}
 .cover .foot b{color:#FFFFFF}
 
@@ -261,6 +265,9 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 .pcover p{color:var(--on-navy-mute);font-size:16px;line-height:1.5;margin-top:14px}
 .pcover .fig{margin-top:20px;border:0;padding:0;background:transparent}
 .pcover .fig svg{max-height:260px}
+.pcover .ill{margin:20px 0 0}
+.pcover .ill img{display:block;width:100%;height:auto;aspect-ratio:1376/768;border:2px solid #FFFFFF}
+.pcover .ill figcaption{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-mute);margin-top:8px}
 .psec{padding:30px 20px 8px;scroll-margin-top:60px}
 .psec .kick .kn::before,.band .bi::before{content:attr(data-n)}
 .kick .kn{font-size:38px}
@@ -423,7 +430,7 @@ F.filter = ['<svg viewBox="0 0 420 380"><g fill="#FFFFFF" stroke="#1E1B17" strok
  'Fig. 02 / three tests, then it earns a schedule<br>Most jobs fail the first one'];
 
 const S = [
-{sec:"", cover:true, fig:"cover", h:"A chatbot answers you. An agent does work for you.", pts:[], sub:"Reference · Chatbots, Agents and Bots", note:"What the words mean, what is out there, and how to build one bot in Claude that runs on a schedule. Watch it before session one, or any time the words get confusing."},
+{sec:"", cover:true, fig:"cover", ill:["https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_064438_a631412d-28bd-4aa2-961f-2683c789f4af_min.webp","A cartoon line-up outside a shed, from an apprentice scratching his head to a security guard, watched by a man on his phone."], h:"A chatbot answers you. An agent does work for you.", pts:[], sub:"Reference · Chatbots, Agents and Bots", note:"What the words mean, what is out there, and how to build one bot in Claude that runs on a schedule. Watch it before session one, or any time the words get confusing."},
 
 {sec:"Why", h:"Why this is <em>confusing</em>", pts:[
  "Model. LLM. Chatbot. Agent. Bot. Task work. Code. Workspace agent. Computer use. MCP.",
@@ -636,6 +643,8 @@ function paintPrompt(i){document.querySelectorAll(`pre[data-p="${i}"]`).forEach(
 const ptsH=s=>s.pts&&s.pts.length?`<ul class="points">${s.pts.map(p=>`<li>${p}</li>`).join('')}</ul>`:'';
 const noteH=s=>s.note?`<p class="note">${s.note}</p>`:'';
 const metaH=s=>s.meta?`<div class="meta">${s.meta.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join('')}</div>`:'';
+const illH=s=>`<figure class="ill"><img src="${s.ill[0]}" alt="${s.ill[1]}" width="1376" height="768" decoding="async"><figcaption>Illustration: Magnum AI</figcaption></figure>`;
+const artH=s=>s.ill?illH(s):figH(s);
 const figH=s=>s.fig?`<div class="fig">${F[s.fig][0]}<div class="cap">${F[s.fig][1]}</div></div>`:'';
 const splitH=s=>s.split?`<div class="split"><div class="b"><h3>${s.split[0][0]}</h3>${s.split[0].slice(1).map(t=>`<p>${t}</p>`).join('')}</div><div class="a"><h3>${s.split[1][0]}</h3>${s.split[1].slice(1).map(t=>`<p>${t}</p>`).join('')}</div></div>`:'';
 const bandsH=s=>{
@@ -662,7 +671,7 @@ S.forEach((s,i)=>{
   let h='';
   if(s.cover){
     h=`<div class="ctop"><img class="badge" src="../assets/logos/magnum-badge-ring-navy-red-ai.svg" alt="Magnum AI"><div class="clabel"><b>${s.sub||''}</b>${LAST} slides · ${NPROMPTS} prompts</div></div>
-      <div class="bd"><div><h1${plain(s.h).length>40?' class="long"':''}>${s.h}</h1>${noteH(s)}</div>${figH(s)}</div>`;
+      <div class="bd${s.ill?' has-ill':''}"><div><h1${plain(s.h).length>40?' class="long"':''}>${s.h}</h1>${noteH(s)}</div>${artH(s)}</div>`;
   }else{
     h=`<div class="hd">${kickH(s,i)}<div class="hrow"><h1>${s.h}</h1>${icoH(s)}</div></div>`;
     if(L==='prompt'){
@@ -685,7 +694,7 @@ const page=document.getElementById('page');
 (function(){
   let ph=`<div class="pbar"><a class="pmark" href="../" aria-label="Magnum AI members area"><img src="../assets/logos/magnum-mark.svg" alt=""></a><span class="ptitle">${NAME}</span><button type="button" onclick="toggleMenu()">Sections</button></div>`;
   S.forEach((s,i)=>{
-    if(s.cover){ph+=`<section class="pcover" id="p0"><div class="clabel">${s.sub?s.sub+' · ':''}${LAST} slides · ${NPROMPTS} prompts</div><h2>${s.h}</h2>${s.note?`<p>${s.note}</p>`:''}${figH(s)}</section>`;return;}
+    if(s.cover){ph+=`<section class="pcover" id="p0"><div class="clabel">${s.sub?s.sub+' · ':''}${LAST} slides · ${NPROMPTS} prompts</div><h2>${s.h}</h2>${s.note?`<p>${s.note}</p>`:''}${artH(s)}</section>`;return;}
     let b=`<section class="psec" id="p${i}">${kickH(s,i)}<h2>${s.h}</h2>${icoH(s)}`;
     if(s.prompt){
       const nb=blanks(s.prompt).length;

@@ -60,3 +60,30 @@ sandbox cannot reach that CDN to self-host. When a session can reach
 one place so that swap is a single edit.
 
 Every image carries a small credit line: "Illustration: Magnum AI".
+
+## Where the pictures are, since 15 Oct
+
+James said "apply to the whole members area" on 15 Oct. One picture per page,
+under the masthead, in a `<figure class="ill">` with the credit line, styled by
+`assets/illustration.css`:
+
+- Guides: `privacy/`, `cowork/`, `team-seats/`, `effort/`,
+  `agent-workforce/`, `manus-bridge/`, `manus-website-manual.html`,
+  `ba-growth/`, the Prompt Shelf and the Field Note archive.
+- Fine-Tune: at the top of Start here, not on the cover, because the cover
+  keeps its safe drawing.
+- The social questionnaire: on the start card only, so no question moves.
+- The five decks: on the cover slide, through an optional `ill:[url, alt]`
+  on the slide. When it is there it replaces the cover figure, on the laptop
+  and on the phone page. It is capped at 500px wide so the cover fits at
+  1280 by 600.
+- The front page: the course, shelf and tool cards show the pictures. The AI
+  tools card uses the shadow board. The footer carries the credit.
+
+Left alone on purpose. The share cards (`og:image`) keep their titles, because
+WhatsApp shows them. The Field Notes are sent and printed on their own, and a
+routine builds them. And the AI tools page keeps its own figures.
+
+The image ids are in each page's `<figure class="ill">` and in each deck's
+cover slide. To self-host, swap the CDN prefix in those places.
+

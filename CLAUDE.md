@@ -2756,6 +2756,19 @@ matters for the parity rule. The opening is a letter in James's voice built
 on a made-up composite (a builder's card statement), at his instruction;
 it names no real client. Register rows 102 to 108.
 
+**The cartoon style is on every page, 15 Oct, on James's word ("Lock it.
+Please apply to the whole members area").** He approved 17 new pictures in
+the locked style, one per page. Where they sit and what was left alone is in
+`notes/image-style.md`. The shared CSS is `assets/illustration.css`. The
+deck engine gained an optional `ill` on the cover slide in all five decks,
+and the engine is still byte-identical apart from slide data. With a picture
+the cover overflowed by 27px at 1280 by 600, so the picture is capped at
+500px wide. Deck check, contrast (folds shut and open) and the style checker
+all pass, with no new finding. The pictures are hotlinked from Higgsfield's
+CDN like the AI tools page. Render checks here show grey boxes for that
+reason, so the pictures themselves were checked one by one in the Higgsfield
+sandbox.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
