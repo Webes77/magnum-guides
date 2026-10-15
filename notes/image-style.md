@@ -52,12 +52,22 @@ Model: Nano Banana 2.1 on Higgsfield, 16:9, 1k. About 2 credits an image.
 
 ## Where the files live
 
-Images are made on Higgsfield and are hotlinked from its CDN as the
-compressed `_min.webp` version (about 110 KB at 1376 by 768), because the
-sandbox cannot reach that CDN to self-host. When a session can reach
-`d8j0ntlcm91z4.cloudfront.net`, download each `_min.webp` into
-`assets/illustrations/` and swap the URLs. Each page lists its image URLs in
-one place so that swap is a single edit.
+Every picture is on the site itself, in `assets/illustrations/`, as a JPEG
+about 1200 pixels wide (1000 for the Field Note cards), quality 80. Nothing
+is hotlinked. The site pictures are named after the page they sit on
+(`privacy.jpg`, `ai-foundations.jpg`), the AI tools pictures carry a `tools-`
+prefix, and each Field Note card has `field-note-NN.jpg`.
+
+How a picture gets from Higgsfield into the repo, because this sandbox cannot
+reach Higgsfield's image host (`d8j0ntlcm91z4.cloudfront.net`). In the
+Higgsfield sandbox, `curl` the result, convert it to JPEG
+(`convert in.png -resize 1200x -strip -interlace JPEG -quality 80 out.jpg`),
+print its size, and pass the file in `image_paths` on `sandbox_exec`. The
+image comes back into this session's `tool-results` folder as
+`mcp-Higgsfield-blob-*.jpg`, byte for byte (checked on 15 Oct: same size,
+same bytes). Copy it into place by matching the exact size. Up to 512 KB per
+call, so two or three pictures at a time. Look at each one as it arrives;
+that is the check.
 
 Every image carries a small credit line: "Illustration: Magnum AI".
 
@@ -84,6 +94,20 @@ Left alone on purpose. The share cards (`og:image`) keep their titles, because
 WhatsApp shows them. The Field Notes are sent and printed on their own, and a
 routine builds them. And the AI tools page keeps its own figures.
 
-The image ids are in each page's `<figure class="ill">` and in each deck's
-cover slide. To self-host, swap the CDN prefix in those places.
+The Higgsfield image ids for every picture are in the session scratchpad
+notes for 15 Oct, not here, because the files themselves are the source now.
+
+## The Field Note cards, since 15 Oct
+
+James asked for the weekly Field Note to follow the same style. The card's
+right-hand panel (the share card WhatsApp shows, and the front page card)
+carries a cartoon made for that issue, 4:3, with the issue number as a small
+bright coral tag in the corner and the credit line under it. Issues 01 to 09
+were all redrawn on 15 Oct. The issue page itself carries no picture: the
+one-card shape is unchanged.
+
+The Wednesday routine makes one each week (Step 6 of
+`notes/field-note-prompt.md`), about two credits. It needs the Higgsfield
+connector on the routine. Without it, the card uses `newsletter.jpg`, the
+archive's picture, and the email says so in one line.
 

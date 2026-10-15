@@ -82,6 +82,13 @@ h1{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-
 .bignum{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:700;font-size:270px;line-height:.8;letter-spacing:-.02em;color:var(--coral-bright);text-align:left;width:100%;padding-top:4px}
 .bignum small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#F4F1EA;margin:0 0 14px 4px;line-height:1}
 .plate .doc-wrap{align-items:flex-start;justify-content:flex-start}
+/* Since 15 Oct the plate carries the issue's own cartoon, in the house
+   illustration style (notes/image-style.md), with the issue number as a tag. */
+.plate.pic{padding:0;position:relative;justify-content:flex-start}
+.plate.pic .ill{display:block;width:100%;flex:1;min-height:0;object-fit:cover;object-position:center;transform:scale(1.04)}
+.plate.pic .plate-cap{position:relative;z-index:1;background:var(--navy)}
+.numtag{position:absolute;top:14px;left:14px;font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:700;font-size:24px;letter-spacing:.06em;text-transform:uppercase;line-height:1;background:var(--coral-bright);color:var(--ink);border:3px solid var(--ink);padding:4px 12px 5px}
+.plate.pic .plate-cap{margin-top:0;padding:10px 18px 12px;border-top:4px solid var(--ink)}
 </style>
 </head>
 <body>
@@ -105,11 +112,10 @@ h1{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-
       </div>
     </div>
 
-    <div class="plate">
-      <div class="doc-wrap">
-        <div class="bignum"><small>Field Note No.</small>05</div>
-      </div>
-      <div class="plate-cap">Fig. 05 / One prompt, one job<br>Published by Magnum AI</div>
+    <div class="plate pic">
+      <img class="ill" src="../assets/illustrations/field-note-05.jpg" alt="">
+      <div class="numtag">No. 05</div>
+      <div class="plate-cap">Fig. 05 / One prompt, one job<br>Illustration: Magnum AI</div>
     </div>
   </div>
 

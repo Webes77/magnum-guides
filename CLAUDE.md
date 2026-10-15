@@ -2731,13 +2731,9 @@ area; that is the next piece of work, scoped page by page and put to him
 before anything is made. About 16 images were made for this page at about
 2 credits each on Higgsfield.
 
-The images are hotlinked to Higgsfield's CDN as the `_min.webp` version
-(about 110 KB each), because this sandbox cannot reach
-`d8j0ntlcm91z4.cloudfront.net` to self-host, even after James added it to
-the allowed domains (the change did not reach this running session). A
-session that can reach it should download them into
-`assets/illustrations/` and swap the one `CDN` line in the page. The
-earlier photographic set is unused and should not come back.
+The images were hotlinked to Higgsfield's CDN at first and are self-hosted
+since later on 15 Oct, in `assets/illustrations/` (see below). The earlier
+photographic set is unused and should not come back.
 
 Twelve tools were added from research files 06 and 07 (12 picked from about
 60): four new jobs (Your inbox, The phone, Your own documents, Your website),
@@ -2764,10 +2760,43 @@ deck engine gained an optional `ill` on the cover slide in all five decks,
 and the engine is still byte-identical apart from slide data. With a picture
 the cover overflowed by 27px at 1280 by 600, so the picture is capped at
 500px wide. Deck check, contrast (folds shut and open) and the style checker
-all pass, with no new finding. The pictures are hotlinked from Higgsfield's
-CDN like the AI tools page. Render checks here show grey boxes for that
-reason, so the pictures themselves were checked one by one in the Higgsfield
-sandbox.
+all pass, with no new finding.
+
+**Every picture is on the site itself, and the Field Note cards carry one
+too, 15 Oct (later), on James's word.** He asked for a rule in the Field
+Note and for its thumbnail to match. Three things.
+
+The share card for every issue, 01 to 09, has its right-hand panel redrawn:
+a cartoon made for that issue (a tailor cutting a sleeve for "Cut a fifth",
+a man taking a breath before replying for the angry email), the issue number
+as a bright coral tag in the corner, the credit line under it. The big coral
+number it replaces had only been there since 14 Oct. The pictures are 4:3 at
+`assets/illustrations/field-note-NN.jpg`, every card source points at its
+own, and all nine cards were re-rendered with a `?v=` bump on each issue's
+share image so WhatsApp fetches the new one. The issue page itself carries
+no picture; the one-card shape is untouched. 18 credits.
+
+The Wednesday routine (`trig_016pPJPsm8D3yUZs81wquraU`) makes one every
+week: Step 6 of `notes/field-note-prompt.md` writes a scene line, adds the
+style block word for word, generates on Higgsfield at 4:3, brings it into the
+repo and looks at it. Pushed with `update_trigger` and asserted equal to the
+file at 28,045 characters; the file and the live prompt matched exactly
+before the edit, so nothing else moved. The routine has Google Drive and
+Microsoft 365 attached and not Higgsfield, and a session cannot attach a
+connector. Until James adds it in the routine's settings the card falls back
+to `newsletter.jpg` and the email says so. `tools/check-field-note.js` now
+fails a card source that points at a picture that is not there, proved by
+pointing one at a missing file.
+
+And nothing is hotlinked any more. The image host is blocked from this
+sandbox, but a picture passed through `image_paths` on the Higgsfield
+`sandbox_exec` lands in this session's `tool-results` folder byte for byte.
+That is how all 42 came across (33 site pictures re-encoded at 1200 wide,
+nine Field Note pictures at 1000), and `notes/image-style.md` has the
+procedure. Every page, the five decks and the AI tools page now point at
+`assets/illustrations/`, and a browser pass loaded all 46 image elements
+with none broken. James's 310 credits cover about three years of weekly
+cards.
 
 ## Decisions already made
 

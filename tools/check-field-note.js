@@ -236,6 +236,13 @@ function check(file) {
       const thumbSrc = path.join(ROOT, 'newsletter', `field-note-${nn}-thumbnail.html`);
       if (!fs.existsSync(thumbSrc)) {
         warn.push(`no card source at newsletter/${path.basename(thumbSrc)}, so the card cannot be regenerated`);
+      } else {
+        // Since 15 Oct the card carries the issue's cartoon. A card source that
+        // points at a picture that is not there renders a broken card.
+        const ill = (fs.readFileSync(thumbSrc, 'utf8').match(/<img class="ill" src="([^"]+)"/) || [])[1];
+        if (ill && !fs.existsSync(path.join(ROOT, 'newsletter', ill))) {
+          fail.push(`the card source points at a picture that is not there: ${ill}`);
+        }
       }
       const thumbJpg = path.join(ROOT, 'assets', 'thumbnails', `${stem}.jpg`);
       if (!fs.existsSync(thumbJpg)) {
