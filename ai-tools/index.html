@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+<title>The AI Tools Worth Paying For · Magnum AI</title>
+<meta name="description" content="What I'd pay for, what to skip, and what you probably already own. One tool for each job, the picture and video models named, and three questions to build your own shortlist.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/ai-tools/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="The AI Tools Worth Paying For">
+<meta property="og:description" content="What I'd pay for, what to skip, and what you already own. Three questions build your own shortlist.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/ai-tools/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/ai-tools.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The AI tools worth paying for, a Magnum AI reference page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AI Tools Worth Paying For">
+<meta name="twitter:description" content="What I'd pay for, what to skip, and what you already own. Three questions build your own shortlist.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/ai-tools.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+/* House style. Tokens come from assets/site.css. --rust is coral for display
+   type, fills and borders only; --coral-text carries anything under 18px.
+   Built from ai-tools/ data in one pass on 14 Oct 2026; every tile has the
+   same shape: ribbon, name, best for, facts, and My take folded. */
+
+  section{margin:0 0 76px;scroll-margin-top:24px;}
+  p a,dd a{color:var(--coral-text);font-weight:500;}
+  @media(max-width:820px){.label{font-size:27px;gap:0 14px}.label::before{font-size:38px}}
+
+  /* ---- masthead ----------------------------------------------------------- */
+  .masthead{padding:64px 0 40px;margin-bottom:56px;}
+  .masthead h1{font-size:clamp(46px,8.4vw,92px);max-width:11ch;margin-bottom:22px;}
+  .masthead .sub{font-size:20px;max-width:46ch;}
+  .checked{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--on-navy-mute);margin:26px 0 0;max-width:none;}
+
+  .intro{font-size:19px;line-height:1.55;max-width:58ch;margin:0 0 30px;color:var(--body);}
+
+  /* ---- the shadow board -------------------------------------------------- */
+  /* Each job has its outline painted on the wall (a dashed line) and its
+     tool hangs inside it from a coral peg. An empty slot is only the
+     outline. No shadows: the outline does the job. */
+  .board{background:var(--navy);border:2px solid var(--ink);padding:34px 30px 34px;}
+  .board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px 24px;flex-wrap:wrap;margin:0 0 28px;}
+  .board-head h3{color:var(--on-navy);font-size:26px;margin:0;}
+  .board-head span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-navy-mute);}
+  .slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 40px;}
+  .slot{position:relative;padding-top:16px;display:flex;flex-direction:column;}
+  .slot::before{content:"";position:absolute;top:0;left:50%;width:14px;height:14px;margin-left:-7px;
+    border-radius:50%;background:var(--coral-bright);z-index:2;}
+  .slot .tool{background:var(--paper-2);border:2px solid var(--ink);padding:22px 20px 20px;flex:1;
+    outline:2px dashed rgba(244,241,234,.38);outline-offset:7px;display:flex;flex-direction:column;}
+  .slot .sjob{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);font-weight:500;margin:0 0 8px;}
+  .slot .name{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:30px;line-height:.98;color:var(--ink);margin:0 0 10px;}
+  .slot .name small{display:block;font-size:17px;font-weight:600;color:var(--mute);margin-top:4px;letter-spacing:.02em;}
+  .slot .why{font-size:15.5px;line-height:1.45;color:var(--char);margin:0 0 14px;}
+  .slot .cost{margin-top:auto;font-family:var(--mono);font-size:12px;color:var(--ink);border-top:1px solid rgba(30,27,23,.14);padding-top:10px;margin-bottom:0;}
+  .slot .also{font-size:14px;line-height:1.45;color:var(--char);border-left:3px solid var(--hair);padding-left:10px;margin:10px 0 0;}
+  .slot .note{font-size:14px;line-height:1.45;color:var(--char);border-left:3px solid var(--rust);padding-left:10px;margin:10px 0 0;}
+  .slot .more{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+    color:var(--coral-text);text-decoration:none;border-bottom:2px solid var(--rust);align-self:flex-start;margin-top:14px;}
+  .slot .more:hover,.slot .more:focus-visible{color:var(--ink);outline:none;}
+  .slot.empty::before{background:transparent;border:2px solid var(--coral-bright);}
+  .slot.empty .tool{background:transparent;border:2px dashed rgba(244,241,234,.55);outline:none;align-items:flex-start;justify-content:center;}
+  .slot.empty .sjob{color:var(--coral-bright);}
+  .slot.empty .name{color:var(--on-navy);}
+  .slot.empty .why{color:var(--on-navy-mute);}
+  .slot.empty a{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink);background:var(--coral-bright);padding:10px 14px;text-decoration:none;font-weight:500;}
+  .slot.empty a:hover,.slot.empty a:focus-visible{background:var(--on-navy);outline:none;}
+  @media(max-width:860px){.slots{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:560px){
+    .board{padding:26px 18px 26px;}
+    .slots{grid-template-columns:1fr;gap:46px;}
+    .slot .name{font-size:28px;}
+  }
+
+  /* ---- the tip ----------------------------------------------------------- */
+  .tip{display:grid;grid-template-columns:minmax(0,21ch) 1fr;gap:10px 32px;align-items:start;
+    background:var(--paper-2);border:2px solid var(--ink);border-top:8px solid var(--rust);padding:26px 26px 26px;margin:34px 0 0;}
+  .tip .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);font-weight:500;margin:0 0 8px;}
+  .tip h3{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.4vw,34px);line-height:1;margin:0;}
+  .tip p{font-size:17px;line-height:1.55;color:var(--char);margin:0 0 12px;max-width:60ch;}
+  .tip p:last-child{margin-bottom:0;}
+  @media(max-width:700px){.tip{grid-template-columns:1fr;}}
+
+  /* ---- the picker -------------------------------------------------------- */
+  .quiz{border:2px solid var(--ink);background:var(--paper-2);}
+  .quiz-head{background:var(--tint);border-bottom:2px solid var(--ink);padding:12px 20px;
+    display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink);}
+  .quiz-head span{color:var(--mute);letter-spacing:.08em;font-size:10.5px;text-transform:none;}
+  .head-again{margin-left:auto;background:none;border:0;padding:0;cursor:pointer;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--ink);font-weight:500;border-bottom:2px solid var(--rust);}
+  .head-again:hover,.head-again:focus-visible{color:var(--coral-text);outline:none;}
+  .steps-bar{display:flex;gap:5px;padding:16px 20px 14px;}
+  .steps-bar i{flex:1;height:4px;background:var(--hair);}
+  .steps-bar i.on{background:var(--rust);}
+  .qbody{padding:0 20px 22px;}
+  .qnum{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--coral-text);margin:0 0 10px;font-weight:500;}
+  .qtext{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:clamp(19px,2.8vw,25px);line-height:1.12;color:var(--ink);margin:0 0 6px;max-width:28ch;text-wrap:balance;}
+  .qhint{font-size:14.5px;color:var(--mute);margin:0 0 16px;}
+  .opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;}
+  .opts.one{grid-template-columns:1fr;}
+  .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+    font-family:var(--sans);font-size:16px;line-height:1.35;color:var(--char);
+    background:var(--paper);border:2px solid rgba(30,27,23,.3);padding:13px 14px;
+    transition:border-color .12s ease,background .12s ease,color .12s ease;}
+  .opt:hover{border-color:var(--rust);background:var(--paper-2);color:var(--ink);}
+  .opt:focus-visible{outline:2px solid var(--rust);outline-offset:-5px;}
+  .opt .box{flex:0 0 18px;height:18px;border:2px solid var(--ink);background:var(--paper-2);position:relative;}
+  .opt[aria-pressed="true"]{border-color:var(--ink);background:var(--tint);color:var(--ink);}
+  .opt[aria-pressed="true"] .box{background:var(--ink);}
+  .opt[aria-pressed="true"] .box::after{content:"";position:absolute;left:4px;top:0;width:5px;height:10px;
+    border:solid var(--paper-2);border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .qnav{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:18px;}
+  .next{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:500;
+    background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);padding:11px 18px;cursor:pointer;}
+  .next:hover,.next:focus-visible{background:var(--ink);color:var(--paper-2);outline:none;}
+  .next[disabled]{background:var(--paper);color:var(--mute);border-color:var(--hair);cursor:default;}
+  .qback{background:none;border:0;padding:0;cursor:pointer;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);}
+  .qback:hover,.qback:focus-visible{color:var(--coral-text);outline:none;}
+
+  /* the answer is drawn as the reader's own board */
+  .verdict{background:var(--navy);padding:26px 24px 24px;}
+  .lean{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--coral-bright);margin:0 0 10px;}
+  .verdict h3{color:var(--on-navy);font-family:var(--display);font-weight:700;font-size:clamp(24px,3.6vw,34px);line-height:1.04;margin:0 0 12px;max-width:26ch;}
+  .vrecap{color:var(--on-navy-mute);font-size:15px;margin:0;max-width:60ch;border-left:3px solid var(--coral-bright);padding-left:12px;}
+  .mine{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:52px 36px;padding:34px 28px 30px;background:var(--paper);}
+  .mine .slot .tool{outline-color:rgba(30,27,23,.28);}
+  .mine .slot::before{background:var(--ink);}
+  .mine .slot.new .tool{border-color:var(--rust);border-width:3px;}
+  .mine .slot.new::before{background:var(--rust);}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:4px 8px;margin:0 0 10px;align-self:flex-start;}
+  .tag.have{background:var(--olive);color:#FFFFFF;}
+  .tag.paid{background:var(--navy);color:var(--on-navy);}
+  .tag.free{background:var(--tint);color:var(--ink);}
+  .empties{border-top:2px solid var(--ink);background:var(--paper);padding:18px 28px 22px;}
+  .empties p{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 10px;}
+  .empties ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;}
+  .empties li{border:2px dashed rgba(30,27,23,.35);padding:7px 12px;font-size:14.5px;color:var(--char);}
+  .vnext{border-top:2px solid var(--ink);background:var(--paper-2);padding:16px 24px 18px;}
+  .vnext p{font-size:15px;line-height:1.5;color:var(--char);margin:0;max-width:62ch;}
+  .again{background:none;border:0;padding:12px 0 0;cursor:pointer;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--mute);}
+  .again:hover,.again:focus-visible{color:var(--coral-text);outline:none;}
+  @media(max-width:860px){.mine{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:560px){.mine{grid-template-columns:1fr;gap:46px;padding:30px 20px 26px;}.empties{padding:18px 20px 22px;}}
+
+  /* ---- the jobs ------------------------------------------------------------ */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;}
+  .chips a{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+    color:var(--ink);text-decoration:none;border:2px solid var(--ink);padding:7px 11px;background:var(--paper-2);}
+  .chips a:hover,.chips a:focus-visible{background:var(--tint);outline:none;}
+  .prices{font-size:14.5px;color:var(--mute);margin:0 0 26px;max-width:66ch;}
+
+  .job{border:2px solid var(--ink);background:var(--paper-2);margin:0 0 14px;scroll-margin-top:16px;}
+  .job>summary{cursor:pointer;list-style:none;padding:20px 22px;display:flex;align-items:baseline;gap:8px 18px;flex-wrap:wrap;}
+  .job>summary::-webkit-details-marker{display:none;}
+  .job>summary::marker{content:"";}
+  .job>summary:hover{background:var(--tint);}
+  .job>summary:focus-visible{outline:2px solid var(--rust);outline-offset:-4px;}
+  .jt{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(22px,3vw,28px);line-height:1;color:var(--ink);}
+  .jp{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);font-weight:500;}
+  .job>summary .sign{margin-left:auto;font-family:var(--mono);font-size:24px;line-height:1;color:var(--rust);align-self:center;}
+  .job[open]>summary{border-bottom:2px solid var(--ink);background:var(--tint);}
+  /* coral text on the tint is 4.17:1, so the pick names go ink once the head turns tint */
+  .job[open]>summary .jp,.job>summary:hover .jp{color:var(--ink);}
+  .job[open]>summary .sign::after{content:"\2212";}
+  .job:not([open])>summary .sign::after{content:"+";}
+  .job-body{padding:26px 24px 26px;background:var(--paper);}
+  .joblead{font-size:17px;line-height:1.55;color:var(--char);margin:0 0 24px;max-width:64ch;}
+
+  .callout{display:grid;grid-template-columns:minmax(0,14ch) 1fr;gap:6px 24px;align-items:start;background:var(--navy);
+    border-left:6px solid var(--coral-bright);padding:22px 24px;margin:0 0 26px;}
+  .callout b{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:24px;line-height:1.02;color:var(--on-navy);}
+  .callout p{margin:0;font-size:16.5px;line-height:1.55;color:var(--on-navy);max-width:62ch;}
+  .callout.soft{background:var(--tint);border-left-color:var(--rust);}
+  .callout.soft b{color:var(--ink);font-size:20px;}
+  .callout.soft p{color:var(--ink);font-size:15.5px;}
+  .job-body>.callout.soft:last-child{margin:26px 0 0;}
+  @media(max-width:600px){.callout{grid-template-columns:1fr;}}
+
+  .tiles{display:grid;gap:22px;margin:0 0 22px;}
+  .tiles.one{grid-template-columns:minmax(0,1fr);max-width:560px;}
+  .tiles.two{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .tiles.three{grid-template-columns:repeat(3,minmax(0,1fr));}
+  @media(max-width:960px){.tiles.three{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:700px){.tiles.two,.tiles.three{grid-template-columns:1fr;}}
+  .tile{background:var(--paper-2);border:2px solid var(--ink);display:flex;flex-direction:column;scroll-margin-top:16px;}
+  .ribbon{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;padding:9px 18px;border-bottom:2px solid var(--ink);}
+  .ribbon.top{background:var(--navy);color:var(--coral-bright);}
+  .ribbon.if{background:var(--tint);color:var(--ink);}
+  .ribbon.skip{background:var(--paper);color:var(--ink);}
+  .ribbon em{font-style:normal;text-transform:none;letter-spacing:.01em;font-family:var(--sans);font-size:13.5px;margin-left:6px;}
+  .tile-body{padding:20px 20px 16px;display:flex;flex-direction:column;flex:1;}
+  .tile h3{font-family:var(--display);font-weight:700;font-size:34px;line-height:.96;margin:0 0 10px;}
+  .small .tile h3{font-size:27px;}
+  .best{font-size:17px;line-height:1.4;color:var(--ink);margin:0 0 16px;max-width:none;}
+  .small .best{font-size:16px;}
+  .facts{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;margin:0 0 14px;padding-top:12px;border-top:1px solid rgba(30,27,23,.14);}
+  .facts dt{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--mute);padding-top:3px;}
+  .facts dd{margin:0;font-size:15px;line-height:1.45;color:var(--char);}
+  .take{margin-top:auto;border-top:1px solid rgba(30,27,23,.14);}
+  .take summary{cursor:pointer;list-style:none;padding:12px 0 2px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);font-weight:500;}
+  .take summary::-webkit-details-marker{display:none;}
+  .take summary::after{content:" +";}
+  .take[open] summary::after{content:" \2212";}
+  .take summary:focus-visible{outline:2px solid var(--rust);outline-offset:2px;}
+  .take p{font-size:15.5px;line-height:1.5;color:var(--char);margin:8px 0 4px;max-width:none;}
+  .take .watch b{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink);background:var(--tint);padding:2px 6px;margin-right:6px;}
+
+  .msub{font-size:18px;margin:4px 0 12px;}
+  .mlist{border:2px solid var(--ink);background:var(--paper-2);margin:0 0 30px;}
+  .mrow{display:grid;grid-template-columns:190px 1fr 210px;gap:4px 16px;align-items:baseline;padding:10px 16px 11px;border-top:1px solid rgba(30,27,23,.12);}
+  .mrow:first-child{border-top:0;}
+  .mname{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:17px;line-height:1.15;color:var(--ink);}
+  .mname small{display:block;font-family:var(--mono);font-weight:400;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em;color:var(--mute);margin-top:3px;}
+  .mbest{font-size:15px;line-height:1.45;color:var(--char);}
+  .mwhere{font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--ink);}
+  @media(max-width:760px){.mrow{grid-template-columns:1fr;}.mwhere::before{content:"Where: ";color:var(--mute);}}
+
+  .sources-acc .job-body li{font-size:14px;line-height:1.5;color:var(--char);margin-bottom:7px;}
+  .sources-acc .job-body ul{padding-left:20px;margin:0;}
+  .sources-acc .job-body p{font-size:14.5px;color:var(--char);}
+
+  /* ---- hero and letter ---------------------------------------------------- */
+  .hero{margin:0 0 64px;border:2px solid var(--ink);background:var(--paper-2);}
+  .hero img{display:block;width:100%;height:auto;}
+  .credit{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+    padding:9px 14px;margin:0;border-top:2px solid var(--ink);background:var(--paper-2);max-width:none;}
+  .letter-body{max-width:66ch;}
+  .letter-body p{font-size:19px;line-height:1.62;color:var(--char);margin:0 0 20px;}
+  .letter-body p.drop::first-letter{font-family:var(--display);font-weight:700;font-size:4.4em;float:left;
+    line-height:.8;margin:7px 12px 0 0;color:var(--rust);}
+  .letter-body p.pull{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(30px,4.6vw,46px);
+    line-height:1.02;color:var(--ink);border-left:8px solid var(--rust);padding:4px 0 4px 22px;margin:34px 0;max-width:18ch;}
+  .letter-body p.sign{font-family:var(--display);font-weight:600;font-size:26px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);margin:28px 0 0;}
+
+  /* ---- tile marks, job pictures, the asked-about line --------------------- */
+  .tile-head{display:flex;align-items:center;gap:12px;margin:0 0 10px;}
+  .tile-head h3{margin:0;}
+  .mark{flex:0 0 42px;height:42px;border:2px solid var(--ink);background:var(--paper);display:grid;place-items:center;}
+  .mark img{width:24px;height:24px;display:block;}
+  .mark.mono{font-family:var(--display);font-weight:700;font-size:16px;color:var(--ink);line-height:1;}
+  .jobpic{margin:0 0 26px;max-width:760px;}
+  .jobpic img{display:block;width:100%;height:auto;border:2px solid var(--ink);}
+  .asked{font-size:14.5px;line-height:1.5;color:var(--char);margin:22px 0 0;padding:12px 16px;border:2px dashed rgba(30,27,23,.32);max-width:none;}
+  .asked b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:4px;}
+  @media(max-width:560px){.letter-body p{font-size:17.5px;}.mark{flex-basis:36px;height:36px;}}
+
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer,.board,.callout{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .quiz{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+
+  <h1>The AI tools <em>worth paying for</em></h1>
+  <p class="sub">What I&rsquo;d hang on the wall, what to skip, and three questions to fill in your own.</p>
+  <p class="checked">Prices checked 11 to 14 October 2026</p>
+</div></header>
+
+<div class="wrap">
+
+  <figure class="hero">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_062806_48293463-1638-4b0a-a31f-ab699ae04815_min.webp" alt="A cartoon workshop shadow board: tools hang in painted outlines, and one outline in the middle is empty." width="1376" height="768" fetchpriority="high">
+    <figcaption class="credit">Illustration: Magnum AI</figcaption>
+  </figure>
+
+  <!-- ============ BEFORE THE LIST ============ -->
+  <section id="letter">
+    <p class="label">Before the list</p>
+    <div class="letter-body">
+      <p class="drop">A builder sits down at the end of the financial year with his card statement and a highlighter. He&rsquo;s looking for fuel receipts. What he finds is AI.</p>
+      <p>ChatGPT. Claude. A video app he signed up to for one ad in March, still billing in October. A notetaker that joins calls he stopped having. A design tool someone set up for a flyer. About A$140 a month, and most weeks he opens two of them.</p>
+      <p>None of them is a bad tool. He bought them the way you fill the back of a ute: one at a time, each for a good reason, never all laid out at once.</p>
+      <p class="pull">Three tape measures, two hammers, no level.</p>
+      <p>I try most new tools the week they land, so my own statement isn&rsquo;t one to wave around either. That&rsquo;s why this page starts with the job, not the tool. One tool per job, the ones I&rsquo;d hang on the wall, and the ones to rent for a month and hand back. And before any of it, check what you already pay for. Most small businesses already own half the AI they need.</p>
+      <p class="sign">James</p>
+    </div>
+  </section>
+
+
+  <!-- ============ 01 MY BOARD ============ -->
+  <section id="board">
+    <p class="label" data-n="01">My shadow board</p>
+    <p class="intro">Every good workshop has a shadow board. The outline of each tool is painted on the wall, so you can see at a glance what&rsquo;s there and what&rsquo;s missing. Here&rsquo;s mine. One tool for each job, and nothing hanging twice.</p>
+
+    <div class="board">
+      <div class="board-head"><h3>What I&rsquo;d pay for, starting today</h3><span>Five tools &middot; one gap</span></div>
+      <div class="slots">
+        <div class="slot"><div class="tool">
+          <p class="sjob">Your main AI</p>
+          <p class="name">Claude <small>or ChatGPT</small></p>
+          <p class="why">Pick one and learn it properly. Claude if your week is writing. ChatGPT if you want pictures from the same app.</p>
+          <p class="cost">A$34 or US$20 a month</p>
+        </div></div>
+        <div class="slot"><div class="tool">
+          <p class="sjob">Pictures and video</p>
+          <p class="name">Google AI Pro</p>
+          <p class="why">Gemini&rsquo;s photos and video with sound, on one bill.</p>
+          <p class="cost">About A$33 a month</p>
+        </div></div>
+        <div class="slot"><div class="tool">
+          <p class="sjob">Talking, not typing</p>
+          <p class="name">Wispr Flow</p>
+          <p class="why">Hold a key, talk, and clean text lands wherever you&rsquo;re typing.</p>
+          <p class="cost">Free to start, then US$12 a month</p>
+        </div></div>
+        <div class="slot"><div class="tool">
+          <p class="sjob">Meeting notes</p>
+          <p class="name">Fireflies</p>
+          <p class="why">Notes from every call, on any platform, ready for your AI to read.</p>
+          <p class="cost">US$10 a month</p>
+        </div></div>
+        <div class="slot"><div class="tool">
+          <p class="sjob">Decks and proposals</p>
+          <p class="name">Gamma</p>
+          <p class="why">Rough notes in, a deck that looks designed out.</p>
+          <p class="cost">US$9 a month</p>
+        </div></div>
+        <div class="slot empty"><div class="tool">
+          <p class="sjob">The gap</p>
+          <p class="name">This one&rsquo;s yours</p>
+          <p class="why">Every business has a job nobody&rsquo;s painted on the wall yet.</p>
+          <a href="#picker">Find it in three questions</a>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <div><p class="k">Tool tip</p><h3>Keep your regulars. Rent the rest.</h3></div>
+      <div>
+        <p>AI models are going the way of streaming services. Most of what&rsquo;s on them overlaps, and each one has a few things it does better than the rest. So you keep one or two as your regulars.</p>
+        <p>And when a show you want is only on one service, you sign up for a month, watch it, and cancel. Do the same with AI. A run of videos for a launch? Take a video tool for a month, then cancel. That&rsquo;s why the cards below keep saying pay monthly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 THE PICKER ============ -->
+  <section id="picker">
+    <p class="label" data-n="02">Fill in your own board</p>
+    <p class="intro">Tick the jobs you want help with and what you already pay for. You get a board of your own: what you already own, what&rsquo;s worth a new bill, and the jobs you can leave empty.</p>
+    <div class="quiz">
+      <div class="quiz-head" id="quizhead">Three questions <span>tap to tick, no typing</span></div>
+      <div class="steps-bar" id="bar" aria-hidden="true"></div>
+      <div id="quizout" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ 03 THE TOOLS, JOB BY JOB ============ -->
+  <section id="tools">
+    <p class="label" data-n="03">Every tool, job by job</p>
+    <p class="intro">41 tools and 15 picture and video models. Open the job you&rsquo;re working on.</p>
+    <nav class="chips" aria-label="Jobs"><a href="#job-main">Your main AI</a><a href="#job-inbox">Your inbox</a><a href="#job-phone">The phone</a><a href="#job-slides">Decks and proposals</a><a href="#job-talk">Talking, not typing</a><a href="#job-meet">Meeting notes</a><a href="#job-docs">Your own documents</a><a href="#job-images">Pictures</a><a href="#job-video">Short videos</a><a href="#job-shops">One-stop shops</a><a href="#job-social">Social posts</a><a href="#job-web">Your website</a><a href="#job-auto">Automation</a><a href="#job-whole">A whole job</a><a href="#job-built">Already in your software</a></nav>
+    <p class="prices">Prices are what each company lists: Australian dollars where they list them, US dollars where they don&rsquo;t. GST is added at checkout unless it says included.</p>
+
+    <details class="job" id="job-main" open>
+      <summary><span class="jt">Your main AI</span><span class="jp">Claude &middot; ChatGPT</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_062806_3ebd2733-ab3c-4c52-87bb-0171a601b028_min.webp" alt="A cartoon cafe owner leans on the counter at dawn, raising an eyebrow at her laptop." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <div class="callout"><b>Claude or ChatGPT?</b><p>Most of what they do overlaps, so pick one as your regular and learn it properly. Claude if your week is writing, quoting and long documents. ChatGPT if you want words, pictures and voice from one app. Paying for both before you&rsquo;ve learnt one is two streaming services and nothing watched.</p></div>
+        <div class="tiles two">
+        <article class="tile" id="t-claude">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/claude.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Claude</h3></div>
+            <p class="best">Writing that sounds like a person, and long documents.</p>
+            <dl class="facts"><dt>Price</dt><dd>A$34 a month, GST included</dd><dt>Free plan</dt><dd>Yes, for light use. A busy day hits the limit</dd><dt>Also does</dt><dd>Slides and docs, and works inside Google Docs and Microsoft 365</dd></dl>
+            <details class="take"><summary>My take</summary><p>It&rsquo;s what I use every day, and what I teach. Put your business in a Project once and it stops needing the backstory.</p><p class="watch"><b>Watch for</b> It makes no photos or video. Pair it with something that does.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-chatgpt">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/openai.svg" alt="" width="26" height="26" loading="lazy"></span><h3>ChatGPT</h3></div>
+            <p class="best">One app for words, pictures and voice.</p>
+            <dl class="facts"><dt>Price</dt><dd>US$20 a month, about A$30 to A$35</dd><dt>Free plan</dt><dd>Yes, on GPT-6 since 8 October, with ads</dd><dt>Also does</dt><dd>The best pictures with words on them, and a voice mode that talks back</dd></dl>
+            <details class="take"><summary>My take</summary><p>I use it alongside Claude, a lot of it for pictures. If you&rsquo;ll only pay for one tool and you want images too, this is the one.</p><p class="watch"><b>Watch for</b> It makes no video now. OpenAI closed Sora in April.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles two small">
+        <article class="tile" id="t-gemini">
+          <div class="ribbon if">Good if <em>you&rsquo;re on Google Workspace</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/gemini.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Gemini</h3></div>
+            <p class="best">Already inside Gmail, Docs and Meet, and the best of the three at photos and video.</p>
+            <dl class="facts"><dt>Price</dt><dd>In Workspace Business Standard and up. On its own, A$7.99 or about A$33 a month</dd><dt>Free plan</dt><dd>Yes, on Google&rsquo;s lightest model since 9 October</dd></dl>
+            <details class="take"><summary>My take</summary><p>I use it for pictures and video. On Workspace, switch it on before you buy anything else.</p><p class="watch"><b>Watch for</b> Business Starter gets a thin version.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-copilot">
+          <div class="ribbon if">Good if <em>you&rsquo;re on Microsoft 365</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/copilot.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Copilot</h3></div>
+            <p class="best">Quick questions, inside the Microsoft account you already have.</p>
+            <dl class="facts"><dt>Price</dt><dd>Copilot Chat is included. The paid version is AU$31.40 a person a month, plus GST</dd><dt>Free plan</dt><dd>Copilot Chat, with Microsoft 365</dd></dl>
+            <details class="take"><summary>My take</summary><p>I don&rsquo;t use it, so this one comes from research. Use the free Copilot Chat first. The paid version costs about as much per person as a whole Claude seat.</p><p class="watch"><b>Watch for</b> Microsoft changed how Copilot is licensed twice this year.</p></details>
+          </div>
+        </article>
+        </div>
+        <p class="asked"><b>Asked about, left off</b>DeepSeek: your data is stored in China, and it&rsquo;s banned on federal government devices. Grok, Meta AI and Mistral: nothing a small business needs that your main AI doesn&rsquo;t already do.</p>
+      </div>
+    </details>
+
+    <details class="job" id="job-inbox">
+      <summary><span class="jt">Your inbox</span><span class="jp">What you already own &middot; Fyxer</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063024_b480a94c-8e32-47ee-abc4-c25f4d175c69_min.webp" alt="A cartoon business owner behind an overflowing in-tray gives his inbox a dry look over his coffee." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">Most inboxes already have an AI in them, switched off. Turn that on before you pay for another one.</p>
+        <div class="tiles one">
+        <article class="tile" id="t-inbox-ai">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">@</span><h3>The AI already in your email</h3></div>
+            <p class="best">A reply drafted from a few dot points, and the long thread summed up.</p>
+            <dl class="facts"><dt>Gmail</dt><dd>Gemini, on Google Workspace. Thin on Business Starter</dd><dt>Outlook</dt><dd>Copilot Chat, free with Microsoft 365 business plans</dd><dt>Claude</dt><dd>Connect Gmail or Outlook and ask it to sort the morning</dd></dl>
+            <details class="take"><summary>My take</summary><p>Check here first. You may already be paying for it.</p><p class="watch"><b>Watch for</b> Keep yourself as the one who presses send.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles one small">
+        <article class="tile" id="t-fyxer">
+          <div class="ribbon if">Good if <em>email takes you an hour a day</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Fy</span><h3>Fyxer</h3></div>
+            <p class="best">Sorts the inbox and leaves replies drafted in your voice each morning.</p>
+            <dl class="facts"><dt>Price</dt><dd>Starter US$30 a month, US$22.50 on annual billing</dd><dt>Free plan</dt><dd>A free trial</dd><dt>Works in</dt><dd>Gmail and Outlook</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. It drafts and never sends, which is the right way round.</p><p class="watch"><b>Watch for</b> Another bill per person, for a job your inbox AI partly does already.</p></details>
+          </div>
+        </article>
+        </div>
+        <p class="asked"><b>Asked about, left off</b>Superhuman: a whole new email app that costs more for the same drafting.</p>
+      </div>
+    </details>
+
+    <details class="job" id="job-phone">
+      <summary><span class="jt">The phone</span><span class="jp">ServiceM8 &middot; Hey Jodie</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063046_46aa0a9a-2a03-4551-bf35-3298f3a064c1_min.webp" alt="A cartoon plumber under a sink strains towards his ringing phone, just out of reach." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">These answer when you can&rsquo;t, take the details and text you a summary. You keep your number and divert missed calls to them. Nearly every review out there is written by someone selling one, so test it before you trust it.</p>
+        <div class="tiles one">
+        <article class="tile" id="t-servicem8">
+          <div class="ribbon top">Top pick <em>you run ServiceM8</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">S8</span><h3>ServiceM8 Phone Agent</h3></div>
+            <p class="best">Calls answered, booked and logged on the job card.</p>
+            <dl class="facts"><dt>Price</dt><dd>A$49 a month on Connect Plus</dd><dt>Free plan</dt><dd>No</dd><dt>Works with</dt><dd>ServiceM8, and Xero through it</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. If you already run ServiceM8, switch this on before you buy anything else.</p><p class="watch"><b>Watch for</b> Which plans include it has moved this year. Check before you sign up.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles one small">
+        <article class="tile" id="t-heyjodie">
+          <div class="ribbon if">Good if <em>you&rsquo;re not on ServiceM8</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">HJ</span><h3>Hey Jodie</h3></div>
+            <p class="best">An AI receptionist on a flat monthly price.</p>
+            <dl class="facts"><dt>Price</dt><dd>From about A$99 a month, plus GST. No setup fee</dd><dt>Free plan</dt><dd>A 7-day trial, no card</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. Divert missed calls to it for a week, and ring it five times yourself before a customer does.</p><p class="watch"><b>Watch for</b> It&rsquo;s a UK company. Ask where your call recordings are kept.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="callout soft"><b>Tell callers they&rsquo;re recorded</b><p>Every one of these records the call. Have it say so in its first sentence. State laws differ, and a call across states should follow the stricter one. General guidance, not legal advice.</p></div><p class="asked"><b>Asked about, left off</b>Rosie, Goodcall and Smith.ai: no Australian number found. Retell and Bland: someone has to build it for you.</p>
+      </div>
+    </details>
+
+    <details class="job" id="job-slides">
+      <summary><span class="jt">Decks and proposals</span><span class="jp">Claude Slides &middot; Gamma</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063046_b49f449b-dd92-4674-9cea-189126587e2f_min.webp" alt="A cartoon woman holds up a scribbled napkin beside a laptop showing a neat slide deck." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <div class="tiles two">
+        <article class="tile" id="t-claude-slides">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/claude.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Claude Slides</h3></div>
+            <p class="best">A decent deck from your notes, with nothing new to buy.</p>
+            <dl class="facts"><dt>Price</dt><dd>Included in every Claude plan</dd><dt>Free plan</dt><dd>Yes, on Claude&rsquo;s free plan too</dd><dt>Exports</dt><dd>PowerPoint and PDF</dd></dl>
+            <details class="take"><summary>My take</summary><p>Free on every plan since 8 October, so it&rsquo;s where I&rsquo;d start. If your business is in a Project, it already knows what to say.</p><p class="watch"><b>Watch for</b> It&rsquo;s weeks old. Open the PowerPoint file yourself before a client edits it.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-gamma">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Ga</span><h3>Gamma</h3></div>
+            <p class="best">Rough notes in, a deck that looks designed out.</p>
+            <dl class="facts"><dt>Price</dt><dd>Plus is US$9 a month</dd><dt>Free plan</dt><dd>A one-off batch of credits to try it</dd><dt>Works with</dt><dd>Claude, through its connector</dd></dl>
+            <details class="take"><summary>My take</summary><p>One of my favourites. Gamma 5 rebuilt it on 6 October, so ignore any how-to video older than that.</p><p class="watch"><b>Watch for</b> Export to PowerPoint is the weak spot.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles one small">
+        <article class="tile" id="t-canva">
+          <div class="ribbon if">Good if <em>you already pay for Canva Pro</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Ca</span><h3>Canva</h3></div>
+            <p class="best">A deck in your brand kit, plus the odd picture and short clip.</p>
+            <dl class="facts"><dt>Price</dt><dd>Canva Pro is about A$20 to A$22 a month, GST included</dd><dt>Free plan</dt><dd>Yes, with a small AI allowance</dd></dl>
+            <details class="take"><summary>My take</summary><p>I don&rsquo;t use it much. If your brand kit is already in Canva, use it before adding Gamma.</p><p class="watch"><b>Watch for</b> All of Canva&rsquo;s AI tools share one monthly allowance.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-talk">
+      <summary><span class="jt">Talking, not typing</span><span class="jp">Wispr Flow</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_062806_034b3a78-06e7-4368-991e-03f93d129d3f_min.webp" alt="A cartoon tradie in his ute dictates a message into his phone." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">You say more when you talk than when you type, and the AI does better with more to go on. Your phone&rsquo;s microphone is fine for a short message. For real writing at a desk, one of these.</p>
+        <div class="tiles one">
+        <article class="tile" id="t-wispr">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Wf</span><h3>Wispr Flow</h3></div>
+            <p class="best">Hold a key, talk, and clean text lands wherever you&rsquo;re typing.</p>
+            <dl class="facts"><dt>Price</dt><dd>Pro is US$12 a month on annual billing, US$15 monthly</dd><dt>Free plan</dt><dd>2,000 words a week on Mac and Windows</dd></dl>
+            <details class="take"><summary>My take</summary><p>I use it every day. Start free. If you hit the weekly limit, you&rsquo;re using it enough to pay for it.</p><p class="watch"><b>Watch for</b> Turn Privacy Mode on. It&rsquo;s off by default.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles one small">
+        <article class="tile" id="t-fireflies-talk">
+          <div class="ribbon if">Good if <em>you&rsquo;re on Fireflies</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Ff</span><h3>Fireflies Talk</h3></div>
+            <p class="best">The same hold-a-key dictation, free with Fireflies.</p>
+            <dl class="facts"><dt>Price</dt><dd>Free on every Fireflies plan</dd><dt>Free plan</dt><dd>Yes, with no word limit</dd><dt>Runs on</dt><dd>Mac and Windows. Phone apps to come</dd></dl>
+            <details class="take"><summary>My take</summary><p>New on 29 September. Too new for me to rank above Wispr Flow, but try it before you pay for anything.</p><p class="watch"><b>Watch for</b> Nobody has tested its accuracy independently yet.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-meet">
+      <summary><span class="jt">Meeting notes</span><span class="jp">Check what you own &middot; Fireflies</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063024_a242fcf9-28c7-4264-98ce-06244bba4e41_min.webp" alt="A cartoon man leans back on a video call while his notes write themselves." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <div class="tiles one">
+        <article class="tile" id="t-fireflies">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Ff</span><h3>Fireflies</h3></div>
+            <p class="best">Notes from every call, on any platform, ready for your AI to read.</p>
+            <dl class="facts"><dt>Price</dt><dd>Pro is US$10 a month on annual billing, US$18 monthly</dd><dt>Free plan</dt><dd>A trial month&rsquo;s worth. You can&rsquo;t export</dd><dt>Works with</dt><dd>Zoom, Meet and Teams, and Claude through its connector</dd></dl>
+            <details class="take"><summary>My take</summary><p>It&rsquo;s what I use. Claude can read last week&rsquo;s call before it writes the proposal.</p><p class="watch"><b>Watch for</b> The bot joins the call as &ldquo;Notetaker&rdquo;. Tell clients first.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles three small">
+        <article class="tile" id="t-meet-builtin">
+          <div class="ribbon if">Good if <em>your plan already has it</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">&#10003;</span><h3>What you already have</h3></div>
+            <p class="best">Your meeting platform may already take the notes for you.</p>
+            <dl class="facts"><dt>Google Meet</dt><dd>Gemini takes notes on Workspace Business Standard and up, not Starter. Switch it on in admin</dd><dt>Zoom</dt><dd>Summaries are included on paid plans</dd><dt>Teams</dt><dd>Recap needs Teams Premium or Copilot on top of Microsoft 365</dd></dl>
+            <details class="take"><summary>My take</summary><p>Check these before you buy a notetaker. The catch is each one only works on its own platform.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-granola">
+          <div class="ribbon skip">Skip <em>for now</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Gr</span><h3>Granola</h3></div>
+            <p class="best">Notes with no bot on the call.</p>
+            <dl class="facts"><dt>Price</dt><dd>Business is US$14 a person a month</dd><dt>Free plan</dt><dd>Yes, to try</dd></dl>
+            <details class="take"><summary>My take</summary><p>I haven&rsquo;t used it, and plenty of people rate it. A US class action filed in July claims it records people without their consent and trains on their data by default. Those are claims, not a ruling. But Fireflies does the same job, so there&rsquo;s no reason to carry the risk while it plays out.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-plaud">
+          <div class="ribbon if">Good if <em>your important talks are face to face</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Pl</span><h3>Plaud</h3></div>
+            <p class="best">A card on the back of your phone that records the conversation in the room.</p>
+            <dl class="facts"><dt>Price</dt><dd>About A$300 for the device, sold at Officeworks</dd><dt>Free plan</dt><dd>300 minutes of transcripts a month</dd><dt>Works with</dt><dd>Claude and ChatGPT, through its connector</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. The only thing here for site visits and kitchen-table quotes, where no notetaker bot can follow you.</p><p class="watch"><b>Watch for</b> Nobody sees it recording. Tell people, every time.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="callout soft"><b>Tell people the call is recorded</b><p>Every time, whatever tool. In Queensland you can record a call you&rsquo;re part of without asking, but other states are stricter, and a call across states should follow the stricter rule. A tool with no bot on screen makes this your job entirely. General guidance, not legal advice.</p></div><p class="asked"><b>Asked about, left off</b>Otter: in the same kind of consent lawsuit as Granola. Read.ai: it invites itself into other people&rsquo;s meetings.</p>
+      </div>
+    </details>
+
+    <details class="job" id="job-docs">
+      <summary><span class="jt">Your own documents</span><span class="jp">Gemini Notebook</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063023_baf5b3b1-9cdf-475e-a7bf-0bdba39b1bb5_min.webp" alt="A cartoon business owner peers over a towering stack of tabbed documents, a highlighter in her teeth." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">For the tender pack, the lease or a pile of supplier PDFs. For research across the web, use the deep research mode in the AI you already pay for. Don&rsquo;t buy a second assistant for it.</p>
+        <div class="tiles one">
+        <article class="tile" id="t-notebook">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/notebook.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Gemini Notebook</h3></div>
+            <p class="best">Answers only from the documents you give it, and shows the page it used.</p>
+            <dl class="facts"><dt>Price</dt><dd>Free with a Google account</dd><dt>More room</dt><dd>Comes with Google AI Plus and Pro</dd><dt>Was called</dt><dd>NotebookLM, until July</dd></dl>
+            <details class="take"><summary>My take</summary><p>For the job nobody wants: reading the 60-page lease. It can also turn the pile into a short audio summary for a staff member.</p><p class="watch"><b>Watch for</b> Check what it quotes against the page. Every time.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles one small">
+        <article class="tile" id="t-perplexity">
+          <div class="ribbon if">Good if <em>you want sources on every answer</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/perplexity.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Perplexity</h3></div>
+            <p class="best">A search engine that answers in sentences and shows its links.</p>
+            <dl class="facts"><dt>Price</dt><dd>Free. Pro is US$20 a month</dd><dt>Free plan</dt><dd>Yes, and it&rsquo;s enough</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. Use it free. Claude, ChatGPT and Gemini all search with sources now, so Pro mostly doubles up.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-images">
+      <summary><span class="jt">Pictures</span><span class="jp">ChatGPT Images &middot; Gemini</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063058_03d614e7-0154-4611-856d-0dcb17e45afc_min.webp" alt="A cartoon cafe owner stands on a chair to photograph a breakfast while a colleague steadies it." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">Check your plan first: ChatGPT, Gemini and Canva Pro all make pictures. The model is what does the work. The app or the shop is just where you use it.</p>
+        <h3 class="msub">The models, October 2026</h3>
+        <div class="mlist">
+          <div class="mrow"><span class="mname">GPT Image 2.5<small>OpenAI</small></span><span class="mbest">Words on a picture, and following a long brief. Top of both public leaderboards.</span><span class="mwhere">ChatGPT, Magnific</span></div>
+          <div class="mrow"><span class="mname">Nano Banana 2.1 and Pro<small>Google</small></span><span class="mbest">Realistic photos and product shots. Pro is the high-detail one.</span><span class="mwhere">Gemini, Fal.ai, and Pro in most shops</span></div>
+          <div class="mrow"><span class="mname">Seedream 5.0 Pro<small>ByteDance</small></span><span class="mbest">Busy layouts and text in many languages.</span><span class="mwhere">Fal.ai, Magnific, Dreamina</span></div>
+          <div class="mrow"><span class="mname">Ideogram 4.5<small>Ideogram</small></span><span class="mbest">Changing one detail, like a price, without the rest moving.</span><span class="mwhere">Ideogram</span></div>
+          <div class="mrow"><span class="mname">Midjourney V8.2<small>Midjourney</small></span><span class="mbest">A distinctive, art-directed look.</span><span class="mwhere">Midjourney</span></div>
+          <div class="mrow"><span class="mname">Recraft V4<small>Recraft</small></span><span class="mbest">Logos and icons as real vector files that scale.</span><span class="mwhere">Recraft</span></div>
+          <div class="mrow"><span class="mname">FLUX 3<small>Black Forest Labs</small></span><span class="mbest">Precise edits that leave everything else alone.</span><span class="mwhere">Fal.ai</span></div>
+        </div>
+        <h3 class="msub">The tools</h3>
+        <div class="tiles two">
+        <article class="tile" id="t-chatgpt-images">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/openai.svg" alt="" width="26" height="26" loading="lazy"></span><h3>ChatGPT Images</h3></div>
+            <p class="best">Pictures with words on them: menus, sale tiles, signs.</p>
+            <dl class="facts"><dt>Price</dt><dd>Included in ChatGPT Plus</dd><dt>Free plan</dt><dd>A few a day</dd></dl>
+            <details class="take"><summary>My take</summary><p>My pick when the picture carries words. It&rsquo;s the best of the lot at getting text right.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-gemini-images">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/gemini.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Gemini</h3></div>
+            <p class="best">Realistic photos and product shots, for the money.</p>
+            <dl class="facts"><dt>Price</dt><dd>Google AI Plus, A$7.99 a month. AI Pro, about A$33, adds video</dd><dt>Free plan</dt><dd>Yes, a small allowance</dd></dl>
+            <details class="take"><summary>My take</summary><p>I use it for realistic photos. Nano Banana 2.1 landed on 6 October and handles text better than the last one.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles two small">
+        <article class="tile" id="t-ideogram">
+          <div class="ribbon if">Good if <em>graphics with words are a weekly job</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/ideogram.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Ideogram</h3></div>
+            <p class="best">Changing a price or a date on a graphic without the rest of it moving.</p>
+            <dl class="facts"><dt>Price</dt><dd>Plus from US$15 a month on annual billing</dd><dt>Free plan</dt><dd>Yes, but your pictures are public</dd></dl>
+            <details class="take"><summary>My take</summary><p>I use it for text-heavy graphics. Otherwise ChatGPT covers it.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-midjourney">
+          <div class="ribbon if">Good if <em>a distinctive look is the point</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/midjourney.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Midjourney</h3></div>
+            <p class="best">Mood and style: an illustrated menu board, a poster look.</p>
+            <dl class="facts"><dt>Price</dt><dd>Basic US$10, Standard US$30 a month</dd><dt>Free plan</dt><dd>No</dd></dl>
+            <details class="take"><summary>My take</summary><p>I&rsquo;ve used it, video included. Claude can&rsquo;t drive it, so you paste the prompt in yourself.</p><p class="watch"><b>Watch for</b> Turning over more than US$1 million a year? You need Pro, US$60, to own what you make. Cheaper plans show everything in a public gallery.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="callout soft"><b>Never fake the real thing</b><p>A made-up photo of a job you didn&rsquo;t do, a dish you don&rsquo;t serve or stock you don&rsquo;t carry can break Australian consumer law. The law asks whether the picture misleads, not who made it. Pictures from Gemini and ChatGPT carry an invisible mark, and since 7 October anyone can check for it.</p></div>
+      </div>
+    </details>
+
+    <details class="job" id="job-video">
+      <summary><span class="jt">Short videos</span><span class="jp">Gemini</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063023_f106ae5d-4128-4643-95b2-309cbe188e17_min.webp" alt="A cartoon tour guide films herself on a coastal boardwalk while a seagull eyes her sandwich." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">ChatGPT makes no video now. OpenAI closed Sora in April. Gemini does, on a paid Google plan. For anything else, use one of these models through its own app or a <a href="#job-shops">one-stop shop</a>.</p>
+        <h3 class="msub">The models, October 2026</h3>
+        <div class="mlist">
+          <div class="mrow"><span class="mname">Gemini Omni<small>Google</small></span><span class="mbest">Ten-second clips with sound. Top of the main public video leaderboard.</span><span class="mwhere">Gemini on a paid plan, Fal.ai</span></div>
+          <div class="mrow"><span class="mname">Veo 3.1<small>Google</small></span><span class="mbest">Realism, sound and lip-sync. The usual premium pick.</span><span class="mwhere">Flow, and nearly every shop</span></div>
+          <div class="mrow"><span class="mname">Seedance 2.5<small>ByteDance</small></span><span class="mbest">Clips up to 30 seconds that keep a product or person steady.</span><span class="mwhere">Higgsfield, Fal.ai, Krea, Dreamina</span></div>
+          <div class="mrow"><span class="mname">Kling 3.0<small>Kuaishou</small></span><span class="mbest">Natural movement for the money. Version 4.0 is due this month.</span><span class="mwhere">Kling, and every shop</span></div>
+          <div class="mrow"><span class="mname">Wan 3.0<small>Alibaba</small></span><span class="mbest">Longer clips, cheap. Near the top of the leaderboards.</span><span class="mwhere">Krea, Magnific</span></div>
+          <div class="mrow"><span class="mname">MiniMax Hailuo 3<small>MiniMax</small></span><span class="mbest">Up to 15 seconds in high resolution, with sound.</span><span class="mwhere">Hailuo, Fal.ai, Krea</span></div>
+          <div class="mrow"><span class="mname">Runway Gen-4.5<small>Runway</small></span><span class="mbest">Controlled, cinematic shots for people who edit video.</span><span class="mwhere">Runway, Firefly, Magnific</span></div>
+          <div class="mrow"><span class="mname">Luma Ray3.2<small>Luma</small></span><span class="mbest">Up to 20 seconds with fine control over each shot.</span><span class="mwhere">Luma</span></div>
+        </div>
+        <h3 class="msub">The tools</h3>
+        <div class="tiles one">
+        <article class="tile" id="t-gemini-video">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/gemini.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Gemini</h3></div>
+            <p class="best">Clips with sound, from a sentence or a photo.</p>
+            <dl class="facts"><dt>Price</dt><dd>Included in Google AI Pro, about A$33 a month</dd><dt>Free plan</dt><dd>No. Video needs a paid plan</dd><dt>Clip length</dt><dd>About 8 to 10 seconds. Right for a Reel, not an explainer</dd></dl>
+            <details class="take"><summary>My take</summary><p>Google&rsquo;s models are what I use for video. Pictures and video on one bill is the simplest setup I know.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles two small">
+        <article class="tile" id="t-kling">
+          <div class="ribbon if">Good if <em>you want one cheap video app of its own</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/kling.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Kling</h3></div>
+            <p class="best">Bringing a still picture to life with natural movement.</p>
+            <dl class="facts"><dt>Price</dt><dd>Standard is US$8.80 a month</dd><dt>Free plan</dt><dd>Watermarked, and not for business use</dd></dl>
+            <details class="take"><summary>My take</summary><p>I used it to animate a still for the newsletter, and that&rsquo;s where it shines. If you&rsquo;re on Higgsfield, it&rsquo;s already in there.</p><p class="watch"><b>Watch for</b> Kling 4.0 is due this month. Don&rsquo;t pay for a year yet.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-capcut">
+          <div class="ribbon if">Good if <em>you edit your own phone clips weekly</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/capcut.svg" alt="" width="26" height="26" loading="lazy"></span><h3>CapCut</h3></div>
+            <p class="best">Captions, cuts and templates on the clips you film yourself.</p>
+            <dl class="facts"><dt>Price</dt><dd>Standard about US$10 a month, Pro about US$20</dd><dt>Free plan</dt><dd>Yes, but its terms restrict business use</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. Pay for it if it&rsquo;s for the business, and skip its music library in business posts. That music isn&rsquo;t cleared for business use.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-shops">
+      <summary><span class="jt">One-stop shops</span><span class="jp">Fal.ai</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063023_07942818-eee5-4d51-9926-e52547da4958_min.webp" alt="A cartoon shopkeeper on a ladder pulls the right drawer from a wall of hundreds." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">One login and one bill that reach many makers&rsquo; picture and video models. You pay for the choice in credits, plus a small markup on each model, and the shops often run a version behind the makers. I left OpenArt off: its cheapest plan doesn&rsquo;t cover business use. These are the ones to rent for a month, not marry.</p>
+        <div class="tiles one">
+        <article class="tile" id="t-fal">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/fal.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Fal.ai</h3></div>
+            <p class="best">Every major picture and video model, paid one result at a time.</p>
+            <dl class="facts"><dt>Price</dt><dd>Pay as you go. Ten pictures about US$0.40, an 8-second clip about US$0.80</dd><dt>Free plan</dt><dd>A few free goes a day in the Sandbox</dd><dt>Works with</dt><dd>Claude, through its connector</dd></dl>
+            <details class="take"><summary>My take</summary><p>It&rsquo;s where I try every new model the week it lands. It looks like a site for developers, but you don&rsquo;t need code. Start in the Sandbox: one prompt, several models side by side, and the cost before you press go.</p><p class="watch"><b>Watch for</b> Check each model&rsquo;s &ldquo;Commercial use&rdquo; badge before you publish.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles three small">
+        <article class="tile" id="t-higgsfield">
+          <div class="ribbon if">Good if <em>video or ads are a weekly job</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Hf</span><h3>Higgsfield</h3></div>
+            <p class="best">Ready-made styles and ad tools on top of the big video models.</p>
+            <dl class="facts"><dt>Price</dt><dd>Plans from about US$15 to US$19 a month</dd><dt>Free plan</dt><dd>No, not for business</dd><dt>Works with</dt><dd>Claude, through its connector</dd></dl>
+            <details class="take"><summary>My take</summary><p>It&rsquo;s what I publish with, and Seedance is my pick inside it for longer, steady clips. Its Ads Studio turns a product link into static ads for about US$0.20 each.</p><p class="watch"><b>Watch for</b> Billing complaints, and renewals aren&rsquo;t refunded. Pay monthly.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-krea">
+          <div class="ribbon if">Good if <em>you want one cheap login for many picture models</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/krea.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Krea</h3></div>
+            <p class="best">A long menu of models in a simple browser app.</p>
+            <dl class="facts"><dt>Price</dt><dd>Basic US$9 a month for pictures. Video needs Pro, US$35</dd><dt>Free plan</dt><dd>Yes, but not for business use</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. The cheapest business licence of the shops, and it has a Claude connector.</p><p class="watch"><b>Watch for</b> Strict refunds. Pay monthly.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-magnific">
+          <div class="ribbon if">Good if <em>you already use Freepik stock</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark mono" aria-hidden="true">Mg</span><h3>Magnific</h3></div>
+            <p class="best">Stock photos plus AI pictures and video on one bill. Freepik renamed in April.</p>
+            <dl class="facts"><dt>Price</dt><dd>Premium US$20 a month, or US$14.50 on annual billing</dd><dt>Free plan</dt><dd>Yes, for personal use</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. It carries GPT Image 2.5, which most shops don&rsquo;t yet, and a Brand Kit that applies your logo and colours.</p><p class="watch"><b>Watch for</b> Credits come as a yearly pool, and reviewers report losing them when they cancel.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-firefly">
+          <div class="ribbon if">Good if <em>you already pay for Adobe</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/firefly.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Adobe Firefly</h3></div>
+            <p class="best">Adobe&rsquo;s own model, safe to print and sell, plus Google&rsquo;s, OpenAI&rsquo;s and Kling.</p>
+            <dl class="facts"><dt>Price</dt><dd>Standard US$9.99, Pro US$19.99 a month</dd><dt>Free plan</dt><dd>A small daily allowance</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. Only Adobe&rsquo;s own model carries its &ldquo;commercially safe&rdquo; promise. The other makers&rsquo; models inside it don&rsquo;t.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-social">
+      <summary><span class="jt">Social posts</span><span class="jp">Buffer</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063024_a3bfcf0a-67f2-43e6-848d-b4c90ba3f326_min.webp" alt="A cartoon shop owner lines up a product photo while the shop cat sits in the middle of it." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <div class="tiles one">
+        <article class="tile" id="t-buffer">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/buffer.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Buffer</h3></div>
+            <p class="best">One queue for every account. Your AI drafts into it, you check each post.</p>
+            <dl class="facts"><dt>Price</dt><dd>Essentials US$6 a channel a month, US$5 on annual billing</dd><dt>Free plan</dt><dd>Yes, for three channels</dd></dl>
+            <details class="take"><summary>My take</summary><p>It&rsquo;s what I teach in <a href="../social/">Social Media with AI</a>.</p><p class="watch"><b>Watch for</b> Its Claude connector is added by hand, not from Claude&rsquo;s list.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles one small">
+        <article class="tile" id="t-meta">
+          <div class="ribbon if">Good if <em>you only post to Facebook and Instagram</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/meta.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Meta Business Suite</h3></div>
+            <p class="best">Meta&rsquo;s own scheduler.</p>
+            <dl class="facts"><dt>Price</dt><dd>Free</dd><dt>Free plan</dt><dd>Yes</dd></dl>
+            <details class="take"><summary>My take</summary><p>The moment you add LinkedIn, Google or TikTok, move to Buffer.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-web">
+      <summary><span class="jt">Your website</span><span class="jp">Wix</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063022_8ffcb983-e906-4067-9aca-91ee8f9e432b_min.webp" alt="A cartoon baker outside her shop holds up her new website on a tablet." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <div class="tiles one">
+        <article class="tile" id="t-wix">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/wix.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Wix</h3></div>
+            <p class="best">A site Claude and ChatGPT can both build and edit for you.</p>
+            <dl class="facts"><dt>Price</dt><dd>From about A$16 a month on annual billing</dd><dt>Free plan</dt><dd>Yes, on a Wix address with Wix ads</dd><dt>Works with</dt><dd>Claude and ChatGPT, directly</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. It&rsquo;s the one builder both main AIs can work on, so you describe the change and it gets made. Bookings and a shop are built in.</p><p class="watch"><b>Watch for</b> Moving off Wix later is hard. Decide before you build.</p></details>
+          </div>
+        </article>
+        </div>
+        <p class="asked"><b>Asked about, left off</b>Squarespace: good-looking, but no AI can edit it for you. Framer and Lovable: built for designers and app builders.</p>
+      </div>
+    </details>
+
+    <details class="job" id="job-auto">
+      <summary><span class="jt">Automation</span><span class="jp">Zapier</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063023_b1ee34c3-8038-4603-958b-2fecd4db3e93_min.webp" alt="A cartoon tradie with a cup of tea watches a long row of dominoes fall." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <div class="callout soft"><b>Check your AI first</b><p>If the job runs on a timetable and ends in a draft you check, like a Monday summary of last week&rsquo;s enquiries, a Claude scheduled task may do it with no other tool. If it has to fire the moment a form comes in, that&rsquo;s a job for one of these.</p></div>
+        <div class="tiles one">
+        <article class="tile" id="t-zapier">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/zapier.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Zapier</h3></div>
+            <p class="best">When something happens in one app, something happens in another, without you.</p>
+            <dl class="facts"><dt>Price</dt><dd>Professional from US$19.99 a month on annual billing</dd><dt>Free plan</dt><dd>100 tasks a month, two-step jobs only</dd><dt>Works with</dt><dd>Claude, through its connector</dd></dl>
+            <details class="take"><summary>My take</summary><p>The one to start with. It builds your first automation from a sentence.</p><p class="watch"><b>Watch for</b> Any job with an AI step in the middle needs Professional.</p></details>
+          </div>
+        </article>
+        </div>
+        <div class="tiles two small">
+        <article class="tile" id="t-make">
+          <div class="ribbon if">Good if <em>a Zapier bill or a complicated job pushes you there</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/make.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Make</h3></div>
+            <p class="best">The same job as Zapier, cheaper per step, on a visual canvas.</p>
+            <dl class="facts"><dt>Price</dt><dd>Core from about US$9 a month on annual billing, US$12 monthly</dd><dt>Free plan</dt><dd>1,000 credits a month</dd></dl>
+            <details class="take"><summary>My take</summary><p>I use it for bigger builds. It&rsquo;s harder to learn on your own.</p><p class="watch"><b>Watch for</b> A job checking a folder every 15 minutes burns about 2,880 credits a month doing nothing. Set it to hourly.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-n8n">
+          <div class="ribbon skip">Skip <em>unless someone technical runs it</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/n8n.svg" alt="" width="26" height="26" loading="lazy"></span><h3>n8n</h3></div>
+            <p class="best">App automation for technical people.</p>
+            <dl class="facts"><dt>Price</dt><dd>Hosted from about &euro;20 a month</dd><dt>Free plan</dt><dd>Only if you run your own server</dd></dl>
+            <details class="take"><summary>My take</summary><p>I don&rsquo;t use it, though I hear good things. Running your own server is a security job, and a serious flaw in it was being exploited in March.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-whole">
+      <summary><span class="jt">A whole job</span><span class="jp">Manus</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063059_921a6f03-74a8-4316-b0f3-349905d082ee_min.webp" alt="A cartoon owner hands a job sheet to a contractor and heads for the door, keys in hand." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <div class="tiles one">
+        <article class="tile" id="t-manus">
+          <div class="ribbon top">Top pick</div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/manus.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Manus</h3></div>
+            <p class="best">Handing over a whole job: research, a web page, a deck.</p>
+            <dl class="facts"><dt>Price</dt><dd>Pro from US$20 a month</dd><dt>Free plan</dt><dd>Free daily credits</dd><dt>Manuals</dt><dd><a href="../manus-bridge/">Manus Bridge</a> and the <a href="../manus-website-manual.html">website manual</a></dd></dl>
+            <details class="take"><summary>My take</summary><p>One of my favourites. Think of it as a contractor, not an assistant. Start free and pay once a job has proved itself.</p><p class="watch"><b>Watch for</b> Credits make the bill hard to predict. In August it deleted some users&rsquo; data after a deal with Meta fell through, so keep copies outside it.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job" id="job-built">
+      <summary><span class="jt">Already in your software</span><span class="jp">Xero &middot; Shopify &middot; Square</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <figure class="jobpic"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Cf3pN3Od0BMoYtBE8Pnj11axEC/hf_20261015_063057_cbdeb5c7-9169-4f88-bd72-8227cb75a8be_min.webp" alt="A cartoon cafe owner after closing looks pleasantly surprised at the sales chart on his till." width="1376" height="768" loading="lazy" decoding="async"></figure>
+        <p class="joblead">The cheapest AI is the one already inside software you pay for. Nothing in this group is a new bill.</p>
+        <div class="tiles two">
+        <article class="tile" id="t-xero">
+          <div class="ribbon top">Top pick <em>you&rsquo;re on Xero</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/xero.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Xero</h3></div>
+            <p class="best">Ask Claude about your real numbers.</p>
+            <dl class="facts"><dt>In Xero</dt><dd>JAX answers questions about cashflow and your P&amp;L</dd><dt>In Claude</dt><dd>An official Xero connector, read-only, on every plan including Free</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. &ldquo;Who owes me money, and how late are they?&rdquo; is now a question Claude can answer from your books. MYOB has the same idea in beta.</p><p class="watch"><b>Watch for</b> Xero has said its AI may move to paid tiers next financial year.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-shopify">
+          <div class="ribbon top">Top pick <em>you sell on Shopify</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/shopify.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Shopify</h3></div>
+            <p class="best">Product descriptions, store edits and answers about your sales.</p>
+            <dl class="facts"><dt>Price</dt><dd>Sidekick is free on every plan, Basic included</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. Use it before you pay anyone to write product copy.</p></details>
+          </div>
+        </article>
+        <article class="tile" id="t-square">
+          <div class="ribbon top">Top pick <em>you take payments on Square</em></div>
+          <div class="tile-body">
+            <div class="tile-head"><span class="mark"><img src="logos/square.svg" alt="" width="26" height="26" loading="lazy"></span><h3>Square</h3></div>
+            <p class="best">Ask about your own sales in plain English, with charts.</p>
+            <dl class="facts"><dt>Price</dt><dd>Free, in Australia since March</dd></dl>
+            <details class="take"><summary>My take</summary><p>From research, not use. &ldquo;What sold best last Saturday?&rdquo; is now a question your till can answer.</p></details>
+          </div>
+        </article>
+        </div>
+      </div>
+    </details>
+
+    <details class="job sources-acc" id="sources">
+      <summary><span class="jt">Where this comes from</span><span class="jp">Sources</span><span class="sign"></span></summary>
+      <div class="job-body">
+        <p>Prices and features were checked on 11 October 2026, from each company&rsquo;s own pages where I could read them and from press and comparison sites where I couldn&rsquo;t. Where sources disagreed, the page gives a range. Every card marked &ldquo;From research, not use&rdquo; is a tool I haven&rsquo;t used myself.</p>
+        <ul>
+          <li>Claude: Anthropic&rsquo;s announcements of Docs, Slides and Design on every plan (8 October) and of Claude in Google Docs, Sheets and Slides (6 October); Automata AI on Australian pricing.</li>
+          <li>ChatGPT: OpenAI&rsquo;s help centre on pricing; gHacks on GPT-6 for free users (8 October); OpenAI&rsquo;s notice closing Sora; OpenAI on Images 2.5.</li>
+          <li>Gemini: Google&rsquo;s Australian subscriptions page; Google&rsquo;s Workspace edition comparison; The Next Web and TechRepublic on the free plan change (October); Google&rsquo;s Gemini video page.</li>
+          <li>Copilot: Microsoft&rsquo;s Australian Copilot pricing page; Microsoft Learn on Teams meeting recap.</li>
+          <li>Gamma: Gamma&rsquo;s Gamma 5 release (6 October) and developer changelog.</li>
+          <li>Wispr Flow and Fireflies: each company&rsquo;s pricing and privacy pages; Fireflies&rsquo; Talk launch (29 September).</li>
+          <li>Granola: Computerworld on the class action filed 30 July 2026.</li>
+          <li>Ideogram: its plans pages and its 4.5 announcement. Midjourney: its version notes, with plan prices and the US$1 million rule from third-party reviews.</li>
+          <li>The model lists: the Artificial Analysis and arena.ai leaderboards as seen on 11 October, and each maker&rsquo;s own release notes.</li>
+          <li>One-stop shops: each shop&rsquo;s own pricing, connector and documentation pages, including Fal.ai&rsquo;s Sandbox and Claude connector pages; Magnific&rsquo;s rename announcement (April); Adobe&rsquo;s partner-model pages; review sites on refunds and billing.</li>
+          <li>Picture rules: commentary on the ACCC&rsquo;s guidance on misleading claims; eWeek on Google&rsquo;s SynthID Detector (7 October).</li>
+          <li>Buffer, Zapier, Make and n8n: each company&rsquo;s pricing pages and help centre; CISA&rsquo;s list of exploited flaws on n8n.</li>
+          <li>Manus: its help centre on plans; Pulse 2.0 and Windows Report on the August data deletion and the October funding.</li>
+          <li>Inbox, phone, documents, websites and the AI inside your software: each company&rsquo;s own pages where reachable (Xero&rsquo;s Claude connector announcement, Square&rsquo;s Australian launch, ServiceM8&rsquo;s phone page, Wix&rsquo;s connector docs), and review and comparison sites for the rest, checked 14 October. Phone receptionist reviews are nearly all written by competitors, which is why that group says test before you trust.</li>
+          <li>Illustrations: made for this page with Nano Banana 2.1 on Higgsfield. Logos: from the open Simple Icons and LobeHub icon sets, used to name each product. Each mark belongs to its company.</li>
+          <li>Recording calls: Australian legal guidance sites on state recording laws. Not legal advice.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+</div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Prices last checked · 14 October 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script src="picker.js"></script>
+<script>
+(function () {
+  'use strict';
+  var M = window.MagnumPicker;
+  var out = document.getElementById('quizout');
+  var bar = document.getElementById('bar');
+  var headEl = document.getElementById('quizhead');
+  var HEAD_ASK = 'Three questions <span>tap to tick, no typing</span>';
+  var WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+
+  var state = { step: 0, jobs: [], pays: [], budget: null };
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function drawBar(n) {
+    var h = '';
+    for (var i = 0; i < 3; i++) { h += '<i class="' + (i < n ? 'on' : '') + '"></i>'; }
+    bar.innerHTML = h;
+  }
+  function has(list, k) { return list.indexOf(k) !== -1; }
+  function toggle(list, k) {
+    var i = list.indexOf(k);
+    if (i === -1) { list.push(k); } else { list.splice(i, 1); }
+  }
+  function and(list) {
+    if (list.length < 2) { return list.join(''); }
+    return list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+  }
+
+  function askMany(num, q, hint, items, chosen, key) {
+    var h = '<div class="qbody"><p class="qnum">Question ' + num + ' of 3</p>' +
+      '<p class="qtext">' + esc(q) + '</p><p class="qhint">' + esc(hint) + '</p><div class="opts">';
+    for (var i = 0; i < items.length; i++) {
+      var on = has(chosen, items[i].k);
+      h += '<button type="button" class="opt" data-k="' + items[i].k + '" aria-pressed="' + on + '">' +
+        '<span class="box" aria-hidden="true"></span>' + esc(items[i].label) + '</button>';
+    }
+    h += '</div><div class="qnav"><button type="button" class="next" id="next"' + (chosen.length ? '' : ' disabled') + '>Next</button>';
+    if (num > 1) { h += '<button type="button" class="qback" id="back">Back a question</button>'; }
+    h += '</div></div>';
+    out.innerHTML = h;
+
+    var btns = out.querySelectorAll('.opt');
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].addEventListener('click', function () {
+        var k = this.getAttribute('data-k');
+        if (key === 'pays') {
+          /* "None of these" clears the rest, and ticking anything clears it */
+          if (k === 'none') { state.pays = has(state.pays, 'none') ? [] : ['none']; }
+          else { if (has(state.pays, 'none')) { state.pays = []; } toggle(state.pays, k); }
+        } else { toggle(state[key], k); }
+        render();
+        var again = out.querySelector('.opt[data-k="' + k + '"]');
+        if (again) { again.focus(); }
+      });
+    }
+    document.getElementById('next').addEventListener('click', function () { state.step++; render(); });
+    var back = document.getElementById('back');
+    if (back) { back.addEventListener('click', function () { state.step--; render(); }); }
+  }
+
+  function askBudget() {
+    var h = '<div class="qbody"><p class="qnum">Question 3 of 3</p>' +
+      '<p class="qtext">How do you feel about spending?</p><p class="qhint">Pick one.</p><div class="opts one">';
+    for (var i = 0; i < M.BUDGETS.length; i++) {
+      h += '<button type="button" class="opt" data-k="' + M.BUDGETS[i].k + '">' + esc(M.BUDGETS[i].label) + '</button>';
+    }
+    h += '</div><div class="qnav"><button type="button" class="qback" id="back">Back a question</button></div></div>';
+    out.innerHTML = h;
+    var btns = out.querySelectorAll('.opt');
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].addEventListener('click', function () {
+        state.budget = this.getAttribute('data-k');
+        state.step++;
+        render();
+      });
+    }
+    document.getElementById('back').addEventListener('click', function () { state.step--; render(); });
+  }
+
+  function result() {
+    var r = M.recommend(state.jobs, state.pays, state.budget);
+    var i, n = r.subs.length, owned = 0;
+    for (i = 0; i < r.rows.length; i++) { if (r.rows[i].tag === 'have') { owned++; } }
+
+    var head = n === 0 ? 'Nothing new to buy.'
+      : WORDS[n] + ' new ' + (n === 1 ? 'bill' : 'bills') + ': ' + and(r.subs) + '.';
+    if (owned) { head += ' ' + WORDS[owned] + (owned === 1 ? ' tool' : ' tools') + ' you already own.'; }
+
+    var paid = [];
+    for (i = 0; i < M.PAYS.length; i++) {
+      if (has(state.pays, M.PAYS[i].k) && !M.PAYS[i].only) { paid.push(M.PAYS[i].label.replace(/ \(.*\)$/, '')); }
+    }
+    var budget = '';
+    for (i = 0; i < M.BUDGETS.length; i++) { if (M.BUDGETS[i].k === state.budget) { budget = M.BUDGETS[i].recap; } }
+    var recap = 'Based on ' + (state.jobs.length === 1 ? 'one job' : state.jobs.length + ' jobs') + ', ' +
+      (paid.length ? and(paid) + ' already paid for' : 'nothing already paid for') + ', and ' + budget + '.';
+
+    var h = '<div class="verdict"><p class="lean">Your board &nbsp;&middot;&nbsp; one tool per job</p>' +
+      '<h3>' + esc(head) + '</h3><p class="vrecap">' + esc(recap) + '</p></div><div class="mine">';
+    var seen = [];
+    for (i = 0; i < r.rows.length; i++) {
+      var p = r.rows[i], label, cls = '';
+      if (p.tag === 'have') { label = 'Already yours'; }
+      else if (p.tag === 'free') { label = 'Free'; }
+      else { cls = ' new'; label = has(seen, p.sub) ? 'Same bill' : 'New bill'; seen.push(p.sub); }
+      h += '<div class="slot' + cls + '"><div class="tool">' +
+        '<span class="tag ' + p.tag + '">' + label + '</span>' +
+        '<p class="sjob">' + esc(p.job) + '</p>' +
+        '<p class="name">' + esc(p.tool) + '</p>' +
+        '<p class="why">' + esc(p.why) + '</p>' +
+        '<p class="cost">' + esc(p.price) + '</p>';
+      if (p.also) { h += '<p class="also">' + esc(p.also) + '</p>'; }
+      if (p.note) { h += '<p class="note">' + esc(p.note) + '</p>'; }
+      h += '<a class="more" href="' + p.link + '">Read the card</a></div></div>';
+    }
+    h += '</div>';
+    var empty = [];
+    for (i = 0; i < M.JOBS.length; i++) { if (!has(state.jobs, M.JOBS[i].k)) { empty.push(M.JOBS[i].title); } }
+    if (empty.length) {
+      h += '<div class="empties"><p>Outlines left empty for now</p><ul>';
+      for (i = 0; i < empty.length; i++) { h += '<li>' + esc(empty[i]) + '</li>'; }
+      h += '</ul></div>';
+    }
+    h += '<div class="vnext"><p>Every tool on your board links to its card below, with the price and what to watch for.</p>' +
+      '<button type="button" class="again js-again">Start again</button></div>';
+    out.innerHTML = h;
+    drawBar(3);
+    headEl.innerHTML = 'Your board <span>three questions, answered</span>' +
+      '<button type="button" class="head-again js-again">Start again</button>';
+  }
+
+  function render() {
+    if (state.step < 3) { headEl.innerHTML = HEAD_ASK; drawBar(state.step); }
+    if (state.step === 0) {
+      askMany(1, 'What do you want help with?', 'Tick as many as you like.', M.JOBS, state.jobs, 'jobs');
+    } else if (state.step === 1) {
+      askMany(2, 'What does the business already pay for?', 'Tick everything that applies.', M.PAYS, state.pays, 'pays');
+    } else if (state.step === 2) {
+      askBudget();
+    } else {
+      result();
+    }
+  }
+
+  function restart() {
+    state = { step: 0, jobs: [], pays: [], budget: null };
+    render();
+    document.getElementById('picker').scrollIntoView({ block: 'start' });
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList && e.target.classList.contains('js-again')) { restart(); }
+  });
+
+  render();
+
+  /* A link to a job or a card opens the fold it sits in, then scrolls to
+     it. Covers the job chips, the picker's links and any pasted link. */
+  function openHash(hash) {
+    if (!hash || hash.length < 2) { return null; }
+    var el = document.getElementById(hash.slice(1));
+    if (!el) { return null; }
+    var d = el.tagName === 'DETAILS' ? el : el.closest('details.job');
+    if (d) { d.open = true; }
+    return el;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) { return; }
+    var el = openHash(a.getAttribute('href'));
+    if (!el) { return; }
+    e.preventDefault();
+    history.replaceState(null, '', a.getAttribute('href'));
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  if (location.hash) {
+    var landed = openHash(location.hash);
+    if (landed) { landed.scrollIntoView({ block: 'start' }); }
+  }
+})();
+</script>
+</body>
+</html>

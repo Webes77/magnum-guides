@@ -13,6 +13,10 @@
 
   Exits 1 on any failure.
 
+  OPEN=1 opens every <details> on the page before measuring. A fold hides
+  its contents from the audit, so run it both ways on any page with
+  accordions (20 Sep lesson, made a switch on 11 Oct).
+
   Three exclusions, each deliberate and each earned:
   - Outlined type. A numeral drawn as --paper fill with an ink stroke reads
     1:1 to anything looking only at `color`. Skipped on a non-zero
@@ -44,6 +48,7 @@ function lum(c){const s=c.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0
     for (const w of WIDTHS) {
       const p = await b.newPage({viewport:{width:w,height:900}});
       await p.goto(`http://localhost:${PORT}/${rel}`, {waitUntil:'networkidle'});
+      if (process.env.OPEN) { await p.evaluate(() => document.querySelectorAll('details').forEach(d => { d.open = true; })); }
       const r = await p.evaluate((lumSrc) => {
         const lum = eval('(' + lumSrc + ')');
         function bg(el){let e=el;while(e){const c=getComputedStyle(e).backgroundColor;const m=c.match(/[\d.]+/g);if(m&&(m.length<4||+m[3]>0.9))return [+m[0],+m[1],+m[2]];e=e.parentElement;}return [251,251,249];}
