@@ -104,6 +104,16 @@ under the masthead, in a `<figure class="ill">` with the credit line, styled by
   glasses, greying moustache, grey t-shirt; a fawn bulldog with a white
   chest blaze, rose ears and the tongue out). Ask for "exactly one dog": the
   first pass drew two.
+- The members area share card (`members-area.jpg`, since 15 Oct, night):
+  a still life, no people. The coral shop door propped open, coffee and keys
+  on the step, a dog bowl and lead by the mat, the workbench lit inside.
+
+Not every picture is a person. James said so on 15 Oct. A still life of the
+job's objects, with the human detail carried by what someone left behind,
+is as much the house style as a scene with people in it. The Field Note
+routine alternates: if last week's card showed a person, this week's is a
+still life. Put "no people" in the scene line when you want none, or the
+model adds someone.
 
 Left alone on purpose. The share cards (`og:image`) keep their titles, because
 WhatsApp shows them. The Field Notes are sent and printed on their own, and a
