@@ -2804,6 +2804,18 @@ symbols, not only people. Four still lifes in the same style, listed in
 `notes/image-style.md`. Their white margins were cropped off in the files
 so they meet the block's ink border cleanly. About 8 credits.
 
+The front page was redesigned around the pictures the same evening, after
+James said the course pictures looked small and he did not like the other
+guides as underlined links. The seven `.ref` lines under the courses are a
+grid of picture cards now, "Guides that go with them" (`.guides`, `.gcard`):
+four across on a laptop, two on a phone, each using the picture already on
+that guide's page, a small coral kicker and the title, no underlines. On a
+phone the Start here pictures are full-width 2:1 banners instead of 76px
+squares. Every illustration on a front page card sits in a `.crop` wrapper
+that trims the picture's own thin panel frame, because inside a card's ink
+border it read as a box in a box. The `.ref` pattern is retired on the front
+page; a new guide gets a `.gcard`, not a line.
+
 The Routines screen is called Scheduled now (James, 15 Oct). Where this file
 says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
 a scheduled task are added there by James; `update_trigger` has no connectors

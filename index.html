@@ -149,9 +149,20 @@ section:hover > .label::before,section:focus-within > .label::before,
 .duo .grid{grid-template-columns:1fr}
 
 /* REFERENCE LINE */
-.ref{margin-top:22px;font-size:15px;font-weight:500;color:var(--body)}
-.ref a{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--rust);padding-bottom:3px;margin-left:8px}
-.ref a:hover{color:var(--rust)}
+.subhead{font-family:var(--display);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.01em;color:var(--ink);margin:44px 0 16px;padding-top:14px;border-top:2px solid var(--ink)}
+.guides{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.gcard{display:flex;flex-direction:column;background:var(--paper-2);border:2px solid var(--ink);text-decoration:none;color:var(--ink)}
+.gcard:hover{border-color:var(--rust)}
+.gcard:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
+/* Illustrations carry their own thin panel frame; inside a card that reads as
+   a box in a box, so the frame is cropped off here. */
+.crop{display:block;overflow:hidden;aspect-ratio:16/9;border-bottom:2px solid var(--ink);background:#F4F1EA}
+.crop img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.07);border:0}
+.card.wide .crop{width:46%;flex-shrink:0;aspect-ratio:auto;border-bottom:0;border-right:2px solid var(--ink)}
+.card .crop img,.gcard .crop img{width:100%;height:100%;border:0}
+.card.wide .crop img{width:100%;border:0}
+.gcard .gk{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);padding:14px 16px 0}
+.gcard .gt{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.15;text-transform:uppercase;padding:6px 16px 16px}
 .links{display:flex;gap:30px;flex-wrap:wrap}
 .recent{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:26px}
 .recent-label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-text);margin-bottom:10px}
@@ -181,10 +192,15 @@ footer b{color:var(--paper);font-weight:500}
   .step h3{margin-top:0;font-size:19px;grid-column:2;grid-row:1}
   .step p{grid-column:2;grid-row:2;font-size:14px;margin-top:0}
   .step .meta{display:none}
-  .step{grid-template-columns:auto minmax(0,1fr) 76px}
-  .step .pic{grid-column:3;grid-row:1/3;width:76px;height:76px;margin:0;aspect-ratio:auto;border:2px solid var(--ink);align-self:center}
+  .step .pic{grid-column:1/-1;grid-row:1;width:calc(100% + 36px);height:auto;margin:-14px -18px 12px;aspect-ratio:2/1;object-fit:cover;border-bottom:2px solid var(--ink)}
+  .step .n{grid-row:2}.step h3{grid-row:2}.step p{grid-row:3}
+  .guides{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .gcard .gk{display:none}
+  .gcard .gt{font-size:15px;padding:10px 12px 12px}
+  .subhead{font-size:20px;margin-top:36px}
   .card.wide{flex-direction:column}
   .card.wide img{width:100%;border-right:0;border-bottom:2px solid var(--ink)}
+  .card.wide .crop{width:100%;aspect-ratio:16/9;border-right:0;border-bottom:2px solid var(--ink)}
   .card.wide .inner{padding:24px 26px 26px}
   .card.wide h3{font-size:23px}
   .duo{gap:54px}
@@ -361,7 +377,7 @@ section,.start{scroll-margin-top:64px}
     <div class="grid three">
 
       <a class="card thumb" href="ai-foundations/">
-        <img src="assets/illustrations/ai-foundations.jpg" alt="A cartoon man at his desk talks to his laptop with both hands, the way he would explain a job to a mate." width="1376" height="768" loading="lazy" decoding="async">
+        <span class="crop"><img src="assets/illustrations/ai-foundations.jpg" alt="A cartoon man at his desk talks to his laptop with both hands, the way he would explain a job to a mate." width="1376" height="768" loading="lazy" decoding="async"></span>
         <div class="inner">
           <h3>AI Foundations</h3>
           <div class="meta">Course one &middot; Nothing to set up</div>
@@ -371,7 +387,7 @@ section,.start{scroll-margin-top:64px}
       </a>
 
       <a class="card thumb" href="make-claude-yours/">
-        <img src="assets/illustrations/make-claude-yours.jpg" alt="A cartoon shop owner hands her laptop a coral folder about her business, her shopfront through the window." width="1376" height="768" loading="lazy" decoding="async">
+        <span class="crop"><img src="assets/illustrations/make-claude-yours.jpg" alt="A cartoon shop owner hands her laptop a coral folder about her business, her shopfront through the window." width="1376" height="768" loading="lazy" decoding="async"></span>
         <div class="inner">
           <h3>Make Claude Yours</h3>
           <div class="meta">Course two &middot; Ninety minutes</div>
@@ -381,7 +397,7 @@ section,.start{scroll-margin-top:64px}
       </a>
 
       <a class="card thumb" href="runs-without-you/">
-        <img src="assets/illustrations/runs-without-you.jpg" alt="A cartoon man fishes off a jetty while his phone lights up beside him with the job done." width="1376" height="768" loading="lazy" decoding="async">
+        <span class="crop"><img src="assets/illustrations/runs-without-you.jpg" alt="A cartoon man fishes off a jetty while his phone lights up beside him with the job done." width="1376" height="768" loading="lazy" decoding="async"></span>
         <div class="inner">
           <h3>Work That Runs Without You</h3>
           <div class="meta">Course three &middot; Scheduled tasks</div>
@@ -391,13 +407,44 @@ section,.start{scroll-margin-top:64px}
       </a>
 
     </div>
-    <p class="ref">Reference for what course two sets up: <a href="fine-tune/">Fine-Tune the AI You Already Use &rarr;</a></p>
-    <p class="ref">What these tools keep, and who can read it: <a href="privacy/">AI Privacy: What Is Kept, and Who Can See It &rarr;</a></p>
-    <p class="ref">Before you put staff on paid seats: <a href="team-seats/">Should You Move Your Team onto Paid Seats? &rarr;</a></p>
-    <p class="ref">Hand over a whole job: <a href="cowork/">Task Work: What It Is and How to Set It Up &rarr;</a></p>
-    <p class="ref">How hard to make it work: <a href="effort/">Claude Effort Levels: Current Guidance &rarr;</a></p>
-    <p class="ref">Posts in your voice, on autopilot: <a href="social/">Social Media with AI &rarr;</a></p>
-    <p class="ref">A team that works the shift while you approve the drafts, built in Claude Code: <a href="agent-workforce/">Build Your Own Agent Workforce &rarr;</a></p>
+    <h3 class="subhead">Guides that go with them</h3>
+    <div class="guides">
+      <a class="gcard" href="fine-tune/">
+        <span class="crop"><img src="assets/illustrations/fine-tune.jpg" alt="" width="1200" height="670" loading="lazy" decoding="async"></span>
+        <span class="gk">Reference for course two</span>
+        <span class="gt">Fine-Tune the AI You Already Use</span>
+      </a>
+      <a class="gcard" href="privacy/">
+        <span class="crop"><img src="assets/illustrations/privacy.jpg" alt="" width="1200" height="670" loading="lazy" decoding="async"></span>
+        <span class="gk">What these tools keep</span>
+        <span class="gt">AI Privacy: What Is Kept, and Who Can See It</span>
+      </a>
+      <a class="gcard" href="team-seats/">
+        <span class="crop"><img src="assets/illustrations/team-seats.jpg" alt="" width="1200" height="670" loading="lazy" decoding="async"></span>
+        <span class="gk">Before you buy staff seats</span>
+        <span class="gt">Should You Move Your Team onto Paid Seats?</span>
+      </a>
+      <a class="gcard" href="cowork/">
+        <span class="crop"><img src="assets/illustrations/cowork.jpg" alt="" width="1200" height="670" loading="lazy" decoding="async"></span>
+        <span class="gk">Hand over a whole job</span>
+        <span class="gt">Task Work: What It Is and How to Set It Up</span>
+      </a>
+      <a class="gcard" href="effort/">
+        <span class="crop"><img src="assets/illustrations/effort.jpg" alt="" width="1200" height="670" loading="lazy" decoding="async"></span>
+        <span class="gk">How hard to make it work</span>
+        <span class="gt">Claude Effort Levels</span>
+      </a>
+      <a class="gcard" href="social/">
+        <span class="crop"><img src="assets/illustrations/social.jpg" alt="" width="1200" height="670" loading="lazy" decoding="async"></span>
+        <span class="gk">Posts in your voice</span>
+        <span class="gt">Social Media with AI</span>
+      </a>
+      <a class="gcard" href="agent-workforce/">
+        <span class="crop"><img src="assets/illustrations/agent-workforce.jpg" alt="" width="1200" height="670" loading="lazy" decoding="async"></span>
+        <span class="gk">A team that works the shift</span>
+        <span class="gt">Build Your Own Agent Workforce</span>
+      </a>
+    </div>
   </section>
 
   <!-- PROMPT SHELF · cumulative, undated. Fed by the Sunday Brief -->
@@ -408,7 +455,7 @@ section,.start{scroll-margin-top:64px}
     <div class="grid" style="grid-template-columns:1fr">
 
       <a class="card thumb wide" href="prompts/">
-        <img src="assets/illustrations/prompts.jpg" alt="A cartoon café worker reaches for one jar on a long shelf of jars while a colleague waits with his cup." width="1376" height="768" loading="lazy" decoding="async">
+        <span class="crop"><img src="assets/illustrations/prompts.jpg" alt="A cartoon café worker reaches for one jar on a long shelf of jars while a colleague waits with his cup." width="1376" height="768" loading="lazy" decoding="async"></span>
         <div class="inner">
           <h3>Prompt Shelf</h3>
           <div class="meta">Living page &middot; new cards every week</div>
@@ -480,7 +527,7 @@ section,.start{scroll-margin-top:64px}
       <div class="grid">
 
         <a class="card thumb" href="ai-tools/">
-          <img src="assets/illustrations/tools-hero.jpg" alt="A cartoon workshop shadow board: tools hang in painted outlines, and one outline in the middle is empty." width="1376" height="768" loading="lazy" decoding="async">
+          <span class="crop"><img src="assets/illustrations/tools-hero.jpg" alt="A cartoon workshop shadow board: tools hang in painted outlines, and one outline in the middle is empty." width="1376" height="768" loading="lazy" decoding="async"></span>
           <div class="inner">
             <h3>The AI tools worth paying for</h3>
             <div class="meta">Reference &middot; 41 tools &middot; 15 models</div>
@@ -490,7 +537,7 @@ section,.start{scroll-margin-top:64px}
         </a>
 
         <a class="card thumb" href="manus-website-manual.html">
-          <img src="assets/illustrations/manus-website.jpg" alt="A cartoon crew in hard hats hoists a giant web page into place on scaffolding while the foreman points." width="1376" height="768" loading="lazy" decoding="async">
+          <span class="crop"><img src="assets/illustrations/manus-website.jpg" alt="A cartoon crew in hard hats hoists a giant web page into place on scaffolding while the foreman points." width="1376" height="768" loading="lazy" decoding="async"></span>
           <div class="inner">
             <h3>Build client websites without a developer</h3>
             <div class="meta">Manus &middot; Reference manual &middot; Thirty-three parts</div>
@@ -500,7 +547,7 @@ section,.start{scroll-margin-top:64px}
         </a>
 
         <a class="card thumb" href="manus-bridge/">
-          <img src="assets/illustrations/manus-bridge.jpg" alt="A cartoon covered walkway joins two buildings, and a worker carries boxes across from one side to the other." width="1376" height="768" loading="lazy" decoding="async">
+          <span class="crop"><img src="assets/illustrations/manus-bridge.jpg" alt="A cartoon covered walkway joins two buildings, and a worker carries boxes across from one side to the other." width="1376" height="768" loading="lazy" decoding="async"></span>
           <div class="inner">
             <h3>Brief Claude. Manus builds it.</h3>
             <div class="meta">Manus Bridge &middot; Walkthrough &middot; Forty-five minutes</div>
@@ -520,7 +567,7 @@ section,.start{scroll-margin-top:64px}
       <div class="grid">
 
         <a class="card thumb" href="ba-growth/index.html">
-          <img src="assets/illustrations/ba-growth.jpg" alt="A cartoon buyer's agent shows a young couple a listing on his tablet outside a Queenslander." width="1376" height="768" loading="lazy" decoding="async">
+          <span class="crop"><img src="assets/illustrations/ba-growth.jpg" alt="A cartoon buyer's agent shows a young couple a listing on his tablet outside a Queenslander." width="1376" height="768" loading="lazy" decoding="async"></span>
           <div class="inner">
             <h3>AI for Buyer&rsquo;s Agents</h3>
             <div class="meta">Industry guide &middot; Ten parts</div>
