@@ -97,6 +97,13 @@ under the masthead, in a `<figure class="ill">` with the credit line, styled by
   width at the top of each block on a laptop, a 76px square beside the title
   on a phone. James said pictures need not be people: objects and symbols
   are fine in this style.
+- The front page welcome picture (`welcome.jpg`, since 15 Oct, night):
+  James and his British Bulldog at the coral shop door at opening time. His
+  likeness lives here and nowhere else; see CLAUDE.md for why. Drawn from a
+  written description of his photos (dark hair swept up, black rectangular
+  glasses, greying moustache, grey t-shirt; a fawn bulldog with a white
+  chest blaze, rose ears and the tongue out). Ask for "exactly one dog": the
+  first pass drew two.
 
 Left alone on purpose. The share cards (`og:image`) keep their titles, because
 WhatsApp shows them. The Field Notes are sent and printed on their own, and a
