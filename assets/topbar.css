@@ -1,0 +1,23 @@
+/* The members area top bar, shared by the inner pages since 16 Oct.
+   Same bar as the front page: the small mark and the name on the left,
+   five places on the right. Self-contained on purpose, so it reads the same
+   on every page whatever that page's own tokens are. Class names carry the
+   mtb- prefix so no page rule can reach them. */
+.mtb{background:#FFFFFF;border-bottom:2px solid #1E1B17;position:relative;z-index:60}
+.mtb *{box-sizing:border-box;margin:0;padding:0}
+.mtb-in{max-width:1120px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.mtb-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#1E1B17}
+.mtb-brand img{display:block;width:40px;height:40px;border:0}
+.mtb-brand b{display:block;font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:700;font-size:19px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.mtb-brand i{display:block;font-style:normal;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#63615C;margin-top:4px;line-height:1}
+.mtb-links{display:flex;gap:28px}
+.mtb-links a{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;color:#1E1B17;text-decoration:none;padding:6px 0;border-bottom:3px solid transparent}
+.mtb-links a:hover,.mtb-links a[aria-current]{border-bottom-color:#EF4029}
+@media(max-width:820px){
+  .mtb-in{flex-direction:column;align-items:stretch;height:auto;gap:0;padding:10px 18px 0}
+  .mtb-brand img{width:36px;height:36px}
+  .mtb-links{gap:0;justify-content:space-between;overflow-x:auto;padding:8px 0 10px;scrollbar-width:none}
+  .mtb-links::-webkit-scrollbar{display:none}
+  .mtb-links a{font-size:14.5px;white-space:nowrap}
+}
+@media print{.mtb{display:none}}
