@@ -2868,6 +2868,25 @@ at 28,456 characters. The task still has only Google Drive and Microsoft
 365 attached, so until Higgsfield is added in Scheduled its cards use the
 stand-in picture.
 
+**The top bar is on the inner pages too, 16 Oct, on James's word.** Nine
+pages carry the front page's bar: the six guides (`privacy/`, `cowork/`,
+`team-seats/`, `effort/`, `agent-workforce/`, `manus-bridge/`), `ba-growth/`,
+`ai-tools/` and `prompts/`. It is `assets/topbar.css` plus one `<header
+class="mtb">` straight after `<body>`, every class prefixed `mtb-` and every
+colour written out, so no page's own rules or tokens reach it. Static, not
+sticky, because several of these pages pin things of their own. The page's
+own link is underlined coral (`aria-current`). Pages that pad their body
+carry an inline negative margin on the header so it runs edge to edge: 20px
+on the guides and `ai-tools/`; `ba-growth/` is a centred 800px column, so it
+takes `calc(50% - 50vw)` and `html{overflow-x:clip}`.
+
+Left without it, on purpose. Fine-Tune and the Manus website manual have
+fixed bars of their own (Fine-Tune's carries Present mode), which would sit
+on top of this one, and both already link home. The five decks are
+full-screen presenter tools. The Field Notes and their archive never link
+into the members area, by the 16 Sep rule. A new guide gets the bar: copy
+the header from any guide and link `../assets/topbar.css`.
+
 The Routines screen is called Scheduled now (James, 15 Oct). Where this file
 says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
 a scheduled task are added there by James; `update_trigger` has no connectors
