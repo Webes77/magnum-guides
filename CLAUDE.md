@@ -2579,7 +2579,13 @@ repo's `ROUTINE.md` under Publish from a chat, step 5.
 
 From 18 Oct (brought forward a week on James's word) the newsletter hero is
 `assets/standing/hero-cartoon.jpg`, the preview card `preview.jpg` is the same
-cartoon with the title on a navy panel (the gold robot card is retired), and
+cartoon still life (a seagull eyeing a croissant, the badge on the coffee cup)
+with the title on a navy panel, because James said his face on every share
+was indulgent (the gold robot card is retired). The nine Field Note cards were
+rebuilt to the same layout the same day (cartoon left, navy title panel right,
+`templates/field-note-thumbnail.html`), their share links bumped to a new
+`?v=`. The front page's opening line no longer leads with "Four short
+courses"; it leads with what the reader gets. And
 the builder uses it by default. It shows James at his desk with the bulldog
 in a black polo. It was redrawn on 17 Oct from two of his own photos, after
 he said the first version, drawn from `welcome.jpg`, looked nothing like
