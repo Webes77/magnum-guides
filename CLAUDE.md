@@ -2570,6 +2570,21 @@ returned file lands in this session's `tool-results` folder byte for byte
 (checked by md5). Copy it into the build. This works for stills only, not
 videos.
 
+Later on 17 Oct James called the drawn section diagrams boring and asked
+for proper pictures, like normal newsletters. Every section now gets the
+article's own picture where one exists and shows the story. Otherwise it
+gets a cartoon made to `notes/image-style.md`. The 18 Oct edition was
+republished with four cartoons (deploy `5044f72`). The steps are in that
+repo's `ROUTINE.md` under Publish from a chat, step 5.
+
+From 25 Oct the newsletter hero is `assets/standing/hero-cartoon.jpg`, and
+the builder uses it by default. It shows James at his desk with the bulldog,
+drawn from `welcome.jpg` as a reference. The delivered
+`magnum-badge-ring-navy-red-ai.svg` is laid onto a blank navy disc on the
+wall, so the logo is the real file and was not drawn by the model. James
+asked for his brand to be visible. This is the second place his likeness
+appears, at his request. Editions up to 18 Oct keep the old `hero.png`.
+
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
 (`trig_014BpCSeSMonkfgePpN5tBfN`, renamed "Percy · Sunday Brief") was
