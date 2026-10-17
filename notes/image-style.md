@@ -124,7 +124,10 @@ notes for 15 Oct, not here, because the files themselves are the source now.
 
 ## The Field Note cards, since 15 Oct
 
-James asked for the weekly Field Note to follow the same style. The card's
+James asked for the weekly Field Note to follow the same style. Since 17 Oct
+the card matches the This Week in AI preview: the cartoon fills the left, and a
+navy panel on the right carries Weekly Field Note, the headline and the kicker.
+Before that, the card's
 right-hand panel (the share card WhatsApp shows, and the front page card)
 carries a cartoon made for that issue, 4:3, with the issue number as a small
 bright coral tag in the corner and the credit line under it. Issues 01 to 09
