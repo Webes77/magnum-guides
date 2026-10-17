@@ -2577,7 +2577,9 @@ gets a cartoon made to `notes/image-style.md`. The 18 Oct edition was
 republished with four cartoons (deploy `5044f72`). The steps are in that
 repo's `ROUTINE.md` under Publish from a chat, step 5.
 
-From 25 Oct the newsletter hero is `assets/standing/hero-cartoon.jpg`, and
+From 18 Oct (brought forward a week on James's word) the newsletter hero is
+`assets/standing/hero-cartoon.jpg`, the preview card `preview.jpg` is the same
+cartoon with the title on a navy panel (the gold robot card is retired), and
 the builder uses it by default. It shows James at his desk with the bulldog
 in a black polo. It was redrawn on 17 Oct from two of his own photos, after
 he said the first version, drawn from `welcome.jpg`, looked nothing like
