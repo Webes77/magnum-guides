@@ -2555,6 +2555,21 @@ faults marked. A 1200-wide landscape version was unreadable at phone width,
 so draw these about 800px wide with large type. Republished with
 `--replace` at the same URL, deploy confirmed on `fd121f2`.
 
+The 18 Oct edition was published from a chat on 17 Oct with no Magnum
+from James: he asked for the whole edition to be run. The Magnum was made
+in his Higgsfield account from the draft's picture idea 1, word for word
+(`gpt_image_2_5`, 3:2). Four sections carry drawn illustrations; the
+Newsline had no source image because openai.com refuses fetches. One copy
+fix: DigUp runs on Mac, Windows and Linux, and the draft said Mac only.
+The WhatsApp text opens "Hi everyone, happy Sunday. The new edition of This
+Week in AI is out." James asked for a Sunday greeting on 11 Oct.
+Deploy confirmed on `a3c43fb`. **How to get a Higgsfield file onto the
+site when its CDN is blocked:** download it in `mcp__Higgsfield__sandbox_exec`,
+then pass it back with `image_paths` (a JPEG or PNG of 512 KiB at most). The
+returned file lands in this session's `tool-results` folder byte for byte
+(checked by md5). Copy it into the build. This works for stills only, not
+videos.
+
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
 (`trig_014BpCSeSMonkfgePpN5tBfN`, renamed "Percy · Sunday Brief") was
