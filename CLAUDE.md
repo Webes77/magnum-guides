@@ -2587,8 +2587,9 @@ black polo shirt. He picked version 1. The photos are in his Higgsfield
 library as media `9096a02f-4aaf-4bfb-9162-d09e8e58b3d9` (glasses) and
 `fcaa2d74-1e70-4f04-8c0f-36fb52970297` (no glasses). Use them as
 references for any future picture of him, and edit an approved picture
-rather than starting fresh. `welcome.jpg` on the front page still uses the
-old likeness; redoing it from the photos was offered and not yet asked for.
+rather than starting fresh. `welcome.jpg` on the front page was redrawn the
+same day from the same photos and the approved hero, with the scene kept as
+it was. James picked version 2.
 James unblocked `upload.higgsfield.ai`, `d8j0ntlcm91z4.cloudfront.net` and
 `d2ol7oe51mr4n9.cloudfront.net` in the environment's network settings on
 17 Oct. Higgsfield files now download and upload directly from this
