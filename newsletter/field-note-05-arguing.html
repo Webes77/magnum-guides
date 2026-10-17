@@ -18,14 +18,14 @@
 <meta property="og:title" content="Weekly Field Note No. 05 · Get Claude to find the hole in your plan">
 <meta property="og:description" content="A prompt that makes Claude argue against your plan instead of agreeing with it.">
 <meta property="og:url" content="https://webes77.github.io/magnum-guides/newsletter/field-note-05-arguing.html">
-<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Weekly Field Note No. 05 · Get Claude to find the hole in your plan, published by Magnum AI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Weekly Field Note No. 05 · Get Claude to find the hole in your plan">
 <meta name="twitter:description" content="A prompt that makes Claude argue against your plan instead of agreeing with it.">
-<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-05-arguing.jpg?v=3">
 <meta name="theme-color" content="#1F2A37">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,6 +79,12 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 .copy{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
   background:var(--coral-bright);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
 .copy.done{background:var(--tint)}
+.pbox pre .blank{display:inline;background:var(--coral-bright);color:var(--ink);padding:1px 5px;
+  outline:none;cursor:text;-webkit-user-select:text;user-select:text;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pbox pre .blank:empty::before{content:attr(data-ph)}
+.pbox pre .blank:focus{background:var(--white)}
+.pbox pre .blank:focus:empty::before{color:var(--mute)}
+.pbox .hint{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-navy-mute);margin:0 0 12px}
 .pbox pre{font-family:var(--mono);font-size:14px;line-height:1.6;white-space:pre-wrap;
   word-break:break-word;color:var(--white)}
 
@@ -101,7 +107,7 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 }
 @media print{
   html,body{background:#fff}
-  .sitebar,.sharebar,.copy{display:none}
+  .sitebar,.sharebar,.copy,.hint{display:none}
   .note{border:0}
   .pbox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
@@ -130,8 +136,8 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
       <dt>What you do</dt>
       <dd>
         <ol class="steps">
-          <li>Write your plan in a few lines, or use the one Claude just gave you.</li>
-          <li>In the same chat, paste the prompt straight under the plan.</li>
+          <li>Tap the two coral blanks in the prompt and type your answers in.</li>
+          <li>Press Copy and paste it into a new chat in Claude or ChatGPT.</li>
           <li>Fix the one that matters before anything else.</li>
         </ol>
       </dd>
@@ -140,9 +146,10 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 
   <div class="pbox">
     <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
-    <pre>You are the most experienced operator in my trade, brought in to find the reason this fails. Nobody is paying you to be encouraging.
+    <p class="hint">Tap a coral blank to type in it</p>
+    <pre>You are the most experienced operator in [your industry], brought in to find the reason this plan fails. Nobody is paying you to be encouraging.
 
-The plan above is mine and I am about to spend my own time and money on it, so a miss here costs me a week of work, not a mark out of ten.
+The plan below is mine and I am about to spend my own time and money on it, so a miss here costs me a week of work, not a mark out of ten.
 
 Work only from what is written. Where the plan leans on something I have not told you, say so rather than filling the gap, because an invented risk sends me chasing a problem I do not have.
 
@@ -159,7 +166,10 @@ Each assumption the plan rests on, with the question I should have asked to test
 WHAT YOU WOULD WANT TO KNOW
 The things you would ask before you put your own name on this.
 
-If the plan holds up, say so in one line. Do not invent a fourth problem to look useful.</pre>
+If the plan holds up, say so in one line. Do not invent a fourth problem to look useful.
+
+MY PLAN
+[your plan, a few lines is plenty]</pre>
   </div>
 
   <section class="why">
@@ -192,9 +202,36 @@ function copyText(text, done){
     fallback(text, done);
   }
 }
+var pre = document.querySelector('.pbox pre');
+var PROMPT = pre.textContent;
+var BLANKS = ['[your industry]','[your plan, a few lines is plenty]'];
+function esc(x){ return x.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+(function(){
+  var h = esc(PROMPT);
+  BLANKS.forEach(function(b, i){
+    h = h.split(esc(b)).join('<span class="blank" contenteditable="true" spellcheck="false" role="textbox" aria-label="' + esc(b.slice(1,-1)) + '" data-i="' + i + '" data-ph="' + esc(b) + '"></span>');
+  });
+  pre.innerHTML = h;
+})();
+pre.querySelectorAll('.blank').forEach(function(el){
+  el.addEventListener('paste', function(e){
+    e.preventDefault();
+    var t = (e.clipboardData || window.clipboardData).getData('text');
+    document.execCommand('insertText', false, t);
+  });
+  el.addEventListener('input', function(){ if (!el.textContent.trim()) el.innerHTML = ''; });
+});
+function filled(){
+  var t = PROMPT;
+  pre.querySelectorAll('.blank').forEach(function(el){
+    var v = el.innerText.replace(/ /g,' ').trim();
+    if (v) t = t.split(BLANKS[+el.dataset.i]).join(v);
+  });
+  return t;
+}
 document.querySelectorAll('[data-copy]').forEach(function(btn){
   btn.addEventListener('click', function(){
-    var text = btn.closest('.pbox').querySelector('pre').textContent;
+    var text = filled();
     copyText(text, function(){
       btn.textContent = 'Copied';
       btn.classList.add('done');

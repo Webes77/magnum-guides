@@ -73,6 +73,10 @@ h1{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-
 .tick::after{content:"";width:42%;height:22%;border-left:6px solid var(--paper);border-bottom:6px solid var(--paper);transform:rotate(-45deg) translate(6%,-18%)}
 .plate-cap{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#F4F1EA;border-top:3px solid rgba(244,241,234,.5);padding-top:10px;margin-top:14px;line-height:1.6}
 
+.plate.pic{padding:0;position:relative;justify-content:flex-start}
+.plate.pic .ill{display:block;width:100%;flex:1;min-height:0;object-fit:cover;object-position:center;transform:scale(1.04)}
+.plate.pic .plate-cap{position:relative;z-index:1;background:var(--navy);margin-top:0;padding:10px 18px 12px;border-top:4px solid var(--ink)}
+.numtag{position:absolute;top:14px;left:14px;z-index:1;font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:700;font-size:24px;letter-spacing:.06em;text-transform:uppercase;line-height:1;background:var(--coral-bright);color:var(--ink);border:3px solid var(--ink);padding:4px 12px 5px}
 .foot{border-top:3px solid var(--ink);margin-top:20px;padding-top:11px;display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal)}
 .foot .mid{color:var(--taupe)}
 .foot .pg{color:var(--ink);font-weight:600}
@@ -95,40 +99,17 @@ h1{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-
       <!-- EDIT 3 · theme, headline, kicker -->
       <div class="eyebrow">Front door</div>
       <h1>Everything,<br>in one place.</h1>
-      <div class="kicker">Guides, decks and the weekly.</div>
+      <div class="kicker">Courses, prompts and two weekly reads.</div>
       <div class="slug">
-        <span><b>Holds</b> session decks, manuals, industry guides</span>
+        <span><b>Holds</b> four courses, every prompt, the guides</span>
         <span><b>Updated</b> every week</span>
       </div>
     </div>
 
-    <div class="plate">
-      <div class="doc-wrap">
-<svg viewBox="0 0 420 380" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-  <rect x="24" y="36" width="168" height="116" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/>
-  <rect x="44" y="60" width="82" height="11" fill="#1E1B17"/>
-  <rect x="44" y="84" width="124" height="8" fill="#3A3630"/>
-  <rect x="44" y="102" width="98" height="8" fill="#3A3630"/>
-  <rect x="44" y="126" width="56" height="9" fill="#FF6F5E"/>
-  <rect x="228" y="36" width="168" height="116" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/>
-  <rect x="248" y="60" width="82" height="11" fill="#FFFFFF"/>
-  <rect x="248" y="84" width="124" height="8" fill="#FFFFFF" opacity=".7"/>
-  <rect x="248" y="102" width="98" height="8" fill="#FFFFFF" opacity=".7"/>
-  <rect x="248" y="126" width="56" height="9" fill="#FFFFFF"/>
-  <rect x="24" y="180" width="168" height="116" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/>
-  <rect x="44" y="204" width="82" height="11" fill="#1E1B17"/>
-  <rect x="44" y="228" width="124" height="8" fill="#3A3630"/>
-  <rect x="44" y="246" width="98" height="8" fill="#3A3630"/>
-  <rect x="44" y="270" width="56" height="9" fill="#FF6F5E"/>
-  <rect x="228" y="180" width="168" height="116" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/>
-  <rect x="248" y="204" width="82" height="11" fill="#1E1B17"/>
-  <rect x="248" y="228" width="124" height="8" fill="#3A3630"/>
-  <circle cx="352" cy="272" r="28" fill="#5B6B7A" stroke="#1E1B17" stroke-width="4"/>
-  <path d="M339 272l10 11 19-22" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="24" y="326" width="372" height="10" fill="#1E1B17"/>
-</svg>
-      </div>
-      <div class="plate-cap">Fig. 01 / One address, everything in it<br>Published by Magnum AI</div>
+    <div class="plate pic">
+      <img class="ill" src="assets/illustrations/members-area.jpg" alt="">
+      <div class="numtag">Open</div>
+      <div class="plate-cap">Fig. 01 / Opened up, ready to work<br>Illustration: Magnum AI</div>
     </div>
   </div>
 

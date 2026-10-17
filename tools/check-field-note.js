@@ -197,7 +197,9 @@ function check(file) {
         ['twitter:image', meta(/name="twitter:image" content="([^"]*)"/), img],
       ];
       for (const [name, got, want] of pairs) {
-        if (got !== want) fail.push(`${name} is ${got || 'missing'}, expected ${want}`);
+        // A share image may carry ?v=N so WhatsApp and LinkedIn fetch a re-rendered card.
+        const norm = (name === 'og:image' || name === 'twitter:image') && got ? got.replace(/\?v=\d+$/, '') : got;
+        if (norm !== want) fail.push(`${name} is ${got || 'missing'}, expected ${want}`);
       }
 
       for (const tag of ['og:type','og:site_name','og:title','og:description',
@@ -234,6 +236,13 @@ function check(file) {
       const thumbSrc = path.join(ROOT, 'newsletter', `field-note-${nn}-thumbnail.html`);
       if (!fs.existsSync(thumbSrc)) {
         warn.push(`no card source at newsletter/${path.basename(thumbSrc)}, so the card cannot be regenerated`);
+      } else {
+        // Since 15 Oct the card carries the issue's cartoon. A card source that
+        // points at a picture that is not there renders a broken card.
+        const ill = (fs.readFileSync(thumbSrc, 'utf8').match(/<img class="ill" src="([^"]+)"/) || [])[1];
+        if (ill && !fs.existsSync(path.join(ROOT, 'newsletter', ill))) {
+          fail.push(`the card source points at a picture that is not there: ${ill}`);
+        }
       }
       const thumbJpg = path.join(ROOT, 'assets', 'thumbnails', `${stem}.jpg`);
       if (!fs.existsSync(thumbJpg)) {

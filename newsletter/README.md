@@ -67,9 +67,16 @@ are what a client sees when the link arrives in their inbox, so worth getting ri
 **3. Make the thumbnail.**
 
 - Copy `../templates/field-note-thumbnail.html` to
-  `field-note-NN-thumbnail.html` in this folder and change the four bits marked
-  `EDIT` in it (issue number, theme, headline, kicker). The card source is named
-  by issue number only, not by slug, and it stays beside the issue.
+  `field-note-NN-thumbnail.html` in this folder and change the bits marked
+  `EDIT` in it (issue number, theme, headline, kicker, footer, picture). The
+  card source is named by issue number only, not by slug, and it stays beside
+  the issue.
+- Since 15 Oct the card's right-hand panel carries a cartoon made for the
+  issue, at `../assets/illustrations/field-note-NN.jpg`, 4:3, in the house
+  picture style (`../notes/image-style.md`). The issue page itself carries no
+  picture. If no picture can be made, the card uses
+  `../assets/illustrations/newsletter.jpg`, and `tools/check-field-note.js`
+  fails a card that points at a picture that is not there.
 - Render it to a JPEG at exactly 1200 × 630, quality 90, and save it to
   `../assets/thumbnails/field-note-NN-slug.jpg`.
 - Render with Playwright at a true viewport and a clip. Do **not** use

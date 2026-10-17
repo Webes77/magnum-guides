@@ -2616,6 +2616,297 @@ stage 5 the reading questionnaire, stage 6 shelf cards. Then one push of
 the whole prompt with the extract, diff, read in full, emit, read back
 procedure.
 
+**AI tools guide, built 11 Oct on `claude/confident-davinci-ht1ufd`, live at
+`ai-tools/` once merged.** James asked for a tools section: what each tool
+does, whether it is worth paying for, and a small tool that recommends
+tools from what a reader uses them for. Titled "Which AI Tools Are Worth
+Paying For?". The folder is `ai-tools/` because `tools/` already holds the
+check scripts.
+
+How it was made, and the shape to repeat. James named his own stack first
+(Claude, ChatGPT, Gemini, Manus, Gamma, Claude Slides, Wispr Flow, Fireflies,
+Fal.ai, Ideogram, Higgsfield with Seedance, Make, Zapier; Buffer as the
+social pick; Copilot, Granola and n8n by reputation only). Four research
+agents then checked every tool by search in parallel, fed with the launches
+the Sunday Brief vault had already caught (Gamma 5, Claude Docs and Slides
+on Free, GPT-6 free, Wispr Notetaker, Fireflies Talk). The research is
+`notes/tools-research/` 01 to 04, and `00-shortlist.md` is the verdict table
+James approved, with "yes", before anything was built. "C Dance" is
+Seedance and "N-A-N" is n8n.
+
+Two verdicts differ from the research, both James's call: Wispr Flow is
+Worth it (start free, pay when the weekly cap bites), and Granola is Skip
+for now because of the US consent class action filed 30 Jul. Revisit
+Granola when the case moves. Kling was added as its own card the same day
+at James's word, Only if; it is not a picker pick, because
+Google AI Pro covers the owner's clip and Kling sits inside Higgsfield.
+Later the same day James said the pictures and video advice was too
+narrow: name the models, and recommend the one-stop shops, Fal.ai included.
+So Pictures and Short videos each open with a model list (maker, best at,
+where to use it), and a new One-stop shops group carries Fal.ai (Worth it,
+his call, was Skip), Higgsfield, Krea, Magnific (Freepik renamed in April)
+and Adobe Firefly. Midjourney was added under Pictures. Research is
+`notes/tools-research/05-models-and-hubs.md`. The "where" column dates
+fastest of anything on the page, because shops add model versions weekly
+and run a version behind the makers. On "best tool for each job" the picker
+now sends pictures and video to Fal.ai. 29 tools, 15 models.
+Copilot, Granola and n8n carry "From research,
+not use", because James does not use them and the page never claims he does.
+
+**Rebuilt 14 Oct, on James's word, after he said the verdicts were biased
+and the page looked and read off.** He was right on both. "Worth it / Only
+if / Skip" ranked companies rather than jobs, so ChatGPT and Gemini read as
+runners-up, and the picker handed the writing job to Claude by default.
+The page also showed every tool twice (a one-line list and a card), opened
+on four paragraphs before any answer, and set every card as the same block
+of prose.
+
+What replaced it, signed off from `notes/ai-tools-mockup.html` first:
+- **The shadow board** is the page's idea, James approved. A tradie's
+  shadow board paints each tool's outline on the wall. 01 is his board on a
+  navy plate (Claude or ChatGPT, Google AI Pro, Wispr Flow, Fireflies,
+  Gamma, and an empty outline, "This one's yours", that links to the
+  picker). The picker's answer is drawn as the reader's own board: owned
+  tools solid, new bills in coral, "Same bill" when a pick rides on a
+  subscription already counted, and unticked jobs as dashed outlines.
+- **Verdicts are Top pick, Good if (with the condition on the ribbon),
+  Skip.** A job can have two top picks. Claude and ChatGPT are both top
+  picks under Your main AI, side by side at the same size. The picker
+  treats them as equals: paying for neither, the writing pick is "Claude
+  or ChatGPT" unless pictures were also asked for, when ChatGPT Plus does
+  both on one bill. `tools/check-ai-tools.js` asserts it.
+- **James's streaming tip**, in his words: AI models are going the way of
+  streaming services, so keep your regulars and rent the rest for a month.
+  It is the tip card under the board, and it is why the specialist cards
+  say pay monthly. "Hilux or Ranger" was tried in the mockup and thrown
+  out as American; do not reach for car-brand comparisons.
+- **Every tool is one tile** with the same shape: ribbon, name, best for,
+  fixed facts (Price, Free plan, one more), and My take folded with a Watch
+  for line. Each job is a fold with its top picks named on the head; Your
+  main AI is open on load. The models lists stay inside Pictures and Short
+  videos.
+
+The page is generated from one data list so the tiles cannot drift apart.
+The generator is not in the repo; edit `ai-tools/index.html` directly and
+keep the tile shape. Two bugs worth keeping: the job folds took the class
+`job`, which the board's tile label also used, so every board label grew a
+white box and a border until it was renamed `sjob`; and a `sed` replacement
+containing `&rsquo;` garbled the tip, because `&` in a sed replacement
+means the whole match. Use Python for any text edit carrying an entity.
+
+
+The page: 01 short version (check what you already pay for first), 02 the
+picker, 03 every tool on one line, 04 nine closed accordions by job with a
+card per tool, then sources. Copy through `james-writes`; every claim about
+James is one he made in chat.
+
+The picker is three questions: jobs (tick many), what the business already
+pays for (tick many, "None of these" clears the rest), and spending (free
+only, a few subscriptions, best tool per job). One pick per job, tagged
+Already paying, Free or New bill, and a headline counting new bills, which
+is often none. No price is ever added up. The logic lives in
+`ai-tools/picker.js` so `tools/check-ai-tools.js` can run all 98,112
+combinations in node: it fails if a pick claims "already in your plan" for a
+box that was not ticked, if "free only" ever returns a paid plan, if a line
+repeats, if a placeholder leaks, or if a pick links to a card that is not on
+the page. It was proved by breaking the logic on purpose and watching it
+fail.
+
+A price lives in two places: the card in `index.html` and the string in
+`picker.js`. Change both, run the check, update the date in the verified
+line, the footer and register rows 90 to 100.
+
+Found while building, both fixed: "Start again" in the picker head was coral
+text on the tint at 4.17:1, and `team-seats/` carried the same fault live,
+so it was fixed there too. And a `.board-job` heading inherited
+`p{max-width:64ch}` from `assets/site.css`, so its rule stopped halfway
+across. Any `<p>` used as a full-width heading needs `max-width:none`.
+
+`tools/check-contrast.js` takes `OPEN=1` now, which opens every
+`<details>` before measuring. Run any page with folds both ways.
+
+Front page, on James's yes: the Tool manuals section is now Tools, with
+this guide as the first card and the two Manus manuals under it. The
+`#manuals` anchor is unchanged. The Index dropdown lists it first under
+Tools and industry. Card at `assets/thumbnails/ai-tools.jpg`, source
+`ai-tools/thumbnail.html`.
+
+**The AI tools page gained pictures, a letter and twelve tools, 15 Oct, on
+the same branch, not merged.** James said the page was cold, had no
+pictures, and wanted it a bit more comprehensive but not fifty tools.
+
+The images are a locked house style now, and the recipe is
+`notes/image-style.md`: a modern adult animated-series cartoon, rounded
+ink lines, daylight, the five palette colours, a thin panel border, one
+human detail per scene, right-hand-drive vehicles. It took four rounds of
+samples: photographs (rejected, too real), flat and clean-line comic (people
+read as kids' characters), graphic-novel noir (too dark), then the middle,
+which James called perfect. He wants this style across the whole members
+area; that is the next piece of work, scoped page by page and put to him
+before anything is made. About 16 images were made for this page at about
+2 credits each on Higgsfield.
+
+The images were hotlinked to Higgsfield's CDN at first and are self-hosted
+since later on 15 Oct, in `assets/illustrations/` (see below). The earlier
+photographic set is unused and should not come back.
+
+Twelve tools were added from research files 06 and 07 (12 picked from about
+60): four new jobs (Your inbox, The phone, Your own documents, Your website),
+a group for the AI already inside Xero, Shopify and Square, plus Plaud under
+meeting notes and CapCut under video. Tools owners ask about and should
+skip get one line each in an "Asked about, left off" strip, not a card:
+DeepSeek, Grok, Meta AI, Mistral, Superhuman, Otter, Read.ai, Squarespace,
+Framer, Lovable and the US phone services. 41 tools, 15 models. The picker
+gained the four jobs and ServiceM8 under what you already pay for, so the
+check now runs 3.1 million combinations in about 30 seconds.
+
+Tiles carry a mark: a real logo from the Simple Icons and LobeHub sets
+(`ai-tools/logos/`, recoloured to ink) where one exists, and a two-letter
+badge where it does not. ChatGPT and Claude both have real logos, which
+matters for the parity rule. The opening is a letter in James's voice built
+on a made-up composite (a builder's card statement), at his instruction;
+it names no real client. Register rows 102 to 108.
+
+**The cartoon style is on every page, 15 Oct, on James's word ("Lock it.
+Please apply to the whole members area").** He approved 17 new pictures in
+the locked style, one per page. Where they sit and what was left alone is in
+`notes/image-style.md`. The shared CSS is `assets/illustration.css`. The
+deck engine gained an optional `ill` on the cover slide in all five decks,
+and the engine is still byte-identical apart from slide data. With a picture
+the cover overflowed by 27px at 1280 by 600, so the picture is capped at
+500px wide. Deck check, contrast (folds shut and open) and the style checker
+all pass, with no new finding.
+
+**Every picture is on the site itself, and the Field Note cards carry one
+too, 15 Oct (later), on James's word.** He asked for a rule in the Field
+Note and for its thumbnail to match. Three things.
+
+The share card for every issue, 01 to 09, has its right-hand panel redrawn:
+a cartoon made for that issue (a tailor cutting a sleeve for "Cut a fifth",
+a man taking a breath before replying for the angry email), the issue number
+as a bright coral tag in the corner, the credit line under it. The big coral
+number it replaces had only been there since 14 Oct. The pictures are 4:3 at
+`assets/illustrations/field-note-NN.jpg`, every card source points at its
+own, and all nine cards were re-rendered with a `?v=` bump on each issue's
+share image so WhatsApp fetches the new one. The issue page itself carries
+no picture; the one-card shape is untouched. 18 credits.
+
+The Wednesday routine (`trig_016pPJPsm8D3yUZs81wquraU`) makes one every
+week: Step 6 of `notes/field-note-prompt.md` writes a scene line, adds the
+style block word for word, generates on Higgsfield at 4:3, brings it into the
+repo and looks at it. Pushed with `update_trigger` and asserted equal to the
+file at 28,045 characters; the file and the live prompt matched exactly
+before the edit, so nothing else moved. The routine has Google Drive and
+Microsoft 365 attached and not Higgsfield, and a session cannot attach a
+connector. Until James adds it in the routine's settings the card falls back
+to `newsletter.jpg` and the email says so. `tools/check-field-note.js` now
+fails a card source that points at a picture that is not there, proved by
+pointing one at a missing file.
+
+And nothing is hotlinked any more. The image host is blocked from this
+sandbox, but a picture passed through `image_paths` on the Higgsfield
+`sandbox_exec` lands in this session's `tool-results` folder byte for byte.
+That is how all 42 came across (33 site pictures re-encoded at 1200 wide,
+nine Field Note pictures at 1000), and `notes/image-style.md` has the
+procedure. Every page, the five decks and the AI tools page now point at
+`assets/illustrations/`, and a browser pass loaded all 46 image elements
+with none broken. James's 310 credits cover about three years of weekly
+cards.
+
+Later the same day the front page Start here strip gained four pictures, at
+James's word that it looked bare and that pictures can be objects and
+symbols, not only people. Four still lifes in the same style, listed in
+`notes/image-style.md`. Their white margins were cropped off in the files
+so they meet the block's ink border cleanly. About 8 credits.
+
+The front page was redesigned around the pictures the same evening, after
+James said the course pictures looked small and he did not like the other
+guides as underlined links. The seven `.ref` lines under the courses are a
+grid of picture cards now, "Guides that go with them" (`.guides`, `.gcard`):
+four across on a laptop, two on a phone, each using the picture already on
+that guide's page, a small coral kicker and the title, no underlines. On a
+phone the Start here pictures are full-width 2:1 banners instead of 76px
+squares. Every illustration on a front page card sits in a `.crop` wrapper
+that trims the picture's own thin panel frame, because inside a card's ink
+border it read as a box in a box. The `.ref` pattern is retired on the front
+page; a new guide gets a `.gcard`, not a line.
+
+**The front page was rebuilt again the same night, on James's word
+("whatever you think is the right thing").** He said the courses needed a
+number or symbol, that Start here and The courses showed the same four
+things twice, and that his logo no longer fitted beside the pictures. The
+mockup went up on draft PR #12 first and he said go.
+
+How it opens now, top to bottom. A white top bar, sticky, with the small
+`magnum-mark.svg` and the name on the left and five links on the right:
+Courses, Prompts, This week, Guides, Tools. It replaces the navy masthead
+and the Index dropdown. A welcome block on paper: kicker, MEMBERS AREA, one
+line, one button (Start here, to `bots/`; Carry on when a deck is
+remembered, the same `magnum-last` script retargeted to `.cta`), and the
+welcome picture. Then Your path: the four courses once, 00 to 03, each with
+its still life and a coral number tag (`.num`), joined by a short ink rule
+on a laptop and as side-by-side rows on a phone. Then Use it every day (the
+shelf), This week, and The library: twelve picture cards (`.g`) labelled
+Tools, Guide, Manual, By industry or Archive, replacing Tools, By industry
+and the guides grid. The full badge sits in the navy footer, where its
+ground matches.
+
+Numbers now mean one thing on this page: the order of the courses. The
+section headings lost their ghost numbers (`.h2` replaces `.label` here
+only), which was half of the doubled-up feeling.
+
+What did not move, on purpose. Every anchor still resolves (`#sessions` is
+the path, `#prompts`, `#week`, and `#manuals` and `#industry` are empty
+spans at the top of the library), so no sent link breaks. The This week
+block is the old markup byte for byte apart from its heading, because the
+Wednesday Field Note routine edits that card and the earlier-issues list
+every week (Step 7 of `notes/field-note-prompt.md`), and
+`tools/check-field-note.js` reads the front page for the newest four.
+Change that markup and the routine breaks.
+
+The welcome picture is James and his British Bulldog, at his request, drawn
+from a written description of two photos he supplied, because Higgsfield's
+upload host is blocked from the sandbox. The photos were never uploaded or
+committed. Keep his likeness to the front page: in the other pictures
+someone is doing a job, and with his face on them they read as things he
+did. The scenes with the course cartoons (`ai-foundations.jpg` and the rest)
+stay on the deck covers.
+
+The members area share card (`assets/thumbnails/members-area.jpg`, source
+`members-area-thumbnail.html`) carries a picture now, a still life of the
+coral door propped open with nobody in it, built like the Field Note cards.
+James said the same night that the pictures need not be a person every
+time, so the Wednesday Field Note scheduled task alternates: a still life
+whenever the previous issue's card showed a person. That one sentence in
+Step 6 is the only change; the file and the live task were asserted equal
+at 28,456 characters. The task still has only Google Drive and Microsoft
+365 attached, so until Higgsfield is added in Scheduled its cards use the
+stand-in picture.
+
+**The top bar is on the inner pages too, 16 Oct, on James's word.** Nine
+pages carry the front page's bar: the six guides (`privacy/`, `cowork/`,
+`team-seats/`, `effort/`, `agent-workforce/`, `manus-bridge/`), `ba-growth/`,
+`ai-tools/` and `prompts/`. It is `assets/topbar.css` plus one `<header
+class="mtb">` straight after `<body>`, every class prefixed `mtb-` and every
+colour written out, so no page's own rules or tokens reach it. Static, not
+sticky, because several of these pages pin things of their own. The page's
+own link is underlined coral (`aria-current`). Pages that pad their body
+carry an inline negative margin on the header so it runs edge to edge: 20px
+on the guides and `ai-tools/`; `ba-growth/` is a centred 800px column, so it
+takes `calc(50% - 50vw)` and `html{overflow-x:clip}`.
+
+Left without it, on purpose. Fine-Tune and the Manus website manual have
+fixed bars of their own (Fine-Tune's carries Present mode), which would sit
+on top of this one, and both already link home. The five decks are
+full-screen presenter tools. The Field Notes and their archive never link
+into the members area, by the 16 Sep rule. A new guide gets the bar: copy
+the header from any guide and link `../assets/topbar.css`.
+
+The Routines screen is called Scheduled now (James, 15 Oct). Where this file
+says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
+a scheduled task are added there by James; `update_trigger` has no connectors
+field and cannot do it.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
@@ -2632,6 +2923,10 @@ procedure.
   training for other chat models; that is the retired Big 6. Things the
   Sunday Brief finds go to the shelf or a Field Note, not a manual. Decided
   4 Sep.
+  Since 11 Oct the section is called Tools and opens with the AI tools
+  guide. A verdict card saying what another chat model is and who it suits
+  is a recommendation, not training, so Gemini, ChatGPT and Copilot have
+  cards there and still get no setup steps or prompting guides.
 - Every prompt on the shelf is reviewed against
   `notes/prompt-review-standards.md`, James's September 2026 reference
   checked against Anthropic's live docs. Pasted in verbatim on 4 Sep. The

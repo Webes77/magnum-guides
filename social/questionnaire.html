@@ -67,7 +67,9 @@
   pre#summary{white-space:pre-wrap;font-family:var(--mono);font-size:14px;line-height:1.5;background:var(--paper-2);color:var(--ink);border:2px solid var(--ink);padding:14px;max-height:320px;overflow:auto;margin:0 0 16px}
   #status{font-family:var(--mono);font-size:13px;color:var(--coral-bright);min-height:1.4em;margin:6px 0 0}
   footer{font-size:14px;color:var(--mute);margin-top:28px}
+  .start .ill{margin:0 0 24px}
 </style>
+<link rel="stylesheet" href="../assets/illustration.css">
 </head>
 <body>
 <div class="wrap">
@@ -155,7 +157,7 @@ function answered(q){
 function render(){
   fill.style.width=Math.max(0,Math.min(100,((i+1)/(Q.length+1))*100))+'%';
   if(i<0){count.textContent='About ten minutes · mostly tapping';
-    stage.innerHTML=`<section class="card start"><h2>Let’s find your voice</h2>
+    stage.innerHTML=`<section class="card start"><figure class="ill"><img src="../assets/illustrations/questionnaire.jpg" alt="A cartoon publican frowns at his phone at the bar while the bartender leans in to help." width="1376" height="768" decoding="async"><figcaption>Illustration: Magnum AI</figcaption></figure><h2>Let’s find your voice</h2>
       <p>Eighteen quick questions. Most are taps. A few ask you to type a sentence, and you can talk instead of typing.</p>
       <ul><li>No wrong answers.</li><li>You can stop and come back. It saves on this phone.</li><li>At the end you copy your answers in one tap.</li></ul>
       <div class="nav"><span></span><button class="btn go" id="next">Start</button></div></section>`;
