@@ -297,6 +297,12 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 .psec .band .bl1,.psec .band .bl2{font-size:16px}
 .psec .bands.num .band{grid-template-columns:44px 1fr;column-gap:10px}
 .psec .bands.num .band > :nth-child(n+3){grid-column:2}
+/* phone rows: tight inside a row, clear space between rows. The dense desktop
+   rules (.bands.dense) outrank the plain .psec ones, so these name both. */
+.psec .bands .band,.psec .bands.dense .band{gap:4px;padding:18px 0 20px}
+.psec .bands .band .bn,.psec .bands.dense .band .bn{font-size:22px;line-height:1.1;margin-bottom:4px}
+.psec .bands .band .bl1,.psec .bands .band .bl2,.psec .bands.dense .band .bl1,.psec .bands.dense .band .bl2{font-size:16px;line-height:1.45}
+.psec .bands.dense .band .bi{font-size:34px}
 .pwhere{font-size:15px;color:var(--mute);margin:18px 0 12px}
 .pwhere b{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text)}
 .ppc{border:2px solid var(--ink);background:var(--paper-2);margin:4px -6px 0}
