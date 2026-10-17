@@ -2578,8 +2578,21 @@ republished with four cartoons (deploy `5044f72`). The steps are in that
 repo's `ROUTINE.md` under Publish from a chat, step 5.
 
 From 25 Oct the newsletter hero is `assets/standing/hero-cartoon.jpg`, and
-the builder uses it by default. It shows James at his desk with the bulldog,
-drawn from `welcome.jpg` as a reference. The delivered
+the builder uses it by default. It shows James at his desk with the bulldog
+in a black polo. It was redrawn on 17 Oct from two of his own photos, after
+he said the first version, drawn from `welcome.jpg`, looked nothing like
+him. It took three rounds of his corrections: hair taller, then not Johnny
+Bravo, then not bald; some grey in the moustache, not a grey beard; and a
+black polo shirt. He picked version 1. The photos are in his Higgsfield
+library as media `9096a02f-4aaf-4bfb-9162-d09e8e58b3d9` (glasses) and
+`fcaa2d74-1e70-4f04-8c0f-36fb52970297` (no glasses). Use them as
+references for any future picture of him, and edit an approved picture
+rather than starting fresh. `welcome.jpg` on the front page still uses the
+old likeness; redoing it from the photos was offered and not yet asked for.
+James unblocked `upload.higgsfield.ai`, `d8j0ntlcm91z4.cloudfront.net` and
+`d2ol7oe51mr4n9.cloudfront.net` in the environment's network settings on
+17 Oct. Higgsfield files now download and upload directly from this
+sandbox, so the `image_paths` route is only a fallback. The delivered
 `magnum-badge-ring-navy-red-ai.svg` is laid onto a blank navy disc on the
 wall, so the logo is the real file and was not drawn by the model. James
 asked for his brand to be visible. This is the second place his likeness
