@@ -179,3 +179,21 @@ line now reads "A task with a folder of your business files granted", matching
 the convention the other task cards took the same day.
 
 Shelf is 53 cards.
+
+## 18 Oct 2026 · `claude/modest-albattani-bds0l0`
+
+Three cards, merged on James's yes in chat, byte for byte as the routine wrote
+them. The routine pushed to its session branch rather than
+`sunday-brief/2026-10-18`; the staff half went to
+`claude/sunday-brief-staff-bds0l0` in `magnum-staff` the same way. Look for
+`claude/*` branches as well as `sunday-brief/*` until that is settled.
+
+`spread-the-options` (writing, start), `find-the-leaks` (review, monthly) and
+`question-the-bill` (review, before you act). Duplicate test: `question-the-bill`
+shares type and moment with `check-the-spreadsheet`, but the thing in hand is a
+supplier's bill, not your own sheet, so it passes. `find-the-leaks` carries the
+read-only and emails-are-material rules in its own text, which a card that
+reads an inbox needs. Fact register rows 109 to 112 came with it, none taught.
+
+Ids unique, script parses, all three copy their stored text, no sideways scroll
+at 1440 or 390. Shelf is 95 cards.
