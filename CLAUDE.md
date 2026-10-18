@@ -2653,6 +2653,26 @@ stage 5 the reading questionnaire, stage 6 shelf cards. Then one push of
 the whole prompt with the extract, diff, read in full, emit, read back
 procedure.
 
+**One fix went in ahead of the stages, 18 Oct, on James's word ("do what
+you need to do").** The 18 Oct run pushed its work to session branches
+(`claude/modest-albattani-bds0l0` here, `claude/sunday-brief-staff-bds0l0`
+in `magnum-staff`) instead of `sunday-brief/2026-10-18`, and the email never
+named them, so James's yes needed hunting for. Both were merged and deleted.
+The live prompt now says: if the session assigns one branch and forbids
+others, use it everywhere and name it in the email. Block 4 ends with a line
+to paste ("Merge the Sunday Brief cards for D Month YYYY from the
+magnum-guides branch BRANCH") and says replying does nothing; block B names
+the real branch the same way. That is the stage 3 rule already agreed,
+applied to the two approval lines only. The shared WRITING TO JAMES line is
+still untouched. The new shared rule from `magnum-staff` (when refused, stop
+and report, never go round) went into RUNNING UNATTENDED.
+
+The live prompt had drifted. Another session switched Step 4 to Outlook on
+9 Oct starting from a pre-5 Oct copy, which silently dropped the two
+technique-repositioning lines. Both are restored. Live and
+`notes/sunday-brief-prompt.md` asserted equal at 33,945 characters, from the
+saved tool result.
+
 **AI tools guide, built 11 Oct on `claude/confident-davinci-ht1ufd`, live at
 `ai-tools/` once merged.** James asked for a tools section: what each tool
 does, whether it is worth paying for, and a small tool that recommends
