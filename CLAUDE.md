@@ -2940,6 +2940,21 @@ at 28,456 characters. The task still has only Google Drive and Microsoft
 365 attached, so until Higgsfield is added in Scheduled its cards use the
 stand-in picture.
 
+**The Wednesday picture is topped up from a session, 19 Oct.** James could
+not find the Field Note task in his Scheduled list at all (he sees the
+paused social drafter and the learning check-in, not this one), so he cannot
+add Higgsfield to it. A session cannot either: `create_trigger` refuses the
+connectors parameter for this organisation, and a task created from a
+session carries no connectors and no repository, so rebuilding Remy from
+here would make it worse. Proved on 19 Oct with a probe task, deleted after.
+The fix is `trig_01BLYzoy5QZN6A9LFkdeTevh`, Wednesdays 6:35am Brisbane,
+firing into session `session_01F8XX6o5R5CWfwEwwc3uDpR`, which holds
+Higgsfield and the repo: it makes that week's cartoon, puts it on the card,
+re-renders, bumps the share image's `?v=`, pushes and confirms the deploy.
+It stops in one line if Remy already gave the card its own picture. If that
+session is ever archived, recreate the task from a session that has the
+Higgsfield tools. Delete it once Higgsfield reaches Remy's task by any route.
+
 **The top bar is on the inner pages too, 16 Oct, on James's word.** Nine
 pages carry the front page's bar: the six guides (`privacy/`, `cowork/`,
 `team-seats/`, `effort/`, `agent-workforce/`, `manus-bridge/`), `ba-growth/`,
