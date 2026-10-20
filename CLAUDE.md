@@ -2981,13 +2981,12 @@ says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
 a scheduled task are added there by James; `update_trigger` has no connectors
 field and cannot do it.
 
-**Build Your Brand DNA, built 20 Oct on `module/brand-dna`, not merged.**
+**Build Your Brand DNA, built 20 Oct on `module/brand-dna`, merged and live 21 Oct at James's word (`e3a0cc0`, deploy confirmed on `head_sha`).** Not on the front page or the shelf yet: ask James before adding a library card.
 James asked for a reusable Brand DNA programme: a live 90-minute session
 that leaves a client with one folder every AI tool reads before it makes
 anything, so outputs stop drifting and old rule documents stop arguing. First
 run is a client session on 26 Oct; the module is generic and no client name
-ships (hard rule 5). Nothing is linked from the front page and nothing is
-merged until James says so.
+ships (hard rule 5).
 
 Four pieces in `brand-dna/`. `index.html` is the guide in the Agent
 Workforce shell: why brands drift, the folder, before you start, then eleven
