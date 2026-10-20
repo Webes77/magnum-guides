@@ -6,7 +6,7 @@ voice.md, visuals.md, image-style.md and the channels folder add detail to secti
 
 Last updated: [date]
 
-The short version: [One paragraph of no more than 500 characters, about 75 words: who we are, who we serve, how we sound, and the three rules that matter most. No markers in it. Tools with small instruction boxes, such as Canva's brand voice box, get this paragraph.]
+The short version: [One paragraph of no more than 500 characters, about 75 words: who we are, who we serve, how we sound, and the three rules that matter most. No markers in it. Tools with small instruction or brand voice boxes get this paragraph, and some take only 500 characters.]
 
 ## 1. Snapshot
 
@@ -54,7 +54,7 @@ The current logo, the versions we have, the final file set, clear space and mini
 
 ## 11. Type
 
-Heading and body fonts, and what to use instead where ours aren't available, such as Canva, Word and email.
+Heading and body fonts, and what to use instead where ours aren't available, such as Word, email and other design tools.
 
 ## 12. Photography and imagery
 

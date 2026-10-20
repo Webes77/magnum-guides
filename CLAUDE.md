@@ -3081,8 +3081,10 @@ case, and the core idea of the transcript James supplied); stage 8 sets up
 the client's design system in Claude Design first, with prompt 8.1 checking
 it against visuals.md, and the booklet is 8.2; voice.md gains tone by
 situation and hard messages, with rules written as behaviour; brand-dna.md
-opens with a short version of 500 characters or fewer for small boxes such as
-Canva's Brand Voice, whose limit is characters, not words; image-style.md uses the platform's own AI label.
+opens with a short version of 500 characters or fewer for any tool with a
+small instruction or brand voice box (some, Canva's among them, cap it at 500
+characters). The module names no design tool: James does not use Canva and
+said on 21 Oct not to build around any one tool; image-style.md uses the platform's own AI label.
 Sixteen prompts. Register rows 115 to 118. A second dry run covered the new
 prompts.
 
