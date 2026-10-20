@@ -10,6 +10,10 @@
   Usage:  node tools/check-brand-dna.js          check, exit 1 on any failure
           node tools/check-brand-dna.js --fix    copy every guide prompt into
                                                  the deck, then check
+          node tools/check-brand-dna.js --export DIR
+                                                 also write each prompt to DIR
+                                                 as a numbered .md file (the
+                                                 Brand Studio's prompts folder)
 
   What it checks:
   1. Every guide prompt is in the deck, byte for byte, under its constant.
@@ -47,6 +51,20 @@ if (process.argv.includes('--fix')) {
     deck = deck.replace(re, () => `const ${constName(id)} = \`${text}\`;`);
   }
   fs.writeFileSync(DECK, deck);
+}
+const ex = process.argv.indexOf('--export');
+if (ex > -1) {
+  const dir = process.argv[ex + 1];
+  if (!dir) fails.push('--export needs a folder');
+  else {
+    fs.mkdirSync(dir, { recursive: true });
+    for (const m of guide.matchAll(/<div class="promptcard" id="([^"]+)">\s*<p class="promptlabel">Prompt ([\d.]+) &middot; ([^<]+)<\/p>/g)) {
+      const [, id, num, label] = m;
+      const name = `${num.split('.').map(n => n.padStart(2, '0')).join('-')} ${label.trim()}.md`;
+      const stamp = new Date().toISOString().slice(0, 10);
+      fs.writeFileSync(path.join(dir, name), `<!-- Prompt ${num}, ${label.trim()}. Copied from the members area Brand DNA guide on ${stamp}. Edit the guide, not this file, then export again. -->\n\n${prompts[id]}\n`);
+    }
+  }
 }
 for (const [id, text] of Object.entries(prompts)) {
   const m = deck.match(new RegExp(`const ${constName(id)} = \`([\\s\\S]*?)\`;`));

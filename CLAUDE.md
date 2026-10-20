@@ -3238,10 +3238,14 @@ and deck returns a guide prompt exactly.
 
 ## Next
 
-**Waiting, on James's word (21 Oct): a Brand Design project.** Once the
-Brand DNA guide and walkthrough are merged, set up a project so client brand
-builds follow one process. Not started. It is on the Daily Board under
-Magnum, Members area.
+**The Brand Studio, built 21 Oct at James's word.** James's done-for-you
+version of the Brand DNA module lives in Google Drive at Magnum AI / Brand
+Studio, not in this repo, because it holds client material. It runs from the
+Code tab with that folder open: a CLAUDE.md with the rules and fourteen
+stages, the sixteen prompts, the empty template, an intake list, a QA gate,
+and one folder per client. Its prompts are copies of the guide's: after any
+prompt change here, run `node tools/check-brand-dna.js --export "<Drive
+path>/Brand Studio/prompts"`.
 
 On 9 Sep, later, the whole members area moved to the white, navy and
 coral palette in one pass (see House style above): every page, all four
