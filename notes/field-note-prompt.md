@@ -213,7 +213,7 @@ Step 9, the log. Add an entry at the top of notes/field-note-log.md under a head
 
 Step 10, publish. Commit with a plain message naming the issue and the card, no model name, no em dash.
 
-The issue goes live by itself when Step 8 printed PASS. James settled this on 20 Sep: the whole point of the email is a link he can forward to clients that morning, and a link on a branch is a dead link. So when the check passed, merge the branch into main and push main on its own, then push the branch too so the diff survives. The issue is live and the front page and the archive carry it.
+The issue goes live by itself when Step 8 printed PASS and Step 8B passed. James settled this on 20 Sep: the whole point of the email is a link he can forward to clients that morning, and a link on a branch is a dead link. So when the check passed, merge the branch into main and push main on its own, then push the branch too so the diff survives. The issue is live and the front page and the archive carry it.
 
 When the check did not pass, nothing reaches main. Push the branch only, and open the email with one line saying the issue is built but not live and naming exactly what failed. Never publish around a failing check to keep the schedule; a week with no issue costs less than a broken one under James's name.
 
