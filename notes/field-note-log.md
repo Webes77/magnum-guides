@@ -320,3 +320,5 @@ PASS. Card image rendered clean at 1200x630. Checked in the browser at 1440,
 scroll.
 
 21 Oct, issue 10 rewritten on James's word: the headline "Get Claude to give you five options, not one" did not say what it was or how it helped. Now "Taglines and subject lines that don't sound like everyone else's". Card re-rendered, ?v=3. Headline rule tightened in the prompt and the checker.
+
+21 Oct, issue 10 prompt replaced on James's word with a stronger version: asks for the reader's business details, drops the made-up likelihood scores and the two deliberately weak options, adds a 45-character limit for subject lines and a follow-up round. Shelf card spread-the-options updated to match.
