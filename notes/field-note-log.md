@@ -9,6 +9,75 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-10-21
+
+Issue 10, Options. The Sunday Brief vault file for 2026-10-18 carries a
+`## field-note-commission` section naming the card: headline "Ask your AI for
+five options, not one," shelf card `spread-the-options`. Held against the
+headline rule: it says what to do but names no subject in the first two words
+beyond "your AI," and it does not land the "Get Claude to..." voice the other
+issues use, so it was rewritten to "Get Claude to give you five options, not
+one" (9 words), matching the shape of issues 05 and 06.
+
+The card was on `claude/modest-albattani-bds0l0` when the commission was
+written, but that branch had already merged to `main` (visible in the merge
+commit history as `7436d80`/`f5cd28f`/`47267b0`), so it was read straight from
+`prompts/index.html` on `main`.
+
+Card check against `notes/prompt-review-standards.md`: passes every item that
+usually catches a thin card. Role present (item 7: "a working copywriter for
+small businesses"). Every rule carries its reason (item 2: "so be honest about
+it," "because an invented claim in my name costs me trust," "An explanation
+makes a weak option sound stronger than it is"). Guard against invention
+present (item 9: "Use only what I have told you about my business... leave it
+out"). Output format and stop boundary stated (item 10: "Give me the five
+lines, each followed by its number. Then stop"), and the prompt tells the
+model which two options must be the unlikely ones, so the important ordering
+is explicit rather than buried.
+
+Cold-paste test: not applicable in the usual sense, the prompt never claims
+the model can see a file, account or document, it is a self-contained writing
+task filled in from four square-bracket blanks typed directly into the
+prompt. Nothing for a cold-paste reader to attach. Passes trivially.
+
+Business-neutral check: the shelf card already carries four bracket fill-ins
+(what you need, what it is for, who will see it, what you want from them), at
+the three-or-four ceiling, and is already generic for any small business. No
+rewrite needed.
+
+Words around the prompt (what it is, what you get, the three steps, why it
+works, plus the headline and the two prompt-box labels, which the checker
+also counts): 169, under the 170 ceiling, one word of headroom. Headline: 9
+words. Phone screens at 390 wide: 2.45, measured by `scrollHeight / 844`.
+
+`node tools/check-field-note.js --shape newsletter/field-note-10-options.html`
+prints PASS. A full run across every issue also passes except
+`field-note-08-pasting.html`, which fails on "the Field Note archive does not
+link this issue," a pre-existing, deliberate state (that page is the orphaned
+first build of issue 08, left live and unlinked at its own URL per the 7 Oct
+entry below) and not something this run touched.
+
+Checked in headless Chromium at 1440, 820 and 390 wide against a local
+server: no console errors, no sideways scroll at any width. The Copy button
+returns the authored prompt text; diffed word-for-word against the shelf
+card's stored prompt and they match exactly (249 words each), confirming the
+reflow for the phone only touched line breaks.
+
+Picture: this session carried no Higgsfield connector (confirmed by tool
+search), so the card points at the archive's stand-in picture,
+`assets/illustrations/newsletter.jpg`, with a caption saying a new picture is
+on its way. The Wednesday picture top-up task (`trig_01BLYzoy5QZN6A9LFkdeTevh`)
+is expected to generate this issue's own cartoon and bump the card's `?v=`
+shortly after this run, per the 19 Oct entry in CLAUDE.md.
+
+No interface claims about Claude, Cowork or Anthropic appear anywhere on the
+page (the prompt names "Claude" only as the model the reader is talking to,
+no menu, setting or button), so no WebSearch verification was needed.
+
+Everything else finished: head tags, the mailto link, the thumbnail source,
+the front page (newest card plus the three before it, issue 06 dropped off by
+design), and the archive, all updated and all pass their checks.
+
 ## 2026-10-14
 
 Issue 09, Numbers. The Sunday Brief vault file for 2026-10-11 carries a
@@ -98,6 +167,7 @@ reading four pages of HTML. Add to it when an issue merges.
 | 07 | Proof | Check your bill before you renew (rebuilt as a prompt, one-card shape) | `read-your-account` |
 | 08 | Replying (replaced Pasting at the same issue number on 7 Oct; the Pasting page stays live, unlinked, at its own URL) | Reply to the difficult email | `difficult-email` |
 | 09 | Numbers | Check your spreadsheet before you send the numbers | `check-the-spreadsheet` |
+| 10 | Options | Ask for five options, ranked from obvious to unusual | `spread-the-options` |
 
 ## Entries
 
@@ -248,3 +318,5 @@ on the shelf together. `node tools/check-field-note.js --shape --draft` prints
 PASS. Card image rendered clean at 1200x630. Checked in the browser at 1440,
 820 and 390 wide: no console errors beyond blocked Google Fonts, no sideways
 scroll.
+
+21 Oct, issue 10 rewritten on James's word: the headline "Get Claude to give you five options, not one" did not say what it was or how it helped. Now "Taglines and subject lines that don't sound like everyone else's". Card re-rendered, ?v=3. Headline rule tightened in the prompt and the checker.

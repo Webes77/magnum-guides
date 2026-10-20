@@ -128,9 +128,9 @@ One card. James set this on 30 Sep, after issue 07 went out at six phone screens
 
 A reader decides in seconds whether to keep going, and decides on three questions: What is it? What do I get? What do I do? The card answers those three, in that order, in plain words, before anything else. In James's words: how does this solve a problem for me, is it simple, is it valuable. If any of the three is unclear, the reader is gone.
 
-1. The headline says what to do and when, in the words a client would use. "Check your bill with Claude before you renew" is right. "Your AI just gave you the textbook answer" is wrong: it is a riddle, it sounds like an advertisement, and it does not say what the issue is for. Ten words at most. One coral phrase.
-2. What it is: one sentence starting "A prompt that", naming the job.
-3. What you get: one sentence, the result in the reader's hands.
+1. The headline names the everyday job and what it does for the reader, in the words a client would use. Test it as the only line someone sees in a WhatsApp preview: could a busy owner say what it is for and why they would care? If not, rewrite it. Never describe the AI technique: no "Get Claude to", "Ask AI to", "a prompt that" or "five options", because the method is not the hook. "Check your bill with Claude before you renew" is right. "Taglines and subject lines that don't sound like everyone else's" is right. "Get Claude to give you five options, not one" is wrong (James, 21 Oct): it names the trick and not the job, so the reader cannot tell what it is or how it affects them. "Your AI just gave you the textbook answer" is wrong: it is a riddle and sounds like an advertisement. Ten words at most. One coral phrase.
+2. What it is: one sentence naming the job and the moment you would reach for it, for example "A copy-and-paste prompt for a business name, tagline, headline or email subject line." Not a description of what the prompt makes Claude do.
+3. What you get: how it affects the reader. The problem it takes away or what it saves them (time, money, a bad look, a missed job), in one or two short sentences. Not a description of the output.
 4. What you do: exactly three numbered steps, one action each. Step one says where the file or information comes from. Step two is open a new chat and paste the prompt. Step three is what to do with the answer.
 5. The prompt, with its copy button.
 6. Why it works: two to four short sentences built on one everyday comparison.
