@@ -322,3 +322,5 @@ scroll.
 21 Oct, issue 10 rewritten on James's word: the headline "Get Claude to give you five options, not one" did not say what it was or how it helped. Now "Taglines and subject lines that don't sound like everyone else's". Card re-rendered, ?v=3. Headline rule tightened in the prompt and the checker.
 
 21 Oct, issue 10 prompt replaced on James's word with a stronger version: asks for the reader's business details, drops the made-up likelihood scores and the two deliberately weak options, adds a 45-character limit for subject lines and a follow-up round. Shelf card spread-the-options updated to match.
+
+21 Oct, issue 10 run through the new value test by hand, three rounds (plumber and cafe, hairdresser and bookkeeper, electrician and physio). Rebuilt each round. Final headline "Stuck on what to send customers? Sorted in five minutes"; the prompt now asks four questions instead of brackets, writes the full message from the chosen line, and carries opt-out and health-advertising guards. Round three: both owners would send the result with light edits. Shelf card spread-the-options matches the page.

@@ -547,32 +547,41 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- From the Sunday Brief ---------- */
-{kind:'prompt', id:'spread-the-options', sec:'From the Sunday Brief', title:'Five lines that sound like your business, not everyone else', where:'Naming, headlines, taglines, subject lines or any idea you need options for', type:'writing', when:'start', hook:"Subject lines, headlines and taglines your competitors won't also have.", added:'2026-10-18', levers:['Role','Context','Constraints','Tone','Format','Output'],
+{kind:'prompt', id:'spread-the-options', sec:'From the Sunday Brief', title:'Write your next post, text or email to customers', where:'Any time you are stuck on what to write to customers', type:'writing', when:'start', hook:"Four quick questions, five opening lines, then the whole message in your voice.", added:'2026-10-18', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a copywriter for small Australian businesses. The first idea
 anyone has, AI included, is usually the one every competitor already
-uses, so your job is to give me options that sound like my business and
+uses, so your job is to write lines that sound like my business and
 nobody else's.
 
-I need five [email subject lines / ad headlines / taglines] for [what
-it's for, e.g. our spring sale email].
+Before you write anything, ask me these four things, one at a time, and
+wait for each answer:
+1. What is this for? For example a text to past customers when you've
+   got a gap, a post to fill quiet days, or an email chasing paperwork.
+2. What does my business do, and for whom?
+3. What's one thing customers actually say about us, or something we do
+   that others in our trade don't? If my answer could fit any business
+   like mine, ask me once for something more specific.
+4. How do we sound? For example friendly and straight-talking.
 
-About my business: [what you do and who for, in one line]
-What customers like about us: [one or two true things]
-How we sound: [e.g. friendly and straight-talking]
-What I want people to do: [open it, call, book, remember us]
+Then give me five opening lines, the first thing they read, one per
+line. The rules, and why:
+- Make them clearly different: two safe, two bolder, and one that takes
+  a risk without knocking anyone I might work with or get referrals
+  from. I want a real choice, not five versions of one idea.
+- Build each one on something I told you. If a line needs a fact I
+  didn't give you, leave it out, because a made-up claim in my name
+  costs me trust.
+- Keep each line under 45 characters so it isn't cut off on a phone.
+- Don't mention a season, holiday or sale unless I do.
+- No hype words like "unlock", "elevate" or "game-changer", no clipped
+  lines like "Fast. Local. Reliable.", no dashes and no exclamation
+  marks, because they read like AI.
 
-Rules, and why:
-- Make the five clearly different: two safe, two bolder, one that takes
-  a risk. I want a real choice, not five versions of one idea.
-- Build each one on something I told you about my business. If an option
-  needs a fact I didn't give you, leave it out, because a made-up claim
-  in my name costs me trust.
-- Keep subject lines under 45 characters so they don't get cut off on a
-  phone.
-- No hype words like "unlock", "elevate" or "game-changer".
-
-Give me the five, one per line. Then ask me which one I like, and give
-me five more in that direction.`},
+Ask me which line I like, and don't comment on my choice. Then write the
+full post, text or email under it, in my voice, under 80 words, using
+only what I told you. Sign off with my first name and business. For a
+text or email to a list of customers, end with "Reply STOP to opt out".
+If I'm in health, don't use patient praise or promise results.`},
 {kind:'prompt', id:'find-the-leaks', sec:'From the Sunday Brief', title:'Find the money leaking out of your inbox', where:'A chat with your email connected, once a month', type:'review', when:'monthly', hook:"Forgotten subscriptions, missed refunds and expiring credits, found in one read.", added:'2026-10-18', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a sharp bookkeeper doing a first-pass leak check for a small
 business owner. You look for money going out that should not be, and
