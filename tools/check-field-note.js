@@ -165,6 +165,13 @@ function check(file) {
     if (!/<section class="why">/.test(html)) fail.push('no Why it works block');
     const h1 = visibleText((html.match(/<h1>[\s\S]*?<\/h1>/) || [''])[0]).trim().split(/\s+/).filter(Boolean);
     if (h1.length > 10) fail.push(`the headline is ${h1.length} words; keep it to 10`);
+    // James, 21 Oct: the headline names the job and what it does for the
+    // reader, never the AI trick. "Get Claude to give you five options" told
+    // nobody what it was for.
+    const h1s = h1.join(' ');
+    if (/^(get|ask|make|tell|have|let)\s+(claude|ai|chatgpt)\b/i.test(h1s) || /\bprompt\b/i.test(h1s)) {
+      fail.push(`the headline "${h1s}" describes the AI technique; name the job and what it does for the reader`);
+    }
     const card = (html.match(/<main class="note">[\s\S]*?<\/main>/) || [''])[0]
       .replace(/<pre>[\s\S]*?<\/pre>/g, ' ');
     const words = visibleText(card).trim().split(/\s+/).filter(Boolean).length;

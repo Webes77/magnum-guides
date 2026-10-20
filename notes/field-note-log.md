@@ -318,3 +318,5 @@ on the shelf together. `node tools/check-field-note.js --shape --draft` prints
 PASS. Card image rendered clean at 1200x630. Checked in the browser at 1440,
 820 and 390 wide: no console errors beyond blocked Google Fonts, no sideways
 scroll.
+
+21 Oct, issue 10 rewritten on James's word: the headline "Get Claude to give you five options, not one" did not say what it was or how it helped. Now "Taglines and subject lines that don't sound like everyone else's". Card re-rendered, ?v=3. Headline rule tightened in the prompt and the checker.
