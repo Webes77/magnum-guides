@@ -1,4 +1,4 @@
-# [CLIENT] Brand DNA changelog
+# [business name] Brand DNA changelog
 
 One line per change. Newest at the top. Every "which wins" answer goes here too.
 

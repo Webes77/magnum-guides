@@ -1,4 +1,4 @@
-# [CLIENT] on [CHANNEL]
+# [business name] on [channel]
 
 Copy this file once per channel you use and rename it (instagram.md, email.md, website.md, print.md). Prompt 6.1 moves this template to sources/retired once the playbooks exist.
 

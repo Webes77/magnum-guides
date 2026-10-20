@@ -1,10 +1,12 @@
-# [CLIENT] Brand DNA
+# [business name] Brand DNA
 
-Read this file before making anything for [CLIENT]. If a request conflicts with it, ask which wins and record the answer in changelog.md.
+Read this file before making anything for [business name]. If a request conflicts with it, ask which wins and record the answer in changelog.md.
 
 voice.md, visuals.md, image-style.md and the channels folder add detail to sections 9 to 15. If any of them disagrees with this file, this file wins and the disagreement is flagged.
 
-Last updated: [DATE]
+Last updated: [date]
+
+The short version: [One paragraph of no more than 500 characters, about 75 words: who we are, who we serve, how we sound, and the three rules that matter most. No markers in it. Tools with small instruction boxes, such as Canva's brand voice box, get this paragraph.]
 
 ## 1. Snapshot
 
@@ -56,7 +58,7 @@ Heading and body fonts, and what to use instead where ours aren't available, suc
 
 ## 12. Photography and imagery
 
-Real photos for anything real: the business, our people, our work and our events. Our best image, where photos come from, subjects to shoot, and what to avoid. Where AI images are allowed is set out in image-style.md.
+Real photos for anything real: the business, our people, our work and our events. Our best image, where photos come from, subjects to shoot, and what to avoid. Where AI images are allowed is set out in image-style.md, and nothing else is an exception.
 
 ## 13. Voice
 

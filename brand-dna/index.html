@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
 <title>Build Your Brand DNA &middot; Magnum AI</title>
-<meta name="description" content="One folder every AI tool you use reads before it makes anything: posts, emails, images, ads and website copy. Eleven stages, every prompt ready to copy, and an empty folder to start from.">
+<meta name="description" content="One folder every AI tool you use reads before it makes anything: posts, emails, images, ads and website copy. Eleven stages, sixteen prompts ready to copy, and an empty folder to start from.">
 <meta name="author" content="Magnum AI">
 <link rel="canonical" href="https://webes77.github.io/magnum-guides/brand-dna/">
 
@@ -128,6 +128,7 @@
   .observed{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
     color:var(--mute);margin:12px 0 0;}
 </style>
+<link rel="stylesheet" href="../assets/illustration.css">
 <link rel="stylesheet" href="../assets/topbar.css">
 </head>
 <body>
@@ -138,6 +139,10 @@
     <p class="sub">Your AI tools each carry their own idea of your brand, so the posts, emails and images they make drift, and the rule documents you wrote to stop it end up arguing with each other. This page builds one folder that every tool reads before it makes anything. One master file, one place to change a rule, and one rule for when a request and the brand disagree.</p>
   </div></header>
   <div class="wrap">
+  <figure class="ill">
+    <img src="../assets/illustrations/brand-dna.jpg" alt="A cartoon café owner hands one tidy folder to three new staff while a heap of old, mismatched notebooks slides into the recycling." width="1376" height="768" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
 
   <div class="short">
     <h2>The short version</h2>
@@ -152,8 +157,8 @@
           <li data-stage="4"><a href="#voice">Voice</a></li>
           <li data-stage="5"><a href="#visuals">Visual system and AI image style</a></li>
           <li data-stage="6"><a href="#channels">Channel playbooks</a></li>
-          <li data-stage="7"><a href="#wire">Wire it in</a></li>
-          <li data-stage="8"><a href="#booklet">Build the booklet</a></li>
+          <li data-stage="7"><a href="#wire">Wire it in, and the brand skill</a></li>
+          <li data-stage="8"><a href="#booklet">Design system and booklet</a></li>
           <li data-stage="9"><a href="#test">Test it on real work</a></li>
           <li data-stage="10"><a href="#review">Independent review</a></li>
           <li data-stage="11"><a href="#maintain">Keep it current</a></li>
@@ -172,6 +177,7 @@
       </div>
     </div>
     <p class="tail"><b id="progress">0 of 11 stages ticked.</b> Each stage ends with a Done when box. Tick it and it stays ticked on this device, so you can come back to where you were.</p>
+    <p class="tail">Running it live? The <a href="walkthrough/">walkthrough deck</a> has the session slide by slide, with Fill in and Copy on every prompt. Type the business name once and it fills every prompt.</p>
   </div>
 
   <ul class="contents">
@@ -203,6 +209,10 @@
         <p>One folder, one master file, read first by everything. Change a rule once and every tool has it.</p>
       </div>
     </div>
+    <figure class="ill" style="margin:28px 0 0">
+    <img src="../assets/illustrations/brand-dna-drift.jpg" alt="Three cartoon staff hold up three completely different signs for the same florist while the owner frowns from the doorway." width="1376" height="768" loading="lazy" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
   </section>
 
   <!-- ============ 02 THE FOLDER ============ -->
@@ -223,7 +233,7 @@
 ├── booklet/            <span class="c">the visual booklet, as a PDF</span>
 ├── assets/             <span class="c">logo and font files, copied in</span>
 └── sources/            <span class="c">what the client sent, and retired documents</span></div>
-    <p style="margin-top:18px"><a href="brand-dna-template.zip" download>Download the empty folder</a>. Every file is ready with its headings and a [CLIENT] blank to fill. Or let stage 3 create the files for you.</p>
+    <p style="margin-top:18px"><a href="brand-dna-template.zip" download>Download the empty folder</a>. Every file is ready with its headings and a [business name] blank to fill. Or let stage 3 create the files for you.</p>
 
     <h3 style="margin-top:38px">What each file is for</h3>
     <div class="tablewrap">
@@ -256,7 +266,7 @@
     <h3 style="margin-top:38px">How to run the prompts</h3>
     <ol class="steps3">
       <li><b>One at a time, in order.</b> Each stage reads what the stage before it saved.</li>
-      <li><b>Fill every [square bracket].</b> [CLIENT] is your business name. Delete the brackets once filled.</li>
+      <li><b>Fill every lowercase [square bracket],</b> such as [business name], and delete the brackets. Brackets in capitals, such as [NEEDS CONFIRMING], are markers the AI writes into your files. Leave those alone.</li>
       <li><b>Read before you say yes.</b> Any prompt that would change or delete a file shows you the change first and waits. Read it.</li>
       <li><b>Keep the folder open.</b> Work in task work with the brand-dna folder chosen, so Claude can save the files itself. If it can only see attached copies, each prompt hands you the files to save instead.</li>
       <li><b>Fix one thing at a time.</b> If an answer is wrong, tell it the one thing that is wrong. Do not start the prompt again.</li>
@@ -274,13 +284,13 @@
       <h3>Inventory, conflicts, gaps</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>You're a brand editor helping us, [CLIENT], build our Brand DNA: one folder every AI tool we use will read before it makes anything for us. Today you're only reading and reporting.
+<pre>You're a brand editor helping us, [business name], build our Brand DNA: one folder every AI tool we use will read before it makes anything for us. Today you're only reading and reporting.
 
-Read every file in the sources folder inside our brand-dna folder: logos, fonts, colour notes, website screenshots, posts we love, posts we'd never make, phrases we use, photos, and every existing rule, instruction or "HQ" document. Our website is [WEBSITE ADDRESS, or "none"].
+Read every file in the sources folder inside our brand-dna folder: logos, fonts, colour notes, website screenshots, posts we love, posts we'd never make, phrases we use, photos, and every existing rule, instruction or "HQ" document. Our website is [website address, or "none"].
 
 Then write one report with five parts:
 1. Inventory. One line per file: what it is and which brand facts it holds. Say which posts are ours and which are someone else's.
-2. What's already clear. Our name, colours (with values where a file states them), fonts, logo versions, voice habits and channels, each with the file it came from. If you worked a value out yourself, such as a colour picked from a screenshot, mark it [INFERRED: how you got it].
+2. What's already clear. Our name, colours (with values where a file states them), fonts, logo versions, voice habits and channels, each with the file it came from. If you worked a value out yourself, such as a colour picked from a screenshot, mark it [INFERRED] followed by how you got it.
 3. Conflicts. Every place two of our documents disagree, or one breaks a rule set in another, most important first. For each, quote both files and write the question we need to answer to settle it.
 4. Gaps. What's missing about who we are, who we serve, what we're not, voice, logo, colour, type, photography and each channel.
 5. Other questions for us that the conflicts don't already cover, no more than 5.
@@ -301,12 +311,17 @@ Save the report as sources/audit-report.md. That's the only file you create, and
     <h2>One question at a time, in your own <em>words</em></h2>
     <p>The interview fills what the files could not tell it, and settles every conflict the audit found. Answer out loud and type what you said, or let someone type for you. Short, real answers beat polished ones.</p>
 
+    <figure class="ill" style="margin:24px 0 0">
+    <img src="../assets/illustrations/brand-dna-interview.jpg" alt="A cartoon interviewer takes notes while two business partners laugh and correct each other over coffee on a back deck." width="1376" height="768" loading="lazy" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
+
     <div class="promptcard" id="p-interview">
       <p class="promptlabel">Prompt 2.1 &middot; the interview</p>
       <h3>Identity, audience, what we're not, voice, visuals</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>You're interviewing us, [CLIENT], so our Brand DNA is written from what we actually say rather than from guesses. Read sources/audit-report.md in our brand-dna folder first, and skip anything it already settles.
+<pre>You're a brand strategist interviewing us, [business name], so our Brand DNA is written from what we actually say rather than from guesses. Read sources/audit-report.md in our brand-dna folder first, and skip anything it already settles.
 
 Ask one question at a time and wait for our answer before asking the next. Keep each question short and plain. If an answer is vague, ask one follow-up for a real example, then move on.
 
@@ -315,11 +330,11 @@ Cover these, in this order:
 2. Identity: what we do, what we're best at, and three words we'd want people to use about us, each with a time we lived up to it.
 3. Audience: who comes to us, how they find us, what they want from us, and our busy and quiet times.
 4. What we're not: styles, words and kinds of work we don't want, and anything others in our field do that we never would.
-5. Voice: how we talk to people, phrases and sign-offs we always use, and words that make us cringe.
+5. Voice: how we talk to people, phrases and sign-offs we always use, words that make us cringe, and how we handle a complaint or bad news, with a real example.
 6. Visuals: what our photos and posts should look like, and what they never should.
 7. Decisions: the conflicts in the audit report, most important first, then its other questions. Group small ones into a single question.
 
-Ask no more than 20 questions in total, follow-ups included. Don't suggest slogans or taglines.
+Ask no more than 20 questions in total, follow-ups included. Keep slogans and taglines out of your questions, because we want how we really talk, not a line.
 
 When we say "that's it", or after the last question, save our answers as sources/interview-notes.md, in our words, under the seven headings above. End it with a list of anything we couldn't answer and anything you didn't get to ask. If you can't save to our folder, give us the notes to save there ourselves. Use plain Australian English.</pre>
       </div>
@@ -340,7 +355,7 @@ When we say "that's it", or after the last question, save our answers as sources
       <h3>Draft brand-dna.md</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Write our master Brand DNA. We're [CLIENT]. This file will be the single source of truth: every AI tool, agent and routine we use will read it before making anything for us, so it has to be accurate, plain and complete.
+<pre>You're our brand editor. Write our master Brand DNA. We're [business name]. This file will be the single source of truth: every AI tool, agent and routine we use will read it before making anything for us, so it has to be accurate, plain and complete.
 
 Read everything in the sources folder inside our brand-dna folder first, especially sources/audit-report.md and sources/interview-notes.md, and ignore sources/retired/. Where the interview settled a conflict, follow the interview.
 
@@ -356,20 +371,23 @@ Then write brand-dna.md in the brand-dna folder, using these 16 sections, in thi
 9. Logo. The current logo, the versions we have, the final file set, clear space and minimum size.
 10. Colour. A table of name, hex, print value where known, and role.
 11. Type. Heading and body fonts, and what to use instead where ours aren't available, such as Canva, Word and email.
-12. Photography and imagery. Real photos for anything real: the business, our people, our work and our events. Our best image, where photos come from, subjects to shoot, and what to avoid. Where AI images are allowed is set out in image-style.md.
+12. Photography and imagery. Real photos for anything real: the business, our people, our work and our events. Our best image, where photos come from, subjects to shoot, and what to avoid. Where AI images are allowed is set out in image-style.md, and nothing else is an exception.
 13. Voice. How we sound, who we speak as, specifics to always state, words to avoid, and two short examples: one real post or email of ours, named, and one written for this file and labelled so.
 14. Social media. Each channel we use, social accounts and email, with its handle or list name, who posts and how much time they have, the strongest channels, three to five content pillars, rhythm, tools, and what not to post.
 15. Website application. What the site must do, the feel, what to lead with, and the plain questions it must answer for search and AI search.
 16. Gaps to fill. Every open marker in this file, in one list.
 
 Writing rules:
-- Use only facts from our files and our answers. Where something is missing or unclear, write [NEEDS CONFIRMING: what to check] rather than guessing. Never invent a date, a number, a founding story or a review.
-- Where we have to choose between options, write [DECISION: the options, and your recommendation].
-- If you worked a value out yourself, such as a colour picked from a screenshot, write [INFERRED: how you got it].
+- Use only facts from our files and our answers. Where something is missing or unclear, write [NEEDS CONFIRMING] followed by what to check, rather than guessing. Never invent a date, a number, a founding story or a review.
+- Where we have to choose between options, write [DECISION] followed by the options and your recommendation.
+- For example: "Open 7am to 2pm weekdays. [NEEDS CONFIRMING] weekend hours."
+- If you worked a value out yourself, such as a colour picked from a screenshot, write [INFERRED] followed by how you got it.
 - Write "always" or "never" only where every example in our files follows it.
 - Where a real post or email of ours breaks a rule in this file, fix it and say what you changed.
-- Plain Australian English, short sentences, plain headings. Don't write new slogans or taglines, and don't use an existing one as the core idea. No em dashes, because they read as AI-written.
-- Start the file with these two lines: "Read this file before making anything for [CLIENT]. If a request conflicts with it, ask which wins and record the answer in changelog.md." and "voice.md, visuals.md, image-style.md and the channels folder add detail to sections 9 to 15. If any of them disagrees with this file, this file wins and the disagreement is flagged." Under them, write "Last updated:" and today's date.
+- Plain Australian English, short sentences, plain headings, with a comma or a full stop wherever an em dash might go, because em dashes read as AI-written.
+- Leave out new slogans and taglines, because the brand should come through in specifics. A tagline we already use goes in section 8 and never becomes the core idea.
+- Keep each section as long as its content needs, with no filler or repeated summaries.
+- Start the file with these two lines: "Read this file before making anything for [business name]. If a request conflicts with it, ask which wins and record the answer in changelog.md." and "voice.md, visuals.md, image-style.md and the channels folder add detail to sections 9 to 15. If any of them disagrees with this file, this file wins and the disagreement is flagged." Under them, write "Last updated:" and today's date, then "The short version:" and one paragraph of no more than 500 characters, spaces included (about 75 words), covering who we are, who we serve, how we sound and the three rules that matter most. Use only facts with no marker against them, and put no markers in it. Tools with small instruction boxes, such as Canva's brand voice box, get this paragraph.
 
 If brand-dna.md already has our content, beyond the empty template headings, show us what you'd change and wait for our yes before saving. If you can't edit our folder directly, give us the file to save there instead.
 
@@ -392,20 +410,22 @@ Then tell us, in five lines or fewer, how many markers there are and the three t
       <h3>Build voice.md</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Build our voice file. We're [CLIENT]. In our brand-dna folder, read brand-dna.md first, then sources/interview-notes.md and the posts in the sources folder, both the ones we love and the ones we'd never make.
+<pre>You're our brand editor. Build our voice file. We're [business name]. In our brand-dna folder, read brand-dna.md first, then sources/interview-notes.md and the posts in the sources folder, both the ones we love and the ones we'd never make.
 
 Write voice.md in the brand-dna folder with these parts:
-1. How we sound: five plain rules, each with a one-line reason.
+1. How we sound: five rules written as things anyone can check, such as "uses contractions" rather than "friendly", each with a one-line reason.
 2. Who we speak as ("we", "I" or our names) and how we address people.
 3. Do words: up to 25 words and phrases we actually use, taken from our own posts and answers, each with where it came from. Fewer is fine; don't add any we haven't used.
-4. Don't words: up to 25 words and phrases we never use, each with a better choice beside it where there is one. Include stock AI phrases that would give us away, such as "elevate", "unlock", "dive in" and "game-changer".
+4. Don't words: up to 25 words and phrases we never use, each with a better choice beside it where there is one. Include stock AI phrases that would give us away, such as "elevate", "unlock", "dive in" and "game-changer", and the em dash.
 5. Sign-offs and set phrases.
-6. Two examples for each channel listed in section 14 of brand-dna.md. Use a real post or email of ours (not someone else's) where one exists and say which file it came from. If it breaks anything in brand-dna.md, such as an old sign-off, an em dash, an out-of-date price or an unconfirmed number, fix it and say what you changed. Where we have no real one, write one in our voice and label it "Written for this file". Under each, one line on why it works.
+6. Two examples for each channel listed in section 14 of brand-dna.md. Use a real post or email of ours (not someone else's) where one exists and say which file it came from. If it breaks anything in brand-dna.md, such as an old sign-off, an em dash, an out-of-date price or an unconfirmed number, fix it and say what you changed, without quoting the words you removed. Where we have no real one, write one in our voice and label it "Written for this file". Under each, one line on why it works.
 7. Lines that sound wrong for us: five sentences from a post or email an AI might write for us that we'd reject, each with the fix. Make them ordinary sentences, not slogans or taglines; write them without em dashes, and don't use a tagline of ours as one of them.
+8. Tone by situation: how we sound in four moments: promoting something, thanking a happy customer, answering a complaint, and saying no. For each, one rule based on what we've said or written, and one short example labelled "Written for this file" that mentions only products, offers and policies already in our files.
+9. Hard messages: how we apologise, how we give bad news, and what we never say when something has gone wrong. Use a real message of ours where there is one. Where we haven't told you how we handle something, such as a refund or a redo, write [DECISION] followed by your suggestion instead of a rule.
 
-Keep everything consistent with brand-dna.md. If a source contradicts brand-dna.md, follow brand-dna.md and list the contradiction at the end of your reply. Where an example needs a fact we haven't given, write [NEEDS CONFIRMING: what to check] rather than inventing it. No new slogans or taglines, no em dashes, plain Australian English.
+Keep everything consistent with brand-dna.md. If a source contradicts brand-dna.md, follow brand-dna.md and list the contradiction at the end of your reply. Write examples that don't need a date, time, name or number we haven't given. Where one can't avoid it, write [NEEDS CONFIRMING] followed by what to check, rather than inventing it. Write in plain Australian English, with a comma or a full stop wherever an em dash might go, because em dashes read as AI-written. Leave out new slogans and taglines, because the brand should come through in specifics; a tagline we already use appears only where section 8 of brand-dna.md says it's used. Keep the file as long as the content needs, with no filler sections or repeated summaries.
 
-If voice.md already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the file to save there instead. Then ask us to read it. When we say yes, add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it), and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload this file there, and when we say we have, update its "Copy last replaced" date.</pre>
+If voice.md already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the file to save there instead. Then ask us to read it. When we say yes, add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it), update "Last updated" at the top of brand-dna.md to today, and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload this file there, and when we say we have, update its "Copy last replaced" date.</pre>
       </div>
       <p class="note"><b>Why real examples beat rules.</b> A tool copies an example far more faithfully than it follows a description. Two real posts per channel do more than a page of adjectives.</p>
     </div>
@@ -424,20 +444,20 @@ If voice.md already has our content, beyond the empty template headings, show us
       <h3>Build visuals.md</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Build our visual rules. We're [CLIENT]. In our brand-dna folder, read sections 9 to 12 of brand-dna.md first, then look at the logo, font, colour and photo files and any website screenshots in the sources folder.
+<pre>You're our brand designer. Build our visual rules. We're [business name]. In our brand-dna folder, read sections 9 to 12 of brand-dna.md first, then look at the logo, font, colour and photo files and any website screenshots in the sources folder.
 
 Write visuals.md in the brand-dna folder with these parts:
 1. Logo: each version we have, by file name, and when to use each (light background, dark background, small sizes, social profile picture). Clear space, minimum size, and five things never to do to it.
 2. Colour: a table of name, hex, RGB, print value if we have one, and its job (background, text, accent). Say which pairs are readable as text on background and which aren't.
 3. Type: heading, body and any accent font, with weights and where each is used, plus what to use instead in Canva, Word and email when ours isn't available.
 4. Photography: what we shoot, how it's lit and framed, what's always in it, what's never in it, and up to five of our best existing photos by file name (ask us which if the interview didn't say). List any photo that can't be used publicly (stock, AI-made, or people who haven't agreed) and why.
-5. Layout basics: how much text goes on an image, where the logo sits on a post, and the image sizes for each channel listed in section 14 of brand-dna.md. Sizes won't be in our files: give the current standard sizes and mark each [NEEDS CONFIRMING: platform size, check before use].
+5. Layout basics: how much text goes on an image, where the logo sits on a post, and the image sizes for each channel listed in section 14 of brand-dna.md. Sizes won't be in our files. If you can search the web, check each platform's current sizes; if not, give the standard sizes you know. Mark each [NEEDS CONFIRMING] followed by "platform size, check before use".
 
 Copy our logo and font files into brand-dna/assets/ with clear names, and list them. Copy, don't move: the originals stay where they are.
 
-Take every other value from our files. If you worked a value out yourself, such as a colour picked from a screenshot, write [INFERRED: how you got it]. If something is missing, write [NEEDS CONFIRMING: what to check]. Where this file and brand-dna.md disagree, follow brand-dna.md and tell us. No new slogans or taglines; use a tagline of ours only where section 8 of brand-dna.md says it's used. No em dashes, plain Australian English.
+Take every other value from our files. If you worked a value out yourself, such as a colour picked from a screenshot, write [INFERRED] followed by how you got it. If something is missing, write [NEEDS CONFIRMING] followed by what to check. Where this file and brand-dna.md disagree, follow brand-dna.md and tell us. Write in plain Australian English, with a comma or a full stop wherever an em dash might go, because em dashes read as AI-written. Leave out new slogans and taglines, because the brand should come through in specifics; a tagline we already use appears only where section 8 of brand-dna.md says it's used. Keep the file as long as the content needs, with no filler sections or repeated summaries.
 
-If visuals.md already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the files to save there instead. Then ask us to read it. When we say yes, add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it), and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload this file there, and when we say we have, update its "Copy last replaced" date.</pre>
+If visuals.md already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the files to save there instead. Then ask us to read it. When we say yes, add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it), update "Last updated" at the top of brand-dna.md to today, and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload this file there, and when we say we have, update its "Copy last replaced" date.</pre>
       </div>
     </div>
 
@@ -446,20 +466,20 @@ If visuals.md already has our content, beyond the empty template headings, show 
       <h3>Build image-style.md</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Write our AI image and video style guide. We're [CLIENT]. In our brand-dna folder, read brand-dna.md and visuals.md first, and look at the five best photos named in section 4 of visuals.md.
+<pre>You're our brand designer and AI image director. Write our AI image and video style guide. We're [business name]. In our brand-dna folder, read brand-dna.md and visuals.md first, and look at the five best photos named in section 4 of visuals.md.
 
 Write image-style.md in the brand-dna folder with these parts:
 1. The look, in one paragraph: light, colour, framing, mood, and how close it should sit to our real photos.
 2. Always: up to eight specific visual rules.
 3. Never: up to eight specific things to keep out, including stock-photo clichés and anything that contradicts visuals.md.
-4. Real people: real people, real events and real work are shown with real photos. The one exception is an AI image or video of one of us or our staff, made only with that person's agreement, labelled as AI-made wherever it's used, and never presented as a real photo. We never make AI images of our customers.
+4. Real people: real people, real events and real work are shown with real photos. The one exception is an AI image or video of one of us or our staff, and only after we've confirmed that person has agreed: ask us first. It is labelled as AI-made wherever it's used, never presented as a real photo, and never shows a real customer, event or job. We never make AI images of our customers. Where a platform offers its own AI label, such as Meta's AI info label, we use it.
 5. Image prompt template: one fill-in-the-blanks prompt in four parts (subject, setting, style taken from this file, and format using the sizes in section 5 of visuals.md). Then three filled-in examples for images we'd use where a real photo isn't possible, such as a background for a graphic or a seasonal post. No real people, and not our premises, vehicles, products or events.
 6. Video prompt template: the same, adding camera movement and length. Then two filled-in examples under the same limits.
 7. A short paragraph we can paste into any image tool's style or brand settings.
 
-Make sure parts 2, 3 and 4 agree with each other and with section 12 of brand-dna.md, and that the examples in parts 5 and 6 follow them. Write the templates so they work in any image or video tool. Keep words out of generated images, because AI tools still misspell them; text goes on afterwards in the design tool. No new slogans or taglines; use a tagline of ours only where section 8 of brand-dna.md says it's used. No em dashes, plain Australian English.
+Make sure parts 2, 3 and 4 agree with each other and with section 12 of brand-dna.md, and that the examples in parts 5 and 6 follow them. Write the templates so they work in any image or video tool. Keep words out of generated images, because AI tools still misspell them; text goes on afterwards in the design tool. Write in plain Australian English, with a comma or a full stop wherever an em dash might go, because em dashes read as AI-written. Leave out new slogans and taglines, because the brand should come through in specifics; a tagline we already use appears only where section 8 of brand-dna.md says it's used. Keep the file as long as the content needs, with no filler sections or repeated summaries.
 
-If image-style.md already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the file to save there instead. Then ask us to read it. When we say yes, add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it), and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload this file there, and when we say we have, update its "Copy last replaced" date.</pre>
+If image-style.md already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the file to save there instead. Then ask us to read it. When we say yes, add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it), update "Last updated" at the top of brand-dna.md to today, and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload this file there, and when we say we have, update its "Copy last replaced" date.</pre>
       </div>
       <p class="note"><b>Why the real people rule is in the file.</b> It has to travel with the look. A tool that reads the style without the rule will happily make a lifelike photo of you at an event you never went to.</p>
     </div>
@@ -478,22 +498,22 @@ If image-style.md already has our content, beyond the empty template headings, s
       <h3>Build the channels folder</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Write one playbook for each channel we use. We're [CLIENT]. In our brand-dna folder, read brand-dna.md, voice.md, visuals.md and image-style.md first. Our channels are the ones listed in section 14 of brand-dna.md.
+<pre>You're our brand editor. Write one playbook for each channel we use. We're [business name]. In our brand-dna folder, read brand-dna.md, voice.md, visuals.md and image-style.md first. Our channels are the ones listed in section 14 of brand-dna.md.
 
 For each channel, create a file in brand-dna/channels/ named for the channel (instagram.md, email.md and so on) with these parts:
 1. What this channel is for, for us, and who we're talking to there.
 2. Content pillars: three to five, taken from section 14 of brand-dna.md.
-3. Rhythm: how often and which days, based on the time section 14 says we have. Write [NEEDS CONFIRMING: hours a week] if it doesn't say.
+3. Rhythm: how often and which days, based on the time section 14 says we have. Write [NEEDS CONFIRMING] followed by "hours a week" if it doesn't say.
 4. Format: length, structure, hashtags or subject lines, image or video size from section 5 of visuals.md, and the call to action we use.
 5. One example in our voice, labelled "Written for this file" unless it's a real one of ours.
 6. Never on this channel: up to five things, each taken from brand-dna.md, voice.md or visuals.md.
 7. Before posting: a five-point check.
 
-Also write website.md if we have a website, using section 15 of brand-dna.md and listing the plain questions the site must answer for search and AI search, and print.md if sources/interview-notes.md says we print anything, such as menus, flyers or signs, marking print sizes and printer details [NEEDS CONFIRMING: what to check].
+Also write website.md if we have a website, using section 15 of brand-dna.md and listing the plain questions the site must answer for search and AI search, and print.md if sources/interview-notes.md says we print anything, such as menus, flyers or signs, marking print sizes and printer details [NEEDS CONFIRMING].
 
-Each playbook only adds channel detail. Leave the rules in brand-dna.md, voice.md and visuals.md as they are; if a channel seems to need a different rule, list it at the end of your reply as a question for us instead of writing it in. Use only facts from our files; where an example needs one we haven't given, write [NEEDS CONFIRMING: what to check]. Ignore channels/channel-template.md, and once every playbook is saved, move it into sources/retired/ and tell us. No new slogans or taglines; use a tagline of ours only where section 8 of brand-dna.md says it's used. No em dashes, plain Australian English.
+Each playbook only adds channel detail. Leave the rules in brand-dna.md, voice.md and visuals.md as they are; if a channel seems to need a different rule, list it at the end of your reply as a question for us instead of writing it in. Use only facts from our files; where an example needs one we haven't given, write [NEEDS CONFIRMING] followed by what to check. Ignore channels/channel-template.md, and once every playbook is saved, move it into sources/retired/ and tell us. Write in plain Australian English, with a comma or a full stop wherever an em dash might go, because em dashes read as AI-written. Leave out new slogans and taglines, because the brand should come through in specifics; a tagline we already use appears only where section 8 of brand-dna.md says it's used. Keep the file as long as the content needs, with no filler sections or repeated summaries.
 
-If a playbook already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the files to save there instead. Then ask us to read them. When we say yes, add a line to changelog.md for each file with the name of whoever said yes under Approved by (ask if you don't know it), and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload these files there, and when we say we have, update its "Copy last replaced" date.</pre>
+If a playbook already has our content, beyond the empty template headings, show us the changes and wait for our yes. If you can't edit our folder directly, give us the files to save there instead. Then ask us to read them. When we say yes, add a line to changelog.md for each file with the name of whoever said yes under Approved by (ask if you don't know it), update "Last updated" at the top of brand-dna.md to today, and add any new markers to section 16 of brand-dna.md, listing them in your reply. If a tool works from uploaded copies, as listed under "Where the Brand DNA is used" in changelog.md, tell us to upload these files there, and when we say we have, update its "Copy last replaced" date.</pre>
       </div>
     </div>
 
@@ -506,25 +526,30 @@ If a playbook already has our content, beyond the empty template headings, show 
     <h2>Every tool reads it first, and the old rules <em>retire</em></h2>
     <p>This is the stage that stops the arguments. Every place an AI tool gets its instructions gets a short block at the top, pointing at the Brand DNA and carrying the one rule for a clash: ask which wins, then write the answer down. Tools that can open the folder read it there; tools that work from uploaded copies get the files uploaded and a slightly different block.</p>
 
+    <figure class="ill" style="margin:24px 0 0">
+    <img src="../assets/illustrations/brand-dna-wire.jpg" alt="A cartoon electrician plugs a shop laptop, phone, tablet and till into one tidy power board while the shop cat supervises." width="1376" height="768" loading="lazy" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
+
     <div class="promptcard" id="p-wire">
       <p class="promptlabel">Prompt 7.1 &middot; wire it in</p>
       <h3>Point every tool at the Brand DNA</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Make every AI tool we use read our Brand DNA first. We're [CLIENT]. Our brand-dna folder is the single source of truth, and brand-dna.md inside it is the master. The folder lives at [FOLDER LOCATION].
+<pre>You're setting up our AI tools so they all follow one brand. Make every AI tool we use read our Brand DNA first. We're [business name]. Our brand-dna folder is the single source of truth, and brand-dna.md inside it is the master. The folder lives at [where the folder lives].
 
-Step 1, find. List every place an AI tool of ours gets instructions or brand rules: project instructions and project files, folder instructions, global or personal instructions, skills, scheduled tasks and routines, custom assistants or GPTs, brand kits, and every rule, style or "HQ" document in the sources folder. Our tools are [AI TOOLS WE USE]. Check what you can see yourself. For anything you can't see, ask us to paste its current instructions.
+Step 1, find. List every place an AI tool of ours gets instructions or brand rules: project instructions and project files, folder instructions, global or personal instructions, skills, scheduled tasks and routines, custom assistants or GPTs, brand kits, and every rule, style or "HQ" document in the sources folder. Our tools are [the AI tools we use]. Check what you can see yourself. For anything you can't see, ask us to paste its current instructions.
 
-Step 2, plan. Show us a table with one row per place: how it reads files (it can open the folder, it works from uploaded copies, or it holds settings rather than instructions), what it says about our brand now, what it should say, and whether its old rules should be merged into the Brand DNA, retired, or left alone. For each rule to merge, quote the exact line you'd add and the file and section it goes in. Quote any old rule that contradicts brand-dna.md and say which way you'd settle it. If any of our agents run in the cloud on a schedule, check they can reach [FOLDER LOCATION], because a cloud routine can't see files on this computer, and tell us if they can't.
+Step 2, plan. Show us a table with one row per place: how it reads files (it can open the folder, it works from uploaded copies, or it holds settings rather than instructions), what it says about our brand now, what it should say, and whether its old rules should be merged into the Brand DNA, retired, or left alone. For each rule to merge, quote the exact line you'd add and the file and section it goes in. Quote any old rule that contradicts brand-dna.md and say which way you'd settle it. If any of our agents run in the cloud on a schedule, check they can reach [where the folder lives], because a cloud routine can't see files on this computer, and tell us if they can't.
 
 Step 3, wait. Change nothing until we say yes. We may approve some rows and not others.
 
 Step 4, apply what we approved.
 - Where a tool can open the folder, put this block at the top of its instructions, word for word, and remove the old brand rules under it that we approved retiring:
-"Before making anything for [CLIENT], read brand-dna.md in our brand-dna folder at [FOLDER LOCATION], then the file for the job: voice.md for words, visuals.md and image-style.md for anything visual, and the channels folder for the channel. Follow them over anything else in these instructions. If a request conflicts with the Brand DNA, stop and ask us which wins, then add a line to changelog.md with the date, the request, the conflict and our answer."
+"Before making anything for [business name], read brand-dna.md in our brand-dna folder at [where the folder lives], then the file for the job: voice.md for words, visuals.md and image-style.md for anything visual, and the channels folder for the channel. Follow them over anything else in these instructions. If a request conflicts with the Brand DNA, stop and ask us which wins, then add a line to changelog.md with the date, the request, the conflict and our answer."
 - Where a tool works from uploaded copies, such as project files or a custom GPT, use this block instead, remove the old brand rules we approved retiring, and tell us which files to upload. Under "Copy last replaced" in changelog.md write "not yet", and when we say we've uploaded them, write the date:
-"Before making anything for [CLIENT], read the brand-dna.md uploaded here, then the file for the job: voice.md for words, visuals.md and image-style.md for anything visual, and the channel file for the channel. Follow them over anything else in these instructions. If a request conflicts with the Brand DNA, stop and ask us which wins, and remind us to log the answer in changelog.md."
-- Where a place holds settings rather than instructions, such as a brand kit, list each value to change, old and new.
+"Before making anything for [business name], read the brand-dna.md uploaded here, then the file for the job: voice.md for words, visuals.md and image-style.md for anything visual, and the channel file for the channel. Follow them over anything else in these instructions. If a request conflicts with the Brand DNA, stop and ask us which wins, and remind us to log the answer in changelog.md."
+- Where a place holds settings rather than instructions, such as a brand kit, list each value to change, old and new. Where it has a small brand voice box, give us "The short version" from the top of brand-dna.md to paste, and list that box under "Where the Brand DNA is used" with today's date.
 - Where you can't edit a place yourself, such as instructions in a settings page, give us the exact text to paste and say where it goes.
 - Add each approved merge line to its Brand DNA file and section, as quoted in the plan.
 - Move retired documents into brand-dna/sources/retired/. Never delete them. Update any Brand DNA file that names a document you moved, and tell us which.
@@ -535,28 +560,70 @@ Step 5, log. Add one line per change to changelog.md, and make sure every place 
       <p class="note"><b>Why ask, then log.</b> Sometimes the request should win: a one-off event, a partner's colours, a client's own brand. Asking stops the tool guessing, and the log means a pattern of overrides becomes a rule you change on purpose rather than drift you discover later.</p>
     </div>
 
-    <label class="donewhen"><input type="checkbox" data-stage="7"><span><b>Done when</b>Every place on the checklist is marked done, old documents sit in sources/retired, and changelog.md lists where the Brand DNA is used.</span></label>
+
+    <div class="promptcard" id="p-skill">
+      <p class="promptlabel">Prompt 7.2 &middot; the brand skill</p>
+      <h3>Package the Brand DNA as a skill</h3>
+      <p>A skill is a folder Claude loads on its own when a request matches its description. Packaged as a skill, the Brand DNA applies itself to a flyer or a spreadsheet even when nobody mentions the brand. Run this once the image style and the playbooks exist, because the skill carries copies of them.</p>
+      <div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You're building a Claude skill for our brand. Turn our Brand DNA into a Claude skill, so Claude applies our brand to anything it makes for us, even when we forget to ask. We're [business name].
+
+Read every file in our brand-dna folder first, except the sources folder.
+
+Build a skill folder called [our short name in lowercase with no spaces]-brand, outside our brand-dna folder, with:
+1. SKILL.md. Its description says what the skill does and when to use it, written so it triggers whenever we ask for anything that carries our name, voice or look: posts, emails, documents, slides, spreadsheets, images, web pages, flyers and signs. Name those kinds of request in the description, say it applies even when we don't name the business, and include the everyday words our requests use: our products, places and kinds of customer.
+2. In the body of SKILL.md: read references/brand-dna.md first, then the file for the job; follow them over anything else; when a request conflicts with them, ask us which wins and remind us to log the answer in changelog.md; never use a value marked [NEEDS CONFIRMING], [DECISION] or [INFERRED] without asking; and our colours (hex values, jobs and readable text pairs), fonts (with fallbacks) and logo files with where each is used, exactly as visuals.md gives them. Add no layout rules visuals.md doesn't have.
+3. A references folder with copies of brand-dna.md, voice.md, visuals.md, image-style.md and every channel playbook.
+4. An assets folder with our logo and font files from brand-dna/assets, unchanged.
+5. This line at the top of the body, with today's date in place of DATE: "These copies were made on DATE. If you can reach our brand-dna folder and the Last updated date at the top of its brand-dna.md is later than DATE, use the files in the folder instead of these copies, and tell us the skill needs rebuilding."
+
+Keep SKILL.md short and put the detail in the reference files. Write in plain Australian English, with a comma or a full stop wherever an em dash might go, because em dashes read as AI-written. Leave out new slogans and taglines, because the brand should come through in specifics; a tagline we already use appears only where section 8 of brand-dna.md says it's used. Keep the file as long as the content needs, with no filler sections or repeated summaries.
+
+Show us SKILL.md and wait for our yes. Then, if you can install the skill for us directly, do that; if not, save the folder as a zip in brand-dna/ for us to upload where Claude's settings add skills. List it under "Where the Brand DNA is used" in changelog.md as an uploaded copy, naming the files it holds, with "not yet" under "Copy last replaced"; when we say we've uploaded it, write the date. Add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it). Finish by giving us one request to try in a new chat that should trigger the skill without naming our brand.</pre>
+      </div>
+      <p class="note"><b>Why the date line matters.</b> A skill holds copies. The line tells Claude to prefer the folder when it can reach it, and the monthly check catches a skill that has fallen behind. Custom skills belong to one person's account, so everyone on the team uploads their own copy.</p>
+    </div>
+
+    <label class="donewhen"><input type="checkbox" data-stage="7"><span><b>Done when</b>Every place on the checklist is marked done, old documents sit in sources/retired, the brand skill is installed and triggers on a request that never names the brand, and changelog.md lists where the Brand DNA is used.</span></label>
   </section>
 
   <!-- ============ STAGE 8 · BOOKLET ============ -->
   <section id="booklet">
     <p class="label" data-n="11">Stage 8 &middot; The booklet</p>
-    <h2>The version people <em>look</em> at</h2>
-    <p>Your AI tools read the files. Your team, designers and printers need something they can flick through. The booklet is built from the files in Claude Design, adds no new rules, and says on its back cover that the folder wins.</p>
+    <h2>A design system, then the version people <em>look</em> at</h2>
+    <p>Your AI tools read the files. Your team, designers and printers need something they can flick through. In Claude Design the Brand DNA becomes a design system first, so every flyer, post and slide made there is on-brand, and then the booklet is built from it. It adds no new rules, and says on its back cover that the folder wins.</p>
     <ol class="steps3">
-      <li><b>Open Claude Design</b> and start a new project.</li>
-      <li><b>Attach</b> brand-dna.md, voice.md, visuals.md, image-style.md, the channel files, the logo and font files from assets, and the photos visuals.md lists as usable.</li>
-      <li><b>Paste prompt 8.1</b> and let it build. Fix one page at a time.</li>
+      <li><b>Set up the design system first.</b> In Claude Design, upload brand-dna.md, visuals.md, the logo and font files from assets, and the photos visuals.md lists as usable, and let it build the client's design system. <a href="https://support.claude.com/en/articles/14604397-set-up-your-design-system-in-claude-design">Anthropic's setup guide</a> walks through it. Every design made there afterwards uses it, not just the booklet.</li>
+      <li><b>Check it with prompt 8.1</b> and fix what does not match visuals.md.</li>
+      <li><b>Start a new project and paste prompt 8.2,</b> with the same files attached. Fix one page at a time.</li>
       <li><b>Export it as a PDF,</b> save it in the booklet folder with the date in the file name, and log it in changelog.md.</li>
     </ol>
-    <p class="observed">Claude Design steps and PDF export observed October 2026 and confirmed by third-party sources only</p>
+    <p class="observed">Design system setup from Anthropic's own guide, October 2026. PDF export confirmed by third-party sources only</p>
+
+    <div class="promptcard" id="p-design-system">
+      <p class="promptlabel">Prompt 8.1 &middot; check the design system</p>
+      <h3>Make the design system match the files</h3>
+      <div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You're our brand designer, working in Claude Design. Check our design system against our Brand DNA. We're [business name]. Attached are visuals.md, voice.md, our channel playbooks, and our logo and font files. If you haven't set up a design system for us yet, set one up from these files first.
+
+Compare the design system you set up for us with visuals.md, one item at a time: every colour value and its job, every font and weight, every logo version and where it's used, clear space and minimum size, and the photo rules.
+
+Show us a table: the item, what visuals.md says, what the design system has, and match or mismatch. Then list the fixes for every mismatch, and wait for our yes before changing anything. visuals.md wins every disagreement. If visuals.md marks a value [NEEDS CONFIRMING], [DECISION] or [INFERRED], leave that value out of the design system and say so. A marker only rules out the value it sits beside.
+
+When the fixes are made, give us the line to add under "Where the Brand DNA is used" in changelog.md: Claude Design design system, holding values from visuals.md and our logo and font files, with today's date under "Copy last replaced".
+
+Finish by suggesting three things to make as a test, such as an Instagram post, a flyer and a one-page document. When we say which, use only wording from the examples in voice.md and our channel playbooks, no prices, and a plain box labelled "Photo to come" wherever a photo goes. Label each one "Mock-up". No new slogans or taglines, and a comma or a full stop wherever an em dash might go. Plain Australian English.</pre>
+      </div>
+    </div>
 
     <div class="promptcard" id="p-booklet">
-      <p class="promptlabel">Prompt 8.1 &middot; the booklet</p>
+      <p class="promptlabel">Prompt 8.2 &middot; the booklet</p>
       <h3>Build the booklet in Claude Design</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Build our brand guidelines booklet from our Brand DNA. We're [CLIENT]. Attached are brand-dna.md, voice.md, visuals.md, image-style.md, our channel playbooks, our logo and font files, and the photos listed as usable in section 4 of visuals.md.
+<pre>You're our brand designer, working in Claude Design. Build our brand guidelines booklet from our Brand DNA. We're [business name]. Attached are brand-dna.md, voice.md, visuals.md, image-style.md, our channel playbooks, our logo and font files, and the photos listed as usable in section 4 of visuals.md.
 
 The booklet is for people: our team, designers, printers and anyone making something for us. It shows the brand in the attached files and adds no new rules.
 
@@ -586,14 +653,14 @@ Rules:
 - Use only the attached photos. Where a page needs a photo we don't have, use a plain placeholder labelled "Photo to come", not a generated picture.
 - Label every mock-up as a mock-up.
 - Number every page in the footer, counting the cover as page 1.
-- No new slogans or taglines; use a tagline of ours only where section 8 of brand-dna.md says it's used. No em dashes, plain Australian English.
+- Plain Australian English, with a comma or a full stop wherever an em dash might go, because em dashes read as AI-written. No new slogans or taglines; a tagline of ours appears only where section 8 of brand-dna.md says it's used.
 
 When the draft is ready, list every page where you had to make a judgement call, so we can check those first. When we approve it, remind us to export it as a PDF and save it in brand-dna/booklet/ with the date in the file name, and give us the changelog.md line to add: the date, "Booklet", the version, the page count and who approved it.</pre>
       </div>
       <p class="note"><b>Why the booklet never adds a rule.</b> The moment a rule exists only in the booklet, you have two sources of truth again, and the tools cannot read the booklet.</p>
     </div>
 
-    <label class="donewhen"><input type="checkbox" data-stage="8"><span><b>Done when</b>The booklet PDF is in the booklet folder with its date, it is logged in changelog.md, and its back cover says the folder wins.</span></label>
+    <label class="donewhen"><input type="checkbox" data-stage="8"><span><b>Done when</b>The design system matches visuals.md, the booklet PDF is in the booklet folder with its date, it is logged in changelog.md, and its back cover says the folder wins.</span></label>
   </section>
 
   <!-- ============ STAGE 9 · TEST ============ -->
@@ -602,21 +669,26 @@ When the draft is ready, list every page where you had to make a judgement call,
     <h2>Three real jobs, with the <em>working</em> shown</h2>
     <p>A Brand DNA is only done when it changes what comes out. This makes three real things and shows you which lines of the Brand DNA shaped each one, so you can see it working, and see where it is thin.</p>
 
+    <figure class="ill" style="margin:24px 0 0">
+    <img src="../assets/illustrations/brand-dna-test.jpg" alt="A cartoon shop owner holds a printed flyer against her shop window to check it matches, while a passer-by with a pram squints too." width="1376" height="768" loading="lazy" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
+
     <div class="promptcard" id="p-test">
       <p class="promptlabel">Prompt 9.1 &middot; the test</p>
       <h3>A post, an email and an image prompt</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Test our Brand DNA on three real jobs. We're [CLIENT]. In our brand-dna folder, read brand-dna.md, voice.md, visuals.md, image-style.md and any channel playbooks in the channels folder first (channel-template.md is a blank template, not a playbook). If image-style.md or a playbook hasn't been written yet, say so in one line, work from brand-dna.md, voice.md and visuals.md, and don't count it as a gap or a fail.
+<pre>You're testing our Brand DNA the way a new staff member would use it. Test it on three real jobs. We're [business name]. In our brand-dna folder, read brand-dna.md, voice.md, visuals.md, image-style.md and any channel playbooks in the channels folder first (channel-template.md is a blank template, not a playbook). If image-style.md or a playbook hasn't been written yet, say so in one line, work from brand-dna.md, voice.md and visuals.md, and don't count it as a gap or a fail.
 
 Make these three, as drafts only. Don't post, send or publish anything.
-1. A post for [CHANNEL] about [SOMETHING REAL WE'RE DOING SOON].
-2. An email to [WHO IT'S FOR] about [WHAT IT'S ABOUT].
-3. An image for [WHAT THE IMAGE IS FOR]. If our Brand DNA says it should be a real photo, say so and write a short shot list instead of an AI prompt.
+1. A post for [channel] about [something real we're doing soon].
+2. An email to [who it's for] about [what it's about].
+3. An image for [what the image is for]. If our Brand DNA says it should be a real photo, say so and write a short shot list instead of an AI prompt.
 
-Under each one, show your working in a table: each Brand DNA line you used, quoted, with its file and section, and what it changed in the draft. Then list anything the job needed that the Brand DNA didn't cover, and anywhere two of our files pulled different ways.
+Under each one, list in a table each Brand DNA line you drew on, quoted, with its file and section, and what it changed in the draft. Then list anything the job needed that the Brand DNA didn't cover, and anywhere two of our files pulled different ways.
 
-Finish with a pass, fail or not applicable for each draft on three checks: sounds like us, follows our visual rules, and nothing invented. Where something fails, name the file that needs fixing, suggest the exact line to add or change, and say whether it's a new rule or a change to an existing one. Don't change any file. Plain Australian English.</pre>
+Finish with a pass, fail or not applicable for each draft on three checks: sounds like us, follows our visual rules, and nothing invented. Where something fails, name the file that needs fixing, suggest the exact line to add or change, and say whether it's a new rule or a change to an existing one. Don't change any file. No new slogans or taglines, and a comma or a full stop wherever an em dash might go. Plain Australian English.</pre>
       </div>
       <p class="note"><b>Why show the working.</b> A draft that sounds right by luck teaches you nothing. A draft with its sources quoted tells you which lines are doing the work, and which lines nothing ever uses.</p>
     </div>
@@ -635,7 +707,7 @@ Finish with a pass, fail or not applicable for each draft on three checks: sound
       <h3>Check the folder and the booklet</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>You're an independent senior brand reviewer. You didn't build this, and your job is to find what's wrong before our team, designers and AI tools start using it. We're [CLIENT].
+<pre>You're an independent senior brand reviewer. You didn't build this, and your job is to find what's wrong before our team, designers and AI tools start using it. We're [business name].
 
 Attached is our brand-dna folder: brand-dna.md (the master), voice.md, visuals.md, image-style.md, the channels folder, changelog.md, and our brand booklet PDF. If the sources folder is attached too, use it to check our claims, and ignore sources/retired/.
 
@@ -652,7 +724,7 @@ For each finding give: where it is (file and section, or booklet page number cou
 
 Start with a short verdict and rate each of these as Ready, Ready with minor fixes, or Needs work: approving it ourselves as it stands today, handing it to a designer, and everyday social posts. Then give: what to keep (up to four strengths), the fixes, questions only we can answer, and up to eight edits, in order, that we can paste back into the chat that built the folder, each written so it shows the change before saving and logs it in changelog.md.
 
-Don't change any file. Plain Australian English.</pre>
+Don't change any file. No new slogans or taglines, and a comma or a full stop wherever an em dash might go. Plain Australian English.</pre>
       </div>
     </div>
 
@@ -670,15 +742,15 @@ Don't change any file. Plain Australian English.</pre>
       <h3>Add a new rule</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Add a rule to our Brand DNA. We're [CLIENT]. The rule: [THE NEW RULE]. Why: [THE REASON].
+<pre>You're our brand editor. Add a rule to our Brand DNA. We're [business name]. The rule: [the new rule]. Why: [the reason].
 
 Read brand-dna.md and every other file in our brand-dna folder first, except the sources folder. Then:
 1. Tell us which file and section it belongs in. Rules for the whole brand go in brand-dna.md; detail for one channel goes in that channel's file.
 2. Check it against every existing rule and example. If it clashes with anything, quote the clash and ask us which wins.
 3. Show us the exact wording and where it goes, plus any other line that has to change because of it.
-4. Wait for our yes. Then save, and add a line to changelog.md: the date, the file and section, the rule, the reason, and who approved it. If the rule settles a marker, remove it from section 16 of brand-dna.md, and update "Last updated" at the top of brand-dna.md. If you can't edit our folder directly, give us the changed files to save instead.
+4. Wait for our yes. Then save, and add a line to changelog.md: the date, the file and section, the rule, the reason, and who approved it. Update "Last updated" at the top of brand-dna.md to today. If it settles a marker, also remove that marker from section 16. If you can't edit our folder directly, give us the changed files to save instead.
 
-If the rule changes anything shown in our booklet, list the booklet pages that now need updating. If any tool works from an uploaded copy of a changed file, as listed under "Where the Brand DNA is used" in changelog.md, tell us which copies to replace, and when we say we've replaced one, update its "Copy last replaced" date. Plain Australian English.</pre>
+If the rule changes anything shown in our booklet, list the booklet pages that now need updating. If any tool works from an uploaded copy of a changed file, as listed under "Where the Brand DNA is used" in changelog.md, tell us which copies to replace, and when we say we've replaced one, update its "Copy last replaced" date. For the brand skill, rebuild the zip with the changed files and today's date and tell us to upload it. If visuals.md or a logo or font file changed, tell us to run the design system check again. No new slogans or taglines, and a comma or a full stop wherever an em dash might go. Plain Australian English.</pre>
       </div>
     </div>
 
@@ -687,14 +759,14 @@ If the rule changes anything shown in our booklet, list the booklet pages that n
       <h3>Change or remove a rule</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Change a rule in our Brand DNA. We're [CLIENT]. The rule now: [THE RULE AS IT IS, OR WHERE IT IS]. What it should be: [THE NEW VERSION, OR "remove it"]. Why: [THE REASON].
+<pre>You're our brand editor. Change a rule in our Brand DNA. We're [business name]. The rule now: [the rule as it is, or where it is]. What it should be: [the new version, or "remove it"]. Why: [the reason].
 
 Read every file in our brand-dna folder first. Don't change anything in the sources folder: it's a record. Then:
 1. Find every place the old rule appears or is relied on, in any file, including examples that follow it.
 2. Show us each change as before and after, quoted.
-3. Wait for our yes. Then make the changes, and add a line to changelog.md: the date, every file and section changed, the old rule, the new rule, the reason, and who approved it. If the change settles a marker, remove it from section 16 of brand-dna.md, and update "Last updated" at the top of brand-dna.md. If you can't edit our folder directly, give us the changed files to save instead.
+3. Wait for our yes. Then make the changes, and add a line to changelog.md: the date, every file and section changed, the old rule, the new rule, the reason, and who approved it. Update "Last updated" at the top of brand-dna.md to today. If it settles a marker, also remove that marker from section 16. If you can't edit our folder directly, give us the changed files to save instead.
 
-If the change affects our booklet, list the pages that now need updating. If any tool works from an uploaded copy of a changed file, as listed under "Where the Brand DNA is used" in changelog.md, tell us which copies to replace, and when we say we've replaced one, update its "Copy last replaced" date. Plain Australian English.</pre>
+If the change affects our booklet, list the pages that now need updating. If any tool works from an uploaded copy of a changed file, as listed under "Where the Brand DNA is used" in changelog.md, tell us which copies to replace, and when we say we've replaced one, update its "Copy last replaced" date. For the brand skill, rebuild the zip with the changed files and today's date and tell us to upload it. If visuals.md or a logo or font file changed, tell us to run the design system check again. No new slogans or taglines, and a comma or a full stop wherever an em dash might go. Plain Australian English.</pre>
       </div>
     </div>
 
@@ -703,16 +775,16 @@ If the change affects our booklet, list the pages that now need updating. If any
       <h3>Catch drift before it spreads</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>Run our monthly Brand DNA check. We're [CLIENT]. Read every file in our brand-dna folder, including changelog.md, except the sources folder, which is a record. Don't change anything yet.
+<pre>You're our brand editor. Run our monthly Brand DNA check. We're [business name]. Read every file in our brand-dna folder, including changelog.md, except the sources folder, which is a record. Don't change anything yet.
 
 Report:
 1. Conflicts: any two lines across our files that now disagree, quoted.
-2. Stale copies: every place listed under "Where the Brand DNA is used" in changelog.md that works from an uploaded copy, and whether that copy was last replaced before the latest change to the file.
+2. Stale copies: every place listed under "Where the Brand DNA is used" in changelog.md that holds an uploaded, pasted or typed-in copy (project files, a GPT's knowledge, the brand skill, a brand kit, a brand voice box, a design system), and whether it was last replaced on or before the date of the latest change to any file it copies.
 3. Loose ends: every [NEEDS CONFIRMING], [DECISION] and [INFERRED] marker still open anywhere in the folder, any that section 16 of brand-dna.md is missing, and any it still lists after they were settled.
 4. Override answers: every "which wins" answer logged since the last monthly check in changelog.md, and whether a pattern means a rule should change. Suggest the wording.
 5. Booklet: whether any change since the last booklet line in changelog.md affects it, and which pages.
 
-Then list the fixes you propose and wait for our yes. If nobody answers, as when this runs on a schedule, log "fixes proposed, waiting on us" in changelog.md and stop. Make only the ones we approve, and log each in changelog.md. If you can't edit our folder directly, give us the changed files to save instead. Finish with a line in changelog.md: the date, "Monthly check", and what was fixed, or "no changes". Plain Australian English.</pre>
+Then list the fixes you propose and wait for our yes. If nobody answers, as when this runs on a schedule, log "fixes proposed, waiting on us" in changelog.md and stop. Make only the ones we approve, and log each in changelog.md. If you can't edit our folder directly, give us the changed files to save instead. Finish with a line in changelog.md: the date, "Monthly check", and what was fixed, or "no changes". No new slogans or taglines, and a comma or a full stop wherever an em dash might go. Plain Australian English.</pre>
       </div>
       <p class="note"><b>Make it a routine.</b> Once the folder is settled, ask Claude to run prompt 11.3 on the first Monday of every month as a scheduled task, report only. <a href="../runs-without-you/">Work That Runs Without You</a> covers scheduling.</p>
     </div>

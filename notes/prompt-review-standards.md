@@ -164,3 +164,35 @@ When handed a prompt or skill to improve, run this in order:
 Australian English. No em dashes. Never the word "solid". Draft-for-approval
 pattern on anything that would overwrite a person's existing setup: output
 the replacement, the human pastes it themselves.
+
+## Part four: October 2026 additions
+
+Added 21 Oct 2026 from Anthropic's current prompting docs
+(platform.claude.com, prompting best practices and the Opus 5 and Sonnet 5.5
+pages, read that day). Parts one to three above are James's September text,
+unchanged. Where they and this part differ, this part is newer.
+
+1. **Never ask a model to write out its reasoning.** "Show your working",
+   "explain your thinking step by step in the answer" and the like can now be
+   declined outright as reasoning extraction on Opus 5 and Sonnet 5.5. Ask
+   for what you actually need instead: the sources or lines it drew on, or a
+   short explanation of the answer.
+2. **Calibrate document length.** Opus 5 writes longer documents and replies
+   than earlier models, and effort does not shorten them. Any prompt that
+   produces a file says to keep it as long as the content needs, with no
+   filler sections or repeated summaries.
+3. **Drop "double-check" lines.** Current models verify and self-correct
+   without being told. "Double-check your answer" or "add a verification
+   step" now adds cost without improving results. A check that is the job
+   itself (compare this against that) is still fine.
+4. **Pin the scope.** Current models can widen a task on their own. Say what
+   is in, what is out, and where to stop; for anything risky, say to show the
+   change and wait.
+5. **Search for what changes.** Where a fact moves (rules, prices, platform
+   sizes), tell the model to check online when it can rather than answer from
+   training, and to mark what it could not check.
+6. **Role still helps, briefly.** One sentence of role is enough. Elaborate
+   personas add nothing on current models.
+7. **XML tags are optional.** Use them when a prompt mixes instructions,
+   pasted material and examples; plain headings and whitespace are enough
+   otherwise.

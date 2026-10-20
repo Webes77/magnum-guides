@@ -1,4 +1,4 @@
-# [CLIENT] Visuals
+# [business name] Visuals
 
 Adds detail to sections 9 to 12 of brand-dna.md. If the two disagree, brand-dna.md wins.
 

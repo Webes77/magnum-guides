@@ -2989,11 +2989,14 @@ merged until James says so.
 
 Four pieces in `brand-dna/`. `index.html` is the guide in the Agent
 Workforce shell: why brands drift, the folder, before you start, then eleven
-stages with fourteen prompts and Done when boxes (`magnum-brand-dna-stages`).
+stages with sixteen prompts and Done when boxes (`magnum-brand-dna-stages`).
 `prep.html` is the client prep checklist; `?for=Name&by=Date` fills the name
 and send-by date on screen so a personalised link never puts a client name in
-the repo. `run-sheet.html` is James's facilitator sheet, `noindex`, and not
-linked from any page: before, ten timed blocks, after. `template/brand-dna/` and
+the repo. The run sheet, James's facilitator notes (before, the timed
+blocks, after), is not on the site: at his word on 21 Oct it lives in Google
+Drive at Magnum AI / Session Run Sheets, as a PDF with its HTML source
+beside it. Edit the source there and reprint; its links point at the live
+site. `template/brand-dna/` and
 `brand-dna-template.zip` are the empty folder. Card at
 `assets/thumbnails/brand-dna.jpg`, source `brand-dna/thumbnail.html`,
 rendered with local headless Chrome at a true 1200x630.
@@ -3035,6 +3038,58 @@ The run took two and a half to three hours with the owner present, so the
 run sheet keeps the interview, the master file, voice, visuals, wiring and
 the test in the room, and moves 5.2 and 6.1 to after the session with the
 booklet and the review.
+
+**Two pieces, one set of prompts, 21 Oct, at James's word.** James said the
+guide looked flat beside the rest of the members area and asked whether the
+walkthrough and the members area page should be two things. They are now,
+and the prompts cannot drift between them.
+
+The guide carries five cartoons in the locked style (`brand-dna.jpg` hero,
+`-drift`, `-interview`, `-wire`, `-test`) and the prep page carries
+`brand-dna-folder.jpg`, all in `assets/illustrations/`, Nano Banana 2.1, 16:9,
+about 2 credits each. Two first takes were thrown away for readable text (a
+floating "seriously?" and fake window lettering) and one for a staffer who
+read as a child. The run sheet has no picture: it is James's notes.
+
+`brand-dna/walkthrough/` is the walkthrough, built on deck engine v2 from
+`social/`, engine byte-identical apart from the two per-deck strings
+(`magnum-brand-dna-fill`, `Magnum AI / Walkthrough`) and paths one level
+deeper (`../../`). 28 slides in session order: why, today, the folder, the
+one rule, then the in-room prompts, what happens next, the after-today
+prompts and keeping it current. Illustrations sit inside `F` figures as an
+SVG `<image>`, so the engine needed no change. `tools/check-decks.js` now
+covers it, and it passes at all four sizes and on the phone page.
+
+`tools/check-brand-dna.js` is the gate: all sixteen guide prompts in the
+deck byte for byte, the sixteen sections of prompt 3.1 against the
+template's headings, brackets, em dashes and "solid". `--fix` copies every
+guide prompt into the deck's `P_` constants. The guide is the source; edit a
+prompt there and run `--fix`. Proved by breaking a deck prompt and watching
+it fail.
+
+Brackets follow the shelf convention now, which the first build had
+backwards. Lowercase is a blank the client fills (`[business name]`, so the
+deck's Fill in types it once for all sixteen prompts); capitals are the three
+markers the AI writes (`[NEEDS CONFIRMING]`, `[DECISION]`, `[INFERRED]`),
+each followed by its detail outside the brackets. `[CLIENT]` became
+`[business name]` everywhere, template included.
+
+Five upgrades from research, all in the prompts and the deck: prompt 7.2
+packages the folder as a Claude skill (Anthropic's own brand-guidelines use
+case, and the core idea of the transcript James supplied); stage 8 sets up
+the client's design system in Claude Design first, with prompt 8.1 checking
+it against visuals.md, and the booklet is 8.2; voice.md gains tone by
+situation and hard messages, with rules written as behaviour; brand-dna.md
+opens with a short version of 500 characters or fewer for small boxes such as
+Canva's Brand Voice, whose limit is characters, not words; image-style.md uses the platform's own AI label.
+Sixteen prompts. Register rows 115 to 118. A second dry run covered the new
+prompts.
+
+Checks, 21 Oct: the repo's own contrast audit and deck check ran on this
+Mac through `playwright-core` in the session scratchpad driving the
+installed Chrome (the `/opt` paths in both tools are the cloud sandbox's).
+Contrast zero on all four pages at four widths; every Copy button in guide
+and deck returns a guide prompt exactly.
 
 ## Decisions already made
 
@@ -3175,6 +3230,11 @@ booklet and the review.
   has started ticking.
 
 ## Next
+
+**Waiting, on James's word (21 Oct): a Brand Design project.** Once the
+Brand DNA guide and walkthrough are merged, set up a project so client brand
+builds follow one process. Not started. It is on the Daily Board under
+Magnum, Members area.
 
 On 9 Sep, later, the whole members area moved to the white, navy and
 coral palette in one pass (see House style above): every page, all four
