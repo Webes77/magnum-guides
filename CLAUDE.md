@@ -2979,6 +2979,63 @@ says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
 a scheduled task are added there by James; `update_trigger` has no connectors
 field and cannot do it.
 
+**Build Your Brand DNA, built 20 Oct on `module/brand-dna`, not merged.**
+James asked for a reusable Brand DNA programme: a live 90-minute session
+that leaves a client with one folder every AI tool reads before it makes
+anything, so outputs stop drifting and old rule documents stop arguing. First
+run is a client session on 26 Oct; the module is generic and no client name
+ships (hard rule 5). Nothing is linked from the front page and nothing is
+merged until James says so.
+
+Four pieces in `brand-dna/`. `index.html` is the guide in the Agent
+Workforce shell: why brands drift, the folder, before you start, then eleven
+stages with fourteen prompts and Done when boxes (`magnum-brand-dna-stages`).
+`prep.html` is the client prep checklist; `?for=Name&by=Date` fills the name
+and send-by date on screen so a personalised link never puts a client name in
+the repo. `run-sheet.html` is James's facilitator sheet, `noindex`, and not
+linked from any page: before, ten timed blocks, after. `template/brand-dna/` and
+`brand-dna-template.zip` are the empty folder. Card at
+`assets/thumbnails/brand-dna.jpg`, source `brand-dna/thumbnail.html`,
+rendered with local headless Chrome at a true 1200x630.
+
+The backbone is the 16 sections of James's `client-brand-dna` skill, names
+and order unchanged; prompt 10.1 carries the checks of his
+`review-brand-booklet` skill in a self-contained form. The School Furniture
+Shop booklet was used only for which pages a booklet carries; James said it
+is an example, not the standard. Prompts are in the client's voice ("we"),
+every one that writes shows the change and waits for a yes, and old rule
+documents move to `sources/retired/`, never deleted.
+
+Two additions to the folder James specified: `assets/` (logo and font files,
+copied in, because a tool needs the real files) and `sources/` (what the
+client sent, plus `retired/`). The run sheet moves the booklet and the
+independent review to after the session, because both need more than the
+time left and the review must not run in the chat that built the folder.
+
+Every Copy button returns the authored text (14 of 14), contrast zero at
+1440, 820 and 390 on all three pages, no sideways scroll, style checker clean.
+Register rows 113 and 114.
+
+**The dry run, and what it changed.** An agent ran all fourteen prompts in
+order on a made-up two-person coffee van, playing the owner from a crib
+sheet. The prompts held up inside themselves; the breaks were between them.
+Section 12 said "real photos only" and 5.2 then built an AI image guide; the
+interview never asked for hours, staff or contact details, so the Snapshot
+filled with markers; 4.1 copied old sign-offs, em dashes and an unverified
+number out of real posts, and its "wrong lines" were slogans that 8.1 then
+put in the booklet; 7.1 told a Claude project and a custom GPT, which work
+from uploaded copies, to read a folder and write a changelog. All seven must
+fixes and the should fixes went in, the template moved with 3.1, and a second
+agent checked the revision against the findings. Two things worth keeping:
+markers are three and only three (`[NEEDS CONFIRMING: ...]`,
+`[DECISION: ...]`, `[INFERRED: ...]`), and every writing prompt ends by
+asking the client to read it, then logs their name under Approved by.
+
+The run took two and a half to three hours with the owner present, so the
+run sheet keeps the interview, the master file, voice, visuals, wiring and
+the test in the room, and moves 5.2 and 6.1 to after the session with the
+booklet and the review.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from

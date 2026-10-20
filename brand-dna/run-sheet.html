@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+<title>Brand DNA Run Sheet &middot; Magnum AI</title>
+<meta name="description" content="The 90-minute Brand DNA session in timed blocks: what to say, what the client does, and which prompt runs in each block. Plus what happens before and after.">
+<meta name="author" content="Magnum AI">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  html,body{background:#FBFBF9;}
+  /* The coral word in a section's deck line sits under 24px, so it takes the small-text coral. */
+  .label + h2 em{color:var(--coral-text);font-style:normal;}
+  .masthead .crumb::after{background:var(--on-navy-mute)}
+  .wrap p a,.wrap li a,.wrap td a{color:var(--coral-text);}
+
+  /* One block of the session. Time on the left, the block on the right. */
+  .block{display:grid;grid-template-columns:120px 1fr;gap:0 26px;border-top:2px solid var(--ink);
+    padding:22px 0 26px;}
+  .block .t{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--coral-text);
+    padding-top:4px;}
+  .block .t b{display:block;font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:0;
+    color:var(--ink);line-height:1;margin-bottom:6px;}
+  .block h3{margin:0 0 12px;}
+  .block .row{display:grid;grid-template-columns:130px 1fr;gap:4px 18px;padding:10px 0;
+    border-top:1px solid rgba(30,27,23,.12);font-size:15.5px;color:var(--char);}
+  .block .row:first-of-type{border-top:none;}
+  .block .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--ink);padding-top:3px;}
+  .block .row p{margin:0 0 8px;max-width:64ch;}
+  .block .row p:last-child{margin-bottom:0;}
+  .block q{quotes:none;display:block;border-left:3px solid var(--rust);padding:2px 0 2px 14px;
+    color:var(--ink);font-size:16px;line-height:1.5;}
+  .block q + q{margin-top:10px;}
+  .pill{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+    background:var(--tint);color:var(--ink);border:2px solid var(--ink);padding:3px 8px;margin:0 6px 6px 0;
+    text-decoration:none;}
+  a.pill:hover,a.pill:focus-visible{background:var(--coral-bright);outline:none;}
+  .block.after{border-top-style:dashed;}
+  @media(max-width:700px){
+    .block{grid-template-columns:1fr;gap:10px 0}
+    .block .row{grid-template-columns:1fr;gap:2px 0}
+  }
+  .steps3{counter-reset:s;list-style:none;margin:18px 0 0;padding:0;}
+  .steps3>li{counter-increment:s;position:relative;padding:0 0 14px 44px;margin:0 0 14px;
+    border-bottom:1px solid rgba(30,27,23,.14);font-size:15.5px;color:var(--char);}
+  .steps3>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .steps3>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--coral-text);}
+  .steps3 b{color:var(--ink);}
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .mtb{display:none}
+    .block{break-inside:avoid}
+  }
+</style>
+<link rel="stylesheet" href="../assets/topbar.css">
+</head>
+<body>
+<header class="mtb" style="margin:0 -20px"><div class="mtb-in"><a class="mtb-brand" href="../"><img src="../assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="../#sessions">Courses</a><a href="../prompts/">Prompts</a><a href="../#week">This week</a><a href="../#library" aria-current="page">Guides</a><a href="../ai-tools/">Tools</a></nav></div></header>
+<header class="masthead"><div class="wrap">
+    <p class="crumb"><a href="../" style="color:inherit;text-decoration:none">Magnum AI</a> &nbsp;&middot;&nbsp; <a href="./" style="color:inherit;text-decoration:none">Brand DNA</a> &nbsp;&middot;&nbsp; Run sheet</p>
+    <h1>Brand DNA <em>run sheet</em></h1>
+    <p class="sub">The 90-minute session in timed blocks. What I say, what the client does, and which prompt runs. The prompts live on <a href="./" style="color:inherit">the Brand DNA page</a>; every pill below links to one. The client drives their own Claude, so the folder and the wiring end up in their account.</p>
+  </div></header>
+  <div class="wrap">
+
+  <section id="before">
+    <p class="label" data-n="01">Before the session</p>
+    <h2>Most of the reading happens before the <em>room</em></h2>
+
+    <div class="block">
+      <div class="t"><b>&minus;5</b>working days</div>
+      <div>
+        <h3>Send the prep checklist</h3>
+        <div class="row"><span class="k">Do</span><div><p>Send the personalised link: <code>prep.html?for=[CLIENT]&amp;by=[SEND-BY DATE]</code>. It fills their name and the date and stores nothing.</p></div></div>
+        <div class="row"><span class="k">Ask</span><div><p>Where the folder should live. If any of their AI agents run in the cloud on a schedule, it goes in their Google Drive or shared drive, because a cloud routine cannot read a file on their computer.</p></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>&minus;2</b>working days</div>
+      <div>
+        <h3>Check what has arrived</h3>
+        <div class="row"><span class="k">Do</span><div><p>Open their shared folder against the seven items. No colours or fonts? Ask for a website screenshot. No rule documents? Ask for the instructions from every AI tool on their list, pasted into a note.</p></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>&minus;1</b>day &middot; 20 min</div>
+      <div>
+        <h3>Build the folder and run the audit</h3>
+        <div class="row"><span class="k">Do</span><div><p>Unzip the empty folder where it will live. Put everything they sent into <code>sources</code>. In task work, with that folder chosen, run the audit.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-audit">1.1 The audit</a></div></div>
+        <div class="row"><span class="k">Then</span><div><p>Read the report. Star the three conflicts that matter most: those go first in the session. Fix nothing yet.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="session">
+    <p class="label" data-n="02">The session</p>
+    <h2>Ninety minutes, nine <em>blocks</em></h2>
+    <p>Times are from the start. The client has the Claude desktop app open on task work with the brand-dna folder chosen. I read the prompts out and they paste them, or they share their screen and I talk them through it.</p>
+
+    <div class="block">
+      <div class="t"><b>0:00</b>4 min</div>
+      <div>
+        <h3>Open</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>Today we build one folder that every AI tool you use reads before it makes anything. Five parts: what you have already got, a short interview, the files, pointing your tools at them, and a test on real work.</q>
+          <q>One rule runs through all of it. When a request and your brand disagree, the tool asks you which wins and writes your answer down. It never guesses.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Opens Claude, task work, chooses the brand-dna folder.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><p>None.</p></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>0:04</b>6 min</div>
+      <div>
+        <h3>What you have already got</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>I read everything you sent. Here is where your own documents disagree with each other. Every one of these is a coin your AI tools have been tossing.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Reads the conflicts in <code>sources/audit-report.md</code>, starting with the three I starred. Reacts out loud. No decisions typed yet: the interview captures them.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><p>None live. 1.1 ran yesterday.</p></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>0:10</b>30 min</div>
+      <div>
+        <h3>The interview</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>It asks one question at a time. Answer out loud and type what you said, or I will type for you. Short and real beats polished.</q>
+          <q>When it gets to the conflicts, you pick the winner. If you cannot pick, say so and it stays open.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Answers up to twenty questions, starting with one list of plain facts: hours, who works there, contact details, handles, time for social media. Says "that's it" at the end.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-interview">2.1 The interview</a></div></div>
+        <div class="row"><span class="k">Watch for</span><div><p>Vague answers ("friendly", "professional"). Ask for the last time they lived up to it. That example becomes the proof line in section 3.</p></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>0:40</b>8 min</div>
+      <div>
+        <h3>The master file</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>This is the file everything reads first. Anything it does not know, it marks rather than guesses, and puts on one list at the bottom.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>While it writes, opens the five posts they love beside the five they would never make and says what each set has in common. Then reads the three markers that matter most and answers any they can on the spot.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-draft">3.1 The master file</a></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>0:48</b>9 min</div>
+      <div>
+        <h3>Voice</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>Read the don't list first. If a word on it makes you wince, it is right. If one is a word you actually use, say so and it comes off.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Reads the do and don't lists and the examples. Flags anything that does not sound like them, one line at a time.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-voice">4.1 Voice</a></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>0:57</b>9 min</div>
+      <div>
+        <h3>The visual system</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>Anything marked inferred is a guess from a screenshot. Confirm it or give me the right value.</q>
+          <q>Photos of you, your work and your events stay real. I will write the AI image rules after today, with one rule in them no matter what: an AI picture of a real person is always labelled as AI, never passed off as a photo.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Confirms colours and fonts. Picks their five best photos, and flags any that cannot be used publicly.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-visuals">5.1 Visuals</a></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>1:06</b>12 min</div>
+      <div>
+        <h3>Wire it in</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>This is the bit that stops the arguing. Every tool gets the same few lines at the top: read the Brand DNA first, and ask when something clashes.</q>
+          <q>Old documents are not deleted. They go in a retired folder, so nothing is lost and nothing reads them by accident.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Reads the plan table and says yes row by row. Pastes the block into any settings page Claude cannot reach itself, and uploads the files to any tool that works from copies.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-wire">7.1 Wire it in</a></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>1:18</b>9 min</div>
+      <div>
+        <h3>Test it on real work</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>Pick something real you need this week. A post, an email and a picture. It shows which line of the Brand DNA shaped each one.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Fills the three jobs with real ones. Reads the working table under each draft.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-test">9.1 The test</a></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="t"><b>1:27</b>3 min</div>
+      <div>
+        <h3>Close</h3>
+        <div class="row"><span class="k">I say</span><div>
+          <q>Three things happen next. The AI image rules and a playbook for each channel, which you read and approve. Then the booklet, built from these files. Then a separate reviewer checks the folder and the booklet before anyone relies on them. All of it by [AGREED DATE].</q>
+          <q>From now on every change goes through one of three prompts: add a rule, change a rule, or the monthly check. Never edit a tool's instructions by hand.</q>
+        </div></div>
+        <div class="row"><span class="k">Client</span><div><p>Answers anything left in section 16 they can. Agrees the date.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><p>None. Point them at <a href="./#maintain">stage 11</a>.</p></div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:38px">Running behind</h3>
+    <p>The interview is the block that overruns. Let it, and take the time from voice: run 4.1 and leave the client to read it after. Never cut the interview, the wiring or the test: the first is where the brand comes from, the second is the reason for the whole session, and the third is what the client remembers.</p>
+    <p>Why the AI image rules and the playbooks come after: a dry run of the whole pack on a sample business took two and a half to three hours with the owner present. Ninety minutes holds the parts that need the client in the room.</p>
+  </section>
+
+  <section id="after">
+    <p class="label" data-n="03">After the session</p>
+    <h2>The rest of the folder, the booklet, then a reviewer that did not build <em>it</em></h2>
+
+    <div class="block after">
+      <div class="t"><b>1</b>Images and channels</div>
+      <div>
+        <h3>AI image rules and channel playbooks</h3>
+        <div class="row"><span class="k">Do</span><div><p>In the client's folder, from a short follow-up call or from my own Claude if the folder is in their shared drive. Each prompt asks the client to read and approve before anything is logged.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-image-style">5.2 AI image style</a><a class="pill" href="./#p-channels">6.1 Channel playbooks</a></div></div>
+      </div>
+    </div>
+
+    <div class="block after">
+      <div class="t"><b>2</b>Booklet</div>
+      <div>
+        <h3>Build the booklet</h3>
+        <div class="row"><span class="k">Do</span><div><p>In Claude Design, attach the folder's files, the logo and font files from <code>assets</code>, and the photos visuals.md lists as usable. Fix one page at a time. Export as PDF into <code>booklet</code> with the date in the file name, and log it.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-booklet">8.1 The booklet</a></div></div>
+      </div>
+    </div>
+
+    <div class="block after">
+      <div class="t"><b>3</b>Review</div>
+      <div>
+        <h3>Independent review</h3>
+        <div class="row"><span class="k">Do</span><div><p>A new chat, never the one that built the folder. Attach the whole folder and the booklet PDF. My own review-brand-booklet skill does the same job if it is to hand.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-review">10.1 The review</a></div></div>
+        <div class="row"><span class="k">Then</span><div><p>Paste the review's list of edits back into the chat that built the folder. Each fix is shown before it is saved, and logged.</p></div></div>
+      </div>
+    </div>
+
+    <div class="block after">
+      <div class="t"><b>4</b>Hand over</div>
+      <div>
+        <h3>Send it back</h3>
+        <div class="row"><span class="k">Do</span><div><p>Send the booklet, the open items from section 16, and the link to <a href="./#maintain">stage 11</a>. Offer to set prompt 11.3 up as a monthly scheduled task in their account.</p></div></div>
+        <div class="row"><span class="k">Prompt</span><div><a class="pill" href="./#p-monthly">11.3 The monthly check</a></div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<footer>
+  <span>Magnum AI &middot; magnumai.com.au</span>
+  <span>Brand DNA &middot; run sheet</span>
+  <span><a href="./" style="color:inherit">The full guide</a></span>
+</footer>
+</body>
+</html>
