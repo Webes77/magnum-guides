@@ -3101,6 +3101,33 @@ said on 21 Oct not to build around any one tool; image-style.md uses the platfor
 Sixteen prompts. Register rows 115 to 118. A second dry run covered the new
 prompts.
 
+**Version 2: one document, four checkpoints, 21 Oct, at James's word.** James
+wants the Brand DNA to be everything about the business in one document that
+uploads into any AI, built in stopping-off points the client signs off, and
+sold as a discovery session plus a build plus a finished package. So:
+
+- The framework is twenty sections, James's sixteen plus Values (3), Offers
+  (9), Proof and policies (10) and Prompts (19), Gaps to fill last (20). The
+  names and order live in `FRAMEWORK` in `tools/check-brand-dna.js`, which
+  fails if the template or any prompt drifts from them.
+- One file, `brand-dna.md`, replaces the folder of voice, visuals, image style
+  and channel files. The folder keeps the changelog, assets, booklet and
+  sources. The short version at the top is 500 characters or fewer (about 85
+  words).
+- Seventeen prompts in stages: audit; checkpoint 1 who you are (the one-hour
+  discovery session, 2.1 and 2.2); checkpoint 2 what you sell (3.1);
+  checkpoint 3 look and sound (4.1, 4.2); checkpoint 4 where you show up
+  (5.1); pull it together and the skill (6.1, 6.2); design system and booklet
+  (7.1, 7.2); test, review, wire in, keep current. Every writing prompt lists
+  open markers as questions at sign-off and clears the ones answered.
+- The guide is generated from the prompt source by a script in the session
+  scratchpad; edit `brand-dna/index.html` directly from now on and keep the
+  card markup. An agent ran the whole process on a made-up coffee van and its
+  fixes are in.
+- James's done-for-you kit is his `client-brand-dna` skill, upgraded to this
+  process (built 21 Oct, uploaded by James). It runs inside each client's
+  own Claude project. The Drive Brand Studio is superseded by it.
+
 **The walkthrough is James's own, not the members', later on 21 Oct at his
 word.** It is a private Artifact (https://claude.ai/artifact/HR7XfbT3p3gAakyLT5jh5i),
 its images published with it, and its source is in Google Drive at Magnum AI /

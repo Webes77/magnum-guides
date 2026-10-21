@@ -2,8 +2,9 @@
 /*
   check-brand-dna.js
   ==================
-  The Brand DNA guide (brand-dna/index.html) is the source of sixteen
-  prompts. James's walkthrough deck carries the same prompts, but it is his
+  The Brand DNA guide (brand-dna/index.html) is the source of seventeen
+  prompts and the 20-section framework. James's walkthrough deck carries
+  the same prompts, but it is his
   private Artifact, not part of this site: its source sits in Google Drive
   (Magnum AI / Session Run Sheets). Pass its path with --deck to check or
   fix it; without --deck the deck checks are skipped.
@@ -45,7 +46,23 @@ const constName = id => id.replace(/^p-/, 'P_').replace(/-/g, '_').toUpperCase()
 const guide = fs.readFileSync(GUIDE, 'utf8');
 const prompts = {};
 for (const m of guide.matchAll(/<div class="promptcard" id="([^"]+)">[\s\S]*?<pre>([\s\S]*?)<\/pre>/g)) prompts[m[1]] = unesc(m[2]);
-if (Object.keys(prompts).length !== 16) fails.push(`guide has ${Object.keys(prompts).length} prompts, expected 16`);
+if (Object.keys(prompts).length !== 17) fails.push(`guide has ${Object.keys(prompts).length} prompts, expected 17`);
+const FRAMEWORK = ['Snapshot','The core idea','Values','Personality','Pillars','Audience','What it is not','Story and heritage','Offers','Proof and policies','Name','Logo','Colour','Type','Photography and imagery','Voice','Social media','Website application','Prompts','Gaps to fill'];
+
+const ex = process.argv.indexOf('--export');
+if (ex > -1) {
+  const dir = process.argv[ex + 1];
+  if (!dir) fails.push('--export needs a folder');
+  else {
+    fs.mkdirSync(dir, { recursive: true });
+    for (const m of guide.matchAll(/<div class="promptcard" id="([^"]+)">\s*<p class="promptlabel">Prompt ([\d.]+) &middot; ([^<]+)<\/p>/g)) {
+      const [, id, num, label] = m;
+      const name = `${num.split('.').map(n => n.padStart(2, '0')).join('-')} ${label.trim()}.md`;
+      const stamp = new Date().toISOString().slice(0, 10);
+      fs.writeFileSync(path.join(dir, name), `<!-- Prompt ${num}, ${label.trim()}. Copied from the members area Brand DNA guide on ${stamp}. Edit the guide, not this file, then export again. -->\n\n${prompts[id]}\n`);
+    }
+  }
+}
 
 if (DECK) {
   let deck = fs.readFileSync(DECK, 'utf8');
@@ -58,20 +75,6 @@ if (DECK) {
     }
     fs.writeFileSync(DECK, deck);
   }
-  const ex = process.argv.indexOf('--export');
-  if (ex > -1) {
-    const dir = process.argv[ex + 1];
-    if (!dir) fails.push('--export needs a folder');
-    else {
-      fs.mkdirSync(dir, { recursive: true });
-      for (const m of guide.matchAll(/<div class="promptcard" id="([^"]+)">\s*<p class="promptlabel">Prompt ([\d.]+) &middot; ([^<]+)<\/p>/g)) {
-        const [, id, num, label] = m;
-        const name = `${num.split('.').map(n => n.padStart(2, '0')).join('-')} ${label.trim()}.md`;
-        const stamp = new Date().toISOString().slice(0, 10);
-        fs.writeFileSync(path.join(dir, name), `<!-- Prompt ${num}, ${label.trim()}. Copied from the members area Brand DNA guide on ${stamp}. Edit the guide, not this file, then export again. -->\n\n${prompts[id]}\n`);
-      }
-    }
-  }
   for (const [id, text] of Object.entries(prompts)) {
     const m = deck.match(new RegExp(`const ${constName(id)} = \`([\\s\\S]*?)\`;`));
     if (!m) fails.push(`deck is missing ${constName(id)}`);
@@ -81,12 +84,18 @@ if (DECK) {
   for (const id of Object.keys(prompts)) if (!used.includes(constName(id))) fails.push(`no deck slide uses ${constName(id)}`);
 }
 
-// 2. sixteen sections, same names and order as the template
-const draft = prompts['p-draft'] || '';
-const fromPrompt = [...draft.matchAll(/^(\d{1,2})\. ([^.]+)\./gm)].map(m => `${m[1]}. ${m[2]}`).filter((_, i, a) => i < 16);
-const fromTemplate = [...fs.readFileSync(TEMPLATE, 'utf8').matchAll(/^## (\d{1,2}\. .+)$/gm)].map(m => m[1]);
-if (fromTemplate.length !== 16) fails.push(`template has ${fromTemplate.length} section headings, expected 16`);
-fromTemplate.forEach((t, i) => { if (fromPrompt[i] !== t) fails.push(`section ${i + 1}: prompt says "${fromPrompt[i]}", template says "${t}"`); });
+// 2. the twenty sections: the template's headings and the prompts that write them
+const fromTemplate = [...fs.readFileSync(TEMPLATE, 'utf8').matchAll(/^## (\d{1,2})\. (.+)$/gm)].map(m => [+m[1], m[2].trim()]);
+if (fromTemplate.length !== 20) fails.push(`template has ${fromTemplate.length} section headings, expected 20`);
+fromTemplate.forEach(([n, name]) => { if (FRAMEWORK[n - 1] !== name) fails.push(`template section ${n} is "${name}", framework says "${FRAMEWORK[n - 1]}"`); });
+const seen = new Set();
+for (const id of ['p-who', 'p-sell', 'p-look', 'p-sound', 'p-show']) {
+  for (const m of (prompts[id] || '').matchAll(/^(\d{1,2})\. ([A-Z][^.,:]*)/gm)) {
+    const n = +m[1]; seen.add(n);
+    if (FRAMEWORK[n - 1] !== m[2].trim()) fails.push(`${id}: section ${n} is "${m[2].trim()}", framework says "${FRAMEWORK[n - 1]}"`);
+  }
+}
+for (let n = 1; n <= 19; n++) if (!seen.has(n)) fails.push(`no prompt writes section ${n}`);
 
 // 3. brackets
 for (const [id, text] of Object.entries(prompts)) {
@@ -106,4 +115,4 @@ for (const f of walk(path.join(ROOT, 'brand-dna')).filter(f => /\.(html|md)$/.te
 }
 
 if (fails.length) { fails.forEach(f => console.log('FAIL  ' + f)); console.log(`\nFAIL (${fails.length})`); process.exit(1); }
-console.log(`PASS: ${DECK ? '16 prompts identical in guide and deck, ' : 'deck not checked (no --deck), '}16 sections match the template, brackets and banned words clean`);
+console.log(`PASS: ${DECK ? '17 prompts identical in guide and deck, ' : 'deck not checked (no --deck), '}20 sections match the template and the prompts, brackets and banned words clean`);

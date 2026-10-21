@@ -1,3 +1,3 @@
 # Booklet
 
-The brand guidelines booklet goes here as a PDF. The folder is the source of truth: if the booklet and the files disagree, the files win.
+The brand booklet goes here as a PDF, with the date in the file name. It comes from brand-dna.md: if they disagree, the document wins.
