@@ -3125,8 +3125,14 @@ sold as a discovery session plus a build plus a finished package. So:
   card markup. An agent ran the whole process on a made-up coffee van and its
   fixes are in.
 - James's done-for-you kit is his `client-brand-dna` skill, upgraded to this
-  process (built 21 Oct, uploaded by James). It runs inside each client's
-  own Claude project. The Drive Brand Studio is superseded by it.
+  process: the zip is in Google Drive at Magnum AI / Brand DNA Kit, for James
+  to upload in Claude's settings. It runs inside each client's own Claude
+  project, and carries the coffee van document as its worked example. The
+  Drive Brand Studio is superseded by it.
+- The sample package for prospects is a private Artifact
+  (https://claude.ai/artifact/XgwDzuw7bzcNYnBCZE927c), with the booklet PDF,
+  the document and the skill zip in Drive at Magnum AI / Brand DNA Sample -
+  Saltbush Coffee Van. The business, its reviews and its photos are made up.
 
 **The walkthrough is James's own, not the members', later on 21 Oct at his
 word.** It is a private Artifact (https://claude.ai/artifact/HR7XfbT3p3gAakyLT5jh5i),
