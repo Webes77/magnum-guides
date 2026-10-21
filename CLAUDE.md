@@ -3149,6 +3149,19 @@ installed Chrome (the `/opt` paths in both tools are the cloud sandbox's).
 Contrast zero on all four pages at four widths; every Copy button in guide
 and deck returns a guide prompt exactly.
 
+**The booklet prompts carry design rules, 21 Oct (later), at James's word.**
+James said the Saltbush booklet read crowded and dull, with type pushed to the
+top of every page. Prompt 7.2 now asks for all seven prompts (six mock-ups and
+the cover) and labels the cover "Cover image, AI-made from the logo file".
+Prompt 7.3 splits the three doubled-up pages (one idea per page) and gains a
+Design block: centred pages with room around them, two typefaces and no more
+than four sizes, What we sell laid out as a menu with dotted leaders, short
+lists as large lines, and a crowding check before the draft is shown. Synced to
+Drive build/prompts.txt, the walkthrough deck (republished) and the kit zip,
+whose QA gate gained four booklet lines. The Saltbush sample was rebuilt to
+match: 24 pages, and its fonts changed to Fraunces and DM Sans, recorded in its
+document as a checkpoint 3 decision (sections 11, 14, 18 and the changelog).
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
