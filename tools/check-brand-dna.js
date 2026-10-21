@@ -2,7 +2,7 @@
 /*
   check-brand-dna.js
   ==================
-  The Brand DNA guide (brand-dna/index.html) is the source of seventeen
+  The Brand DNA guide (brand-dna/index.html) is the source of eighteen
   prompts and the 20-section framework. James's walkthrough deck carries
   the same prompts, but it is his
   private Artifact, not part of this site: its source sits in Google Drive
@@ -46,7 +46,7 @@ const constName = id => id.replace(/^p-/, 'P_').replace(/-/g, '_').toUpperCase()
 const guide = fs.readFileSync(GUIDE, 'utf8');
 const prompts = {};
 for (const m of guide.matchAll(/<div class="promptcard" id="([^"]+)">[\s\S]*?<pre>([\s\S]*?)<\/pre>/g)) prompts[m[1]] = unesc(m[2]);
-if (Object.keys(prompts).length !== 17) fails.push(`guide has ${Object.keys(prompts).length} prompts, expected 17`);
+if (Object.keys(prompts).length !== 18) fails.push(`guide has ${Object.keys(prompts).length} prompts, expected 18`);
 const FRAMEWORK = ['Snapshot','The core idea','Values','Personality','Pillars','Audience','What it is not','Story and heritage','Offers','Proof and policies','Name','Logo','Colour','Type','Photography and imagery','Voice','Social media','Website application','Prompts','Gaps to fill'];
 
 const ex = process.argv.indexOf('--export');
@@ -115,4 +115,4 @@ for (const f of walk(path.join(ROOT, 'brand-dna')).filter(f => /\.(html|md)$/.te
 }
 
 if (fails.length) { fails.forEach(f => console.log('FAIL  ' + f)); console.log(`\nFAIL (${fails.length})`); process.exit(1); }
-console.log(`PASS: ${DECK ? '17 prompts identical in guide and deck, ' : 'deck not checked (no --deck), '}20 sections match the template and the prompts, brackets and banned words clean`);
+console.log(`PASS: ${DECK ? '18 prompts identical in guide and deck, ' : 'deck not checked (no --deck), '}20 sections match the template and the prompts, brackets and banned words clean`);

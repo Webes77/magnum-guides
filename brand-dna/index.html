@@ -157,7 +157,7 @@
           <li data-stage="4"><a href="#look">Checkpoint 3: how you look and sound</a></li>
           <li data-stage="5"><a href="#show">Checkpoint 4: where you show up</a></li>
           <li data-stage="6"><a href="#finish">Pull it together, and the brand skill</a></li>
-          <li data-stage="7"><a href="#booklet">Design system and booklet</a></li>
+          <li data-stage="7"><a href="#booklet">Design system, mock-ups and booklet</a></li>
           <li data-stage="8"><a href="#test">Test it on real work</a></li>
           <li data-stage="9"><a href="#review">Independent review</a></li>
           <li data-stage="10"><a href="#wire">Wire it in</a></li>
@@ -232,7 +232,7 @@
     <h3 style="margin-top:38px">The finished package</h3>
     <div class="cards">
       <div class="card hl"><p class="tag">For AI</p><h3>The Brand DNA document</h3><p>Everything, in one file. Upload it anywhere and the AI knows the business.</p></div>
-      <div class="card"><p class="tag">For people</p><h3>The booklet</h3><p>The same brand, designed, for staff, designers and printers. It adds no new rules.</p></div>
+      <div class="card"><p class="tag">For people</p><h3>The booklet</h3><p>The same brand, designed, for staff, designers and printers, with mock-ups of the logo in use. It adds no new rules.</p></div>
       <div class="card"><p class="tag">For Claude</p><h3>The brand skill</h3><p>Claude applies the brand to anything it makes, even when nobody mentions it.</p></div>
     </div>
     <p style="margin-top:18px">It all lives in one folder called brand-dna: the document, a changelog, the logo and font files, the booklet, and the raw material it was built from. <a href="brand-dna-template.zip" download>Download the empty folder</a>.</p>
@@ -533,11 +533,12 @@ Show us SKILL.md and wait for our yes. Then, if you can install the skill for us
   <section id="booklet">
     <p class="label" data-n="10">Stage 7 &middot; Design system and booklet</p>
     <h2>The version people <em>look</em> at</h2>
-    <p>Your AI tools read the document. Your team, designers and printers need something to flick through. In Claude Design the document becomes a design system first, so every flyer, post and slide made there is on-brand, and then the booklet is built from it.</p>
+    <p>Your AI tools read the document. Your team, designers and printers need something to flick through. In Claude Design the document becomes a design system first, so every flyer, post and slide made there is on-brand. Then mock-ups show the logo out in the world, and the booklet is built from all of it.</p>
     <ol class="steps3">
       <li><b>Set up the design system first.</b> In Claude Design, upload brand-dna.md, the logo and font files from assets, and the photos section 15 lists as usable. <a href="https://support.claude.com/en/articles/14604397-set-up-your-design-system-in-claude-design">Anthropic's setup guide</a> walks through it.</li>
       <li><b>Check it with prompt 7.1</b> and fix what does not match the document.</li>
-      <li><b>Start a new project and paste prompt 7.2,</b> with the same files attached. Fix one page at a time.</li>
+      <li><b>Make the mock-ups with prompt 7.2:</b> the logo on business cards, packaging, signage and the like, made by an image tool from the real logo file and checked for any changed letter or colour.</li>
+      <li><b>Start a new project and paste prompt 7.3,</b> with the same files and the mock-ups attached. Fix one page at a time.</li>
       <li><b>Export it as a PDF,</b> save it in the booklet folder with the date in the file name, and log it in changelog.md.</li>
     </ol>
     <p class="observed">Design system setup from Anthropic's own guide, October 2026. PDF export confirmed by third-party sources only</p>
@@ -559,12 +560,29 @@ Finish by suggesting three things to make as a test, such as an Instagram post, 
       </div>
     </div>
 
+    <div class="promptcard" id="p-mockups">
+      <p class="promptlabel">Prompt 7.2 &middot; the mock-ups</p>
+      <h3>Show the logo in use</h3>
+      <div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>You're our brand designer. Make photorealistic mock-ups that show our logo in use, for our brand booklet. We're [business name]. Attached are brand-dna.md and our logo files.
+
+1. Choose six things our customers would really see, using sections 1, 9 and 17: for example business cards, our packaging, signage, a uniform, a vehicle or a shopfront. List them, with the logo version section 12 says suits each background, and wait for our yes.
+2. For each one, write an image prompt for a tool that can take a reference image, in this shape: "Photorealistic brand mock-up photograph: the item, the setting, the light. The logo from the reference image, reproduced exactly as supplied: same shape, same colours, same lettering, nothing redrawn or changed. No other text, no other logos, no people's faces." Fill in the item, a setting our customers would recognise from section 6, and our colours from section 13.
+3. If you can make images yourself with our logo file as the reference, make them. If not, give us the six prompts to run in our image tool with the logo file attached.
+4. Check every result against the logo file. A changed letter, colour or shape fails, and that one is made again. Show us the ones that pass and wait for our yes.
+
+Every mock-up is labelled "Mock-up" wherever it's used, and never presented as a photo of a real item. When we approve them, save them in brand-dna/booklet/mock-ups/ and add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it). Plain Australian English, with a comma or a full stop wherever an em dash might go. No new slogans or taglines.</pre>
+      </div>
+      <p class="note"><b>Why check every one.</b> Image tools still change letters and colours in a logo. A mock-up with a changed logo teaches people the wrong logo, so it is made again.</p>
+    </div>
+
     <div class="promptcard" id="p-booklet">
-      <p class="promptlabel">Prompt 7.2 &middot; the booklet</p>
+      <p class="promptlabel">Prompt 7.3 &middot; the booklet</p>
       <h3>Build the booklet in Claude Design</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>You're our brand designer, working in Claude Design. Build our brand booklet from our Brand DNA. We're [business name]. Attached are brand-dna.md, our logo and font files, and the photos section 15 lists as usable.
+<pre>You're our brand designer, working in Claude Design. Build our brand booklet from our Brand DNA. We're [business name]. Attached are brand-dna.md, our logo and font files, the photos section 15 lists as usable, and our approved mock-ups.
 
 The booklet is for people: our team, designers, printers and anyone making something for us. It shows the brand in the document and adds no new rules.
 
@@ -578,6 +596,7 @@ Pages, in this order:
 - What we sell and why people trust us (sections 9 and 10), leaving out prices unless section 9 includes them.
 - Our name (section 11).
 - Logo: every version, on the backgrounds it's used on, then clear space, minimum size and the never list, shown visually (section 12).
+- In the world: the six mock-ups, each labelled "Mock-up".
 - Colour: swatches with name, hex, RGB and print values, and the readable text pairs (section 13).
 - Type: each font at real sizes, with what it's used for (section 14).
 - Photography and AI imagery, with the always and never rules and the rule on real people (section 15).
@@ -589,7 +608,7 @@ Rules:
 - Use only what's in the attached files. Leave out any line that carries a [NEEDS CONFIRMING], [DECISION] or [INFERRED] marker, section 19, section 20, and the changelog. If that empties a page, keep the page with one line saying it's to come. A colour with no print value yet shows "Print value to come".
 - Use our logo files exactly as supplied. Never redraw, recolour or retype them.
 - Design the booklet itself in our colours and fonts.
-- Use only the attached photos. Where a page needs a photo we don't have, use a plain placeholder labelled "Photo to come", not a generated picture.
+- Use only the attached photos and mock-ups. Where a page needs a photo we don't have, use a plain placeholder labelled "Photo to come", not a generated picture.
 - Label every mock-up as a mock-up, and number every page in the footer, counting the cover as page 1.
 - Plain Australian English, with a comma or a full stop wherever an em dash might go. No new slogans or taglines; a tagline of ours appears only where section 11 says it's used.
 
@@ -598,7 +617,7 @@ When the draft is ready, list every page where you had to make a judgement call,
       <p class="note"><b>Why the booklet never adds a rule.</b> The moment a rule exists only in the booklet, there are two sources of truth again, and the AI tools cannot read the booklet.</p>
     </div>
 
-    <label class="donewhen"><input type="checkbox" data-stage="7"><span><b>Done when</b>The design system matches the document, and the booklet PDF is in the booklet folder with its date.</span></label>
+    <label class="donewhen"><input type="checkbox" data-stage="7"><span><b>Done when</b>The design system matches the document, the mock-ups are checked and labelled, and the booklet PDF is in the booklet folder with its date.</span></label>
   </section>
 
   <!-- ============ STAGE 8 ============ -->
