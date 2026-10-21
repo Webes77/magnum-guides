@@ -565,12 +565,13 @@ Finish by suggesting three things to make as a test, such as an Instagram post, 
       <h3>Show the logo in use</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>You're our brand designer. Make photorealistic mock-ups that show our logo in use, for our brand booklet. We're [business name]. Attached are brand-dna.md and our logo files.
+<pre>You're our brand designer. Make photorealistic mock-ups that show our logo in use, and a cover image, for our brand booklet. We're [business name]. Attached are brand-dna.md and our logo files.
 
 1. Choose six things our customers would really see, using sections 1, 9 and 17: for example business cards, our packaging, signage, a uniform, a vehicle or a shopfront. List them, with the logo version section 12 says suits each background, and wait for our yes.
 2. For each one, write an image prompt for a tool that can take a reference image, in this shape: "Photorealistic brand mock-up photograph: the item, the setting, the light. The logo from the reference image, reproduced exactly as supplied: same shape, same colours, same lettering, nothing redrawn or changed. No other text, no other logos, no people's faces." Fill in the item, a setting our customers would recognise from section 6, and our colours from section 13.
-3. If you can make images yourself with our logo file as the reference, make them. If not, give us the six prompts to run in our image tool with the logo file attached.
-4. Check every result against the logo file. A changed letter, colour or shape fails, and that one is made again. Show us the ones that pass and wait for our yes.
+3. Write one more prompt for the booklet's cover: "Photorealistic flat-lay photograph of a premium brand book cover, filling the whole frame: heavy textured paper in our darkest brand colour, with the logo from the reference image foil-stamped and debossed into the paper, centred slightly above the middle. Soft raking light that shows the depth of the emboss. Reproduce the logo exactly, nothing redrawn or changed. The lower third is plain empty paper. No other text, no other marks." Use the logo version section 12 gives for dark backgrounds, and our colours from section 13.
+4. If you can make images yourself with our logo file as the reference, make them. If not, give us the six prompts to run in our image tool with the logo file attached.
+5. Check every result against the logo file. A changed letter, colour or shape fails, and that one is made again. Show us the ones that pass and wait for our yes.
 
 Every mock-up is labelled "Mock-up" wherever it's used, and never presented as a photo of a real item. When we approve them, save them in brand-dna/booklet/mock-ups/ and add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it). Plain Australian English, with a comma or a full stop wherever an em dash might go. No new slogans or taglines.</pre>
       </div>
@@ -582,12 +583,12 @@ Every mock-up is labelled "Mock-up" wherever it's used, and never presented as a
       <h3>Build the booklet in Claude Design</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>You're our brand designer, working in Claude Design. Build our brand booklet from our Brand DNA. We're [business name]. Attached are brand-dna.md, our logo and font files, the photos section 15 lists as usable, and our approved mock-ups.
+<pre>You're our brand designer, working in Claude Design. Build our brand booklet from our Brand DNA. We're [business name]. Attached are brand-dna.md, our logo and font files, the photos section 15 lists as usable, and our approved mock-ups and cover image.
 
 The booklet is for people: our team, designers, printers and anyone making something for us. It shows the brand in the document and adds no new rules.
 
 Pages, in this order:
-- Cover: our logo, our name, and "Brand DNA" with this month and year. Nothing else.
+- Cover: the cover image from our mock-ups, full page, with our name and "Brand DNA" set beneath the logo in our heading font, widely spaced capitals, a short rule, and the year. Nothing else. Set the words in the design, never in the image.
 - Contents.
 - The short version, from the top of the document.
 - Who we are: the core idea, values and personality (sections 2 to 4).
