@@ -3092,6 +3092,15 @@ said on 21 Oct not to build around any one tool; image-style.md uses the platfor
 Sixteen prompts. Register rows 115 to 118. A second dry run covered the new
 prompts.
 
+**The walkthrough is James's own, not the members', later on 21 Oct at his
+word.** It is a private Artifact (https://claude.ai/artifact/HR7XfbT3p3gAakyLT5jh5i),
+its images published with it, and its source is in Google Drive at Magnum AI /
+Session Run Sheets, beside the run sheet. `brand-dna/walkthrough/` is gone
+from the site, from the guide's links and from `tools/check-decks.js`. After a
+prompt change in the guide, run `node tools/check-brand-dna.js --deck
+"<Drive path>/Brand DNA Walkthrough (source).html" --fix`, copy that file to
+the session scratchpad and republish it to the Artifact's URL.
+
 Checks, 21 Oct: the repo's own contrast audit and deck check ran on this
 Mac through `playwright-core` in the session scratchpad driving the
 installed Chrome (the `/opt` paths in both tools are the cloud sandbox's).
