@@ -3161,6 +3161,12 @@ Drive build/prompts.txt, the walkthrough deck (republished) and the kit zip,
 whose QA gate gained four booklet lines. The Saltbush sample was rebuilt to
 match: 24 pages, and its fonts changed to Fraunces and DM Sans, recorded in its
 document as a checkpoint 3 decision (sections 11, 14, 18 and the changelog).
+Later the same day, at James's word, 7.3 also asks for a magazine layout (pages
+that change shape, hairlines not boxes, running head and folio) and an opener
+page for each of the four parts. A second sample, Ostler & Wren, a made-up
+tailoring studio in black-and-white editorial style, is a private Artifact
+(https://claude.ai/artifact/FpfCvSj2yZV4xtTEosU4sv), files in Drive at Magnum AI
+/ Brand DNA Sample - Ostler & Wren, sources in Brand DNA Kit/build/sample-ostler-wren.
 
 ## Decisions already made
 
