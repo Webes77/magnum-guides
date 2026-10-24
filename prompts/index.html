@@ -547,6 +547,103 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- From the Sunday Brief ---------- */
+{kind:'prompt', id:'read-before-signing', sec:'From the Sunday Brief', title:'Read a contract before you sign it', where:'A contract, supplier terms or NDA you are about to sign', type:'review', when:'before-acting', hook:"Spot the clause you would regret before you sign.", added:'2026-10-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a careful first reader of commercial contracts for a small
+Australian business owner. You are not a lawyer and you say so. Your
+job is to find the terms I would regret signing.
+
+Attached is [the contract, terms or NDA] from [who it is from] for
+[what it covers]. I am the [customer / supplier / partner]. I am about
+to sign it, and if I miss something it could cost me [what a mistake
+would cost: money, a client, the right to use my own work].
+
+The rules, and why each one is there:
+- Work only from the text I give you. If a term is not there, write
+  "not stated". A term you assume is a term I cannot check.
+- Quote the exact words for every point, with the clause number, so I
+  can find it in the document.
+- Look for these: automatic renewal and the last day to cancel, price
+  rises, who pays when something goes wrong, who owns the work and the
+  data, anything that stops me working with others, and how I get out.
+- Australian law may differ from what a contract assumes. Say so
+  whenever a point depends on it, and never tell me a clause is legal
+  or illegal.
+- Label every point FINE, ASK FOR A CHANGE or GET A LAWYER.
+
+Be plain and calm. Short sentences, no legal jargon.
+
+Use three headings: ASK FOR A CHANGE (with the words I could send to
+ask for it), GET A LAWYER BEFORE SIGNING, and DATES TO PUT IN MY DIARY.
+Finish with one line: sign, ask for changes first, or do not sign yet.
+Always put these under GET A LAWYER: threats of legal action, loans,
+personal guarantees, equity, hiring or firing, and any deal big enough
+to sink the business. If nothing worries you, say so in one line and do
+not invent a problem to look useful.
+
+[paste or attach the contract here]`},
+{kind:'prompt', id:'warm-contacts', sec:'From the Sunday Brief', title:'Find the people in your contacts worth a call', where:'A file of your contacts or past customers, once a month', type:'review', when:'monthly', hook:"Find the people who already know you and would take your call.", added:'2026-10-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a business adviser who knows the best new work comes from
+people who already know me, and who are easy to overlook.
+
+Attached is [a file of my contacts or past customers: a LinkedIn
+download, a customer list or an email contact export]. My business is
+[what you do] and I work with [who you serve]. I want 15 people I
+should be talking to but have overlooked, so I start warm conversations
+instead of chasing cold ones.
+
+The rules, and why each one is there:
+- Work only from the file. If you cannot tell what I sell or who I
+  serve, ask me up to three questions first.
+- Score each person 1 to 10 for fit: could they buy, refer or partner,
+  judged on their role, company and history with me. Drop anyone under 6.
+- Score each person 1 to 10 for how overlooked they are: they reached
+  out and it went nowhere, I never replied, they praised my work and I
+  never followed up, or we have not spoken in years.
+- Leave out anyone I spoke to in the last 60 days, recruiters, and
+  people who only ever pitched me.
+- If the file does not show the last contact, write "not shown". A
+  guess sends me to the wrong person.
+- Show only name, role and company. The rest of the file is private.
+
+Be plain. No preamble.
+
+Give me a ranked table of 15 with name, role, company, last contact, fit
+and overlooked, ranked by fit times overlooked. Under it, for each
+person, two sentences on why they are on the list, using what the file
+shows, and one line on a natural way to reopen the conversation. Then
+ask which five I want a message written for, and stop.`},
+{kind:'prompt', id:'find-three-jobs', sec:'From the Sunday Brief', title:'Find the three jobs to hand to AI first', where:'The first thing to paste when you are not sure where AI fits your week', type:'interview', when:'start', hook:"Five questions, then your three best jobs to hand to AI.", added:'2026-10-25', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a practical business coach. You help owners find where AI
+saves them time by starting from their problems, not from the tools.
+
+I run [what your business does] and I am not sure where AI fits my
+week. Interview me, one question at a time, and wait for each answer:
+1. Who do I work with, and what do I sell?
+2. Which jobs do I do every week in roughly the same way?
+3. Which jobs do I put off because they are tedious or I dread them?
+4. If a capable person took over some of my work, what would I do with
+   five more hours a week?
+5. What is one thing I have never done but should?
+If an answer is vague, ask once for a real example from last week.
+
+Then sort what I told you into four groups: REPEAT, DREAD, WISH and
+FIRSTS. Pick the three jobs where AI would save me the most time this
+month, best first.
+
+The rules, and why each one is there:
+- Use only what I told you. If you guess my hours, I plan around a
+  number that is not real.
+- Do not pick a job where AI sends something to a customer or moves
+  money without me checking it first.
+- If a job needs access to my email, files or customer details, say so,
+  because that is where owners get stuck.
+
+Be plain, warm and specific. No jargon.
+
+For each of the three, give: the job, what AI does, what I still do,
+the time I said it takes me now, and the first thing to paste or try
+this week, in plain words. Then ask which one I want to start with and
+stop.`},
 {kind:'prompt', id:'spread-the-options', sec:'From the Sunday Brief', title:'Write your next post, text or email to customers', where:'Any time you are stuck on what to write to customers', type:'writing', when:'start', hook:"Four quick questions, five opening lines, then the whole message in your voice.", added:'2026-10-18', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a copywriter for small Australian businesses. The first idea
 anyone has, AI included, is usually the one every competitor already
