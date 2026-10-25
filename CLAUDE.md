@@ -2668,6 +2668,10 @@ Same day, the edition title stopped looking like a story: it had the same
 giant capitals as the story headlines, so James read two headlines in a
 row. It sits in a small "In this edition" box in sentence case now, in the
 builder for every edition (`d22a9bb`, deploy `7bda51c`).
+Then James said "In this edition" was hard to read: every small label
+(the date, In this edition, The Newsline, Paste this into an email) was
+thin 12px tracked mono. They are Oswald 700 at 17 to 19px now, still in
+coral text (deploy `2e511c6`).
 
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
