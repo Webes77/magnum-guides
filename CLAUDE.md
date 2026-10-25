@@ -2664,6 +2664,10 @@ saying it once is not saying less (a reader learns from the page alone what
 the thing is, what happened, who it affects and what to do) and that the
 title leads with The Newsline. Live task equal to its file at 23,209
 characters.
+Same day, the edition title stopped looking like a story: it had the same
+giant capitals as the story headlines, so James read two headlines in a
+row. It sits in a small "In this edition" box in sentence case now, in the
+builder for every edition (`d22a9bb`, deploy `7bda51c`).
 
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
