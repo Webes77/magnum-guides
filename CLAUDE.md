@@ -2622,6 +2622,24 @@ wall, so the logo is the real file and was not drawn by the model. James
 asked for his brand to be visible. This is the second place his likeness
 appears, at his request. Editions up to 18 Oct keep the old `hero.png`.
 
+**The newsletter's shape changed on 25 Oct, on James's word, and both
+newsletter tasks carry it.** Every story opens with three lines (What it is,
+Why it matters, What to do) in a `brief` block; The Win is a real, named,
+linked business found by research, never a composite and never "we", after
+the salon and café stories were called made-up and pointless; every story
+carries a picture; the Saturday task researches the week's AI picture or
+video trend and makes the Magnum itself in Higgsfield; no Wispr Flow for a
+while. `build_edition.py --check` enforces the first three from 25 Oct on.
+Details and the reasons are in `magnum-newsletter/ROUTINE.md` under "Since
+25 October 2026". The Saturday task needs the Higgsfield connector, which
+James said he will add in Scheduled; until then the chat makes the pictures
+at publish time. The 25 Oct edition went live from this session (deploy
+`90b9f44`): The Win is Ted and Tami Taylor's restaurants (OpenAI Academy,
+labelled as OpenAI's own account), Tool is Canva Craft, the Magnum is the
+Halloween found-photo trend as a still and a Seedance video. Two draft
+errors were corrected against the sources: Morgan Stanley was not blocking
+agents (Schwab was), and the PHP credit is Calif, Wiz and OpenAI.
+
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
 (`trig_014BpCSeSMonkfgePpN5tBfN`, renamed "Percy · Sunday Brief") was
