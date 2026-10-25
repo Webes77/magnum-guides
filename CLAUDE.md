@@ -2640,6 +2640,23 @@ Halloween found-photo trend as a still and a Seedance video. Two draft
 errors were corrected against the sources: Morgan Stanley was not blocking
 agents (Schwab was), and the PHP credit is Calif, Wiz and OpenAI.
 
+Round two the same day, after James read it live and called it repetitive,
+cluttered and too much like a summary of other people's newsletters. Every
+story is said once now: the headline is the what (under 12 words, a reason
+to read, never a label), then three lines, Why it matters, What to do and
+My take, then capped detail (90 words, 170 for The Win). My take is
+James's opinion through `james-writes`, never an event. Every story says
+whether it applies in Australia. A risk story most owners will hand on
+(the PHP patch) runs as a heads-up with a paste box holding the exact
+email to send. The Odd One joins the fixed order. Prompts carry a Copy
+button. The page opens on the news: no index list, no hero, a one-line
+opener, a two-line sign-off with no sales line. James said no "reply on
+WhatsApp" line for now. The Saturday email asks him one question a week,
+anything from his week worth a line, and his answer becomes the opener;
+The Win stays researched. Builder `9a21aa0`, edition republished at the
+same URL (deploy `2d24560`), Saturday task asserted equal to its file at
+22,661 characters.
+
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
 (`trig_014BpCSeSMonkfgePpN5tBfN`, renamed "Percy · Sunday Brief") was
