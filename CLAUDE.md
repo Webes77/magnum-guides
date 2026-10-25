@@ -2657,6 +2657,14 @@ The Win stays researched. Builder `9a21aa0`, edition republished at the
 same URL (deploy `2d24560`), Saturday task asserted equal to its file at
 22,661 characters.
 
+Round three, same day: the PHP Newsline had been cut so far it never said
+what PHP was, and the title led with Canva while the page opened on PHP.
+Rewritten and republished (deploy `7f30ae7`). The Saturday task now says
+saying it once is not saying less (a reader learns from the page alone what
+the thing is, what happened, who it affects and what to do) and that the
+title leads with The Newsline. Live task equal to its file at 23,209
+characters.
+
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
 (`trig_014BpCSeSMonkfgePpN5tBfN`, renamed "Percy · Sunday Brief") was
