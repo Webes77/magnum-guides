@@ -2672,6 +2672,13 @@ Then James said "In this edition" was hard to read: every small label
 (the date, In this edition, The Newsline, Paste this into an email) was
 thin 12px tracked mono. They are Oswald 700 at 17 to 19px now, still in
 coral text (deploy `2e511c6`).
+Then James sent three big newsletters (The Rundown, Superhuman and one more)
+as the model. The page now opens on one card: "Happy Sunday.", two or three
+sentences telling the lead story, and a numbered "In this edition" list of
+every headline linking to its story. The edition title is off the page.
+Story headlines are bold sentence case, labels carry the story number.
+Builder `a59edca` is live; the Saturday task carries it, asserted equal to
+its file at 23,740 characters, and `ROUTINE.md` matches (`90b2988`).
 
 **The Sunday Brief review, stage by stage, on James's instruction: do not
 change the routine until every stage is agreed.** The live routine
