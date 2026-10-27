@@ -9,6 +9,60 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-10-28 (issue 11 replaced, same day)
+
+James read issue 11, Chasing, and said the Field Notes had become the same
+kind of thing week after week: four of the last six were about checking
+paperwork or money, and two were about bills. He asked for variety, high value
+over novelty, broad prompts rather than one narrow case, work and life both,
+and prompts that push what AI can do now. Over three short rounds in chat he
+approved 26 topics in four groups, now `notes/field-note-topics.md`, and asked
+that every issue name the tool and carry a warning whenever it touches email
+or files.
+
+Issue 11 was rebuilt the same day on topic A1, "AI sounds nothing like you?
+Teach it how you write", at `newsletter/field-note-11-voice.html`. Chasing
+stays live at its own URL, unlinked, the same as 08 Pasting, because it went
+live this morning. James had not sent it yet. The prompt was written fresh
+(the shelf's `writing-style-skill` card saves a skill and is written for a
+connected task; this one returns a guide anyone can paste into personal
+instructions, with a paste-in route for free plans, texters and clinics).
+
+Value test. Cold runs (a landscaper and a physio, both from pasted messages)
+were strong. Each guide was specific and quoted real lines, and no phone
+number or address reached it. Round 1 reviewer: message 3, relevance 3,
+effort 3 for both. The big catch was privacy, because a clinic's sent mail is
+mostly patient health. Fixed: skip health, money and legal emails, skip
+software-sent mail, texts as a fallback, a guide under 1,200 characters,
+"only include a pattern you can see", brackets for unknown prices. Round 2:
+the physio still scored 3 on message and relevance, and the landscaper 3 on
+relevance and effort. "Skips anything private" overclaimed what a prompt can
+guarantee. Fixed by saying only what the prompt instructs, and sending health
+practices to the paste route. Round 3: hook 5 and 4, message 4 and 4,
+relevance 4 and 3 (physio), effort 3 and 3. Fixed: an honest twenty minutes,
+screenshots as the fast route for texts, "health practice, don't connect" on
+the page, step 2 says private emails are left out of the guide, and the
+sample reply is an everyday booking or quote message. Under Step 8B three
+failed rounds means not publishing. James had asked in chat for the issue to
+go out today, so it was published with those fixes and he was told so
+plainly.
+
+Tool claims: "usually a paid plan feature" for email connections, written
+loosely because third-party sources disagree on Claude Free (fact register
+row 120). The card uses `assets/illustrations/tools-inbox.jpg` from the AI
+tools page, in the house style, because no Higgsfield tools were in this
+session and the Wednesday top-up had already run.
+
+Checks: `--shape` PASS. 3.24 phone screens at 390 wide. No script errors or
+sideways scroll at 1440, 820 and 390. Copy text matches the authored prompt
+exactly. A full run fails only on the two deliberate unlinked pages, 08
+Pasting and 11 Chasing.
+
+The routine changed in the same commit: Step 2 takes the topic from the list
+in rotation rather than from the Sunday Brief, and the constraints carry the
+variety, tool and warning rules. The live trigger cannot be updated from this
+session, so James pastes the file in himself.
+
 ## 2026-10-28
 
 Issue 11, Chasing. Built on the Foundations deck card `overdue-invoice`
@@ -262,7 +316,7 @@ reading four pages of HTML. Add to it when an issue merges.
 | 08 | Replying (replaced Pasting at the same issue number on 7 Oct; the Pasting page stays live, unlinked, at its own URL) | Reply to the difficult email | `difficult-email` |
 | 09 | Numbers | Check your spreadsheet before you send the numbers | `check-the-spreadsheet` |
 | 10 | Options | Ask for five options, ranked from obvious to unusual | `spread-the-options` |
-| 11 | Chasing | Chase an overdue invoice (rewritten on the page, four questions) | `overdue-invoice` |
+| 11 | Voice (replaced Chasing the same day; the Chasing page stays live, unlinked, at its own URL and taught `overdue-invoice`) | Learn how you write from your sent mail (written fresh, topic A1) | none on the shelf yet |
 
 ## Entries
 
