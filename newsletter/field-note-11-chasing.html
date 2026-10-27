@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+
+<title>Weekly Field Note No. 11 · Chasing · Magnum AI</title>
+<meta name="description" content="A copy-and-paste prompt that writes the reminder for an overdue invoice, so you get paid and keep the customer.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/newsletter/field-note-11-chasing.html">
+
+<!-- Social preview · what clients see when this link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI · Weekly Field Note">
+<meta property="og:title" content="Weekly Field Note No. 11 · Customer hasn't paid? Chase it without losing them">
+<meta property="og:description" content="A copy-and-paste prompt that writes the reminder for an overdue invoice, so you get paid and keep the customer.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/newsletter/field-note-11-chasing.html">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-11-chasing.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Weekly Field Note No. 11 · Customer hasn't paid? Chase it without losing them, published by Magnum AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weekly Field Note No. 11 · Customer hasn't paid? Chase it without losing them">
+<meta name="twitter:description" content="A copy-and-paste prompt that writes the reminder for an overdue invoice, so you get paid and keep the customer.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-11-chasing.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* The one-card shape, from 30 Sep. A Field Note answers three questions a
+   reader asks before anything else: what is it, what do I get, what do I do.
+   Then the prompt, then one short reason it works. Nothing else. */
+:root{
+  --paper:#FBFBF9; --white:#FFFFFF; --ink:#1E1B17; --navy:#1F2A37;
+  --body:#2B2823; --mute:#63615C;
+  --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+  --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3;
+  --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:#1F2A37}
+body{background:#1F2A37;font-family:var(--sans);color:var(--body);
+  padding:0 16px 40px;display:flex;flex-direction:column;align-items:center}
+
+.sitebar{width:100%;max-width:680px;display:flex;justify-content:space-between;align-items:center;
+  gap:12px;padding:16px 0;font-family:var(--mono);font-size:11px;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--on-navy-mute)}
+.sitebar .wordmark{font-weight:500}
+
+.note{width:100%;max-width:680px;background:var(--paper);border:2px solid var(--ink);
+  padding:28px 28px 26px}
+.note h1{font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(30px,7vw,42px);line-height:1;letter-spacing:-.005em;color:var(--ink);
+  margin:0 0 22px;text-wrap:balance}
+.note h1 em{font-style:normal;color:var(--rust)}
+
+.three{margin:0 0 24px;border-top:2px solid var(--ink)}
+.three > div{padding:14px 0;border-bottom:1px solid rgba(30,27,23,.16)}
+.three dt{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--coral-text);margin-bottom:5px}
+.three dd{font-size:17px;line-height:1.5;color:var(--body)}
+.three ol{margin:2px 0 0;padding-left:22px}
+.three li{margin:0 0 6px;padding-left:4px}
+.three li:last-child{margin-bottom:0}
+.three li::marker{font-family:var(--mono);font-weight:500;color:var(--coral-text)}
+
+.pbox{background:var(--ink);color:var(--white);padding:16px 18px 18px;margin:0 0 24px}
+.pbox .phead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.pbox b{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--on-navy-mute)}
+.copy{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+  background:var(--coral-bright);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
+.copy.done{background:var(--tint)}
+.pbox pre{font-family:var(--mono);font-size:14px;line-height:1.6;white-space:pre-wrap;
+  word-break:break-word;color:var(--white)}
+
+.why h2{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--coral-text);margin-bottom:6px}
+.why p{font-size:16px;line-height:1.55;color:var(--body)}
+
+.sharebar{width:100%;max-width:680px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding-top:18px}
+.share-btn{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--on-navy);background:transparent;border:1px solid rgba(244,241,234,.5);
+  padding:9px 14px;text-decoration:none;cursor:pointer}
+.share-btn:hover{border-color:var(--white)}
+.share-btn.done{background:var(--on-navy);color:var(--ink)}
+
+@media (max-width:480px){
+  body{padding:0 0 32px}
+  .sitebar{padding:14px 16px}
+  .note{border-left:0;border-right:0;padding:24px 18px 22px}
+  .sharebar{padding:18px 16px 0}
+}
+@media print{
+  html,body{background:#fff}
+  .sitebar,.sharebar,.copy{display:none}
+  .note{border:0}
+  .pbox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<nav class="sitebar">
+  <span class="wordmark">Magnum AI</span>
+  <span class="issue">Weekly Field Note / No. 11</span>
+</nav>
+
+<main class="note">
+  <h1>Customer hasn&rsquo;t paid? <em>Chase it without losing them</em></h1>
+
+  <dl class="three">
+    <div>
+      <dt>What it is</dt>
+      <dd>A copy-and-paste prompt for chasing an invoice that&rsquo;s gone past its due date.</dd>
+    </div>
+    <div>
+      <dt>What you get</dt>
+      <dd>A reminder email and a text that get you paid without a threat or a grovel. You keep the money and the customer.</dd>
+    </div>
+    <div>
+      <dt>What you do</dt>
+      <dd>
+        <ol class="steps">
+          <li>Have the invoice handy: number, amount, due date and how they pay.</li>
+          <li>Open Claude or ChatGPT, start a new chat and paste the prompt.</li>
+          <li>Answer its four questions, check the email and text, then send them yourself. About five minutes.</li>
+        </ol>
+      </dd>
+    </div>
+  </dl>
+
+  <div class="pbox">
+    <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
+    <pre>You are an experienced office manager for small Australian businesses. You write payment reminders that get invoices paid without souring the relationship.
+
+A customer hasn't paid an invoice. Before you write anything, ask me these four things, one at a time, and wait for each answer:
+1. My first name, my business name, and what the job was for this customer.
+2. The invoice number, amount and due date, and how they can pay, like my bank details or a payment link.
+3. What have I already sent them about it, and did they reply?
+4. Do I want to keep working with them?
+
+If an answer is missing something, ask for it before you write. Then write the reminder. The rules, and why each one is there:
+- Use only what I told you. Never invent a figure, date or late fee, because a wrong number gives them a reason not to pay.
+- No threats, no apology and no guilt, because each one makes it harder for them to pay. If this is my third reminder or later, be firmer and give a date to pay by. Suggest one a week from today and tell me, so I can change it.
+- Put the amount, the due date and how to pay in the email itself, so paying takes them one minute.
+- If I want to keep working with them, end on one warm line about the next job. If I don't, keep it to the payment.
+- Give them an easy way to tell me if something's wrong with the invoice, because a quiet customer often has a question, not a problem.
+- Keep it under 120 words so it's read in one go. No dashes and no exclamation marks.
+
+Sound like an owner who is busy and expects to be paid, not one who is desperate: warm, level and straight.
+
+Lay it out as a subject line under 50 characters, then the email as plain text I can paste. Sign off with my first name and business name.
+
+Then give me a text message version under 300 characters for a customer who doesn't open email. Ask if I want either one firmer or softer, and rewrite it if I do.</pre>
+  </div>
+
+  <section class="why">
+    <h2>Why it works</h2>
+    <p>Chasing money is like knocking on a neighbour&rsquo;s door about the fence. Go in angry and you lose the neighbour. Go in with the facts and an easy fix and it gets sorted. The prompt writes the calm knock, with the amount and how to pay right there.</p>
+  </section>
+</main>
+
+<div class="sharebar">
+  <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
+  <a class="share-btn" href="mailto:?subject=Weekly%20Field%20Note%20No.%2011%20%C2%B7%20Chasing&amp;body=Thought%20this%20one%20was%20worth%20passing%20on%3A%0A%0Ahttps%3A%2F%2Fwebes77.github.io%2Fmagnum-guides%2Fnewsletter%2Ffield-note-11-chasing.html">Email it to someone</a>
+  <a class="share-btn" href="../newsletter/">All Field Notes</a>
+</div>
+
+<script>
+function fallback(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+function copyText(text, done){
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+  } else {
+    fallback(text, done);
+  }
+}
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var text = btn.closest('.pbox').querySelector('pre').textContent;
+    copyText(text, function(){
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+    });
+  });
+});
+var shareBtn = document.getElementById('share-link');
+if (shareBtn) {
+  shareBtn.addEventListener('click', function(){
+    copyText(window.location.href.split('#')[0], function(){
+      shareBtn.textContent = 'Link copied';
+      shareBtn.classList.add('done');
+      setTimeout(function(){ shareBtn.textContent = 'Copy link to this Field Note'; shareBtn.classList.remove('done'); }, 1600);
+    });
+  });
+}
+</script>
+
+</body>
+</html>
