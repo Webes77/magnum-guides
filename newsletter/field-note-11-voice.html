@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+
+<title>Weekly Field Note No. 11 · Voice · Magnum AI</title>
+<meta name="description" content="A copy-and-paste prompt that reads your sent emails and works out how you write, so AI stops sounding like a robot.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/newsletter/field-note-11-voice.html">
+
+<!-- Social preview · what clients see when this link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI · Weekly Field Note">
+<meta property="og:title" content="Weekly Field Note No. 11 · AI sounds nothing like you? Teach it how you write">
+<meta property="og:description" content="A copy-and-paste prompt that reads your sent emails and works out how you write, so AI stops sounding like a robot.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/newsletter/field-note-11-voice.html">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-11-voice.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Weekly Field Note No. 11 · AI sounds nothing like you? Teach it how you write, published by Magnum AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weekly Field Note No. 11 · AI sounds nothing like you? Teach it how you write">
+<meta name="twitter:description" content="A copy-and-paste prompt that reads your sent emails and works out how you write, so AI stops sounding like a robot.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-11-voice.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* The one-card shape, from 30 Sep. A Field Note answers three questions a
+   reader asks before anything else: what is it, what do I get, what do I do.
+   Then the prompt, then one short reason it works. Nothing else. */
+:root{
+  --paper:#FBFBF9; --white:#FFFFFF; --ink:#1E1B17; --navy:#1F2A37;
+  --body:#2B2823; --mute:#63615C;
+  --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+  --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3;
+  --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:#1F2A37}
+body{background:#1F2A37;font-family:var(--sans);color:var(--body);
+  padding:0 16px 40px;display:flex;flex-direction:column;align-items:center}
+
+.sitebar{width:100%;max-width:680px;display:flex;justify-content:space-between;align-items:center;
+  gap:12px;padding:16px 0;font-family:var(--mono);font-size:11px;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--on-navy-mute)}
+.sitebar .wordmark{font-weight:500}
+
+.note{width:100%;max-width:680px;background:var(--paper);border:2px solid var(--ink);
+  padding:28px 28px 26px}
+.note h1{font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(30px,7vw,42px);line-height:1;letter-spacing:-.005em;color:var(--ink);
+  margin:0 0 22px;text-wrap:balance}
+.note h1 em{font-style:normal;color:var(--rust)}
+
+.three{margin:0 0 24px;border-top:2px solid var(--ink)}
+.three > div{padding:14px 0;border-bottom:1px solid rgba(30,27,23,.16)}
+.three dt{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--coral-text);margin-bottom:5px}
+.three dd{font-size:17px;line-height:1.5;color:var(--body)}
+.three ol{margin:2px 0 0;padding-left:22px}
+.three li{margin:0 0 6px;padding-left:4px}
+.three li:last-child{margin-bottom:0}
+.three li::marker{font-family:var(--mono);font-weight:500;color:var(--coral-text)}
+
+.pbox{background:var(--ink);color:var(--white);padding:16px 18px 18px;margin:0 0 24px}
+.pbox .phead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.pbox b{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--on-navy-mute)}
+.copy{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+  background:var(--coral-bright);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
+.copy.done{background:var(--tint)}
+.pbox pre{font-family:var(--mono);font-size:14px;line-height:1.6;white-space:pre-wrap;
+  word-break:break-word;color:var(--white)}
+
+.why h2{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--coral-text);margin-bottom:6px}
+.why p{font-size:16px;line-height:1.55;color:var(--body)}
+
+.sharebar{width:100%;max-width:680px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding-top:18px}
+.share-btn{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--on-navy);background:transparent;border:1px solid rgba(244,241,234,.5);
+  padding:9px 14px;text-decoration:none;cursor:pointer}
+.share-btn:hover{border-color:var(--white)}
+.share-btn.done{background:var(--on-navy);color:var(--ink)}
+
+@media (max-width:480px){
+  body{padding:0 0 32px}
+  .sitebar{padding:14px 16px}
+  .note{border-left:0;border-right:0;padding:24px 18px 22px}
+  .sharebar{padding:18px 16px 0}
+}
+@media print{
+  html,body{background:#fff}
+  .sitebar,.sharebar,.copy{display:none}
+  .note{border:0}
+  .pbox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<nav class="sitebar">
+  <span class="wordmark">Magnum AI</span>
+  <span class="issue">Weekly Field Note / No. 11</span>
+</nav>
+
+<main class="note">
+  <h1>AI sounds nothing like you? <em>Teach it how you write</em></h1>
+
+  <dl class="three">
+    <div>
+      <dt>What it is</dt>
+      <dd>A copy-and-paste prompt that reads your sent emails and works out how you write.</dd>
+    </div>
+    <div>
+      <dt>What you get</dt>
+      <dd>A short guide you save once. After that, the quotes, booking replies and texts your AI writes sound like you, so you stop rewriting them.</dd>
+    </div>
+    <div>
+      <dt>What you do</dt>
+      <dd>
+        <ol class="steps">
+          <li>Connect your email to Claude or ChatGPT, usually a paid plan feature. Health practice, free plan or mostly texts? Don&rsquo;t connect. Paste or screenshot 10 everyday messages instead.</li>
+          <li>Open a new chat and paste the prompt. It tells your AI to only read, and to leave private emails out of the guide.</li>
+          <li>Fix lines that sound wrong, then save the guide in your AI&rsquo;s personal instructions. About twenty minutes.</li>
+        </ol>
+      </dd>
+    </div>
+  </dl>
+
+  <div class="pbox">
+    <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
+    <pre>You are a writing coach who works out how a person actually writes, so AI can write in their voice instead of its own.
+
+Read up to 50 of my most recent sent emails. If you can only see fewer, tell me how many you read. If you can't reach my email, ask me to paste in or screenshot 10 emails or text messages I've written, and work from those. If I give you messages, use only those.
+
+Only read. Don't send, delete, move or reply to anything, because this is a look, not a clean-up.
+
+Skip automatic replies, forwards, anything mostly written by someone else, and anything sent by software, like invoices, booking confirmations and reminders. Also skip any email about someone's health, treatment, money troubles or legal matters, because those are private and you don't need them to learn how I write.
+
+Then write my voice guide. The rules, and why each one is there:
+- Base every point on what's in my messages, with a short real line as the example, because a rule without an example gets ignored.
+- Say what I actually do, like "opens with the answer" or "signs off with Cheers", never flattering labels like "professional" or "engaging", because a label doesn't tell an AI what to write.
+- Only include a pattern you can actually see in my messages. Don't guess.
+- Leave out names, phone numbers and anything private. Keep the pattern, not the person.
+- Cover how I open and sign off, how long my sentences are, words and phrases I use a lot, how I say no, how I chase, and how I change between the different kinds of people I write to.
+
+Write the guide as instructions to an AI ("Write like this..."), under 1,200 characters, so it fits in my AI's personal instructions.
+
+Then write one sample reply in my voice to the kind of everyday email or text I answer most often, like a booking or a quote, never one about someone's health or money. Put any price, date or detail you don't know in [square brackets], and give no advice I haven't given in my own emails. Ask me which lines in the sample reply sound wrong. Once I tell you, fix the guide and give me the final version to save.</pre>
+  </div>
+
+  <section class="why">
+    <h2>Why it works</h2>
+    <p>A new receptionist sounds wrong for a month because nobody told them how you talk. Hand them a page of your real emails and they get it in a day. This writes that page, for your AI.</p>
+  </section>
+</main>
+
+<div class="sharebar">
+  <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
+  <a class="share-btn" href="mailto:?subject=Weekly%20Field%20Note%20No.%2011%20%C2%B7%20Voice&amp;body=Thought%20this%20one%20was%20worth%20passing%20on%3A%0A%0Ahttps%3A%2F%2Fwebes77.github.io%2Fmagnum-guides%2Fnewsletter%2Ffield-note-11-voice.html">Email it to someone</a>
+  <a class="share-btn" href="../newsletter/">All Field Notes</a>
+</div>
+
+<script>
+function fallback(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+function copyText(text, done){
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+  } else {
+    fallback(text, done);
+  }
+}
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var text = btn.closest('.pbox').querySelector('pre').textContent;
+    copyText(text, function(){
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+    });
+  });
+});
+var shareBtn = document.getElementById('share-link');
+if (shareBtn) {
+  shareBtn.addEventListener('click', function(){
+    copyText(window.location.href.split('#')[0], function(){
+      shareBtn.textContent = 'Link copied';
+      shareBtn.classList.add('done');
+      setTimeout(function(){ shareBtn.textContent = 'Copy link to this Field Note'; shareBtn.classList.remove('done'); }, 1600);
+    });
+  });
+}
+</script>
+
+</body>
+</html>
