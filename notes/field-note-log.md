@@ -58,6 +58,8 @@ sideways scroll at 1440, 820 and 390. Copy text matches the authored prompt
 exactly. A full run fails only on the two deliberate unlinked pages, 08
 Pasting and 11 Chasing.
 
+Later the same day, at James's word: the prompt reads up to 100 sent emails rather than 50, and the paste route asks for 20 messages to different kinds of people rather than 10, because ten is too thin to show how someone opens, signs off, says no and chases.
+
 The routine changed in the same commit: Step 2 takes the topic from the list
 in rotation rather than from the Sunday Brief, and the constraints carry the
 variety, tool and warning rules. The live trigger cannot be updated from this
