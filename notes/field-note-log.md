@@ -9,6 +9,100 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-10-28
+
+Issue 11, Chasing. Built on the Foundations deck card `overdue-invoice`
+("Chase an overdue invoice"), headline "Customer hasn't paid? Chase it
+without losing them" (8 words). This is the fallback card, reached after the
+commissioned card failed the Step 8B value test three rounds running.
+
+The commission. The Sunday Brief vault file for 2026-10-25 commissioned
+"Stuck on where to use AI? Find your first three jobs in five minutes" on the
+card `find-three-jobs`, which sits on the unmerged branch
+`claude/modest-albattani-fuqj1k` (added 2026-10-25, not on `main`). The card
+passed the standards check (role, reasons on every rule, guard against
+invention, format, a next step) once its ending was changed to do the first
+task with the owner rather than stop, and its one bracket was removed because
+question 1 already asks it. An issue was built on it as "starting".
+
+Value test on that build, three rounds. Round 1 (groomer, bookkeeper; the
+reviewer had no Agent tool and simulated the cold runs itself): hook 3 and
+message 3 for the groomer, because "jobs" reads as bookings to a tradie;
+relevance 3; result 3 for the bookkeeper, because the prompt ranked Xero
+reconciliation first, which a chat cannot do. Fixed: "tasks" for "jobs", a
+rule that only tasks doable from pasted text qualify, a redaction rule, an
+example task in What you get. Round 2 (same owners, cold runs by fresh agents
+this time): both cold runs were usable as is, the groomer's strongly (six
+ready price replies plus a pinned price post). The reviewer scored hook 3
+(groomer), message 3 (bookkeeper), effort 3 (both), and flagged that
+questions 4 and 5 produced aspirations, not tasks, and that the model would
+estimate times it was never given. Fixed: three questions instead of five,
+"you didn't say" instead of estimates, a figures rule, no sorted working
+shown, a second-person WhatsApp line. Round 3 (plumber and hairdresser cold
+runs): both excellent (a full hot water quote with a reusable quoting
+prompt; six salon DM replies with a reusable reply prompt). The reviewer
+still scored hook 3 and message 3 for the groomer ("where AI fits" is
+consultant framing) and effort 3 for both (ten minutes is optimistic for an
+open interview). Three rounds spent, so the card was dropped under Step 8B.
+The finding worth keeping: the prompt itself worked every time from round 2
+on. What failed was the frame. A "find where AI fits" idea is a meta topic,
+the kind the 7 Oct relevance gate warns about, and no headline made it land
+for every trade. The round 3 prompt is saved in the session scratchpad as
+prompt11-find-three-jobs.txt; it is not in the repo.
+
+The fallback. Untaught cards were read from the shelf. No rank 1 card is
+left untaught. Cards added after 14 Oct were excluded. `overdue-invoice` was
+chosen: moment start, an everyday money job every client has, and getting the
+tone wrong costs the customer or the money. `write-the-quote` was the runner
+up and was passed over because it carries six blanks.
+
+Card check on `overdue-invoice` as stored: role present but odd (a
+bookkeeper writing the owner's email); every rule carries a reason (item 2);
+format stated (item 5); no guard against invention (item 9 fails); no
+questions about the reader's own business, the situation is hard-coded at 30
+days late and one reminder (value rules fail); ends "Give me the email. Then
+stop." (value rules fail). It is a deck prompt, so the shelf and deck were
+not touched. The page carries a rewrite: an office manager role, four
+questions asked one at a time (name and business and the job, the invoice
+details and how to pay, what has been sent, whether to keep the customer),
+an ask-before-writing guard, never invent a figure, date or late fee, a
+firmer pay-by date only from the third reminder (suggested a week out and
+flagged to the owner), payment details in the email, a warm line only if the
+owner wants to keep them, an easy way to raise a problem, under 120 words,
+no dashes or exclamation marks, a subject under 50 characters, sign-off with
+name and business, a text version under 300 characters, and an offer to make
+either firmer or softer. The rewrite went to James in the email to apply to
+the deck and shelf together.
+
+Cold-paste test: passes; nothing is attached, every detail is asked for.
+
+Value test on the chasing build, round 1 (electrician and cleaning business):
+hook 5 and 5, message 4 and 4, relevance 5 and 4, effort 4 and 4. Cold runs:
+the electrician's email and text were ready to send unchanged; the cleaner's
+third-reminder email named a pay-by date and flagged it, which exposed the
+clash between "name a date" and "never invent a date", fixed afterwards. The
+reviewer's other fixes went in too: question 1 now collects the name and
+business the sign-off needs, the keep-the-customer answer now changes the
+ending, missing details are asked for, the tone line was made plainer, and
+step 3 says to check the email and text. These were tidy-ups after a pass,
+so the test was not rerun.
+
+Words around the prompt: under the 170 ceiling (the shape check passes).
+Phone screens at 390 wide: 3.01 by scrollHeight / 844, 2.10 at 1440 and 820.
+`node tools/check-field-note.js --shape` prints PASS. A full run fails only
+on `field-note-08-pasting.html`, the deliberate unlinked page from 7 Oct.
+Headless Chromium at 1440, 820 and 390: no JavaScript errors, no sideways
+scroll, and the Copy text matches the authored prompt exactly.
+
+Picture: no Higgsfield tools in this session (checked by tool search), so the
+card uses the stand-in `assets/illustrations/newsletter.jpg`. The Wednesday
+picture top-up task should swap in this issue's own cartoon. Card rendered at
+1200 x 630 with fonts inlined and looked at.
+
+No interface claims about Claude or Anthropic are on the page, so no search
+was needed. The slug moved from "starting" to "chasing" on the branch before
+anything reached main, so no published URL changed.
+
 ## 2026-10-21
 
 Issue 10, Options. The Sunday Brief vault file for 2026-10-18 carries a
@@ -168,6 +262,7 @@ reading four pages of HTML. Add to it when an issue merges.
 | 08 | Replying (replaced Pasting at the same issue number on 7 Oct; the Pasting page stays live, unlinked, at its own URL) | Reply to the difficult email | `difficult-email` |
 | 09 | Numbers | Check your spreadsheet before you send the numbers | `check-the-spreadsheet` |
 | 10 | Options | Ask for five options, ranked from obvious to unusual | `spread-the-options` |
+| 11 | Chasing | Chase an overdue invoice (rewritten on the page, four questions) | `overdue-invoice` |
 
 ## Entries
 
