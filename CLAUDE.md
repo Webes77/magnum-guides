@@ -4147,6 +4147,13 @@ order of value:
   `live == file` on length and equality, not by eye. A prompt that is
   shorter than the one it replaced is the tell.
 - A Word lock file (`~$name.docx`) is not a document.
+- The session clone is shallow (main goes back about 50 commits), so old
+  branches show "no merge base" and look full of unlanded work. Run
+  `git fetch --unshallow origin` before judging whether a branch is merged.
+- A session cannot delete a branch on GitHub: the git proxy refuses the push
+  with a 403 and the GitHub tools have no delete. James deletes branches on
+  GitHub's Branches page. `notes/deleted-branches.md` lists the 34 checked as
+  safe on 1 Nov, with the commit each one ended on.
 - `outlook-send` cannot send from a Claude Code session. The sandbox
   refuses the call to the Make webhook before it runs, so nothing reaches
   Make and there is no failed execution to hunt for. Make itself is fine.
