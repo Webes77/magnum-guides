@@ -197,3 +197,22 @@ reads an inbox needs. Fact register rows 109 to 112 came with it, none taught.
 
 Ids unique, script parses, all three copy their stored text, no sideways scroll
 at 1440 or 390. Shelf is 95 cards.
+
+## 25 Oct 2026 · `claude/modest-albattani-fuqj1k`
+
+Three cards, merged on James's yes in chat on 1 Nov, byte for byte as the
+routine wrote them. `read-before-signing` (review, before you act),
+`warm-contacts` (review, monthly) and `find-three-jobs` (interview, start).
+Duplicate test: `read-before-signing` shares type and moment with
+`read-your-account`, but the thing in hand is a contract's terms, not a renewal
+against your own numbers, so it passes. `find-three-jobs` shares interview and
+start with `talk-it-out`, which briefs one task rather than finding which jobs
+to hand over. Fact register row 119 came with it, filed in number order before
+120. The 1 Nov brief (`claude/modest-albattani-jd48fy`) carried no cards, only
+rows 121 to 124, merged the same day.
+
+Every branch on the remote was compared card id by card id against `main` on
+1 Nov. These three were the only cards not already on the shelf.
+
+Ids unique, page loads with no errors, every card copies its stored text, no
+sideways scroll at 1440 or 390. Shelf is 98 cards.
