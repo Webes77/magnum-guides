@@ -81,10 +81,23 @@
     .short{padding:20px 18px 22px}}
 
   /* The folder, as a tree. */
-  .tree{font-family:var(--mono);font-size:14px;line-height:1.75;background:#FFFFFF;
-    border:2px solid var(--ink);padding:18px 20px;margin:22px 0 0;white-space:pre;overflow-x:auto;color:var(--ink);}
-  .tree .c{color:var(--mute);}
-  .tree b{font-weight:500;color:var(--coral-text);}
+  .dna{border:2px solid var(--ink);background:#FFFFFF;margin:22px 0 0;}
+  .dna-head{background:var(--navy);color:var(--on-navy);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 18px;font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;border-bottom:4px solid var(--coral-bright);}
+  .dna-head span:first-child{color:var(--coral-bright);font-weight:500;text-transform:none;letter-spacing:.04em;font-size:14px;}
+  .dna-short{background:var(--tint);padding:14px 18px;border-bottom:2px solid var(--ink);display:flex;gap:6px 14px;flex-wrap:wrap;align-items:baseline;}
+  .dna-short b{font-family:var(--display);text-transform:uppercase;font-size:17px;letter-spacing:.02em;color:var(--ink);}
+  .dna-short span{color:var(--char);font-size:15px;}
+  .dna-part{display:grid;grid-template-columns:200px 1fr;grid-template-rows:auto 1fr;align-items:start;gap:4px 20px;padding:16px 18px;border-bottom:1px solid var(--hair);}
+  .dna-k{grid-column:1;margin:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);}
+  .dna-t{grid-column:1;margin:0;font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:18px;line-height:1.1;color:var(--ink);}
+  .dna-part ul{grid-column:2;grid-row:1 / span 2;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;}
+  .dna-part li{border:1.5px solid var(--ink);padding:5px 10px;font-size:14.5px;color:var(--char);display:flex;gap:8px;align-items:baseline;}
+  .dna i{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--coral-text);font-weight:500;}
+  .dna-gaps{padding:14px 18px;display:flex;gap:6px 12px;flex-wrap:wrap;align-items:baseline;}
+  .dna-gaps b{font-family:var(--display);text-transform:uppercase;font-size:17px;color:var(--ink);}
+  .dna-gaps span{color:var(--char);font-size:15px;}
+  @media(max-width:640px){.dna-part{grid-template-columns:1fr}.dna-part ul{grid-column:1;grid-row:auto;margin-top:8px}}
 
   /* A stage: numbered section heading, then the prompts, then done when. */
   .promptcard{border-top:2px solid var(--ink);padding-top:22px;margin-top:38px;}
@@ -219,16 +232,15 @@
     <p class="label" data-n="02">What you end up with</p>
     <h2>One document, and a package made from <em>it</em></h2>
     <p>The Brand DNA document is the heart of it: everything about the business, in plain words, in one file you can upload into Claude, ChatGPT, Gemini or any other AI tool. Twenty sections in four parts, with a one-paragraph short version at the top for tools with small boxes.</p>
-<div class="tree" role="img" aria-label="The Brand DNA document: the short version at the top, then four parts holding twenty sections.">brand-dna.md
-  <span class="c">The short version, for small instruction boxes</span>
-  <b>Who we are</b>                  <span class="c">1 Snapshot · 2 Core idea · 3 Values</span>
-                                <span class="c">4 Personality · 5 Pillars · 6 Audience</span>
-                                <span class="c">7 What it is not · 8 Story</span>
-  <b>What we sell, why trust us</b>  <span class="c">9 Offers · 10 Proof and policies</span>
-  <b>How we look and sound</b>       <span class="c">11 Name · 12 Logo · 13 Colour · 14 Type</span>
-                                <span class="c">15 Photography and imagery · 16 Voice</span>
-  <b>Where we show up</b>            <span class="c">17 Social media · 18 Website · 19 Prompts</span>
-  20 Gaps to fill               <span class="c">every open question, in one list</span></div>
+<div class="dna" role="img" aria-label="The Brand DNA document: the short version at the top, then four parts holding twenty sections.">
+  <div class="dna-head"><span>brand-dna.md</span><span>One file &middot; 20 sections</span></div>
+  <div class="dna-short"><b>The short version</b><span>At the top. One paragraph for tools with small instruction boxes.</span></div>
+  <div class="dna-part"><p class="dna-k">Part 1</p><p class="dna-t">Who we are</p><ul><li><i>1</i>Snapshot</li><li><i>2</i>Core idea</li><li><i>3</i>Values</li><li><i>4</i>Personality</li><li><i>5</i>Pillars</li><li><i>6</i>Audience</li><li><i>7</i>What it is not</li><li><i>8</i>Story</li></ul></div>
+  <div class="dna-part"><p class="dna-k">Part 2</p><p class="dna-t">What we sell, and why trust us</p><ul><li><i>9</i>Offers</li><li><i>10</i>Proof and policies</li></ul></div>
+  <div class="dna-part"><p class="dna-k">Part 3</p><p class="dna-t">How we look and sound</p><ul><li><i>11</i>Name</li><li><i>12</i>Logo</li><li><i>13</i>Colour</li><li><i>14</i>Type</li><li><i>15</i>Photography and imagery</li><li><i>16</i>Voice</li></ul></div>
+  <div class="dna-part"><p class="dna-k">Part 4</p><p class="dna-t">Where we show up</p><ul><li><i>17</i>Social media</li><li><i>18</i>Website</li><li><i>19</i>Prompts</li></ul></div>
+  <div class="dna-gaps"><i>20</i><b>Gaps to fill</b><span>Every open question, in one list.</span></div>
+</div>
     <h3 style="margin-top:38px">The finished package</h3>
     <div class="cards">
       <div class="card hl"><p class="tag">For AI</p><h3>The Brand DNA document</h3><p>Everything, in one file. Upload it anywhere and the AI knows the business.</p></div>

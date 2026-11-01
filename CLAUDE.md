@@ -4274,3 +4274,5 @@ order of value:
   Cowork, all of which need re-verifying before they ship.
 - `README.md` and `ROADMAP.md`: the human-facing version of this file and
   the long-term plan for logins.
+
+**Two small fixes, 1 Nov, on James's word.** Front page section headings now match the top bar words, so pressing Courses lands on Courses: "Your path" is Courses, "Use it every day" is Prompts, "The library" is Guides and tools. Ids unchanged. On `brand-dna/`, section 02's monospaced text tree (wrapped badly on a phone) is a `.dna` card now: navy filename bar, tinted short-version row, four parts with numbered section chips, and Gaps to fill. Contrast PASS with folds open, no sideways scroll at 390.
