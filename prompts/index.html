@@ -406,6 +406,49 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 @media(max-width:820px){.sindex{max-height:68vh;columns:1;padding:14px 16px 18px}.sbar{padding:8px 10px;gap:8px}.sbar .snow{flex-basis:100%;font-size:14px}.sbar .snow b{font-size:17px}.sbar button{flex:1;padding:8px 10px}.sbar .l{display:none}.sbar .s{display:inline}}
 @media print{.sbar{display:none!important}}
 </style>
+
+<style>
+/* SIMPLE SHELF · 1 Nov, James. One way in: search, eight pictured shelves of titles, one card at a time. */
+#vault,#filters,#sbar,#howto,#none,#shead,.fmeta{display:none!important}
+.clist{margin:0 0 48px}
+.clist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;align-items:start}
+.chow{grid-column:1/-1;font-size:17px;line-height:1.5;color:var(--ink);margin:0;max-width:62ch;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+.chow span{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;color:var(--char)}
+.chow svg,.citem svg{width:26px;height:26px;flex:0 0 26px}
+.cgroup{border:2px solid var(--ink);background:#FFFFFF;min-width:0}
+.cgroup summary{list-style:none;cursor:pointer;display:block}
+.cgroup summary::-webkit-details-marker{display:none}
+.cgroup .cpic{display:block;aspect-ratio:16/7;overflow:hidden;border-bottom:2px solid var(--ink)}
+.cgroup .cpic img{display:block;width:104%;height:104%;margin:-2%;object-fit:cover}
+.cgroup .cbar{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--navy);color:#F4F1EA;padding:13px 16px;border-bottom:6px solid var(--rust)}
+.cgroup .cbar b{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.1;text-transform:uppercase;letter-spacing:.02em}
+.cgroup .cbar span{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C8CDD3;white-space:nowrap}
+.cgroup .cbar span::after{content:"  Open +";color:var(--coral-bright)}
+.cgroup[open] .cbar span::after{content:"  Close \2212"}
+.cgroup summary:hover .cbar{background:var(--ink)}
+.cgroup summary:hover .cpic img{transform:scale(1.03)}
+.cgroup .cpic img{transition:transform .25s ease}
+.cgroup summary:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
+.cgroup ul{list-style:none;margin:0;padding:4px 16px 8px}
+.citem{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);padding:11px 0;border-bottom:1px solid #DADAD5;font-size:16.5px;line-height:1.35}
+.cgroup li:last-child .citem{border-bottom:0}
+.citem b{font-weight:500;flex:1;min-width:0}
+.citem:hover b{color:var(--coral-text);text-decoration:underline}
+.citem i{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.citem::after{content:"\203A";font-size:22px;line-height:1;color:var(--coral-text)}
+@media(prefers-reduced-motion:reduce){.cgroup .cpic img{transition:none}}
+@media(max-width:820px){.clist{grid-template-columns:1fr;gap:18px}.cgroup .cbar b{font-size:18px}.cgroup ul{padding:2px 14px 6px}.citem{font-size:16px}}
+.cback{position:sticky;top:0;z-index:20;background:#FFFFFF;border:2px solid var(--ink);display:flex;align-items:center;gap:14px;padding:10px 14px;margin:0 0 22px}
+.cback a{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#F4F1EA;background:var(--navy);border:2px solid var(--ink);padding:9px 14px;text-decoration:none;white-space:nowrap}
+.cback a:hover{background:var(--ink)}
+.cback span{font-size:14px;color:var(--char)}
+.cnone{font-size:16px;color:var(--char);margin:0 0 40px}
+#shelf section>.label,#shelf section>.note,#shelf .sublabel{display:none!important}
+#shelf .grid{grid-template-columns:1fr;max-width:860px}
+.pane-head .meta i.type,.pane-head .meta i.src,.pane-head .meta i.pick{display:none}
+.search input{flex:1 1 220px;min-width:0}
+@media print{.cback,.clist{display:none!important}}
+</style>
 <link rel="stylesheet" href="../assets/illustration.css">
 <link rel="stylesheet" href="../assets/topbar.css">
 </head>
@@ -3435,5 +3478,61 @@ openHash();
 checkMore();
 </script>
 
+
+<script>
+// SIMPLE SHELF · 1 Nov. Takes over the older views (chooser, chips, bar), which stay in the file hidden.
+(function(){
+  window.removeEventListener('hashchange',openHash); openHash=()=>false;
+  const main=document.querySelector('main');
+  const q0=document.getElementById('q'),q=q0.cloneNode(true);q0.replaceWith(q);
+  q.placeholder='quote, email, Instagram, meeting';
+  document.querySelector('.search label').textContent='Find a prompt';
+  const shelf=document.getElementById('shelf');
+  // contents list
+  const list=document.createElement('div');list.className='clist';list.id='clist';
+  const AREA_NOTE={research:'Before you commit money, time or your reputation.',learning:'Turn any AI into a tutor for something new.',workforce:'Build a team of AI agents in Claude Code, step by step.'};
+  const BUB='<svg aria-label="Chat bubble" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10 H40 A2 2 0 0 1 42 12 V30 A2 2 0 0 1 40 32 H22 L14 40 V32 H8 A2 2 0 0 1 6 30 V12 A2 2 0 0 1 8 10 Z"/><path d="M14 19 H34 M14 25 H26"/></svg>',TICK='<svg aria-label="Tick" viewBox="0 0 48 48" fill="none" stroke="#EF4029" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M15 24 L21 31 L33 17"/></svg>';
+  const item=c=>{const w=(c.works||'').split(':')[0];return `<li><a class="citem" href="#${esc(c.id)}" data-id="${esc(c.id)}">${c.kind==='recipe'?TICK:BUB}<b>${esc(c.title)}</b>${w==='claude'?'<i>Claude only</i>':''}</a></li>`;};
+  const PIC={start:'start','before-acting':'before',setup:'setup',weekly:'weekly',monthly:'monthly',research:'research',learning:'learning',workforce:'workforce'};
+  const group=(key,name,note,cards)=>cards.length?`<details class="cgroup"><summary>${PIC[key]?`<span class="cpic"><img src="../assets/illustrations/shelf-${PIC[key]}.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async"></span>`:''}<span class="cbar"><b>${esc(name)}</b><span>${cards.length}</span></span></summary><ul>${cards.map(item).join('')}</ul></details>`:'';
+  list.innerHTML=`<p class="chow">Pick a shelf, then tap the job you need.<span>${BUB} A prompt to copy</span><span>${TICK} Steps to follow</span></p>`+present.when.map(k=>group(k,label(WHENS,k),WHEN_NOTES[k]||'',S.filter(c=>!c.station&&whenOf(c)===k))).join('')+
+    stationKeys.map(k=>group(k,label(STATIONS,k),AREA_NOTE[k]||'',S.filter(c=>c.station===k))).join('');
+  const none=document.createElement('p');none.className='cnone';none.hidden=true;none.textContent='Nothing matches that. Try one plain word, like quote or email.';
+  const back=document.createElement('div');back.className='cback';back.hidden=true;back.innerHTML='<a href="#">&larr; All prompts</a><span id="cwhere"></span>';
+  const search=document.querySelector('.search');
+  search.after(none);none.after(list);shelf.before(back);
+  // the primers move under the list, so the list is the first thing you meet
+  const ill=document.querySelector('.ill');const ab=[...document.querySelectorAll('.about.primer')];[...ab].reverse().forEach(a=>shelf.after(a));if(ill){ab.push(ill);shelf.after(ill);}
+  let listY=0;
+  function showList(){
+    back.hidden=true;shelf.hidden=true;search.hidden=false;list.hidden=false;ab.forEach(a=>a.hidden=false);
+    filterList();window.scrollTo({top:listY,behavior:'instant'});
+  }
+  function showCard(id){
+    const c=S.find(x=>x.id===id),pane=document.getElementById(id);if(!c||!pane)return showList();
+    if(!list.hidden)listY=window.scrollY;
+    list.hidden=true;none.hidden=true;search.hidden=true;ab.forEach(a=>a.hidden=true);
+    shelf.hidden=false;
+    document.querySelectorAll('#shelf .pane').forEach(p=>p.hidden=p!==pane);
+    document.querySelectorAll('#shelf .subgroup').forEach(g=>g.hidden=!g.contains(pane));
+    document.querySelectorAll('#shelf section').forEach(sec=>sec.hidden=!sec.contains(pane));
+    document.getElementById('cwhere').textContent=c.station?label(STATIONS,c.station):label(WHENS,whenOf(c));
+    back.hidden=false;
+    window.scrollTo({top:back.getBoundingClientRect().top+window.scrollY-8,behavior:'instant'});
+    checkMore();
+  }
+  let searched=false;
+  function filterList(){
+    const words=q.value.toLowerCase().split(/\s+/).filter(Boolean);let n=0;
+    list.querySelectorAll('.citem').forEach(a=>{const li=a.parentNode;const c=S.find(x=>x.id===a.dataset.id),hay=[c.title,c.hook,c.where,c.sec].join(' ').toLowerCase();const ok=words.every(w=>hay.includes(w));li.hidden=!ok;if(ok)n++;});
+    list.querySelectorAll('.cgroup').forEach(g=>{const k=g.querySelectorAll('li:not([hidden])').length;g.hidden=!k;g.querySelector('.cbar span').textContent=k;if(words.length)g.open=k>0;else if(searched)g.open=false;});searched=words.length>0;
+    none.hidden=n>0;
+  }
+  q.addEventListener('input',filterList);
+  function route(){const h=decodeURIComponent(location.hash.slice(1));h?showCard(h):showList();}
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
 </body>
 </html>

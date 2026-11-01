@@ -3263,6 +3263,24 @@ tailoring studio in black-and-white editorial style, is a private Artifact
 (https://claude.ai/artifact/FpfCvSj2yZV4xtTEosU4sv), files in Drive at Magnum AI
 / Brand DNA Sample - Ostler & Wren, sources in Brand DNA Kit/build/sample-ostler-wren.
 
+**The Prompt Shelf is eight pictured shelves of titles, 1 Nov, on James's
+word.** The sticky bar and index below lasted a morning: James said the page
+was still confusing and too full on, because it offered six ways in (moment
+tiles, area tiles, four chip rows, search, the bar, the index). Now there is
+one: a search box, then eight shelves (the five moments, then Research,
+Learning, Agent workforce), each a picture in the locked style
+(`assets/illustrations/shelf-*.jpg`, still lifes of a wall shelf) over a navy
+name bar with a coral plank, closed until tapped. Open, a shelf is a plain list
+of titles, each led by the design system's chat bubble (a prompt) or tick
+(steps), with a key at the top. Tapping a title shows that one card alone under
+a sticky "All prompts" button, and back returns to the same shelf. Every card
+id still deep-links. It is a takeover script at the foot of
+`prompts/index.html` ("SIMPLE SHELF"): the older chooser, chips, bar and index
+code is still in the file, hidden by CSS and never shown. A new card needs no
+extra field to appear; area cards list under their area, the rest under their
+moment. The intro boxes move under the shelves, and the Research and Workforce
+area headers no longer show.
+
 **The Prompt Shelf has an index and a Works in tag, 1 Nov, on James's word.**
 He said a reader picks Research, scrolls, and forgets the shelf is narrowed. A
 bar now sticks to the top of the screen: it names what is showing and the
