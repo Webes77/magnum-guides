@@ -4242,7 +4242,9 @@ order of value:
   GitHub emails James that jobs failed. Nothing breaks, the next deploy
   carries every commit. Wait for one deploy to finish before pushing again.
   A re-run of the failed job can sit queued for many minutes; one fresh
-  commit is quicker. Found 1 Nov.
+  commit is quicker. Found 1 Nov. A re-run stuck that way cannot be
+  cancelled, by the API or the Actions page (409, "not yet queued"), so do
+  not ask James to cancel it.
 - A Word lock file (`~$name.docx`) is not a document.
 - The session clone is shallow (main goes back about 50 commits), so old
   branches show "no merge base" and look full of unlanded work. Run
