@@ -412,22 +412,23 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 /* SIMPLE SHELF · preview, 1 Nov. One way in: search, the contents list, one card. */
 #vault,#filters,#sbar,#howto,#none,#shead,.fmeta{display:none!important}
 .clist{margin:0 0 48px}
-.cgroup{margin:0 0 40px}
-.cgroup h2{font-family:var(--display);font-weight:700;font-size:26px;line-height:1;text-transform:uppercase;color:var(--ink);border-top:3px solid var(--ink);padding-top:12px;margin:0 0 4px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.cgroup h2 span{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.14em;color:var(--coral-text)}
-.cgroup .gn{font-size:14.5px;color:var(--mute);margin:0 0 8px}
-.shelfrow{display:flex;flex-wrap:wrap;row-gap:22px;padding-left:2px}
-.citem{flex:1 1 auto;min-height:62px;max-width:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;text-decoration:none;
-  background:#FFFFFF;color:var(--ink);border:2px solid var(--ink);border-bottom:8px solid var(--navy);margin-left:-2px;padding:12px 14px 9px}
-.citem b{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.25}
-.citem em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
-.citem.k1{background:var(--tint)}
-.citem.k2{background:var(--navy);color:#F4F1EA}
-.citem.k3{background:var(--coral-bright);color:var(--ink)}
-.citem:hover,.citem:focus-visible{transform:translateY(-6px)}
-.citem:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
-@media(prefers-reduced-motion:reduce){.citem:hover{transform:none}}
-@media(max-width:820px){.shelfrow{row-gap:12px}.citem{min-height:0;padding:11px 12px 9px}.citem b{font-size:15px}}
+.clist{max-width:760px}
+.chow{font-size:17px;line-height:1.5;color:var(--ink);margin:0 0 18px;max-width:60ch}
+.cgroup{margin:0 0 10px;border:2px solid var(--ink);background:#FFFFFF}
+.cgroup summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--navy);color:#F4F1EA;padding:14px 18px;font-family:var(--display);font-weight:600;font-size:21px;line-height:1.1;text-transform:uppercase;letter-spacing:.02em}
+.cgroup summary::-webkit-details-marker{display:none}
+.cgroup summary span{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.12em;color:#C8CDD3;white-space:nowrap}
+.cgroup summary span::after{content:"  +";color:var(--coral-bright);font-size:16px}
+.cgroup[open] summary span::after{content:"  \2212"}
+.cgroup summary:hover{background:var(--ink)}
+.cgroup summary:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
+.cgroup ul{list-style:none;margin:0;padding:4px 18px 8px}
+.citem{display:flex;justify-content:space-between;gap:12px;align-items:baseline;text-decoration:none;color:var(--ink);padding:11px 0;border-bottom:1px solid #DADAD5;font-size:16.5px;line-height:1.35}
+.cgroup li:last-child .citem{border-bottom:0}
+.citem:hover b{color:var(--coral-text);text-decoration:underline}
+.citem b{font-weight:500}
+.citem em{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+@media(max-width:820px){.cgroup summary{font-size:18px;padding:13px 14px}.cgroup ul{padding:2px 14px 6px}.citem{font-size:16px}}
 .cback{position:sticky;top:0;z-index:20;background:#FFFFFF;border:2px solid var(--ink);display:flex;align-items:center;gap:14px;padding:10px 14px;margin:0 0 22px}
 .cback a{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#F4F1EA;background:var(--navy);border:2px solid var(--ink);padding:9px 14px;text-decoration:none;white-space:nowrap}
 .cback a:hover{background:var(--ink)}
@@ -3481,9 +3482,9 @@ checkMore();
   // contents list
   const list=document.createElement('div');list.className='clist';list.id='clist';
   const AREA_NOTE={research:'Before you commit money, time or your reputation.',learning:'Turn any AI into a tutor for something new.',workforce:'Build a team of AI agents in Claude Code, step by step.'};
-  let bk=0;const item=c=>{const w=(c.works||'').split(':')[0];return `<a class="citem k${(bk++*7)%4}" href="#${esc(c.id)}" data-id="${esc(c.id)}" title="${esc(c.hook||'')}"><b>${esc(c.title)}</b>${w==='claude'?'<em>Claude only</em>':''}</a>`;};
-  const group=(name,note,cards)=>cards.length?`<div class="cgroup"><h2>${esc(name)}<span>${cards.length}</span></h2><div class="shelfrow">${cards.map(item).join('')}</div></div>`:'';
-  list.innerHTML=present.when.map(k=>group(label(WHENS,k),WHEN_NOTES[k]||'',S.filter(c=>!c.station&&whenOf(c)===k))).join('')+
+  const item=c=>{const w=(c.works||'').split(':')[0];return `<li><a class="citem" href="#${esc(c.id)}" data-id="${esc(c.id)}"><b>${esc(c.title)}</b>${w==='claude'?'<em>Claude only</em>':''}</a></li>`;};
+  const group=(name,note,cards)=>cards.length?`<details class="cgroup"><summary>${esc(name)}<span>${cards.length}</span></summary><ul>${cards.map(item).join('')}</ul></details>`:'';
+  list.innerHTML='<p class="chow">Pick a shelf, then tap the job you need. You get the prompt, ready to copy.</p>'+present.when.map(k=>group(label(WHENS,k),WHEN_NOTES[k]||'',S.filter(c=>!c.station&&whenOf(c)===k))).join('')+
     stationKeys.map(k=>group(label(STATIONS,k),AREA_NOTE[k]||'',S.filter(c=>c.station===k))).join('');
   const none=document.createElement('p');none.className='cnone';none.hidden=true;none.textContent='Nothing matches that. Try one plain word, like quote or email.';
   const back=document.createElement('div');back.className='cback';back.hidden=true;back.innerHTML='<a href="#">&larr; All prompts</a><span id="cwhere"></span>';
@@ -3509,10 +3510,11 @@ checkMore();
     window.scrollTo({top:back.getBoundingClientRect().top+window.scrollY-8,behavior:'instant'});
     checkMore();
   }
+  let searched=false;
   function filterList(){
     const words=q.value.toLowerCase().split(/\s+/).filter(Boolean);let n=0;
-    list.querySelectorAll('.citem').forEach(a=>{const c=S.find(x=>x.id===a.dataset.id),hay=[c.title,c.hook,c.where,c.sec].join(' ').toLowerCase();const ok=words.every(w=>hay.includes(w));a.hidden=!ok;if(ok)n++;});
-    list.querySelectorAll('.cgroup').forEach(g=>{const k=g.querySelectorAll('.citem:not([hidden])').length;g.hidden=!k;g.querySelector('h2 span').textContent=k;});
+    list.querySelectorAll('.citem').forEach(a=>{const li=a.parentNode;const c=S.find(x=>x.id===a.dataset.id),hay=[c.title,c.hook,c.where,c.sec].join(' ').toLowerCase();const ok=words.every(w=>hay.includes(w));li.hidden=!ok;if(ok)n++;});
+    list.querySelectorAll('.cgroup').forEach(g=>{const k=g.querySelectorAll('li:not([hidden])').length;g.hidden=!k;g.querySelector('summary span').textContent=k;if(words.length)g.open=k>0;else if(searched)g.open=false;});searched=words.length>0;
     none.hidden=n>0;
   }
   q.addEventListener('input',filterList);
