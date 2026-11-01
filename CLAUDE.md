@@ -3263,6 +3263,28 @@ tailoring studio in black-and-white editorial style, is a private Artifact
 (https://claude.ai/artifact/FpfCvSj2yZV4xtTEosU4sv), files in Drive at Magnum AI
 / Brand DNA Sample - Ostler & Wren, sources in Brand DNA Kit/build/sample-ostler-wren.
 
+**The Prompt Shelf has an index and a Works in tag, 1 Nov, on James's word.**
+He said a reader picks Research, scrolls, and forgets the shelf is narrowed. A
+bar now sticks to the top of the screen: it names what is showing and the
+count, carries Show all cards whenever anything is narrowed, and opens an
+index of every card. Each card is listed once, area cards under their area
+and the rest under their moment, so a moment heading in the index leaves the
+area cards out (`state.loose`), and every index count matches what the shelf
+then shows. A title jumps straight to the card and clears any narrowing.
+
+Every card carries `works`: `'any'`, `'any:<need>'` (web search on, in a
+project, email connected, calendar connected, memory on) or
+`'claude:<why>'` (folder access, runs on a schedule, saves a skill, Claude
+Code, task work, Buffer connector, follows Claude's menus). 63 Any AI, 35
+Claude only. It shows as the first tag on the card and filters in a Works in
+row. This is the answer to the members area reading Claude-only: the method
+is portable and the shelf now shows it. The Sunday Brief routine does not
+write `works` yet, so a new card shows no tag until it is added by hand or
+the routine prompt gains the field (James's sign-off, routine procedure in
+the gotchas). Next on the same request: one page, "Same job, other tool",
+mapping what the courses teach in Claude to ChatGPT, Gemini and Copilot,
+every row in the fact register.
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
