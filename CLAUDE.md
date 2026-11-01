@@ -4237,6 +4237,12 @@ order of value:
   the call and emit what you just read. Then re-list and assert
   `live == file` on length and equality, not by eye. A prompt that is
   shorter than the one it replaced is the tell.
+- Two pushes to `main` within a couple of minutes can collide: the second
+  deploy fails with "in progress deployment, please cancel ... first" and
+  GitHub emails James that jobs failed. Nothing breaks, the next deploy
+  carries every commit. Wait for one deploy to finish before pushing again.
+  A re-run of the failed job can sit queued for many minutes; one fresh
+  commit is quicker. Found 1 Nov.
 - A Word lock file (`~$name.docx`) is not a document.
 - The session clone is shallow (main goes back about 50 commits), so old
   branches show "no merge base" and look full of unlanded work. Run
