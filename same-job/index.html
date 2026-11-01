@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+<title>Same Job, Other Tool · Magnum AI</title>
+<meta name="description" content="Everything the courses teach in Claude has a version in ChatGPT, Gemini and Copilot. Find the job, then what your tool calls it and where it lives.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/same-job/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Same Job, Other Tool">
+<meta property="og:description" content="Not on Claude? Find what ChatGPT, Gemini and Copilot call the same job, and where it lives.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/same-job/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/same-job.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Same Job, Other Tool, a Magnum AI reference page">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Same Job, Other Tool">
+<meta name="twitter:description" content="Not on Claude? Find what ChatGPT, Gemini and Copilot call the same job, and where it lives.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/same-job.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/prompt.css">
+<style>
+  .sub{font-size:19px;max-width:62ch;margin:0 0 14px;color:var(--on-navy-mute);}
+  .meta{font-family:var(--sans);font-size:14px;color:var(--on-navy-mute);margin:0;}
+  .wrap p a,.sources a,.why a{color:var(--coral-text);}
+  .pick{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;position:sticky;top:0;z-index:5;background:#FBFBF9;padding:10px 0;border-bottom:1px solid #DADAD5}
+  .pick span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);align-self:center;margin-right:4px}
+  .pick button{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:#FFFFFF;color:var(--ink);border:2px solid var(--ink);padding:8px 14px;cursor:pointer}
+  .pick button[aria-pressed="true"]{background:var(--navy);color:#F4F1EA}
+  .jobs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:0 0 30px}
+  .job{background:#FFFFFF;border:2px solid var(--ink);padding:18px 20px 12px;scroll-margin-top:70px}
+  .job h3{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.1;text-transform:uppercase;color:var(--ink);margin:0 0 6px}
+  .job .why{font-size:15px;line-height:1.45;color:var(--char);margin:0 0 10px;max-width:none}
+  .tools{list-style:none;margin:0;padding:0}
+  .tools li{display:grid;grid-template-columns:86px 1fr;gap:2px 12px;padding:10px 0;border-top:1px solid #DADAD5}
+  .tools .tn{grid-row:span 2;font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-top:3px}
+  .tools .nm{font-weight:600;font-size:16px;color:var(--ink)}
+  .tools .wh{font-size:14.5px;line-height:1.4;color:var(--char)}
+  .tools li[data-t="claude"] .tn{color:var(--coral-text)}
+  body[data-tool]:not([data-tool=""]) .tools li{display:none}
+  body[data-tool="claude"] .tools li[data-t="claude"],body[data-tool="chatgpt"] .tools li[data-t="chatgpt"],
+  body[data-tool="gemini"] .tools li[data-t="gemini"],body[data-tool="copilot"] .tools li[data-t="copilot"]{display:grid}
+  .flag{border-left:5px solid var(--olive);background:#FFFFFF;border-top:1px solid var(--hair);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:12px 16px;margin:18px 0 0;max-width:64ch}
+  .flag p{margin:0;font-size:14.5px;color:var(--char);max-width:none}
+  .flag strong{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px}
+  .only{margin:0 0 20px;padding:0;list-style:none;max-width:64ch}
+  .only li{padding:10px 0 10px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12)}
+  .only li::before{content:"\2713";position:absolute;left:0;top:10px;font-family:var(--mono);font-size:13px;color:var(--olive)}
+  @media(max-width:820px){.jobs{grid-template-columns:1fr}.tools li{grid-template-columns:72px 1fr}}
+  @media print{.pick{display:none}html,body{background:#fff!important}.job{break-inside:avoid}}
+</style>
+<link rel="stylesheet" href="../assets/illustration.css">
+<link rel="stylesheet" href="../assets/topbar.css">
+</head>
+<body data-tool="">
+<header class="mtb" style="margin:0 -20px"><div class="mtb-in"><a class="mtb-brand" href="../"><img src="../assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="../#sessions">Courses</a><a href="../prompts/">Prompts</a><a href="../#week">This week</a><a href="../#library" aria-current="page">Guides</a><a href="../ai-tools/">Tools</a></nav></div></header>
+<header class="masthead"><div class="wrap">
+    <h1>Same job, <em>other tool</em></h1>
+    <p class="sub">The courses use Claude. If your business runs on ChatGPT, Gemini or Copilot, everything still works. Here is what your tool calls each thing, and where to find it.</p>
+    <p class="meta">Checked 1 Nov 2026</p>
+  </div></header>
+  <div class="wrap">
+  <figure class="ill">
+    <img src="../assets/illustrations/same-job.jpg" alt="Four cartoon tradies around a workbench, each with a different coloured spanner on the same bolt, while the older woman in a coral cap grins." width="1200" height="670" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
+
+  <section id="short">
+    <p class="label" data-n="01">The short version</p>
+    <p class="lead">The prompts work anywhere. What changes between tools is the name of the setting, where it lives, and which plan has it.</p>
+    <p>Any card on the <a href="../prompts/">Prompt Shelf</a> without a &ldquo;Claude only&rdquo; tag pastes straight into ChatGPT, Gemini or Copilot and does the same job. It is like swapping spanner brands. The bolt doesn&rsquo;t care.</p>
+    <p>Pick your tool below and the page shows only that one.</p>
+  </section>
+
+  <section id="jobs">
+    <p class="label" data-n="02">Nine jobs, four tools</p>
+    <div class="pick" role="group" aria-label="Show one tool"><span>Show</span><button type="button" data-tool="" aria-pressed="true">All four</button><button type="button" data-tool="claude" aria-pressed="false">Claude</button><button type="button" data-tool="chatgpt" aria-pressed="false">ChatGPT</button><button type="button" data-tool="gemini" aria-pressed="false">Gemini</button><button type="button" data-tool="copilot" aria-pressed="false">Copilot</button></div>
+    <div class="jobs">
+    <article class="job" id="instructions">
+      <h3>Tell it about you once</h3>
+      <p class="why">So every chat starts knowing your business. <a href="../make-claude-yours/">Course two</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Instructions for Claude</span><span class="wh">In Settings. Every plan.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Custom instructions</span><span class="wh">In Settings, under Personalisation. Free and paid.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Instructions for Gemini</span><span class="wh">In Settings. Free and paid.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Custom instructions</span><span class="wh">In Settings, under Personalisation. Work accounts, with or without a Copilot licence.</span></li></ul>
+    </article>
+    <article class="job" id="projects">
+      <h3>One place for each job</h3>
+      <p class="why">A folder it remembers: the files and the rules for one kind of work. <a href="../make-claude-yours/">Course two</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Projects</span><span class="wh">In the sidebar. Free plans get a few.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Projects</span><span class="wh">In the sidebar. Free and paid, with more files on paid.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Notebooks</span><span class="wh">Gemini Notebook, which used to be NotebookLM. Free on the web.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Notebooks</span><span class="wh">Copilot Notebooks. Still rolling out, licensed users first.</span></li></ul>
+    </article>
+    <article class="job" id="memory">
+      <h3>Remember past chats</h3>
+      <p class="why">It picks up what you told it last week. Check what it has kept now and then. <a href="../privacy/">Privacy guide</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Memory</span><span class="wh">In Settings. One memory across chats and tasks.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Memory</span><span class="wh">In Settings, under Personalisation. Free plans remember recent chats only.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Past chats</span><span class="wh">In Settings. May be on unless you turn it off.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Copilot Memory</span><span class="wh">In Settings, under Personalisation. Your admin can search it.</span></li></ul>
+    </article>
+    <article class="job" id="private">
+      <h3>A chat that is not saved</h3>
+      <p class="why">For something you would rather not sit in your history. <a href="../privacy/">Privacy guide</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Incognito chat</span><span class="wh">Not in your history. Kept 30 days for safety.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Temporary Chat</span><span class="wh">Not in your history and not added to memory.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Temporary chat</span><span class="wh">Kept up to 72 hours. On a work account your admin sets the rules.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Temporary chat</span><span class="wh">Not in your history. Your admin can still find it.</span></li></ul>
+    </article>
+    <article class="job" id="connect">
+      <h3>Read your email, calendar and files</h3>
+      <p class="why">So you stop copying and pasting between apps. <a href="../make-claude-yours/">Course two</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Connectors</span><span class="wh">Gmail, Calendar, Drive and Microsoft 365. Every plan.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Apps</span><span class="wh">Gmail, Calendar, Drive and Outlook. Paid plans.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Connected apps</span><span class="wh">Personal Google accounts. On Workspace business plans it is built into Gmail and Drive.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Built in</span><span class="wh">Outlook, Teams and OneDrive with a Copilot licence. The free Copilot Chat in Outlook reads your inbox and calendar.</span></li></ul>
+    </article>
+    <article class="job" id="research">
+      <h3>Search the web and research</h3>
+      <p class="why">For answers with sources, not from memory. <a href="../prompts/#trust-test">Research prompts</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Web search and Research</span><span class="wh">Turn it on in the chat box. Every plan, more on paid.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Search and Deep research</span><span class="wh">In the chat box. Limited on free plans.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Deep Research</span><span class="wh">In the chat box. A small free allowance.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Web search and Researcher</span><span class="wh">Web search is on by default. Researcher needs a licence.</span></li></ul>
+    </article>
+    <article class="job" id="skills">
+      <h3>Save a routine you repeat</h3>
+      <p class="why">Teach it a job once and call it up by name. <a href="../make-claude-yours/">Course two</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Skills</span><span class="wh">Save one once, and Claude uses it when the job comes up.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Skills, or a Project</span><span class="wh">Skills on business plans. On a personal plan, keep the routine in a Project.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Skills</span><span class="wh">Type / in the chat box. These replace Gems, which move across from 17 November.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Agents</span><span class="wh">Build one in Agent Builder. Check with your admin.</span></li></ul>
+    </article>
+    <article class="job" id="schedule">
+      <h3>A job that runs on a timer</h3>
+      <p class="why">It does the job while you are busy, and leaves the result for you. <a href="../runs-without-you/">Course three</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Scheduled tasks</span><span class="wh">Runs with your computer off. Paid plans.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Scheduled tasks</span><span class="wh">Check your plan: limits differ.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Scheduled actions</span><span class="wh">Google AI Pro and up, and business plans.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Scheduled prompts</span><span class="wh">Needs a Copilot licence.</span></li></ul>
+    </article>
+    <article class="job" id="agent">
+      <h3>Let it do a whole job by itself</h3>
+      <p class="why">Hand over a job with a few steps and check the result. <a href="../cowork/">Task Work guide</a></p>
+      <ul class="tools"><li data-t="claude"><b class="tn">Claude</b><span class="nm">Task work</span><span class="wh">Previously Cowork. Reaching every plan over the coming weeks, paid plans first.</span></li><li data-t="chatgpt"><b class="tn">ChatGPT</b><span class="nm">Agent mode</span><span class="wh">Paid plans.</span></li><li data-t="gemini"><b class="tn">Gemini</b><span class="nm">Gemini Agent</span><span class="wh">Top plan only, and not in every country yet.</span></li><li data-t="copilot"><b class="tn">Copilot</b><span class="nm">Copilot Cowork, Researcher</span><span class="wh">Needs a licence, and your admin to switch it on.</span></li></ul>
+    </article>
+    </div>
+    <div class="flag">
+      <strong>Your screen may read differently</strong>
+      <p>These menus move every few weeks, and plans change what they include. If a name doesn&rsquo;t match, search the tool&rsquo;s settings for the job in plain words, like &ldquo;instructions&rdquo; or &ldquo;memory&rdquo;. Checked against the makers&rsquo; own pages and tech press on 1 Nov 2026, and re-checked every month.</p>
+    </div>
+  </section>
+
+  <section id="only">
+    <p class="label" data-n="03">What still needs Claude</p>
+    <p>A few things on the members area lean on Claude features the others don&rsquo;t match yet. They carry a &ldquo;Claude only&rdquo; tag on the Prompt Shelf.</p>
+    <ul class="only">
+      <li><strong>Working through a folder on your computer.</strong> Sorting, filing and auditing files where they sit.</li>
+      <li><strong>The agent workforce.</strong> A team of agents built in Claude Code.</li>
+    </ul>
+    <p>None of that stops you learning on the tool you have. Start with the prompts, and move only when you hit one of these.</p>
+  </section>
+
+  <section id="log">
+    <p class="label">Update log</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Date</th><th>What changed</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:nowrap">1 Nov 2026</td><td>First version.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sources">
+      <p>Sources: OpenAI, Google and Microsoft help and support pages and announcements, Anthropic&rsquo;s own documentation, plus The Verge, 9to5Google, Windows Central and TechCrunch where the makers had not published a page. Gemini Notebook, Gemini skills and the ChatGPT plan details rest on tech press rather than the makers&rsquo; own pages.</p>
+    </div>
+  </section>
+  </div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Last checked · 1 November 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script>
+(function(){
+  var KEY='magnum-same-job-tool',btns=document.querySelectorAll('.pick button');
+  function set(t){document.body.setAttribute('data-tool',t);btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.tool===t?'true':'false');});try{localStorage.setItem(KEY,t);}catch(e){}}
+  btns.forEach(function(b){b.onclick=function(){set(b.dataset.tool);};});
+  try{var s=localStorage.getItem(KEY);if(s)set(s);}catch(e){}
+})();
+</script>
+</body>
+</html>

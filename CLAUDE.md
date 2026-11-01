@@ -3263,6 +3263,20 @@ tailoring studio in black-and-white editorial style, is a private Artifact
 (https://claude.ai/artifact/FpfCvSj2yZV4xtTEosU4sv), files in Drive at Magnum AI
 / Brand DNA Sample - Ostler & Wren, sources in Brand DNA Kit/build/sample-ostler-wren.
 
+**Same Job, Other Tool, live 1 Nov at `same-job/`, on James's word.** The
+second half of the answer to the members area reading Claude-only (the first
+is the Works in tag). Nine jobs the courses teach (standing instructions, one
+place per job, memory, private chat, connecting email and files, research,
+skills, a job on a timer, a whole job by itself), each as a card with what
+Claude, ChatGPT, Gemini and Copilot call it, where it lives and which plan has
+it. A Show row picks one tool and remembers it (`magnum-same-job-tool`). Then
+what still needs Claude, an update log and sources. Research is
+`notes/tools-research/08-same-job.md`, sixteen items it could not confirm are
+written loosely ("check your plan") rather than stated. Register rows 129 to
+137; the page says re-checked monthly. Watch first: Gemini Gems become skills
+from 17 Nov. No setup steps for the other tools, by the 4 Sep rule. Library
+card on the front page, card at `assets/thumbnails/same-job.jpg`.
+
 **The Prompt Shelf is eight pictured shelves of titles, 1 Nov, on James's
 word.** The sticky bar and index below lasted a morning: James said the page
 was still confusing and too full on, because it offered six ways in (moment
