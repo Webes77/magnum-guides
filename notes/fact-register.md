@@ -33,7 +33,7 @@ a source, not the date the slide was written.
 | 8 | An incognito chat is kept 30 days, longer under an Enterprise custom retention setting | same | 2026-09-13 | A |
 | 9 | An incognito chat appears in the organisation data export a Team or Enterprise Primary Owner can run | same | 2026-09-13 | A |
 | 10 | A deleted chat leaves history at once and clears storage within 30 days | same, Chat history and deleting | 2026-09-04 | A |
-| 11 | Record a skill: desktop app, inside Cowork, plus icon, Pro, Max and Team | same, The other way to build one | 2026-09-04 | C |
+| 11 | Record a skill exists in the Claude desktop app (the slide no longer names a button, menu or plan, and gives a fallback when the option is missing) | same, The other way to build one | 2026-11-01 | C. Standing exception closed 1 Nov 2026: slide rewritten so nothing needs confirming in the live product. Check normally; do not ask James |
 
 Row 11 is the standing exception. It was checked against Claude's own
 announcement post on X of 21 July 2026 and three third-party writeups, and
@@ -47,7 +47,7 @@ only person who can close it.
 | 12 | Cowork runs on the web and the phone app, Max plans first | decks, several | 2026-09-04 | C |
 | 13 | Scheduled tasks run in the cloud with no device awake | `runs-without-you` | 2026-09-04 | C |
 | 14 | Chat and Cowork share memory, on by default since 25 Aug | decks, several | 2026-09-04 | C |
-| 15 | A server added through `claude_desktop_config.json` shows its tools in Cowork sessions and not in standard chats | `manus-bridge` What it cannot do | never | observed only |
+| 15 | Retired 1 Nov 2026. `manus-bridge` no longer claims the tools show only in task sessions; it says start a task, which works either way. Standing exception closed. Do not ask James | `manus-bridge` section 05 lead | 2026-11-01 | n/a |
 
 Rows 12 to 14 are third-party only: TechCrunch, Engadget, The Register and
 9to5Mac. `claude.com`, `anthropic.com` and `support.claude.com` are blocked
