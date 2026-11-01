@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
 <title>AI Privacy: What Is Kept, and Who Can See It · Magnum AI</title>
-<meta name="description" content="What actually happens to what you type into Claude and ChatGPT, how long it is kept on each plan, who can retrieve it, the settings to switch off, and what never to paste in at all.">
+<meta name="description" content="What actually happens to what you type into Claude, ChatGPT and Gemini, how long it is kept on each plan, who can retrieve it, the settings to switch off, and what never to paste in at all.">
 <meta name="author" content="Magnum AI">
 <link rel="canonical" href="https://webes77.github.io/magnum-guides/privacy/">
 
@@ -123,11 +123,11 @@
       </div>
       <div class="card">
         <h3>Is it used to train</h3>
-        <p>On a personal Claude or ChatGPT account, yes by default. On a business or enterprise account, no by default. This is the one you can turn off in about fifteen seconds, and it is the one that changes how long things are kept.</p>
+        <p>On a personal Claude, ChatGPT or Gemini account, yes by default. On a business or enterprise account, no by default. This is the one you can turn off in about fifteen seconds, and it is the one that changes how long things are kept.</p>
       </div>
       <div class="card">
         <h3>Can a person read it</h3>
-        <p>The one people never ask about, and the one that actually bites. On a work account the answer is usually yes, an administrator can retrieve it, and no setting you control changes that.</p>
+        <p>The one people never ask about, and the one that actually bites. On a work account the answer is usually yes, an administrator can retrieve it, and no setting you control changes that. On a personal Gemini account, a trained reviewer may read a sample of your chats.</p>
       </div>
     </div>
   </section>
@@ -167,6 +167,21 @@
         </tbody>
       </table>
     </div>
+    <h3 style="margin-top:34px">Gemini</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Your situation</th><th class="mono">Kept for</th><th>Used to train</th></tr></thead>
+        <tbody>
+          <tr><td>A personal Google account, with <em>Keep Activity</em> on. This is the default for adults.</td><td class="mono">18 months</td><td>Yes</td></tr>
+          <tr><td>The same, with the auto-delete period changed. You can pick 3 months, 36 months or never.</td><td class="mono">What you pick</td><td>Yes</td></tr>
+          <tr><td>Keep Activity switched off, or a Temporary Chat. Not in your history.</td><td class="mono">Up to 72 hours</td><td>No</td></tr>
+          <tr><td>A chat a human reviewer has read</td><td class="mono">Up to 3 years</td><td>Yes</td></tr>
+          <tr><td>Gemini on a Google Workspace business account</td><td class="mono">Your org's policy</td><td>No, not by default</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px">Gemini is the one of the three where a person reading your chat changes how long it is kept. Google has trained reviewers, some from outside companies, read a sample of personal chats. Those copies are separated from your account, kept for up to three years, and do not go when you delete your history. Google's own advice is not to type anything you would not want a reviewer to see.</p>
+
     <div class="say">
       <p><strong>The catch most people miss</strong>Deleting a chat does not delete what the tool remembered from it. Memory is a separate store with its own list and its own delete button. Section 04 covers both.</p>
     </div>
@@ -185,6 +200,7 @@
         <ul class="yes">
           <li>Nobody at your workplace can pull your chats.</li>
           <li>Staff access at the company is limited and audited, but not zero.</li>
+          <li>On Gemini, a sample of chats is read by reviewers, and those copies are kept for up to three years.</li>
           <li>A legal request or a breach is still a real path, whatever your settings say.</li>
         </ul>
       </div>
@@ -256,6 +272,22 @@
         <p>The Temporary button sits at the top right of a new chat. It stays out of your history, creates no memories and is not used for training. It is still kept thirty days.</p>
       </li>
     </ol>
+
+    <h3 style="margin-top:36px">In Gemini</h3>
+    <ol class="steps">
+      <li>
+        <h3>Turn off Keep Activity, or shorten it</h3>
+        <span class="path">gemini.google.com &rsaquo; Settings &amp; help &rsaquo; Activity</span>
+        <p>Choose Turn off, or Turn off and delete activity. Chats are then held for up to 72 hours and not used to train. If you want to keep your history, change the auto-delete period from 18 months to 3.</p>
+      </li>
+      <li>
+        <h3>Use a Temporary Chat for the one-offs</h3>
+        <p>It stays out of your history and is not used to train. Google still holds it for up to 72 hours.</p>
+      </li>
+      <li>
+        <h3>Check what you have connected to it</h3>
+        <p>If you have connected Gmail, Drive or Photos to Gemini's Personal Intelligence feature, look at that list and disconnect anything you did not mean to share. Since 16 October 2026 Google's privacy policy lets that connected content shape the ads you see. It is off unless you turned it on, and disconnecting stops it. This change is reported by the tech press; Google's policy text is the final word, and it is not offered in the UK or Europe.</p>
+      </li>
   </section>
 
   <!-- ============ 05 WHAT NEVER TO PUT IN ============ -->
@@ -307,7 +339,7 @@
   <section id="audit">
     <p class="label">The prompt · Audit what it remembers</p>
     <h2>See what it is holding about you</h2>
-    <p>Run this in Claude or ChatGPT. It does not replace the memory list in your settings, it gives you something to check that list against, in plain sentences rather than a wall of fragments. The settings list is the authoritative one and the only place you can actually delete.</p>
+    <p>Run this in Claude, ChatGPT or Gemini. It does not replace the memory list in your settings, it gives you something to check that list against, in plain sentences rather than a wall of fragments. The settings list is the authoritative one and the only place you can actually delete.</p>
     <div class="prompt">
       <button class="copy" type="button" data-copy>Copy prompt</button>
       <pre>You are auditing what you have stored about me, so I can decide
@@ -347,6 +379,9 @@ Stop after that list.</pre>
         <li>OpenAI Help Center · <a href="https://help.openai.com/en/articles/7730893-data-controls-faq">Data Controls FAQ</a> and <a href="https://help.openai.com/en/articles/8914046-temporary-chat-faq">Temporary Chat FAQ</a>, for the training toggle and Temporary Chat.</li>
         <li>OpenAI Help Center · <a href="https://help.openai.com/en/articles/8590148-memory-faq">Memory FAQ</a>, for turning memory off and managing saved memories.</li>
         <li>OpenAI · <a href="https://openai.com/enterprise-privacy/">Enterprise privacy</a> and the <a href="https://help.openai.com/en/articles/9261474-openai-compliance-platform-for-enterprise-and-edu-customers">Compliance Platform</a>, for business data not being trained on by default and what the compliance tools cover.</li>
+        <li>Gemini Apps Help · <a href="https://support.google.com/gemini/answer/13594961">Gemini Apps Privacy Hub</a> and <a href="https://support.google.com/gemini/answer/13278892">Manage your Gemini Apps activity</a>, for the 18 month default, the 72 hour window, Temporary Chats, human review and the three year retention of reviewed chats.</li>
+        <li>Google Workspace Help · <a href="https://support.google.com/mail/answer/14615114">How Gemini in Gmail, Docs and Drive protects your data</a>, for business data not being used to train models outside Workspace.</li>
+        <li>The Hacker News, The Next Web and PPC Land, October 2026, for the 16 October privacy policy change on Personal Intelligence and ads. Third-party reporting.</li>
       </ul>
     </div>
   </section>
@@ -354,7 +389,7 @@ Stop after that list.</pre>
   </div>
 <footer>
   <span>Magnum AI · magnumai.com.au</span>
-  <span>Settings last checked · 14 September 2026</span>
+  <span>Settings last checked · 14 September 2026 · Gemini added 1 November 2026</span>
   <span><a href="../" style="color:inherit">Members area</a></span>
 </footer>
 <script>
