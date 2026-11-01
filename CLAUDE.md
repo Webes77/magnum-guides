@@ -2754,6 +2754,9 @@ same guard as 20 Sep, and correctly. James pastes the body himself into Percy
 in Scheduled. Until he does, the live task is the 40,016 character version
 from earlier on 1 Nov; the file is 42,085. Read the live prompt back the next
 time a session can and assert `live == file`.
+The exact body is also at `notes/sunday-brief-paste-in.txt` for him to copy
+from the raw GitHub link; he was emailed the steps on 1 Nov. Once the live
+task matches, delete that file.
 
 The WRITING TO JAMES reply line is fixed in `notes/routine-email-style.md`
 and in the Sunday Brief only. The other routines still carry "Each item
