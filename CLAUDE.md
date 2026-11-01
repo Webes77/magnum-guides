@@ -2107,7 +2107,7 @@ shape; only CSS moved. The shelf's two recorded contrast failures (Copy
 
 **Field Note relevance gate, 7 Oct, James's word.** Before a Field Note is built, and before the Sunday Brief commissions one, the idea must pass one test: would a busy small business owner use this prompt this week, on a job they already do? Issue 08 first shipped on pasted-text safety; James said it was too complicated and irrelevant to his clients right now, "exactly the type of field note that would turn people off". If the commission fails the test, ignore it and take the shelf fallback. Prefer everyday jobs: replying, quoting, chasing, writing, deciding. No security, setup or AI-mechanics topics unless a client is actually hitting the problem.
 
-**Field Note topics come from an approved list, 28 Oct, James's word.** Four of the six issues to 11 were about checking paperwork or money, two about bills, and James said the notes had become boring and narrow. He approved 26 topics in four groups, now `notes/field-note-topics.md`: push what AI can do, build a system once, think and decide better, run your life better. Work and life, high value, never novelty, and always broad: one prompt for a whole family of cases ("explain any document you don't understand"), never one narrow case. The routine takes the next topic in rotation, never the same group twice in a row, and marks it done. The Sunday Brief's commission no longer sets the topic; an idea from it joins the list only once James approves it. Every issue names the tool and what it needs connected, with a paste-in fallback, and anything that reads email or touches files says in step two what it will never do. Issue 11 was rebuilt the same day as Voice ("AI sounds nothing like you? Teach it how you write"); Chasing stays live at its URL, unlinked, like 08 Pasting. `notes/field-note-prompt.md` carries all of it. The live trigger could not be updated from a session, so James pasted the prompt body into the Remy task in Scheduled himself on 28 Oct, from the file. Not yet read back from a session: check `live == file` the next time a session can read the trigger. Issue 11 reads up to 100 sent emails, or 20 pasted messages, at James's word.
+**Field Note topics come from an approved list, 28 Oct, James's word.** Four of the six issues to 11 were about checking paperwork or money, two about bills, and James said the notes had become boring and narrow. He approved 26 topics in four groups, now `notes/field-note-topics.md`: push what AI can do, build a system once, think and decide better, run your life better. Work and life, high value, never novelty, and always broad: one prompt for a whole family of cases ("explain any document you don't understand"), never one narrow case. The routine takes the next topic in rotation, never the same group twice in a row, and marks it done. The Sunday Brief's commission no longer sets the topic; an idea from it joins the list only once James approves it. Every issue names the tool and what it needs connected, with a paste-in fallback, and anything that reads email or touches files says in step two what it will never do. Issue 11 was rebuilt the same day as Voice ("AI sounds nothing like you? Teach it how you write"); Chasing stays live at its URL, unlinked, like 08 Pasting. `notes/field-note-prompt.md` carries all of it. The live trigger could not be updated from a session, so James pasted the prompt body into the Remy task in Scheduled himself on 28 Oct, from the file. Read back 1 Nov: live equals the file. Issue 11 reads up to 100 sent emails, or 20 pasted messages, at James's word.
 
 **What No. 10's value test taught, 21 Oct. The Field Note routine applies all of these.** Issue 10 was put through three rounds of the Step 8B value test by hand and rebuilt each time; it ended as "Stuck on what to send customers? Sorted in five minutes". What each round caught, so the routine starts where it finished:
 1. Lead the headline with the reader's pain in their words (stuck on what to send, a quiet week, a bill due), not with our diagnosis ("sounds like your competitors") or marketing words ("taglines").
@@ -2723,10 +2723,28 @@ nothing. The same reply-goes-nowhere fault sits in the shared WRITING TO
 JAMES block ("Each item ends by naming what you want him to say back") in
 every routine; fix it there once stage 3 is settled, not before.
 
-Still to do, in order: stage 3 how each item is written, stage 4 length,
-stage 5 the reading questionnaire, stage 6 shelf cards. Then one push of
-the whole prompt with the extract, diff, read in full, emit, read back
-procedure.
+**Shipped 1 Nov, on James's word ("ship all the changes"). The review is
+closed.** James had not realised stages were still open. Everything locked
+above went in, plus what he asked for the same day after a training gap was
+found: the 1 Nov run read eight newsletter tutorials (a Claude brand kit, a
+banned-words list for custom instructions, ElevenLabs tags, a voice-dump
+dispatcher, a second-Claude writing checker, Canva Craft and Terra mockup
+guides, Eliot Prince's Claude from Scratch), cut each to a few words, and
+sent him one. So there is a new section, LEARN THESE THIS WEEK (up to five,
+three tests, a link to each tutorial, an "Adds to:" line when it improves
+something he already teaches), a sixth reading question that captures every
+training section in full, and a `## training` vault section. His rule on
+basics, in his words: if it complements, enhances or improves what he
+already teaches, it goes in; no padding. The duplicate test gained a third
+option, improve the existing card. Stage 4 kept the ten-minute ceiling. The
+section map is in the header of `notes/sunday-brief-prompt.md`.
+Live and file asserted equal at 40,016 characters from the saved
+`update_trigger` result. First run in the new shape is Sunday 8 Nov.
+
+The WRITING TO JAMES reply line is fixed in `notes/routine-email-style.md`
+and in the Sunday Brief only. The other routines still carry "Each item
+ends by naming what you want him to say back": push the shared line into
+each the next time that routine is touched, not as a pass of its own.
 
 **One fix went in ahead of the stages, 18 Oct, on James's word ("do what
 you need to do").** The 18 Oct run pushed its work to session branches

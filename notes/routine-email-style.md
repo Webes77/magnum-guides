@@ -80,7 +80,8 @@ or anything broken, goes under MAKE A DECISION ON EACH ITEM BELOW near the
 top, numbered, most important first. It goes there even when you did not
 break it and even when you think it is minor. Burying a judgement call at
 the foot of an email is the fault this rule exists to stop. Each item ends
-by naming what you want him to say back.
+with the exact words to paste into a Claude chat to say yes or no, because
+replying to this email does nothing.
 
 Never print the same thing twice in one email.
 
