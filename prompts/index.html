@@ -378,6 +378,32 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 .copy.done{background:#FFFFFF;border-color:var(--ink);color:var(--ink)}
 .pane-head h3{flex:0 1 auto}
 </style>
+<style>
+/* SHELF BAR · the index, 1 Nov. James: a reader picks Research, scrolls, and
+   forgets the shelf is narrowed. The bar sticks to the top of the screen, says
+   what is showing, puts every card one tap away, and has one way back to all. */
+.sbar{position:sticky;top:0;z-index:20;background:#FFFFFF;border:2px solid var(--ink);margin:0 0 22px;padding:10px 14px;display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap}
+.sbar .snow{flex:1 1 220px;min-width:0;font-size:15px;line-height:1.35;color:var(--ink)}
+.sbar .snow i{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-text);margin-bottom:2px}
+.sbar .snow b{font-family:var(--display);font-weight:600;font-size:19px;text-transform:uppercase;letter-spacing:.02em}
+.sbar button{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;border:2px solid var(--ink);padding:8px 13px;cursor:pointer;white-space:nowrap}
+.sbar .sidx{background:var(--navy);color:#F4F1EA}
+.sbar .sidx:hover,.sbar .sidx[aria-expanded="true"]{background:var(--ink)}
+.sbar .sall{background:#FFFFFF;color:var(--ink)}
+.sbar .sall:hover{background:var(--tint)}
+.sindex{position:absolute;left:-2px;right:-2px;top:calc(100% + 2px);background:#FFFFFF;border:2px solid var(--ink);max-height:72vh;overflow:auto;padding:18px 20px 22px;columns:3 240px;column-gap:28px}
+.sindex .ig{break-inside:avoid;margin:0 0 18px}
+.sindex .ih{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;text-align:left;background:none;border:0;border-bottom:2px solid var(--ink);padding:0 0 5px;margin:0 0 6px;cursor:pointer;font-family:var(--display);font-weight:600;font-size:17px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);white-space:normal}
+.sindex .ih span{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.12em;color:var(--coral-text)}
+.sindex .ih:hover{color:var(--coral-text)}
+.sindex .ik{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 12px;column-span:all}
+.sindex a{display:block;font-size:14.5px;line-height:1.35;color:var(--char);text-decoration:none;padding:4px 0}
+.sindex a:hover{color:var(--coral-text);text-decoration:underline}
+.pane{scroll-margin-top:calc(var(--sbh,90px) + 14px)}
+.sbar .s{display:none}
+@media(max-width:820px){.sindex{max-height:68vh;columns:1;padding:14px 16px 18px}.sbar{padding:8px 10px;gap:8px}.sbar .snow{flex-basis:100%;font-size:14px}.sbar .snow b{font-size:17px}.sbar button{flex:1;padding:8px 10px}.sbar .l{display:none}.sbar .s{display:inline}}
+@media print{.sbar{display:none!important}}
+</style>
 <link rel="stylesheet" href="../assets/illustration.css">
 <link rel="stylesheet" href="../assets/topbar.css">
 </head>
@@ -429,6 +455,13 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
     <p>Some cards are <b>step by step</b> rather than a prompt. They sit in their own group under the prompts, and the button says <span class="key">Copy steps</span>. Nothing to paste, just a short routine to follow.</p>
     <p>The shelf is grouped by <em>when</em> you would run a card: starting a task, before you act, setting up, every week, every month. The chips at the top narrow it further by what a card does for you. New cards land under New until they are filed. Every card keeps its link, so anything already shared still works.</p>
     <p>You do not need to know any technique to use a card. The prompt already does that work. <a href="../ai-foundations/">Session one</a> teaches how to brief a job yourself.</p>
+  </div>
+
+  <div class="sbar" id="sbar">
+    <p class="snow" id="snow" aria-live="polite"></p>
+    <button class="sidx" id="sidx" type="button" aria-expanded="false" aria-controls="sindex"><span class="l">Index of every card</span><span class="s">Index</span></button>
+    <button class="sall" id="sall" type="button" hidden><span class="l">Show all cards</span><span class="s">Show all</span></button>
+    <div class="sindex" id="sindex" hidden></div>
   </div>
 
   <div class="search" role="search"><label for="q">Search the shelf</label><input id="q" type="search" autocomplete="off" placeholder="Try quote, invoice, Instagram, meeting"></div>
@@ -3234,7 +3267,7 @@ function renderStationHead(k){
 
 // ---- the filter row. One active chip per group. Groups combine.
 const filters=document.getElementById('filters');
-const state={when:'',type:'',station:'',q:''};
+const state={when:'',type:'',station:'',q:'',loose:false};
 const HAY={};S.forEach(c=>{HAY[c.id]=[c.title,c.hook,c.where,c.sec,c.prompt].join(' ').toLowerCase();});
 const present={when:whenKeys.filter(k=>S.some(c=>whenOf(c)===k)),type:typeKeys.filter(k=>S.some(c=>c.type===k))};
 let revealed=false;
@@ -3260,12 +3293,44 @@ if(stationKeys.length){
     }).join('')+`</div>`;
   vgrid.parentNode.appendChild(wrap);
   wrap.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{
-    state.station=b.dataset.station;state.when='';state.type='';revealed=true;
+    state.loose=false;state.station=b.dataset.station;state.when='';state.type='';revealed=true;
     applyFilters();document.getElementById('filters').scrollIntoView();
   };});
 }
-vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.when=b.dataset.when;state.type='';state.station='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
-document.getElementById('tovault').onclick=()=>{state.when='';state.type='';state.station='';state.q='';document.getElementById('q').value='';revealed=false;applyFilters();window.scrollTo({top:0});};
+vgrid.querySelectorAll('.vtile').forEach(b=>{b.onclick=()=>{state.loose=false;state.when=b.dataset.when;state.type='';state.station='';revealed=true;applyFilters();document.getElementById('filters').scrollIntoView();};});
+document.getElementById('tovault').onclick=()=>{state.loose=false;state.when='';state.type='';state.station='';state.q='';document.getElementById('q').value='';revealed=false;applyFilters();window.scrollTo({top:0});};
+
+// ---- the shelf bar and its index. 1 Nov.
+// Every card is listed once: an area card under its area, every other card
+// under its moment. A heading narrows the shelf to that group; a title jumps
+// straight to the card, clearing whatever narrowing was on.
+const sbar=document.getElementById('sbar'),sidx=document.getElementById('sidx'),sall=document.getElementById('sall'),sindex=document.getElementById('sindex'),snow=document.getElementById('snow');
+const igroup=(kind,k,name,cards)=>`<div class="ig"><button class="ih" type="button" data-${kind}="${esc(k)}">${esc(name)}<span>${cards.length}</span></button>${cards.map(c=>`<a href="#${esc(c.id)}" data-jump="${esc(c.id)}">${esc(c.title)}</a>`).join('')}</div>`;
+sindex.innerHTML=`<p class="ik">Tap a heading to see that group. Tap a title to go straight to the card.</p>`+
+  present.when.map(k=>igroup('when',k,label(WHENS,k),S.filter(c=>!c.station&&whenOf(c)===k))).join('')+
+  stationKeys.map(k=>igroup('station',k,label(STATIONS,k),S.filter(c=>c.station===k))).join('');
+function setIndex(open){sindex.hidden=!open;sidx.setAttribute('aria-expanded',open?'true':'false');sidx.innerHTML=open?'<span class="l">Close the index</span><span class="s">Close</span>':'<span class="l">Index of every card</span><span class="s">Index</span>';}
+sidx.onclick=e=>{e.stopPropagation();setIndex(sindex.hidden);};
+document.addEventListener('click',e=>{if(!sindex.hidden&&!sbar.contains(e.target))setIndex(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!sindex.hidden){setIndex(false);sidx.focus();}});
+function resetState(){state.loose=false;state.when='';state.type='';state.station='';state.q='';document.getElementById('q').value='';}
+function toShelfTop(){const y=document.getElementById('filters').getBoundingClientRect().top+window.scrollY-sbar.offsetHeight-12;window.scrollTo({top:Math.max(0,y)});}
+sindex.querySelectorAll('.ih').forEach(b=>{b.onclick=()=>{resetState();if(b.dataset.station)state.station=b.dataset.station;else{state.when=b.dataset.when;state.loose=true;}revealed=true;setIndex(false);applyFilters();toShelfTop();};});
+sindex.querySelectorAll('[data-jump]').forEach(a=>{a.onclick=e=>{e.preventDefault();const c=S.find(x=>x.id===a.dataset.jump);if(!c)return;resetState();if(c.station)state.station=c.station;else{state.when=whenOf(c);state.loose=true;}revealed=true;setIndex(false);applyFilters();history.replaceState(null,'','#'+c.id);requestAnimationFrame(()=>requestAnimationFrame(()=>document.getElementById(c.id).scrollIntoView()));};});
+sall.onclick=()=>{resetState();revealed=true;applyFilters();toShelfTop();};
+function sbh(){document.documentElement.style.setProperty('--sbh',sbar.offsetHeight+'px');}
+window.addEventListener('resize',sbh);
+function updateBar(landing,n){
+  const parts=[];
+  if(state.station)parts.push(label(STATIONS,state.station));
+  if(state.when)parts.push(label(WHENS,state.when));
+  if(state.type)parts.push(label(TYPES,state.type));
+  if(state.q.trim())parts.push('“'+state.q.trim()+'”');
+  requestAnimationFrame(sbh);
+  if(landing){snow.innerHTML=`<i>Prompt Shelf</i><b>${S.length} cards</b> · pick a group below, or open the index`;sall.hidden=true;return;}
+  if(!parts.length){snow.innerHTML=`<i>Showing</i><b>All ${S.length} cards</b>`;sall.hidden=true;return;}
+  snow.innerHTML=`<i>Showing only</i><b>${esc(parts.join(' · '))}</b> · ${n} of ${S.length} cards`;sall.hidden=false;
+}
 function applyFilters(){
   const words=state.q.toLowerCase().split(/\s+/).filter(Boolean);
   const any=!!(state.when||state.type||state.station||words.length);
@@ -3277,21 +3342,22 @@ function applyFilters(){
   document.getElementById('tovault').hidden=landing;
   renderStationHead(landing?'':state.station);
   document.getElementById('shelf').classList.toggle('flat',!!(state.station&&(STATION_HEAD[state.station]||{}).flat));
-  if(landing){document.getElementById('none').hidden=true;document.getElementById('fcount').textContent=`${S.length} cards`;filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.v===''));return;}
+  if(landing){updateBar(true,S.length);document.getElementById('none').hidden=true;document.getElementById('fcount').textContent=`${S.length} cards`;filters.querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.v===''));return;}
   let n=0;
   document.querySelectorAll('.pane').forEach(p=>{
-    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.station||p.dataset.station===state.station)&&words.every(w=>(HAY[p.id]||'').includes(w));
+    const ok=(!state.when||p.dataset.when===state.when)&&(!state.type||p.dataset.type===state.type)&&(!state.station||p.dataset.station===state.station)&&(!state.loose||!p.dataset.station)&&words.every(w=>(HAY[p.id]||'').includes(w));
     p.hidden=!ok;if(ok)n++;
   });
   document.querySelectorAll('#shelf .subgroup').forEach(g=>{g.hidden=!g.querySelector('.pane:not([hidden])');});
   document.querySelectorAll('#shelf section').forEach(sec=>{sec.hidden=!sec.querySelector('.pane:not([hidden])');});
   document.getElementById('none').hidden=n>0;
+  updateBar(false,n);
   document.getElementById('fcount').textContent=any?`${n} of ${S.length} cards`:`${S.length} cards`;
   filters.querySelectorAll('.chip:not(.back)').forEach(b=>b.classList.toggle('on',state[b.dataset.g]===b.dataset.v));
   checkMore();
 }
-filters.querySelectorAll('.chip:not(.back)').forEach(b=>{b.onclick=()=>{state[b.dataset.g]=b.dataset.v;applyFilters();};});
-document.getElementById('clear').onclick=()=>{state.when='';state.type='';state.station='';state.q='';document.getElementById('q').value='';applyFilters();};
+filters.querySelectorAll('.chip:not(.back)').forEach(b=>{b.onclick=()=>{state.loose=false;state[b.dataset.g]=b.dataset.v;applyFilters();};});
+document.getElementById('clear').onclick=()=>{state.loose=false;state.when='';state.type='';state.station='';state.q='';document.getElementById('q').value='';applyFilters();};
 document.getElementById('q').addEventListener('input',e=>{state.q=e.target.value;if(!state.q.trim()&&!state.when&&!state.type&&!state.station)revealed=false;applyFilters();});
 applyFilters();
 
@@ -3342,6 +3408,7 @@ document.querySelectorAll('.prewrap pre').forEach(pre=>pre.addEventListener('scr
 window.addEventListener('resize',checkMore);
 function openHash(){
   const h0=location.hash.slice(1);
+  state.loose=false;
   if(h0){const c0=S.find(x=>x.id===h0); if(c0&&c0.station){state.station=c0.station;state.when='';revealed=true;}}
   const h=location.hash.slice(1);const e=h&&document.getElementById(h);
   if(!(e&&e.classList.contains('pane')))return false;
