@@ -2741,6 +2741,20 @@ section map is in the header of `notes/sunday-brief-prompt.md`.
 Live and file asserted equal at 40,016 characters from the saved
 `update_trigger` result. First run in the new shape is Sunday 8 Nov.
 
+**Approvals simplified, later on 1 Nov, at James's word, and the file is ahead
+of the live task.** He finds approvals confusing and forgets them, and would
+rather anything safe just went live. `notes/sunday-brief-prompt.md` now says:
+shelf cards and `notes/` files publish to `main` by themselves when every check
+passes and the branch touches nothing else; the email lists each live card
+with a "take it down" line; and every remaining approval sits in one block B,
+SAY YES TO THESE, near the top, each with what it is, what changes, and the
+exact line to paste. The `update_trigger` push was refused by the permission
+classifier (standing-rule change, a routine gaining unattended publish), the
+same guard as 20 Sep, and correctly. James pastes the body himself into Percy
+in Scheduled. Until he does, the live task is the 40,016 character version
+from earlier on 1 Nov; the file is 42,085. Read the live prompt back the next
+time a session can and assert `live == file`.
+
 The WRITING TO JAMES reply line is fixed in `notes/routine-email-style.md`
 and in the Sunday Brief only. The other routines still carry "Each item
 ends by naming what you want him to say back": push the shared line into
@@ -3278,8 +3292,10 @@ tailoring studio in black-and-white editorial style, is a private Artifact
   James) feeds the shelf. It moved from a Cowork task to a Claude Code
   routine on 4 Sep so it runs with no Mac awake. Its prompt is versioned at
   `notes/sunday-brief-prompt.md`. The routine drafts shelf cards straight
-  into `prompts/index.html` on a branch named `sunday-brief/<date>`; James
-  reads the diff and merges. Nothing reaches the shelf without that step.
+  into `prompts/index.html` on a branch named `sunday-brief/<date>`. Since
+  1 Nov, at James's word, cards that pass every check publish themselves and
+  the email gives a line to take each one down; anything else waits for his
+  yes in block B.
   The vault is the `Vault` folder in Drive, synced to the Mac; the routine
   adds one dated file a week there and never edits the four standing files. Deck prompts on the shelf are the authored text and are
   never rewritten; a fix to a deck prompt is made in the deck and the shelf.
