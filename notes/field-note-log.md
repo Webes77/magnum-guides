@@ -11,6 +11,19 @@ Field Note was worth having, which is the thing to watch over the first month.
 
 ## 2026-11-04
 
+Rewritten later the same morning at James's word, before he sent it. He said
+it was another quotes issue: the headline led "Quotes, replies, reports?" and
+the examples were quotes, enquiry replies and job reports, when the prompt
+works for any task. Headline is now "Tired of re-explaining tasks to AI? Set
+them up once", examples are the staff roster, social posts and the family
+meal plan, step one says what a project is, and the prompt's role and
+examples no longer lean on quoting (trainer, not office manager; "a list or a
+form", "a checklist, a menu or a price list"; never makes up "a number, name
+or date"). Shape check PASS at 168 words. Card re-rendered, share image
+?v=3. The routine gained two rules: quote, invoice, email and reply are
+banned as examples, and a feature is explained in plain words the first time
+it appears.
+
 Issue 12, Projects, at `newsletter/field-note-12-projects.html`. Topic B9 from
 `notes/field-note-topics.md` ("Set up a project for any job you repeat: it
 interviews you, then writes its own instructions"), taken in rotation after
