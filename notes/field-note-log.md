@@ -9,6 +9,83 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-11-04
+
+Issue 12, Projects, at `newsletter/field-note-12-projects.html`. Topic B9 from
+`notes/field-note-topics.md` ("Set up a project for any job you repeat: it
+interviews you, then writes its own instructions"), taken in rotation after
+issue 11 ran group A. Not a repeat of the last three entries (Voice, Chasing,
+Options). The Sunday Brief commission was not used, per the 28 Oct rule, and
+nothing in it was raised as a new topic.
+
+The card. The nearest shelf card is the Make Claude Yours deck prompt
+`project-instructions` ("Project instructions"). Against
+`notes/prompt-review-standards.md` it passes role (a careful new hire, thin),
+output format, guard against invention and reasons on rules. It fails the
+cold-paste test outside the deck: it refers to "my account instructions" and
+"files, which we plan next", which only make sense in the course sequence. It
+fails the 21 Oct value rules: no fill-ins about the business, no question
+about how the owner sounds, and it ends "Stop after the assumptions" rather
+than on a next step. Because it is a deck prompt the shelf and deck were left
+alone and the page carries a fresh prompt built from it: an office manager
+role, two fill-ins ([the job you repeat], [what you do and who for]), six
+interview questions one at a time (start material, a real example, reader,
+always, never, how I sound), rules with reasons (use only what I tell you,
+leave changing details for an uploaded file, rules with reasons, write as me
+with no exclamation marks or pet names, a rule that it never makes up a
+price, measurement or date and marks it [ASK], under 300 words), a fixed
+output (THE INSTRUCTIONS, WHAT I GUESSED), then a trial on one real job with
+any file it needs, a reminder to take out names and health or money details,
+and the one change that would have improved the result. The improved version
+went to James as a possible shelf card.
+
+Headline "Quotes, replies, reports? Teach your AI the job once" (8 words).
+What it is: a copy-and-paste prompt that sets up your AI for any job you
+repeat, like quotes, replies to enquiries or job reports. What you get: no
+more explaining the same job every time; it asks once, writes its own
+instructions, and every job after comes out your way. Steps: make a project in
+Claude or ChatGPT (free plans get a few; no projects, use a normal chat and
+keep what it writes in a note); open a new chat in the project, paste and
+answer; have one real job ready to test, then save in the project's
+instructions, about twenty minutes. Why it works: the cafe recipe card on the
+wall. No email, files or calendar are read, so no read-only warning applies.
+
+Plan claim: projects on both tools, a few on free plans. WebSearch found only
+third-party sources (Claude Free reportedly capped at five projects since Feb
+2026; ChatGPT Projects free since Sep 2025, register row 130). Written
+loosely, no menu path, register row 138.
+
+Value test (Step 8B). Round 1 (electrician, dog groomer; the reviewer could
+not spawn agents and ran the cold runs itself): hook 3 and 3, message 4 and 3,
+relevance 5 and 4, result 4 and 4, effort 4 and 4. Faults: the first headline,
+"Doing the same job every week? Set it up once", never said AI or what gets set
+up; "Why it matters" assumed weekly AI use; no question about how the owner
+sounds; step 3 doubled the test; no hours and materials in question 1. All
+fixed. Round 2 used two separate fresh cold-run agents (bookkeeper chasing BAS
+receipts, salon replying to price enquiries); both owners said they would use
+the result with light edits. Scores: hook 4 and 4, message 4 and 4, relevance
+5 and 4, result 5 and 4, effort 4 and 3. Faults: step 3 read save-then-test
+and fifteen minutes was the low end; no-project readers had nowhere to save;
+an ambiguous "that" in the voice rule; bracket example text could be left in;
+headline order favoured trades. All fixed: twenty minutes, a note fallback,
+"[the job you repeat]", "Quotes, replies, reports?". Round 3 (landscaper,
+physio, reviewer ran cold runs itself): all 4 or 5 for both, pass. Its two
+optional fixes went in inside the prompt: the [ASK] rule for missing figures,
+and "like promising results if I'm a health business" plus the reminder to
+take out names and health or money details before the trial job.
+
+Picture: no Higgsfield tools in this session, so the card uses
+`assets/illustrations/newsletter.jpg`, the archive's picture (two workers
+reading a sheet pinned to a site office wall, which happens to suit). The
+Wednesday top-up task may replace it.
+
+Checks: `node tools/check-field-note.js --shape` PASS. No script errors and no
+sideways scroll at 1440, 820 and 390; 2.41 screens at 1440 and 820, 3.28 phone
+screens at 390 (844 tall). Contrast PASS at all widths. The prompt is 2,226
+characters. Card rendered at 1200x630 q90 with inlined fonts and looked at.
+Front page now carries 12 as the card and 11, 10, 09 in the list; 08 dropped
+off it and stays in the archive.
+
 ## 2026-10-28 (issue 11 replaced, same day)
 
 James read issue 11, Chasing, and said the Field Notes had become the same

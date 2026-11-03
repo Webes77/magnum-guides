@@ -35,7 +35,7 @@ The topic is a starting point. Build the best prompt for it to the standards in
 `notes/prompt-review-standards.md`. Use a shelf card when one fits; otherwise
 write the prompt fresh and list it in the email as a card for the shelf.
 
-The rotation stands at: last issue was group A (issue 11). Next is group B.
+The rotation stands at: last issue was group B (issue 12). Next is group C.
 
 ## A. Push what AI can do (it works on your email, files or calendar)
 
@@ -50,7 +50,7 @@ The rotation stands at: last issue was group A (issue 11). Next is group B.
 
 ## B. Build a system once, use it forever
 
-9. next. Set up a project for any job you repeat: it interviews you, then writes its own instructions.
+9. done 12. Set up a project for any job you repeat: it interviews you, then writes its own instructions.
 10. next. Turn how you do any job into steps someone else can follow.
 11. next. Brain dump: everything in your head becomes do, hand off, later or drop.
 12. next. A checklist for anything you keep forgetting.
