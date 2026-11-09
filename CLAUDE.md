@@ -3322,6 +3322,23 @@ the gotchas). Next on the same request: one page, "Same job, other tool",
 mapping what the courses teach in Claude to ChatGPT, Gemini and Copilot,
 every row in the fact register.
 
+**Set Up a Project Properly, live 9 Nov at `projects/`, built the same day for a
+group coaching session.** A concept deck, not a hands-on build: James demos it
+live and the group keeps the link, which works as a scrolling page on a phone
+with a Copy button on every prompt. 18 slides on the shared engine (footer
+`Magnum AI / Coaching`, fill key `magnum-projects-fill`): the container, a bad
+and a good project, five misconceptions, instructions as the key, six kinds of
+project (client, expert, repeat job, content, team, customers), the interview,
+knowledge files from you and from research, a brand file pointing at
+`brand-dna/`, and test before you trust. No homework slide. Five prompts: 1 and
+2 are the shelf's `project-instructions` and `build-the-reference-file` byte
+for byte; 3 to 5 are new and on the shelf under `Reference · Set Up a Project
+Properly` as `expert-knowledge-file`, `brand-file`, `redline-the-answer`. The
+shelf is 104 cards. Not on the front page: ask James before adding a library
+card. Cover reuses `make-claude-yours.jpg`; card at
+`assets/thumbnails/projects.jpg`. Register row 145. The group name is not in
+the repo (hard rule 5).
+
 ## Decisions already made
 
 - Old training material (the Big 6, ChatGPT manuals, everything in Drive from
