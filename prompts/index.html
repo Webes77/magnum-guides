@@ -2474,6 +2474,95 @@ steps:[
  'Check the invite landed. Ten minutes, start to finish.'
 ]},
 
+/* ---------- Reference · Set Up a Project Properly ---------- */
+{kind:'prompt', id:'expert-knowledge-file', works:'any:web search on', sec:'Reference · Set Up a Project Properly', title:'Research an expert knowledge file', where:'Inside the expert project, with web search on', type:'instructions', when:'setup', hook:"An expert adviser that answers from current research, not a guess.", added:'2026-11-09', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are a researcher building the knowledge file for an expert project:
+a project I will ask for advice on [the topic, for example Facebook
+marketing] for my business. The project reads this file before every
+answer, so what goes in it decides how good the advice is.
+
+My business: [what you sell, who to, and where in Australia].
+
+Research the topic as it applies to a business like mine now. Where the
+topic moves fast, use sources from the last 12 months. Then write the
+file.
+
+Rules:
+- Name a source for anything that could go out of date, such as a
+  platform rule, a price or a statistic, because I will check those
+  before I rely on them.
+- Mark anything you could not confirm as [CHECK] rather than stating it,
+  because a guess in this file gets repeated in every answer.
+- Write for a small business with no marketing team. Leave out advice
+  that needs a big budget or an agency, because I cannot act on it.
+- Keep it under 1,500 words, because the project reads the whole file
+  every time and a long file crowds out my question.
+
+Use these headings, in this order: WHAT WORKS NOW. WHAT TO AVOID. RULES
+THAT APPLY IN AUSTRALIA (write "None found" if there are none). HOW TO
+TELL IF IT IS WORKING. SOURCES.
+
+Answer with the finished file only, ready to save and upload. Then one
+line listing what you could not confirm. Stop there.`},
+
+{kind:'prompt', id:'brand-file', works:'any', sec:'Reference · Set Up a Project Properly', title:'Put your brand on one page', where:'A new chat. Then add the file to each project', type:'interview', when:'setup', hook:"Everything it writes or designs comes out looking and sounding like you.", added:'2026-11-09', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are a brand writer helping a small business owner put their brand
+on one page, so that every project that writes or designs anything for
+the business starts from the same picture of who we are.
+
+Interview me first. Ask one question at a time and wait for my answer.
+Cover these, in this order:
+1. What we do, who for, and why we started.
+2. The three things we stand for, and what each one looks like in
+   practice, because a value nobody can see is a slogan.
+3. How we sound. Ask me to paste a few emails, posts or reviews I am
+   proud of, and work it out from those rather than from adjectives.
+4. Words and phrases we use, and ones we never use.
+5. How we look: logo, colours with their codes if I have them, fonts,
+   and the kind of photos we use.
+6. What we never say or claim.
+Ask one more question only if an answer needs it. Then stop asking.
+
+Rules:
+- Use only what I tell you or paste. Where I do not know something,
+  such as a colour code, write [NEEDS CONFIRMING] and keep going,
+  because an invented colour or value ends up on everything you make.
+- Describe behaviour, not adjectives: "short sentences, first names,
+  no exclamation marks" beats "friendly".
+- Under 600 words, in plain Australian English.
+
+When the interview is done, answer with the brand file only, under these
+headings: WHO WE ARE. WHAT WE STAND FOR. HOW WE SOUND. WORDS WE USE.
+WORDS WE NEVER USE. HOW WE LOOK. WHAT WE NEVER SAY. Then one line
+listing every [NEEDS CONFIRMING]. Stop there.`},
+
+{kind:'prompt', id:'redline-the-answer', works:'any:in a project', sec:'Reference · Set Up a Project Properly', title:'Redline the answer, fix the project', where:'In the project, straight after an answer you are not happy with', type:'review', when:'before-acting', hook:"Fix the project once, so the same mistake stops coming back.", added:'2026-11-09', levers:['Role','Constraints','Tone','Format','Output'],
+prompt:`You are reviewing the answer you just gave me in this project, as the
+person who has to put their name to it. I do not want the answer fixed.
+I want the project fixed, so the same mistake does not come back.
+
+Check the answer against what I asked, the project instructions and the
+project files.
+
+Rules:
+- Quote the exact words for every problem you raise, so I can see it
+  for myself.
+- Treat anything that is not in my message, my instructions or my files
+  as invented, and flag it, because an invented price or promise is the
+  mistake that costs me.
+- Be blunt and specific. If the answer is right, say so in one line and
+  do not invent a problem to look useful.
+
+Give it back under these headings:
+WRONG: anything untrue or invented, quoted.
+MISSING: what a good answer for this job would have had.
+OFF: anything that does not sound like us or breaks a rule in the
+instructions.
+THE FIX: for each problem, the line to add or change, written ready to
+paste, and whether it goes in the instructions or a file.
+
+Stop after the fix.`},
+
 /* ---------- Reference · Chatbots, Agents and Bots ---------- */
 {kind:'prompt', id:'memory-audit', works:'any:memory on', sec:'Reference · AI privacy', title:'Audit what it remembers about you', where:'Once now, then every few months', type:'review', when:'setup', hook:"See what it has stored about you, and what should not be there.", added:'2026-09-14', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are auditing what you have stored about me, so I can decide
