@@ -693,7 +693,7 @@ F.skill = ['<svg viewBox="0 0 420 300">' + BOX(50, 20, 320, 240, '#FFFFFF') +
   '<line x1="72" y1="122" x2="348" y2="122" stroke="#5B6B7A" stroke-width="2"/>' +
   T(72, 152, 'STEPS', {c:'#C63A2A', z:12, ls:2}) +
   T(160, 152, '1  Thank them by name', {f:'IBM Plex Sans', z:16, ls:0}) +
-  T(160, 182, '2  Mention what they liked', {f:'IBM Plex Sans', z:16, ls:0}) +
+  T(160, 182, '2  Say what they liked', {f:'IBM Plex Sans', z:16, ls:0}) +
   T(160, 212, '3  Invite them back', {f:'IBM Plex Sans', z:16, ls:0}) +
   '<rect x="50" y="244" width="320" height="16" fill="#FF6F5E"/>' + '</svg>',
   'Fig. 06 / one job, saved<br>Works in any project or chat'];
@@ -793,9 +793,9 @@ const S = [
  ["o","Every Tuesday","Rule, award or price changes in your industry, in five lines with sources."],
  ["o","Every Thursday","Three post ideas from this week’s photos in your Drive."]]},
 
-{sec:"6 · Skills", ic:["Tick","Works in any project"], h:"One job, done <em>your way</em>, every time", fig:"skill", pts:[
- "Your way of doing one job, saved.",
- "Works in every project.",
+{sec:"6 · Skills", ic:["Tick","Works in any project"], h:"Skills: save how you <em>do a job</em>", fig:"skill", pts:[
+ "Write it once, use it in every project.",
+ "It kicks in when that job comes up.",
  "Prompt 6 builds your first one."]},
 
 {sec:"6 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
@@ -803,24 +803,10 @@ const S = [
  "It drafts the reply in their style.",
  "I check it and send it."]},
 
-{sec:"Any job", ic:["Building","Three projects, one method"], h:"Same six parts, <em>any job</em>", tiles:[
- ["o","Your marketing","Instructions: who you sell to, what you never post.<br>Files: your best posts, research on what works.<br>Connector: the Drive with your photos.<br>Schedule: Monday, three post ideas.<br>Skill: writes posts your way."],
- ["o","One big client","Instructions: how they like to be contacted, what you promised.<br>Files: their emails, call notes, the proposal.<br>Connector: your inbox and calendar.<br>Schedule: Friday, anything waiting on you.<br>Skill: writes proposals your way."],
- ["o","Your team","Instructions: answer staff questions from our procedures, and say who to ask.<br>Files: procedures, handbook, leave policy.<br>Connector: the shared Drive.<br>Schedule: monthly, policies due for review.<br>Skill: writes a procedure in your format."]]},
-
-{sec:"Test it", ic:["Tick","Four checks"], h:"Test it before you <em>trust</em> it", rowhead:["Check","How","What it tells you"], rows:[
- ["Ask what it is for","“Tell me in two lines what this project is for and who it writes for.”","A vague answer means vague instructions."],
- ["Give it an old job","Paste an enquiry you already answered and compare its reply with yours.","Every difference is a missing instruction or file."],
- ["Make it check its work","Prompt 7 checks numbers, facts and links as pass or fail before it says done.","You see what it checked, not a score out of ten."],
- ["Fix the project","Prompt 8 turns a bad answer into the exact line to add.","The mistake stops coming back."]]},
-
-{sec:"Close", ic:["Spanner","Your first week"], h:"Your first project <em>this week</em>", rows:[
- ["Pick one job","The one you explain most often.","One job, one project."],
- ["Make the project","Paste prompt 1 and let it interview you.","About ten minutes, and the instructions are drafted."],
- ["Give it the facts","Your price list and two past jobs you were proud of.","Answers come from your facts, not a guess."],
- ["Fix it once","Every correction you give twice goes in the instructions.","It stops making the same mistake."],
- ["Add the rest","Connectors, then a schedule, then a skill.","Each one takes another job off your plate."]],
- note:"If you want it built and tuned with you, that is the work I do with businesses."},
+{sec:"Test it", ic:["Tick","Three checks, in order"], h:"Test it before you <em>trust</em> it", pts:[
+ "1. Ask it what the project is for. A vague answer means vague instructions.",
+ "2. Give it a job you’ve already done. Compare its answer with yours.",
+ "3. Fix the instructions, not the answer. Then it stays fixed."]},
 
 {sec:"Your prompts", ic:["Chat bubble","Every prompt has a Copy button"], h:"I’ve already built you <em>the prompts</em>", rowhead:["Part","The prompts","What you get"], rows:[
  ["1 and 2","1 · Write the instructions","It interviews you, then drafts them"],
