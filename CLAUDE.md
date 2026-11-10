@@ -3332,8 +3332,7 @@ instructions, 4 files, 5 test, 6 connect, 7 skills, 8 schedule; skills
 before schedule so a timed job runs a saved method), then Steps 1 to 3 set
 the goal (Talk-It-Out from AI Foundations, then the instructions prompt),
 Step 4 files (plus the Brand DNA document slide), Step 5 test, Step 6
-connect, Step 7 skills (plus the Horseman, described only; its text is his
-IP and never goes in this repo), Step 8 schedule, then an index of all
+connect, Step 7 skills, Step 8 schedule, then an index of all
 nine prompts. Each step's prompts sit straight after it.
 James's rules for this deck, all his words: never the word "today"; no
 hands-up interaction; no homework; no trade-only examples; no live
@@ -3348,9 +3347,10 @@ library card. Card at `assets/thumbnails/projects.jpg`. Register rows 145
 to 152. A private co-branded copy for the group James ran it with is an
 Artifact (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from
 this file by a scratchpad script that swaps paths, the sub line and the
-footer, adds the group's logo, and links a client's Brand DNA booklet on
-the Brand DNA slide. The group's name, its logo and the client link never
-ship in this repo (hard rule 5). The same co-branded copy is public, for
+footer and adds the group's logo. James pulled the Horseman slide and the
+client booklet link on 10 Nov as not for sharing; the Horseman's text is his
+IP and never goes in this repo. The group's name and logo never ship in this
+repo (hard rule 5). The same co-branded copy is public, for
 the group to keep, on Netlify at `magnum-ai-project-setup.netlify.app`
 (site `c476cbeb-55b7-4bca-adb2-bd134f980dba`, `noindex`); redeploy it from
 the scratchpad build with the deploy-site command whenever the deck moves. A long headline that wraps to two lines
