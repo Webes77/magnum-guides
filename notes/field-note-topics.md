@@ -35,7 +35,7 @@ The topic is a starting point. Build the best prompt for it to the standards in
 `notes/prompt-review-standards.md`. Use a shelf card when one fits; otherwise
 write the prompt fresh and list it in the email as a card for the shelf.
 
-The rotation stands at: last issue was group C (issue 13, built on its branch, not live). Next is group D. Topic 14 was tried first on 11 Nov and dropped after three value-test rounds; it stays next.
+The rotation stands at: last issue was group C (issue 13). Next is group D. Topic 14 was tried first on 11 Nov and dropped after three value-test rounds; it stays next.
 
 ## A. Push what AI can do (it works on your email, files or calendar)
 
@@ -59,7 +59,7 @@ The rotation stands at: last issue was group C (issue 13, built on its branch, n
 ## C. Think and decide better
 
 14. next. Research anything properly: what's proven, what's just claimed, and where it came from.
-15. done 13 (on its branch, not live). Make any big decision: your options weighed against what matters to you.
+15. done 13. Make any big decision: your options weighed against what matters to you.
 16. next. Learn any skill in seven days, with a plan that tests you.
 17. next. Explain any document you don't understand, plus what to ask next.
 18. next. Read anything before you sign it: the traps, in plain words.

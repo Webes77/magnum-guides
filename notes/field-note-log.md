@@ -12,7 +12,8 @@ Field Note was worth having, which is the thing to watch over the first month.
 ## 2026-11-11
 
 Issue 13, Deciding, at `newsletter/field-note-13-deciding.html`, built on the
-branch `field-note/2026-11-11` and NOT merged. Two topics each failed the
+branch `field-note/2026-11-11` and not merged by the run (published later the
+same day, see below). Two topics each failed the
 Step 8B value test three rounds running, so under Step 8B nothing reached
 main and James was emailed "needs a fix". Every reviewer this week said it
 had no Agent tool, so every cold run was the reviewer running the filled-in
@@ -67,6 +68,15 @@ missed a clinic. Those three fixes are on the branch and untested: headline
 names raising prices, buying equipment, taking on a worker or buying a car,
 and the WhatsApp line below. Cold runs invented no figure in any round; the
 one risk named was a model quoting super or penalty rates.
+
+Published 11 Nov at James's word, after the run. Two edits before it went
+live. Reader-facing "call" became "decision" or "recommendation" in the
+preview description, step three and the card, because a WhatsApp reader takes
+"call" as a phone call (round three's own finding); "THE CALL" inside the
+prompt stays. And the card carries its own cartoon, made in a chat session
+(`assets/illustrations/field-note-13.jpg`: an owner at the kitchen table with a
+van brochure, the paperwork, a cold tea and a dog asleep underneath), not the
+stand-in. Shape check, style checker and contrast PASS.
 
 Words around the prompt: under 170, shape check PASS. Why it works: the
 mechanic who tells you what he'd do if it were his car. 3.07 phone screens
