@@ -3324,7 +3324,7 @@ every row in the fact register.
 
 **Set Up a Project Properly, live 9 Nov at `projects/`, reworked 10 Nov.** A
 concept deck for a group coaching session: James demos, the group keeps the
-link (a scrolling page on a phone, Copy on every prompt). 22 slides on the
+link (a scrolling page on a phone, Copy on every prompt). 23 slides on the
 shared engine (footer `Magnum AI / Coaching`, fill key `magnum-projects-fill`).
 On 10 Nov, at James's word, it opens on a golf frame (you can already swing; a
 better score is rarely a better club; AI first) and three quick tricks
@@ -3332,9 +3332,10 @@ better score is rarely a better club; AI first) and three quick tricks
 which lost "why bother" and "two ways to build one" and gained a client
 profile as the worked example. Every content slide carries a design-system
 icon whose label says Live demo, Show a finished one or Show your own, and
-which AIs it works in. The close is one subtle line on how James works. His
-trained skill was left out: a skill in front of a room that has not built a
-project opens the wrong gap. Eight prompts, all on the shelf byte for byte
+which AIs it works in. The close is one subtle line on how James works. Slide 21
+shows James's Horseman skill (his communication skill) as what a tuned swing
+looks like, described by what it does only; the skill's text is his IP and
+never goes in this repo, and the thinkers it draws on stay off the slide. Eight prompts, all on the shelf byte for byte
 under `Reference · Set Up a Project Properly`: `check-its-own-work`,
 `scheduled-review` (new), `project-instructions`, `build-the-reference-file`,
 `expert-knowledge-file`, `client-profile` (new), `brand-file`,
