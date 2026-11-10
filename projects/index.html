@@ -633,7 +633,7 @@ const F = {};
 F.project = ['<svg viewBox="0 0 420 300"><rect x="30" y="220" width="360" height="52" fill="#3A3630" stroke="#1E1B17" stroke-width="4"/><text x="210" y="253" text-anchor="middle" font-family="Oswald" font-size="20" fill="#FFFFFF">ACCOUNT INSTRUCTIONS. WHO YOU ARE.</text><rect x="60" y="150" width="300" height="52" fill="#5B6B7A" stroke="#1E1B17" stroke-width="4"/><text x="210" y="183" text-anchor="middle" font-family="Oswald" font-size="20" fill="#FFFFFF">PROJECT INSTRUCTIONS. THE JOB.</text><rect x="90" y="80" width="240" height="52" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><text x="210" y="113" text-anchor="middle" font-family="Oswald" font-size="20" fill="#1E1B17">FILES. WHAT CHANGES.</text><rect x="150" y="22" width="120" height="40" fill="#FF6F5E" stroke="#1E1B17" stroke-width="4"/><text x="210" y="49" text-anchor="middle" font-family="Oswald" font-size="18" fill="#FFFFFF">ONE JOB</text></svg>',
  'Fig. 04 / the project sits on top of your account<br>Teach it the job once. It behaves that way every time.'];
 
-F.dna = ['<svg viewBox="0 0 420 300"><image href="../assets/illustrations/brand-dna-folder.jpg" x="0" y="0" width="420" height="300" preserveAspectRatio="xMidYMid slice"/></svg>', 'One document, every project<br>Values, voice, look and offers'];
+F.dna = ['<svg viewBox="0 0 420 300"><image href="../assets/illustrations/brand-dna-folder.jpg" x="0" y="0" width="420" height="300" preserveAspectRatio="xMidYMid slice"/></svg>', 'Your Brand DNA document<br>Values, voice, look and offers'];
 const T = (x, y, s, o) => `<text x="${x}" y="${y}" font-family="${(o&&o.f)||'IBM Plex Mono'}" font-size="${(o&&o.z)||12}" letter-spacing="${(o&&o.ls)||1}" fill="${(o&&o.c)||'#1E1B17'}"${(o&&o.a)?` text-anchor="${o.a}"`:''}>${s}</text>`;
 const BOX = (x, y, w, h, fill, stroke) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${stroke||'#1E1B17'}" stroke-width="${stroke?2:4}"/>`;
 
@@ -749,12 +749,12 @@ const S = [
 {sec:"3 · Files", ic:["Database","What to load in"], h:"Files: load the <em>brain</em>", tiles:[
  ["o","Your service menu","What you sell, what’s included and what it costs. It quotes from this, not a guess."],
  ["o","A knowledge file","Everything you’d tell a new starter: FAQs, process, policies. Prompt 2 builds it."],
- ["o","Your brand DNA","Your values, voice, look and offers, so everything sounds like your business."],
+ ["o","Your Brand DNA document","Your values, voice, look and offers, so everything sounds like your business."],
  ["c","Your best work","Two or three proposals, emails or posts you were proud of. It copies the standard."],
  ["c","Straight from Google Drive","Add documents from your Drive instead of downloading and uploading them."],
  ["c","Keep them current","Prices change? Swap the file that day. It quotes an old file with full confidence."]]},
 
-{sec:"3 · Files", ic:["Database","One document, every project"], h:"One <em>brand document</em> in every project", fig:"dna", pts:[
+{sec:"3 · Files", ic:["Database","One document, every project"], h:"Your <em>Brand DNA</em> document", fig:"dna", pts:[
  "Your values, voice, look and offers.",
  "One document, uploaded to every project.",
  "Everything it writes sounds like one business."]},
@@ -816,7 +816,7 @@ const S = [
 
 {sec:"Your prompts", ic:["Chat bubble","Every prompt has a Copy button"], h:"I’ve already built you <em>the prompts</em>", rowhead:["Part","The prompts","What you get"], rows:[
  ["1 and 2","1 · Write the instructions","It interviews you, then drafts them"],
- ["3","2 · Knowledge file · 3 · Research file<br>4 · Brand file","What you know, what works, how you sound"],
+ ["3","2 · Knowledge file · 3 · Research file<br>4 · Brand DNA starter","What you know, what works, how you sound"],
  ["5 and 6","5 · A review on a timer<br>6 · Your first skill","A job that runs itself, and one job saved"],
  ["Test","7 · Check its own work<br>8 · Redline the answer","Pass or fail, then the fix for the project"]],
  note:"All eight are in this link. More on the <a href=\"../prompts/\">Prompt Shelf</a>. On ChatGPT or Gemini? <a href=\"../same-job/\">Same Job, Other Tool</a>."},
@@ -839,8 +839,8 @@ const S = [
  "Check every [CHECK].",
  "Save it and add it to the project’s files."]},
 
-{sec:"Your prompts", ic:["Database","Part 3"], h:"Your brand <em>file</em>", pts:[
- "Have a few emails, posts or reviews you are proud of ready to paste."],
+{sec:"Your prompts", ic:["Database","Part 3"], h:"Your Brand DNA <em>starter</em>", pts:[
+ "A one-page start on your Brand DNA document. Have a few emails, posts or reviews you are proud of ready to paste."],
  prompt:P_BRAND, where:"Inside the project you are setting up. Then add the file to every project that writes for you", after:[
  "Fill in every [NEEDS CONFIRMING].",
  "Add it to every project that writes for you."]},
