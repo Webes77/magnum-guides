@@ -3322,32 +3322,36 @@ the gotchas). Next on the same request: one page, "Same job, other tool",
 mapping what the courses teach in Claude to ChatGPT, Gemini and Copilot,
 every row in the fact register.
 
-**Set Up a Project Properly, live 9 Nov at `projects/`, reworked 10 Nov.** A
-concept deck for a group coaching session: James demos, the group keeps the
-link (a scrolling page on a phone, Copy on every prompt). 23 slides on the
+**Set Up a Project Properly, live 9 Nov at `projects/`, rebuilt 10 Nov.** A
+concept deck for a big-room coaching session: James talks over it on one
+screen with Claude open on the other, nobody builds along, and the group
+keeps the link (a scrolling page on a phone, Copy on every prompt). Since the
+second 10 Nov rebuild, at James's word, it is six parts of a project, each
+with one slide, a diagram of the six with its block lit, three short lines and
+a "Where in Claude" line: instructions, the interview, files, connectors,
+schedule (plus a slide of six timer jobs), skills (plus his Horseman skill as
+the example). Then "same six parts, any job" (a marketing adviser beside a
+client), test it, and a prompt pack of eight at the back. 22 slides on the
 shared engine (footer `Magnum AI / Coaching`, fill key `magnum-projects-fill`).
-On 10 Nov, at James's word, it opens on a golf frame (you can already swing; a
-better score is rarely a better club; AI first) and three quick tricks
-(/setup, check its own work, a review on a timer) before the projects section,
-which lost "why bother" and "two ways to build one" and gained a client
-profile as the worked example. Every content slide carries a design-system
-icon whose label says Live demo, Show a finished one or Show your own, and
-which AIs it works in. The close is one subtle line on how James works. Slide 21
-shows James's Horseman skill (his communication skill) as what a tuned swing
-looks like, described by what it does only; the skill's text is his IP and
-never goes in this repo, and the thinkers it draws on stay off the slide. Eight prompts, all on the shelf byte for byte
-under `Reference · Set Up a Project Properly`: `check-its-own-work`,
-`scheduled-review` (new), `project-instructions`, `build-the-reference-file`,
-`expert-knowledge-file`, `client-profile` (new), `brand-file`,
-`redline-the-answer`. The shelf is 106 cards. Not on the front page: ask James
-before adding a library card. Card at `assets/thumbnails/projects.jpg`
-(`?v=2`). Register rows 145 to 147; /setup is third-party only and the slide
-says so. A private co-branded copy for the group James ran it with is an
-Artifact (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from this
-file by a scratchpad script that swaps paths, the sub line and the footer and
-adds the group's logo. The group's name and logo never ship in this repo (hard
-rule 5); a 10 Nov commit was refused for carrying them in this note, rightly.
-James's demo run sheet is a separate private Artifact.
+James's rules for this deck, all his words: never the word "today"; no
+hands-up or show-of-hands interaction; few words on screen because he talks;
+no trade-only examples; no live building, because waiting on answers kills a
+room; show concepts and versatility. The golf frame, the three tricks and the
+client profile are gone (`client-profile` and `scheduled-review` stay on the
+shelf). The eight prompts are all shelf cards byte for byte:
+`project-instructions`, `build-the-reference-file`, `expert-knowledge-file`,
+`brand-file`, `scheduled-review`, `first-skill`, `check-its-own-work`,
+`redline-the-answer`. The Horseman slide describes what it does only; the
+skill's text is his IP and never goes in this repo. The shelf is 106 cards.
+Not on the front page: ask James before adding a library card. Card at
+`assets/thumbnails/projects.jpg`. Register rows 145 to 148. A private
+co-branded copy for the group James ran it with is an Artifact
+(https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from this file by a
+scratchpad script that swaps paths, the sub line and the footer and adds the
+group's logo. The group's name and logo never ship in this repo (hard rule 5);
+a 10 Nov commit was refused for carrying them in this note, rightly. James's
+run sheet, with talking points and answers to hard questions, is a separate
+private Artifact.
 
 ## Decisions already made
 
