@@ -699,13 +699,6 @@ F.skill = ['<svg viewBox="0 0 420 300">' + BOX(50, 20, 320, 240, '#FFFFFF') +
   '<rect x="50" y="244" width="320" height="16" fill="#FF6F5E"/>' + '</svg>',
   'Fig. 06 / one job, saved<br>Works in any project or chat'];
 
-F.horse = ['<svg viewBox="0 0 420 300">' +
-  BOX(80, 20, 260, 56, '#FFFFFF') + T(210, 54, 'A MESSAGE COMES IN', {a:'middle', z:13}) +
-  '<path d="M210 80 V108" stroke="#FFFFFF" stroke-width="4"/><path d="M200 100 L210 112 L220 100" fill="none" stroke="#FFFFFF" stroke-width="4"/>' +
-  BOX(80, 118, 260, 56, '#FF6F5E') + T(210, 152, 'WHAT THEY ACTUALLY WANT', {a:'middle', z:13}) +
-  '<path d="M210 178 V206" stroke="#FFFFFF" stroke-width="4"/><path d="M200 198 L210 210 L220 198" fill="none" stroke="#FFFFFF" stroke-width="4"/>' +
-  BOX(80, 216, 260, 56, '#FFFFFF') + T(210, 250, 'A REPLY IN THEIR STYLE', {a:'middle', z:13}) + '</svg>',
-  'Fig. 07 / read first, then reply<br>You check it and send it'];
 
 F.flow = [(() => {
   const ar = (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#FFFFFF" stroke-width="3"/>`;
@@ -842,11 +835,6 @@ const S = [
  "Write it once, use it in every project.",
  "It kicks in when that job comes up.",
  "Prompt 8 builds your first one."]},
-
-{sec:"Step 7 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
- "It reads a message and says what they really want.",
- "It drafts the reply in their style.",
- "I check it and send it."]},
 
 {sec:"Step 7 · Skills", ic:["Tick","Step 7"], h:"Your first <em>skill</em>", pts:[
  "Pick one job you do the same way every time."],
