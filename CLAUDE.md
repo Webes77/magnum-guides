@@ -3325,37 +3325,36 @@ every row in the fact register.
 **Set Up a Project Properly, live 9 Nov at `projects/`, rebuilt 10 Nov.** A
 concept deck for a big-room coaching session: James talks over it on one
 screen with Claude open on the other, nobody builds along, and the group
-keeps the link (a scrolling page on a phone, Copy on every prompt). Since the
-second 10 Nov rebuild, at James's word, it is six parts of a project, each
-with one slide, a diagram of the six with its block lit, three short lines and
-a "Where in Claude" line: instructions, the interview, files, connectors,
-files (plus a Brand DNA slide: one document of values, voice, look and offers
-uploaded to every project, with the folder picture), connectors (plus a slide
-of six worth plugging in, Fireflies first), schedule (plus a slide of six timer
-jobs), skills (plus his Horseman skill as the example). Later the same day he
-asked for a few more bullets per part slide showing range; four or five short
-lines is the ceiling. Then "same six parts, any job" (a marketing adviser beside a
-client), test it, and a prompt pack of eight at the back. 22 slides on the
-shared engine (footer `Magnum AI / Coaching`, fill key `magnum-projects-fill`).
-James's rules for this deck, all his words: never the word "today"; no
-hands-up or show-of-hands interaction; few words on screen because he talks;
-no trade-only examples; no live building, because waiting on answers kills a
-room; show concepts and versatility. The golf frame, the three tricks and the
-client profile are gone (`client-profile` and `scheduled-review` stay on the
-shelf). The eight prompts are all shelf cards byte for byte:
+keeps the link (a scrolling page on a phone, Copy on every prompt). The
+10 Nov (evening) version came from an independent review agent reading every
+slide rendered at 1920, plus James's asks. 27 slides: cover; AI hacks (an
+AI-first mindset: ask "How can AI help?", AI starts and assists the job, it
+does not do all of it; and talk to it), the payoff, a project is one job
+(figure: parts 1 to 3 live in the project, 4 to 6 are switched on in the
+account), then one slide per part with a figure, a "Try this on your AI"
+line and "Go and look" paths for Claude and ChatGPT: instructions plus a
+worked example (Role to Output, a made-up bookkeeping practice, then how to
+paste them in), interview, files, a Brand DNA slide, connectors plus six
+worth switching on (Fireflies first), schedule plus six timer jobs, skills
+plus his Horseman skill (describes what it does only; the skill's text is
+his IP and never goes in this repo). Then same six parts for three jobs,
+test it, the first project this week, an index of the eight prompts, and
+the eight prompt slides. James's rules for this deck, all his words: never
+the word "today"; no hands-up interaction; no trade-only examples; no live
+building; show concepts and versatility; bullets with substance, not cut to
+nothing. The eight prompts are shelf cards byte for byte:
 `project-instructions`, `build-the-reference-file`, `expert-knowledge-file`,
 `brand-file`, `scheduled-review`, `first-skill`, `check-its-own-work`,
-`redline-the-answer`. The Horseman slide describes what it does only; the
-skill's text is his IP and never goes in this repo. The shelf is 106 cards.
-Not on the front page: ask James before adding a library card. Card at
-`assets/thumbnails/projects.jpg`. Register rows 145 to 149. A private
-co-branded copy for the group James ran it with is an Artifact
-(https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from this file by a
-scratchpad script that swaps paths, the sub line and the footer and adds the
-group's logo. The group's name and logo never ship in this repo (hard rule 5);
-a 10 Nov commit was refused for carrying them in this note, rightly. James's
-run sheet, with talking points and answers to hard questions, is a separate
-private Artifact.
+`redline-the-answer`; the `brand-file` and `scheduled-review` where lines
+moved with the deck. Shared engine (footer `Magnum AI / Coaching`, fill key
+`magnum-projects-fill`). The shelf is 106 cards. Not on the front page: ask
+James before adding a library card. Card at `assets/thumbnails/projects.jpg`.
+Register rows 145 to 151. A private co-branded copy for the group James ran
+it with is an Artifact (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ),
+built from this file by a scratchpad script that swaps paths, the sub line
+and the footer and adds the group's logo. The group's name and logo never
+ship in this repo (hard rule 5). A long headline that wraps to two lines
+pushes a figure slide over at 1440; shorten the headline, not the points.
 
 ## Decisions already made
 
