@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
 <title>Set Up a Project Properly · Magnum AI</title>
-<meta name="description" content="One job, set up once. What a Claude project is, the instructions that make it work, a knowledge file, your brand, and how to test it. Five prompts, all copy-paste ready.">
+<meta name="description" content="Three quick AI tricks, then a Claude project set up properly: instructions, a knowledge file, a client profile, your brand, and a test. Eight prompts, all copy-paste ready.">
 <meta name="author" content="Magnum AI">
 <link rel="canonical" href="https://webes77.github.io/magnum-guides/projects/">
 
@@ -15,16 +15,16 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Magnum AI · Members Area">
 <meta property="og:title" content="Set Up a Project Properly">
-<meta property="og:description" content="Set up a Claude project once and it knows the job every time. Five prompts: instructions, two knowledge files, your brand, and a redline.">
+<meta property="og:description" content="Three quick AI tricks, then a project set up once that knows the job every time. Eight prompts to copy.">
 <meta property="og:url" content="https://webes77.github.io/magnum-guides/projects/">
-<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/projects.jpg">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/projects.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Set Up a Project Properly · a Magnum AI coaching deck">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Set Up a Project Properly">
-<meta name="twitter:description" content="Set up a Claude project once and it knows the job every time. Five prompts: instructions, two knowledge files, your brand, and a redline.">
-<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/projects.jpg">
+<meta name="twitter:description" content="Three quick AI tricks, then a project set up once that knows the job every time. Eight prompts to copy.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/projects.jpg?v=2">
 <meta name="theme-color" content="#1F2A37">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -360,7 +360,59 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 <div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="pbtn copy" id="rcopy" data-copy="0">Copy</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
-const P1 = `You are helping me write the instructions for this project, the way a
+const P_CHECK = `You are a careful colleague who never tells me a job is finished until
+it has been checked.
+
+My task: [what you want done].
+
+Before you tell me it is done, check your own work three ways. A check
+is a pass or a fail that does not depend on your opinion, so do not
+give yourself a score out of ten.
+
+The rules, and why each one is there:
+- COUNT IT: check these things that have one right answer:
+  [for example: under $500 in total, under 150 words, nothing before
+  10am Saturday, the total matches the rows above it]. Mark each one
+  pass or fail, because a number is either right or it is not.
+- LOOK IT UP: confirm every fact against a source I name or one you can
+  link to, and give me the link or the page. If you cannot confirm a
+  fact, say "not confirmed" rather than guessing, because a guess sent
+  to a customer costs me more than a gap.
+- TRY IT: walk through the result the way the person who will use it
+  would, and include one thing that could actually fail. "Review it" is
+  not a check. "Click every link and tell me which ones go nowhere" is.
+- If any check fails, fix it and run that check again before you answer.
+- If you cannot run a check, tell me which one and why. Do not skip it
+  quietly.
+
+Show me the work first, then the checks as a list: each check, pass or
+fail, and what you did to find out. Then stop.`;
+
+const P_SCHED = `You are my business watcher. Each time this job runs, you check one
+thing for me and report back in under 200 words, so I can read it in two
+minutes over a coffee.
+
+What to check: [what to review, for example: rule, award or price changes
+that affect my kind of business in Australia, or contracts in my Drive
+that renew in the next 60 days].
+
+Rules:
+- Report only what has changed since the last run, and give me the
+  source or the file for each item, because I will act on these and need
+  to check them first.
+- Mark anything you could not confirm as [CHECK] rather than stating it.
+- If nothing has changed, say "Nothing new this time" in one line,
+  because a quiet week and a broken job look the same if you send
+  nothing.
+
+Format: up to five items. For each one: what changed, why it matters to
+me, and what I should do, one line each. Stop there.
+
+Before you schedule it, run it once now so I can see a real result. Then
+wait for me to say go, and set it to run [when, for example every Monday
+at 7am].`;
+
+const P_INSTR = `You are helping me write the instructions for this project, the way a
 careful new hire would learn one job before doing it: by asking. This
 project is for one job only, and the instructions go in the project
 instructions box.
@@ -404,7 +456,7 @@ WHAT I ASSUMED: (max 3 bullets, one line each.)
 
 No preamble, no summary. Stop after the assumptions.`;
 
-const P2 = `I want one reference file for this project: the document you read before
+const P_KNOW = `I want one reference file for this project: the document you read before
 every piece of work here, so I never explain the same background twice.
 
 Before you write anything, ask me one question: what should this file
@@ -427,7 +479,7 @@ Rules:
 Answer with the finished file only: headed, plain language, ready to save
 and upload. Stop after the file.`;
 
-const P3 = `You are a researcher building the knowledge file for an expert project:
+const P_RESEARCH = `You are a researcher building the knowledge file for an expert project:
 a project I will ask for advice on [the topic, for example Facebook
 marketing] for my business. The project reads this file before every
 answer, so what goes in it decides how good the advice is.
@@ -456,7 +508,34 @@ TELL IF IT IS WORKING. SOURCES.
 Answer with the finished file only, ready to save and upload. Then one
 line listing what you could not confirm. Stop there.`;
 
-const P4 = `You are a brand writer helping a small business owner put their brand
+const P_PROFILE = `You are a sales coach who reads people for a living. I want to know how
+this client thinks, decides and likes to be spoken to, so my next
+proposal and my next conversation land.
+
+Work only from the emails, meeting transcripts and proposal in this
+project's files.
+
+Rules:
+- Quote their own words for every point you make, so I can see the
+  evidence and judge it myself.
+- Describe how they communicate and decide, not who they are as a
+  person. Leave out guesses about their private life, health or motives,
+  because that is not yours to judge and I would not want it written
+  down.
+- Where the material is thin, say so rather than filling the gap.
+
+Give it back under these headings:
+WHAT THEY CARE ABOUT: up to three things, each with a quote.
+HOW THEY DECIDE: fast or slow, alone or with others, on numbers or on
+trust, with the evidence.
+WORDS THEY USE: phrases worth using back to them.
+WHAT PUT THEM OFF: anything in my emails or proposal that landed badly,
+quoted.
+HOW TO PITCH THE NEXT STEP: three lines I could use, in their language.
+
+Stop after the three lines.`;
+
+const P_BRAND = `You are a brand writer helping a small business owner put their brand
 on one page, so that every project that writes or designs anything for
 the business starts from the same picture of who we are.
 
@@ -486,7 +565,7 @@ headings: WHO WE ARE. WHAT WE STAND FOR. HOW WE SOUND. WORDS WE USE.
 WORDS WE NEVER USE. HOW WE LOOK. WHAT WE NEVER SAY. Then one line
 listing every [NEEDS CONFIRMING]. Stop there.`;
 
-const P5 = `You are reviewing the answer you just gave me in this project, as the
+const P_REDLINE = `You are reviewing the answer you just gave me in this project, as the
 person who has to put their name to it. I do not want the answer fixed.
 I want the project fixed, so the same mistake does not come back.
 
@@ -539,47 +618,69 @@ F.project = ['<svg viewBox="0 0 420 300"><rect x="30" y="220" width="360" height
  'Fig. 04 / the project sits on top of your account<br>Teach it the job once. It behaves that way every time.'];
 
 const S = [
-{sec:"", cover:true, ill:["../assets/illustrations/make-claude-yours.jpg","A cartoon shop owner hands her laptop a coral folder about her business, her shopfront through the window."], h:"Set up a project <em>properly</em>.", pts:[], sub:"Coaching session · One job, set up once", note:"Instructions, a knowledge file, your brand, and a test before you trust it. Every prompt is in here, ready to copy.", meta:[["Works in","Claude. The same idea works in ChatGPT and Gemini"],["Today","The ideas, shown live"],["Take-away","This link, with every prompt in it"]]},
+{sec:"", cover:true, ill:["../assets/illustrations/make-claude-yours.jpg","A cartoon shop owner hands her laptop a coral folder about her business, her shopfront through the window."], h:"Set up a project <em>properly</em>.", pts:[], sub:"Coaching session · One job, set up once", note:"Three quick tricks, then a project set up properly: instructions, a knowledge file, your brand, and a test. Every prompt is in here, ready to copy."},
 
-{sec:"Open", h:"<em>Today</em>", rows:[
- ["The container","What a project is, and why you would bother.","Stop explaining your business every time you open a chat."],
- ["The instructions","The part that does the work.","Claude reads them before every message in the project."],
- ["The knowledge file","What it reads before every job.","Answers come from your facts, not from a guess."],
- ["Your brand","Who you are, on one page.","Everything it writes or designs looks and sounds like you."],
- ["Test it","Check it before you trust it.","Fix the project once, not the answer every time."]],
- pts:["You watch it built live. Every prompt is in this deck, so you can build your own afterwards."]},
+{sec:"Open", ic:["Clock","60 minutes · watch, then copy"], h:"<em>Today</em>", rows:[
+ ["The swing","Why a better result is rarely a better tool.","You stop blaming the AI and start fixing the ask."],
+ ["Three quick tricks","Set up, check its own work, run on a timer.","Three things you can use tomorrow."],
+ ["A project, properly","Instructions, a knowledge file, your brand.","It knows the job before you type a word."],
+ ["Test it","Make it mark its own answer.","Fix the project once, not the answer every time."],
+ ["Your questions","The rest of the hour.","Your business, not a made-up one."]],
+ pts:["Watch now, build later. Everything works in ChatGPT and Gemini too, unless a slide says Claude only."]},
 
-{sec:"The container", h:"What a project <em>is</em>", fig:"project", pts:[
+{sec:"The swing", ic:["Spanner","A lesson, not a new club"], h:"You can already <em>swing</em>", pts:[
+ "Everyone here has used AI. Most of us swing it like a weekend golfer: the ball goes somewhere, not always where we aimed.",
+ "A better score is rarely a better club. It is setup and practice. A newer AI will not fix a vague ask.",
+ "AI first: before you start any job, ask whether AI can do the first draft. Then you edit instead of starting from blank.",
+ "Every trick today is one lesson on the swing."]},
+
+{sec:"Quick tricks", ic:["Spanner","Live demo · Claude only"], h:"Trick 1. Let it set itself <em>up</em>", pts:[
+ "In Claude, open a new chat, type <b>/setup</b>, and say what your business does.",
+ "It walks you through your settings and instructions one question at a time.",
+ "Not on your screen yet? It is rolling out. The instructions prompt later today does the same job, in any AI.",
+ "Reported by third-party guides in September 2026."]},
+
+{sec:"Quick tricks", ic:["Tick","Live demo · Any AI"], h:"Trick 2. Make it check its own <em>work</em>", pts:[
+ "Paste it at the start of any job where a wrong answer costs you.",
+ "You get pass or fail checks, not a score out of ten."],
+ prompt:P_CHECK, where:"Any AI, at the start of the request", after:[
+ "Fill in the task and the checks that matter.",
+ "Read the pass and fail list before the work itself.",
+ "A fail it could not fix is your cue to step in."]},
+
+{sec:"Quick tricks", ic:["Clock","Show a finished one · Claude, ChatGPT, Gemini"], h:"Trick 3. Put a review on a <em>timer</em>", pts:[
+ "Monthly: contracts renewing in the next 60 days. Weekly: rule or price changes in your trade.",
+ "Claude and ChatGPT call it scheduled tasks. Gemini calls it scheduled actions. Check your plan."],
+ prompt:P_SCHED, where:"A new chat. Connect your Drive for contracts, web search for news", after:[
+ "Read the first result while you are there.",
+ "Say go. It runs on its own from then on.",
+ "Read it with your coffee. Stop it if it stops being useful."]},
+
+{sec:"The container", ic:["Carton","One job, one box"], h:"What a project <em>is</em>", fig:"project", pts:[
  "A space for one job. Every chat inside it starts already knowing that job.",
  "Instructions: what is true every time. Files: the detail. Chats: the work.",
  "Most people treat it as a folder. It is a set of instructions with a folder attached.",
- "The instructions are the point. Without them it is just a place to keep chats."]},
+ "ChatGPT calls it a project too. Gemini’s nearest thing is a Gem."]},
 
-{sec:"The container", ic:["Clock","Set up once"], h:"Why <em>bother</em>", pts:[
- "You stop re-explaining your business, your customers and your rules every time you open a chat.",
- "Answers fit your business, because it starts from your facts, not the internet’s average.",
- "The same quality on a Friday afternoon as on a Monday morning.",
- "It is how you hand a job over. Set it up properly and a staff member gets the same result you do."]},
-
-{sec:"The container", h:"A bad project, a good <em>project</em>", split:[
+{sec:"The container", ic:["Tick","Show your own"], h:"A bad project, a good <em>project</em>", split:[
  ["Bad","Called “Business stuff”.","Quotes, social posts and staff questions all in one place.","The instructions box is empty, or it says “be helpful”.","Fourteen files, including last year’s price list."],
  ["Good","Called “Quotes · bathroom renovations”.","One job. Every chat in it is a quote.","Instructions under 300 words: what it is given, what a good quote looks like, what it must never promise.","Two files: this year’s price list and two quotes that won the job."]],
  pts:["One job per project. The moment it does three jobs, it stops being a specialist."]},
 
-{sec:"The container", h:"What people <em>get wrong</em>", rowhead:["What people think","What is true","So"], rows:[
+{sec:"The container", ic:["Chat bubble","Five things people get wrong"], h:"What people <em>get wrong</em>", rowhead:["What people think","What is true","So"], rows:[
  ["It learns from every chat in it","It may remember some things, but the instructions and files are the only part you control.","If it matters every time, write it in the instructions."],
  ["More files make it smarter","It treats every file as true, old ones included.","A few current files. Delete what is stale."],
  ["One big project for the business","It cannot tell which job you mean.","One project per job."],
  ["It will work out what I want","It does what the instructions say, and guesses the rest.","Tell it what good looks like. Show it an example."],
  ["Set it up and forget it","Your prices, services and rules change. It does not know.","Every correction you give twice goes into the instructions."]]},
 
-{sec:"The instructions", h:"The instructions are the <em>key</em>", pts:[
- "Claude reads them before every message in the project. An empty box is why answers feel generic.",
+{sec:"The instructions", ic:["Spanner","Show your instructions box"], h:"The instructions are the <em>key</em>", pts:[
+ "It reads them before every message in the project. An empty box is why answers feel generic.",
  "In: what the job is, what you hand it, what a good result looks like, who reads it, what it must always and never do.",
  "Out: anything that changes, such as prices, templates and examples. Those go in files.",
  "Under 300 words. Only what is true for this job every single time."]},
 
-{sec:"The instructions", h:"Projects you could <em>build</em>", tiles:[
+{sec:"The instructions", ic:["Building","Six kinds to start with"], h:"Projects you could <em>build</em>", tiles:[
  ["o","A client","One project per client: their notes, their history, how they like things. Every email and proposal starts from what you know about them."],
  ["o","An expert","A Facebook marketing adviser who knows your business. Or a pricing adviser, a hiring adviser, a grants adviser."],
  ["o","A job you repeat","Quotes, proposals, job reports. The thing you write every week the same way."],
@@ -588,81 +689,84 @@ const S = [
  ["c","Your customers","Replies to enquiries, complaints and reviews, with your rules about what you never promise."]],
  pts:["The list is endless. Start with the job you explain most often."]},
 
-{sec:"The instructions", ic:["Chat bubble","It asks, you answer"], h:"Let it <em>interview</em> you", pts:[
+{sec:"The instructions", ic:["Chat bubble","Live demo · Any AI"], h:"Let it <em>interview</em> you", pts:[
  "Do not write the instructions yourself. You know more than you can write down cold.",
- "Claude asks one question at a time. You answer out loud. Rough is fine.",
+ "It asks one question at a time. You answer out loud. Rough is fine.",
  "It drafts the instructions. You read them, and fix anything by telling it what to change.",
  "Then you paste them in yourself. Nothing saves itself."]},
 
-{sec:"The instructions", h:"Prompt 1. Write the instructions", pts:[
+{sec:"The instructions", ic:["Chat bubble","Live demo · Any AI"], h:"Write the instructions", pts:[
  "Six questions, one at a time.",
- "Paste in a past job you are proud of when it asks. One example beats a description."],
- prompt:P1, where:"Inside the new project, in its first chat", after:[
- "Read the draft. Tell Claude what to change, one thing at a time.",
+ "When it asks, paste in a past job you are proud of. One example beats a description."],
+ prompt:P_INSTR, where:"Inside the new project, in its first chat", after:[
+ "Read the draft. Tell it what to change, one thing at a time.",
  "Copy the final version.",
  "Open the project’s instructions, paste, and save."]},
 
 {sec:"The knowledge file", ic:["Database","Read before every job"], h:"What a knowledge <em>file</em> is", pts:[
  "The reference it reads before every job: your services, prices, process, the questions customers ask, past examples.",
  "Instructions say how to do the job. The knowledge file holds the facts the job needs.",
- "One purpose per file, current, and under about 1,500 words.",
+ "Build it from what you told it, or from research for an expert project.",
  "It treats every file as true. An old price list gives you a wrong quote, confidently."]},
 
-{sec:"The knowledge file", h:"Two ways to <em>build</em> one", split:[
- ["From you","What is already in your head and your documents.","Claude drafts it from what you told it in the interview, and marks anything it is not sure of.","Prompt 2."],
- ["From research","For an expert project, such as Facebook marketing.","Claude researches what works now for a business like yours, names its sources, and marks what it could not confirm.","Prompt 3."]],
- pts:["Read it before you upload it. Anything marked [CHECK] is yours to confirm or cut."]},
-
-{sec:"The knowledge file", h:"Prompt 2. The knowledge file, from you", pts:[
- "Same project, after the instructions are in.",
+{sec:"The knowledge file", ic:["Database","Live demo · Any AI"], h:"The knowledge file, from <em>you</em>", pts:[
+ "Same project, once the instructions are in.",
  "It asks one question first: what should this file put first?"],
- prompt:P2, where:"Inside the project, after the instructions are saved", after:[
+ prompt:P_KNOW, where:"Inside the project, after the instructions are saved", after:[
  "Read it. Fix or cut anything marked [CHECK].",
- "Save it as a document. Ask Claude to make it one if that is easier.",
+ "Save it as a document. Ask it to make one if that is easier.",
  "Add it to the project’s files."]},
 
-{sec:"The knowledge file", h:"Prompt 3. The knowledge file, from research", pts:[
+{sec:"The knowledge file", ic:["Globe","Show a finished one · Any AI with web search"], h:"The knowledge file, from <em>research</em>", pts:[
  "Fill in the topic and your business.",
  "Turn on web search, or Research if your plan has it."],
- prompt:P3, where:"Inside the expert project, with web search on", after:[
+ prompt:P_RESEARCH, where:"Inside the expert project, with web search on", after:[
  "Check every [CHECK] and anything that could date.",
  "Save it as a document and add it to the project’s files.",
  "Run it again in six months. Platforms change."]},
 
-{sec:"Your brand", ic:["Megaphone","One page, every project"], h:"Bring your <em>brand</em> in", pts:[
+{sec:"The knowledge file", ic:["Envelope","Show a finished one · Any AI"], h:"Profile a <em>client</em>", pts:[
+ "A client project with their emails, call transcripts and your last proposal in the files.",
+ "It tells you what they care about, how they decide, and the words to use back.",
+ "Their data, so a paid plan with the training switch off. Show a made-up client on screen, never a real one."],
+ prompt:P_PROFILE, where:"Inside the client’s project, with the files added", after:[
+ "Check every quote against the source.",
+ "Save the profile into the client’s project as a file.",
+ "Use it before your next call or proposal."]},
+
+{sec:"Your brand", ic:["Megaphone","Show your own"], h:"Bring your <em>brand</em> in", pts:[
  "A brand file is one page on who you are: what you stand for, how you sound, how you look, what you never say.",
  "Add it to every project that writes or designs anything for you. Posts, proposals, slides, flyers.",
- "With your colour codes and fonts in it, what Claude designs comes out in your look, not a stock one.",
- "Prompt 4 builds the short version. The full version, everything about the business in one document, is <a href=\"../brand-dna/\">Brand DNA</a>."]},
+ "With your colour codes and fonts in it, what it designs comes out in your look, not a stock one.",
+ "The full version, everything about the business in one document, is <a href=\"../brand-dna/\">Brand DNA</a>."]},
 
-{sec:"Your brand", h:"Prompt 4. Your brand file", pts:[
+{sec:"Your brand", ic:["Megaphone","Show your own · Any AI"], h:"Your brand <em>file</em>", pts:[
  "Have a few emails, posts or reviews you are proud of ready to paste.",
  "Your colour codes are on your website or with whoever made your logo."],
- prompt:P4, where:"A new chat. Then add the file to each project", after:[
+ prompt:P_BRAND, where:"A new chat. Then add the file to each project", after:[
  "Fill in every [NEEDS CONFIRMING], or cut the line.",
  "Save it as a document.",
  "Add it to every project that writes or designs for you."]},
 
-{sec:"Test it", h:"Test before you <em>trust</em>", tiles:[
+{sec:"Test it", ic:["Tick","Live demo · Any AI"], h:"Test before you <em>trust</em>", tiles:[
  ["o","Ask what it is for","“Before you start, tell me in two lines what this project is for.” A wrong answer means the instructions need work."],
  ["o","Give it an old job","Give it a job you have already done. Compare its answer with what you actually sent."],
- ["c","Redline the answer","Make it mark its own answer against your instructions and files, then tell you what to change. Prompt 5."]],
+ ["c","Redline the answer","Make it mark its own answer against your instructions and files, then tell you what to change."]],
  pts:["Fix the project, not the answer. A correction you make in every chat belongs in the instructions once."]},
 
-{sec:"Test it", h:"Prompt 5. Redline the answer", pts:[
+{sec:"Test it", ic:["Tick","Live demo · Any AI"], h:"Redline the <em>answer</em>", pts:[
  "Run it straight after an answer you are not happy with.",
  "It quotes what is wrong, then writes the fix for the project."],
- prompt:P5, where:"In the project, straight after the answer", after:[
+ prompt:P_REDLINE, where:"In the project, straight after the answer", after:[
  "Paste each fix into the instructions or the file it names.",
  "Start a new chat in the project. Ask the same question again.",
  "Still wrong? The fix is not in yet. Go again."]},
 
-{sec:"Close", ic:["Tick","1 job · 1 project"], h:"Keep it <em>sharp</em>", pts:[
- "One job per project. Start with the one you explain most often.",
- "Every correction you give twice goes into the instructions.",
- "When a price, a service or a rule changes, update the file that day. Delete what is stale.",
- "On ChatGPT or Gemini? Same idea, different names. <a href=\"../same-job/\">Same Job, Other Tool</a> shows where each lives.",
- "Every prompt in this deck is on the <a href=\"../prompts/\">Prompt Shelf</a> too."]}
+{sec:"Close", ic:["Spanner","Practice, not a new club"], h:"Lessons <em>stick</em> with practice", pts:[
+ "The projects that work are the ones corrected ten times in their first fortnight.",
+ "One job, one project. Every correction you give twice goes into the instructions.",
+ "That is the work I do with businesses: watch the swing, find the one thing costing the most, and fix that first.",
+ "Every prompt from today is in this link and on the <a href=\"../prompts/\">Prompt Shelf</a>. Using ChatGPT or Gemini? <a href=\"../same-job/\">Same Job, Other Tool</a> shows where each part lives."]}
 ];
 
 

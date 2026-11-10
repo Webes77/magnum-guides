@@ -3322,22 +3322,31 @@ the gotchas). Next on the same request: one page, "Same job, other tool",
 mapping what the courses teach in Claude to ChatGPT, Gemini and Copilot,
 every row in the fact register.
 
-**Set Up a Project Properly, live 9 Nov at `projects/`, built the same day for a
-group coaching session.** A concept deck, not a hands-on build: James demos it
-live and the group keeps the link, which works as a scrolling page on a phone
-with a Copy button on every prompt. 18 slides on the shared engine (footer
-`Magnum AI / Coaching`, fill key `magnum-projects-fill`): the container, a bad
-and a good project, five misconceptions, instructions as the key, six kinds of
-project (client, expert, repeat job, content, team, customers), the interview,
-knowledge files from you and from research, a brand file pointing at
-`brand-dna/`, and test before you trust. No homework slide. Five prompts: 1 and
-2 are the shelf's `project-instructions` and `build-the-reference-file` byte
-for byte; 3 to 5 are new and on the shelf under `Reference · Set Up a Project
-Properly` as `expert-knowledge-file`, `brand-file`, `redline-the-answer`. The
-shelf is 104 cards. Not on the front page: ask James before adding a library
-card. Cover reuses `make-claude-yours.jpg`; card at
-`assets/thumbnails/projects.jpg`. Register row 145. The group name is not in
-the repo (hard rule 5).
+**Set Up a Project Properly, live 9 Nov at `projects/`, reworked 10 Nov.** A
+concept deck for a group coaching session: James demos, the group keeps the
+link (a scrolling page on a phone, Copy on every prompt). 22 slides on the
+shared engine (footer `Magnum AI / Coaching`, fill key `magnum-projects-fill`).
+On 10 Nov, at James's word, it opens on a golf frame (you can already swing; a
+better score is rarely a better club; AI first) and three quick tricks
+(/setup, check its own work, a review on a timer) before the projects section,
+which lost "why bother" and "two ways to build one" and gained a client
+profile as the worked example. Every content slide carries a design-system
+icon whose label says Live demo, Show a finished one or Show your own, and
+which AIs it works in. The close is one subtle line on how James works. His
+trained skill was left out: a skill in front of a room that has not built a
+project opens the wrong gap. Eight prompts, all on the shelf byte for byte
+under `Reference · Set Up a Project Properly`: `check-its-own-work`,
+`scheduled-review` (new), `project-instructions`, `build-the-reference-file`,
+`expert-knowledge-file`, `client-profile` (new), `brand-file`,
+`redline-the-answer`. The shelf is 106 cards. Not on the front page: ask James
+before adding a library card. Card at `assets/thumbnails/projects.jpg`
+(`?v=2`). Register rows 145 to 147; /setup is third-party only and the slide
+says so. A private co-branded copy for the group James ran it with is an
+Artifact (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from this
+file by a scratchpad script that swaps paths, the sub line and the footer and
+adds the group's logo. The group's name and logo never ship in this repo (hard
+rule 5); a 10 Nov commit was refused for carrying them in this note, rightly.
+James's demo run sheet is a separate private Artifact.
 
 ## Decisions already made
 

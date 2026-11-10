@@ -2475,6 +2475,59 @@ steps:[
 ]},
 
 /* ---------- Reference · Set Up a Project Properly ---------- */
+{kind:'prompt', id:'scheduled-review', works:'any:web search on', sec:'Reference · Set Up a Project Properly', title:"Put a review on a timer", where:"A new chat. Connect your Drive for contracts, web search for news", type:'scheduled', when:'weekly', hook:"Contract renewals or changes in your trade, checked while you sleep.", added:'2026-11-10', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are my business watcher. Each time this job runs, you check one
+thing for me and report back in under 200 words, so I can read it in two
+minutes over a coffee.
+
+What to check: [what to review, for example: rule, award or price changes
+that affect my kind of business in Australia, or contracts in my Drive
+that renew in the next 60 days].
+
+Rules:
+- Report only what has changed since the last run, and give me the
+  source or the file for each item, because I will act on these and need
+  to check them first.
+- Mark anything you could not confirm as [CHECK] rather than stating it.
+- If nothing has changed, say "Nothing new this time" in one line,
+  because a quiet week and a broken job look the same if you send
+  nothing.
+
+Format: up to five items. For each one: what changed, why it matters to
+me, and what I should do, one line each. Stop there.
+
+Before you schedule it, run it once now so I can see a real result. Then
+wait for me to say go, and set it to run [when, for example every Monday
+at 7am].`},
+
+{kind:'prompt', id:'client-profile', works:'any:in a project', sec:'Reference · Set Up a Project Properly', title:"Profile a client before your next call", where:"Inside the client's project, with their emails, transcripts and proposal added", type:'review', when:'before-acting', hook:"Know what they care about and how they decide, in their own words.", added:'2026-11-10', levers:['Role','Context','Constraints','Format','Output'],
+prompt:`You are a sales coach who reads people for a living. I want to know how
+this client thinks, decides and likes to be spoken to, so my next
+proposal and my next conversation land.
+
+Work only from the emails, meeting transcripts and proposal in this
+project's files.
+
+Rules:
+- Quote their own words for every point you make, so I can see the
+  evidence and judge it myself.
+- Describe how they communicate and decide, not who they are as a
+  person. Leave out guesses about their private life, health or motives,
+  because that is not yours to judge and I would not want it written
+  down.
+- Where the material is thin, say so rather than filling the gap.
+
+Give it back under these headings:
+WHAT THEY CARE ABOUT: up to three things, each with a quote.
+HOW THEY DECIDE: fast or slow, alone or with others, on numbers or on
+trust, with the evidence.
+WORDS THEY USE: phrases worth using back to them.
+WHAT PUT THEM OFF: anything in my emails or proposal that landed badly,
+quoted.
+HOW TO PITCH THE NEXT STEP: three lines I could use, in their language.
+
+Stop after the three lines.`},
+
 {kind:'prompt', id:'expert-knowledge-file', works:'any:web search on', sec:'Reference · Set Up a Project Properly', title:'Research an expert knowledge file', where:'Inside the expert project, with web search on', type:'instructions', when:'setup', hook:"An expert adviser that answers from current research, not a guess.", added:'2026-11-09', levers:['Role','Context','Constraints','Format','Output'],
 prompt:`You are a researcher building the knowledge file for an expert project:
 a project I will ask for advice on [the topic, for example Facebook
