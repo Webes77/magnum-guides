@@ -714,25 +714,19 @@ const S = [
  "<b>2. Talk to it.</b> Press the microphone and say what you want, the way you would brief a person. Rough is fine. You give it far more than you would ever type."],
  note:"Try this on your AI: “I have a proposal to write this week. How can you help me start it?”"},
 
-{sec:"The project", ic:["Building","Same AI, different result"], h:"What changes when it <em>knows</em> your business", split:[
- ["Without a project","“Hi, I run a two-person bookkeeping practice in Toowoomba, we mostly do…”","You retype who you are, what you sell and how you price in every new chat.","Drafts come back sounding like a bank, and fixing one takes longer than writing it.","You correct the same mistake every week, because nothing keeps the correction."],
- ["With a project","“Reply to this enquiry.”","It opens already knowing your services, prices, customers and how you sign off.","First drafts sound like your business, so you edit instead of rewrite.","You fix a mistake once, in the instructions, and it stays fixed."]]},
+{sec:"The project", ic:["Building","Same request, two results"], h:"The same request, <em>with and without</em> a project", split:[
+ ["Without a project","You type: “Reply to this enquiry.”","You get: a polite reply that could come from any business.","So you explain who you are, what you sell and your prices. In every new chat."],
+ ["With a project","You type: “Reply to this enquiry.”","You get: a reply in your voice, with your prices and your sign-off.","Because it read your instructions and files before you typed a word."]]},
 
 {sec:"The project", ic:["Building","Three inside, three account-wide"], h:"A project is <em>one job</em>, set up once", fig:"six", pts:[
- "A workspace for one job: your marketing, one big client, or your team’s how-to questions.",
- "Every chat you start inside it already has your instructions and files loaded.",
- "Start with the job you explain most often. That is where your hours go.",
- "Parts 1 to 3 live inside the project. Parts 4 to 6 you switch on once, and every project uses them."],
- note:"Try this on your AI: “Where do I start a new project in this app?”",
- meta:[["Go and look · Claude","Sidebar › Projects › New project"],["Go and look · ChatGPT","Sidebar › Projects"]]},
+ "One project for one job.",
+ "Every chat inside it already knows that job.",
+ "Start with the job you explain most often."]},
 
 {sec:"1 · Instructions", ic:["Spanner","About 300 words"], h:"The <em>rules</em> it follows every time", fig:"project", pts:[
- "Say what the job is and who reads the result.",
- "Describe a good result: length, opening, what it always includes, the sign-off.",
- "Write the always and never lines: “Never quote a price. Always offer a phone call.”",
- "Rules go in instructions, facts go in files. Prices change, so they live in a file you can swap."],
- note:"Try this on your AI: “What instructions are you working from in this project?”",
- meta:[["Go and look · Claude","Inside the project › Instructions"],["Go and look · ChatGPT","Inside the project › Instructions"]]},
+ "What the job is, and who reads it.",
+ "What a good result looks like.",
+ "What it must always and never do."]},
 
 {sec:"1 · Instructions", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
  ["Role","“You write replies to website enquiries for Harbour Bookkeeping, a two-person practice in Toowoomba.”","It knows whose voice it is writing in."],
@@ -744,36 +738,24 @@ const S = [
  pts:["To put them in: open the project, find Instructions, paste, save, then start a new chat inside the project."]},
 
 {sec:"2 · Interview", ic:["Chat bubble","About ten minutes"], h:"Don’t write them. Let it <em>interview</em> you", fig:"interview", pts:[
- "Paste prompt 1 into the project’s first chat. It asks six questions, one by one.",
- "Answer the way you would brief a new staff member: out loud, in your own words.",
- "When it asks for an example, paste a real email, quote or post you were happy with.",
- "It drafts the instructions. Fix what is wrong, then paste them into the instructions box."],
- note:"Try this on your AI: “Interview me one question at a time to write instructions for answering my enquiries.”",
- meta:[["Go and look","Prompt 1 in your link · paste it into a new project"]]},
+ "Paste prompt 1. It asks you six questions.",
+ "Answer out loud, like briefing a new staff member.",
+ "It writes the instructions for you."]},
 
 {sec:"3 · Files", ic:["Database","Swap a file when it changes"], h:"Files: the <em>facts</em> it works from", fig:"files", pts:[
- "Upload what you would hand a new starter: price list, services, FAQs, policies, two past jobs that won work.",
- "In a client’s project, add their emails, call notes and the proposal, so answers come from the record.",
- "One subject per file, named plainly, so you can see which one is out of date.",
- "When a price changes, replace the file that day. It will quote an old price list with full confidence."],
- note:"Try this on your AI: “Which files in this project are you working from, and what is missing?”",
- meta:[["Go and look · Claude","Inside the project › Files"],["Go and look · ChatGPT","Inside the project › add files"]]},
+ "Upload what you’d hand a new starter.",
+ "Price list, services, FAQs, past work.",
+ "When a price changes, swap the file."]},
 
 {sec:"3 · Files", ic:["Database","One document, every project"], h:"One <em>brand document</em> in every project", fig:"dna", pts:[
- "Write down your values, how you sound, how you look and what you sell, once, in one document.",
- "Upload it to every project, so marketing, client work and team answers sound like one business.",
- "Describe your voice by what it does: “short sentences, first names, no exclamation marks” beats “friendly”.",
- "Prompt 4 builds a one-page starter. The full Brand DNA, with a booklet for your team, is the version I build with clients."],
- note:"Try this on your AI: “From what you know about my business, describe how we sound in three lines.”",
- meta:[["Go and look","Inside the project › Files"]]},
+ "Your values, voice, look and offers.",
+ "One document, uploaded to every project.",
+ "Everything it writes sounds like one business."]},
 
 {sec:"4 · Connectors", ic:["Globe","Set up once, used everywhere"], h:"Connectors: it reads the <em>real thing</em>", fig:"connect", pts:[
- "A connector lets it read your email, calendar, Drive, meeting notes or design tool directly.",
- "You switch each one on once in Settings, and every project can use it.",
- "Start by asking questions of your inbox and calendar before you let it draft anything from them.",
- "It reaches only what you have connected, and you can switch any connector off again."],
- note:"Try this on your AI: “What connectors can I switch on in this account, and which would save a small business the most time?”",
- meta:[["Go and look · Claude","Settings › Connectors"],["Go and look · ChatGPT","Settings, under apps or plugins"]]},
+ "It reads your email, calendar and files directly.",
+ "Switch each one on once.",
+ "Switch it off any time."]},
 
 {sec:"4 · Connectors", ic:["Globe","The question you would ask each"], h:"Six connectors <em>worth switching on</em>", tiles:[
  ["o","Fireflies","“What did I promise the client on Tuesday’s call, and by when?”"],
@@ -784,12 +766,9 @@ const S = [
  ["o","Zapier","“Add this enquiry to my CRM as a new lead.”"]]},
 
 {sec:"5 · Schedule", ic:["Clock","Runs with your computer off"], h:"It works <em>while you are away</em>", fig:"week", pts:[
- "A job and a time, in plain words: “Every Monday at 7am, list enquiries with no reply.”",
- "It works through your connectors, so it only sees what you have connected.",
- "Run it once while you watch, then read the first two results properly.",
- "Tell it to say “nothing new” on a quiet week, so a quiet week and a broken job look different."],
- note:"Try this on your AI: “Can you run a job here every Monday at 7am? Show me how.”",
- meta:[["Go and look · Claude","The Scheduled page, or ask it to schedule the job"],["Go and look · ChatGPT","The Scheduled page in the sidebar"]]},
+ "Give it a job and a time.",
+ "It runs with your computer off.",
+ "The result is waiting when you open Claude."]},
 
 {sec:"5 · Schedule", ic:["Clock","A time and a job"], h:"Six jobs worth putting <em>on a timer</em>", tiles:[
  ["o","Weekdays, 7am","Your meetings for the day, with a three-line brief on each person."],
@@ -800,18 +779,14 @@ const S = [
  ["o","Every Thursday","Three post ideas from this week’s photos in your Drive."]]},
 
 {sec:"6 · Skills", ic:["Tick","Works in any project"], h:"One job, done <em>your way</em>, every time", fig:"skill", pts:[
- "A saved method for a job you do the same way every time: a proposal, a welcome email.",
- "Build it once and it works in any project or chat.",
- "A good first skill is the job you explain to every new staff member.",
- "Prompt 6 interviews you and drafts it. Read it, then say “Save this as a skill”."],
- note:"Try this on your AI: “Do I have any skills switched on, and what does each one do?”",
- meta:[["Go and look · Claude","Customize › Skills, or Settings on older accounts"],["Go and look · ChatGPT","Business and Enterprise accounts for now"]]},
+ "Your way of doing one job, saved.",
+ "Works in every project.",
+ "Prompt 6 builds your first one."]},
 
 {sec:"6 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
- "It reads an incoming message and tells me, in one line, what the person actually wants.",
- "Then it drafts the reply in the way that person writes: short and plain back to a short, plain sender.",
- "I check the draft and send it.",
- "Yours does not need to be clever. Pick one kind of message you answer every day and start there."]},
+ "It reads a message and says what they really want.",
+ "It drafts the reply in their style.",
+ "I check it and send it."]},
 
 {sec:"Any job", ic:["Building","Three projects, one method"], h:"Same six parts, <em>any job</em>", tiles:[
  ["o","Your marketing","Instructions: who you sell to, what you never post.<br>Files: your best posts, research on what works.<br>Connector: the Drive with your photos.<br>Schedule: Monday, three post ideas.<br>Skill: writes posts your way."],
