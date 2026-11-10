@@ -3350,7 +3350,10 @@ Artifact (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from
 this file by a scratchpad script that swaps paths, the sub line and the
 footer, adds the group's logo, and links a client's Brand DNA booklet on
 the Brand DNA slide. The group's name, its logo and the client link never
-ship in this repo (hard rule 5). A long headline that wraps to two lines
+ship in this repo (hard rule 5). The same co-branded copy is public, for
+the group to keep, on Netlify at `magnum-ai-project-setup.netlify.app`
+(site `c476cbeb-55b7-4bca-adb2-bd134f980dba`, `noindex`); redeploy it from
+the scratchpad build with the deploy-site command whenever the deck moves. A long headline that wraps to two lines
 pushes a figure slide over at 1440; shorten the headline, not the points.
 
 ## Decisions already made
