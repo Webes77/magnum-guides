@@ -9,6 +9,81 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-11-11
+
+Issue 13, Deciding, at `newsletter/field-note-13-deciding.html`, built on the
+branch `field-note/2026-11-11` and NOT merged. Two topics each failed the
+Step 8B value test three rounds running, so under Step 8B nothing reached
+main and James was emailed "needs a fix". Every reviewer this week said it
+had no Agent tool, so every cold run was the reviewer running the filled-in
+prompt itself; the Result scores are softer than a true cold run.
+
+First topic: C14, "Research anything properly", taken in rotation after
+issue 12 ran group B. Not a repeat of Projects, Voice or Options. The
+Research station cards (`trust-test`, `briefing`) fit the topic but run 4,800
+to 9,600 characters with XML scaffolding, too heavy for a phone card, and
+they are James's authored text, so the prompt was written fresh: a careful
+researcher role, three fill-ins, search with today's date, PROVEN / CLAIMED /
+WRONG / NOT SETTLED with a named source for each, a NOT FOUND rule against
+invented figures, a check that it applies where the reader lives, a short
+answer first, and a dig-deeper next step. Web search on all Claude plans is
+Anthropic's own 27 May 2025 post (seen in search results); ChatGPT search on
+free plans is long-standing. Headline went "Heard a big claim? Find out
+what's actually proven", then "Someone says it's the rule? Check it before
+you pay". Rounds (mechanic and family day care; salon and bookkeeper;
+landscaper and physio): round 1 hook 3/3, message 3/4, relevance 3/5, result
+4/5, effort 4/4; round 2 hook 4/4, message 4/4, relevance 3/5, result 4/4,
+effort 3/4; round 3 hook 4/4, message 3/3, relevance 3/4, result 4/4, effort
+3/3. Faults across the rounds: vague hook, list-style WhatsApp line, rules-led
+examples that miss a salon or a tradie's week, a six-section answer too long
+on a phone, and a bracket-count slip (the NOT FOUND marker was in brackets).
+Each was fixed in turn. The prompt itself sorted real claims correctly every
+time: an EV licence rumour (wrong), the family day care device rule (proven,
+narrower than claimed), the RBA surcharge ban (proven, no new terminal
+needed), e-invoicing "mandatory for small business" (wrong), retaining wall
+licence claims and AI-scribe consent. The final page and prompt are saved
+in the session scratchpad only, not in the repo. Worth another try with a
+headline that leads on a rep or supplier trying to sell you something.
+
+Second topic: C15, "Make any big decision". The shelf's `make-the-decision`
+(Magnum AI library) was rejected: no fill-ins about the reader, ends on "Stop
+after the next action", and a best/base/worst scenario table that invites
+invented figures and is too heavy on a phone. Written fresh: a level-headed
+adviser role, two fill-ins, four questions one at a time (deadline, what
+matters ranked, numbers already in hand and what could be lost, regret), an
+ask-once-more rule for vague answers, ASK ME instead of any invented figure,
+known kept apart from assumed, recommend only on enough to stand on, then
+THE CALL, WHY, WHAT IT COSTS ME, WHAT WE'RE ASSUMING, THE FACT THAT WOULD
+CHANGE IT, and an optional stress test. No email, files or calendar, so no
+read-only warning applies. Rounds (electrician and cafe; dog groomer and
+accounting practice; painter and podiatrist): round 1 hook 3/3, relevance
+3/3, the rest 4; round 2 all 4 except result 3 for the accounting practice
+(no question asked for the owner's numbers, fixed by folding numbers into
+question 3); round 3 hook 3/3, message 3/3, relevance 4/3, result 4/4,
+effort 4/4. Round 3 said the headline did not say where the answer comes
+from, "Stuck on a call" reads as a phone call in WhatsApp, and the examples
+missed a clinic. Those three fixes are on the branch and untested: headline
+"Stuck on a decision? AI gives a straight answer" (9 words), What it is
+names raising prices, buying equipment, taking on a worker or buying a car,
+and the WhatsApp line below. Cold runs invented no figure in any round; the
+one risk named was a model quoting super or penalty rates.
+
+Words around the prompt: under 170, shape check PASS. Why it works: the
+mechanic who tells you what he'd do if it were his car. 3.07 phone screens
+at 390 wide, 2.22 at 1440 and 820. No script errors, no sideways scroll at
+1440, 820 and 390. Copy returns the authored prompt exactly. Contrast PASS on
+the issue, the front page and the archive. A full `check-field-note.js` run
+fails only on the two deliberate unlinked pages, 08 Pasting and 11 Chasing.
+
+Card: no Higgsfield tools in this session, so the card uses the stand-in
+`assets/illustrations/newsletter.jpg`, scaled 8 per cent to hide that
+picture's white top margin. Rendered at 1200x630 q90 with inlined fonts and
+looked at. The Wednesday top-up task may replace it once the issue is live.
+
+On the branch the front page carries 13 as the card and 12, 11, 10 in the
+list; 09 drops off it and stays in the archive. The topic list marks 15 done
+13 and leaves 14 next. The Sunday Brief commission was not read this week.
+
 ## 2026-11-04
 
 Rewritten later the same morning at James's word, before he sent it. He said

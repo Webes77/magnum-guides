@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+
+<title>Weekly Field Note No. 13 · Deciding · Magnum AI</title>
+<meta name="description" content="A copy-and-paste prompt for any big call you keep going back and forth on. It asks four questions, then gives you a clear recommendation and its catch.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/newsletter/field-note-13-deciding.html">
+
+<!-- Social preview · what clients see when this link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI · Weekly Field Note">
+<meta property="og:title" content="Weekly Field Note No. 13 · Stuck on a decision? AI gives a straight answer">
+<meta property="og:description" content="A prompt for any big decision, at work or at home: four questions, then a clear call, its cost and its catch.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/newsletter/field-note-13-deciding.html">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-13-deciding.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Weekly Field Note No. 13 · Stuck on a decision? AI gives a straight answer, published by Magnum AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weekly Field Note No. 13 · Stuck on a decision? AI gives a straight answer">
+<meta name="twitter:description" content="A prompt for any big decision, at work or at home: four questions, then a clear call, its cost and its catch.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/field-note-13-deciding.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* The one-card shape, from 30 Sep. A Field Note answers three questions a
+   reader asks before anything else: what is it, what do I get, what do I do.
+   Then the prompt, then one short reason it works. Nothing else. */
+:root{
+  --paper:#FBFBF9; --white:#FFFFFF; --ink:#1E1B17; --navy:#1F2A37;
+  --body:#2B2823; --mute:#63615C;
+  --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E; --tint:#FBE1D8;
+  --on-navy:#F4F1EA; --on-navy-mute:#C8CDD3;
+  --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
+  --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:#1F2A37}
+body{background:#1F2A37;font-family:var(--sans);color:var(--body);
+  padding:0 16px 40px;display:flex;flex-direction:column;align-items:center}
+
+.sitebar{width:100%;max-width:680px;display:flex;justify-content:space-between;align-items:center;
+  gap:12px;padding:16px 0;font-family:var(--mono);font-size:11px;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--on-navy-mute)}
+.sitebar .wordmark{font-weight:500}
+
+.note{width:100%;max-width:680px;background:var(--paper);border:2px solid var(--ink);
+  padding:28px 28px 26px}
+.note h1{font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(30px,7vw,42px);line-height:1;letter-spacing:-.005em;color:var(--ink);
+  margin:0 0 22px;text-wrap:balance}
+.note h1 em{font-style:normal;color:var(--rust)}
+
+.three{margin:0 0 24px;border-top:2px solid var(--ink)}
+.three > div{padding:14px 0;border-bottom:1px solid rgba(30,27,23,.16)}
+.three dt{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--coral-text);margin-bottom:5px}
+.three dd{font-size:17px;line-height:1.5;color:var(--body)}
+.three ol{margin:2px 0 0;padding-left:22px}
+.three li{margin:0 0 6px;padding-left:4px}
+.three li:last-child{margin-bottom:0}
+.three li::marker{font-family:var(--mono);font-weight:500;color:var(--coral-text)}
+
+.pbox{background:var(--ink);color:var(--white);padding:16px 18px 18px;margin:0 0 24px}
+.pbox .phead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.pbox b{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--on-navy-mute)}
+.copy{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+  background:var(--coral-bright);color:var(--ink);border:0;padding:7px 14px;cursor:pointer}
+.copy.done{background:var(--tint)}
+.pbox pre{font-family:var(--mono);font-size:14px;line-height:1.6;white-space:pre-wrap;
+  word-break:break-word;color:var(--white)}
+
+.why h2{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--coral-text);margin-bottom:6px}
+.why p{font-size:16px;line-height:1.55;color:var(--body)}
+
+.sharebar{width:100%;max-width:680px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding-top:18px}
+.share-btn{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--on-navy);background:transparent;border:1px solid rgba(244,241,234,.5);
+  padding:9px 14px;text-decoration:none;cursor:pointer}
+.share-btn:hover{border-color:var(--white)}
+.share-btn.done{background:var(--on-navy);color:var(--ink)}
+
+@media (max-width:480px){
+  body{padding:0 0 32px}
+  .sitebar{padding:14px 16px}
+  .note{border-left:0;border-right:0;padding:24px 18px 22px}
+  .sharebar{padding:18px 16px 0}
+}
+@media print{
+    html,body{background:#fff}
+  .sitebar,.sharebar,.copy{display:none}
+  .note{border:0}
+  .pbox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <span class="wordmark">Magnum AI</span>
+  <span class="issue">Weekly Field Note / No. 13</span>
+</nav>
+
+<main class="note">
+  <h1>Stuck on a decision? <em>AI gives a straight answer</em></h1>
+
+  <dl class="three">
+    <div>
+      <dt>What it is</dt>
+      <dd>A copy-and-paste prompt for any decision you keep going back and forth on, from raising your prices or buying equipment to taking on a worker or buying a car.</dd>
+    </div>
+    <div>
+      <dt>What you get</dt>
+      <dd>One clear recommendation, what it costs you, and the one fact that would change it. No more going round in circles at 2am.</dd>
+    </div>
+    <div>
+      <dt>What you do</dt>
+      <dd>
+        <ol class="steps">
+          <li>Open Claude or ChatGPT. Any plan works. Have your options and rough numbers handy.</li>
+          <li>Open a new chat, paste the prompt, fill in the two square brackets and answer its four questions. Typing or talking both work.</li>
+          <li>Read the call, then check the one fact it says would change it before you commit. About ten minutes.</li>
+        </ol>
+      </dd>
+    </div>
+  </dl>
+
+  <div class="pbox">
+    <div class="phead"><b>The prompt</b><button class="copy" type="button" data-copy>Copy</button></div>
+    <pre>You are a level-headed adviser who has helped hundreds of small business owners and families make big calls. You care more about a decision I can stand behind than one that sounds clever.
+
+The decision: [what you're deciding, and the options you're weighing].
+
+About me: [your business or household, in a line].
+
+Before you weigh anything, ask me these one at a time and wait for each answer:
+1. When does this have to be decided?
+2. What matters most to me here? Ask me to rank money, time, risk, stress and anything else I name.
+3. What numbers do I already have, like costs, income, prices or hours? And what could I afford to lose if it goes wrong?
+4. What would I regret not doing?
+If an answer is vague, ask once more for a real example or a number.
+
+Rules, and why each one is there:
+- Work only from what I tell you. If a fact is missing, say so instead of guessing, because I'll make the call on what you write.
+- Never make up a price, figure or statistic. If one matters and I haven't given it, write ASK ME next to it.
+- Keep what we know apart from what we're assuming, because assumptions are where decisions go wrong.
+- Recommend one option only if there's enough to stand on. If there isn't, name the one fact that would settle it.
+- Plain words, straight talk, no pep talk. Short enough to read on a phone.
+
+Then give me:
+THE CALL: one line. The option you'd pick and the main reason.
+WHY: up to three lines, tied to what I said matters most.
+WHAT IT COSTS ME: the downside of that choice, honestly.
+WHAT WE'RE ASSUMING: up to three, the riskiest first.
+THE FACT THAT WOULD CHANGE IT: one line, and how I could find it out this week.
+
+Then ask if I want to stress-test the call. If I say yes, tell me the most likely way it goes wrong and what I could do now to limit the damage.</pre>
+  </div>
+
+  <section class="why">
+    <h2>Why it works</h2>
+    <p>A good mechanic doesn&rsquo;t just say it&rsquo;s cooked. They tell you what they&rsquo;d do if it were their car, what it&rsquo;ll cost, and the catch. This prompt gives your decision the same treatment.</p>
+  </section>
+</main>
+
+<div class="sharebar">
+  <button class="share-btn" type="button" id="share-link">Copy link to this Field Note</button>
+  <a class="share-btn" href="mailto:?subject=Weekly%20Field%20Note%20No.%2013%20%C2%B7%20Deciding&amp;body=Thought%20this%20one%20was%20worth%20passing%20on%3A%0A%0Ahttps%3A%2F%2Fwebes77.github.io%2Fmagnum-guides%2Fnewsletter%2Ffield-note-13-deciding.html">Email it to someone</a>
+  <a class="share-btn" href="../newsletter/">All Field Notes</a>
+</div>
+
+<script>
+function fallback(text, done){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+function copyText(text, done){
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+  } else {
+    fallback(text, done);
+  }
+}
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var text = btn.closest('.pbox').querySelector('pre').textContent;
+    copyText(text, function(){
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+    });
+  });
+});
+var shareBtn = document.getElementById('share-link');
+if (shareBtn) {
+  shareBtn.addEventListener('click', function(){
+    copyText(window.location.href.split('#')[0], function(){
+      shareBtn.textContent = 'Link copied';
+      shareBtn.classList.add('done');
+      setTimeout(function(){ shareBtn.textContent = 'Copy link to this Field Note'; shareBtn.classList.remove('done'); }, 1600);
+    });
+  });
+}
+</script>
+
+</body>
+</html>
