@@ -749,24 +749,21 @@ const S = [
  ["c","A travel adviser","Your budget, dates and how you like to travel. Itineraries that fit you."],
  ["c","Your team","Job ads, interview questions and inductions written the way you run things."]]},
 
-{sec:"The project", ic:["Building","Six steps, in order"], h:"The <em>workflow</em>", fig:"flow", pts:[
- "Set the goal first: interview, brief, instructions.",
- "Then add your files and test it.",
- "Then connect, schedule and save skills."]},
+{sec:"The project", ic:["Building","Eight steps, in order"], h:"The workflow: <em>setting up a project</em>", pts:[], note:'<div class="wf" style="width:100%;margin-top:8px"><svg viewBox="0 0 1240 424" style="width:100%;height:auto;max-height:440px;display:block" role="img" aria-label="The workflow: interview, brief, instructions, files, test, connect, skills, schedule"><rect x="0" y="4" width="250" height="124" fill="#EF4029" stroke="#1E1B17" stroke-width="4"/><text x="125" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">1</text><text x="125" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">INTERVIEW</text><rect x="330" y="4" width="250" height="124" fill="#EF4029" stroke="#1E1B17" stroke-width="4"/><text x="455" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">2</text><text x="455" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">BRIEF</text><rect x="660" y="4" width="250" height="124" fill="#EF4029" stroke="#1E1B17" stroke-width="4"/><text x="785" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">3</text><text x="785" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">INSTRUCTIONS</text><rect x="990" y="4" width="250" height="124" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><text x="1115" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#1E1B17">4</text><text x="1115" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#1E1B17">FILES</text><rect x="0" y="296" width="250" height="124" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><text x="125" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#1E1B17">5</text><text x="125" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#1E1B17">TEST</text><rect x="330" y="296" width="250" height="124" fill="#1F2A37" stroke="#1E1B17" stroke-width="4"/><text x="455" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">6</text><text x="455" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">CONNECT</text><rect x="660" y="296" width="250" height="124" fill="#1F2A37" stroke="#1E1B17" stroke-width="4"/><text x="785" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">7</text><text x="785" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">SKILLS</text><rect x="990" y="296" width="250" height="124" fill="#1F2A37" stroke="#1E1B17" stroke-width="4"/><text x="1115" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">8</text><text x="1115" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">SCHEDULE</text><line x1="256" y1="66" x2="312" y2="66" stroke="#1E1B17" stroke-width="5"/><polygon points="326,66 310,56 310,76" fill="#1E1B17"/><line x1="256" y1="358" x2="312" y2="358" stroke="#1E1B17" stroke-width="5"/><polygon points="326,358 310,348 310,368" fill="#1E1B17"/><line x1="586" y1="66" x2="642" y2="66" stroke="#1E1B17" stroke-width="5"/><polygon points="656,66 640,56 640,76" fill="#1E1B17"/><line x1="586" y1="358" x2="642" y2="358" stroke="#1E1B17" stroke-width="5"/><polygon points="656,358 640,348 640,368" fill="#1E1B17"/><line x1="916" y1="66" x2="972" y2="66" stroke="#1E1B17" stroke-width="5"/><polygon points="986,66 970,56 970,76" fill="#1E1B17"/><line x1="916" y1="358" x2="972" y2="358" stroke="#1E1B17" stroke-width="5"/><polygon points="986,358 970,348 970,368" fill="#1E1B17"/><polyline points="1115,128 1115,212 125,212 125,276" fill="none" stroke="#1E1B17" stroke-width="5"/><polygon points="125,292 115,274 135,274" fill="#1E1B17"/></svg></div>'},
 
-{sec:"Step 1 · Set the goal", ic:["Chat bubble","Interview, brief, instructions"], h:"Step 1: set the <em>goal</em>", fig:"interview", pts:[
- "Prompt 1 interviews you about the job.",
- "From your answers it writes the brief.",
- "Prompt 2 turns the brief into instructions."]},
+{sec:"Steps 1 to 3 · The goal", ic:["Chat bubble","Interview, brief, instructions"], h:"Steps 1 to 3: set the <em>goal</em>", fig:"interview", pts:[
+ "1. Interview: it asks, you answer.",
+ "2. Brief: it sums up the job.",
+ "3. Instructions: the brief, written as rules."]},
 
-{sec:"Step 1 · Set the goal", ic:["Chat bubble","Step 1 · the interview"], h:"Talk it <em>out</em>", pts:[
+{sec:"Steps 1 to 3 · The goal", ic:["Chat bubble","Step 1 · the interview"], h:"Talk it <em>out</em>", pts:[
  "Talk, don’t type. Rough is fine."],
  prompt:P_TALK, where:"Any new chat, on a real task", after:[
  "Say the job you want the project to do.",
  "Answer one question at a time.",
  "Ask it for the brief when it is done."]},
 
-{sec:"Step 1 · Set the goal", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
+{sec:"Steps 1 to 3 · The goal", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
  ["Role","“You write replies to website enquiries for Harbour Bookkeeping, a two-person practice in Toowoomba.”","It knows whose voice it is writing in."],
  ["Context","“Most enquiries are sole traders behind on their BAS. Our prices are in the file Services and prices, Nov 2026.”","It knows who is asking and where the facts live."],
  ["Constraints","“Never quote a price or a turnaround. Offer a call instead. Tax advice goes to Sarah.”","It never promises what you cannot deliver."],
@@ -775,13 +772,13 @@ const S = [
  ["Output","“The reply, ready to send, then one line on anything I should check first.”","You check, then send."]],
  pts:["To put them in: open the project, find Instructions, paste, save, then start a new chat inside the project."]},
 
-{sec:"Step 1 · Set the goal", ic:["Chat bubble","Step 1"], h:"Write the <em>instructions</em>", pts:[
+{sec:"Steps 1 to 3 · The goal", ic:["Chat bubble","Step 3 · the instructions"], h:"Write the <em>instructions</em>", pts:[
  "Paste in your brief from prompt 1, and a past job you are proud of."],
  prompt:P_INSTR, where:"Inside the new project, in its first chat", after:[
  "Read the draft. Tell it what to change.",
  "Paste the final version into the project’s instructions."]},
 
-{sec:"Step 2 · Files", ic:["Database","What to load in"], h:"Step 2: add your <em>files</em>", tiles:[
+{sec:"Step 4 · Files", ic:["Database","What to load in"], h:"Step 4: add your <em>files</em>", tiles:[
  ["o","Your service menu","What you sell, what’s included and what it costs. It quotes from this, not a guess."],
  ["o","A knowledge file","Everything you’d tell a new starter: FAQs, process, policies. Prompt 3 builds it."],
  ["o","Your Brand DNA document","Your values, voice, look and offers, so everything sounds like your business."],
@@ -789,51 +786,51 @@ const S = [
  ["c","Client work","Their emails, call notes and proposals, added straight from Google Drive."],
  ["c","Keep them current","Prices change? Swap the file that day. It quotes an old file with full confidence."]]},
 
-{sec:"Step 2 · Files", ic:["Database","One document, every project"], h:"Your <em>Brand DNA</em> document", fig:"dna", pts:[
+{sec:"Step 4 · Files", ic:["Database","One document, every project"], h:"Your <em>Brand DNA</em> document", fig:"dna", pts:[
  "Your values, voice, look and offers.",
  "One document, uploaded to every project.",
  "Everything it writes sounds like one business."]},
 
-{sec:"Step 2 · Files", ic:["Database","Step 2"], h:"The knowledge <em>file</em>", pts:[
+{sec:"Step 4 · Files", ic:["Database","Step 4"], h:"The knowledge <em>file</em>", pts:[
  "Built from what you have already told it."],
  prompt:P_KNOW, where:"Inside the project, after the instructions are saved", after:[
  "Fix or cut anything marked [CHECK].",
  "Save it and add it to the project’s files."]},
 
-{sec:"Step 2 · Files", ic:["Globe","Step 2 · web search on"], h:"The research <em>file</em>", pts:[
+{sec:"Step 4 · Files", ic:["Globe","Step 4 · web search on"], h:"The research <em>file</em>", pts:[
  "Fill in the topic and your business."],
  prompt:P_RESEARCH, where:"Inside the project, with web search on", after:[
  "Check every [CHECK].",
  "Save it and add it to the project’s files."]},
 
-{sec:"Step 2 · Files", ic:["Database","Step 2"], h:"Your Brand DNA <em>starter</em>", pts:[
+{sec:"Step 4 · Files", ic:["Database","Step 4"], h:"Your Brand DNA <em>starter</em>", pts:[
  "A one-page start on your Brand DNA document. Have a few emails, posts or reviews you are proud of ready to paste."],
  prompt:P_BRAND, where:"Inside the project you are setting up. Then add the file to every project that writes for you", after:[
  "Fill in every [NEEDS CONFIRMING].",
  "Add it to every project that writes for you."]},
 
-{sec:"Step 3 · Test", ic:["Tick","Three checks, in order"], h:"Step 3: test it before you <em>trust</em> it", pts:[
+{sec:"Step 5 · Test", ic:["Tick","Three checks, in order"], h:"Step 5: test it before you <em>trust</em> it", pts:[
  "1. Ask it what the project is for. A vague answer means vague instructions.",
  "2. Give it a job you’ve already done. Compare its answer with yours.",
  "3. Fix the instructions, not the answer. Then it stays fixed."]},
 
-{sec:"Step 3 · Test", ic:["Tick","Step 3"], h:"Check its own <em>work</em>", pts:[
+{sec:"Step 5 · Test", ic:["Tick","Step 5"], h:"Check its own <em>work</em>", pts:[
  "Paste it at the start of any job where a wrong answer costs you."],
  prompt:P_CHECK, where:"Any AI, at the start of the request", after:[
  "Read the pass and fail list first."]},
 
-{sec:"Step 3 · Test", ic:["Tick","Step 3"], h:"Redline the <em>answer</em>", pts:[
+{sec:"Step 5 · Test", ic:["Tick","Step 5"], h:"Redline the <em>answer</em>", pts:[
  "Run it straight after an answer you are not happy with."],
  prompt:P_REDLINE, where:"In the project, straight after the answer", after:[
  "Paste each fix where it says.",
  "Ask the same question again in a new chat."]},
 
-{sec:"Step 4 · Connect", ic:["Globe","Set up once, used everywhere"], h:"Step 4: connect your <em>tools</em>", fig:"connect", pts:[
+{sec:"Step 6 · Connect", ic:["Globe","Set up once, used everywhere"], h:"Step 6: connect your <em>tools</em>", fig:"connect", pts:[
  "Switch on email, calendar, Drive or Fireflies.",
  "It reads the real thing, not a paste.",
  "Switch it off any time."]},
 
-{sec:"Step 4 · Connect", ic:["Globe","The question you would ask each"], h:"Six connectors <em>worth switching on</em>", tiles:[
+{sec:"Step 6 · Connect", ic:["Globe","The question you would ask each"], h:"Six connectors <em>worth switching on</em>", tiles:[
  ["o","Fireflies","“What did I promise the client on Tuesday’s call, and by when?”"],
  ["o","Email","“Which enquiries from this week still have no reply?”"],
  ["o","Calendar","“Where are my free two-hour blocks next week?”"],
@@ -841,12 +838,28 @@ const S = [
  ["o","Canva","“Make a flyer for the March promotion from our brand template.”"],
  ["o","Zapier","“Add this enquiry to my CRM as a new lead.”"]]},
 
-{sec:"Step 5 · Schedule", ic:["Clock","Runs with your computer off"], h:"Step 5: put a job on a <em>timer</em>", fig:"week", pts:[
+{sec:"Step 7 · Skills", ic:["Tick","Works in any project"], h:"Step 7: save a <em>skill</em>", fig:"skill", pts:[
+ "Write it once, use it in every project.",
+ "It kicks in when that job comes up.",
+ "Prompt 8 builds your first one."]},
+
+{sec:"Step 7 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
+ "It reads a message and says what they really want.",
+ "It drafts the reply in their style.",
+ "I check it and send it."]},
+
+{sec:"Step 7 · Skills", ic:["Tick","Step 7"], h:"Your first <em>skill</em>", pts:[
+ "Pick one job you do the same way every time."],
+ prompt:P_SKILL, where:"A new chat. It saves to Customize › Skills, or Settings on older accounts", after:[
+ "Fix anything marked [NEEDS CONFIRMING].",
+ "Say “Save this as a skill.”"]},
+
+{sec:"Step 8 · Schedule", ic:["Clock","Runs with your computer off"], h:"Step 8: put a job on a <em>timer</em>", fig:"week", pts:[
  "Give it a job and a time.",
  "It runs with your computer off.",
  "The result is waiting when you open Claude."]},
 
-{sec:"Step 5 · Schedule", ic:["Clock","A time and a job"], h:"Six jobs worth putting <em>on a timer</em>", tiles:[
+{sec:"Step 8 · Schedule", ic:["Clock","A time and a job"], h:"Six jobs worth putting <em>on a timer</em>", tiles:[
  ["o","Weekdays, 7am","Your meetings for the day, with a three-line brief on each person."],
  ["o","Monday","Last week’s enquiries, and which ones never got an answer."],
  ["o","Friday","Quotes sent this week with no reply, and a short follow-up drafted for each."],
@@ -854,33 +867,17 @@ const S = [
  ["o","Every Tuesday","Rule, award or price changes in your industry, in five lines with sources."],
  ["o","Every Thursday","Three post ideas from this week’s photos in your Drive."]]},
 
-{sec:"Step 5 · Schedule", ic:["Clock","Step 5"], h:"A review on a <em>timer</em>", pts:[
+{sec:"Step 8 · Schedule", ic:["Clock","Step 8"], h:"A review on a <em>timer</em>", pts:[
  "Say what to check and when."],
  prompt:P_SCHED, where:"Inside the project, with the connectors the job needs switched on", after:[
  "Read the first result.",
  "Say go. It runs on its own from then on."]},
 
-{sec:"Step 6 · Skills", ic:["Tick","Works in any project"], h:"Step 6: save a <em>skill</em>", fig:"skill", pts:[
- "Write it once, use it in every project.",
- "It kicks in when that job comes up.",
- "Prompt 9 builds your first one."]},
-
-{sec:"Step 6 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
- "It reads a message and says what they really want.",
- "It drafts the reply in their style.",
- "I check it and send it."]},
-
-{sec:"Step 6 · Skills", ic:["Tick","Step 6"], h:"Your first <em>skill</em>", pts:[
- "Pick one job you do the same way every time."],
- prompt:P_SKILL, where:"A new chat. It saves to Customize › Skills, or Settings on older accounts", after:[
- "Fix anything marked [NEEDS CONFIRMING].",
- "Say “Save this as a skill.”"]},
-
 {sec:"All the prompts", ic:["Chat bubble","Every prompt has a Copy button"], h:"I’ve already built you <em>the prompts</em>", rowhead:["Step","The prompts","What you get"], rows:[
- ["Step 1","1 · Talk it out<br>2 · Write the instructions","The brief, then the instructions"],
- ["Step 2","3 · Knowledge file · 4 · Research file<br>5 · Brand DNA starter","What you know, what works, how you sound"],
- ["Step 3","6 · Check its own work<br>7 · Redline the answer","Pass or fail, then the fix for the project"],
- ["Steps 5 and 6","8 · A review on a timer<br>9 · Your first skill","A job that runs itself, and one job saved"]],
+ ["Steps 1 to 3","1 · Talk it out<br>2 · Write the instructions","The brief, then the instructions"],
+ ["Step 4","3 · Knowledge file · 4 · Research file<br>5 · Brand DNA starter","What you know, what works, how you sound"],
+ ["Step 5","6 · Check its own work<br>7 · Redline the answer","Pass or fail, then the fix for the project"],
+ ["Steps 7 and 8","8 · Your first skill<br>9 · A review on a timer","One job saved, and a job that runs itself"]],
  note:"All nine are in this link. More on the <a href=\"../prompts/\">Prompt Shelf</a>. On ChatGPT or Gemini? <a href=\"../same-job/\">Same Job, Other Tool</a>."}
 ];
 const deck = document.getElementById('deck');

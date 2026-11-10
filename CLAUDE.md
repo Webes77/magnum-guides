@@ -3327,12 +3327,14 @@ concept deck for a big-room coaching session: James talks over it on one
 screen with Claude open on the other, nobody builds along, and the group
 keeps the link. Since 10 Nov (late) it runs as James's workflow, in order:
 AI hacks, why a project beats a chat, projects you could build, the
-workflow diagram (`F.flow`), then Step 1 set the goal (interview, brief,
-instructions: Talk-It-Out from AI Foundations, then the instructions
-prompt), Step 2 files (plus the Brand DNA document slide), Step 3 test,
-Step 4 connect, Step 5 schedule, Step 6 skills (plus the Horseman,
-described only; its text is his IP and never goes in this repo), then an
-index of all nine prompts. Each step's prompts sit straight after it.
+full-width workflow diagram of eight steps (1 interview, 2 brief, 3
+instructions, 4 files, 5 test, 6 connect, 7 skills, 8 schedule; skills
+before schedule so a timed job runs a saved method), then Steps 1 to 3 set
+the goal (Talk-It-Out from AI Foundations, then the instructions prompt),
+Step 4 files (plus the Brand DNA document slide), Step 5 test, Step 6
+connect, Step 7 skills (plus the Horseman, described only; its text is his
+IP and never goes in this repo), Step 8 schedule, then an index of all
+nine prompts. Each step's prompts sit straight after it.
 James's rules for this deck, all his words: never the word "today"; no
 hands-up interaction; no homework; no trade-only examples; no live
 building; three short lines per slide he can talk over, no "go and look"
