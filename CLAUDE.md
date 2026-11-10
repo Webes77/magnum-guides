@@ -3353,7 +3353,9 @@ IP and never goes in this repo. The group's name and logo never ship in this
 repo (hard rule 5). The same co-branded copy is public, for
 the group to keep, on Netlify at `magnum-ai-project-setup.netlify.app`
 (site `c476cbeb-55b7-4bca-adb2-bd134f980dba`, `noindex`); redeploy it from
-the scratchpad build with the deploy-site command whenever the deck moves. A long headline that wraps to two lines
+the scratchpad build with the deploy-site command whenever the deck moves. It carries its own
+share card, `assets/card.jpg` on the Netlify site, the members card with the
+group's logo and "Prepared for" line added, rendered in the scratchpad only. A long headline that wraps to two lines
 pushes a figure slide over at 1440; shorten the headline, not the points.
 
 ## Decisions already made
