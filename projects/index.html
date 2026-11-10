@@ -648,7 +648,7 @@ F.six = [(() => {
     s += T(x + 60, y + 78, n, {z:11, a:'middle', c: inside ? '#1E1B17' : '#C8CDD3'});
   });
   return s + '</svg>';
-})(), 'Fig. 01 / one project, six parts<br>Three live in the project. Three you switch on once.'];
+})(), 'Fig. 01 / six steps, in order<br>Three in the project. Three switched on once.'];
 
 F.interview = ['<svg viewBox="0 0 420 300">' +
   BOX(30, 24, 270, 50, '#FFFFFF') + T(46, 54, 'WHAT IS THE JOB, IN ONE LINE?') +
@@ -722,11 +722,6 @@ const S = [
  ["c","Everything in one place","Every chat, file and decision for that job, ready to pick up."],
  ["c","Any job you like","A marketing adviser, one big client, your team handbook. Same setup."]]},
 
-{sec:"The project", ic:["Building","Three inside, three account-wide"], h:"A project is <em>one job</em>, set up once", fig:"six", pts:[
- "One project for one job.",
- "Every chat inside it already knows that job.",
- "Start with the job you explain most often."]},
-
 {sec:"The project", ic:["Building","One project per job"], h:"Projects you could <em>build</em>", tiles:[
  ["o","One for every client","Their emails, call notes and proposal. Every reply starts from their history."],
  ["o","Your content","Posts, newsletters and blogs in your voice, from your Brand DNA document."],
@@ -735,12 +730,17 @@ const S = [
  ["c","A travel adviser","Your budget, dates and how you like to travel. Itineraries that fit you."],
  ["c","Your team","Job ads, interview questions and inductions written the way you run things."]]},
 
-{sec:"1 · Instructions", ic:["Spanner","About 300 words"], h:"The <em>rules</em> it follows every time", fig:"project", pts:[
- "What the job is, and who reads it.",
- "What a good result looks like.",
- "What it must always and never do."]},
+{sec:"The project", ic:["Building","Six steps, in order"], h:"How to build one: <em>six steps</em>", fig:"six", pts:[
+ "Steps 1 to 3 happen inside the project.",
+ "Steps 4 to 6 you switch on once, for every project.",
+ "Then test it before you trust it."]},
 
-{sec:"1 · Instructions", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
+{sec:"Step 1 · Instructions", ic:["Spanner","About 300 words"], h:"Step 1: write the <em>instructions</em>", fig:"project", pts:[
+ "Say what the job is and who reads it.",
+ "Say what a good result looks like.",
+ "Say what it must always and never do."]},
+
+{sec:"Step 1 · Instructions", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
  ["Role","“You write replies to website enquiries for Harbour Bookkeeping, a two-person practice in Toowoomba.”","It knows whose voice it is writing in."],
  ["Context","“Most enquiries are sole traders behind on their BAS. Our prices are in the file Services and prices, Nov 2026.”","It knows who is asking and where the facts live."],
  ["Constraints","“Never quote a price or a turnaround. Offer a call instead. Tax advice goes to Sarah.”","It never promises what you cannot deliver."],
@@ -749,30 +749,30 @@ const S = [
  ["Output","“The reply, ready to send, then one line on anything I should check first.”","You check, then send."]],
  pts:["To put them in: open the project, find Instructions, paste, save, then start a new chat inside the project."]},
 
-{sec:"2 · Interview", ic:["Chat bubble","About ten minutes"], h:"Don’t write them. Let it <em>interview</em> you", fig:"interview", pts:[
- "Paste prompt 1. It asks you six questions.",
- "Answer out loud, like briefing a new staff member.",
- "It writes the instructions for you."]},
+{sec:"Step 2 · Interview", ic:["Chat bubble","About ten minutes"], h:"Step 2: let it <em>interview</em> you", fig:"interview", pts:[
+ "Paste prompt 1 into the project.",
+ "Answer its questions out loud.",
+ "It writes the instructions. Paste them in."]},
 
-{sec:"3 · Files", ic:["Database","What to load in"], h:"Files: load the <em>brain</em>", tiles:[
+{sec:"Step 3 · Files", ic:["Database","What to load in"], h:"Step 3: add your <em>files</em>", tiles:[
  ["o","Your service menu","What you sell, what’s included and what it costs. It quotes from this, not a guess."],
  ["o","A knowledge file","Everything you’d tell a new starter: FAQs, process, policies. Prompt 2 builds it."],
  ["o","Your Brand DNA document","Your values, voice, look and offers, so everything sounds like your business."],
- ["c","Your best work","Two or three proposals, emails or posts you were proud of. It copies the standard."],
+ ["c","A research file","What works in your industry right now, with sources. Prompt 3 builds it."],
  ["c","Straight from Google Drive","Add documents from your Drive instead of downloading and uploading them."],
  ["c","Keep them current","Prices change? Swap the file that day. It quotes an old file with full confidence."]]},
 
-{sec:"3 · Files", ic:["Database","One document, every project"], h:"Your <em>Brand DNA</em> document", fig:"dna", pts:[
+{sec:"Step 3 · Files", ic:["Database","One document, every project"], h:"Your <em>Brand DNA</em> document", fig:"dna", pts:[
  "Your values, voice, look and offers.",
  "One document, uploaded to every project.",
  "Everything it writes sounds like one business."]},
 
-{sec:"4 · Connectors", ic:["Globe","Set up once, used everywhere"], h:"Connectors: it reads the <em>real thing</em>", fig:"connect", pts:[
- "It reads your email, calendar and files directly.",
- "Switch each one on once.",
+{sec:"Step 4 · Connectors", ic:["Globe","Set up once, used everywhere"], h:"Step 4: plug in your <em>tools</em>", fig:"connect", pts:[
+ "Switch on email, calendar, Drive or Fireflies.",
+ "It reads the real thing, not a paste.",
  "Switch it off any time."]},
 
-{sec:"4 · Connectors", ic:["Globe","The question you would ask each"], h:"Six connectors <em>worth switching on</em>", tiles:[
+{sec:"Step 4 · Connectors", ic:["Globe","The question you would ask each"], h:"Six connectors <em>worth switching on</em>", tiles:[
  ["o","Fireflies","“What did I promise the client on Tuesday’s call, and by when?”"],
  ["o","Email","“Which enquiries from this week still have no reply?”"],
  ["o","Calendar","“Where are my free two-hour blocks next week?”"],
@@ -780,12 +780,12 @@ const S = [
  ["o","Canva","“Make a flyer for the March promotion from our brand template.”"],
  ["o","Zapier","“Add this enquiry to my CRM as a new lead.”"]]},
 
-{sec:"5 · Schedule", ic:["Clock","Runs with your computer off"], h:"It works <em>while you are away</em>", fig:"week", pts:[
+{sec:"Step 5 · Schedule", ic:["Clock","Runs with your computer off"], h:"Step 5: put a job on a <em>timer</em>", fig:"week", pts:[
  "Give it a job and a time.",
  "It runs with your computer off.",
  "The result is waiting when you open Claude."]},
 
-{sec:"5 · Schedule", ic:["Clock","A time and a job"], h:"Six jobs worth putting <em>on a timer</em>", tiles:[
+{sec:"Step 5 · Schedule", ic:["Clock","A time and a job"], h:"Six jobs worth putting <em>on a timer</em>", tiles:[
  ["o","Weekdays, 7am","Your meetings for the day, with a three-line brief on each person."],
  ["o","Monday","Last week’s enquiries, and which ones never got an answer."],
  ["o","Friday","Quotes sent this week with no reply, and a short follow-up drafted for each."],
@@ -793,17 +793,17 @@ const S = [
  ["o","Every Tuesday","Rule, award or price changes in your industry, in five lines with sources."],
  ["o","Every Thursday","Three post ideas from this week’s photos in your Drive."]]},
 
-{sec:"6 · Skills", ic:["Tick","Works in any project"], h:"Skills: save how you <em>do a job</em>", fig:"skill", pts:[
+{sec:"Step 6 · Skills", ic:["Tick","Works in any project"], h:"Step 6: save a <em>skill</em>", fig:"skill", pts:[
  "Write it once, use it in every project.",
  "It kicks in when that job comes up.",
  "Prompt 6 builds your first one."]},
 
-{sec:"6 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
+{sec:"Step 6 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
  "It reads a message and says what they really want.",
  "It drafts the reply in their style.",
  "I check it and send it."]},
 
-{sec:"Test it", ic:["Tick","Three checks, in order"], h:"Test it before you <em>trust</em> it", pts:[
+{sec:"Last step · Test it", ic:["Tick","Three checks, in order"], h:"Then test it before you <em>trust</em> it", pts:[
  "1. Ask it what the project is for. A vague answer means vague instructions.",
  "2. Give it a job you’ve already done. Compare its answer with yours.",
  "3. Fix the instructions, not the answer. Then it stays fixed."]},
