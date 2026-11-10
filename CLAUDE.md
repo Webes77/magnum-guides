@@ -3325,34 +3325,29 @@ every row in the fact register.
 **Set Up a Project Properly, live 9 Nov at `projects/`, rebuilt 10 Nov.** A
 concept deck for a big-room coaching session: James talks over it on one
 screen with Claude open on the other, nobody builds along, and the group
-keeps the link (a scrolling page on a phone, Copy on every prompt). The
-10 Nov (evening) version came from an independent review agent reading every
-slide rendered at 1920, plus James's asks. 27 slides: cover; AI hacks (an
-AI-first mindset: ask "How can AI help?", AI starts and assists the job, it
-does not do all of it; and talk to it), the payoff, a project is one job
-(figure: parts 1 to 3 live in the project, 4 to 6 are switched on in the
-account), then one slide per part with a figure, a "Try this on your AI"
-line and "Go and look" paths for Claude and ChatGPT: instructions plus a
-worked example (Role to Output, a made-up bookkeeping practice, then how to
-paste them in), interview, files, a Brand DNA slide, connectors plus six
-worth switching on (Fireflies first), schedule plus six timer jobs, skills
-plus his Horseman skill (describes what it does only; the skill's text is
-his IP and never goes in this repo). Then same six parts for three jobs,
-test it, the first project this week, an index of the eight prompts, and
-the eight prompt slides. James's rules for this deck, all his words: never
-the word "today"; no hands-up interaction; no trade-only examples; no live
-building; show concepts and versatility; bullets with substance, not cut to
-nothing. The eight prompts are shelf cards byte for byte:
-`project-instructions`, `build-the-reference-file`, `expert-knowledge-file`,
-`brand-file`, `scheduled-review`, `first-skill`, `check-its-own-work`,
-`redline-the-answer`; the `brand-file` and `scheduled-review` where lines
-moved with the deck. Shared engine (footer `Magnum AI / Coaching`, fill key
-`magnum-projects-fill`). The shelf is 106 cards. Not on the front page: ask
-James before adding a library card. Card at `assets/thumbnails/projects.jpg`.
-Register rows 145 to 151. A private co-branded copy for the group James ran
-it with is an Artifact (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ),
-built from this file by a scratchpad script that swaps paths, the sub line
-and the footer and adds the group's logo. The group's name and logo never
+keeps the link. Since 10 Nov (late) it runs as James's workflow, in order:
+AI hacks, why a project beats a chat, projects you could build, the
+workflow diagram (`F.flow`), then Step 1 set the goal (interview, brief,
+instructions: Talk-It-Out from AI Foundations, then the instructions
+prompt), Step 2 files (plus the Brand DNA document slide), Step 3 test,
+Step 4 connect, Step 5 schedule, Step 6 skills (plus the Horseman,
+described only; its text is his IP and never goes in this repo), then an
+index of all nine prompts. Each step's prompts sit straight after it.
+James's rules for this deck, all his words: never the word "today"; no
+hands-up interaction; no homework; no trade-only examples; no live
+building; three short lines per slide he can talk over, no "go and look"
+menu lines; interview always comes before instructions. The nine prompts
+are shelf cards byte for byte: `talk-it-out`, `project-instructions`,
+`build-the-reference-file`, `expert-knowledge-file`, `brand-file`,
+`check-its-own-work`, `redline-the-answer`, `scheduled-review`,
+`first-skill`. Shared engine (footer `Magnum AI / Coaching`, fill key
+`magnum-projects-fill`). Not on the front page: ask James before adding a
+library card. Card at `assets/thumbnails/projects.jpg`. Register rows 145
+to 152. A private co-branded copy for the group James ran it with is an
+Artifact (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from
+this file by a scratchpad script that swaps paths, the sub line and the
+footer, adds the group's logo, and links a client's Brand DNA booklet on
+the Brand DNA slide. The group's name, its logo and the client link never
 ship in this repo (hard rule 5). A long headline that wraps to two lines
 pushes a figure slide over at 1440; shorten the headline, not the points.
 

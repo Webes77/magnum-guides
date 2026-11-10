@@ -360,6 +360,7 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 <div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="pbtn copy" id="rcopy" data-copy="0">Copy</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
+const P_TALK = "I want your help with a real task, and I would rather talk it\nthrough than write you a brief.\n\nInterview me. Ask one question at a time and wait for my answer before the next\none. Work out what I actually need, who it is for, what it has to do, and what\nwould make it wrong.\n\nStart producing only when you have enough, and tell me what you understood\nbefore you hand me the result.\n\nThe task is: [say it roughly, out loud, in your own words]";
 const P_INSTR = `You are helping me write the instructions for this project, the way a
 careful new hire would learn one job before doing it: by asking. This
 project is for one job only, and the instructions go in the project
@@ -706,6 +707,24 @@ F.horse = ['<svg viewBox="0 0 420 300">' +
   BOX(80, 216, 260, 56, '#FFFFFF') + T(210, 250, 'A REPLY IN THEIR STYLE', {a:'middle', z:13}) + '</svg>',
   'Fig. 07 / read first, then reply<br>You check it and send it'];
 
+F.flow = [(() => {
+  const ar = (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#FFFFFF" stroke-width="3"/>`;
+  const hr = (x, y) => `<polygon points="${x},${y} ${x-8},${y-6} ${x-8},${y+6}" fill="#FFFFFF"/>`;
+  const hd = (x, y) => `<polygon points="${x},${y} ${x-6},${y-8} ${x+6},${y-8}" fill="#FFFFFF"/>`;
+  const box = (x, y, w, h, t, fill, ink) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="#1E1B17" stroke-width="3"/><text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-family="IBM Plex Mono" font-size="${t.length > 10 ? 11 : 12}" letter-spacing="${t.length > 10 ? 0 : 1}" fill="${ink}">${t}</text>`;
+  let o = '<svg viewBox="0 0 420 300">';
+  o += '<rect x="8" y="10" width="404" height="108" fill="none" stroke="#FF6F5E" stroke-width="3"/>';
+  o += '<text x="22" y="34" font-family="IBM Plex Mono" font-size="12" letter-spacing="2" fill="#FF6F5E">1 · SET THE GOAL</text>';
+  o += box(20, 50, 112, 52, 'INTERVIEW', '#FFFFFF', '#1E1B17') + box(154, 50, 112, 52, 'BRIEF', '#FFFFFF', '#1E1B17') + box(288, 50, 112, 52, 'INSTRUCTIONS', '#FF6F5E', '#1E1B17');
+  o += ar(132, 76, 146, 76) + hr(154, 76) + ar(266, 76, 280, 76) + hr(288, 76);
+  o += ar(210, 118, 210, 134) + hd(210, 142);
+  o += box(70, 142, 120, 46, '2 · FILES', '#FFFFFF', '#1E1B17') + box(230, 142, 120, 46, '3 · TEST', '#FFFFFF', '#1E1B17');
+  o += ar(190, 165, 222, 165) + hr(230, 165);
+  o += `<polyline points="290,188 290,200 72,200 72,206" fill="none" stroke="#FFFFFF" stroke-width="3"/>` + hd(72, 214);
+  o += box(10, 214, 124, 46, '4 · CONNECT', '#5B6B7A', '#FFFFFF') + box(148, 214, 124, 46, '5 · SCHEDULE', '#5B6B7A', '#FFFFFF') + box(286, 214, 124, 46, '6 · SKILLS', '#5B6B7A', '#FFFFFF');
+  o += ar(134, 237, 140, 237) + hr(148, 237) + ar(272, 237, 278, 237) + hr(286, 237);
+  return o + '</svg>';
+})(), 'Fig. 01 / the workflow<br>Set the goal first. Everything else builds on it.'];
 const S = [
 {sec:"", cover:true, ill:["../assets/illustrations/make-claude-yours.jpg","A cartoon shop owner hands her laptop a coral folder about her business, her shopfront through the window."], h:"Set up a project <em>properly</em>.", pts:[], sub:"Coaching session · One job, set up once", note:"Stop explaining your business to AI every time you open it. Every prompt is in this link, ready to copy."},
 
@@ -730,17 +749,24 @@ const S = [
  ["c","A travel adviser","Your budget, dates and how you like to travel. Itineraries that fit you."],
  ["c","Your team","Job ads, interview questions and inductions written the way you run things."]]},
 
-{sec:"The project", ic:["Building","Six steps, in order"], h:"How to build one: <em>six steps</em>", fig:"six", pts:[
- "Steps 1 to 3 happen inside the project.",
- "Steps 4 to 6 you switch on once, for every project.",
- "Then test it before you trust it."]},
+{sec:"The project", ic:["Building","Six steps, in order"], h:"The <em>workflow</em>", fig:"flow", pts:[
+ "Set the goal first: interview, brief, instructions.",
+ "Then add your files and test it.",
+ "Then connect, schedule and save skills."]},
 
-{sec:"Step 1 · Instructions", ic:["Spanner","About 300 words"], h:"Step 1: write the <em>instructions</em>", fig:"project", pts:[
- "Say what the job is and who reads it.",
- "Say what a good result looks like.",
- "Say what it must always and never do."]},
+{sec:"Step 1 · Set the goal", ic:["Chat bubble","Interview, brief, instructions"], h:"Step 1: set the <em>goal</em>", fig:"interview", pts:[
+ "Prompt 1 interviews you about the job.",
+ "From your answers it writes the brief.",
+ "Prompt 2 turns the brief into instructions."]},
 
-{sec:"Step 1 · Instructions", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
+{sec:"Step 1 · Set the goal", ic:["Chat bubble","Step 1 · the interview"], h:"Talk it <em>out</em>", pts:[
+ "Talk, don’t type. Rough is fine."],
+ prompt:P_TALK, where:"Any new chat, on a real task", after:[
+ "Say the job you want the project to do.",
+ "Answer one question at a time.",
+ "Ask it for the brief when it is done."]},
+
+{sec:"Step 1 · Set the goal", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
  ["Role","“You write replies to website enquiries for Harbour Bookkeeping, a two-person practice in Toowoomba.”","It knows whose voice it is writing in."],
  ["Context","“Most enquiries are sole traders behind on their BAS. Our prices are in the file Services and prices, Nov 2026.”","It knows who is asking and where the facts live."],
  ["Constraints","“Never quote a price or a turnaround. Offer a call instead. Tax advice goes to Sarah.”","It never promises what you cannot deliver."],
@@ -749,30 +775,65 @@ const S = [
  ["Output","“The reply, ready to send, then one line on anything I should check first.”","You check, then send."]],
  pts:["To put them in: open the project, find Instructions, paste, save, then start a new chat inside the project."]},
 
-{sec:"Step 2 · Interview", ic:["Chat bubble","About ten minutes"], h:"Step 2: let it <em>interview</em> you", fig:"interview", pts:[
- "Paste prompt 1 into the project.",
- "Answer its questions out loud.",
- "It writes the instructions. Paste them in."]},
+{sec:"Step 1 · Set the goal", ic:["Chat bubble","Step 1"], h:"Write the <em>instructions</em>", pts:[
+ "Paste in your brief from prompt 1, and a past job you are proud of."],
+ prompt:P_INSTR, where:"Inside the new project, in its first chat", after:[
+ "Read the draft. Tell it what to change.",
+ "Paste the final version into the project’s instructions."]},
 
-{sec:"Step 3 · Files", ic:["Database","What to load in"], h:"Step 3: add your <em>files</em>", tiles:[
+{sec:"Step 2 · Files", ic:["Database","What to load in"], h:"Step 2: add your <em>files</em>", tiles:[
  ["o","Your service menu","What you sell, what’s included and what it costs. It quotes from this, not a guess."],
- ["o","A knowledge file","Everything you’d tell a new starter: FAQs, process, policies. Prompt 2 builds it."],
+ ["o","A knowledge file","Everything you’d tell a new starter: FAQs, process, policies. Prompt 3 builds it."],
  ["o","Your Brand DNA document","Your values, voice, look and offers, so everything sounds like your business."],
- ["c","A research file","What works in your industry right now, with sources. Prompt 3 builds it."],
- ["c","Straight from Google Drive","Add documents from your Drive instead of downloading and uploading them."],
+ ["c","A research file","What works in your industry right now, with sources. Prompt 4 builds it."],
+ ["c","Client work","Their emails, call notes and proposals, added straight from Google Drive."],
  ["c","Keep them current","Prices change? Swap the file that day. It quotes an old file with full confidence."]]},
 
-{sec:"Step 3 · Files", ic:["Database","One document, every project"], h:"Your <em>Brand DNA</em> document", fig:"dna", pts:[
+{sec:"Step 2 · Files", ic:["Database","One document, every project"], h:"Your <em>Brand DNA</em> document", fig:"dna", pts:[
  "Your values, voice, look and offers.",
  "One document, uploaded to every project.",
  "Everything it writes sounds like one business."]},
 
-{sec:"Step 4 · Connectors", ic:["Globe","Set up once, used everywhere"], h:"Step 4: plug in your <em>tools</em>", fig:"connect", pts:[
+{sec:"Step 2 · Files", ic:["Database","Step 2"], h:"The knowledge <em>file</em>", pts:[
+ "Built from what you have already told it."],
+ prompt:P_KNOW, where:"Inside the project, after the instructions are saved", after:[
+ "Fix or cut anything marked [CHECK].",
+ "Save it and add it to the project’s files."]},
+
+{sec:"Step 2 · Files", ic:["Globe","Step 2 · web search on"], h:"The research <em>file</em>", pts:[
+ "Fill in the topic and your business."],
+ prompt:P_RESEARCH, where:"Inside the project, with web search on", after:[
+ "Check every [CHECK].",
+ "Save it and add it to the project’s files."]},
+
+{sec:"Step 2 · Files", ic:["Database","Step 2"], h:"Your Brand DNA <em>starter</em>", pts:[
+ "A one-page start on your Brand DNA document. Have a few emails, posts or reviews you are proud of ready to paste."],
+ prompt:P_BRAND, where:"Inside the project you are setting up. Then add the file to every project that writes for you", after:[
+ "Fill in every [NEEDS CONFIRMING].",
+ "Add it to every project that writes for you."]},
+
+{sec:"Step 3 · Test", ic:["Tick","Three checks, in order"], h:"Step 3: test it before you <em>trust</em> it", pts:[
+ "1. Ask it what the project is for. A vague answer means vague instructions.",
+ "2. Give it a job you’ve already done. Compare its answer with yours.",
+ "3. Fix the instructions, not the answer. Then it stays fixed."]},
+
+{sec:"Step 3 · Test", ic:["Tick","Step 3"], h:"Check its own <em>work</em>", pts:[
+ "Paste it at the start of any job where a wrong answer costs you."],
+ prompt:P_CHECK, where:"Any AI, at the start of the request", after:[
+ "Read the pass and fail list first."]},
+
+{sec:"Step 3 · Test", ic:["Tick","Step 3"], h:"Redline the <em>answer</em>", pts:[
+ "Run it straight after an answer you are not happy with."],
+ prompt:P_REDLINE, where:"In the project, straight after the answer", after:[
+ "Paste each fix where it says.",
+ "Ask the same question again in a new chat."]},
+
+{sec:"Step 4 · Connect", ic:["Globe","Set up once, used everywhere"], h:"Step 4: connect your <em>tools</em>", fig:"connect", pts:[
  "Switch on email, calendar, Drive or Fireflies.",
  "It reads the real thing, not a paste.",
  "Switch it off any time."]},
 
-{sec:"Step 4 · Connectors", ic:["Globe","The question you would ask each"], h:"Six connectors <em>worth switching on</em>", tiles:[
+{sec:"Step 4 · Connect", ic:["Globe","The question you would ask each"], h:"Six connectors <em>worth switching on</em>", tiles:[
  ["o","Fireflies","“What did I promise the client on Tuesday’s call, and by when?”"],
  ["o","Email","“Which enquiries from this week still have no reply?”"],
  ["o","Calendar","“Where are my free two-hour blocks next week?”"],
@@ -793,74 +854,34 @@ const S = [
  ["o","Every Tuesday","Rule, award or price changes in your industry, in five lines with sources."],
  ["o","Every Thursday","Three post ideas from this week’s photos in your Drive."]]},
 
+{sec:"Step 5 · Schedule", ic:["Clock","Step 5"], h:"A review on a <em>timer</em>", pts:[
+ "Say what to check and when."],
+ prompt:P_SCHED, where:"Inside the project, with the connectors the job needs switched on", after:[
+ "Read the first result.",
+ "Say go. It runs on its own from then on."]},
+
 {sec:"Step 6 · Skills", ic:["Tick","Works in any project"], h:"Step 6: save a <em>skill</em>", fig:"skill", pts:[
  "Write it once, use it in every project.",
  "It kicks in when that job comes up.",
- "Prompt 6 builds your first one."]},
+ "Prompt 9 builds your first one."]},
 
 {sec:"Step 6 · Skills", ic:["Tick","A skill I use"], h:"A skill I <em>use</em>: the Horseman", fig:"horse", pts:[
  "It reads a message and says what they really want.",
  "It drafts the reply in their style.",
  "I check it and send it."]},
 
-{sec:"Last step · Test it", ic:["Tick","Three checks, in order"], h:"Then test it before you <em>trust</em> it", pts:[
- "1. Ask it what the project is for. A vague answer means vague instructions.",
- "2. Give it a job you’ve already done. Compare its answer with yours.",
- "3. Fix the instructions, not the answer. Then it stays fixed."]},
-
-{sec:"Your prompts", ic:["Chat bubble","Every prompt has a Copy button"], h:"I’ve already built you <em>the prompts</em>", rowhead:["Part","The prompts","What you get"], rows:[
- ["1 and 2","1 · Write the instructions","It interviews you, then drafts them"],
- ["3","2 · Knowledge file · 3 · Research file<br>4 · Brand DNA starter","What you know, what works, how you sound"],
- ["5 and 6","5 · A review on a timer<br>6 · Your first skill","A job that runs itself, and one job saved"],
- ["Test","7 · Check its own work<br>8 · Redline the answer","Pass or fail, then the fix for the project"]],
- note:"All eight are in this link. More on the <a href=\"../prompts/\">Prompt Shelf</a>. On ChatGPT or Gemini? <a href=\"../same-job/\">Same Job, Other Tool</a>."},
-
-{sec:"Your prompts", ic:["Chat bubble","Parts 1 and 2"], h:"Write the <em>instructions</em>", pts:[
- "It interviews you first. Paste in a past job you are proud of when it asks."],
- prompt:P_INSTR, where:"Inside the new project, in its first chat", after:[
- "Read the draft. Tell it what to change.",
- "Paste the final version into the project’s instructions."]},
-
-{sec:"Your prompts", ic:["Database","Part 3"], h:"The knowledge <em>file</em>", pts:[
- "Built from what you have already told it."],
- prompt:P_KNOW, where:"Inside the project, after the instructions are saved", after:[
- "Fix or cut anything marked [CHECK].",
- "Save it and add it to the project’s files."]},
-
-{sec:"Your prompts", ic:["Globe","Part 3 · web search on"], h:"The research <em>file</em>", pts:[
- "Fill in the topic and your business."],
- prompt:P_RESEARCH, where:"Inside the project, with web search on", after:[
- "Check every [CHECK].",
- "Save it and add it to the project’s files."]},
-
-{sec:"Your prompts", ic:["Database","Part 3"], h:"Your Brand DNA <em>starter</em>", pts:[
- "A one-page start on your Brand DNA document. Have a few emails, posts or reviews you are proud of ready to paste."],
- prompt:P_BRAND, where:"Inside the project you are setting up. Then add the file to every project that writes for you", after:[
- "Fill in every [NEEDS CONFIRMING].",
- "Add it to every project that writes for you."]},
-
-{sec:"Your prompts", ic:["Clock","Part 5"], h:"A review on a <em>timer</em>", pts:[
- "Say what to check and when."],
- prompt:P_SCHED, where:"Inside the project, with the connectors the job needs switched on", after:[
- "Read the first result.",
- "Say go. It runs on its own from then on."]},
-
-{sec:"Your prompts", ic:["Tick","Part 6"], h:"Your first <em>skill</em>", pts:[
+{sec:"Step 6 · Skills", ic:["Tick","Step 6"], h:"Your first <em>skill</em>", pts:[
  "Pick one job you do the same way every time."],
  prompt:P_SKILL, where:"A new chat. It saves to Customize › Skills, or Settings on older accounts", after:[
  "Fix anything marked [NEEDS CONFIRMING].",
  "Say “Save this as a skill.”"]},
 
-{sec:"Your prompts", ic:["Tick","Test"], h:"Check its own <em>work</em>", pts:[
- "Paste it at the start of any job where a wrong answer costs you."],
- prompt:P_CHECK, where:"Any AI, at the start of the request", after:[
- "Read the pass and fail list first."]},
-
-{sec:"Your prompts", ic:["Tick","Test"], h:"Redline the <em>answer</em>", pts:[
- "Run it straight after an answer you are not happy with."],
- prompt:P_REDLINE, where:"In the project, straight after the answer", after:[
- "Paste each fix where it says.",
- "Ask the same question again in a new chat."]}
+{sec:"All the prompts", ic:["Chat bubble","Every prompt has a Copy button"], h:"I’ve already built you <em>the prompts</em>", rowhead:["Step","The prompts","What you get"], rows:[
+ ["Step 1","1 · Talk it out<br>2 · Write the instructions","The brief, then the instructions"],
+ ["Step 2","3 · Knowledge file · 4 · Research file<br>5 · Brand DNA starter","What you know, what works, how you sound"],
+ ["Step 3","6 · Check its own work<br>7 · Redline the answer","Pass or fail, then the fix for the project"],
+ ["Steps 5 and 6","8 · A review on a timer<br>9 · Your first skill","A job that runs itself, and one job saved"]],
+ note:"All nine are in this link. More on the <a href=\"../prompts/\">Prompt Shelf</a>. On ChatGPT or Gemini? <a href=\"../same-job/\">Same Job, Other Tool</a>."}
 ];
 const deck = document.getElementById('deck');
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
