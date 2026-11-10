@@ -645,45 +645,68 @@ const projFig = k => {
 F.p0 = [projFig(0), 'Fig. 01 / one project, six parts<br>Each part makes it better at the job'];
 PARTS.forEach((p, i) => { F['p' + (i + 1)] = [projFig(i + 1), `Part ${i + 1} of 6 / ${p.toLowerCase()}`]; });
 
+F.dna = ['<svg viewBox="0 0 420 300"><image href="../assets/illustrations/brand-dna-folder.jpg" x="0" y="0" width="420" height="300" preserveAspectRatio="xMidYMid slice"/></svg>', 'One document, every project<br>Values, voice, look and offers'];
 const S = [
 {sec:"", cover:true, ill:["../assets/illustrations/make-claude-yours.jpg","A cartoon shop owner hands her laptop a coral folder about her business, her shopfront through the window."], h:"Set up a project <em>properly</em>.", pts:[], sub:"Coaching session · One job, set up once", note:"Six parts, one project. Every prompt is in here, ready to copy."},
 
 {sec:"The project", ic:["Building","Six parts"], h:"A project is a <em>new hire</em>", fig:"p0", pts:[
  "It never forgets its induction.",
  "Every chat inside it starts already knowing the job.",
+ "One for marketing, one for each big client, one for your team.",
  "Six parts. Each one makes it better."],
  meta:[["Where in Claude","Sidebar › Projects › New project"]]},
 
 {sec:"The project", ic:["Chat bubble","Same AI, different result"], h:"Without one, with <em>one</em>", split:[
- ["Without a project","You explain your business in every chat.","Answers sound like anyone’s."],
- ["With a project","It starts already knowing the job.","Answers sound like you."]]},
+ ["Without a project","You explain your business in every chat.","Answers sound like anyone’s.","You fix the same mistake again and again."],
+ ["With a project","It starts already knowing the job.","Answers sound like you.","You fix a mistake once, in the instructions."]]},
 
 {sec:"1 · Instructions", ic:["Spanner","The part that does the work"], h:"Instructions are the <em>key</em>", fig:"p1", pts:[
- "What the job is.",
+ "What the job is, and who reads the result.",
  "What a good result looks like.",
- "What it must always and never do."],
+ "What it must always and never do.",
+ "Example: never promise a finish date. Always sign off with my name."],
  meta:[["Where in Claude","Inside the project › Instructions"]]},
 
 {sec:"2 · Interview", ic:["Chat bubble","It asks, you answer"], h:"Let it <em>interview</em> you", fig:"p2", pts:[
  "It asks one question at a time.",
  "You answer out loud. Rough is fine.",
- "It writes the instructions for you."],
+ "Paste in a past job you are proud of.",
+ "It writes the instructions for you.",
+ "Works for any job: posts, proposals, policies, client updates."],
  meta:[["Where in Claude","The project’s first chat"]]},
 
 {sec:"3 · Files", ic:["Database","What it knows"], h:"Load the <em>brain</em>", fig:"p3", pts:[
- "Price lists, FAQs, policies, past work you are proud of.",
- "Research on what works now.",
- "Your brand: how you sound and how you look."],
+ "Price lists, FAQs, policies, past work that won.",
+ "Research on what works now in your industry.",
+ "Meeting notes and transcripts from a client.",
+ "Keep them current. An old price list gives a wrong answer, confidently."],
+ meta:[["Where in Claude","Inside the project › Files"]]},
+
+{sec:"3 · Files", ic:["Megaphone","Uploaded once, used every time"], h:"Load your <em>Brand DNA</em>", fig:"dna", pts:[
+ "Your values, voice, look and offers in one document.",
+ "Upload it to every project. It never forgets who you are.",
+ "Every post, proposal and email starts from your values.",
+ "A booklet version for your team, too."],
  meta:[["Where in Claude","Inside the project › Files"]]},
 
 {sec:"4 · Connectors", ic:["Envelope","The real thing, not a paste"], h:"Plug in your <em>tools</em>", fig:"p4", pts:[
- "Email, calendar, Drive, meeting notes.",
+ "Email, calendar, Drive, meeting notes, design tools.",
  "It reads the real thing instead of what you paste.",
+ "Works inside every project you build.",
  "You switch it on. You can switch it off."],
  meta:[["Where in Claude","Settings › Connectors"]]},
 
+{sec:"4 · Connectors", ic:["Envelope","Ask the real thing"], h:"Connectors worth <em>plugging in</em>", tiles:[
+ ["o","Fireflies","“What did I promise on Tuesday’s call?”"],
+ ["o","Email","“Which enquiries still need a reply?”"],
+ ["o","Calendar","“Where are the gaps next week?”"],
+ ["c","Drive or Dropbox","“Find last year’s proposal for this client.”"],
+ ["c","Canva","“Make a flyer in our brand.”"],
+ ["c","Zapier","“Log this lead in my CRM.”"]]},
+
 {sec:"5 · Schedule", ic:["Clock","Runs with your computer off"], h:"Put it on a <em>timer</em>", fig:"p5", pts:[
- "Give it a job and a time.",
+ "Give it a job and a time, in plain words: every Monday at 7.",
+ "Daily, weekly, monthly, or just once.",
  "It runs on its own, computer off.",
  "The result is waiting when you open it."],
  meta:[["Where in Claude","The Scheduled page, or ask it to schedule the job"]]},
@@ -698,7 +721,8 @@ const S = [
 
 {sec:"6 · Skills", ic:["Tick","One job, saved"], h:"Bring in a <em>skill</em>", fig:"p6", pts:[
  "A saved way of doing one job.",
- "Write it once. Every project can use it.",
+ "Proposals, review replies, job reports, welcome emails.",
+ "Write it once. Use it in any project or chat.",
  "It kicks in when that job comes up."],
  meta:[["Where in Claude","Customize › Skills, or Settings on older accounts"]]},
 

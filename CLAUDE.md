@@ -3329,8 +3329,12 @@ keeps the link (a scrolling page on a phone, Copy on every prompt). Since the
 second 10 Nov rebuild, at James's word, it is six parts of a project, each
 with one slide, a diagram of the six with its block lit, three short lines and
 a "Where in Claude" line: instructions, the interview, files, connectors,
-schedule (plus a slide of six timer jobs), skills (plus his Horseman skill as
-the example). Then "same six parts, any job" (a marketing adviser beside a
+files (plus a Brand DNA slide: one document of values, voice, look and offers
+uploaded to every project, with the folder picture), connectors (plus a slide
+of six worth plugging in, Fireflies first), schedule (plus a slide of six timer
+jobs), skills (plus his Horseman skill as the example). Later the same day he
+asked for a few more bullets per part slide showing range; four or five short
+lines is the ceiling. Then "same six parts, any job" (a marketing adviser beside a
 client), test it, and a prompt pack of eight at the back. 22 slides on the
 shared engine (footer `Magnum AI / Coaching`, fill key `magnum-projects-fill`).
 James's rules for this deck, all his words: never the word "today"; no
@@ -3344,7 +3348,7 @@ shelf). The eight prompts are all shelf cards byte for byte:
 `redline-the-answer`. The Horseman slide describes what it does only; the
 skill's text is his IP and never goes in this repo. The shelf is 106 cards.
 Not on the front page: ask James before adding a library card. Card at
-`assets/thumbnails/projects.jpg`. Register rows 145 to 148. A private
+`assets/thumbnails/projects.jpg`. Register rows 145 to 149. A private
 co-branded copy for the group James ran it with is an Artifact
 (https://claude.ai/artifact/XhCd6BkrdNewdEkPk6poyZ), built from this file by a
 scratchpad script that swaps paths, the sub line and the footer and adds the
