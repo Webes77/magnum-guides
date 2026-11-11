@@ -78,6 +78,11 @@ prompt stays. And the card carries its own cartoon, made in a chat session
 van brochure, the paperwork, a cold tea and a dog asleep underneath), not the
 stand-in. Shape check, style checker and contrast PASS.
 
+On the shelf 11 Nov at James's word as `straight-answer`, "Get a straight
+answer on a big decision", under From the Sunday Brief, type interview, when
+before-acting, byte for byte the page's prompt. It passes the duplicate test
+against `make-the-decision` (instructions, setup).
+
 Words around the prompt: under 170, shape check PASS. Why it works: the
 mechanic who tells you what he'd do if it were his car. 3.07 phone screens
 at 390 wide, 2.22 at 1440 and 820. No script errors, no sideways scroll at
