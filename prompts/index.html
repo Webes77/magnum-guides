@@ -629,6 +629,79 @@ const WHEN_NOTES={
 const S=[
 
 /* ---------- From the Sunday Brief ---------- */
+{kind:'prompt', id:'coach-my-calls', works:'any', sec:'From the Sunday Brief', title:'Get coached on a call you already had', where:'After a recorded call or meeting, with the transcript pasted in or attached', type:'review', when:'weekly', hook:"Hear what you missed on the call, in your own words.", added:'2026-11-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a communication coach who reads transcripts of real
+conversations and tells people what they could not hear in the moment.
+
+Below is the transcript of a call I was on. In the transcript I am
+[your name as it appears]. The call was [what the call was for, for
+example a first meeting with a new customer]. I want to be better on
+the next one, so coach me. Do not summarise the call.
+
+The rules, and why each one is there:
+- Work only from the transcript. Quote my exact words, and theirs,
+  every time you make a point, because advice without the line it
+  came from is too vague to act on.
+- If the transcript does not show who is speaking, or part of it is
+  missing, say so. Do not guess, because coaching built on a guess
+  sends me fixing the wrong thing.
+- Do not flatter me and do not invent a fault to look useful. If I
+  handled something well, say so in one line and move on.
+- This is for me alone. Do not draft anything to send to anyone.
+
+Be blunt, specific and on my side.
+
+Use these five headings, in this order:
+
+TALK TIME: roughly what share of the talking I did. Flag it if I did
+more than half.
+
+WHAT I DODGED: each moment I avoided a hard topic or put off a
+decision I could have made on the spot. Give my words, then what I
+could have said.
+
+WHAT I PROMISED: everything I said I would do, including every "let
+me think about it" and "I'll get back to you". Write it as a to-do
+list, with the date if one was said.
+
+PUSHBACK: every doubt or objection the other person raised, what I
+answered, and a stronger answer for next time.
+
+ONE THING: the single change that would most improve my next call.
+
+Stop after ONE THING.
+
+The transcript:`},
+{kind:'prompt', id:'build-a-tracker', works:'any', sec:'From the Sunday Brief', title:'Build a tracker with totals you can trust', where:'When a list on paper or in your head needs to become a spreadsheet', type:'writing', when:'start', hook:"A working spreadsheet from one description, with every total checked.", added:'2026-11-15', levers:['Role','Context','Constraints','Tone','Format','Output'],
+prompt:`You are a careful office manager who builds spreadsheets other
+people can trust without re-adding the sums.
+
+Build me a spreadsheet to track [what it tracks, for example jobs,
+stock, a budget or a roster]. The one thing I want to see at a glance
+is [the answer you want, for example what is overdue or what is left
+to spend]. The columns I need are [list them, or write "suggest
+them"].
+
+The rules, and why each one is there:
+- Every total, count and sum is a formula, never a typed number,
+  because a typed number does not change when I edit a row and I
+  will not notice it is wrong.
+- Use a dropdown for anything with a fixed set of answers, such as a
+  status, because free typing gives me "Done", "done" and "finished"
+  in the same column.
+- Put in three made-up rows marked SAMPLE so I can see how it works.
+  Do not invent real-looking names or figures.
+- Ask me before you add a column I did not ask for.
+- If you cannot make a real spreadsheet file here, say so, then give
+  me the table and write out each formula with the cell it goes in.
+
+Be plain and brief.
+
+Give me the spreadsheet. Under it, list every cell that holds a
+formula and say in plain words what it adds up. Then check your own
+work: name any cell where you typed a number that should have been a
+formula, and fix it. Then tell me in two lines how to replace the
+sample rows with my own, and stop.`},
 {kind:'prompt', id:'straight-answer', works:'any', sec:'From the Sunday Brief', title:'Get a straight answer on a big decision', where:'Any big decision you keep going back and forth on, at work or at home', type:'interview', when:'before-acting', hook:"Four questions, then a clear recommendation, what it costs you and the catch.", added:'2026-11-11', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a level-headed adviser who has helped hundreds of small business owners and families make big calls. You care more about a decision I can stand behind than one that sounds clever.
 
@@ -2276,15 +2349,20 @@ Rules:
 - Keep apologies to things that are my fault, and keep the temperature
   where it is. If there is a legal dimension, name it and tell me to get
   advice.
+- Describe what the person did, never what they are. "Three invoices
+  paid late" can be answered. "Unreliable" starts a fight. Do not guess
+  at their motives, because I do not know them either.
 
 Tone: grounded and practical. Calm authority, no false reassurance.
 
 Structure: the situation read back to me. What to have ready. Three
-opening lines, from direct to diplomatic. The pushbacks to expect, each
-with a response. One sentence on what success looks like.
+opening lines, from direct to diplomatic. One question that asks for
+their side of it. The pushbacks to expect, each with a response. One
+sentence on what success looks like. Then a short message I can send
+afterwards that records what we agreed, with gaps for me to fill in.
 
 I should be able to read it in three minutes and walk in prepared. A
-mental map, not a script. Stop after the success line.`},
+mental map, not a script. Stop after the follow-up message.`},
 {kind:'prompt', id:'week-of-posts', works:'any', sec:'Magnum AI library', title:'A week of posts in your voice', where:'New chat, once a week', type:'writing', when:'start', hook:"Seven posts you can schedule today, and none of them sound like an agency.", added:'2026-09-04', levers:['Role','Context','Constraints','Tone','Format','Output'],
 prompt:`You are a content strategist who helps small business owners build local
 authority with posts that sound like them, not like an agency.
