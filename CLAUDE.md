@@ -3270,6 +3270,19 @@ tailoring studio in black-and-white editorial style, is a private Artifact
 (https://claude.ai/artifact/FpfCvSj2yZV4xtTEosU4sv), files in Drive at Magnum AI
 / Brand DNA Sample - Ostler & Wren, sources in Brand DNA Kit/build/sample-ostler-wren.
 
+**James's booklet rewrite of 26 Oct, published 16 Nov at his word.** On 26 Oct James
+supplied new text for prompts 7.1, 7.2 and 7.3 (lessons from a real build) and the
+session applied it without committing, for his review, which never happened. On
+16 Nov it was reviewed and published. 7.1 now traces every colour to the client and
+picks the heading font from three set on a real page; 7.2 writes a mock-up brief
+for a professional, checks the logo file is clean first, and checks results against
+photos of the premises; 7.3 adds dark statement pages, large real photos, at most
+three questions to the client, no customer quotes, and a softer marker rule. Review
+fixes on top of James's text: 7.3's pages are tied to sections the template really
+has (core idea, content pillars, "where section 6/7 covers it"), and 7.1 writes a
+newly picked heading font back into section 14 so the booklet never holds a rule
+the document lacks. The QA gate in the kit (Drive only) carries the matching lines.
+
 **Same Job, Other Tool, live 1 Nov at `same-job/`, on James's word.** The
 second half of the answer to the members area reading Claude-only (the first
 is the Works in tag). Nine jobs the courses teach (standing instructions, one

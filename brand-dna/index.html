@@ -548,10 +548,10 @@ Show us SKILL.md and wait for our yes. Then, if you can install the skill for us
     <p>Your AI tools read the document. Your team, designers and printers need something to flick through. In Claude Design the document becomes a design system first, so every flyer, post and slide made there is on-brand. Then mock-ups show the logo out in the world, and the booklet is built from all of it.</p>
     <ol class="steps3">
       <li><b>Set up the design system first.</b> In Claude Design, upload brand-dna.md, the logo and font files from assets, and the photos section 15 lists as usable. <a href="https://support.claude.com/en/articles/14604397-set-up-your-design-system-in-claude-design">Anthropic's setup guide</a> walks through it.</li>
-      <li><b>Check it with prompt 7.1</b> and fix what does not match the document.</li>
-      <li><b>Make the mock-ups with prompt 7.2:</b> the logo on business cards, packaging, signage and the like, made by an image tool from the real logo file and checked for any changed letter or colour.</li>
+      <li><b>Check it with prompt 7.1,</b> fix what does not match the document, and pick the heading font from three it sets on a real page.</li>
+      <li><b>Write the mock-up brief with prompt 7.2:</b> the logo on business cards, packaging, signage and the like, run in an image tool with the clean logo file attached, then checked against the logo file and photos of the premises for any changed letter, colour or shape.</li>
       <li><b>Start a new project and paste prompt 7.3,</b> with the same files and the mock-ups attached. Fix one page at a time.</li>
-      <li><b>Export it as a PDF,</b> save it in the booklet folder with the date in the file name, and log it in changelog.md.</li>
+      <li><b>Export it as one PDF,</b> save it in the booklet folder with the date in the file name, and log it in changelog.md.</li>
     </ol>
     <p class="observed">Design system setup from Anthropic's own guide, October 2026. PDF export confirmed by third-party sources only</p>
 
@@ -564,11 +564,15 @@ Show us SKILL.md and wait for our yes. Then, if you can install the skill for us
 
 Compare the design system with sections 11 to 15 of brand-dna.md, one item at a time: every colour value and its job, every font and weight, every logo version and where it's used, clear space and minimum size, and the photo rules.
 
+Every colour must come from us: our logo, our signage, our premises or something we said. If a colour in the design system or the document can't be traced to one of those, mark it as a mismatch and say where it came from. Never add a colour because it suits our kind of business.
+
 Show us a table: the item, what the document says, what the design system has, and match or mismatch. Then list the fixes for every mismatch, and wait for our yes before changing anything. The document wins every disagreement. If it marks a value [NEEDS CONFIRMING], [DECISION] or [INFERRED], leave that value out of the design system and say so. A marker only rules out the value it sits beside.
+
+Then show us three heading fonts that suit sections 4 and 14, each set on a real page: a heading, a large line and a paragraph of body text in our body font. If section 14 already names a heading font, make it one of the three. Wait for us to pick one before anything else is built with it, and if we pick a new one, give us the change to section 14 so the document says the same.
 
 When the fixes are made, give us the line to add under "Where the Brand DNA is used" in changelog.md: Claude Design design system, holding values from brand-dna.md and our logo and font files, with today's date under "Copy last replaced".
 
-Finish by suggesting three things to make as a test, such as an Instagram post, a flyer and a one-page document. When we say which, use only wording from the examples in sections 16 and 17, no prices, and a plain box labelled "Photo to come" wherever a photo goes. Label each one "Mock-up". No new slogans or taglines, and a comma or a full stop wherever an em dash might go. Plain Australian English.</pre>
+Plain Australian English, with a comma or a full stop wherever an em dash might go. No new slogans or taglines.</pre>
       </div>
     </div>
 
@@ -577,13 +581,15 @@ Finish by suggesting three things to make as a test, such as an Instagram post, 
       <h3>Show the logo in use</h3>
       <div class="prompt">
 <button class="copy" type="button">Copy</button>
-<pre>You're our brand designer. Make photorealistic mock-ups that show our logo in use, and a cover image, for our brand booklet. We're [business name]. Attached are brand-dna.md and our logo files.
+<pre>You're our brand designer. Write the brief for photorealistic mock-ups that show our logo in use, and a cover image, for our brand booklet. A professional will make them in an image tool. We're [business name]. Attached are brand-dna.md, our logo file and photos of our premises.
 
-1. Choose six things our customers would really see, using sections 1, 9 and 17: for example business cards, our packaging, signage, a uniform, a vehicle or a shopfront. List them, with the logo version section 12 says suits each background, and wait for our yes.
-2. For each one, write an image prompt for a tool that can take a reference image, in this shape: "Photorealistic brand mock-up photograph: the item, the setting, the light. The logo from the reference image, reproduced exactly as supplied: same shape, same colours, same lettering, nothing redrawn or changed. No other text, no other logos, no people's faces." Fill in the item, a setting our customers would recognise from section 6, and our colours from section 13.
-3. Write one more prompt for the booklet's cover: "Photorealistic flat-lay photograph of a premium brand book cover, filling the whole frame: heavy textured paper in our darkest brand colour, with the logo from the reference image foil-stamped and debossed into the paper, centred slightly above the middle. Soft raking light that shows the depth of the emboss. Reproduce the logo exactly, nothing redrawn or changed. The lower third is plain empty paper. No other text, no other marks." Use the logo version section 12 gives for dark backgrounds, and our colours from section 13.
-4. If you can make images yourself with our logo file as the reference, make them. If not, give us all seven prompts, the six mock-ups and the cover, to run in our image tool with the logo file attached.
-5. Check every result against the logo file. A changed letter, colour or shape fails, and that one is made again. Show us the ones that pass and wait for our yes.
+1. Check the logo file first. It must be a clean file, a transparent PNG or a vector. If all we have is a photo or a crop from another image, stop and tell us, because the image tool will copy any paper texture or background into every mock-up.
+2. Choose six things our customers would really see, using sections 1, 9 and 17: for example a business card, our packaging, signage, a uniform, a menu or a coaster. Only choose things we actually use. Leave out anything that has to look like our building, such as a door or a shopfront, unless one of our photos shows it clearly enough to match. List the six, with the logo version section 12 says suits each background, and wait for our yes.
+3. For each one, write an image prompt in this shape: "Photorealistic brand mock-up photograph: the item, the material, the setting, the light. The logo from the reference image, reproduced exactly as supplied: same shape, same colours, same lettering, nothing redrawn or changed." Fill in a setting our customers would recognise from section 6, and our colours from section 13 by hex value. Give the exact words for anything printed on the item, from section 1, and say no other text.
+4. List what to avoid in every prompt, by name: other logos, made-up text, placeholder text, QR codes, icons, slogans, people's faces, props that aren't ours, colours outside section 13.
+5. Write one more prompt for the booklet's cover: "Photorealistic flat-lay photograph of a premium brand book cover, filling the whole frame: heavy textured paper in our darkest brand colour, with the logo from the reference image foil-stamped and debossed into the paper, centred slightly above the middle. Soft raking light that shows the depth of the emboss. Reproduce the logo exactly, nothing redrawn or changed. The lower third is plain empty paper. No other text, no other marks." Use the logo version section 12 gives for dark backgrounds.
+6. Give us the seven prompts, the six mock-ups and the cover, to run in our image tool with the logo file attached. Never build a mock-up as a page in a layout tool.
+7. When the images come back, check each one against the logo file and our premises photos. A changed letter, colour or shape fails, and so does anything that doesn't look like us. Tell us which to make again and why.
 
 Every mock-up is labelled "Mock-up" wherever it's used, and never presented as a photo of a real item. The cover image carries "Cover image, AI-made from the logo file" instead. When we approve them, save them in brand-dna/booklet/mock-ups/ and add a line to changelog.md with the name of whoever said yes under Approved by (ask if you don't know it). Plain Australian English, with a comma or a full stop wherever an em dash might go. No new slogans or taglines.</pre>
       </div>
@@ -597,17 +603,19 @@ Every mock-up is labelled "Mock-up" wherever it's used, and never presented as a
 <button class="copy" type="button">Copy</button>
 <pre>You're our brand designer, working in Claude Design. Build our brand booklet from our Brand DNA. We're [business name]. Attached are brand-dna.md, our logo and font files, the photos section 15 lists as usable, and our approved mock-ups and cover image.
 
-The booklet is for people: our team, designers, printers and anyone making something for us. It shows the brand in the document and adds no new rules.
+The booklet is for people: our team, designers, printers and anyone making something for us. It shows the brand in the document and adds no new rules. It's the most expensive-looking thing we own, and a busy owner should be proud to leave it on the counter after one flick through.
 
 Pages, in this order:
 - Cover: the cover image from our mock-ups, full page, with our name and "Brand DNA" set beneath the logo in our heading font, widely spaced capitals, a short rule, and the year, with "Cover image, AI-made from the logo file" small in one corner. Nothing else. Set the words in the design, never in the image.
 - Contents.
 - The short version, from the top of the document.
-- Who we are: the core idea, values and personality (sections 2 to 4).
+- Why we're here: the core idea (section 2), on a dark page.
+- Who we are: values and personality (sections 3 and 4).
 - What sets us apart (section 5).
-- Who we serve (section 6).
-- What we're not (section 7).
-- Our story (section 8).
+- Who we serve (section 6), and what choosing us says about them where section 6 covers it.
+- What we're not (section 7), and who we're compared to where section 7 names them.
+- Our story and our dates (section 8).
+- Community: where we show up locally, if section 8 covers it.
 - What we sell (section 9), leaving out prices unless section 9 includes them.
 - Why people trust us (section 10).
 - Our name (section 11).
@@ -617,28 +625,39 @@ Pages, in this order:
 - Type: each font at real sizes, with what it's used for (section 14).
 - Photography and AI imagery, with the always and never rules and the rule on real people (section 15).
 - Voice: how we sound, words we use and never use, and two lines shown as wrong and then fixed, from section 16. Choose ones whose wrong version isn't a slogan.
-- Our channels: one page per channel in section 17, with its example laid out at the channel's real shape.
+- Social media: our real handles, and example posts from section 17 shown inside phone frames at the channel's real shape, each with one of our photos.
+- Weekly posts: three of the content pillars in section 17, each with an example tile.
+- Website (section 18).
+- Questions for us: three at most, from section 20.
 - Back cover: who to ask, from the contact details in section 1, and this line: "This booklet comes from our Brand DNA document. If they disagree, the document wins."
 
-Rules:
-- Use only what's in the attached files. Leave out any line that carries a [NEEDS CONFIRMING], [DECISION] or [INFERRED] marker, section 19, section 20, and the changelog. If that empties a page, keep the page with one line saying it's to come. A colour with no print value yet shows "Print value to come".
+Content rules:
+- Use only what's in the attached files.
+- A line marked [INFERRED] stays in if it reads true. Set it normally and put it on your judgement-call list.
+- Leave out a line marked [NEEDS CONFIRMING] or [DECISION] only when it could be wrong in a way a customer would notice: a date, a price, a policy or a claim. Otherwise keep it and list it.
+- Put no more than three questions to us in the booklet, all on the questions page: the ones that matter most, short enough for a busy owner to answer in a text. Never scatter "to confirm" notes through other pages.
+- Leave out section 19, the rest of section 20 and the changelog. A colour with no print value yet shows "Print value to come".
+- No customer names, customer quotes, or paraphrases of what customers said.
 - Use our logo files exactly as supplied. Never redraw, recolour or retype them.
-- Design the booklet itself in our colours and fonts.
-- Use only the attached photos and mock-ups. Where a page needs a photo we don't have, use a plain placeholder labelled "Photo to come", not a generated picture.
+- Use only the attached photos and mock-ups. Any image that stands for our premises, products, staff or customers is one of our real photos. Where a page needs a photo we don't have, use a plain placeholder labelled "Photo to come", not a generated or stock picture.
 - Label every mock-up as a mock-up, and number every page in the footer except the cover, which counts as page 1.
 - Plain Australian English, with a comma or a full stop wherever an em dash might go. No new slogans or taglines; a tagline of ours appears only where section 11 says it's used.
 
-Design, because this booklet is the first thing people see of the brand and it has to look like us at our best:
-- One idea per page, with wide margins and plenty of empty space. Centre each page's content on the page, never pushed to the top. If a page won't fit with room to breathe, split it over two pages; never shrink the type to fit.
-- Two typefaces only, our heading font and our body font, and no more than four sizes, each with one job on every page: page headings, large lines for short lists and quotes, body, and small labels.
-- Each page opens with one large heading and no more than one short line under it.
-- Lay out What we sell like a beautiful menu or price list in our style: grouped under small headings, item names on the left, prices lined up on the right with dotted leaders, centred, the kind of thing we'd frame and hang on the wall.
-- Short lists, five items or fewer, as large spaced lines rather than small dense bullets. One or two quotes to a page, set large.
-- Lay it out like a good magazine, not a slide deck. Change the shape of the pages: a statement page with one large line, a full-bleed photo with the text beside it, a two-column page with the heading offset to one side. Use fine hairline rules rather than boxes, panels and tick icons, and carry a small running head at the top of each page with the page number at the foot.
-- Open each of the document's four parts (who we are, what we sell, how we look and sound, where we show up) with its own page: a large number and the part's name, on a full-page photo or a plain page in our darkest colour.
-- Before you show us the draft, check every page for crowding, uneven spacing and stray fonts, and fix them.
+Design:
+- The page ground is a warm off-white close to white. Our cream, if we have one, is for panels and swatches, not whole pages, because it reads beige on screen.
+- Every four or five pages, use a dark page in our darkest colour for a section opener or a big statement.
+- Use our real photos large or full bleed, at least every few pages. Never leave a small image floating in empty space.
+- Two typefaces only, the heading font we picked and our body font, and no more than four sizes, each with one job on every page: page headings, large lines for short lists and quotes, body, and small labels.
+- Each page opens with one large heading and no more than one short line under it, then content that fills the page with balance. A page with only one line on it is allowed only as a deliberate dark statement page.
+- No text block over about 60 words, and no list over six items. Short lists as large spaced lines rather than small dense bullets. One or two quotes to a page, set large.
+- Lay out What we sell like a beautiful menu or price list in our style: grouped under small headings, item names on the left, prices lined up on the right with dotted leaders, the kind of thing we'd frame and hang on the wall.
+- Labels and captions should look like print, not software.
+- Avoid: the same template on every page, thin divider lines doing all the structure, everything stacked in one centred column, and pages that are mostly empty.
+- Before you show us the draft, look at every page rendered, and fix crowding, empty pages, uneven spacing and stray fonts.
 
-When the draft is ready, list every page where you had to make a judgement call, so we can check those first. When we approve it, remind us to export it as a PDF and save it in brand-dna/booklet/ with the date in the file name, and give us the changelog.md line to add: the date, "Booklet", the version, the page count and who approved it.</pre>
+When the draft is ready, list every page where you had to make a judgement call, so we can check those first. If we ask for something to change, change it in place; never remove a page, an image or an example we asked for without asking us first.
+
+When we approve it, export the whole booklet as one PDF and save it in brand-dna/booklet/ with the date in the file name, and give us the changelog.md line to add: the date, "Booklet", the version, the page count and who approved it.</pre>
       </div>
       <p class="note"><b>Why the booklet never adds a rule.</b> The moment a rule exists only in the booklet, there are two sources of truth again, and the AI tools cannot read the booklet.</p>
     </div>
