@@ -325,7 +325,7 @@ footer b{color:var(--paper);font-weight:500}
 <footer>
   <div class="wrap">
     <img src="assets/logos/magnum-badge-ring-navy-red-ai.svg" alt="Magnum AI" width="120" height="120">
-    <div class="fl"><span><b>Magnum AI</b> &middot; Members Area</span><span>Illustrations: Magnum AI</span><span>magnumai.com.au</span></div>
+    <div class="fl"><span><b>Magnum AI</b> &middot; Members Area</span><span>Illustrations: Magnum AI</span><span>magnumai.com.au</span><span id="signout" hidden><a href="/auth/logout">Sign out</a></span></div>
   </div>
 </footer>
 
@@ -388,5 +388,6 @@ footer b{color:var(--paper);font-weight:500}
   cta.insertAdjacentElement('afterend',alt);
 })();
 </script>
+<script>if(!/github\.io$/.test(location.hostname)){var so=document.getElementById('signout');if(so)so.hidden=false;}</script>
 </body>
 </html>

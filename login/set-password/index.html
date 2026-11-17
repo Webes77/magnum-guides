@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<title>Set your password · Magnum AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/login/login.css">
+</head>
+<body style="background:#FBFBF9">
+<div class="bar"><div><img src="/login/mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></div></div>
+<header class="masthead"><div>
+  <p class="eyebrow">Magnum AI &middot; Members</p>
+  <h1>Choose a <em>password</em></h1>
+  <p>You will use it with your email address each time you sign in.</p>
+</div></header>
+<main>
+  <div class="msg" id="msg" role="status" hidden></div>
+  <div class="label">New password</div>
+  <form class="card" method="post" action="/auth/password">
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required autofocus>
+    <p class="hint">At least 10 characters. A few words run together works well.</p>
+    <label for="password2">Type it again</label>
+    <input id="password2" name="password2" type="password" autocomplete="new-password" minlength="10" required>
+    <button type="submit">Save and go to the members area</button>
+  </form>
+</main>
+<div class="foot">Access is by invitation &middot; Questions: <a href="mailto:info@magnumai.com.au">info@magnumai.com.au</a></div>
+
+<script>
+(function(){
+  var e=new URLSearchParams(location.search).get('e'),m=document.getElementById('msg'),t='';
+  if(e==='short')t='That password is too short. Use at least 10 characters.';
+  else if(e==='match')t='The two passwords did not match. Type them again.';
+  else if(e==='weak')t='That password is too easy to guess. Try a longer one.';
+  else if(e==='same')t='That is your current password. Choose a different one.';
+  else if(e)t='That did not save. Try again, or ask for a fresh link from the sign in page.';
+  if(t){m.textContent=t;m.hidden=false;}
+})();
+</script>
+</body>
+</html>

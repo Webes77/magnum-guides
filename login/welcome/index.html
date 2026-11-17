@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<title>Welcome · Magnum AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/login/login.css">
+</head>
+<body style="background:#FBFBF9">
+<div class="bar"><div><img src="/login/mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></div></div>
+<header class="masthead"><div>
+  <p class="eyebrow">Magnum AI &middot; Members</p>
+  <h1>Set your <em>password</em></h1>
+  <p>One step. Choose a password and you are in.</p>
+</div></header>
+<main>
+  <div class="label">Your link</div>
+  <form class="card" method="post" action="/auth/verify">
+    <input type="hidden" name="t" id="t">
+    <input type="hidden" name="i" id="i">
+    <p>This link works once. Press the button to carry on and choose your password.</p>
+    <button type="submit">Carry on</button>
+  </form>
+</main>
+<div class="foot">Access is by invitation &middot; Questions: <a href="mailto:info@magnumai.com.au">info@magnumai.com.au</a></div>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search),t=q.get('t'),i=q.get('i');
+  if(!t&&!i){location.replace('/login/?e=link');return;}
+  if(t)document.getElementById('t').value=t;
+  if(i)document.getElementById('i').value=i;
+})();
+</script>
+</body>
+</html>

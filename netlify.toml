@@ -1,0 +1,9 @@
+# Magnum AI members area on Netlify.
+# Every page is gated by netlify/edge-functions/gate.js. A signed-out visitor
+# only ever receives /login/. See MEMBERS-LOGIN.md.
+[build]
+  publish = "."
+  edge_functions = "netlify/edge-functions"
+
+[functions]
+  directory = "netlify/functions"

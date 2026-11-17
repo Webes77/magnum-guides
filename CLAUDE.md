@@ -10,6 +10,12 @@ The Magnum AI members area. A static site on GitHub Pages, served from the
 `main` branch at `https://webes77.github.io/magnum-guides/`. Clients get the
 link. No login. Everything is public, so nothing client-specific ships here.
 
+Since 17 Nov 2026 the same files are also served behind a real login at
+`https://magnum-members.netlify.app` (Netlify gate, Supabase logins). The
+GitHub Pages address is still live until James says to switch it off. Read
+`MEMBERS-LOGIN.md` before touching `login/`, `netlify/`, `netlify.toml` or
+`supabase/`, and never put a secret in this repo.
+
 Owner: James Wheable, Magnum AI, Gold Coast. One-person AI consulting
 business. He is the only author and the only presenter.
 
