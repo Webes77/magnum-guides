@@ -3322,6 +3322,16 @@ the gotchas). Next on the same request: one page, "Same job, other tool",
 mapping what the courses teach in Claude to ChatGPT, Gemini and Copilot,
 every row in the fact register.
 
+**Talk-It-Out is back on James's original, 17 Nov, on his word.** A guest
+asked for it and James saw the shelf version had drifted from his own card
+("The Talk-it-Out-First Prompt Method", Drive `Talk it out .PNG`): expert
+role, "We're going to work on [project] together", "Do not start yet", one
+question at a time. The optimised version keeps that spine and adds a
+playback brief and a wait for his OK. It is one prompt in three places, kept
+byte-identical: the shelf card `talk-it-out`, AI Foundations P1 and the
+projects deck. Field Note 03 carries its own older copy and was left alone,
+as a sent issue.
+
 **Set Up a Project Properly, live 9 Nov at `projects/`, rebuilt 10 Nov.** A
 concept deck for a big-room coaching session: James talks over it on one
 screen with Claude open on the other, nobody builds along, and the group

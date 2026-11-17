@@ -360,7 +360,21 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 <div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="pbtn copy" id="rcopy" data-copy="0">Copy</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
-const P_TALK = "I want your help with a real task, and I would rather talk it\nthrough than write you a brief.\n\nInterview me. Ask one question at a time and wait for my answer before the next\none. Work out what I actually need, who it is for, what it has to do, and what\nwould make it wrong.\n\nStart producing only when you have enough, and tell me what you understood\nbefore you hand me the result.\n\nThe task is: [say it roughly, out loud, in your own words]";
+const P_TALK = `You are a top expert with 10+ years' experience in [topic].
+
+You and I are going to work on [project] together.
+
+Do not start yet.
+
+First, interview me. Ask one question at a time and wait for my answer
+before you ask the next. I will answer roughly, often by voice, so pull out
+what matters. Find out what I actually need, who it is for, what a great
+result looks like, and what would make it wrong. Skip anything I have
+already told you.
+
+When you have enough, play it back to me as a short brief: the goal, who
+it is for, what good looks like, and anything you are still unsure of.
+Wait for my OK before you start the work.`;
 const P_INSTR = `You are helping me write the instructions for this project, the way a
 careful new hire would learn one job before doing it: by asking. This
 project is for one job only, and the instructions go in the project
@@ -752,9 +766,9 @@ const S = [
 {sec:"Steps 1 to 3 · The goal", ic:["Chat bubble","Step 1 · the interview"], h:"Talk-It-<em>Out</em>", pts:[
  "Talk, don’t type. Rough is fine."],
  prompt:P_TALK, where:"Any new chat, on a real task", after:[
- "Say the job you want the project to do.",
+ "Fill in the topic and the job for the project.",
  "Answer one question at a time.",
- "Ask it for the brief when it is done."]},
+ "Check the brief it plays back, then say OK."]},
 
 {sec:"Steps 1 to 3 · The goal", ic:["Spanner","A worked example"], h:"What good instructions <em>look like</em>", rowhead:["Part","The line in the instructions","What it does for you"], rows:[
  ["Role","“You write replies to website enquiries for Harbour Bookkeeping, a two-person practice in Toowoomba.”","It knows whose voice it is writing in."],
