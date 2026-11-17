@@ -443,9 +443,9 @@ Answer with the finished file only: headed, plain language, ready to save
 and upload. Stop after the file.`;
 
 const P_RESEARCH = `You are a researcher building the knowledge file for an expert project:
-a project I will ask for advice on [the topic, for example Facebook
-marketing] for my business. The project reads this file before every
-answer, so what goes in it decides how good the advice is.
+a project I will ask for advice on [the topic] for my business. The
+project reads this file before every answer, so what goes in it decides
+how good the advice is.
 
 My business: [what you sell, who to, and where in Australia].
 
@@ -459,8 +459,9 @@ Rules:
   before I rely on them.
 - Mark anything you could not confirm as [CHECK] rather than stating it,
   because a guess in this file gets repeated in every answer.
-- Write for a small business with no marketing team. Leave out advice
-  that needs a big budget or an agency, because I cannot act on it.
+- Write for a small business with no specialist staff in this area.
+  Leave out advice that needs a big budget or an agency, because I
+  cannot act on it.
 - Keep it under 1,500 words, because the project reads the whole file
   every time and a long file crowds out my question.
 
@@ -505,14 +506,17 @@ const P_SCHED = `You are my business watcher. Each time this job runs, you check
 thing for me and report back in under 200 words, so I can read it in two
 minutes over a coffee.
 
-What to check: [what to review, for example: rule, award or price changes
-that affect my kind of business in Australia, or contracts in my Drive
-that renew in the next 60 days].
+What to check: [what you want checked each time].
 
 Rules:
-- Report only what has changed since the last run, and give me the
-  source or the file for each item, because I will act on these and need
-  to check them first.
+- Where the check is about rules, awards or prices, search current
+  sources online each run rather than answering from memory, because
+  they change.
+- Report only what has changed since the last run. If you cannot see
+  your last report, say so and list what is current, so the next run
+  has something to compare against.
+- Give me the source or the file for each item, because I will act on
+  these and need to check them first.
 - Mark anything you could not confirm as [CHECK] rather than stating it.
 - If nothing has changed, say "Nothing new this time" in one line,
   because a quiet week and a broken job look the same if you send
@@ -522,8 +526,7 @@ Format: up to five items. For each one: what changed, why it matters to
 me, and what I should do, one line each. Stop there.
 
 Before you schedule it, run it once now so I can see a real result. Then
-wait for me to say go, and set it to run [when, for example every Monday
-at 7am].`;
+wait for me to say go, and set it to run [how often and when].`;
 
 const P_SKILL = `You are helping me draft one skill, the way you would learn a job from
 the person who does it: by asking. A skill is a saved way of doing one
@@ -578,10 +581,10 @@ is a pass or a fail that does not depend on your opinion, so do not
 give yourself a score out of ten.
 
 The rules, and why each one is there:
-- COUNT IT: check these things that have one right answer:
-  [for example: under $500 in total, under 150 words, nothing before
-  10am Saturday, the total matches the rows above it]. Mark each one
-  pass or fail, because a number is either right or it is not.
+- COUNT IT: check the things that have one right answer, such as a
+  total, a word limit, a budget or a time. Mine are: [the limits it
+  must meet]. Mark each one pass or fail, because a number is either
+  right or it is not.
 - LOOK IT UP: confirm every fact against a source I name or one you can
   link to, and give me the link or the page. If you cannot confirm a
   fact, say "not confirmed" rather than guessing, because a guess sent
