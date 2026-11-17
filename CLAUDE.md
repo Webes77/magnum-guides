@@ -11,7 +11,7 @@ The Magnum AI members area. A static site on GitHub Pages, served from the
 link. No login. Everything is public, so nothing client-specific ships here.
 
 Since 17 Nov 2026 the same files are also served behind a real login at
-`https://magnum-members.netlify.app` (Netlify gate, Supabase logins). The
+`https://members.magnumai.com.au` (Netlify gate, Supabase logins). The
 GitHub Pages address is still live until James says to switch it off.
 Netlify deploys from `main` by itself on every push, so there is still one
 place to work: this repo. Read

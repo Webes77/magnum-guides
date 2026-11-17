@@ -3,8 +3,9 @@
 Set up 17 November 2026. The members area sits behind a real login. A
 signed-out visitor is sent the login page and nothing else.
 
-Address: https://magnum-members.netlify.app (Netlify team `james-5pmc438`,
-site `magnum-members`).
+Address: https://members.magnumai.com.au (Netlify team `james-5pmc438`,
+site `magnum-members`). The original https://magnum-members.netlify.app
+still works and must keep working: the first invitations link to it.
 
 ## James: add or remove a member
 
@@ -81,9 +82,6 @@ must print 401.
 
 ## Still open (as of 17 Nov 2026)
 
-- Custom address `members.magnumai.com.au` (needs one DNS record). The
-  link maker already accepts it. After it is live, set `site_origin` in the
-  `settings` table to the new address so invitation links use it.
 - Old GitHub Pages address still live and the repo still public. Switch
   over only on James's say-so: replace Pages with redirects, then make the
   repo private.
