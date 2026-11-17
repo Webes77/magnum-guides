@@ -71,19 +71,13 @@ cancellation, and `tier` to the plan). Everything else follows from that.
 
 ## Deploying
 
-The site is not yet linked to GitHub, so a push does not deploy it. Deploy
-with the Netlify connector's deploy command, run from a clean copy of this
-folder (the command fails inside a git worktree):
+Since 17 Nov 2026 Netlify is linked to this GitHub repo. Every push to `main`
+deploys the members site by itself, usually inside a minute. Work in GitHub
+exactly as before; there is nothing to do on Netlify.
 
-```bash
-rsync -a --delete --exclude .git --exclude .DS_Store --exclude .claude ./ /tmp/members-deploy/
-```
-
-Then run the `npx @netlify/mcp` command the connector gives you from
-`/tmp/members-deploy/`, with site id `cdb4bf31-242f-4b88-b009-3bc06b7c0ab0`.
-
-After any deploy, check signed-out: `curl -s -o /dev/null -w '%{http_code}'
-https://magnum-members.netlify.app/ai-foundations/` must print 401.
+After a change to `login/`, `netlify/` or `netlify.toml`, check signed-out:
+`curl -s -o /dev/null -w '%{http_code}' https://magnum-members.netlify.app/ai-foundations/`
+must print 401.
 
 ## Still open (as of 17 Nov 2026)
 
@@ -93,7 +87,6 @@ https://magnum-members.netlify.app/ai-foundations/` must print 401.
 - Old GitHub Pages address still live and the repo still public. Switch
   over only on James's say-so: replace Pages with redirects, then make the
   repo private.
-- Link Netlify to the GitHub repo so a merge to `main` deploys by itself.
 - Turn off open sign-ups in Supabase (Authentication, Sign In / Providers).
   Not a hole: an account that is not on the members list gets nothing. It
   is tidiness.

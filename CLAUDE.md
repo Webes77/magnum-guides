@@ -12,7 +12,9 @@ link. No login. Everything is public, so nothing client-specific ships here.
 
 Since 17 Nov 2026 the same files are also served behind a real login at
 `https://magnum-members.netlify.app` (Netlify gate, Supabase logins). The
-GitHub Pages address is still live until James says to switch it off. Read
+GitHub Pages address is still live until James says to switch it off.
+Netlify deploys from `main` by itself on every push, so there is still one
+place to work: this repo. Read
 `MEMBERS-LOGIN.md` before touching `login/`, `netlify/`, `netlify.toml` or
 `supabase/`, and never put a secret in this repo.
 
