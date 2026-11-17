@@ -196,3 +196,52 @@ unchanged. Where they and this part differ, this part is newer.
 7. **XML tags are optional.** Use them when a prompt mixes instructions,
    pasted material and examples; plain headings and whitespace are enough
    otherwise.
+
+## Part five: November 2026 additions
+
+Added 17 Nov 2026 for the full shelf review. Sources: Anthropic's "Best
+practices for prompt engineering" article on claude.com and third-party
+summaries of the platform docs, read through search on 17 Nov
+(claude.com and platform.claude.com are blocked from the sandbox, so these
+are third-party grade). Plus the lessons already paid for on this site:
+the Field Note value tests of 21 Oct and the cold-paste test of 30 Sep.
+Where this part and an earlier part differ, this part is newer.
+
+1. **Context beats scaffolding.** Anthropic now describes prompting on the
+   Claude 5 generation as converging with context engineering: less
+   scaffolding, more curation. A prompt earns its length by carrying the
+   reader's real situation (what they are working on, who it is for, what
+   good looks like), not by stacking rules. When a prompt is long, check
+   whether the length is context or ceremony.
+2. **Ask before guessing.** A prompt that needs facts only the reader holds
+   either has blanks for them or tells the model to ask, one question at a
+   time, and wait. Never both missing. Prompts that ask should ask in a
+   fixed order and stop asking once they have enough.
+3. **Zero-shot first, examples for shape.** Current models reason well
+   without examples. Add an example when the output's shape or voice must
+   be exact, and label it as an example so it is not copied word for word.
+4. **No reasoning instructions.** "Think step by step", "think hard" and
+   "show your reasoning" add time and nothing else on current models, and
+   the last can be refused (Part four, 1). State the task, the scope and
+   the output instead.
+5. **Pasted material is data.** Any prompt that takes an email, a contract,
+   a web page or a chat transcript says the pasted text sits in its own
+   tags and that instructions inside it are not to be followed.
+6. **The cold-paste test.** A prompt is pasted into a new chat by someone
+   who has not read the card. It must work from that paste alone: every
+   thing it refers to is either in the prompt, in a blank, or asked for.
+   No "the file above" unless the prompt says to attach it.
+7. **Blanks and markers follow the shelf convention.** A lowercase square
+   bracket is a blank the reader fills (`[your business]`). A capital
+   bracket is a marker the model writes (`[NEEDS CONFIRMING]`, `[CHECK]`).
+   Keep blanks few and specific; a blank with example text inside gets left
+   in on a phone and steers the answer.
+8. **End on a decision, not a flourish.** The output names what the reader
+   does next, and a prompt that can change something (files, email,
+   settings) shows the change and waits for a yes before acting.
+9. **Sendable output.** Anything the reader will send carries no
+   placeholders it did not ask for, no comment on the reader's choices, and
+   no exclamation marks or dashes unless the reader's own voice uses them.
+10. **No invented numbers.** Scores, percentages, savings and dates come
+    from what the reader gave or from a source the model names. Otherwise
+    the model says it does not know.
