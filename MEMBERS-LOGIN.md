@@ -64,6 +64,13 @@ Supabase whether the session is still live.
 Nothing secret is in this repo. The Supabase key in the code is the
 publishable one.
 
+## What is open without a login
+
+Field Notes only, on James's word (17 Nov 2026), because he sends them on
+WhatsApp to people who are not members: the issues in `newsletter/`, the
+archive page, their share pictures and the site icons. The list is `OPEN` at
+the top of `gate.js`. Everything else needs a member session.
+
 ## Adding payments later
 
 No rebuild. A payment provider's webhook needs to do one thing: insert or

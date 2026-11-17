@@ -2,8 +2,22 @@
 // member session, no content: the visitor gets the login page instead.
 import { currentSession, isMember, clearCookies, redirect, supa } from "../lib/session.js";
 
+// Field Notes stay open to everyone (James's call, 17 Nov 2026): he sends
+// them on WhatsApp to people who are not members. Only the issues, their
+// archive page, their share pictures and the site icons. Nothing else.
+const OPEN = [
+  /^\/newsletter\/?$/,
+  /^\/newsletter\/index\.html$/,
+  /^\/newsletter\/field-note-[a-z0-9-]+\.html$/,
+  /^\/assets\/thumbnails\/field-note-[a-z0-9-]+\.jpg$/,
+  /^\/assets\/logos\/[A-Za-z0-9._-]+$/,
+];
+
 export default async (req, context) => {
   const url = new URL(req.url);
+  if ((req.method === "GET" || req.method === "HEAD") && OPEN.some((r) => r.test(url.pathname))) {
+    return context.next();
+  }
   const s = await currentSession(req);
   const wantsPage = req.method === "GET" && (req.headers.get("accept") || "").includes("text/html");
 
