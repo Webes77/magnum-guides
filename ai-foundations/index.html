@@ -360,17 +360,21 @@ footer{display:flex;align-items:center;justify-content:space-between;padding:12p
 <div id="reader"><div class="rhead"><span id="rwhere"></span><div class="btns"><button class="pbtn copy" id="rcopy" data-copy="0">Copy</button><button class="rclose" onclick="closeReader()">CLOSE ✕</button></div></div><pre id="rpre"></pre></div>
 
 <script>
-const P1 = `I want your help with a real task, and I would rather talk it
-through than write you a brief.
+const P1 = `You are a top expert with 10+ years' experience in [topic].
 
-Interview me. Ask one question at a time and wait for my answer before the next
-one. Work out what I actually need, who it is for, what it has to do, and what
-would make it wrong.
+You and I are going to work on [project] together.
 
-Start producing only when you have enough, and tell me what you understood
-before you hand me the result.
+Do not start yet.
 
-The task is: [say it roughly, out loud, in your own words]`;
+First, interview me. Ask one question at a time and wait for my answer
+before you ask the next. I will answer roughly, often by voice, so pull out
+what matters. Find out what I actually need, who it is for, what a great
+result looks like, and what would make it wrong. Skip anything I have
+already told you.
+
+When you have enough, play it back to me as a short brief: the goal, who
+it is for, what good looks like, and anything you are still unsure of.
+Wait for my OK before you start the work.`;
 
 const P2 = `From now on, in everything you do for me:
 
@@ -611,9 +615,9 @@ const S = [
  "Use voice. Wispr Flow if you have it. Ramble. It tidies.",
  "It asks what a good brief needs, so you do not have to remember."],
  prompt:P1, where:"Any new chat, on a real task", after:[
- "Say the task roughly, out loud. Do not polish it.",
- "Answer its questions one at a time.",
- "When it tells you what it understood, correct anything wrong before it builds.",
+ "Fill in the topic and the project. Rough is fine.",
+ "Answer its questions one at a time, out loud.",
+ "Correct the brief it plays back before you say OK.",
  "Compare what comes back to what you would have written yourself."]},
 
 {sec:"How to talk", h:"Why it starts to <em>drift</em>", pts:[

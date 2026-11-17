@@ -3041,17 +3041,21 @@ Lay it out as [the shape you want back].
 Give me [the finished thing]. Then stop.`},
 
 {kind:'prompt', id:'talk-it-out', works:'any', sec:'Session one · AI Foundations', title:'Talk-It-Out', where:'Any new chat, on a real task', type:'interview', when:'start', hook:"Say the job out loud and get a brief you could not have typed.", rank:1, levers:['Context','Constraints','Output'],
-prompt:`I want your help with a real task, and I would rather talk it
-through than write you a brief.
+prompt:`You are a top expert with 10+ years' experience in [topic].
 
-Interview me. Ask one question at a time and wait for my answer before the next
-one. Work out what I actually need, who it is for, what it has to do, and what
-would make it wrong.
+You and I are going to work on [project] together.
 
-Start producing only when you have enough, and tell me what you understood
-before you hand me the result.
+Do not start yet.
 
-The task is: [say it roughly, out loud, in your own words]`},
+First, interview me. Ask one question at a time and wait for my answer
+before you ask the next. I will answer roughly, often by voice, so pull out
+what matters. Find out what I actually need, who it is for, what a great
+result looks like, and what would make it wrong. Skip anything I have
+already told you.
+
+When you have enough, play it back to me as a short brief: the goal, who
+it is for, what good looks like, and anything you are still unsure of.
+Wait for my OK before you start the work.`},
 
 {kind:'prompt', id:'state-of-play', works:'any', sec:'Session one · AI Foundations', title:'Make it keep a status note', where:'The start of any long job, or once in the instructions of a project that runs for months', type:'instructions', when:'start', hook:"One rule, and every long job picks up exactly where you left it.", added:'2026-09-07', levers:['Constraints','Format','Output'],
 prompt:`For the rest of this job, keep a status note and never lose it.
