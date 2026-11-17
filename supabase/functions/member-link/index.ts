@@ -19,6 +19,8 @@ const ALLOWED_ORIGINS = [
   "https://members.magnumai.com.au",
 ];
 const INVITE_DAYS = 14;
+// The standalone mark, served from the public login folder of the site.
+const LOGO = "https://magnum-members.netlify.app/login/mark.png";
 
 const db = createClient(
   Deno.env.get("SUPABASE_URL")!,
@@ -51,17 +53,22 @@ function layout(paragraphs: string[], button: string, link: string, after: strin
     `<p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:16px;line-height:1.55;color:#2B2823">${t}</p>`;
   return `<div style="background:#FBFBF9;padding:28px 16px">
 <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;margin:0 auto;background:#FFFFFF;border:2px solid #1E1B17">
-<tr><td style="background:#1F2A37;border-bottom:4px solid #FF6F5E;padding:20px 26px;font-family:'Arial Narrow',Arial,sans-serif;font-size:22px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#F4F1EA">Magnum AI <span style="color:#FF6F5E">Members area</span></td></tr>
+<tr><td style="background:#FFFFFF;border-bottom:4px solid #FF6F5E;padding:18px 26px">
+<table role="presentation" cellpadding="0" cellspacing="0"><tr>
+<td style="padding-right:14px"><img src="${LOGO}" width="52" height="52" alt="Magnum AI" style="display:block;border:0"></td>
+<td style="font-family:'Arial Narrow',Arial,sans-serif;font-size:22px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#1E1B17;line-height:1.1">Magnum AI<br><span style="font-family:'Courier New',monospace;font-size:11px;font-weight:normal;letter-spacing:2px;color:#63615C">Members area</span></td>
+</tr></table></td></tr>
 <tr><td style="padding:26px 26px 10px">
 ${paragraphs.map(p).join("\n")}
 <p style="margin:6px 0 22px"><a href="${link}" style="display:inline-block;background:#FF6F5E;border:2px solid #1E1B17;color:#1E1B17;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;text-decoration:none;padding:12px 24px">${button}</a></p>
 ${after.map(p).join("\n")}
 <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:#63615C">If the button does not work, copy this into your browser:<br><a href="${link}" style="color:#C63A2A;word-break:break-all">${link}</a></p>
 </td></tr>
+<tr><td style="background:#1F2A37;padding:14px 26px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#C8CDD3">Magnum AI &middot; magnumai.com.au</td></tr>
 </table></div>`;
 }
 
-function inviteEmail(name: string | null, link: string, site: string) {
+function inviteEmail(name: string | null, link: string, site: string, note: string | null) {
   const host = site.replace(/^https:\/\//, "");
   return {
     subject: "Your login for the Magnum AI members area",
@@ -69,6 +76,7 @@ function inviteEmail(name: string | null, link: string, site: string) {
       [
         firstName(name),
         "It's James from Magnum AI. I've set you up with your own login for the Magnum AI members area. That's where I keep the guides, the prompts and the weekly reads.",
+        ...(note && note.trim() ? [esc(note.trim())] : []),
         "It now sits behind a login, so each person has their own email and password. To get in, choose your password here:",
       ],
       "Choose my password",
@@ -165,7 +173,7 @@ Deno.serve(async (req) => {
   const email = String(body.email || "").trim().toLowerCase();
   if (!email.includes("@") || email.length > 200) return done();
   const { data: m } = await db.from("members")
-    .select("id, name, access, tier, link_sent_at").eq("email", email).maybeSingle();
+    .select("id, name, access, tier, link_sent_at, invite_note").eq("email", email).maybeSingle();
 
   // James ticked send_invite. Only the database holds the key.
   if (action === "invite") {
@@ -177,7 +185,7 @@ Deno.serve(async (req) => {
     const expires = new Date(Date.now() + INVITE_DAYS * 86400e3).toISOString();
     await db.from("members").update({ invite_token: token, invite_expires: expires }).eq("id", m.id);
     const link = `${site}/login/welcome/?i=${token}`;
-    const sent = await send(cfg, email, inviteEmail(m.name, link, site));
+    const sent = await send(cfg, email, inviteEmail(m.name, link, site, m.invite_note));
     if (sent) await db.from("members").update({ invited_at: new Date().toISOString() }).eq("id", m.id);
     await log(email, link, "invite", sent);
     return done();

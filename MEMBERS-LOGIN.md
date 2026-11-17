@@ -26,6 +26,10 @@ To do it yourself:
    emails them from james@magnumai.com.au and unticks itself. `invited_at`
    shows when it went. Adding a row on its own sends nothing.
 
+To add a personal line for one person, type it in `invite_note` on their row
+before you tick `send_invite`. It appears as its own paragraph near the top.
+Leave it empty for the standard invitation.
+
 The invitation says who it is from, what the members area is, and gives one
 button to choose a password. The link is theirs only, works once and lasts
 14 days. A copy lands in your Sent Items. Tick `send_invite` again to send a
