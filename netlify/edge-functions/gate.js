@@ -11,6 +11,13 @@ const OPEN = [
   /^\/newsletter\/field-note-[a-z0-9-]+\.html$/,
   /^\/assets\/thumbnails\/field-note-[a-z0-9-]+\.jpg$/,
   /^\/assets\/logos\/[A-Za-z0-9._-]+$/,
+  // The Brisbane AI Summit page is open too (James's call, 17 Nov 2026):
+  // the 15 Nov This Week in AI links to it. The page, its pictures and the
+  // three style sheets it loads.
+  /^\/news\/brisbane-ai-summit-2026\/?$/,
+  /^\/news\/brisbane-ai-summit-2026\/index\.html$/,
+  /^\/assets\/illustrations\/summit-[a-z0-9-]+\.jpg$/,
+  /^\/assets\/(site|topbar|illustration)\.css$/,
 ];
 
 export default async (req, context) => {

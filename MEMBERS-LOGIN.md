@@ -71,6 +71,11 @@ WhatsApp to people who are not members: the issues in `newsletter/`, the
 archive page, their share pictures and the site icons. The list is `OPEN` at
 the top of `gate.js`. Everything else needs a member session.
 
+Also open, same day, on James's word: the Brisbane AI Summit page
+(`news/brisbane-ai-summit-2026/`), its pictures and the three style sheets
+it loads, because the 15 Nov This Week in AI links to it. Its links to the
+rest of the members area still lead to the login page.
+
 ## Adding payments later
 
 No rebuild. A payment provider's webhook needs to do one thing: insert or
