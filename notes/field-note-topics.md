@@ -35,7 +35,7 @@ The topic is a starting point. Build the best prompt for it to the standards in
 `notes/prompt-review-standards.md`. Use a shelf card when one fits; otherwise
 write the prompt fresh and list it in the email as a card for the shelf.
 
-The rotation stands at: last issue was group C (issue 13). Next is group D. Topic 14 was tried first on 11 Nov and dropped after three value-test rounds; it stays next.
+The rotation stands at: last issue was group C (issue 13). Next is group D. Topic 14 was tried first on 11 Nov and dropped after three value-test rounds; it stays next. On 18 Nov group D was tried: topic 21 (plan any trip or event) and topic 22 (household admin, as renewals) each missed the value test after three rounds, so issue 14 was built on a branch and not published. Both stay next; group D is still due.
 
 ## A. Push what AI can do (it works on your email, files or calendar)
 
@@ -68,8 +68,8 @@ The rotation stands at: last issue was group C (issue 13). Next is group D. Topi
 
 ## D. Run your life better
 
-21. next. Plan any big event or trip: day by day, with a budget and a checklist.
-22. next. Household admin in one place: renewals, dates, who does what.
+21. next (tried 18 Nov, see log). Plan any big event or trip: day by day, with a budget and a checklist.
+22. next (built 18 Nov as issue 14 on a branch, not live). Household admin in one place: renewals, dates, who does what.
 23. next. Get more from any appointment (doctor, accountant, bank): it writes your questions beforehand.
 24. next. A week of meals from a photo of what's in your fridge and pantry.
 25. next. Fix anything: photograph the broken thing or the error message, get the fix step by step.

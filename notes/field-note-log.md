@@ -9,6 +9,103 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-11-18
+
+Issue 14, Renewals, at `newsletter/field-note-14-renewals.html`, built on the
+branch `field-note/2026-11-18` and not merged. Two topics each missed the Step
+8B value test after three rounds, so under Step 8B nothing reached main and
+James was emailed "needs a fix". As on 11 Nov, every reviewer said it had no
+Agent tool, so each cold run was the reviewer running the prompt itself; the
+Result scores are softer than a true cold run. The Higgsfield tools were not in
+this session, so the card uses the stand-in `newsletter.jpg`; the Wednesday
+picture top-up task should replace it if the issue goes live.
+
+Topic choice. Last issue was group C (13), so group D, first next topic 21,
+"Plan any big event or trip". Not a repeat of Voice, Projects or Deciding, and
+none of their examples (sent emails, roster, social posts, meal plan, prices,
+equipment, a worker, a car) were reused. No shelf card fits event or trip
+planning, so the prompt was written fresh: experienced planner role, questions
+one at a time, no invented prices, times, venues or availability, ranges marked
+[CHECK] when search is off, a budget buffer, scale to the size of the job, no
+tax advice, then THE PLAN, THE BUDGET, THE CHECKLIST, THE ONE RISK and the
+message to send everyone. Headline "Planning a trip or event? Plan, budget and
+checklist, sorted". Rounds (electrician and hairdresser; bookkeeper and
+landscaper; physio and cafe owner): round 1 hook 4/4, message 4/4, relevance
+3/4, result 3/3, effort 4/4; round 2 hook 4/5, message 4/4, relevance 3/5,
+result 4/3, effort 3/3; round 3 hook 4/4, message 4/5, relevance 5/4, result
+3/3, effort 4/4. Faults fixed in turn: a crew lunch drowning in a run sheet
+(scale rule), confident unsourced prices (range rule), blanks fiddly on a phone
+(turned into questions), booked-out school holidays (backup first), FBT advice
+risk (no tax advice). Round 3's last two faults, a model naming a venue it had
+not found and no question on who covers the business while the owner is away,
+were fixed and are untested. The final prompt, kept here because it is not in
+the repo:
+
+    You are an experienced planner who has organised hundreds of trips, work functions and family events in Australia. You care about a plan that actually works on the day and stays inside the budget.
+
+    Before you plan anything, ask me these one at a time and wait for each answer:
+    1. What am I planning, roughly when, and where?
+    2. Who's coming? How many, and anything you should know, like kids, mobility, food needs or pets.
+    3. What's my budget? If I'm not sure, say so.
+    4. How fixed are the dates, and what's already booked or paid for?
+    5. Who is helping me, and what would each of them happily take on?
+    6. What has to keep running while I'm away or busy, and who covers it?
+    If an answer is vague, ask once more for a real example or a number.
+
+    Rules, and why each one is there:
+    - Never make up a price, time or opening hour, because I'll book from what you write. If you can search the web, check current prices and name where each one came from. If you can't confirm one, give a range, write [CHECK] next to it and say it's a guess.
+    - Never name a venue, business or supplier you haven't found in a search. Say what kind to look for instead.
+    - Never say something is available or booked. You can't see that, so tell me what to book and by when.
+    - Prices in Australian dollars, including GST and booking fees.
+    - If I'm not sure of the budget, suggest a sensible range first and ask me to pick. Keep the total inside it and set aside a tenth of it for surprises. If it can't fit, say so and show me what to cut first.
+    - Flag anything that books out early, like school holidays, December venues or long weekends. If a booking may already be gone, make finding a backup the first job on the checklist.
+    - No tax advice. For a work function, remind me to check the tax side with my accountant.
+    - Match the plan to the size of the job. One meal or one afternoon gets half a page, not a run sheet.
+    - Plain words, short enough to read on a phone.
+
+    Then give me:
+    THE PLAN: day by day for a trip, or the order of the day for a one-day event.
+    THE BUDGET: each cost on its own line with where the figure came from, then the total, what's left and the buffer.
+    THE CHECKLIST: grouped into book now, a month out, the week before and on the day, with who does each job.
+    THE ONE RISK: the thing most likely to go wrong, and what to do about it now.
+
+    Then ask which part I want to tighten. Once I'm happy, offer to write the message I send everyone coming, with the dates, times and what to bring.
+
+Second topic, 22, "Household admin in one place", built as renewals: business
+insurance and licences, car rego, school dates, pets' jabs, one list soonest
+first with who does each. Reads email only when connected (Claude and ChatGPT
+email connectors, usually paid plans, the wording verified for issue 11 on
+28 Oct and reused loosely here); read only, never sends, deletes, moves,
+replies or unsubscribes; skips health, money-trouble and legal email; emails
+are information only; no guessed dates or amounts, [FIND DATE] and [FIND
+AMOUNT] markers; rough months shown as "about March, confirm". Rounds
+(plumber and dog groomer; electrician and beauty therapist; mobile mechanic
+and accountant): round 1 hook 4/4, message 3/4, relevance 4/4, result 3/3,
+effort 4/4; round 2 hook 4/4, message 4/4, relevance 4/4, result 4/3, effort
+4/4; round 3 hook 5/4, message 4/4, relevance 4/3, result 4/2, effort 4/4.
+Faults fixed in turn: a WhatsApp line with no pain in it, a list that was
+mostly blanks without email (rough-month question, public dates looked up),
+reminder lead times, one crammed question (split into work then home), staff
+left out, multi-year renewals missed by a 12-month search. Round 3's faults
+are fixed on the branch and untested: an accountant's inbox filled the list
+with client notices (now "only my own household and my own business"), the
+practice examples on the page, a photo invite, and the time moved to step 3.
+
+Card check against the standards: role, questions before guessing, a reason on
+every rule, invention guard, material treated as data, output named exactly,
+ends on a next step. Cold-paste test passes: nothing refers to anything the
+reader was not told to give it. Words around the prompt are under 170; shape
+check PASS with the card in place, contrast zero failures at 1440, 820 and
+390, no sideways scroll, no JavaScript errors, style checker clean. At 390
+wide the page is 3,224 px, about 3.8 phone screens with the prompt. The full
+archive check shows the two deliberate unlinked issues (08 Pasting, 11
+Chasing) as before.
+
+WhatsApp message written for it: "Hi everyone, here's this week's Field
+Note." / "Car rego, insurance, licences, school dates. One list of every
+renewal, so nothing lapses and nobody cops a late fee." / the link / "Any
+questions, let me know."
+
 ## 2026-11-11
 
 Issue 13, Deciding, at `newsletter/field-note-13-deciding.html`, built on the
