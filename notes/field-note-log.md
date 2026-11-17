@@ -11,6 +11,12 @@ Field Note was worth having, which is the thing to watch over the first month.
 
 ## 2026-11-18
 
+Published 18 Nov at James's word, the same morning, under the new Step 8B
+rule that the value test never holds an issue back. The card carries its own
+cartoon, `assets/illustrations/field-note-14.jpg`, a still life of the renewal
+pile on a kitchen bench (the first take was redone for readable weekday names
+on the calendar). Shape check, style checker and contrast on the issue PASS.
+
 Issue 14, Renewals, at `newsletter/field-note-14-renewals.html`, built on the
 branch `field-note/2026-11-18` and not merged. Two topics each missed the Step
 8B value test after three rounds, so under Step 8B nothing reached main and
