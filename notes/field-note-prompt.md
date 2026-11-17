@@ -139,6 +139,8 @@ A reader decides in seconds whether to keep going, and decides on three question
 5. The prompt, with its copy button.
 6. Why it works: two to four short sentences built on one everyday comparison.
 
+Above the card, the template carries a fixed intro on the navy, "What is the Weekly Field Note?" and two sentences saying what it is and how to use it. James asked for it on 18 Nov because a reader sent one issue had no idea what it was. Keep it word for word on every issue; it is not part of the 170 words.
+
 Nothing else goes on the page. No second headline, no dropdown, no deep dive, no five rules, no story, no pull quote, no reading time, no figure. tools/check-field-note.js --shape fails an issue with a fold or pages, holds the headline to ten words and holds everything around the prompt to 170 words. If an idea needs more than that to make sense, it is the wrong idea for a Field Note; pick a different card rather than pad.
 
 OUTPUT

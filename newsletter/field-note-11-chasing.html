@@ -93,15 +93,23 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
 .share-btn:hover{border-color:var(--white)}
 .share-btn.done{background:var(--on-navy);color:var(--ink)}
 
+.intro{width:100%;max-width:680px;padding:4px 0 22px;color:var(--on-navy)}
+.intro h2{font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(28px,6.4vw,36px);line-height:1.05;color:var(--on-navy);margin:0 0 10px}
+.intro h2 em{font-style:normal;color:var(--coral-bright)}
+.intro p{font-size:18px;line-height:1.5;color:var(--on-navy);max-width:60ch}
+
 @media (max-width:480px){
   body{padding:0 0 32px}
   .sitebar{padding:14px 16px}
+  .intro{padding:0 16px 20px}
   .note{border-left:0;border-right:0;padding:24px 18px 22px}
   .sharebar{padding:18px 16px 0}
 }
 @media print{
   html,body{background:#fff}
   .sitebar,.sharebar,.copy{display:none}
+  .intro,.intro h2,.intro p{color:var(--ink)}
   .note{border:0}
   .pbox{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
@@ -113,6 +121,11 @@ body{background:#1F2A37;font-family:var(--sans);color:var(--body);
   <span class="wordmark">Magnum AI</span>
   <span class="issue">Weekly Field Note / No. 11</span>
 </nav>
+
+<header class="intro">
+  <h2>What is the <em>Weekly Field Note?</em></h2>
+  <p>One free AI prompt every Wednesday that does a real job for you, at work or at home. Copy the prompt below, paste it into Claude or ChatGPT, and follow the three steps. That&rsquo;s it.</p>
+</header>
 
 <main class="note">
   <h1>Customer hasn&rsquo;t paid? <em>Chase it without losing them</em></h1>
