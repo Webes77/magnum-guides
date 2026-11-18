@@ -229,6 +229,16 @@ github.io is blocked from this sandbox, so you can never confirm the page is liv
 
 If the push is refused, write the full page and the full card source into the Drive Vault folder as field-note-YYYY-MM-DD-NOT-PUSHED.md and put it under MAKE A DECISION ON EACH ITEM BELOW.
 
+Step 10B, the email draft. Only when Step 10 sent the issue to main. Since 18 Nov 2026 the Field Note also goes to email subscribers through MailerLite, and James presses send himself. You create the draft. You never send it and never schedule it.
+
+Load the MailerLite connector's create_campaign tool with ToolSearch (search "mailerlite create_campaign"). If the connector is not attached, skip this step, say so in one item under MAKE A DECISION ON EACH ITEM BELOW, and carry on.
+
+Read templates/field-note-email.html. Fill its six slots and nothing else: {{NN}} is the issue number, {{SUBJECT}} is the headline as plain text, {{HEADLINE}} is the headline with its coral phrase wrapped in <span style="color:#C63A2A;"> and </span>, {{WHAT_IT_IS}} and {{WHAT_YOU_GET}} are those two answers from the page word for word, and {{URL}} is https://members.magnumai.com.au/newsletter/field-note-NN-slug.html. Leave {$unsubscribe} exactly as it is; MailerLite turns it into the unsubscribe link. Change no other character of the template.
+
+Call create_campaign once with: name "Field Note NN · Theme", type "regular", subject the headline as plain text, from_name "James Wheable, Magnum AI", from "news@magnumai.com.au", reply_to "james@magnumai.com.au", groups ["204370022473139596"], and content the filled template. Do not call schedule_campaign or any tool that sends. If create_campaign fails twice, put it under MAKE A DECISION ON EACH ITEM BELOW and carry on.
+
+Keep the campaign id it returns. The link James needs is https://dashboard.mailerlite.com/campaigns/ followed by that id and /edit.
+
 Step 11, email James. Use the Microsoft 365 connector's outlook_send_mail (load with ToolSearch "select:mcp__Microsoft_365__outlook_send_mail") to send the email from James's Outlook to james@magnumai.com.au and nobody else, bodyType 'text'. Never send it from the Gmail account; Gmail mail does not reach James's Outlook. Subject: Field Note NN is live - D Month YYYY, or Field Note NN needs a fix - D Month YYYY when Step 10 could not send it to main. This is a standing scheduled send with pre-approval for this recipient and this recipient only.
 
 WRITING TO JAMES
@@ -279,7 +289,11 @@ proof. The email is the handover.
 
 No em dashes anywhere. Never the word "solid". Australian English.
 
-The email is three blocks, in this order, and nothing else. The headings are exactly as written here, each followed by its one line before any content.
+The email is four blocks, in this order, and nothing else. The first block appears only when Step 10B made a draft. The headings are exactly as written here, each followed by its one line before any content.
+
+PRESS SEND ON THIS WEEK'S EMAIL
+Under it: "The email to your subscribers is ready and waiting. Open it, read it, press send."
+Then the MailerLite link from Step 10B on its own line. Then one line: "It goes to everyone on your newsletter list. Nothing has been sent."
 
 SEND THIS TO YOUR CLIENTS
 Under it: "Copy everything below and paste it into your WhatsApp broadcast."
@@ -295,7 +309,7 @@ Then the live URL on its own line, https://webes77.github.io/magnum-guides/newsl
 
 Everything the old email carried under THE IDEA, UP FRONT, WHAT IS BUILT, THE LEAD, THE CARD, CARD CHECK, CHECK and ASSUMPTIONS goes into the log entry at Step 9 instead, in full. None of it is lost, none of it is emailed. A hundred and fifty words is the ceiling for the second and third blocks together.
 
-Step 12, stop. Beyond the merge Step 10 authorises, nothing else is sent, posted, replied to, merged or changed. If a step fails after two attempts, put it under MAKE A DECISION ON EACH ITEM BELOW in the email and continue with the remaining steps rather than abandoning the run.
+Step 12, stop. Beyond the merge Step 10 authorises and the unsent draft Step 10B creates, nothing else is sent, posted, replied to, merged or changed. If a step fails after two attempts, put it under MAKE A DECISION ON EACH ITEM BELOW in the email and continue with the remaining steps rather than abandoning the run.
 
 RUNNING UNATTENDED (added 4 Oct 2026, tuned for Opus 5.5)
 - Look before you act. Before you decide or write anything, open the emails, calendar entries, files and records that could bear on the job, including ones these steps do not name, and use what you find.
