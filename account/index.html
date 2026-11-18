@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<title>Your account · Magnum AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/login/login.css">
+<link rel="stylesheet" href="/assets/topbar.css">
+<style>
+.who{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.2;color:var(--ink);word-break:break-all;margin:0 0 6px}
+.card p.note{color:var(--mute);font-size:14px;margin:0}
+</style>
+</head>
+<body style="background:#FBFBF9">
+<header class="mtb"><div class="mtb-in"><a class="mtb-brand" href="/"><img src="/assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="/#sessions">Courses</a><a href="/prompts/">Prompts</a><a href="/#week">This week</a><a href="/#library">Guides</a><a href="/ai-tools/">Tools</a><a href="/account/" aria-current="page">Account</a></nav></div></header>
+<header class="masthead"><div>
+  <p class="eyebrow">Magnum AI &middot; Members</p>
+  <h1>Your <em>account</em></h1>
+  <p>Who you are signed in as, your password, and the way out.</p>
+</div></header>
+<main>
+  <div class="msg" id="msg" role="status" hidden></div>
+
+  <div class="label">Signed in as</div>
+  <div class="card">
+    <p class="who" id="who">&nbsp;</p>
+    <p class="note">This is the email address you sign in with.</p>
+  </div>
+
+  <div class="label">Change your password</div>
+  <form class="card" method="post" action="/auth/password">
+    <input type="hidden" name="from" value="account">
+    <label for="password">New password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required>
+    <p class="hint">At least 10 characters. A few words run together works well.</p>
+    <label for="password2">Type it again</label>
+    <input id="password2" name="password2" type="password" autocomplete="new-password" minlength="10" required>
+    <button type="submit" class="plain">Save new password</button>
+  </form>
+
+  <div class="label">Sign out</div>
+  <form class="card" method="get" action="/auth/logout">
+    <p>Signs you out on this device. Sign back in any time with your email and password.</p>
+    <button type="submit">Sign out</button>
+  </form>
+</main>
+<div class="foot">Questions: <a href="mailto:info@magnumai.com.au">info@magnumai.com.au</a></div>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search),m=document.getElementById('msg'),t='',e=q.get('e');
+  if(q.get('saved'))t='Your new password is saved. Use it next time you sign in.';
+  else if(e==='short')t='That password is too short. Use at least 10 characters.';
+  else if(e==='match')t='The two passwords did not match. Type them again.';
+  else if(e==='weak')t='That password is too easy to guess. Try a longer one.';
+  else if(e==='same')t='That is your current password. Choose a different one.';
+  else if(e)t='That did not save. Sign out, sign back in, then try again.';
+  if(t){m.textContent=t;m.hidden=false;}
+  fetch('/auth/me',{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(d&&d.email)document.getElementById('who').textContent=d.email;
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>
