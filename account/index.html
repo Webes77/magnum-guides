@@ -22,7 +22,7 @@
 <header class="masthead"><div>
   <p class="eyebrow">Magnum AI &middot; Members</p>
   <h1>Your <em>account</em></h1>
-  <p>Who you are signed in as, your password, and the way out.</p>
+  <p>Who you are signed in as, your password, signing out and closing your account.</p>
 </div></header>
 <main>
   <div class="msg" id="msg" role="status" hidden></div>
@@ -49,6 +49,15 @@
     <p>Signs you out on this device. Sign back in any time with your email and password.</p>
     <button type="submit">Sign out</button>
   </form>
+
+  <div class="label" id="close">Close your account</div>
+  <form class="card" method="post" action="/auth/close">
+    <p>This removes your login and takes you off the members list. You lose access to the guides, the prompts and the weekly reads straight away.</p>
+    <p>It cannot be undone. To come back you would need a new invitation.</p>
+    <label for="closepw">Your password, to confirm</label>
+    <input id="closepw" name="password" type="password" autocomplete="current-password" required>
+    <button type="submit" class="plain">Close my account</button>
+  </form>
 </main>
 <div class="foot">Questions: <a href="mailto:info@magnumai.com.au">info@magnumai.com.au</a></div>
 
@@ -60,6 +69,9 @@
   else if(e==='match')t='The two passwords did not match. Type them again.';
   else if(e==='weak')t='That password is too easy to guess. Try a longer one.';
   else if(e==='same')t='That is your current password. Choose a different one.';
+  else if(e==='pw')t='That password was not right, so your account is still open. Try again.';
+  else if(e==='slow')t='Too many tries in a short time. Wait a minute, then try again.';
+  else if(e==='closefail')t='That did not go through and your account is still open. Email info@magnumai.com.au and it will be closed for you.';
   else if(e)t='That did not save. Sign out, sign back in, then try again.';
   if(t){m.textContent=t;m.hidden=false;}
   fetch('/auth/me',{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
