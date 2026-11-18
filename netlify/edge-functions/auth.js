@@ -17,6 +17,16 @@ export default async (req) => {
     return redirect("/login/?out=1", clearCookies());
   }
 
+  // The account page asks who is signed in. The session cookies are HttpOnly,
+  // so the page cannot read them itself.
+  if (route === "/auth/me") {
+    const s = await currentSession(req);
+    const h = new Headers({ "content-type": "application/json", "cache-control": "no-store" });
+    for (const c of s.set) h.append("set-cookie", c);
+    if (!isMember(s.claims)) return new Response("{}", { status: 401, headers: h });
+    return new Response(JSON.stringify({ email: s.claims.email || "" }), { headers: h });
+  }
+
   if (req.method !== "POST") return redirect("/login/");
   // Forms must come from this site.
   const origin = req.headers.get("origin");
@@ -65,18 +75,21 @@ export default async (req) => {
   }
 
   if (route === "/auth/password") {
+    // Used by the first-time page and by the account page.
+    const acct = val("from") === "account";
+    const page = acct ? "/account/" : "/login/set-password/";
     const pw = val("password");
-    if (pw.length < 10) return redirect("/login/set-password/?e=short");
-    if (pw !== val("password2")) return redirect("/login/set-password/?e=match");
+    if (pw.length < 10) return redirect(page + "?e=short");
+    if (pw !== val("password2")) return redirect(page + "?e=match");
     const s = await currentSession(req);
     if (!s.claims) return redirect("/login/?e=link", s.set);
     const r = await supa("/auth/v1/user", { method: "PUT", token: s.token, body: { password: pw } });
     if (!r.ok) {
       const code = r.data && (r.data.error_code || r.data.code);
       const e = code === "weak_password" ? "weak" : code === "same_password" ? "same" : "fail";
-      return redirect("/login/set-password/?e=" + e, s.set);
+      return redirect(page + "?e=" + e, s.set);
     }
-    return redirect("/", s.set);
+    return redirect(acct ? "/account/?saved=1" : "/", s.set);
   }
 
   return redirect("/login/");

@@ -3103,6 +3103,11 @@ full-screen presenter tools. The Field Notes and their archive never link
 into the members area, by the 16 Sep rule. A new guide gets the bar: copy
 the header from any guide and link `../assets/topbar.css`.
 
+**Account is the sixth link in the bar, 18 Nov, on James's word.** Every
+page with the bar, and the front page, links to `account/`: who is signed
+in, change password, sign out. It is part of the login (see
+`MEMBERS-LOGIN.md`); keep the link when copying the header.
+
 The Routines screen is called Scheduled now (James, 15 Oct). Where this file
 says "Routines UI" or "the routine's settings", read Scheduled. Connectors on
 a scheduled task are added there by James; `update_trigger` has no connectors

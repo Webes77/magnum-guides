@@ -52,6 +52,7 @@ email went.
 | Sign in, sign out, links | `netlify/edge-functions/auth.js` | Sets the session in two HttpOnly cookies |
 | Shared code | `netlify/lib/session.js` | Checks the session signature against Supabase's public keys |
 | Login pages | `login/` | Sign in, welcome, choose a password. House style |
+| Account page | `account/` | Shows who is signed in, changes the password, signs out. Linked as Account in the top bar of every page. No self-serve delete: removing a member is James's call, on the members list |
 | Link maker | Supabase function `member-link` (source in `supabase/functions/`) | Makes invitation and reset links, only for addresses on the list, and writes the two emails |
 | Email sender | Make scenario "Magnum members area: login emails" | Takes the email from the link maker and sends it from James's Outlook. Swappable: the address it posts to is one row in the private `settings` table |
 | Keep-alive | `netlify/functions/keepalive.mjs` | Touches Supabase daily so the free project never rests |
