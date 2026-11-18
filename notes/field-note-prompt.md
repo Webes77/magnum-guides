@@ -237,7 +237,7 @@ Read templates/field-note-email.html. Fill its six slots and nothing else: {{NN}
 
 Call create_campaign once with: name "Field Note NN · Theme", type "regular", subject the headline as plain text, from_name "James Wheable, Magnum AI", from "news@magnumai.com.au", reply_to "james@magnumai.com.au", groups ["204370022473139596"], and content the filled template. Do not call schedule_campaign or any tool that sends. If create_campaign fails twice, put it under MAKE A DECISION ON EACH ITEM BELOW and carry on.
 
-Keep the campaign id it returns. The link James needs is https://dashboard.mailerlite.com/campaigns/ followed by that id and /edit.
+MailerLite has no direct link to one draft. The link James needs is always the drafts page, https://dashboard.mailerlite.com/campaigns/status/draft, where he opens the draft by its name.
 
 Step 11, email James. Use the Microsoft 365 connector's outlook_send_mail (load with ToolSearch "select:mcp__Microsoft_365__outlook_send_mail") to send the email from James's Outlook to james@magnumai.com.au and nobody else, bodyType 'text'. Never send it from the Gmail account; Gmail mail does not reach James's Outlook. Subject: Field Note NN is live - D Month YYYY, or Field Note NN needs a fix - D Month YYYY when Step 10 could not send it to main. This is a standing scheduled send with pre-approval for this recipient and this recipient only.
 
@@ -293,7 +293,7 @@ The email is four blocks, in this order, and nothing else. The first block appea
 
 PRESS SEND ON THIS WEEK'S EMAIL
 Under it: "The email to your subscribers is ready and waiting. Open it, read it, press send."
-Then the MailerLite link from Step 10B on its own line. Then one line: "It goes to everyone on your newsletter list. Nothing has been sent."
+Then the drafts page link from Step 10B on its own line. Then one line: "Open the draft called Field Note NN, check it, then press Send. It goes to everyone on your newsletter list. Nothing has been sent."
 
 SEND THIS TO YOUR CLIENTS
 Under it: "Copy everything below and paste it into your WhatsApp broadcast."
