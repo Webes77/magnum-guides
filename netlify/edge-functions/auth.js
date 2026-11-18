@@ -92,6 +92,23 @@ export default async (req) => {
     return redirect(acct ? "/account/?saved=1" : "/", s.set);
   }
 
+  // A member closes their own account from the account page. They type
+  // their password again first, so a stray click or a borrowed laptop cannot
+  // do it. The database function removes them from the members list and
+  // deletes the login.
+  if (route === "/auth/close") {
+    const s = await currentSession(req);
+    if (!s.claims || !s.claims.email) return redirect("/login/", s.set);
+    const r = await supa("/auth/v1/token?grant_type=password", {
+      body: { email: s.claims.email, password: val("password") },
+    });
+    if (r.status === 429) return redirect("/account/?e=slow#close", s.set);
+    if (!r.ok || !r.data || !r.data.access_token) return redirect("/account/?e=pw#close", s.set);
+    const x = await supa("/rest/v1/rpc/close_my_account", { token: r.data.access_token, body: {} });
+    if (!x.ok || x.data !== true) return redirect("/account/?e=closefail#close", s.set);
+    return redirect("/login/?closed=1", clearCookies());
+  }
+
   return redirect("/login/");
 };
 

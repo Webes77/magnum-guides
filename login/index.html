@@ -52,7 +52,8 @@
   else if(e==='link')t='That link has been used or has run out. Ask for a fresh one below.';
   else if(e==='slow')t='Too many tries in a short time. Wait a minute, then try again.';
   else if(q.get('sent'))t='If that address is on the members list, a link to set your password is on its way by email. It works once and lasts an hour.';
-  else if(q.get('out'))t='You are signed out.';
+  else if(q.get('out'))t='You are logged out.';
+  else if(q.get('closed'))t='Your account is closed and your login has been removed.';
   if(t){m.textContent=t;m.hidden=false;}
 })();
 </script>
