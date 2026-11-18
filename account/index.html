@@ -23,11 +23,11 @@ if(/github\.io$/.test(location.hostname))location.replace('https://members.magnu
 </style>
 </head>
 <body style="background:#FBFBF9">
-<header class="mtb"><div class="mtb-in"><a class="mtb-brand" href="/"><img src="/assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="/#sessions">Courses</a><a href="/prompts/">Prompts</a><a href="/#week">This week</a><a href="/#library">Guides</a><a href="/ai-tools/">Tools</a><a href="/account/" aria-current="page">Account</a></nav></div></header>
+<header class="mtb"><div class="mtb-in"><a class="mtb-brand" href="/"><img src="/assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="/#sessions">Courses</a><a href="/prompts/">Prompts</a><a href="/#week">This week</a><a href="/#library">Guides</a><a href="/ai-tools/">Tools</a><a href="/account/" aria-current="page">Account</a><a href="/auth/logout">Log out</a></nav></div></header>
 <header class="masthead"><div>
   <p class="eyebrow">Magnum AI &middot; Members</p>
   <h1>Your <em>account</em></h1>
-  <p>Who you are signed in as, your password, signing out and closing your account.</p>
+  <p>Who you are signed in as, your password, logging out and closing your account.</p>
 </div></header>
 <main>
   <div class="msg" id="msg" role="status" hidden></div>
@@ -49,10 +49,10 @@ if(/github\.io$/.test(location.hostname))location.replace('https://members.magnu
     <button type="submit" class="plain">Save new password</button>
   </form>
 
-  <div class="label">Sign out</div>
+  <div class="label">Log out</div>
   <form class="card" method="get" action="/auth/logout">
-    <p>Signs you out on this device. Sign back in any time with your email and password.</p>
-    <button type="submit">Sign out</button>
+    <p>Logs you out on this device. Sign back in any time with your email and password.</p>
+    <button type="submit">Log out</button>
   </form>
 
   <div class="label" id="close">Close your account</div>
@@ -77,7 +77,7 @@ if(/github\.io$/.test(location.hostname))location.replace('https://members.magnu
   else if(e==='pw')t='That password was not right, so your account is still open. Try again.';
   else if(e==='slow')t='Too many tries in a short time. Wait a minute, then try again.';
   else if(e==='closefail')t='That did not go through and your account is still open. Email info@magnumai.com.au and it will be closed for you.';
-  else if(e)t='That did not save. Sign out, sign back in, then try again.';
+  else if(e)t='That did not save. Log out, sign back in, then try again.';
   if(t){m.textContent=t;m.hidden=false;}
   fetch('/auth/me',{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
     if(d&&d.email)document.getElementById('who').textContent=d.email;
