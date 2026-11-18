@@ -14,6 +14,9 @@ const OPEN = [
   // The newsletter sign-up block the Field Notes and their archive load
   // (18 Nov 2026). One script, no secrets in it.
   /^\/assets\/subscribe\.js$/,
+  // The sign-up page James links from WhatsApp (19 Nov 2026).
+  /^\/subscribe\/?$/,
+  /^\/subscribe\/index\.html$/,
   // The Brisbane AI Summit page is open too (James's call, 17 Nov 2026):
   // the 15 Nov This Week in AI links to it. The page, its pictures and the
   // three style sheets it loads.
