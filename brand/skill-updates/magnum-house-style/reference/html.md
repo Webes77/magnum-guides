@@ -15,7 +15,7 @@ viewer can be in dark mode, so still hard-code the ground:
 ```html
 <style>
   :root{color-scheme:light}
-  html,body{background:#FBFBF9 !important;color:#2B2823}
+  html,body{background:#FBFBF9 !important;color:#1E1B17}
 </style>
 <div style="background:#FBFBF9">...page...</div>
 ```

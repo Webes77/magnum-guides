@@ -21,7 +21,7 @@ import zipfile
 from pathlib import Path
 
 PALETTE = {
-    "FBFBF9", "FFFFFF", "1F2A37", "1E1B17", "2B2823", "3A3630", "63615C",
+    "FBFBF9", "FFFFFF", "1F2A37", "1E1B17", "45433E",
     "EF4029", "C63A2A", "F7BAB0", "A1524E", "FF6F5E", "FBE1D8", "5B6B7A", "F4F1EA", "C8CDD3", "DADAD5",
     "000000",  # allowed for print-only rules and SVG strokes that read as ink
 }
@@ -32,7 +32,10 @@ RETIRED = {
     "B8452A": "old rust (Aug/Sep 2026 system, retired)",
     "6C7A3F": "old olive (Aug/Sep 2026 system, retired)",
     "DE4A3C": "old single-value coral (retired 14 Sep 2026: EF4029 for display/fills/figures, C63A2A for anything under 18px)",
-    "7A7A7A": "old mute grey (retired 14 Sep 2026, was 4.14:1 and failed; use 63615C)",
+    "7A7A7A": "old mute grey (retired 14 Sep 2026, was 4.14:1 and failed; use 45433E)",
+    "2B2823": "old body brown (retired 19 Nov 2026, read light; text is ink 1E1B17)",
+    "3A3630": "old card text (retired 19 Nov 2026, read light; text is ink 1E1B17)",
+    "63615C": "old mute grey (retired 19 Nov 2026, read faint; use 45433E)",
 }
 BAD_FONTS = [
     "Inter", "Playfair", "Bebas", "Archivo Narrow", "Roboto", "Calibri",

@@ -95,13 +95,18 @@ ink `#1E1B17`, coral `#EF4029` (since 14 Sep, was `#DE4A3C`) as the one
 accent for display type, fills, borders and figures, deep coral `#C63A2A`
 for any coral text under 18px, bright coral `#FF6F5E` for fills on navy and
 badges only, coral tint `#FBE1D8` for tags, slate `#5B6B7A` for ticks and
-figure detail, mute `#63615C` for notes and secondary lines (since 15 Sep,
-was `#7A7A7A` at 4.14:1), ghost coral `#F7BAB0` for the resting index number
+figure detail, mute `#45433E` for notes and secondary lines (since 19 Nov,
+was `#63615C`, and `#7A7A7A` before that), ghost coral `#F7BAB0` for the resting index number
 on a section heading and nothing else, and `#A1524E` for the same number on a
 navy ground (both since 15 Sep). The CSS token names did
 not change: `--rust` holds coral, `--olive` holds slate.
 Oswald for display, IBM Plex Sans for body, IBM Plex Mono for labels and
-prompts. Retired: black and gold, and the beige and rust system (paper
+prompts. Since 19 Nov, on James's word ("it just feels like it's blending
+into the page"): every line of text you read is ink `#1E1B17` at Plex Sans
+weight 500. The `--body` and `--char` tokens still exist and both hold ink;
+the old browns `#2B2823` and `#3A3630` and the old mute `#63615C` are retired
+and `check_style.py` flags them. Contrast was never the fault (14:1); weight
+400 at 14 to 15px and four near-black greys were. Retired: black and gold, and the beige and rust system (paper
 `#EEE6D3`, rust `#B8452A`, olive `#6C7A3F`, grid texture, offset
 shadows). Do not introduce a fourth typeface. Since 9 Sep (night) Fine-Tune and
 the Buyer's Agents guide carry it too. The claim that nothing was left in an

@@ -25,7 +25,7 @@ established in the header."
 > condensed grotesk if Oswald is unavailable; not Playfair, not Inter, not
 > Bebas, not Roboto. Line height 1.0. One word of each heading in coral
 > #EF4029 (bright coral #FF6F5E when the heading sits on navy). Body in IBM
-> Plex Sans 400, 17px, colour #2B2823. Labels and metadata in IBM Plex Mono
+> Plex Sans 500, 17px, colour #1E1B17. Labels and metadata in IBM Plex Mono
 > 12px uppercase, letter spacing 0.22em, coral #C63A2A (this is small text,
 > so it takes the small-text coral, not the heading one), each with a thin
 > ink rule running off to the right. Cards: white #FFFFFF, 2px ink #1E1B17

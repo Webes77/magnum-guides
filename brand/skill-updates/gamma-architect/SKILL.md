@@ -139,7 +139,7 @@ Black and gold is retired: never #D4AF37, never #0E0D0B, never Bebas Neue,
 Playfair Display or Inter.
 
 - Ground: paper #FBFBF9. Cards and panels: paper deep #FFFFFF.
-- Ink #1E1B17 for headings, borders and rules. Body text #2B2823.
+- Ink #1E1B17 for headings, borders and rules. Body text #1E1B17.
 - Navy #1F2A37 for title slides, section breaks and any dark block. Every
   deck has some navy; it is where the weight is.
 - Coral #EF4029 is the only accent: one coral word in a heading, a label,

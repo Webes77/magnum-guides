@@ -53,9 +53,9 @@ been re-checked against it since.
 | paper-2 | `#FFFFFF` | Cards and panels |
 | navy | `#1F2A37` | Masthead band, footers, figure plates, cover slides, dark cards |
 | ink | `#1E1B17` | Headings, borders, rules |
-| body | `#2B2823` | Running text on paper |
-| char | `#3A3630` | Text inside cards |
-| mute | `#63615C` | Notes and secondary lines. 5.97:1 on paper; replaces `#7A7A7A`, which was 4.14:1 and failed |
+| body | `#1E1B17` | Running text on paper, at weight 500. Same as ink since 19 Nov 2026 (was `#2B2823`, which read light) |
+| char | `#1E1B17` | Text inside cards. Same as ink since 19 Nov 2026 (was `#3A3630`) |
+| mute | `#45433E` | Notes and secondary lines. 9.5:1 on paper. Darkened 19 Nov 2026 from `#63615C`, which read faint |
 | rust (coral) | `#EF4029` | Display type, fills, borders and figures. 3.73:1 on paper: never small text |
 | coral-text | `#C63A2A` | Anything under 18px you read: labels, links, captions, metadata. 5.02:1 on paper |
 | coral-ghost | `#F7BAB0` | The resting index number on a section heading. Never text you read |
@@ -78,7 +78,7 @@ Three faces, one job each. Never a fourth.
 | Face | Weight and case | Job | Local fallback |
 |---|---|---|---|
 | Oswald | 600 or 700, uppercase, line height .90 to 1.12 | Headings, card titles, big numbers | Arial Narrow |
-| IBM Plex Sans | 400 running, 500 or 600 emphasis. 17px on page, 15.5px in cards | Body text | Arial |
+| IBM Plex Sans | 500 running (since 19 Nov 2026; 400 read too light), 600 emphasis. 17px on page, 15.5px in cards | Body text | Arial |
 | IBM Plex Mono | 400 or 500, 11 to 13px, uppercase, letter spaced .14em to .28em | Eyebrows, labels, dates, metadata, footers, prompt text | Courier New |
 
 Never more than two type treatments in one block. Oswald has no italic in

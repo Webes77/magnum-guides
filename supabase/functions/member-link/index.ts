@@ -50,19 +50,19 @@ function firstName(name: string | null): string {
 // One plain email layout, house colours, built to survive Outlook and Gmail.
 function layout(paragraphs: string[], button: string, link: string, after: string[]): string {
   const p = (t: string) =>
-    `<p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:16px;line-height:1.55;color:#2B2823">${t}</p>`;
+    `<p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:16px;line-height:1.55;color:#1E1B17">${t}</p>`;
   return `<div style="background:#FBFBF9;padding:28px 16px">
 <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;margin:0 auto;background:#FFFFFF;border:2px solid #1E1B17">
 <tr><td style="background:#FFFFFF;border-bottom:4px solid #FF6F5E;padding:18px 26px">
 <table role="presentation" cellpadding="0" cellspacing="0"><tr>
 <td style="padding-right:14px"><img src="${LOGO}" width="52" height="52" alt="Magnum AI" style="display:block;border:0"></td>
-<td style="font-family:'Arial Narrow',Arial,sans-serif;font-size:22px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#1E1B17;line-height:1.1">Magnum AI<br><span style="font-family:'Courier New',monospace;font-size:11px;font-weight:normal;letter-spacing:2px;color:#63615C">Members area</span></td>
+<td style="font-family:'Arial Narrow',Arial,sans-serif;font-size:22px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#1E1B17;line-height:1.1">Magnum AI<br><span style="font-family:'Courier New',monospace;font-size:11px;font-weight:normal;letter-spacing:2px;color:#45433E">Members area</span></td>
 </tr></table></td></tr>
 <tr><td style="padding:26px 26px 10px">
 ${paragraphs.map(p).join("\n")}
 <p style="margin:6px 0 22px"><a href="${link}" style="display:inline-block;background:#FF6F5E;border:2px solid #1E1B17;color:#1E1B17;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;text-decoration:none;padding:12px 24px">${button}</a></p>
 ${after.map(p).join("\n")}
-<p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:#63615C">If the button does not work, copy this into your browser:<br><a href="${link}" style="color:#C63A2A;word-break:break-all">${link}</a></p>
+<p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:#45433E">If the button does not work, copy this into your browser:<br><a href="${link}" style="color:#C63A2A;word-break:break-all">${link}</a></p>
 </td></tr>
 <tr><td style="background:#1F2A37;padding:14px 26px;font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#C8CDD3">Magnum AI &middot; magnumai.com.au</td></tr>
 </table></div>`;

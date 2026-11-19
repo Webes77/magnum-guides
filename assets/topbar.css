@@ -9,7 +9,7 @@
 .mtb-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#1E1B17}
 .mtb-brand img{display:block;width:40px;height:40px;border:0}
 .mtb-brand b{display:block;font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:700;font-size:19px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
-.mtb-brand i{display:block;font-style:normal;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#63615C;margin-top:4px;line-height:1}
+.mtb-brand i{display:block;font-style:normal;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#45433E;margin-top:4px;line-height:1}
 .mtb-links{display:flex;gap:28px}
 .mtb-links a{font-family:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;color:#1E1B17;text-decoration:none;padding:6px 0;border-bottom:3px solid transparent}
 .mtb-links a:hover,.mtb-links a[aria-current]{border-bottom-color:#EF4029}

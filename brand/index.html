@@ -2,7 +2,7 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
-<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#FBFBF9;color:#2B2823}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#FBFBF9;color:#1E1B17}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Magnum AI Brand Guidelines</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,16 +10,16 @@
 <style>
 :root{
   color-scheme:light;
-  --paper:#FBFBF9;--white:#FFF;--navy:#1F2A37;--ink:#1E1B17;--body:#2B2823;
-  --char:#3A3630;--mute:#63615C;--rust:#EF4029;--coral-text:#C63A2A;
+  --paper:#FBFBF9;--white:#FFF;--navy:#1F2A37;--ink:#1E1B17;--body:#1E1B17;
+  --char:#1E1B17;--mute:#45433E;--rust:#EF4029;--coral-text:#C63A2A;
   --coral-bright:#FF6F5E;--tint:#FBE1D8;--slate:#5B6B7A;--on-navy:#F4F1EA;
   --on-navy-mute:#C8CDD3;--hair:#DADAD5;
   --sans:"IBM Plex Sans",Arial,Helvetica,sans-serif;
   --mono:"IBM Plex Mono","Courier New",monospace;
   --disp:"Oswald","Arial Narrow",Arial,sans-serif;
 }
-html,body{background:#FBFBF9 !important;color:#2B2823}
-body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+html,body{background:#FBFBF9 !important;color:#1E1B17}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;font-weight:500}
 *{box-sizing:border-box}
 h1,h2,h3,h4{font-family:var(--disp);font-weight:600;text-transform:uppercase;margin:0;color:var(--ink);text-wrap:balance}
 h1{font-size:clamp(38px,7vw,68px);line-height:.95;letter-spacing:.005em}
@@ -340,9 +340,9 @@ footer{background:var(--navy);color:var(--on-navy-mute);font-family:var(--mono);
       <tr><td><span class="sw" style="background:#FFFFFF"></span></td><td class="tk">paper-2</td><td class="hx">#FFFFFF</td><td>Cards and panels</td></tr>
       <tr><td><span class="sw" style="background:#1F2A37"></span></td><td class="tk">navy</td><td class="hx">#1F2A37</td><td>The one dark block: masthead, plate, footer</td></tr>
       <tr><td><span class="sw" style="background:#1E1B17"></span></td><td class="tk">ink</td><td class="hx">#1E1B17</td><td>Headings, card borders, rules</td></tr>
-      <tr><td><span class="sw" style="background:#2B2823"></span></td><td class="tk">body</td><td class="hx">#2B2823</td><td>Running text on paper</td></tr>
-      <tr><td><span class="sw" style="background:#3A3630"></span></td><td class="tk">char</td><td class="hx">#3A3630</td><td>Text inside a card</td></tr>
-      <tr><td><span class="sw" style="background:#63615C"></span></td><td class="tk">mute</td><td class="hx">#63615C</td><td>Notes and secondary lines. 5.97:1</td></tr>
+      <tr><td><span class="sw" style="background:#1E1B17"></span></td><td class="tk">body</td><td class="hx">#1E1B17</td><td>Running text on paper, weight 500. Same as ink</td></tr>
+      <tr><td><span class="sw" style="background:#1E1B17"></span></td><td class="tk">char</td><td class="hx">#1E1B17</td><td>Text inside a card. Same as ink</td></tr>
+      <tr><td><span class="sw" style="background:#45433E"></span></td><td class="tk">mute</td><td class="hx">#45433E</td><td>Notes and secondary lines. 9.5:1</td></tr>
       <tr><td><span class="sw" style="background:#EF4029"></span></td><td class="tk">rust</td><td class="hx">#EF4029</td><td>Display type 18px and up, fills, borders, figures</td></tr>
       <tr><td><span class="sw" style="background:#C63A2A"></span></td><td class="tk">coral-text</td><td class="hx">#C63A2A</td><td>Anything under 18px you read</td></tr>
       <tr><td><span class="sw" style="background:#FF6F5E"></span></td><td class="tk">coral-bright</td><td class="hx">#FF6F5E</td><td>Fills, and the accent on navy</td></tr>
@@ -389,8 +389,8 @@ footer{background:var(--navy);color:var(--on-navy-mute);font-family:var(--mono);
   </div>
   <div class="spec">
     <p class="role">Text &middot; IBM Plex Sans</p>
-    <p class="s-body">Running text sits at 17px on a page and 15.5px inside a card. Emphasis is weight 500 or 600, never italic, because Oswald has no italic in this system and a slant would not match it.</p>
-    <p class="s-meta">400 running &middot; 500 and 600 emphasis &middot; fallback Arial</p>
+    <p class="s-body">Running text sits at 17px on a page and 15.5px inside a card. Running text is weight 500, emphasis 600, never italic, because Oswald has no italic in this system and a slant would not match it.</p>
+    <p class="s-meta">500 running &middot; 600 emphasis &middot; never 400 for text you read &middot; fallback Arial</p>
   </div>
   <div class="spec">
     <p class="role">Utility &middot; IBM Plex Mono</p>

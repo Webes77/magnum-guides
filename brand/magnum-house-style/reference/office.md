@@ -22,7 +22,7 @@ is the point of the fallback.
 ```js
 const C = {
   paper:"FBFBF9", white:"FFFFFF", navy:"1F2A37", ink:"1E1B17",
-  body:"2B2823", char:"3A3630", mute:"63615C",
+  body:"1E1B17", char:"1E1B17", mute:"45433E",
   coral:"EF4029", coralText:"C63A2A", coralBright:"FF6F5E", tint:"FBE1D8", slate:"5B6B7A",
   onNavy:"F4F1EA", onNavyMute:"C8CDD3", hair:"DADAD5"
 };

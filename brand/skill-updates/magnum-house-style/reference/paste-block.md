@@ -30,15 +30,15 @@ Colours:
 - Coral tint `#FBE1D8`: tags, marks, highlighted lines. The pale wash.
 - Slate `#5B6B7A`: ticks, secondary lines, figure detail. Slate never
   carries text.
-- Body `#2B2823` for running text, Char `#3A3630` inside cards, Mute
-  `#63615C` for notes. On navy, text is `#F4F1EA` and muted text `#C8CDD3`.
+- All text you read is ink `#1E1B17`, on the page and inside cards
+  (since 19 Nov 2026). Mute `#45433E` for notes, 9.5:1 on paper. On navy, text is `#F4F1EA` and muted text `#C8CDD3`.
 
 Type, three faces, one job each, never a fourth:
 
 - Oswald 600 or 700, uppercase, for headings and card titles. Line height
   .90 to 1.12. Fallback Arial Narrow.
-- IBM Plex Sans 400 for running text, 500 or 600 for emphasis. Fallback
-  Arial.
+- IBM Plex Sans 500 for running text, 600 for emphasis. Never 400 for
+  text you read; it reads too light. Fallback Arial.
 - IBM Plex Mono 11 to 13px, uppercase, letter spaced .14em to .28em, for
   labels, eyebrows, dates, metadata, footers, and any prompt text.
 
@@ -66,8 +66,8 @@ CSS tokens:
 ```css
 :root{
   --paper:#FBFBF9; --paper-2:#FFFFFF; --navy:#1F2A37; --ink:#1E1B17;
-  --body:#2B2823; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E;
-  --tint:#FBE1D8; --olive:#5B6B7A; --char:#3A3630; --mute:#63615C;
+  --body:#1E1B17; --rust:#EF4029; --coral-text:#C63A2A; --coral-bright:#FF6F5E;
+  --tint:#FBE1D8; --olive:#5B6B7A; --char:#1E1B17; --mute:#45433E;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;

@@ -19,14 +19,14 @@
   --tint:#FBE1D8; --paper:#FBFBF9; --panel:#FFFFFF; --hair:#DADAD5;
   --rust:#EF4029;         /* display type, fills, borders, figures */
   --coral-text:#C63A2A;   /* anything under 18px you read. 5.02:1 on paper */
-  --muted:#63615C;        /* 5.97:1. the old warm grey was 4.14:1 and failed */
+  --muted:#45433E;        /* 9.5:1. was #63615C, read faint (19 Nov 2026) */
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --body:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
-body{font-family:var(--body);color:var(--ink);background-color:var(--paper);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);font-weight:500;color:var(--ink);background-color:var(--paper);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
 /* Running header */
 .runhead{position:fixed;top:0;left:0;right:0;background:var(--paper);z-index:100;padding:20px 48px 0}
 .runhead-inner{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}

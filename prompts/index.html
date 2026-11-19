@@ -42,11 +42,11 @@
      tellable from the writing around it at a glance, and paper on white was
      too close to see. Same family as the navy, nothing new introduced. */
   --prompt-bg:#FBFBF9;
-  --body:#2B2823;
+  --body:#1E1B17;
   --rust:#EF4029; --coral-text:#C63A2A;--coral-ghost:#F7BAB0;
   --olive:#5B6B7A;
-  --char:#3A3630;
-  --mute:#63615C;
+  --char:#1E1B17;
+  --mute:#45433E;
   --grid:rgba(120,90,60,.13);
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
@@ -58,8 +58,7 @@ body{
   font-family:var(--sans);font-size:17px;line-height:1.6;color:var(--body);
   background-color:#FFFFFF;
   
-  -webkit-font-smoothing:antialiased;
-}
+  -webkit-font-smoothing:antialiased;font-weight:500}
 button{font:inherit;cursor:pointer}
 .wrap{max-width:1080px;margin:0 auto;padding:0 40px}
 
@@ -321,7 +320,7 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 }
 
 /* the machine-facing parts of a prompt, quietened */
-.prewrap pre .mach{color:#63615C}
+.prewrap pre .mach{color:#45433E}
 .prewrap pre .mhead{color:var(--olive);font-weight:500}
 .pnote{margin:0;padding:8px 18px 0;background:var(--prompt-bg);
   font-size:13px;line-height:1.45;color:var(--char)}
@@ -339,7 +338,7 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 .fgrid input,.fgrid select{font-family:var(--mono);font-size:13px;color:var(--ink);
   background:var(--paper);border:2px solid rgba(30,27,23,.3);padding:7px 9px;width:100%}
 .fgrid input:focus,.fgrid select:focus{outline:none;border-color:var(--rust)}
-.fgrid input::placeholder{color:#63615C}
+.fgrid input::placeholder{color:#45433E}
 .pane.isfilled .plabel span::after{content:" \00b7 your details are in";color:var(--coral-text)}
 @media print{.filler{display:none}}
 
@@ -354,7 +353,7 @@ mark.ph{background:var(--tint);color:inherit;padding:0 2px}
 .brow6 input,.brow6 textarea{font:inherit;color:var(--ink);background:transparent;border:0;
   border-bottom:2px solid var(--ink);padding:0 2px;margin:0 2px;max-width:100%}
 .brow6 textarea.wide{display:block;width:100%;margin:2px 0;resize:none;overflow:hidden;line-height:1.6}
-.brow6 input::placeholder,.brow6 textarea::placeholder{color:#63615C}
+.brow6 input::placeholder,.brow6 textarea::placeholder{color:#45433E}
 .brow6 input:focus,.brow6 textarea:focus{outline:none;border-bottom-color:var(--rust);background:var(--prompt-bg)}
 .bfoot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;padding-top:14px;
   border-top:2px solid var(--ink);font-size:14px;color:var(--char)}

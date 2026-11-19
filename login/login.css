@@ -1,8 +1,8 @@
 /* Magnum AI members login. House style, 14 September 2026 tokens. */
 :root{
-  --paper:#FBFBF9;--paper-2:#FFFFFF;--navy:#1F2A37;--ink:#1E1B17;--body:#2B2823;
+  --paper:#FBFBF9;--paper-2:#FFFFFF;--navy:#1F2A37;--ink:#1E1B17;--body:#1E1B17;
   --rust:#EF4029;--coral-text:#C63A2A;--coral-bright:#FF6F5E;--tint:#FBE1D8;
-  --char:#3A3630;--mute:#63615C;--on-navy:#F4F1EA;--on-navy-mute:#C8CDD3;--hair:#DADAD5;
+  --char:#1E1B17;--mute:#45433E;--on-navy:#F4F1EA;--on-navy-mute:#C8CDD3;--hair:#DADAD5;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',Arial,system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -10,7 +10,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#FBFBF9}
-body{font-family:var(--sans);font-size:17px;line-height:1.55;color:var(--body);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);font-size:17px;line-height:1.55;color:var(--body);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;font-weight:500}
 
 .bar{background:var(--paper-2);border-bottom:2px solid var(--ink)}
 .bar div{max-width:1120px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;gap:12px}
