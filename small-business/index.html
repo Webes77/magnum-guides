@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+<title>Set Claude Up to Handle Your Business Admin &middot; Magnum AI</title>
+<meta name="description" content="Install and customise Anthropic&rsquo;s free Small Business plugin for Claude, connect your accounting and email, then run your Monday brief, chase overdue invoices and turn a call into a proposal. About 20 minutes.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/small-business/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="Set Claude Up to Handle Your Business Admin">
+<meta property="og:description" content="Install it once, tell it about your business, and Claude drafts your Monday numbers, invoice reminders and quotes. You approve every one.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/small-business/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/small-business.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Set Claude Up to Handle Your Business Admin, a Magnum AI guide">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Set Claude Up to Handle Your Business Admin">
+<meta name="twitter:description" content="Install it once, tell it about your business, and Claude drafts your Monday numbers, invoice reminders and quotes. You approve every one.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/small-business.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/prompt.css">
+<style>
+/* contents strip */
+
+  .contents a:hover,.contents a:focus-visible{color:var(--coral-text);outline:none;}
+.masthead .crumb::after{background:var(--on-navy-mute)}
+section:hover > .label::before,section:focus-within > .label::before{color:var(--rust)}
+@media(prefers-reduced-motion:reduce){.label::before{transition:none}}
+@media(max-width:820px){
+  .label{font-size:27px;gap:0 14px;padding-top:13px;margin-bottom:14px}
+  .label::before{font-size:38px}
+}
+/* The index entry is the section heading. An h2 right under it is the
+     section's point, so it steps down to a deck line instead of competing. */
+
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
+  .card .tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--coral-text);margin:0 0 8px;}
+  .copy:hover,.copy:focus-visible{background:var(--coral-text);outline:none;transform:translateY(-2px);}
+  td b{color:var(--ink);}
+  @media print{
+    html,body{background:#fff !important}
+    .masthead,footer,.short,.figure{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .card,.prompt,.promptcard{break-inside:avoid}
+    .copy{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ---- this page only ------------------------------------------------ */
+  /* The short version. The whole page on one screen, for a reader being
+     talked through it in a session. Same component as the Task Work guide. */
+  .short{background:var(--navy);color:var(--on-navy);border:2px solid var(--ink);
+    padding:26px 26px 28px;margin:0 0 44px;}
+  .short h2{color:var(--on-navy);font-size:clamp(22px,3.2vw,30px);margin:0 0 6px;}
+  .short .short-sub{font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--coral-bright);margin:0 0 20px;}
+  .short-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 34px;}
+  .short h3{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--on-navy-mute);margin:0 0 12px;}
+  .short ol{margin:0;padding:0;list-style:none;counter-reset:q;}
+  .short ol li{counter-increment:q;position:relative;padding:0 0 0 30px;margin-bottom:9px;
+    font-size:15.5px;line-height:1.45;color:var(--on-navy);}
+  .short ol li::before{content:counter(q,decimal-leading-zero);position:absolute;left:0;top:2px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--coral-bright);}
+  .short ol li:last-child{margin-bottom:0;}
+  .short ol li.ticked a{text-decoration:line-through;text-decoration-color:var(--coral-bright);}
+  .short a{color:var(--on-navy);text-decoration-color:var(--coral-bright);}
+  .short a:hover,.short a:focus-visible{color:var(--coral-bright);outline:none;}
+  .short .tail{margin:20px 0 0;font-size:14.5px;color:var(--on-navy-mute);max-width:60ch;}
+  .short .tail b{color:var(--on-navy);}
+  @media(max-width:700px){.short-grid{grid-template-columns:1fr;gap:22px}
+    .short{padding:20px 18px 22px}}
+
+  /* How one shift runs. A row of steps that wraps on a phone. */
+  .flow{list-style:none;margin:26px 0 0;padding:0;display:grid;
+    grid-template-columns:repeat(6,1fr);gap:0;border:2px solid var(--ink);background:var(--paper-2);}
+  .flow li{padding:14px 14px 16px;border-right:1px solid rgba(30,27,23,.16);}
+  .flow li:last-child{border-right:none;background:var(--tint);}
+  .flow .k{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.14em;color:var(--coral-text);margin-bottom:6px;}
+  .flow li:last-child .k{color:var(--ink);}
+  .flow b{display:block;font-size:15px;line-height:1.3;color:var(--ink);font-weight:600;}
+  @media(max-width:820px){.flow{grid-template-columns:repeat(3,1fr)}
+    .flow li:nth-child(3){border-right:none}
+    .flow li:nth-child(-n+3){border-bottom:1px solid rgba(30,27,23,.16)}}
+  @media(max-width:480px){.flow{grid-template-columns:1fr 1fr}
+    .flow li{border-right:none;border-bottom:1px solid rgba(30,27,23,.16)}
+    .flow li:nth-child(odd){border-right:1px solid rgba(30,27,23,.16)}
+    .flow li:nth-last-child(-n+2){border-bottom:none}}
+
+  /* My team, as a roster. */
+  .roster{list-style:none;margin:22px 0 0;padding:0;border-top:2px solid var(--ink);}
+  .roster li{display:grid;grid-template-columns:180px 1fr;gap:4px 22px;padding:14px 0;
+    border-bottom:1px solid rgba(30,27,23,.16);}
+  .roster .who{font-family:var(--display);font-weight:600;font-size:22px;text-transform:uppercase;
+    line-height:1.1;color:var(--ink);}
+  .roster .who span{display:block;font-family:var(--mono);font-weight:400;font-size:11px;
+    letter-spacing:.16em;color:var(--coral-text);margin-top:4px;}
+  .roster p{margin:0;font-size:15.5px;color:var(--char);}
+  @media(max-width:560px){.roster li{grid-template-columns:1fr}}
+
+  /* A stage: numbered section heading, then the prompts, then done when. */
+  .promptcard{border-top:2px solid var(--ink);padding-top:22px;margin-top:38px;}
+  .promptlabel{font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--coral-text);margin:0 0 10px;}
+  .note{font-size:15px;color:var(--char);margin:4px 0 0;max-width:64ch;
+    border-left:3px solid var(--olive);padding-left:14px;}
+  .note b{color:var(--ink);}
+  .gate{background:var(--tint);border:2px solid var(--ink);padding:12px 16px;margin:6px 0 0;
+    font-size:15.5px;color:var(--ink);max-width:64ch;}
+  .gate b{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;
+    letter-spacing:.16em;margin-right:8px;}
+
+  /* Done when. A tick box, remembered on this device only. */
+  .donewhen{display:flex;gap:14px;align-items:flex-start;margin:34px 0 0;padding:16px 18px;
+    background:var(--paper-2);border:2px solid var(--ink);border-left:8px solid var(--rust);
+    cursor:pointer;max-width:720px;}
+  .donewhen input{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:24px;height:24px;
+    margin:1px 0 0;border:2px solid var(--ink);background:var(--paper-2);cursor:pointer;
+    display:grid;place-content:center;}
+  .donewhen input::after{content:"";width:12px;height:6px;border-left:3px solid var(--ink);
+    border-bottom:3px solid var(--ink);transform:rotate(-45deg) translate(1px,-1px);opacity:0;}
+  .donewhen input:checked{background:var(--coral-bright);}
+  .donewhen input:checked::after{opacity:1;}
+  .donewhen input:focus-visible{outline:3px solid var(--coral-text);outline-offset:2px;}
+  .donewhen span{font-size:15.5px;color:var(--char);}
+  .donewhen b{display:block;font-family:var(--mono);font-size:11px;font-weight:500;
+    text-transform:uppercase;letter-spacing:.16em;color:var(--coral-text);margin-bottom:3px;}
+
+  .steps3{counter-reset:s;list-style:none;margin:18px 0 0;padding:0;}
+  .steps3>li{counter-increment:s;position:relative;padding:0 0 14px 44px;margin:0 0 14px;
+    border-bottom:1px solid rgba(30,27,23,.14);font-size:15.5px;color:var(--char);}
+  .steps3>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .steps3>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:1px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--coral-text);}
+  .steps3 b{color:var(--ink);}
+  .sources a{color:var(--coral-text);}
+  /* A link in body copy. Without this it renders in the browser's default
+     blue, which is off-palette. */
+  .wrap p a,.wrap li a{color:var(--coral-text);}
+  .wrap .short a{color:var(--on-navy);}
+  /* The one highlighted card in a row. Coral text fails on the tint, so its
+     tag takes ink, the call made on the .say block elsewhere. */
+  .card.hl{background:var(--tint);}
+  .card.hl .tag{color:var(--ink);}
+/* Icon row, from 4 Oct. One icon from the design system, one mono label, opposite ends. */
+
+  /* What else it can do: one line per job, the phrase to say first. */
+  .steps3.tips>li{padding-left:24px;}
+  .steps3.tips>li::before{content:"";width:8px;height:8px;background:var(--rust);top:8px;}
+  /* Coral text fails on the tint (4.17:1), so a link in the say block takes ink. */
+  .wrap .say a{color:var(--ink);text-decoration-color:var(--rust);}
+  .answers{display:grid;gap:16px;margin-top:18px;}
+  .ans{border:2px solid var(--ink);background:#fff;padding:16px 18px;}
+  .ans .q{font-family:var(--display);font-weight:600;font-size:20px;text-transform:uppercase;margin:0 0 10px;color:var(--ink);}
+  .ans p{margin:0;font-size:15.5px;color:var(--char);max-width:none;}
+  .ans .thin{margin-bottom:8px;}
+  .ans span{display:inline-block;min-width:64px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--coral-text);margin-right:8px;}
+  .ans .good{background:var(--tint);padding:8px 10px;margin:0 -10px;}
+  .ans .good span{color:var(--ink);}
+  .joblist{list-style:none;margin:6px 0 0;padding:0;}
+  .joblist li{font-size:15px;line-height:1.45;color:var(--char);padding:9px 0;border-bottom:1px solid rgba(30,27,23,.14);}
+  .joblist li:last-child{border-bottom:none;padding-bottom:0;}
+  .joblist b{display:block;color:var(--ink);font-weight:600;}
+</style><link rel="stylesheet" href="../assets/illustration.css">
+<link rel="stylesheet" href="../assets/topbar.css">
+</head>
+<body>
+<header class="mtb" style="margin:0 -20px"><div class="mtb-in"><a class="mtb-brand" href="../"><img src="../assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="../#sessions">Courses</a><a href="../prompts/">Prompts</a><a href="../whats-new/">What's new</a><a href="../#week">This week</a><a href="../#library" aria-current="page">Guides</a><a href="../ai-tools/">Tools</a><a href="../account/">Account</a><a href="../auth/logout">Log out</a></nav></div></header>
+<header class="masthead"><div class="wrap">
+    <h1>Set Claude up to handle your <em>business admin</em></h1>
+    <p class="sub">Anthropic has a free add-on for Claude built for small businesses. Install it once, tell it about your business, and it writes your Monday numbers, chases the people who owe you money and turns a call into a quote. Claude does the work. You approve anything that touches money or customers. About 20 minutes, start to finish.</p>
+  </div></header>
+  <div class="wrap">
+  <figure class="ill">
+    <img src="../assets/illustrations/small-business.jpg" alt="A cartoon of a business owner in a coral cap having a coffee at the kitchen bench at 7am while the paperwork files itself, watched by a very suspicious kelpie." width="1200" height="670" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
+
+  <div class="short">
+    <h2>The short version</h2>
+    <p class="short-sub">Six stages, about 20 minutes, top to bottom</p>
+    <div class="icorow on-navy"><svg aria-label="Clock" viewBox="0 0 48 48" fill="none" stroke="#FF6F5E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 12 L24 24 L33 29"/></svg><span>About 20 minutes</span></div>
+    <div class="short-grid">
+      <div>
+        <h3>The plan</h3>
+        <ol id="plan">
+          <li data-stage="1"><a href="#install">Install it</a></li>
+          <li data-stage="2"><a href="#customise">Make it yours</a></li>
+          <li data-stage="3"><a href="#connect">Connect two tools</a></li>
+          <li data-stage="4"><a href="#monday">Run your Monday brief</a></li>
+          <li data-stage="5"><a href="#invoices">Chase your overdue invoices</a></li>
+          <li data-stage="6"><a href="#proposal">Turn a call into a proposal</a></li>
+        </ol>
+      </div>
+      <div>
+        <h3>The rules that never bend</h3>
+        <ol>
+          <li>Nothing is sent, posted or paid until you say yes.</li>
+          <li>Claude drafts. You read it, and you send it.</li>
+          <li>Check every figure against your own records before it goes to a customer.</li>
+          <li>No tool has to be connected to start. Connected tools make it deeper.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="tail"><b id="progress">0 of 6 stages ticked.</b> Each stage ends with a Done when box. Tick it and it stays ticked on this device, so you can come back to where you were.</p>
+    <p class="tail">Stages 1 to 4 are the 20 minutes. Stages 5 and 6 are for this week, when you have an overdue invoice or a call to quote.</p>
+  </div>
+
+  <!-- ============ 01 WHAT THIS DOES ============ -->
+  <section id="what">
+    <p class="label" data-n="01">What this does for you</p>
+    <h2>The admin that eats your evenings, done as drafts</h2>
+    <p class="lead">Most owners I work with do their admin at night: the numbers, the chasing, the quotes. This takes the first pass off you.</p>
+    <div class="cards">
+      <div class="card">
+        <p class="tag">Every Monday</p>
+        <h3>Your week on one page</h3>
+        <p>Cash, sales, who is likely to buy, what is in your calendar, and the one thing that most needs you. Read it in two minutes.</p>
+      </div>
+      <div class="card">
+        <p class="tag">When someone is late</p>
+        <h3>The chasing</h3>
+        <p>It finds who owes you, checks they have not already paid, and writes each reminder in the right tone. You send it.</p>
+      </div>
+      <div class="card">
+        <p class="tag">After a call</p>
+        <h3>The quote</h3>
+        <p>Give it the call, a voice note or photos of the job. It writes the proposal and prices it from what you have charged before.</p>
+      </div>
+    </div>
+    <p style="margin-top:22px">Anthropic calls it a plugin: a set of ready-made jobs that sits inside Claude. You do not need to remember any of them. Say what you need in plain words, &ldquo;who owes me money?&rdquo;, and it picks the right job.</p>
+  </section>
+
+  <!-- ============ 02 BEFORE YOU START ============ -->
+  <section id="before">
+    <p class="label" data-n="02">Before you start</p>
+    <h2>A paid plan, and know which tools you use</h2>
+    <ol class="steps3">
+      <li><b>Any paid Claude plan.</b> The plugin itself costs nothing extra.</li>
+      <li><b>Claude on the web or the desktop app.</b> Set it up on a computer. You can read the results on your phone afterwards.</li>
+      <li><b>The names of your tools.</b> What you use for accounting, email and calendar. Claude asks for them by name.</li>
+    </ol>
+
+    <h3 style="margin-top:38px">What it can connect to</h3>
+    <p>You connect only the ones you already use. Here are the common ones for an Australian small business.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Kind of tool</th><th>Ones it connects to</th></tr></thead>
+        <tbody>
+          <tr><td><b>Accounting</b></td><td>Xero, MYOB, QuickBooks, Zoho Books</td></tr>
+          <tr><td><b>Email</b></td><td>Gmail, or Microsoft 365 (Outlook) connected on your own Claude account</td></tr>
+          <tr><td><b>Calendar</b></td><td>Google Calendar, or Microsoft 365</td></tr>
+          <tr><td><b>Customer list (CRM)</b></td><td>HubSpot, Zoho CRM</td></tr>
+          <tr><td><b>Payments and sales</b></td><td>Stripe, Square, PayPal, Shopify, Airwallex</td></tr>
+          <tr><td><b>Files and notes</b></td><td>Google Drive, Notion, Zoom (call transcripts)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:38px">What the three jobs on this page need</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Job</th><th>Works best with</th><th>With nothing connected</th></tr></thead>
+        <tbody>
+          <tr><td><b>Monday brief</b></td><td>Accounting, calendar and email. A CRM or payments tool adds to it</td><td>It asks for your week's three big commitments and builds from that</td></tr>
+          <tr><td><b>Chase overdue invoices</b></td><td>Accounting and email</td><td>Upload the overdue invoices report your bookkeeper sends you</td></tr>
+          <tr><td><b>Proposal from a call</b></td><td>Nothing. Accounting helps it price from past jobs</td><td>Attach the transcript, voice note text or photos. This is the normal way</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="say" style="margin-top:22px">
+      <p><strong>Read this once</strong>It helps you run the business. It does not give financial, tax, legal or HR advice. Check what it writes, and take money, tax and staff decisions to your accountant or adviser as you do now. If you have not done it yet, read <a href="../privacy/">AI Privacy</a> before you connect your accounts.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 INSTALL ============ -->
+  <section id="install">
+    <p class="label" data-n="03">Stage 1 &middot; Install it</p>
+    <h2>Two minutes, one time</h2>
+    <ol class="steps3">
+      <li><b>Open Claude.</b> Use claude.ai in your browser, or the Claude desktop app.</li>
+      <li><b>Click Customize</b> in the left sidebar.</li>
+      <li><b>Click Plugins.</b></li>
+      <li><b>Search for</b> <code>small-business</code>.</li>
+      <li><b>Click Small Business.</b> Make sure it says it is by Anthropic. Other plugins have similar names.</li>
+      <li><b>Click Install.</b> The button can also say Add.</li>
+      <li><b>Skip the connections for now</b> if Claude asks. Stage 3 does them.</li>
+    </ol>
+    <p class="note"><b>If your screen looks different.</b> Claude's menus have changed more than once this year. If you cannot see Customize, look for Plugins in Settings or in the menu beside your name. The name to find is always Small Business, by Anthropic.</p>
+    <label class="donewhen"><input type="checkbox" data-stage="1"><span><b>Done when</b>Small Business, by Anthropic, shows as installed in your list of plugins.</span></label>
+  </section>
+
+  <!-- ============ 04 CUSTOMISE ============ -->
+  <section id="customise">
+    <p class="label" data-n="04">Stage 2 &middot; Make it yours</p>
+    <h2>Tell it about your business once</h2>
+    <p class="lead">Out of the box it is written for an average small business. This step rewrites it for yours, so every job after this sounds like you and knows how you work.</p>
+    <ol class="steps3">
+      <li><b>Start a new chat.</b></li>
+      <li><b>Copy the prompt below</b> and paste it in.</li>
+      <li><b>Answer each question Claude asks.</b> It asks one at a time.</li>
+      <li><b>Read the file card it shows you at the end.</b> Check it describes your business correctly.</li>
+      <li><b>Click Save plugin.</b> If you do not save it, the changes are lost.</li>
+    </ol>
+    <div class="promptcard" id="customise-prompt">
+      <p class="promptlabel">Prompt 2.1 &middot; customise it</p>
+      <h3>Make the plugin yours</h3>
+      <div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>Customize the "small-business" plugin for me based on my company.</pre>
+      </div>
+    </div>
+
+    <h3 style="margin-top:38px">What it asks, and how to answer well</h3>
+    <p>It asks what you do, who works with you, and what is hardest right now. The answers decide how good every job after this is, so give it more than you think it needs.</p>
+    <div class="answers">
+      <div class="ans"><p class="q">What you do</p><p class="thin"><span>Thin</span>&ldquo;Plumbing.&rdquo;</p><p class="good"><span>Useful</span>&ldquo;Residential plumbing on the Gold Coast. Mostly hot water and bathroom renos. Jobs run $400 to $25,000. Customers find us on Google.&rdquo;</p></div>
+      <div class="ans"><p class="q">Who works with you</p><p class="thin"><span>Thin</span>&ldquo;Four of us.&rdquo;</p><p class="good"><span>Useful</span>&ldquo;Me, two plumbers and my partner, who does the books two days a week. I do all the quoting.&rdquo;</p></div>
+      <div class="ans"><p class="q">What is hardest</p><p class="thin"><span>Thin</span>&ldquo;Admin.&rdquo;</p><p class="good"><span>Useful</span>&ldquo;Quotes take me two nights a week. About $15,000 is always overdue. I never know my cash position until the bookkeeper tells me.&rdquo;</p></div>
+    </div>
+    <ul class="steps3 tips">
+      <li><b>Name your tools.</b> &ldquo;Xero and Outlook&rdquo;, not &ldquo;accounting software&rdquo;.</li>
+      <li><b>Give real numbers</b> where you know them: job size, how many quotes a week, what is overdue.</li>
+      <li><b>Say what never goes out without you.</b> For example: &ldquo;Nothing goes to a customer until I have read it.&rdquo;</li>
+      <li><b>Talk instead of type</b> if it is quicker. Press the microphone and answer as you would to a new office manager.</li>
+    </ul>
+    <label class="donewhen"><input type="checkbox" data-stage="2"><span><b>Done when</b>You have read the file card, it describes your business correctly, and you have clicked Save plugin.</span></label>
+  </section>
+
+  <!-- ============ 05 CONNECT ============ -->
+  <section id="connect">
+    <p class="label" data-n="05">Stage 3 &middot; Connect two tools</p>
+    <h2>Accounting and email first</h2>
+    <p class="lead">This is the step that changes it from &ldquo;paste it in&rdquo; to &ldquo;Claude goes and gets it&rdquo;. Two tools cover all three jobs on this page.</p>
+    <ol class="steps3">
+      <li><b>Open the Small Business plugin</b> in your list of plugins.</li>
+      <li><b>Open its Connectors tab.</b></li>
+      <li><b>Click Connect beside your accounting software.</b></li>
+      <li><b>Sign in</b> with your usual login for that software.</li>
+      <li><b>Click Allow.</b></li>
+      <li><b>Do steps 3 to 5 again for your email.</b> Gmail is on the plugin's list. If you use Outlook, connect Microsoft 365 in your own Claude connectors instead. The plugin uses it from there.</li>
+    </ol>
+    <p class="note"><b>Already connected?</b> If you connected Xero or Gmail to Claude before, you may see it twice: once in your own connectors and once on the plugin's tab. It is the same tool. Either one works. You do not need to connect it again.</p>
+    <p class="note" style="margin-top:14px"><b>Your accounting software is not on the list?</b> In a chat, type &ldquo;Connect to&rdquo; and the name of your software. Claude checks for a connector and, if there is none, offers to connect it through Zapier.</p>
+    <label class="donewhen"><input type="checkbox" data-stage="3"><span><b>Done when</b>Your accounting software and your email both show as connected.</span></label>
+  </section>
+
+  <!-- ============ 06 THREE JOBS ============ -->
+  <section id="monday">
+    <p class="label" data-n="06">Stage 4 &middot; Run your Monday brief</p>
+    <h2>Your week on one page</h2>
+    <p class="lead">This is the one to run first. It uses everything you just connected, and it shows you in two minutes whether the setup works.</p>
+    <ol class="steps3">
+      <li><b>Start a new chat.</b></li>
+      <li><b>Copy the command below</b> and paste it in. Then send it.</li>
+      <li><b>Read the page it makes.</b></li>
+      <li><b>Check the cash figure</b> against your bank or your accounting software.</li>
+    </ol>
+    <div class="promptcard" id="monday-prompt">
+      <p class="promptlabel">Prompt 4.1 &middot; the Monday brief</p>
+      <h3>Start the week</h3>
+      <div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>/monday-brief</pre>
+      </div>
+      <p class="note"><b>If nothing happens,</b> type <code>Monday brief</code> instead. It runs the same job.</p>
+    </div>
+    <h3 style="margin-top:38px">What comes back</h3>
+    <div class="cards">
+      <div class="card"><p class="tag">The numbers</p><h3>Cash, sales, pipeline</h3><p>Each one beside last week's, so you can see which way it is moving.</p></div>
+      <div class="card"><p class="tag">The week</p><h3>What is booked</h3><p>The shape of your week from your calendar, and the emails where someone is waiting on you.</p></div>
+      <div class="card hl"><p class="tag">The one thing</p><h3>What needs you</h3><p>One item, and the reason: the deadline, the dollar amount or the person waiting.</p></div>
+    </div>
+    <p style="margin-top:18px">If a tool is not connected, the brief says so in one line at the bottom and carries on with what it has. When a brief is useful, Claude offers to run it every Monday morning. Say yes once you have read one you would act on.</p>
+    <label class="donewhen"><input type="checkbox" data-stage="4"><span><b>Done when</b>You have run the Monday brief and checked its cash figure against your own records.</span></label>
+  </section>
+
+  <section id="invoices">
+    <p class="label" data-n="07">Stage 5 &middot; Chase your overdue invoices</p>
+    <h2>It writes the reminders. You send them.</h2>
+    <div class="gate"><b>The rule</b>Claude drafts every reminder. You read every one. You send it. Nothing goes to a customer until you have read it.</div>
+    <ol class="steps3">
+      <li><b>Start a new chat.</b></li>
+      <li><b>Copy the prompt below</b> and paste it in.</li>
+      <li><b>Answer the one setup question</b> if it asks which email you use.</li>
+      <li><b>Read the summary table.</b> It lists each customer, the amount, the days late and the tone of the reminder.</li>
+      <li><b>Check each amount</b> against your accounting software.</li>
+      <li><b>Read each draft in full.</b> Change any line that does not sound like you.</li>
+      <li><b>Tell Claude which drafts to put in your email.</b> They go to your drafts folder, not to the customer.</li>
+      <li><b>Open your drafts folder and send each one yourself.</b></li>
+    </ol>
+    <div class="promptcard" id="invoices-prompt">
+      <p class="promptlabel">Prompt 5.1 &middot; the chase</p>
+      <h3>Chase what you are owed</h3>
+      <div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>Chase my overdue invoices. Draft the reminders, don't send them.</pre>
+      </div>
+      <p class="note"><b>Why the second sentence.</b> The plugin already waits for your yes. Saying it in the prompt makes it the first thing Claude reads, and it covers the one exception: invoices sent through PayPal, where the reminder can go out from PayPal itself once you approve.</p>
+    </div>
+    <h3 style="margin-top:38px">What it does before it writes a word</h3>
+    <ul class="steps3 tips">
+      <li><b>Checks for payments already made.</b> A customer who paid in the last two weeks is marked &ldquo;possibly paid, verify&rdquo; and gets no reminder. Check those before you chase.</li>
+      <li><b>Matches the tone to the customer.</b> Gentle for good payers, firmer for repeat late payers.</li>
+      <li><b>Puts all of a customer's overdue invoices in one email,</b> so nobody gets three reminders in a morning.</li>
+    </ul>
+    <label class="donewhen"><input type="checkbox" data-stage="5"><span><b>Done when</b>You have read every draft, checked every amount, and sent the ones you are happy with yourself.</span></label>
+  </section>
+
+  <section id="proposal">
+    <p class="label" data-n="08">Stage 6 &middot; Turn a call into a proposal</p>
+    <h2>From the conversation to a quote they can sign</h2>
+    <p class="lead">The two nights a week spent writing quotes is the job this saves most often. It works from whatever you have after the call.</p>
+    <ol class="steps3">
+      <li><b>Get what came out of the call.</b> A transcript, the text of a voice note, photos of the job, or a few lines of notes. Most phones turn a voice memo into text for you.</li>
+      <li><b>Start a new chat</b> and attach it.</li>
+      <li><b>Copy the prompt below</b> and paste it in the same message. If you attached a voice note or photos, change &ldquo;call transcript&rdquo; to say so.</li>
+      <li><b>Answer its questions.</b> It lists what is missing, such as a measurement or a start date, and asks rather than guesses.</li>
+      <li><b>Check the price, the scope and the dates.</b> It shows which past jobs it priced from, so you can check the number quickly.</li>
+      <li><b>Send the proposal yourself.</b> It comes back as a Word document and a PDF.</li>
+    </ol>
+    <div class="promptcard" id="proposal-prompt">
+      <p class="promptlabel">Prompt 6.1 &middot; the proposal</p>
+      <h3>Build the proposal</h3>
+      <div class="prompt">
+<button class="copy" type="button">Copy</button>
+<pre>Build a proposal from this call transcript.</pre>
+      </div>
+      <p class="note"><b>No past invoices connected?</b> Attach your price list or rate card as well. It prices from what you have actually charged, not from a general guess, so it needs one or the other.</p>
+    </div>
+    <label class="donewhen"><input type="checkbox" data-stage="6"><span><b>Done when</b>You have a proposal you have checked line by line and would send under your own name.</span></label>
+  </section>
+
+  <!-- ============ 09 WHAT ELSE ============ -->
+  <section id="more">
+    <p class="label" data-n="09">What else it can do</p>
+    <h2>The jobs worth trying next</h2>
+    <p>There are over forty jobs in the plugin. These are the ones that suit a business of one to ten people. You do not need the names: say what you need in plain words and Claude picks the job.</p>
+    <div class="cards">
+      <div class="card">
+        <p class="tag">Money</p>
+        <ul class="joblist">
+          <li><b>&ldquo;Cash forecast&rdquo;</b> Your cash for the next 30, 60 and 90 days, with the risks named.</li>
+          <li><b>&ldquo;Pay the bills&rdquo;</b> Reads and codes your bills, checks your cash, and lines up a payment run for you to approve.</li>
+          <li><b>&ldquo;Close the books&rdquo;</b> Checks the month against your payments and writes what the month means.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Customers</p>
+        <ul class="joblist">
+          <li><b>&ldquo;Respond to this lead&rdquo;</b> Drafts a reply to each new enquiry, with real times you are free.</li>
+          <li><b>&ldquo;Who should I call today?&rdquo;</b> The five people most worth a call, with what to say.</li>
+          <li><b>&ldquo;Win back quiet customers&rdquo;</b> Finds customers who have stopped buying and drafts a note to each.</li>
+          <li><b>&ldquo;Update my CRM&rdquo;</b> Keeps your customer list current from your email and calendar.</li>
+          <li><b>&ldquo;Review this contract&rdquo;</b> Reads a contract and flags the terms to question, in plain English.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Marketing</p>
+        <ul class="joblist">
+          <li><b>&ldquo;What should I promote?&rdquo;</b> A 30-day plan from what is actually selling.</li>
+          <li><b>&ldquo;Give me a month of posts&rdquo;</b> Posts in your voice, held for you to approve before anything goes live.</li>
+          <li><b>&ldquo;What are people saying about us?&rdquo;</b> Pulls your reviews together and drafts a reply to each one.</li>
+          <li><b>&ldquo;How do I show up in ChatGPT?&rdquo;</b> Checks whether Google and AI assistants can find your website.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Team and stock</p>
+        <ul class="joblist">
+          <li><b>&ldquo;Write a job post&rdquo;</b> The ad, the interview questions and the offer letter.</li>
+          <li><b>&ldquo;Screen these applications&rdquo;</b> A shortlist scored against what the job needs.</li>
+          <li><b>&ldquo;What do I need to reorder?&rdquo;</b> What to order and when, from what is selling.</li>
+          <li><b>&ldquo;Go through my email&rdquo;</b> Sorts your inbox into needs you, drafted, and done.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:22px"><b>Leave two alone for now.</b> The payroll and tax jobs are written for the United States. For Australian payroll, BAS and tax, keep using your bookkeeper or accountant.</p>
+  </section>
+
+  <!-- ============ 10 WHEN IT ISN'T ENOUGH ============ -->
+  <section id="custom">
+    <p class="label" data-n="10">When the standard version isn't enough</p>
+    <h2>Two things to try, then a custom build</h2>
+    <p>The plugin is built for the average small business. Before you decide it does not fit, try two things it does itself.</p>
+    <ol class="steps3">
+      <li><b>Say &ldquo;Connect to&rdquo; and the name of your tool.</b> It connects software it does not know, through Zapier.</li>
+      <li><b>Say &ldquo;Automate this&rdquo;</b> after a job you repeat. It turns that job into one of its own.</li>
+    </ol>
+    <p style="margin-top:18px">If it still does not fit how your business works, that is where a custom build comes in. Your own quoting rules, a job system nothing connects to, or three tools that need to talk to each other. I scope and quote those separately. Ask me when you are ready.</p>
+
+    <div class="sources" style="margin-top:44px">
+      <p><b>Where this came from.</b> The jobs, the connections and the approval rules were checked against Anthropic's own published files for the plugin, version 1.35.2, on 21 November 2026. The install path and the customise prompt are from Anthropic's Claude Academy tutorial. Claude's menus change often, so if a step reads differently on your screen, look for the same words nearby.</p>
+      <ul>
+        <li>Anthropic &middot; <a href="https://github.com/anthropics/knowledge-work-plugins/tree/main/small-business">The Small Business plugin, published files</a></li>
+        <li>Claude Academy &middot; <a href="https://academy.claude.com/tutorials/how-to-install-the-claude-for-small-business-plugin">How to install and use the Claude for Small Business plugin</a></li>
+      </ul>
+    </div>
+  </section>
+
+  </div>
+<footer>
+  <span>Magnum AI &middot; magnumai.com.au</span>
+  <span>Plugin last checked &middot; 21 November 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script>
+  // Copy reads the stored text of the prompt, never what happens to be on screen.
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var pre = btn.parentElement.querySelector('pre');
+      var text = pre.textContent;
+      function done() {
+        btn.textContent = 'Copied';
+        btn.classList.add('done');
+        setTimeout(function () { btn.textContent = label; btn.classList.remove('done'); }, 1600);
+      }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        s.removeAllRanges();
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
+  });
+
+  // Done when boxes. Remembered on this device only, and the page works the
+  // same when storage is blocked.
+  (function () {
+    var KEY = 'magnum-small-business-stages';
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+    var boxes = document.querySelectorAll('.donewhen input');
+    var out = document.getElementById('progress');
+    function paint() {
+      var n = 0;
+      boxes.forEach(function (b) {
+        var st = b.getAttribute('data-stage');
+        var li = document.querySelector('#plan li[data-stage="' + st + '"]');
+        if (li) { li.classList.toggle('ticked', b.checked); }
+        if (b.checked) { n++; }
+      });
+      out.textContent = n + ' of ' + boxes.length + ' stages ticked.';
+    }
+    boxes.forEach(function (b) {
+      b.checked = !!saved[b.getAttribute('data-stage')];
+      b.addEventListener('change', function () {
+        saved[b.getAttribute('data-stage')] = b.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+        paint();
+      });
+    });
+    paint();
+  })();
+</script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

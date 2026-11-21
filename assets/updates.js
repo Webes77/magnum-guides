@@ -19,6 +19,14 @@ window.MAGNUM_UPDATES = [
     why: 'On Pro or Max you can now hand a project several jobs at once and let them run while you get on with your day. On any other plan, the projects you already have work exactly as before.'
   },
   {
+    date: '2026-11-21',
+    kind: 'New guide',
+    title: 'Set Claude up to handle your business admin',
+    url: 'small-business/',
+    what: 'A step-by-step guide to Anthropic\'s free Small Business add-on for Claude: install it, tell it about your business, then run your Monday numbers, chase overdue invoices and turn a call into a quote.',
+    why: 'The weekly admin that eats your Monday gets drafted for you, and nothing that touches money or a customer goes out until you approve it. About 20 minutes to set up.'
+  },
+  {
     date: '2026-11-17',
     kind: 'Updated',
     title: 'Every prompt on the shelf, reviewed',
