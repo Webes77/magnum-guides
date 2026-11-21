@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+<title>What's New · Magnum AI</title>
+<meta name="description" content="Every new course, guide and prompt in the Magnum AI members area, newest first, with why each one matters for your business.">
+<meta name="author" content="Magnum AI">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .sub{font-size:19px;max-width:62ch;margin:0;color:var(--on-navy-mute);}
+  .wrap p a{color:var(--coral-text);}
+  .upd{list-style:none;margin:0;padding:0}
+  .upd li{background:#FFFFFF;border:2px solid var(--ink);margin:0 0 18px}
+  .upd a.card{display:block;padding:18px 22px 18px;text-decoration:none;color:var(--ink)}
+  .upd a.card:hover h3,.upd a.card:focus-visible h3{color:var(--coral-text)}
+  .upd .top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 8px}
+  .upd .kind{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(--tint);color:var(--ink);padding:3px 8px}
+  .upd .date{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--mute)}
+  .upd .fresh{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);padding:1px 8px}
+  .upd h3{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.15;text-transform:uppercase;margin:0 0 6px}
+  .upd .what{font-size:15.5px;margin:0 0 10px;max-width:none}
+  .upd .why{font-size:15.5px;margin:0;padding:10px 0 0;border-top:1px solid var(--hair);max-width:none}
+  .upd .why b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);display:block;margin-bottom:2px}
+  .upd .go{display:inline-block;margin-top:10px;font-family:var(--display);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--coral-text)}
+  .count{font-family:var(--display);font-weight:600;font-size:18px;text-transform:uppercase;margin:0 0 18px}
+  @media(max-width:560px){.upd a.card{padding:16px 16px}.upd h3{font-size:20px}}
+</style>
+<link rel="stylesheet" href="../assets/topbar.css">
+</head>
+<body>
+<header class="mtb" style="margin:0 -20px"><div class="mtb-in"><a class="mtb-brand" href="../"><img src="../assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="../#sessions">Courses</a><a href="../prompts/">Prompts</a><a href="../whats-new/" aria-current="page">What's new</a><a href="../#week">This week</a><a href="../#library">Guides</a><a href="../ai-tools/">Tools</a><a href="../account/">Account</a><a href="../auth/logout">Log out</a></nav></div></header>
+<header class="masthead"><div class="wrap">
+    <h1>What's <em>new</em></h1>
+    <p class="sub">Every new course, guide and prompt, newest first, and why each one matters for your business.</p>
+  </div></header>
+  <div class="wrap">
+    <p class="count" id="count" hidden></p>
+    <ul class="upd" id="list"></ul>
+    <noscript><p>This list needs JavaScript switched on.</p></noscript>
+  </div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Updated as things go live</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script src="../assets/updates.js"></script>
+<script>
+(function(){
+  var U=window.MAGNUM_UPDATES||[],KEY='magnum-updates-seen',seen='';
+  try{seen=localStorage.getItem(KEY)||'';}catch(e){}
+  var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmt(d){var p=d.split('-');return (+p[2])+' '+M[+p[1]-1]+' '+p[0];}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  var list=document.getElementById('list'),fresh=0,html='';
+  U.forEach(function(u){
+    var isNew=seen?u.date>seen:(Date.now()-new Date(u.date+'T00:00:00').getTime()<14*864e5); if(isNew)fresh++;
+    html+='<li><a class="card" href="../'+u.url+'"><div class="top"><span class="kind">'+esc(u.kind)+'</span><span class="date">'+fmt(u.date)+'</span>'+(isNew?'<span class="fresh">New</span>':'')+'</div><h3>'+esc(u.title)+'</h3><p class="what">'+esc(u.what)+'</p><p class="why"><b>Why it matters</b>'+esc(u.why)+'</p><span class="go">Open &rarr;</span></a></li>';
+  });
+  list.innerHTML=html;
+  if(fresh){var c=document.getElementById('count');c.textContent=fresh+(fresh===1?' new update':' new updates')+' since your last visit';c.hidden=false;}
+  if(U.length){try{localStorage.setItem(KEY,U[0].date);}catch(e){}}
+})();
+</script>
+</body>
+</html>

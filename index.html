@@ -54,6 +54,21 @@ img{display:block;max-width:100%}
 .links{display:flex;gap:28px}
 .links a{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:3px solid transparent}
 .links a:hover{border-color:var(--rust)}
+@media(max-width:1100px){.links{gap:16px}.links a{font-size:15px}}
+
+/* WHAT'S NEW · the latest three updates, under the welcome, so nothing new gets buried */
+.news{margin-bottom:56px}
+.news .h2 a{float:right;font-size:15px;letter-spacing:.04em;color:var(--coral-text);text-decoration:underline;text-underline-offset:3px;margin-top:10px}
+.nlist{list-style:none;margin:0;padding:0;border:2px solid var(--ink);background:var(--paper-2)}
+.nlist li+li{border-top:1px solid var(--hair)}
+.nlist a{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 20px;padding:14px 18px;text-decoration:none;color:var(--ink)}
+.nlist a:hover b{color:var(--coral-text)}
+.nlist .meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);grid-row:span 2;padding-top:4px}
+.nlist .meta i{display:block;font-style:normal;color:var(--ink);margin-top:4px}
+.nlist .fresh{display:inline-block;margin-top:6px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.06em;background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);padding:0 6px}
+.nlist b{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.2;text-transform:uppercase}
+.nlist span.why{font-size:15px;font-weight:500}
+@media(max-width:820px){.nlist a{grid-template-columns:1fr;padding:14px 14px}.nlist .meta{grid-row:auto}.news .h2 a{float:none;display:block;margin-top:8px}}
 
 /* WELCOME · one picture, one line, one button */
 .hero{padding:44px 0 56px;border-bottom:2px solid var(--ink);background:var(--paper)}
@@ -154,11 +169,11 @@ footer b{color:var(--paper);font-weight:500}
 }
 @media(max-width:820px){
   .wrap{padding:0 18px}
+  .bar{position:static}
   .bar .wrap{flex-direction:column;align-items:stretch;height:auto;gap:0;padding-top:10px}
   .brand img{width:36px;height:36px}
-  .links{gap:0;justify-content:space-between;overflow-x:auto;padding:8px 0 10px;scrollbar-width:none}
-  .links::-webkit-scrollbar{display:none}
-  .links a{font-size:14.5px;white-space:nowrap}
+  .links{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:2px 12px;padding:8px 0 8px}
+  .links a{font-size:14px;white-space:nowrap}
   .hero{padding:22px 0 34px}
   .hero .wrap{grid-template-columns:1fr;gap:22px}
   .hero .pic-frame{order:-1}
@@ -198,6 +213,7 @@ footer b{color:var(--paper);font-weight:500}
     <nav class="links" aria-label="Main">
       <a href="#sessions">Courses</a>
       <a href="prompts/">Prompts</a>
+      <a href="whats-new/">What's new</a>
       <a href="#week">This week</a>
       <a href="#library">Guides</a>
       <a href="ai-tools/">Tools</a>
@@ -220,6 +236,13 @@ footer b{color:var(--paper);font-weight:500}
 </div>
 
 <main class="wrap">
+
+  <!-- WHAT'S NEW · filled from assets/updates.js -->
+  <section id="whats-new" class="news" hidden>
+    <h2 class="h2">What's new <a href="whats-new/">All updates</a></h2>
+    <p class="lede" id="newsline">The latest courses, guides and prompts, and why they matter for your business.</p>
+    <ul class="nlist" id="nlist"></ul>
+  </section>
 
   <section id="sessions">
     <h2 class="h2">Courses</h2>
@@ -392,5 +415,23 @@ footer b{color:var(--paper);font-weight:500}
 })();
 </script>
 <script>if(!/github\.io$/.test(location.hostname)){var so=document.getElementById('signout');if(so)so.hidden=false;}</script>
+<script src="assets/updates.js"></script>
+<script>
+(function(){
+  var U=window.MAGNUM_UPDATES||[];if(!U.length)return;
+  var seen='';try{seen=localStorage.getItem('magnum-updates-seen')||'';}catch(e){}
+  var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmt(d){var p=d.split('-');return (+p[2])+' '+M[+p[1]-1];}
+  function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function isNew(d){return seen?d>seen:(Date.now()-new Date(d+'T00:00:00').getTime()<14*864e5);}
+  var fresh=U.filter(function(u){return isNew(u.date);}).length,h='';
+  U.slice(0,3).forEach(function(u){
+    h+='<li><a href="'+u.url+'"><span class="meta">'+fmt(u.date)+'<i>'+esc(u.kind)+'</i>'+(isNew(u.date)?'<span class="fresh">New</span>':'')+'</span><b>'+esc(u.title)+'</b><span class="why">'+esc(u.why)+'</span></a></li>';
+  });
+  document.getElementById('nlist').innerHTML=h;
+  if(fresh)document.getElementById('newsline').textContent=fresh+(fresh===1?' new update':' new updates')+' since your last visit. Here are the latest, and why they matter for your business.';
+  document.getElementById('whats-new').hidden=false;
+})();
+</script>
 </body>
 </html>
