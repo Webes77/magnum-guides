@@ -1405,6 +1405,15 @@ After each chunk, ask the questions a curious 10-year-old would ask, but judge a
 
 When I say I'm finished, tell me what those mistakes reveal about where my understanding is still weak.`},
 
+/* ---------- Small business plugin ----------
+   Two prompts from small-business/, 21 Nov, byte-identical to the guide.
+   Both need Anthropic's Small Business plugin installed, which the guide
+   walks through. */
+{kind:'prompt', id:'smb-chase-invoices', works:'claude:Small Business plugin', sec:'Reference · Small business plugin', title:"Chase your overdue invoices, as drafts", where:"A new chat, once the Small Business plugin is installed and your accounting and email are connected", type:'does', when:'weekly', hook:"Finds who owes you and writes each reminder. You read it and send it.", added:'2026-11-21',
+prompt:`Chase my overdue invoices. Draft the reminders, don't send them.`},
+{kind:'prompt', id:'smb-proposal-from-call', works:'claude:Small Business plugin', sec:'Reference · Small business plugin', title:"Turn a call into a proposal", where:"A new chat with the transcript, voice note text or job photos attached, once the Small Business plugin is installed", type:'writing', when:'start', hook:"From the conversation to a priced quote you check and send.", added:'2026-11-21',
+prompt:`Build a proposal from this call transcript.`},
+
 /* ---------- Build your agent workforce ----------
    The nineteen prompts from agent-workforce/, 29 Sep, byte-identical to the
    guide. Titles carry the stage number and say what the card does, because a
