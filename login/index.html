@@ -30,11 +30,12 @@
     <label for="password">Password</label>
     <input id="password" name="password" type="password" autocomplete="current-password" required>
     <button type="submit">Sign in</button>
+    <a class="forgot" id="forgot" href="#reset">Forgot your password? Get a new one</a>
   </form>
 
-  <div class="label">First time here, or forgot your password</div>
+  <div class="label" id="reset">First time here, or forgot your password</div>
   <form class="card" method="post" action="/auth/link">
-    <p>Enter the email address your access was set up with. You will get a link to choose your own password.</p>
+    <p>Enter the email address your invitation was sent to. You will get a link to choose a new password. It must be that exact address: any other address gets nothing.</p>
     <label for="email2">Email</label>
     <input id="email2" name="email" type="email" autocomplete="username" required>
     <button type="submit" class="plain">Send me a link</button>
@@ -51,10 +52,15 @@
   else if(e==='noaccess')t='That login does not have access to the members area. If that is a surprise, email info@magnumai.com.au.';
   else if(e==='link')t='That link has been used or has run out. Ask for a fresh one below.';
   else if(e==='slow')t='Too many tries in a short time. Wait a minute, then try again.';
-  else if(q.get('sent'))t='If that address is on the members list, a link to set your password is on its way by email. It works once and lasts an hour.';
+  else if(q.get('sent'))t='If that address is on the members list, a link to set your password is on its way by email. It works once and lasts an hour. Nothing after a few minutes? Check your junk folder, then check you used the address your invitation went to.';
   else if(q.get('out'))t='You are logged out.';
   else if(q.get('closed'))t='Your account is closed and your login has been removed.';
   if(t){m.textContent=t;m.hidden=false;}
+  document.getElementById('forgot').addEventListener('click',function(){
+    var a=document.getElementById('email'),b=document.getElementById('email2');
+    if(a.value&&!b.value)b.value=a.value;
+    setTimeout(function(){b.focus();},0);
+  });
 })();
 </script>
 </body>

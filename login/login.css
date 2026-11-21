@@ -54,3 +54,5 @@ button.plain:hover,button.plain:focus-visible{background:var(--ink);color:var(--
   .card{padding:20px 18px 22px}
   .foot{padding:18px}
 }
+.forgot{display:block;margin-top:18px;font-size:15.5px;font-weight:600;color:var(--coral-text);text-decoration:underline;text-underline-offset:3px}
+.forgot:hover,.forgot:focus-visible{color:var(--ink)}
