@@ -136,3 +136,17 @@ The Wednesday routine makes one each week (Step 6 of
 routine, which it has since 22 Nov. Without it, the card uses `newsletter.jpg`, the
 archive's picture, and the email says so in one line.
 
+
+## Stock cartoons for the Field Note topics, 22 Nov
+
+`assets/illustrations/stock/topic-NN.jpg` holds one ready-made cartoon, in
+this style, for every topic in `notes/field-note-topics.md` still marked
+`next` on 22 Nov (topics 2 to 8, 10 to 14, 16 to 21 and 23 to 26). NN is the
+topic number in that file, not the issue number. They were made on
+Higgsfield's remaining credits before it was turned off, checked for
+readable words, coral on one thing and right-hand-drive vehicles. When an
+issue runs one of these topics, copy its stock picture to
+`assets/illustrations/field-note-NN.jpg` (issue number) instead of making a
+new one. Make a fresh one on fal only when the issue's angle has moved too
+far from the picture, or the topic is new. Every take, kept and rejected,
+is also in James's brand folder under Imagery/members-area/stock-cartoons.
