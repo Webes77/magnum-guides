@@ -36,7 +36,9 @@ panel border. Australian setting. No text, no readable screens, no speech
 bubbles, no logos.
 ```
 
-Model: Nano Banana 2.1 on Higgsfield, 16:9, 1k. About 2 credits an image.
+Model: Nano Banana 2.1 on fal (`google/nano-banana-2.1/edit`), 16:9, 1K, with two or three
+existing pictures from `assets/illustrations/` in `image_urls` as style references.
+Until 22 Nov 2026 these were made on Higgsfield; fal is the only tool from then on.
 
 ## Rules for the scene line
 
@@ -58,16 +60,12 @@ is hotlinked. The site pictures are named after the page they sit on
 (`privacy.jpg`, `ai-foundations.jpg`), the AI tools pictures carry a `tools-`
 prefix, and each Field Note card has `field-note-NN.jpg`.
 
-How a picture gets from Higgsfield into the repo, because this sandbox cannot
-reach Higgsfield's image host (`d8j0ntlcm91z4.cloudfront.net`). In the
-Higgsfield sandbox, `curl` the result, convert it to JPEG
-(`convert in.png -resize 1200x -strip -interlace JPEG -quality 80 out.jpg`),
-print its size, and pass the file in `image_paths` on `sandbox_exec`. The
-image comes back into this session's `tool-results` folder as
-`mcp-Higgsfield-blob-*.jpg`, byte for byte (checked on 15 Oct: same size,
-same bytes). Copy it into place by matching the exact size. Up to 512 KB per
-call, so two or three pictures at a time. Look at each one as it arrives;
-that is the check.
+How a picture gets from fal into the repo: `curl` the result URL fal
+returns, convert it to JPEG
+(`convert in.png -resize 1200x -strip -interlace JPEG -quality 80 out.jpg`)
+and copy it into place. fal result URLs expire, so never link to one. Look
+at each picture before you use it; that is the check. (The old Higgsfield
+`sandbox_exec` and `image_paths` route is retired with Higgsfield.)
 
 Every image carries a small credit line: "Illustration: Magnum AI".
 
@@ -135,7 +133,7 @@ were all redrawn on 15 Oct. The issue page itself carries no picture: the
 one-card shape is unchanged.
 
 The Wednesday routine makes one each week (Step 6 of
-`notes/field-note-prompt.md`), about two credits. It needs the Higgsfield
-connector on the routine. Without it, the card uses `newsletter.jpg`, the
+`notes/field-note-prompt.md`) on fal. It needs the fal connector on the
+routine. Without it, the card uses `newsletter.jpg`, the
 archive's picture, and the email says so in one line.
 
