@@ -33,7 +33,7 @@
 :root{
   --paper:#FBFBF9;--paper-2:#FFFFFF;--ink:#1E1B17;--navy:#1F2A37;
   --coral-bright:#FF6F5E;--tint:#FBE1D8;--body:#1E1B17;--rust:#EF4029;
-  --olive:#5B6B7A;--char:#1E1B17;--mute:#45433E;--coral-text:#C63A2A;
+  --olive:#5B6B7A;--char:#1E1B17;--mute:#45433E;--coral-text:#C63A2A;--hair:#DADAD5;--on-navy:#F4F1EA;--on-navy-mute:#C8CDD3;
   --display:'Oswald','Arial Narrow','Liberation Sans Narrow',sans-serif;
   --sans:'IBM Plex Sans',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -203,9 +203,67 @@ footer b{color:var(--paper);font-weight:500}
   footer .fl{text-align:left}
   footer img{width:96px;height:96px}
 }
+
+/* PHONE, from 22 Nov · an app, not a shrunk website. Bottom tabs (assets/tabs.js),
+   a greeting and one carry-on card, What's new as a navy strip of picture cards
+   you swipe, courses you swipe with progress, sentence case titles. */
+.hi{display:none}
+.news .nlist .im{display:none}
+.nlist li:nth-child(n+4){display:none}
+.pbar{display:block;height:4px;background:rgba(30,27,23,.15);margin:14px 0 6px}
+.pbar i{display:block;height:100%;background:var(--rust)}
+.ptx{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:820px){
+  .has-mtabs .bar .links{display:none}
+  .bar .wrap{padding-top:10px;padding-bottom:10px}
+  .hero{padding:18px 0 26px;border-bottom:0}
+  .hero .wrap{gap:16px}
+  .hero .pic-frame{order:2}
+  .hero h1,.hero .wrap>div>p:not(.hi),.hero .kick{display:none}
+  .hi{display:block;font-family:var(--display);font-weight:700;font-size:34px;line-height:1.05;text-transform:uppercase;color:var(--ink);margin:4px 0 0}
+  .cta{display:block;margin-top:16px;text-transform:none;font-family:var(--sans);font-weight:700;font-size:18px;letter-spacing:0;padding:16px 18px}
+  .cta .pc{font-weight:500;margin-top:2px}
+  .alt{font-size:14px}
+  main.wrap{padding-top:8px}
+  section{margin-bottom:38px}
+  .h2{font-size:24px;padding-top:12px;margin-bottom:6px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .lede{font-size:15px;margin-bottom:16px}
+  /* What's new: full-bleed navy, picture cards that swipe */
+  .news{background:var(--navy);margin:0 -18px 38px;padding:18px 0 22px}
+  .news .h2{color:var(--on-navy);border-top:0;padding:0 18px}
+  .news .h2 a{float:none;display:inline;margin:0;font-family:var(--sans);font-weight:600;font-size:14px;text-transform:none;letter-spacing:0;color:var(--coral-bright)}
+  .news .lede{color:var(--on-navy-mute);padding:0 18px}
+  .nlist{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;border:0;background:none;padding:2px 18px 6px;scroll-padding:0 18px;scrollbar-width:none}
+  .nlist::-webkit-scrollbar{display:none}
+  .nlist li,.nlist li:nth-child(n+4){display:block;flex:0 0 80%;scroll-snap-align:start;background:var(--paper-2);border:2px solid var(--ink)}
+  .nlist li+li{border-top:2px solid var(--ink)}
+  .nlist a{display:flex;flex-direction:column;height:100%;padding:0;gap:0}
+  .news .nlist .im{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;border-bottom:2px solid var(--ink);background:#F4F1EA}
+  .nlist .im img{width:100%;height:100%;object-fit:cover;transform:scale(1.07)}
+  .nlist .im .fresh{position:absolute;top:8px;left:8px;margin:0}
+  .nlist .meta{padding:12px 14px 0}
+  .nlist .meta .fresh{display:none}
+  .nlist b{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.25;text-transform:none;padding:6px 14px 0}
+  .nlist span.why{font-size:14px;line-height:1.45;padding:0 14px;margin:6px 0 14px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  /* Courses: a row you swipe, each with its progress */
+  .path{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -18px;padding:2px 18px 6px;scroll-padding:0 18px;scrollbar-width:none}
+  .path::-webkit-scrollbar{display:none}
+  .stop{flex:0 0 74%;flex-direction:column;scroll-snap-align:start}
+  .stop .pic{width:auto;aspect-ratio:16/10;border-right:0;border-bottom:2px solid var(--ink)}
+  .stop .tx{padding:12px 14px 14px}
+  .stop h3,.wide h3,.card h3{font-family:var(--sans);font-weight:700;text-transform:none;letter-spacing:-.005em}
+  .stop h3{font-size:18px;line-height:1.2}
+  .stop p{font-size:14px}
+  .wide h3{font-size:21px;line-height:1.2}
+  .card h3{font-size:19px;line-height:1.25}
+  .card .inner{padding:16px 16px 18px}
+  .g .t{font-family:var(--sans);font-weight:700;font-size:14.5px;line-height:1.25;text-transform:none;padding:10px 12px 12px}
+  footer{margin-top:20px}
+}
 </style>
+<link rel="stylesheet" href="assets/topbar.css">
 </head>
-<body>
+<body class="home">
 
 <header class="bar">
   <div class="wrap">
@@ -226,7 +284,8 @@ footer b{color:var(--paper);font-weight:500}
 <div class="hero">
   <div class="wrap">
     <div>
-      <div class="kick">Welcome in</div>
+      <div class="kick" id="kick">Welcome in</div>
+      <p class="hi" id="hi">Welcome in</p>
       <h1>Members <em>Area</em></h1>
       <p>Everything you need to get real work out of AI in your business. New to it? Start at the top. Know what you&rsquo;re doing? Grab a prompt and go.</p>
       <a class="cta" href="bots/">Start here &rarr;</a>
@@ -426,13 +485,41 @@ footer b{color:var(--paper);font-weight:500}
   function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
   function isNew(d){return seen?d>seen:(Date.now()-new Date(d+'T00:00:00').getTime()<14*864e5);}
   var fresh=U.filter(function(u){return isNew(u.date);}).length,h='';
-  U.slice(0,3).forEach(function(u){
-    h+='<li><a href="'+u.url+'"><span class="meta">'+fmt(u.date)+'<i>'+esc(u.kind)+'</i>'+(isNew(u.date)?'<span class="fresh">New</span>':'')+'</span><b>'+esc(u.title)+'</b><span class="why">'+esc(u.why)+'</span></a></li>';
+  U.slice(0,5).forEach(function(u){
+    h+='<li><a href="'+u.url+'">'+(u.img?'<span class="im"><img src="'+u.img+'" alt="" loading="lazy" width="1200" height="670">'+(isNew(u.date)?'<span class="fresh">New</span>':'')+'</span>':'')+'<span class="meta">'+fmt(u.date)+'<i>'+esc(u.kind)+'</i>'+(isNew(u.date)?'<span class="fresh">New</span>':'')+'</span><b>'+esc(u.title)+'</b><span class="why">'+esc(u.why)+'</span></a></li>';
   });
   document.getElementById('nlist').innerHTML=h;
   if(fresh)document.getElementById('newsline').textContent=fresh+(fresh===1?' new update':' new updates')+' since your last visit. Here are the latest, and why they matter for your business.';
   document.getElementById('whats-new').hidden=false;
 })();
 </script>
+<script>
+/* Greeting and course progress. The name comes from the member's own login
+   email when it reads as a first name (james@, amelia@); otherwise the
+   greeting stands alone. Progress is what each deck remembers on this device. */
+(function(){
+  var h=new Date().getHours(),g=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
+  var hi=document.getElementById('hi'),kick=document.getElementById('kick');
+  function set(n){var t=g+(n?', '+n:'');hi.textContent=t;kick.textContent=t;}
+  set('');
+  if(!/github\.io$/.test(location.hostname)){
+    fetch('/auth/me',{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+      var m=d&&d.email&&/^([a-z]{2,12})@/i.exec(d.email);
+      if(m&&!/^(info|admin|hello|office|accounts|contact|team|sales|mail|support)$/i.test(m[1]))set(m[1].charAt(0).toUpperCase()+m[1].slice(1).toLowerCase());
+    }).catch(function(){});
+  }
+  var P={};try{P=JSON.parse(localStorage.getItem('magnum-progress')||'{}');}catch(e){}
+  document.querySelectorAll('.path .stop').forEach(function(a){
+    var href=a.getAttribute('href'),rec=null;
+    Object.keys(P).forEach(function(k){if(k.slice(-href.length-1)==='/'+href)rec=P[k];});
+    var pc=rec&&rec.t?Math.min(100,Math.round(rec.i/rec.t*100)):0;
+    var tx=a.querySelector('.tx'),go=a.querySelector('.go');
+    var bar=document.createElement('span');bar.className='pbar';bar.innerHTML='<i style="width:'+pc+'%"></i>';
+    var t=document.createElement('span');t.className='ptx';t.textContent=pc>=100?'Done':pc?pc+'% done':'Not started';
+    tx.insertBefore(bar,go);tx.insertBefore(t,go);
+  });
+})();
+</script>
+<script src="assets/tabs.js" defer></script>
 </body>
 </html>

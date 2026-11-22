@@ -21,19 +21,21 @@
   .wrap p a{color:var(--coral-text);}
   .upd{list-style:none;margin:0;padding:0}
   .upd li{background:#FFFFFF;border:2px solid var(--ink);margin:0 0 18px}
+  .upd .im{display:block;aspect-ratio:16/9;overflow:hidden;border-bottom:2px solid var(--ink);margin:-18px -22px 14px;background:#F4F1EA}
+  .upd .im img{width:100%;height:100%;object-fit:cover;transform:scale(1.07)}
   .upd a.card{display:block;padding:18px 22px 18px;text-decoration:none;color:var(--ink)}
   .upd a.card:hover h3,.upd a.card:focus-visible h3{color:var(--coral-text)}
   .upd .top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 8px}
   .upd .kind{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(--tint);color:var(--ink);padding:3px 8px}
   .upd .date{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--mute)}
   .upd .fresh{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;background:var(--coral-bright);color:var(--ink);border:2px solid var(--ink);padding:1px 8px}
-  .upd h3{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.15;text-transform:uppercase;margin:0 0 6px}
+  .upd h3{font-family:var(--sans);font-weight:700;font-size:21px;line-height:1.2;margin:0 0 6px}
   .upd .what{font-size:15.5px;margin:0 0 10px;max-width:none}
   .upd .why{font-size:15.5px;margin:0;padding:10px 0 0;border-top:1px solid var(--hair);max-width:none}
   .upd .why b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-text);display:block;margin-bottom:2px}
   .upd .go{display:inline-block;margin-top:10px;font-family:var(--display);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--coral-text)}
   .count{font-family:var(--display);font-weight:600;font-size:18px;text-transform:uppercase;margin:0 0 18px}
-  @media(max-width:560px){.upd a.card{padding:16px 16px}.upd h3{font-size:20px}}
+  @media(max-width:560px){.upd .im{margin:-16px -16px 12px}.upd a.card{padding:16px 16px}.upd h3{font-size:20px}}
 </style>
 <link rel="stylesheet" href="../assets/topbar.css">
 </head>
@@ -64,12 +66,13 @@
   var list=document.getElementById('list'),fresh=0,html='';
   U.forEach(function(u){
     var isNew=seen?u.date>seen:(Date.now()-new Date(u.date+'T00:00:00').getTime()<14*864e5); if(isNew)fresh++;
-    html+='<li><a class="card" href="../'+u.url+'"><div class="top"><span class="kind">'+esc(u.kind)+'</span><span class="date">'+fmt(u.date)+'</span>'+(isNew?'<span class="fresh">New</span>':'')+'</div><h3>'+esc(u.title)+'</h3><p class="what">'+esc(u.what)+'</p><p class="why"><b>Why it matters</b>'+esc(u.why)+'</p><span class="go">Open &rarr;</span></a></li>';
+    html+='<li><a class="card" href="../'+u.url+'">'+(u.img?'<span class="im"><img src="../'+u.img+'" alt="" loading="lazy" width="1200" height="670"></span>':'')+'<div class="top"><span class="kind">'+esc(u.kind)+'</span><span class="date">'+fmt(u.date)+'</span>'+(isNew?'<span class="fresh">New</span>':'')+'</div><h3>'+esc(u.title)+'</h3><p class="what">'+esc(u.what)+'</p><p class="why"><b>Why it matters</b>'+esc(u.why)+'</p><span class="go">Open &rarr;</span></a></li>';
   });
   list.innerHTML=html;
   if(fresh){var c=document.getElementById('count');c.textContent=fresh+(fresh===1?' new update':' new updates')+' since your last visit';c.hidden=false;}
   if(U.length){try{localStorage.setItem(KEY,U[0].date);}catch(e){}}
 })();
 </script>
+<script src="../assets/tabs.js" defer></script>
 </body>
 </html>
