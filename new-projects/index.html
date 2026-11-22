@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/logos/apple-touch-icon.png">
+<title>The New Projects (Beta) · Magnum AI</title>
+<meta name="description" content="Anthropic has rebuilt Claude Projects as one conversation that starts a thread for each job. In beta, Pro and Max only, in Claude Code for now. What it is, how it differs, and how to set one up.">
+<meta name="author" content="Magnum AI">
+<link rel="canonical" href="https://webes77.github.io/magnum-guides/new-projects/">
+
+<!-- Social preview. What clients see when this link is shared. -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Magnum AI">
+<meta property="og:title" content="The New Projects (Beta)">
+<meta property="og:description" content="Your separate chats are called threads now. What changed, who has it, and how to set one up.">
+<meta property="og:url" content="https://webes77.github.io/magnum-guides/new-projects/">
+<meta property="og:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/new-projects.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The New Projects (Beta), a Magnum AI guide">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The New Projects (Beta)">
+<meta name="twitter:description" content="Your separate chats are called threads now. What changed, who has it, and how to set one up.">
+<meta name="twitter:image" content="https://webes77.github.io/magnum-guides/assets/thumbnails/new-projects.jpg">
+<meta name="theme-color" content="#1F2A37">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .sub{font-size:19px;max-width:62ch;margin:0 0 14px;color:var(--on-navy-mute);}
+  .meta{font-family:var(--sans);font-size:14px;color:var(--on-navy-mute);margin:0;}
+  .wrap p a,.wrap li a,.sources a{color:var(--coral-text);}
+  /* The beta notice. Same component as the Task Work guide: paper card,
+     coral top rule, dated because its job is saying how fresh it is. */
+  .notice{background:var(--paper-2);border:2px solid var(--ink);border-top:6px solid var(--rust);
+    padding:22px 24px 24px;margin:0 0 44px;}
+  .notice .when{font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--coral-text);margin:0 0 10px;}
+  .notice h2{font-size:clamp(20px,2.8vw,26px);margin:0 0 12px;}
+  .notice p{font-size:15.5px;color:var(--char);margin:0 0 10px;max-width:66ch;}
+  .notice p:last-child{margin-bottom:0;}
+  .only{margin:0 0 20px;padding:0;list-style:none;max-width:64ch}
+  .only li{padding:10px 0 10px 24px;position:relative;border-bottom:1px solid rgba(30,27,23,.12)}
+  .only li::before{content:"\2713";position:absolute;left:0;top:10px;font-family:var(--mono);font-size:13px;color:var(--olive)}
+  .flag{border-left:5px solid var(--olive);background:#FFFFFF;border-top:1px solid var(--hair);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:12px 16px;margin:18px 0 0;max-width:64ch}
+  .flag p{margin:0 0 8px;font-size:15px;color:var(--char);max-width:none}
+  .flag p:last-child{margin-bottom:0}
+  .flag strong{color:var(--ink);font-weight:600;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.16em;display:block;margin-bottom:4px}
+  /* One block per flow step, numbered steps inside. */
+  .stage{background:#FFFFFF;border:2px solid var(--ink);padding:18px 22px 16px;margin:0 0 18px;}
+  .stage h3{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.15;text-transform:uppercase;color:var(--ink);margin:0 0 4px}
+  .stage .why{font-size:15px;color:var(--char);margin:0 0 10px;max-width:none}
+  .stage ol{margin:0;padding:0 0 0 24px}
+  .stage li{font-size:15.5px;line-height:1.5;margin:0 0 6px}
+  .stage li::marker{font-family:var(--mono);font-size:13px;color:var(--coral-text)}
+  .stage .note{font-size:14.5px;color:var(--char);border-top:1px solid var(--hair);padding-top:8px;margin:10px 0 0;max-width:none}
+  .ui{font-weight:600;color:var(--ink)}
+  .sayit{color:var(--ink);font-family:var(--mono);font-size:14px;background:var(--tint);padding:1px 5px}
+  .threads h3{font-family:var(--display);font-weight:600;font-size:20px;text-transform:uppercase;margin:26px 0 6px;color:var(--ink)}
+  .threads p,.threads li{max-width:64ch}
+  .threads ol,.threads ul{padding-left:24px}
+  .threads li{margin:0 0 6px}
+  .big{font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,28px);line-height:1.15;color:var(--ink);text-transform:uppercase;margin:0 0 14px;max-width:none}
+  table td:first-child{font-weight:600}
+  @media(max-width:560px){.stage{padding:16px 16px 14px}}
+  @media print{html,body{background:#fff!important}.stage{break-inside:avoid}}
+</style>
+<link rel="stylesheet" href="../assets/illustration.css">
+<link rel="stylesheet" href="../assets/topbar.css">
+</head>
+<body>
+<header class="mtb" style="margin:0 -20px"><div class="mtb-in"><a class="mtb-brand" href="../"><img src="../assets/logos/magnum-mark.svg" alt="" width="40" height="40"><span><b>Magnum AI</b><i>Members area</i></span></a><nav class="mtb-links" aria-label="Members area"><a href="../#sessions">Courses</a><a href="../prompts/">Prompts</a><a href="../whats-new/">What's new</a><a href="../#week">This week</a><a href="../#library" aria-current="page">Guides</a><a href="../ai-tools/">Tools</a><a href="../account/">Account</a><a href="../auth/logout">Log out</a></nav></div></header>
+<header class="masthead"><div class="wrap">
+    <h1>The new Projects <em>(beta)</em></h1>
+    <p class="sub">Anthropic has rebuilt Projects as one conversation that starts a thread for each job. It is in beta, for Pro and Max plans only, and it lives in Claude Code for now.</p>
+    <p class="meta">Beta · Pro and Max only · Checked 22 Nov 2026</p>
+  </div></header>
+  <div class="wrap">
+
+  <div class="notice" id="notice">
+    <p class="when">Beta · Checked 22 November 2026</p>
+    <h2>You do not need to do anything yet</h2>
+    <p>Your projects in Claude chat and Cowork have not changed. They still work the way <a href="../projects/">Set Up a Project Properly</a> teaches, until Anthropic upgrades them. Anthropic has not given a date.</p>
+    <p>Team and Enterprise plans do not have the new version yet. Read on if you are on Pro or Max and want to try it, or if Claude has already moved one of your projects.</p>
+  </div>
+
+  <figure class="ill">
+    <img src="../assets/illustrations/agent-workforce.jpg" alt="A cartoon office where everyone has one job at their own desk, as the owner walks through with a coffee." width="1200" height="670" decoding="async">
+    <figcaption>Illustration: Magnum AI</figcaption>
+  </figure>
+
+  <section id="what">
+    <p class="label" data-n="01">What it is</p>
+    <p class="lead">A project used to be a folder of chats. Now it is one conversation that runs the work for you.</p>
+    <p>You tell Claude what needs doing in the project conversation. Claude splits the work into threads. Each thread is a separate job that runs in the cloud, and it keeps running after you close your laptop. Every thread starts with the project&rsquo;s files, instructions and memory. Claude then tells you what is done and what is waiting on you.</p>
+    <p>A quick question gets answered in the main conversation. New work goes to a new thread, or to one already working in that area. Ask for three unrelated jobs in one message and you get three threads.</p>
+  </section>
+
+  <section id="who">
+    <p class="label" data-n="02">Who can get it</p>
+    <ul class="only">
+      <li><strong>Pro and Max plans</strong>, as a public beta. Anthropic is rolling it out in stages, so it may not be on your account yet.</li>
+      <li><strong>Not Team or Enterprise</strong> yet.</li>
+      <li><strong>In Claude Code</strong>: at claude.ai/code, the Code tab of the desktop app, and the Claude mobile app.</li>
+    </ul>
+    <p>Look for <span class="ui">Projects</span> in the left sidebar, or under <span class="ui">More</span>. If it is not there, join the waitlist at claude.com/form/projects.</p>
+    <div class="flag">
+      <strong>If the button says Get started</strong>
+      <p>You see <span class="ui">Get started</span> instead of <span class="ui">New project</span> when you still have projects in Claude chat. To go further, you first upgrade or archive those projects.</p>
+      <p>If your business runs on those projects, my advice is to stay on the classic version for now. Nothing is lost by waiting.</p>
+    </div>
+    <div class="flag">
+      <strong>If Claude moved a project for you</strong>
+      <p>Anthropic is moving some Pro, Max and Ultra users&rsquo; projects across. A moved project keeps its instructions, files, full chat history and scheduled tasks. If you used the project in the last 30 days, Anthropic emails you first. Nothing is deleted.</p>
+    </div>
+  </section>
+
+  <section id="differs">
+    <p class="label" data-n="03">How it differs</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th>Classic project (chat)</th><th>New project (beta)</th></tr></thead>
+        <tbody>
+          <tr><td>Shape</td><td>A folder. You start a new chat for each job.</td><td>One conversation. It starts a thread for each job.</td></tr>
+          <tr><td>Where</td><td>Claude chat and Cowork</td><td>Claude Code: claude.ai/code, the desktop Code tab, the mobile app</td></tr>
+          <tr><td>Plans</td><td>Every plan</td><td>Pro and Max, in beta</td></tr>
+          <tr><td>While you are away</td><td>Only a scheduled task runs</td><td>Threads keep working in the cloud</td></tr>
+          <tr><td>Memory</td><td>Instructions and files you write</td><td>Instructions you write, plus project memory Claude writes itself and you can edit</td></tr>
+          <tr><td>Usage</td><td>One chat at a time</td><td>Each thread is a full session, so it uses your plan limits faster</td></tr>
+          <tr><td>Sharing</td><td>Depends on your plan</td><td>One owner. It cannot be shared</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="setup">
+    <p class="label" data-n="04">Set one up, step by step</p>
+    <p>Same flow as the classic project: interview for a brief, turn the brief into instructions and a file list, set it up and run a couple of examples, schedule it if it needs a timer, then critique and improve it.</p>
+
+    <div class="stage">
+      <h3>1. Create the project</h3>
+      <ol>
+        <li>Click <span class="ui">Projects</span> in the left sidebar. If you do not see it, click <span class="ui">More</span>.</li>
+        <li>Click <span class="ui">New project</span>.</li>
+        <li>Type a <span class="ui">Name</span>. This is the only box you must fill in.</li>
+        <li>Optional: type a <span class="ui">Goal</span> in one line, for example &ldquo;Reply to website enquiries&rdquo;.</li>
+        <li>Optional: under <span class="ui">Context</span>, click <span class="ui">Add</span> for each file or Google Drive folder you want in the project.</li>
+        <li>Click <span class="ui">Create project</span>.</li>
+        <li>If Claude posts <span class="ui">Setup recommendations</span>, switch off what you do not want. Then click <span class="ui">Update setup</span>.</li>
+      </ol>
+      <p class="note">You do not need a GitHub repository. A project can research, write documents and deliver files without one.</p>
+    </div>
+
+    <div class="stage">
+      <h3>2. Interview to get a brief</h3>
+      <ol>
+        <li>Copy the <a href="../prompts/#talk-it-out">Talk-It-Out prompt</a> from the Prompt Shelf.</li>
+        <li>Paste it into the project conversation. Fill in the job.</li>
+        <li>If a thread card appears under your message, click the card. Answer inside the thread.</li>
+        <li>Answer one question at a time.</li>
+        <li>Check the brief it plays back. Then say OK.</li>
+      </ol>
+    </div>
+
+    <div class="stage">
+      <h3>3. Write the instructions and list the files</h3>
+      <ol>
+        <li>Copy the <a href="../prompts/#project-instructions">Project instructions prompt</a>. Paste it in the same place, with your brief.</li>
+        <li>Add one line at the end: <span class="sayit">Then tell me which files this project needs.</span></li>
+        <li>Read the draft. Tell it what to change.</li>
+        <li>Click the gear icon in the project header. Click <span class="ui">Project settings</span>, then <span class="ui">Memory</span>, then <span class="ui">Project instructions</span>.</li>
+        <li>Paste the final instructions into the box. The limit is 16,000 characters.</li>
+      </ol>
+      <p class="note">The instructions go to every new thread and to the main conversation.</p>
+    </div>
+
+    <div class="stage">
+      <h3>4. Add the files</h3>
+      <ol>
+        <li>Click <span class="ui">Overview</span>. Click the <span class="ui">Library</span> tab.</li>
+        <li>Add each file on the list from step 3. One file can be up to 480 MB.</li>
+        <li>When a file changes on your computer, add it again and choose <span class="ui">Replace</span>. The project holds a copy, not the original.</li>
+      </ol>
+      <p class="note">Files the threads make for you show up in the <span class="ui">Library</span> too.</p>
+    </div>
+
+    <div class="stage">
+      <h3>5. Run a couple of examples</h3>
+      <ol>
+        <li>Send a small, real job in the project conversation. Use one you have already done, so you can compare.</li>
+        <li>Click the thread card that appears under your message.</li>
+        <li>Read each step. Check the result against what you would have done.</li>
+        <li>Run a second, different job the same way.</li>
+      </ol>
+    </div>
+
+    <div class="stage">
+      <h3>6. Schedule it, if it needs a timer</h3>
+      <ol>
+        <li>Ask in the project conversation, with a day, a time and the job. For example: <span class="sayit">Every Monday at 7am, list last week&rsquo;s enquiries that still have no reply.</span></li>
+        <li>Click <span class="ui">Overview</span>. Check the job is on the <span class="ui">Scheduled tasks</span> tab.</li>
+      </ol>
+    </div>
+
+    <div class="stage">
+      <h3>7. Critique, improve and stress test</h3>
+      <ol>
+        <li>When an answer is wrong, run the <a href="../prompts/#redline-the-answer">Redline prompt</a> inside that thread.</li>
+        <li>Tell Claude the fix and say <span class="sayit">Remember this for every thread in this project.</span> It goes into project memory.</li>
+        <li>To check what it remembered: click the gear icon, then <span class="ui">Project settings</span>, then <span class="ui">Memory</span>. Read, edit or delete anything under <span class="ui">Auto memory</span>.</li>
+        <li>Give it the hardest job you have. Repeat steps 1 to 3 of this block until the answer holds up.</li>
+      </ol>
+      <p class="note">The main conversation works from recent messages, recent threads and project memory, not its full history. Anything it must never forget goes in the instructions or project memory.</p>
+    </div>
+  </section>
+
+  <section id="threads" class="threads">
+    <p class="label" data-n="05">Finding your threads</p>
+    <p class="lead">&ldquo;I used to have separate chats in a project. If it&rsquo;s one conversation now, where do my chats go?&rdquo;</p>
+    <p class="big">Your separate chats still exist. They&rsquo;re called threads now.</p>
+    <p><strong>Before:</strong> you opened a project and started a new chat for each job.<br><strong>Now:</strong> you talk to one main chat, the coordinator. It starts a thread for each job.</p>
+    <p>The project is the office. The coordinator is the front desk. Each thread is a job file. You walk in, tell the front desk what you need, and it opens a new file or pulls out the one you already have.</p>
+
+    <h3>How a thread appears</h3>
+    <p>When the coordinator starts a thread, a card appears under your message with the thread&rsquo;s title and status. Click the card to open it.</p>
+
+    <h3>Working inside a thread</h3>
+    <p>Open the thread and type in its own message box. That message goes straight to that thread, like your old chats. A message in the main chat only reaches a thread if Claude matches it to that thread.</p>
+
+    <h3>Finding a thread later</h3>
+    <p>Three ways:</p>
+    <ol>
+      <li><strong>Overview pane, Threads tab.</strong> Every thread is listed by status: Working, Waiting on you, Ready for review, Landing, Idle, Resolved.</li>
+      <li><strong>The row at the top.</strong> It shows threads you recently opened, updated or pinned. Pin the ones you use often.</li>
+      <li><strong>Ask the coordinator.</strong> For example: &ldquo;Open the thread where we did the quote template.&rdquo;</li>
+    </ol>
+
+    <div class="flag">
+      <strong>Watch for this</strong>
+      <p>A thread moves to Resolved by itself after a week with no activity. It is not deleted. Find it under Resolved and reopen it from the thread&rsquo;s menu.</p>
+    </div>
+
+    <h3>Good to know</h3>
+    <ul>
+      <li>Your Claude chat projects have not changed. They still work the old way until Anthropic upgrades them.</li>
+      <li>A thread stays in the project that started it. You can&rsquo;t move it to another project.</li>
+      <li>Want a side question without cluttering the thread you&rsquo;re in? Type /btw. To branch off a new thread from the current one, type /fork.</li>
+      <li>Threads use the connectors on your Claude account. The main conversation has none, so a job that needs your email or calendar goes to a thread.</li>
+    </ul>
+  </section>
+
+  <section id="usage">
+    <p class="label" data-n="06">Watch your usage</p>
+    <p>Each thread is a full session, so a project uses your plan limits faster than a chat. On Pro you will hit the limit sooner.</p>
+    <ul class="only">
+      <li><strong>See what each thread used:</strong> gear icon, then <span class="ui">Project settings</span>, then <span class="ui">Usage</span>.</li>
+      <li><strong>Use a lighter model:</strong> a new project uses Opus everywhere. Change it under <span class="ui">Project settings</span>, then <span class="ui">General</span>: <span class="ui">Thread model</span>, <span class="ui">Thread effort</span>, <span class="ui">Coordinator model</span> and <span class="ui">Coordinator effort</span>. The <a href="../effort/">effort guide</a> says which level suits which job.</li>
+      <li><strong>Stop a project:</strong> <span class="ui">Pause</span>, <span class="ui">Archive</span> and <span class="ui">Delete</span> are at the bottom of <span class="ui">Project settings</span>, then <span class="ui">General</span>. Delete removes the threads, memory and files for good.</li>
+    </ul>
+    <p>There is also a cap of 200 new threads a day across all your projects.</p>
+  </section>
+
+  <section id="log">
+    <p class="label">Update log</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Date</th><th>What changed</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:nowrap">22 Nov 2026</td><td>First version.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sources">
+      <p>Sources: Anthropic, &ldquo;Projects redesigned: from folder to conversation&rdquo; (claude.com/blog/projects-redesigned, 17 Sep 2026), the Claude Projects page of the Claude Code docs (code.claude.com/docs/en/claude-projects), and the help centre article What are projects. Read on 22 Nov 2026. This is a beta, so button names and limits can change. If something on your screen reads differently, go by your screen.</p>
+    </div>
+  </section>
+  </div>
+<footer>
+  <span>Magnum AI · magnumai.com.au</span>
+  <span>Last checked · 22 November 2026</span>
+  <span><a href="../" style="color:inherit">Members area</a></span>
+</footer>
+<script src="../assets/menu.js" defer></script>
+</body>
+</html>

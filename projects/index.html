@@ -738,6 +738,12 @@ F.flow = [(() => {
 const S = [
 {sec:"", cover:true, ill:["../assets/illustrations/make-claude-yours.jpg","A cartoon shop owner hands her laptop a coral folder about her business, her shopfront through the window."], h:"Set up a project <em>properly</em>.", pts:[], sub:"Coaching session · One job, set up once", note:"Stop explaining your business to AI every time you open it. Every prompt is in this link, ready to copy."},
 
+{sec:"A new version", ic:["Building","Beta · Pro and Max only"], h:"A new version of Projects is <em>in beta</em>", pts:[
+ "Anthropic has rebuilt Projects as one conversation that starts a thread for each job.",
+ "It is in beta, it lives in Claude Code for now, and it reaches chat later.",
+ "You do not need to do anything yet. Everything in this deck still works."],
+ note:"On Pro or Max and curious? <a href=\"../new-projects/\">The new Projects (beta)</a> walks you through it."},
+
 {sec:"AI hacks", ic:["Spanner","Two habits before any project"], h:"Have an <em>AI-first</em> mindset", pts:[
  "<b>1. Ask “How can AI help?”</b> before you start any job. AI is there to get you started and help you through the job. It is not there to do all the work for you.",
  "<b>2. Talk to it.</b> Press the microphone and say what you want, the way you would brief a person. Rough is fine. You give it far more than you would ever type."],
@@ -760,6 +766,14 @@ const S = [
  ["c","Your team","Job ads, interview questions and inductions written the way you run things."]]},
 
 {sec:"The project", ic:["Building","Eight steps, in order"], h:"The workflow: <em>setting up a project</em>", pts:[], note:'<div class="wf" style="width:100%;margin-top:8px"><svg viewBox="0 0 1240 424" style="width:100%;height:auto;max-height:440px;display:block" role="img" aria-label="The workflow: interview, brief, instructions, files, test, connect, skills, schedule"><rect x="0" y="4" width="250" height="124" fill="#EF4029" stroke="#1E1B17" stroke-width="4"/><text x="125" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">1</text><text x="125" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">INTERVIEW</text><rect x="330" y="4" width="250" height="124" fill="#EF4029" stroke="#1E1B17" stroke-width="4"/><text x="455" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">2</text><text x="455" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">BRIEF</text><rect x="660" y="4" width="250" height="124" fill="#EF4029" stroke="#1E1B17" stroke-width="4"/><text x="785" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">3</text><text x="785" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">INSTRUCTIONS</text><rect x="990" y="4" width="250" height="124" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><text x="1115" y="58" text-anchor="middle" font-family="Oswald" font-size="44" fill="#1E1B17">4</text><text x="1115" y="104" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#1E1B17">FILES</text><rect x="0" y="296" width="250" height="124" fill="#FFFFFF" stroke="#1E1B17" stroke-width="4"/><text x="125" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#1E1B17">5</text><text x="125" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#1E1B17">TEST</text><rect x="330" y="296" width="250" height="124" fill="#1F2A37" stroke="#1E1B17" stroke-width="4"/><text x="455" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">6</text><text x="455" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">CONNECT</text><rect x="660" y="296" width="250" height="124" fill="#1F2A37" stroke="#1E1B17" stroke-width="4"/><text x="785" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">7</text><text x="785" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">SKILLS</text><rect x="990" y="296" width="250" height="124" fill="#1F2A37" stroke="#1E1B17" stroke-width="4"/><text x="1115" y="350" text-anchor="middle" font-family="Oswald" font-size="44" fill="#FFFFFF">8</text><text x="1115" y="396" text-anchor="middle" font-family="Oswald" font-size="30" letter-spacing="1" fill="#FFFFFF">SCHEDULE</text><line x1="256" y1="66" x2="312" y2="66" stroke="#1E1B17" stroke-width="5"/><polygon points="326,66 310,56 310,76" fill="#1E1B17"/><line x1="256" y1="358" x2="312" y2="358" stroke="#1E1B17" stroke-width="5"/><polygon points="326,358 310,348 310,368" fill="#1E1B17"/><line x1="586" y1="66" x2="642" y2="66" stroke="#1E1B17" stroke-width="5"/><polygon points="656,66 640,56 640,76" fill="#1E1B17"/><line x1="586" y1="358" x2="642" y2="358" stroke="#1E1B17" stroke-width="5"/><polygon points="656,358 640,348 640,368" fill="#1E1B17"/><line x1="916" y1="66" x2="972" y2="66" stroke="#1E1B17" stroke-width="5"/><polygon points="986,66 970,56 970,76" fill="#1E1B17"/><line x1="916" y1="358" x2="972" y2="358" stroke="#1E1B17" stroke-width="5"/><polygon points="986,358 970,348 970,368" fill="#1E1B17"/><polyline points="1115,128 1115,212 125,212 125,276" fill="none" stroke="#1E1B17" stroke-width="5"/><polygon points="125,292 115,274 135,274" fill="#1E1B17"/></svg></div>'},
+
+{sec:"The project", ic:["Building","Classic and new"], h:"Where each step <em>lives</em>", rowhead:["Step","Classic project (chat)","New project (beta)"], rows:[
+ ["1 to 2 · Interview and brief","A new chat in the project","The project conversation"],
+ ["3 · Instructions","The project instructions field","Project settings › Memory › Project instructions. Up to 16,000 characters"],
+ ["4 · Files","The project’s files","The Library tab in Overview, or Context when you create it. Google Drive folders too"],
+ ["5 · Test","A new chat in the project","Send a small job, then open the thread to check it"],
+ ["8 · Schedule","A scheduled task","Ask in the conversation. It shows on the Scheduled tasks tab"],
+ ["Then · Improve","Edit the instructions, test again","Tell Claude to remember the fix. It goes into project memory"]]},
 
 {sec:"Steps 1 to 3 · The goal", ic:["Chat bubble","Interview, brief, instructions"], h:"Steps 1 to 3: set the <em>goal</em>", fig:"interview", pts:[
  "1. Interview: it asks, you answer.",
@@ -1016,7 +1030,7 @@ function grow(i){
   sl.style.setProperty('--g',lo);
 }
 
-function remember(i){if(i<1)return;try{localStorage.setItem('magnum-last',JSON.stringify({p:location.pathname,n:NAME,i:i,t:LAST,h:plain(S[i].h)}));}catch(e){}}
+function remember(i){if(i<1)return;try{localStorage.setItem('magnum-last',JSON.stringify({p:location.pathname,n:NAME,i:i,t:LAST,h:plain(S[i].h)}));var P=JSON.parse(localStorage.getItem('magnum-progress')||'{}'),k=location.pathname.replace(/index\.html$/,''),o=P[k]||{};P[k]={i:Math.max(o.i||0,i),t:LAST};localStorage.setItem('magnum-progress',JSON.stringify(P));}catch(e){}}
 function show(n){
   cur=Math.max(0,Math.min(slides.length-1,n));
   if(isPhone()){scrollToSec(cur,true);return;}

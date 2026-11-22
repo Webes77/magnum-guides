@@ -626,7 +626,7 @@ const S = [
  "One prompt at a time. Nothing gets pasted in until you have read it."]},
 
 {sec:"Open", h:"The <em>map</em>", fig:"map", pts:[
- "Four parts. Projects know your business. Skills are saved jobs. Task work does whole jobs. Code is the developer version.",
+ "Four parts. Projects know your business. Skills are saved jobs. Task work does whole jobs. Code is the developer version, and where the new Projects beta lives for now.",
  "Two underneath that serve all four. Connectors plug in your email, calendar and files. Schedules run a job on a timer.",
  "Today builds the first three and turns on one connector.",
  "Schedules are session three. Code is a separate conversation."]},
@@ -1005,7 +1005,7 @@ function grow(i){
   sl.style.setProperty('--g',lo);
 }
 
-function remember(i){if(i<1)return;try{localStorage.setItem('magnum-last',JSON.stringify({p:location.pathname,n:NAME,i:i,t:LAST,h:plain(S[i].h)}));}catch(e){}}
+function remember(i){if(i<1)return;try{localStorage.setItem('magnum-last',JSON.stringify({p:location.pathname,n:NAME,i:i,t:LAST,h:plain(S[i].h)}));var P=JSON.parse(localStorage.getItem('magnum-progress')||'{}'),k=location.pathname.replace(/index\.html$/,''),o=P[k]||{};P[k]={i:Math.max(o.i||0,i),t:LAST};localStorage.setItem('magnum-progress',JSON.stringify(P));}catch(e){}}
 function show(n){
   cur=Math.max(0,Math.min(slides.length-1,n));
   if(isPhone()){scrollToSec(cur,true);return;}
