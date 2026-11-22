@@ -33,18 +33,33 @@
   .mmenu .bars i{display:block;height:2px;background:#1E1B17}
   .mmenu-open .mmenu{background:#1E1B17;color:#FFFFFF}
   .mmenu-open .mmenu .bars i{background:#FFFFFF}
-  .mmenu.dot::after,.mpanel a.dot::after{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:#C63A2A;border:2px solid #FFFFFF}
-  .mmenu.dot::after{position:absolute;top:-7px;right:-7px}
-  .mpanel a.dot::after{margin-left:10px;vertical-align:middle;border-color:#FBFBF9}
-  .mpanel:not([hidden]){display:block;position:fixed;left:0;right:0;bottom:0;top:var(--mtop,62px);z-index:89;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#FBFBF9;border-top:2px solid #1E1B17;padding:6px 18px calc(28px + env(safe-area-inset-bottom))}
+  .mmenu.dot::after{content:"";position:absolute;top:-7px;right:-7px;width:10px;height:10px;border-radius:50%;background:#C63A2A;border:2px solid #FFFFFF}
+  /* The open menu: navy, with bright coral circuit lines that draw in down
+     the left of each group and a node at every link. On navy, coral reads as
+     light, so the lines carry the "AI" feel without a glow or a shadow. */
+  .mpanel:not([hidden]){display:block;position:fixed;left:0;right:0;bottom:0;top:var(--mtop,62px);z-index:89;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#1F2A37;border-top:2px solid #1E1B17;padding:4px 18px calc(28px + env(safe-area-inset-bottom))}
   .mmenu-open{overflow:hidden}
-  .mgrp{padding:14px 0 6px}
-  .mgrp+.mgrp{border-top:2px solid #1E1B17}
-  .mh{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#C63A2A;margin:0 0 4px}
+  .mscan{display:block;height:2px;margin:0 -18px;background:#FF6F5E;transform-origin:left;animation:mscan .5s ease-out both}
+  .mgrp{position:relative;padding:16px 0 8px 26px}
+  .mgrp::before{content:"";position:absolute;left:5px;top:22px;bottom:18px;width:2px;background:#FF6F5E;transform-origin:top;animation:mline .45s ease-out both;animation-delay:calc(var(--gi) * 70ms + 120ms)}
+  .mgrp+.mgrp{border-top:1px solid rgba(244,241,234,.14)}
+  .mh{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#FF6F5E;margin:0 0 4px}
+  .mh svg{width:24px;height:24px;flex:none}
   .mpanel ul{list-style:none;margin:0;padding:0}
-  .mpanel li+li{border-top:1px solid #DADAD5}
-  .mpanel a{display:block;padding:12px 0;font-family:'IBM Plex Sans',Arial,sans-serif;font-weight:600;font-size:17px;line-height:1.3;color:#1E1B17;text-decoration:none}
-  .mpanel a[aria-current]{color:#C63A2A}
-  .mpanel a[aria-current]::before{content:"";display:inline-block;width:8px;height:8px;background:#EF4029;margin-right:10px;vertical-align:middle}
+  .mpanel li{position:relative;opacity:0;animation:mitem .35s ease-out forwards;animation-delay:calc(var(--gi) * 70ms + 180ms)}
+  .mpanel li::before{content:"";position:absolute;left:-25px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:#1F2A37;border:2px solid #FF6F5E}
+  .mpanel li::after{content:"";position:absolute;left:-15px;top:50%;width:11px;height:2px;background:#FF6F5E}
+  .mpanel li+li{border-top:1px solid rgba(244,241,234,.10)}
+  .mpanel a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;font-family:'IBM Plex Sans',Arial,sans-serif;font-weight:600;font-size:17px;line-height:1.3;color:#F4F1EA;text-decoration:none}
+  .mpanel a .ma{color:#FF6F5E;font-size:18px;opacity:.85;flex:none}
+  .mpanel a:active,.mpanel a:hover{color:#FFFFFF}
+  .mpanel a:active .ma,.mpanel a:hover .ma{transform:translateX(3px)}
+  .mpanel li:has(a[aria-current])::before{background:#FF6F5E}
+  .mpanel a[aria-current]{color:#FF6F5E}
+  .mpanel a.dot .mt::after{content:"";display:inline-block;width:9px;height:9px;margin-left:10px;border-radius:50%;background:#FF6F5E;vertical-align:middle}
+  @keyframes mscan{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes mline{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  @keyframes mitem{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.mscan,.mgrp::before,.mpanel li{animation:none;opacity:1}}
 }
 @media print{.mtb{display:none}.mmenu,.mpanel{display:none}}
