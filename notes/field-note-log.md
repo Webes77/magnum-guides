@@ -90,6 +90,12 @@ each morning knowing the three things that matter today, picked from your
 calendar and messages, so nothing slips while you're flat out." / the link /
 "Any questions, let me know."
 
+Published: merged to main as `1d8c708`, Pages deploy for that exact commit
+confirmed successful. MailerLite draft "Field Note 15 · Today" created to
+the newsletter group, not sent or scheduled (the tool returned a schema error
+after creating it; one draft confirmed by listing, no retry). Email sent to
+James from Outlook with the SAY YES block; nothing sent on WhatsApp.
+
 Worth putting on the shelf: the prompt as `morning-three` or similar, under
 From the Sunday Brief, `works:'any:email connected'`, type review, when
 start. Listed for James.
