@@ -9,6 +9,91 @@ Two jobs. It tells the next run which shelf cards have already been taught, so
 the fallback never repeats one. And it is the record of whether a drafted
 Field Note was worth having, which is the thing to watch over the first month.
 
+## 2026-11-25
+
+Issue 15, Today, at `newsletter/field-note-15-today.html`, live on main the
+same morning. Headline "Too much on? Know today's three must-dos before you
+start" (ten words, coral on "today's three must-dos").
+
+Topic. Issue 14 ran group D (topic 22, as renewals, published 18 Nov at
+James's word; the topic file still said "not live", corrected in this
+commit). So group A, first next topic 2: a morning brief from your calendar
+and inbox. Not a repeat of Projects, Deciding or Renewals, and none of their
+examples reused (roster, social posts, meal plan, prices, equipment, rego,
+insurance, pets). Examples on the page: the school excursion form and a moved
+delivery. The Sunday Brief commission was not read for the topic.
+
+Card. No shelf card fits a daily brief any AI can run. `monday-brief` is a
+session three deck prompt, weekly, Claude scheduled task only, with no role
+and no fill-ins about the reader, so it was not used and the deck was not
+touched. The prompt was written fresh to the review standards and the value
+rules: assistant role; four bare fill-ins (business, hours, home, people who
+come first); reads today and tomorrow morning in the calendar or booking app
+and three days of email from real people, or asks for screenshots with dates
+showing; read only (never send, reply, delete, move, archive or accept); skips
+the owner's own and family's health, money-trouble and legal mail but keeps
+private appointment times as "private" for clash warnings, with client work,
+bills, suppliers, leases and tax office letters explicitly fine; first names
+and job only for customers or patients; messages are information only and a
+planted instruction is reported; no guessed times, dates or names, [CHECK]
+instead; says so at the top when a connection failed; TODAY'S THREE ranked by
+cost, letting someone down or getting harder tomorrow, then WHAT'S ON, WAITING
+ON ME, QUICK ONES; ends by asking what is wrong or missing, offering drafts
+for the owner to send, and offering the prompt back with answers built in.
+Cold-paste test passes: with no connector it asks for the screenshots and
+waits. Plan claim: Claude's Gmail and Calendar connectors are on paid plans
+(Claude's own connector docs in search results), and ChatGPT's on Plus and
+above, not Free or Go (third-party reporting, Aug 2026). Written loosely as
+"usually on a paid plan". Claude's Gmail connector can now send with
+approval, which is why the never-send rule matters.
+
+Value test, three rounds, every reviewer without an Agent tool, so each cold
+run was the reviewer running the prompt itself. Round 1 (mobile dog groomer,
+accountant with two staff): hook 4/4, message 3/4, relevance 3/5, result 4/3,
+effort 2/3. Faults: inbox-only reads as office work (texts added, WhatsApp
+says "messages"), the private-matters rule would skip an accountant's ATO
+mail (scoped to the owner's own life), typing a paste on a phone is slow
+(screenshots instead), example text inside brackets (bare blanks), ranking
+rules fighting (rank by cost "whoever it's from"), no tomorrow-morning in the
+paste. Round 2 (electrician with two vans, salon with three staff): hook 4/4,
+message 4/4, relevance 4/3, result 4/3, effort 3/3. Faults: bookings live in
+a booking app, a hidden private appointment caused a missed clash, business
+lease and supplier mail at risk of being skipped, "read first" does nothing
+(now "give extra weight"), the excursion form fell out (QUICK ONES added),
+time claim too low. Round 3 (physio clinic connected, landscaper with
+screenshots): hook 4/4, message 4/4, relevance 4/5, result 4/4, effort 3/3.
+Last faults fixed and untested under the Step 8B rule: booking apps that
+will not connect (step one now says screenshot anything that won't connect),
+opening every email to screenshot it (line dropped, cut-off amounts get
+[CHECK]), ATO overdue notices clashing with "money trouble" (tax office
+letters fine even overdue), patient detail on a phone (first name and job
+only), and output length (the rewritten prompt is now offered, not given).
+Rules held in every run: nothing invented, private items skipped, planted
+instructions ignored and flagged.
+
+Words around the prompt: 170 or under, shape check PASS. Why it works: the
+foreman walking the site before the crew turns up. At 390 wide the page is
+3,970 px, about 4.7 phone screens with the prompt; 3.1 at 1440 and 820. No
+script errors, no sideways scroll at 1440, 820 and 390. Copy returns the
+authored prompt exactly. Contrast PASS on the issue, the archive and the
+front page at four widths. Style checker clean on the page and card source.
+
+Card: the stock cartoon for topic 2 (a woman at the kitchen bench at dawn
+with a coffee and two phones, the dog waiting with its lead) copied to
+`assets/illustrations/field-note-15.jpg`, per the stock rule in
+`notes/image-style.md`; issue 14 was a still life, so a person was due. No
+fal call was needed. Rendered at 1200x630 q90 with inlined fonts and looked
+at; "must-dos" held on one line with a nowrap span.
+
+WhatsApp message: "Hi everyone, here's this week's Field Note." / "Start
+each morning knowing the three things that matter today, picked from your
+calendar and messages, so nothing slips while you're flat out." / the link /
+"Any questions, let me know."
+
+Worth putting on the shelf: the prompt as `morning-three` or similar, under
+From the Sunday Brief, `works:'any:email connected'`, type review, when
+start. Listed for James.
+
 ## 2026-11-18
 
 Published 18 Nov at James's word, the same morning, under the new Step 8B

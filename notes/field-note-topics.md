@@ -35,12 +35,12 @@ The topic is a starting point. Build the best prompt for it to the standards in
 `notes/prompt-review-standards.md`. Use a shelf card when one fits; otherwise
 write the prompt fresh and list it in the email as a card for the shelf.
 
-The rotation stands at: last issue was group C (issue 13). Next is group D. Topic 14 was tried first on 11 Nov and dropped after three value-test rounds; it stays next. On 18 Nov group D was tried: topic 21 (plan any trip or event) and topic 22 (household admin, as renewals) each missed the value test after three rounds, so issue 14 was built on a branch and not published. Both stay next; group D is still due.
+The rotation stands at: last issue was group A (issue 15, 25 Nov). Next is group B. Issue 14 ran group D (topic 22, as renewals) and went live on 18 Nov. Topic 21 in group D was tried on 18 Nov and dropped; it stays next.
 
 ## A. Push what AI can do (it works on your email, files or calendar)
 
 1. done 11. It reads your sent emails and learns how you write, so everything after sounds like you.
-2. next. A morning brief from your calendar and inbox: the three things that matter today.
+2. done 15. A morning brief from your calendar and inbox: the three things that matter today.
 3. next. Find what you've forgotten: unanswered emails, promises you made, things waiting on you.
 4. next. Find money leaking out: forgotten subscriptions, refunds never claimed, credits about to expire.
 5. next. Clean up any messy folder or desktop, filed by what's inside each file. Nothing deleted.
@@ -69,7 +69,7 @@ The rotation stands at: last issue was group C (issue 13). Next is group D. Topi
 ## D. Run your life better
 
 21. next (tried 18 Nov, see log). Plan any big event or trip: day by day, with a budget and a checklist.
-22. next (built 18 Nov as issue 14 on a branch, not live). Household admin in one place: renewals, dates, who does what.
+22. done 14 (as renewals, published 18 Nov). Household admin in one place: renewals, dates, who does what.
 23. next. Get more from any appointment (doctor, accountant, bank): it writes your questions beforehand.
 24. next. A week of meals from a photo of what's in your fridge and pantry.
 25. next. Fix anything: photograph the broken thing or the error message, get the fix step by step.
