@@ -17,12 +17,14 @@
  * Two kinds of check. The house rules and the page's own consistency apply to
  * every issue: no em dash, no "solid" in the copy, balanced markup, page numbers
  * that run in order, one masthead number, head tags that match the filename, a
- * card image, and a link from both index pages. The template's shape (one
- * card: the three questions, three steps, one prompt, one Why it works, no
- * fold, 170 words around the prompt) applies only under --shape, because
- * issues 01 to 06 were written before that shape settled and are not being
- * rebuilt to it. Anything drafted from templates/field-note-template.html
- * is checked with --shape.
+ * card image, and a link from both index pages. The template's shape applies
+ * to every issue since 25 Nov 2026, when all of them were rebuilt to James's
+ * approved design: the style block identical to the template's, the fixed
+ * Weekly Field Note title and line, No. NN in the strip, one headline, one
+ * sentence, How to use it with three steps, the prompt in the black box with
+ * Copy, no Why it works, no fold. --shape adds the copy rules for a new
+ * issue: a ten-word headline that names the job, and 170 words around the
+ * prompt. Issues sent before those rules keep their headlines.
  *
  * It does not measure layout. Field Notes are a scrolling page, not a deck, so
  * tools/check-decks.js and its fit rules do not apply here.
@@ -37,7 +39,8 @@ const VOID = new Set(['area','base','br','col','embed','hr','img','input','link'
 
 const args = process.argv.slice(2);
 const allowDraft = args.includes('--draft');
-const wantShape = args.includes('--shape');
+const wantShape = true; // the design checks run on every issue since 25 Nov 2026
+const wantCopyRules = args.includes('--shape'); // headline and word limits: new issues only
 const templateOnly = args.includes('--template');
 const files = args.filter(a => !a.startsWith('--'));
 
@@ -124,7 +127,7 @@ function check(file) {
   // copyable. Since issue 05 it may sit in the bottom-line-up-front block
   // instead of on a page of its own, which is the short shape.
   const promptBlocks = html.match(/<div class="prompt">[\s\S]*?<div class="tip">/g) || [];
-  const blufPrompt = html.match(/<div class="pbox">[\s\S]*?<\/section>/g) || [];
+  const blufPrompt = html.match(/<div class="pbox">[\s\S]*?<\/pre>\s*<\/div>/g) || [];
   const allPrompts = promptBlocks.concat(blufPrompt);
   if (!allPrompts.length) fail.push('no prompt block on the page');
   allPrompts.forEach((b, i) => {
@@ -150,19 +153,36 @@ function check(file) {
     if (!oneCard) fail.push('not the one-card shape: expected <main class="note">');
     if (pages) fail.push(`${pages} pages; the one-card shape has none`);
     if (/<details/.test(html)) fail.push('a fold or deep dive is on the page; the one-card shape has none');
-    const labels = (html.match(/<dl class="three">[\s\S]*?<\/dl>/) || [''])[0]
-      .match(/<dt>([^<]*)<\/dt>/g) || [];
-    const want = ['What it is', 'What you get', 'What you do'];
-    const got = labels.map(l => l.replace(/<[^>]+>/g, '').trim());
-    if (got.join('|') !== want.join('|')) {
-      fail.push(`the three questions read "${got.join(' / ') || 'missing'}", expected "${want.join(' / ')}"`);
+    // James, 25 Nov 2026: "That looks perfect. Keep it the same. Do not
+    // change that." The style block is the design, so every issue must carry
+    // the template's byte for byte. A new font size or a second headline
+    // style fails here.
+    const styleOf = (src) => (src.match(/<style>[\s\S]*?<\/style>/) || [''])[0];
+    if (!isTemplate) {
+      const tpl = fs.readFileSync(path.join(ROOT, 'templates', 'field-note-template.html'), 'utf8');
+      if (styleOf(html) !== styleOf(tpl)) fail.push('the style block differs from templates/field-note-template.html; the design is fixed');
     }
+    const INTRO_H2 = '<h2>Weekly <em>Field Note</em></h2>';
+    const INTRO_P = '<p>One prompt a week, properly built and tested on a real business job. Copy it, paste it, get the result.</p>';
+    const intro = (html.match(/<header class="intro">[\s\S]*?<\/header>/) || [''])[0];
+    if (!intro.includes(INTRO_H2) || !intro.includes(INTRO_P)) {
+      fail.push('the Weekly Field Note title or the line under it has changed; both are fixed word for word');
+    }
+    if ((html.match(/<h[1-6][\s>]/g) || []).length !== 2) {
+      fail.push('expected exactly two headings: the Weekly Field Note title and the issue headline');
+    }
+    if (/<dl class="three">|<dt>/.test(html)) fail.push('the What it is / What you get labels are back; the design has one sentence instead');
+    if (/<section class="why">/.test(html)) fail.push('a Why it works block is back; the design has none');
+    if ((html.match(/<p class="lede">/g) || []).length !== 1) fail.push('expected exactly one sentence block (<p class="lede">) under the headline');
+    if (!html.includes('<p class="how">How to use it</p>')) fail.push('no How to use it label above the steps');
     const steps = ((html.match(/<ol class="steps">[\s\S]*?<\/ol>/) || [''])[0].match(/<li>/g) || []).length;
-    if (steps !== 3) fail.push(`${steps} steps under What you do, expected 3`);
+    if (steps !== 3) fail.push(`${steps} steps under How to use it, expected 3`);
     if (allPrompts.length !== 1) {
       fail.push(`${allPrompts.length} prompt blocks, the template shape is exactly 1`);
     }
-    if (!/<section class="why">/.test(html)) fail.push('no Why it works block');
+    const pbox = (html.match(/<div class="pbox">[\s\S]*?<\/pre>/) || [''])[0];
+    if (!pbox || !/data-copy/.test(pbox)) fail.push('the prompt is not in the black box with its Copy button');
+    if (wantCopyRules || isTemplate) {
     const h1 = visibleText((html.match(/<h1>[\s\S]*?<\/h1>/) || [''])[0]).trim().split(/\s+/).filter(Boolean);
     if (h1.length > 10) fail.push(`the headline is ${h1.length} words; keep it to 10`);
     // James, 21 Oct: the headline names the job and what it does for the
@@ -176,6 +196,7 @@ function check(file) {
       .replace(/<pre>[\s\S]*?<\/pre>/g, ' ');
     const words = visibleText(card).trim().split(/\s+/).filter(Boolean).length;
     if (words > 170) fail.push(`${words} words around the prompt; the limit is 170`);
+    }
   }
 
   // ---- draft band -------------------------------------------------------
@@ -229,8 +250,8 @@ function check(file) {
       if (issueNums.length !== pages || issueNums.some(n => n !== nn)) {
         fail.push(`the masthead does not read No. ${nn} on all ${pages} pages`);
       }
-      if (!html.includes(`Weekly Field Note / No. ${nn}`)) {
-        fail.push(`the top bar does not read Weekly Field Note / No. ${nn}`);
+      if (!html.includes(`<span class="issue">No. ${nn}</span>`)) {
+        fail.push(`the top strip does not read No. ${nn}`);
       }
 
       const mailto = (html.match(/href="mailto:\?([^"]*)"/) || [])[1] || '';
