@@ -11,6 +11,8 @@ Field Note was worth having, which is the thing to watch over the first month.
 
 ## 2026-11-25
 
+Sent on WhatsApp at James's yes, 8:23 to 8:28am Brisbane: 32 of 32 confirmed by Blueticks, single messages (send_message_media, card picture plus caption, no campaign), after a test to his own number at 8:21 that he read and approved. 19 people and 13 group chats from the Field Note list. The message used the new Chris Voss label hook: "It probably feels like your inbox decides what your morning looks like." The MailerLite draft was not touched, at his word.
+
 Issue 15, Today, at `newsletter/field-note-15-today.html`, live on main the
 same morning. Headline "Too much on? Know today's three must-dos before you
 start" (ten words, coral on "today's three must-dos").
